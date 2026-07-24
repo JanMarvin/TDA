@@ -1,0 +1,32 @@
+# ple1.cf
+# example command file for product-limit estimation
+# Example data Lawless 1982, p. 5, p. 73, Lee 1980, p. 128
+
+nvar(
+    dfile = rrdat.2,     # data file
+                          
+    DUR  [2.0] = c1,     # duration;
+    CEN  [1.0] = c2,     # censoring status (1 = not censored)
+    WT   [1.0] = c3,     # case weight (number of individuals)
+    GRP  [1.0] = c4,     # group (0 = placebo, 1 = Drug 6-MP)
+    GRP1 [1.0] = GRP[0], # group 0
+    GRP2 [1.0] = GRP[1], # group 1
+);
+cwt = WT;                # define case weights
+
+edef(
+    org = 0,             # origin state 
+    des = CEN,           # destination state
+    ts  = 0,             # starting time
+    tf  = DUR,           # ending time
+);
+
+ple (                    # request product-limit estimation
+    grp = GRP1,GRP2,     # define two groups
+) = ple.1;               # output file                           
+
+
+
+
+
+

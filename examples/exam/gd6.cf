@@ -1,0 +1,18 @@
+# gd6.cf
+
+nvar(
+    dfile = gd1.dat,
+    I = c1,
+    J = c2,
+    V1 = c3,
+    V2 = c4,
+);
+gdd = I,J,V1,V2;
+gdln(    
+    opt = 1,
+    fmt = 4.0,
+) = df;
+gdln(    
+    opt = 2,
+    fmt = 4.0,
+) = db;

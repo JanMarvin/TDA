@@ -1,0 +1,9 @@
+# l1reg2.cf    l1 regression example data from Spaeth, p. 317             
+
+nvar(
+    dfile = l1reg2.dat,
+    X = c1,
+    Y = c2,
+);
+l1reg = Y,X;
+

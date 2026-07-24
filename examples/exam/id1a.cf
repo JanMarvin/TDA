@@ -1,0 +1,9 @@
+nvar(
+    dfile = id1a.dat,
+    XL = c1,
+    XH = c2,
+);
+iddf(
+    opt=2,
+    df = df,
+) = XL,XH;

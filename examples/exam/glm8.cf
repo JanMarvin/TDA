@@ -1,0 +1,26 @@
+# glm8.cf
+
+nvar(
+    dfile = glm8a.dat,
+    U = c1,
+    Y = c2,
+    L = c3,
+    X = log(U),
+    LX = L * X,
+);
+
+tsel=eq(L,0);
+
+glm(
+    d = 4,
+    v = Y,X,
+    xp = -0.02,0.02,    # starting values required
+);
+
+tsel=eq(L,1);
+
+glm(
+    d = 4,
+    v = Y,X,
+    xp = -0.02,0.02,    # starting values required
+);

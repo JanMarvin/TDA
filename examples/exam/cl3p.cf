@@ -1,0 +1,18 @@
+nvar(
+    dfile = cl3.df,
+    I = c1,
+    J = c2,
+    V = c5,
+);
+gdd(gt=2) = I,J,V;    
+psfile = cl3p.ps;
+psetup(
+    pxa = 0,1,
+    pya = 0,1,
+);
+pltree(
+    rt = 1,     
+    pl = 2,
+    nc = 11,
+);      
+

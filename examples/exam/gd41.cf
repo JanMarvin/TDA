@@ -1,0 +1,11 @@
+nvar(
+    dfile = gd14.dat,
+    I = c1,
+    J = c2,
+    V = c3,
+);
+gdd = I,J,V;    
+gfc(
+    fmt = 4.0,
+) = d;
+

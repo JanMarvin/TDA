@@ -1,0 +1,19 @@
+nvar(
+    dfile = dh1.dat,
+    X = c1,
+);
+psfile = dh2.ps;
+psetup(
+    pxa = 0,8,
+    pya = 0,0.6,
+    pxlen =  90,
+    pylen =  50,
+);
+plxa(sc=1);
+plya(sc=0.1);
+plotd(
+    k = 2,
+    x = 0(0.1)8,    
+    df = df,
+) = X;
+

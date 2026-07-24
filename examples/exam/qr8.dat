@@ -1,0 +1,22 @@
+# qr8.dat
+# example data for bivariate probit
+# Limdep 6 manual, p. 468
+# c1 = vote on tax
+# c2 = kids in private school
+# c3 = prop. taxes
+# c4 = log of income
+# c5 = years lived in town
+# c6 = works as teacher?
+
+1 0 7.0475  9.7700 10 1
+0 0 7.0475 10.0210  8 0
+0 0 7.0475 10.0210  4 0
+1 1 6.7452 10.2220  4 0
+1 0 7.2793 10.0210  5 0
+1 1 7.0475 10.2220  5 1
+0 0 6.3969  9.7700 30 0
+0 1 7.0475 10.0463  7 0
+1 1 7.0475 10.2220  2 0
+0 0 7.0475  8.2940  2 1
+0 1 7.4955 10.2220 18 0
+1 0 6.7452  9.4335 49 0

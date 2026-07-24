@@ -1,0 +1,21 @@
+psfile = gd2.ps;
+psetup(
+    pxa = 0,6,
+    pya = 0,4,
+    pxlen = 60,
+    pylen = 30,
+);
+plg(
+    node(n=1,gs=0.8) = 1,3,
+    node(n=7,gs=0.8) = 3,3,
+    node(n=3,gs=0.8) = 5,3,
+    node(n=4,gs=0.8) = 2,1,
+    node(n=9,gs=0.8) = 4,1,
+
+    edge(ic=10,a=1.5,1.0) =  1,7,
+    edge(ic= 0,a=1.5,1.0) =  3,7,
+    edge(ic= 5,a=1.5,1.0) =  1,4,
+    edge(ic=13,a=1.5,1.0) =  4,7,
+);
+
+

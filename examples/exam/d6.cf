@@ -1,0 +1,11 @@
+nvar(
+    dfile = d2.dat,
+    X1 = c1,
+    X2 = c2,
+    S1 = str(3,8),
+    S2 = str(12,12),
+    S3 = str(13,13),
+);
+pdata (
+) = d6;
+

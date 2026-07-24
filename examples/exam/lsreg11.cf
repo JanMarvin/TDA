@@ -1,0 +1,15 @@
+# lsreg11.cf
+
+nvar(
+    dfile = lsreg11.dat,     # data file
+    UTL = c1,
+    ASL = c2,
+    SPA = c3,           
+    AVS = c4,
+    ALF = c5,
+    CPM = c6,
+    CSM = c7,
+);
+lsreg =
+          CPM,ALF,UTL,ASL,SPA;
+

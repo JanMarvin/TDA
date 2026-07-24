@@ -1,0 +1,22 @@
+# lsreg12a.cf
+# TDA procedure to create robust covariance matrix for linear
+# regression, based on White's (1980) proposal.
+# Input: df12 = X matrix with regression data
+# res12 = matrix with residuals, here the residuals are in column 7
+# cov12 = standard covariance matrix
+# 0.02869 = 1 / estimated variance of residuals
+
+mfmt=-16.8;                 print format
+mdef(X,34,3) = df12;        read data matrix
+mdef(RM,34,10) = res12;     read residual data file 
+mdef(COV,3,3) = cov12;      read covariance matrix
+mscol(RM,7,R);             get R = column with residuals
+mtransp(X,XT);              create XT = transpose of X
+mdiag(R,RD);                create diagonal matrix with residuals
+mmul(RD,RD,RDD);            create squared residuals
+mmul(XT,RDD,X,DD);          create DD = XT * RDD * X
+mpr(DD);                    print DD
+mpr(COV);                   print COV
+mexpr(0.02869*COV,XX);      create inverse of X'X matrix
+mmul(XX,DD,XX,NCOV);        create NCOV = XX * DD * XX
+mpr(NCOV);                  print NCOV

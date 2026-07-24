@@ -1,0 +1,11 @@
+# gd26.cf
+
+nvar(
+    dfile = gd8.dat,
+    I = c1,
+    J = c2,
+    V = c3,
+);
+gdd(gt = 2) = I,J,V;
+gcut = d;
+gcut(opt=2) = d1;

@@ -1,0 +1,18 @@
+# mat7.cf 
+
+mfmt = 13.10;   
+mdef(A,3,3) = 1,0,0, 5,7,0, 1,0,1;
+mpr(A);
+
+mcross(A,AA);
+mpr(AA);
+
+msvd1(AA,Q,U,V);
+mpr(Q);
+mpr(U);
+mpr(V);
+
+mevs(AA,E,V);
+mpr(E);
+mpr(V);
+

@@ -1,0 +1,15 @@
+# gd14a.cf
+
+nvar(
+    dfile = gd3a.dat,
+    I = c1,
+    J = c2,
+    V = c3,
+);
+gdd = I,J,V;
+gbcf(    
+    sc = 49,
+    df = df,
+    opt = 2,
+    fmt = 3.0,
+) = db;

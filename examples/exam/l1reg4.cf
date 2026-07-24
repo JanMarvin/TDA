@@ -1,0 +1,11 @@
+# l1reg4.cf    l1 regression, data from Birkes and Dodge 1993, p.48,78    
+
+nvar(
+    dfile = l1reg4.dat,
+    Y = c1,
+    X1= c2,
+    X2 = c3,
+);
+l1reg = Y,X1,X2;
+
+

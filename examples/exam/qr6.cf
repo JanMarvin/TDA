@@ -1,0 +1,29 @@
+# qr6.cf    multivariate probit
+
+nvar(
+    dfile  = qr3.dat,
+    X      = c1, 
+    Weight = c2,
+    Y      = c3,
+);
+cwt = Weight;       use case weights
+qreg(
+    m = 6,          # select multivariate probit
+    nq = 5,         # categories of dep variable
+    ppar = par,     # write estimated parameters and corr. matrix
+    prot2 = p,      # protocol file
+
+    con = b9 = 0,   # use identity correlation matrix
+    con = b10 = 0,
+    con = b11 = 0,
+    con = b12 = 0,
+    con = b13 = 0,
+    con = b14 = 0,
+    con = b15 = 0,
+    con = b16 = 0,
+    con = b17 = 0,
+    con = b18 = 0,
+
+)= Y,X;
+
+

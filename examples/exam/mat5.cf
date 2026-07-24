@@ -1,0 +1,10 @@
+# mat5.cf
+
+mfmt = 13.10;   
+mdef(A,4,4) = 6,-3,4,1, 4,2,4,0, 4,-2,3,1, 4,2,3,1;
+mpr(A);
+mev(A,ER,EI,EVR,EVI);
+mpr(ER);
+mpr(EI);
+mpr(EVR);
+mpr(EVI);

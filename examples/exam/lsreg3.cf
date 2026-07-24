@@ -1,0 +1,18 @@
+# lsreg3.cf    
+nvar(
+    dfile = lsreg3.dat,
+    G  = c2,
+    Y  = c3,
+    NE = c4,
+    NC = c5,
+    SO = c6,
+    WE = c7,
+    Y2 = Y * Y,
+);
+nlist(
+    DL = NE,NC,SO,WE,
+);                             
+lsreg (     
+    dgrp = [DL],
+    tfmt = -14.6,
+) = G,Y,Y2,DL;           

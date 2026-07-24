@@ -1,0 +1,28 @@
+# gdf1.cf  
+
+nvar(
+    dfile = gdf1.dat,
+    SEL = c1,
+    ID = c2,
+    L1 = c3,
+    YL = c4,
+    CEN = c5,
+);
+
+
+tsel = SEL[1];      # select example 1
+pdata = d;
+gdf(                # expected values based on marginal distribution
+    prn = 2,
+    yl = YL,
+    cen = CEN,
+) = de.5m;
+
+gdf(
+    opt = 3,        # same with method 2        
+    prn = 2,
+    yl = YL,
+    cen = CEN,
+    grp = ID,L1,
+    d = 1,
+) = de.5j;

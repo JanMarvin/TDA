@@ -1,0 +1,14 @@
+# c02.cf
+
+nvar(
+    dfile = co2.dat,  
+    F = c1,
+    D = c2,
+);
+gdd(opt=3) = F,D;
+
+gqap(
+    df = df,
+    fmt = 3.0,
+) = d;
+

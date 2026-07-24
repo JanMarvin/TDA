@@ -1,0 +1,20 @@
+# plot3.cf   example of linear coordinate system      
+
+psfile = plot3.ps;  output file
+psetup(
+    pxlen =  90,    # length of x axis in mm
+    pylen =  50,    # length of y axis in mm
+
+    pxa   = -2,2,   # user coordinates on x axis
+    pya   =  0,1,   # user coordinates on y axis
+);
+plxa (sc=1,ic=2);     plot x axis
+plya (sc=0.5,ic=0);   plot y axis
+plframe;               plot frame
+
+plxgrid = 0.5;
+plygrid = -1,0,1;
+
+plabel  = "Linear Coordinate System";
+pxlabel = "X axis";
+pylabel(sc=3) = "Y axis";   shift 3 mm to right

@@ -1,0 +1,16 @@
+# ds2.cf
+
+nvar(
+    dfile = ds1.dat,
+    X1 = c1,
+    X2 = c2,
+    X3 = c3,
+);
+freq (
+    df = f.out,
+) = X1,X2,X3;
+
+freq2 (sc=1) = X2,X1;
+
+
+

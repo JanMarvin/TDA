@@ -1,0 +1,36 @@
+# ple5.cf
+# Example command file for product-limit estimation
+# with two groups (men and women).
+
+nvar(
+    dfile = rrdat.1,    # data file
+
+    TS    [3.0] = c3,   # starting time
+    TF    [3.0] = c4,   # ending time
+    SEX   [2.0] = c5,   # sex (1 men, 2 women)
+    TI    [3.0] = c6,   # interview date
+
+    # define additional variables
+
+    DES [1.0] = if eq(TF,TI) then 0 else 1,  #  destination state
+    DUR [3.0] = TF - TS + 1,
+
+    MEN   [1.0] = SEX[1],
+    WOMEN [1.0] = SEX[2],
+);
+
+        # define single episode data
+edef(
+    ts = 0,     # starting time
+    tf = DUR,   # ending time
+    org = 0,    # origin state
+    des = DES,  # destination state
+);
+ple(
+    grp = MEN,WOMEN,
+) = ple.5;  
+
+
+
+
+

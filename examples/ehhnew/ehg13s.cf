@@ -1,0 +1,30 @@
+# ehg13s.cf   product limit estimation for residuals
+
+nvar(
+    dfile = ehg13.res,   #   data file with residuals
+
+    RES  = c8,      # column 8 with residuals
+    ORG  = c2,      # origin state
+    DES  = c3,      # destination state
+);
+edef(
+    ts  = 0,
+    tf  = RES,
+    org = ORG,
+    des = DES,
+);        
+ple = ehg13s.ple;
+
+
+
+
+
+
+
+
+
+
+
+
+
+

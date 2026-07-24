@@ -1,0 +1,28 @@
+# qr3.cf    multinomial logit
+
+nvar(
+    dfile  = qr3.dat,
+    X      = c1, 
+    Weight = c2,
+    Y      = c3,
+);
+cwt = Weight;       use case weights
+qreg(
+   m = 5,           # select multinomial logit
+   nq = 5,          # categories of dep variable
+)= Y,X;
+
+# same model with fml command
+
+fml = xb2 = exp(beta20 + X * beta21),
+      xb3 = exp(beta30 + X * beta31),
+      xb4 = exp(beta40 + X * beta41),
+      xb5 = exp(beta50 + X * beta51),
+      xbb = 1 + xb2 + xb3 + xb4 + xb5,
+      ll  = if (eq(Y,1),1 / xbb,
+            if (eq(Y,2),xb2 / xbb,
+            if (eq(Y,3),xb3 / xbb,
+            if (eq(Y,4),xb4 / xbb, xb5 / xbb)))),
+      fn  = Weight * log(ll);
+
+

@@ -1,0 +1,21 @@
+# ds6.cf
+
+nvar(
+    dfile = ds2.dat,
+    G  = c1,
+    X1 = c2,
+    X2 = c3,
+    X3 = c4,    
+    X4 = c5,
+);
+segr(
+    g=G,
+    ptab = tab,
+) = X1,,X4;      
+
+
+
+
+
+
+

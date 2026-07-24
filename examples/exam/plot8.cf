@@ -1,0 +1,21 @@
+# plot8.cf  
+
+nvar(
+    noc = 20,           # create data
+    RD  = rd(-2,2),
+    RDS = sort(RD),
+    ND  = nd(RDS),
+);
+psfile = plot8.ps;  output file
+psetup(
+    pxlen =  90,
+    pylen =  50,
+    pxa   = -2,2,
+    pya   =  0,1,
+);
+plxa (sc=0.5,fmt=4.1);  plot x axis
+plya (sc=1,ic=10);      plot y axis
+plframe;                plot frame
+
+plot (s=4,fs=1.5) = RDS,ND;   polygon with marker symbols
+

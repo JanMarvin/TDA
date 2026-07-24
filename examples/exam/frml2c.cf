@@ -1,0 +1,92 @@
+# frml2c.cf     piecewise constant exponential with constraints
+
+nvar(
+
+    dfile = rrdat.1,     # data file
+
+    ID    [3.0] = c1,    # identification number
+    SN    [2.0] = c2,    # spell number
+    TS    [3.0] = c3,    # starting time
+    TF    [3.0] = c4,    # ending time
+    SEX   [2.0] = c5,    # sex (1 men, 2 women)
+    TI    [3.0] = c6,    # interview date
+    TB    [3.0] = c7,    # birth date
+    TE    [3.0] = c8,    # entry into labor market
+    TMAR  [3.0] = c9,    # marriage date (0 if no marriage)
+    PRES  [3.0] = c10,   # prestige of current job
+    PRESN [3.0] = c11,   # prestige of next job
+    EDU   [2.0] = c12,   # highest educational attainment
+
+    # define additional variables
+
+    COHO1 = ge(TB,348) & le(TB,384),  # birth cohort 1
+    COHO2 = ge(TB,468) & le(TB,504),  # birth cohort 2
+    COHO3 = ge(TB,588) & le(TB,624),  # birth cohort 3
+    W     = SEX[2],                   # women = 1
+
+    DES [1.0] = if eq(TF,TI) then 0 else 1,                    
+    DUR [3.0] = TF - TS + 1,
+);
+
+edef(           # define single episode data
+
+    ts = 0,     # starting time
+    tf = DUR,   # ending time
+    org = 0,    # origin state
+    des = DES,  # destination state
+);
+frml (                  
+    xp = -4,-4,-4,-4,-4,-4,-4,-4,-4,0,0,0,     # starting values
+
+    con = b2 - b1 = 0,
+    con = b3 - b2 = 0,
+    con = b4 - b3 = 0,
+    con = b5 - b4 = 0,
+    con = b6 - b5 = 0,
+    con = b7 - b6 = 0,
+    con = b8 - b7 = 0,
+    con = b9 - b8 = 0,
+
+) = bb = COHO2 * b1 + COHO3 * b2 + W * b3,
+    p1 = ge(tf, 0) & lt(tf,12),
+    p2 = ge(tf,12) & lt(tf,24),
+    p3 = ge(tf,24) & lt(tf,36),
+    p4 = ge(tf,36) & lt(tf,48),
+    p5 = ge(tf,48) & lt(tf,60),
+    p6 = ge(tf,60) & lt(tf,72),
+    p7 = ge(tf,72) & lt(tf,84),
+    p8 = ge(tf,84) & lt(tf,96),
+    p9 = ge(tf,96),             
+    rr = if(p1,a1,
+         if(p2,a2,
+         if(p3,a3,
+         if(p4,a4,
+         if(p5,a5,
+         if(p6,a6,
+         if(p7,a7,
+         if(p8,a8,
+         if(p9,a9,0))))))))),
+
+    s1 = 12 * exp(a1 + bb),
+    s2 = s1 + 12 * exp(a2 + bb),
+    s3 = s2 + 12 * exp(a3 + bb),
+    s4 = s3 + 12 * exp(a4 + bb),
+    s5 = s4 + 12 * exp(a5 + bb),
+    s6 = s5 + 12 * exp(a6 + bb),
+    s7 = s6 + 12 * exp(a7 + bb),
+    s8 = s7 + 12 * exp(a8 + bb),
+                           
+    lsurv = if(p1,tf * exp(a1 + bb), 
+            if(p2,s1 + (tf - 12) * exp(a2 + bb),
+            if(p3,s2 + (tf - 24) * exp(a3 + bb),
+            if(p4,s3 + (tf - 36) * exp(a4 + bb),
+            if(p5,s4 + (tf - 48) * exp(a5 + bb),
+            if(p6,s5 + (tf - 60) * exp(a6 + bb),
+            if(p7,s6 + (tf - 72) * exp(a7 + bb),
+            if(p8,s7 + (tf - 84) * exp(a8 + bb),
+            if(p9,s8 + (tf - 96) * exp(a9 + bb),0))))))))),
+
+    l1   = if(DES,rr + bb,0),
+    fn   = l1 - lsurv;  
+
+

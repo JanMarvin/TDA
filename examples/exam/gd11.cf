@@ -1,0 +1,11 @@
+# gd11.cf
+
+nvar(
+    dfile = gd2b.dat,
+    I = c1,
+    J = c2,
+    V = c3,
+);
+gdd = I,J,V;
+gio = d;
+

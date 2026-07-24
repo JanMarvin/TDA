@@ -1,0 +1,8 @@
+# seq1.cf
+
+nvar(
+    dfile = seq.d1,
+    ID = c1,
+    Y{0,7} = c2,
+);
+seqdef = Y0,,Y7;   

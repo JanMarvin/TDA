@@ -1,0 +1,32 @@
+# plot6.cf  using several coordinate systems          
+
+psfile = plot6.ps;  output file
+psetup(
+    psorg = 100,600,    # set physical origin
+    pxlen =  50,
+    pylen =  40,
+    pxa = 0,6,
+    pya = -1,1,
+);
+plxa(sc=1);     
+plya(sc=1);     
+             
+plotf(rx=0(0.1)6) = sin(x1);   add a plot object  
+pltext(xy=4,0.2) = "Plot 1";   give a label
+
+psetup(                 # define a new coordinate system
+    psorg = 270,600,    # set physical origin
+    pxlen =  50,
+    pylen =  30,
+    pxa = 0,6,
+    pya = -1,1,
+);
+plxa(sc=1);    
+plya(sc=1);    
+
+plotf(rx=0(0.1)6) = sin(x1);   add a plot object  
+pltext(xy=4,0.2) = "Plot 2";   give a label
+
+
+
+

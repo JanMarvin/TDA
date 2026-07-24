@@ -1,0 +1,17 @@
+# gd17.cf
+
+nvar(
+    dfile = gd1.dat,
+    I = c1,
+    J = c2,
+    V1 = c3,
+    V2 = c4,
+);
+gdd(gt=2) = I,J,V1,V2;
+gcut(
+    opt = 1,
+) = d1;
+gcut(
+    opt = 2,
+) = d2;
+

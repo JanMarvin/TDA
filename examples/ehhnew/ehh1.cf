@@ -1,0 +1,30 @@
+# ehh1.cf  Graphical test of distributional assumptions: exponential
+ 
+nvar(
+    dfile = ehc5.ple,           # data file 
+ 
+    # select suitable range of time and survivor function 
+ 
+    isel = gt(c3,0) & gt(c7,0) & lt(c7,1), 
+ 
+    Time = c3,              # time axis 
+    Surv = c7,              # survivor function 
+    LogSurv = log(Surv),    # log of survivor function 
+); 
+lsreg = LogSurv,Time;       request OLS regression
+
+psfile = ehh1.ps;  output file
+psetup(
+    pxlen =  80,    # length of x axis in mm
+    pylen =  40,    # length of y axis in mm
+
+    pxa   = 0,300,  # user coordinates on x axis
+    pya   = -3,0,   # user coordinates on y axis
+);
+plxa (sc=60,ic=5);     plot x axis
+plya (sc=1,ic=10);     plot y axis
+plframe;               plot frame
+
+plot = Time,LogSurv;
+plotp = 0, -0.3527, 300, -2.6027;    plot regression line
+

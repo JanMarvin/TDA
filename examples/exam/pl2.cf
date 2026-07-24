@@ -1,0 +1,34 @@
+# pl2.cf  Example command file to estimate a Cox model
+#         Data taken from Lawless 1980, p. 367
+
+nvar(
+    dfile = rrdat.4,    # data file  
+
+    TF    = c1,         # ending time = duration
+    DES   = c2,         # destination state (= status)
+
+    Performance   = c3,
+    Age           = c4,
+    W_Time        = c5,
+    T_Squamous    = c7[1],  
+    T_Small       = c7[2],  
+    T_Adeno       = c7[3],  
+    Testgroup     = c6[0],  
+
+    Perf_Ctrd     = Performance - mean(Performance),
+    Age_Ctrd      = Age - mean(Age),
+    WTime_Ctrd    = W_Time - mean(W_Time),
+);
+edef(
+    ts = 0,
+    tf = TF,
+    org = 0,
+    des = DES,
+);
+
+rate (                                                
+    xa(0,1) = Perf_Ctrd,Age_Ctrd,WTime_Ctrd,
+              T_Squamous,T_Small,T_Adeno,Testgroup,
+) = 1;
+
+

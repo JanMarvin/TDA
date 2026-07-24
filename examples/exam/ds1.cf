@@ -1,0 +1,17 @@
+# ds1.cf
+
+nvar(
+    dfile = ds1.dat,  # data file
+    X1 = c1,
+    X2 = c2,
+    X3 = c3,
+    X4 = c4,
+);
+dstat;
+atab(
+    x  = -10(0.5)10 ,
+) = X3,X4;
+corr;
+cov;
+ineq = X1,,X4;
+

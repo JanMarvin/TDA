@@ -1,0 +1,19 @@
+# glm10.cf
+
+nvar(
+    dfile = glm10.dat,
+    Antiserum = c1,
+    Complement = c2,
+    Hype = 1 / (Antiserum + 0.52),
+);
+glm(
+    d = 3,
+    v = Complement,Hype,
+);
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+# gd27.cf
+
+nvar(
+    dfile = gd5.dat,
+    I = c1,
+    J = c2,
+    V = c3,
+);
+gdd = I,J,V;
+gsp(
+    opt=1,
+    fmt = 4.1,
+)  = d1;
+gsp(
+    opt=2,
+    fmt = 4.1,
+)  = d2;
+gsp(
+    opt=3,
+    fmt = 4.1,
+)  = d3;
+

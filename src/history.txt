@@ -1,0 +1,3430 @@
+history.txt
+
+-------------------------------------------------------------------------
+Version: TDA 6.4p                               March 18, 2009
+-------------------------------------------------------------------------
+
+Changes made for version 6.4p:
+
+    1.  Modified the prate option when used with the Cox model.
+        The prate output file then contains a further column
+        with estimated baseline rates calculated from first differences 
+        of the cumulated baseline rates (always written in a fixed
+        format).
+
+    2.  Fixed a bug in the com command (option = 3).
+
+    3.  Fixed a bug in the mproc command for Procrustes rotation.
+
+    4.  Changed the algorithm for hcls (hierarchical clustering)
+        according to the code in H. Spaeth, Cluster Analysis
+        Algorithms, NY: Wiley 1977, p. 180-181.
+
+        Also made the following changes to hcls:
+        a) Added the option ptab=..., that creates an additional output
+           file containing the distance matrix implied by the constructed
+           ultrametric tree.
+        b) The standard output provides the Euclidean norm between the
+           original and the constructed distance matrix.
+        c) The standard output contains information about whether the
+           index function is monotone or not.
+
+
+    5.  Added the command pdatr with syntax
+
+        pdatr(
+            keep = varlist,
+            drop = varlist,
+            nfmt = print format for i,j, def. 4
+        ) = fname;
+
+        For all pairs of cases i and j (i,j = 1,...,NOC) the command 
+        writes data to the output file specified by fname.
+
+    6.  Added the command pdatd with syntax
+
+        pdatd (                                                 
+            v=...,      optional varlist, def. all variables    
+            opt=...,    option, def. 1                          
+                        1 euclidean distances                   
+                        2 city-block distance                                              
+                        3 number of different values                                      
+                        4 dissimilarity index       
+
+            wt=...,     optional weights, def. none                       
+            fmt = ...,  print format, def. 10.4                 
+        ) = fname;      output file                             
+
+        Based on the selected variables and depending on opt, the
+        command creates a distance matrix with NOC rows and columns
+        and writes the matrix into the output file specified at the
+        right-hand side.
+
+    7.  Added the command dmet that can be used to change a distance
+        matrix into a metric. The command requires an undirected
+        valued graph. The syntax is:                              
+
+        dmet(                                                  
+          gn = ...,   graph number, def. 1                     
+          fmt=...,    printf format, def. 10.4  
+        ) = fname;                                              
+
+        The command calculates c = max{0, max_i,j,k {d_i,j - d_i,k - d_kj}}                     
+        and changes the distances d_ij into d_ij + c. The modified
+        distance matrix is written into the output file.
+
+    8.  Added alg=7 to the dma command that can be used for the direct
+        svd-based projection of a data matrix.
+
+    9.  Added the command mdsc that can be used for ``classical'' MDS
+        (with principal coordinates). The syntax is:                     
+                                                                
+        mdsc(                                                   
+           gn=...,     graph number, def. 1                     
+           opt=        method if negative eigenvalues, def. 1   
+                        1 = do nothing                          
+                        2 = add constant to distance matrix     
+           df=...,     additional output file                   
+           fmt=...,    print format, def. 10.4                  
+        ) = fname;                                              
+                                                                
+        The command requires an undirected valued graph (dissimilarity
+        matrix D). It then constructs from D a doubly centered matrix A
+        and performs a spectral decomposition A = R L R', with L and R
+        containing, respectively, the eigenvalues and eigenvectors of A.
+        If requested with the df parameter, the A matrix, eigenvalues and
+        eigenvectors are written into an output file.       
+
+        Coordinates corresponding to positive eigenvalues are written into
+        the output file specified at the right-hand side of the command. 
+
+    10. Updated the rstata and wstata commands for Stata release 10 
+        (data file type 0x72).
+
+-------------------------------------------------------------------------
+Version: TDA 6.4o                                   July 30, 2007
+-------------------------------------------------------------------------
+
+Changes made for version 6.4o:
+
+    1.  Added the options
+
+            m1 = missing_value_code,    (def. -1)
+            m2 = missing_value_code,    (def. -1)
+
+        to the seqpe command. The m1 value is used for missing values
+        at the beginning, the m2 value is used for missing values at
+        the end of a sequence. The missing value code defined with the
+        m parameter is used for missing values in between.
+
+    2.  Fixed a bug in the prate option of the rate command when
+        used with competing risks.
+
+
+-------------------------------------------------------------------------
+Version: TDA 6.4n                                   October 1, 2006
+-------------------------------------------------------------------------
+
+Changes made for version 6.4n:
+
+    1.  Fixed a bug in the xplotf command that occurred when using
+        the line plot option with groups.
+
+    2.  Added the matrix command
+
+            mkmet(A,D)
+
+        that can be used to calculated Kemeny distances between rank orders.
+        It is assumed that the rows of the (n,m) matrix A contain rank
+        orders. The command creates a (n,n) matrix D with d(i,j) the
+        Kemeny distance between row i and row j of A.
+
+
+-------------------------------------------------------------------------
+Version: TDA 6.4m                                   September 13, 2005
+-------------------------------------------------------------------------
+
+Changes made for version 6.4m:
+
+    1.  Fixed a bug in the dvar parameter and in the return code of
+        the rspss1 command. Also changed the description of the dvar
+        parameter in the manual. (Thanks to Thilo Ernst.)
+
+    2.  Fixed a bug that occurred when reading data files with
+        DOS end-of-line characters.
+
+    3.  Added the subm command that can be used to compare distributions
+        with a substitution metric. The syntax is:
+
+        subm(
+            eps = ...,          epsilon, def. 1.e-6
+            scost = ...,        substitution cost matrix (optional)
+            fmt = ...,          print format, def. 10.4
+        ) = X,Y1,Y2,...;
+
+        Each variable on the right-hand side must contains the values
+        of a distribution. There must be at least two variables.
+
+-------------------------------------------------------------------------
+Version: TDA 6.4l                                   September 7, 2005
+-------------------------------------------------------------------------
+
+Changes made for version 6.4l:
+
+    1.  Added an additional check that at least one parameter (covariate)
+        is specified for each transition when estimating transition 
+        rate models. (Thanks to Tim Stegmann.)
+
+    2.  Added the matrix command
+
+            mivec(V,n,A)
+
+        Given a q-vector V and a positive integer n with n * m = q (for
+        some m), the command creates a (n,m)-matrix A. The first n
+        elements of V are stored in the first column of A, the following
+        n elements are stored in the second column, and so on. (Inverse
+        of the vec operator.)
+
+    3.  Added the matrix command
+
+            mldes(Z,G,D)
+           
+        that creates design matrices for MLRC models.
+
+-------------------------------------------------------------------------
+Version: TDA 6.4k                                           May 31, 2005
+-------------------------------------------------------------------------
+
+Changes made for version 6.4k:
+
+    1.  Fixed a bug in the seqdef command that occurred with option m = 2.
+        (Thanks to Emilio De Lia.)
+
+    2.  Fixed a bug in the seqpd command concerning the writing of episodes
+        with option m = 4.
+
+        Added the following options to the seqpd command:
+
+            ns = 1  allows to distinguish state numbers for
+                    repeatable episodes (only with m = 1).
+
+            m = 9   creates an output file that records for each individual 
+                    case and each state the total duration spent in that state.
+
+            m = 10  creates an output file that records for each individual 
+                    case and each state the first and the last time point in    
+                    that state.
+
+    3.  Fixed a bug that occurred when combining the cwt and the tsel
+        commands. (Thanks to Rolf Mueller.)
+
+-------------------------------------------------------------------------
+Version: TDA 6.4i                                    February 14, 2005
+-------------------------------------------------------------------------
+
+Changes made for version 6.4i:
+
+    1.  Fixed a bug in the nvar command that occurred when the df 
+        parameter was used without an input data file (dfile) and
+        without a specification of the number of cases (noc).
+
+    2.  Changed the rdp1(x) operator to allow for an arbitrary
+        argument x (which might be a variable instead of a numerical
+        constant).
+
+    3.  Added the glm command for generalized linear models, described
+        in the new manual sections d01615.
+
+-------------------------------------------------------------------------
+Version: TDA 6.4h                                          March 27, 2003
+-------------------------------------------------------------------------
+
+Changes made for version 6.4h:
+
+    1.  Corresponding to the operator cmean which was added in version
+        6.4e, we added the operator 
+
+            cmean1(A,F)
+
+    2.  Fixed a bug that, under certain conditions, occurred when
+        repeat/endif and if/endif constructs are mixed. Also fixed 
+        a bug in the mexpr1 command.
+
+-------------------------------------------------------------------------
+Version: TDA 6.4g                                     February  10,  2003
+-------------------------------------------------------------------------
+
+Changes made for version 6.4g:
+
+    1.  Added the option
+
+            off = ...,  value added to numerical labels, def. 0.0
+
+        to the plxa and plya commands. The value of off is added to
+        the numerical labels of the axes.
+
+    2.  Added the option
+
+            opt = ...,
+
+        to the arcvc command. By default (opt = 1), archive variable names
+        are made unique by appending the logical file number. Alternatively,
+
+        if opt = 2, the file name is appended in lower case letters,
+        if opt = 3, the file name is appended in upper case letters.
+
+-------------------------------------------------------------------------
+Version: TDA 6.4f                                      January  29,  2003
+-------------------------------------------------------------------------
+
+Changes made for version 6.4f:
+
+    1.  Fixed a bug in the mscal1 command.
+
+    2.  Fixed a bug in the mginv command.
+
+    3.  Modified the rspss1 command in order to automatically recognize
+        SPSS sav-files created on machines with standard or reversed
+        byte order.
+
+    4.  Fixed a bug in the rspss command that occurred when reading
+        files containing string variables exceeding the record length.
+
+    5.  Added the matrix command
+
+            mpit(F,N,k,R);
+
+        that can be used to iterate a Leslie matrix. It is assumed that
+        F is a (n,2) matrix, N is a (n,1) vector, and k is an integer.
+        The first column of F contains the first row of the (n,n)
+        Leslie matrix L, and the second column of F contains the
+        subdiagonal of L (the last element is ignored). The vector N 
+        contains the starting values for the iteration. The command
+        creates the (k + 1,n) matrix R. The i.th row of R contains
+        L^i N.
+
+    6.  Added the pcyc command that can be used to calculate cycles in
+        permutations. The syntax is:
+
+            pcyc(
+                df=...,           output file (required)
+                nfmt=...,         integer print format, def. 4
+            ) = varlist;          list of variables (required)
+
+        On the right-hand side must be given a list of integer-valued
+        variables, say S1,...,Sn. It is assumed that these variables
+        specify, for each record in TDA's data matrix, a permutation
+        of the integers 1,...,n, say
+
+            s1,...,sn 
+
+        Permutations might be incomplete, that is, position i is 
+        considered as missing if si < 1 or si > n. However, cases where
+        the same valid number between 1 and n occurs two or more times
+        are considered invalid and are ignored.
+
+        For each valid case (permutation), the command calculates
+        complete and, if present, also incomplete cycles. The output
+        file contains one record for each valid case. The entries are
+        as follows:
+
+            RN          record number (case ID)
+            NV          number of valid entries in the permutation
+            NCC         number of complete cycles
+            NIC         number of incomplete cycles
+            LCC         total length of complete cycles
+            LIC         total length of incomplete cycles
+            S1,...,Sn   values of the input data (the permutation)
+
+        Finally follows a description of the cycles. Complete cycles
+        are marked by round brackets, incomplete cycles are marked by
+        square brackets.
+
+    7.  Added the option 
+
+            m = missing_value_code,
+
+        to the seqpe command. This value is used for the state of the
+        sequence if no valid state is found in the episodes. By default,
+        m = -1.
+
+    8.  Added the option
+
+            glen = ...,
+
+        to the seqdef command. By default, glen = 0. If glen > 0, internal
+        gaps between two identical states which have a length of maximal
+        glen temporal locations are filled with the surrounding state
+        number. Note: This option is only possible for sequences defined
+        with the m = 1 option.
+
+        Also fixed a bug in the recode (rc) option of the seqdef command.
+        This option now also allows to recode valid state numbers into
+        missing value codes.
+
+    9.  Changed the syntax for the definition of multiple variables.
+        Inside the nvar command, multiple variable can now be defined
+        as follows:
+
+            VNAME{j,q,k}<s>[n.m](label) = expression,
+
+        where the storage size <s>, the format definition [n.m], and
+        the label (label) are optional. j, q, and k must be integers
+        with 0 <= j <= q, and k >= 1.
+
+        The definition is then expanded into q - j + 1 variable definitions
+        as follows:
+
+            VNAMEj   <s>[n.m](label) = expression(k),
+            VNAMEj+1 <s>[n.m](label) = expression(k+1),
+            VNAMEj+2 <s>[n.m](label) = expression(k+2),
+            ...
+            VNAMEq   <s>[n.m](label) = expression(k+q-1),
+
+        where expression(k+l) means that all ck terms in expression
+        are substituted by ck+l terms.
+
+        Example 1:
+
+            Y{0,4,3} = c3,
+
+        is expanded into
+
+            Y0 = c3,
+            Y1 = c4,
+            Y2 = c5,
+            Y3 = c6,
+            Y4 = c7,
+
+        Example 2:
+
+            Y{1,3,2} = sqrt(c2) + sqrt(c5),
+
+        is expanded into
+
+            Y1 = sqrt(c2) + sqrt(c5),
+            Y2 = sqrt(c3) + sqrt(c5),
+            Y3 = sqrt(c4) + sqrt(c5),
+
+-------------------------------------------------------------------------
+Version: TDA 6.4e                                      December 2,  2002
+-------------------------------------------------------------------------
+
+Changes made for version 6.4e:
+
+    1.  Changed the lonlat parameter in the psetup3 command. New syntax:
+
+            view = lon,lat,
+
+        As before, lon (-180 <= lon <= +180) specifies the longitude of
+        the view and lat (-90 <= lat <= +90) specifies the latitude of
+        the view.
+
+    2.  As has been noted by some users, the hcls command only creates a
+        graph (dendrogram) that, in some sense, represents a given
+        dissimilarity matrix. To support the definition of arbitrary
+        clusters of the objects, we added the command
+                                                                        
+        hclsp(                                                    
+            nlev=...,   number of levels, def. 0                   
+            cn=...,     sequence of node numbers                  
+            nfmt = ..., integer print format, def. 4              
+        ) = output_file;                                          
+                                                                        
+        The command requires a graph defined with the gdd command, option 1
+        (edge list). As an edge list one can use the output file created by
+        the df option of the hcls command. In any case, the resulting graph
+        must be a tree with a single root node defined by an outdegee 0.
+        There are two opions that can be used separately or simultaneously:
+
+        (1) If nlev > 0, the command determines the root node, that is, the   
+            single node with outdegree 0 and reconstructs the tree for nlev     
+            levels, beginning from the root node. The truncated tree is written
+            to the output file and shows, in addition to the node numbers, the   
+            number of leafs that have a directed path to the node. This option
+            might be helpful in selecting a suitable set of internal nodes of
+            the tree to define a partition of the leafs.
+                                                                        
+        (2) The second option requires the specification of a sequence of     
+            nodes (external node numbers) with the parameter                  
+                                                                          
+                cn = n1,n2,...,                                               
+                                                                        
+            The output file will then contain one record for each leaf of the
+            tree that has a path to one of the nodes n1,n2,... Assuming that
+            node i has a path to node ni, the record will contain two entries:
+            first ni, then i.
+                                                                        
+            Note that is is not required that the nodes n1,n2,... define a 
+            complete partition of the leafs. If a leaf has two or more nodes
+            from the set n1,n2,... as followers, the assignment is arbitrary. 
+
+        Examples that illustrate the hclsp command can be found in the
+        updated section 7.5.1.1 of the TDA manual.
+
+    3.  Added the parameter wf to the pltext and pltext3 commands. By
+        default, wf = 0. If wf = 1, the string is drawn in a white 
+        bounding box.
+
+    4.  Added the type 2 operator cmean(A,F). If a new variable, say
+        M = cmean(A,F), is defined,         
+
+                   sum_j=i^n A(j) * F(j)
+            M(i) = ---------------------
+                       sum_j=i^n F(j)
+
+    5.  Fixed a bug in the plotc command which might occur when a 
+        non-rectangular grid is used.
+
+    6.  Added the command
+
+            plotr(
+                gs=a,b,
+            ) = matrix_name;
+
+    7.  Added the command dple for product-limit estimation with discrete
+        times. The syntax is as follows:
+                                                                           
+              dple(                                                      
+                  df=...,         output file (required)                 
+                  fmt=...,        print format, def. 8.6                 
+                  opt=...,        output option, def. 1                  
+                                  1 : all time points                     
+                                  2 : only time points occurring in T    
+                  grp=...,        list of group variables                
+              ) = [S,] T, D;                                             
+                                                                         
+        There must be two or three variable names on the right-hand side       
+        defining durations on a process time axis beginning at zero. S is the  
+        beginning of the observation period (zero if not specified), and T is  
+        the duration, if D is not equal to zero, and otherwise is the end of   
+        the observation period. It is assumed that values of S and T are       
+        integers, furthermore: 0 <= S <= T.                                    
+                                                                         
+        For each time point t (min(S) <= t <= max(T)), the command counts:       
+          e(t) = number of events at t, that is, the number of cases i with  
+                 T(i) = t and D(i) != 0; and                                 
+          r(t) = number of elements in the risk set at t, that is, the number
+                 of cases i with S(i) <= t and T(i) >= t                     
+                                                                           
+        Finally, for each time point t, one record is written to the output    
+        file specified by the df parameter, containing the following columns:  
+          (1)  index of table                                                
+          (2)  time                                                            
+          (3)  r(t)                                                          
+          (4)  e(t)                                                          
+          (5)  number of censored cases                                      
+          (6)  the rate function e(t) / r(t)                                 
+          (7)  the survivor function calculated as the product of            
+               (1 - e(j)/r(j)) for j < t.                                    
+                                                                         
+        If the grp parameter is used to specify groups, the calculations are     
+        done separately for each group. If opt = 1, the output tables contain  
+        one row for each time point beginning at min(S) and ending at max(T).  
+        If opt = 2, only rows with at least one observation (value of T) are     
+        printed.                                                               
+                                                                         
+
+-------------------------------------------------------------------------
+Version: TDA 6.4d                                       March 12,    2002
+-------------------------------------------------------------------------
+
+Changes made for version 6.4d:
+
+    1.  Changed the maximal length of variable names from 16 to 32.
+
+    2.  Added the option prn=3 to the pdata command. The data matrix
+        is then written as a single column vector into the output file.
+        First, values of the first row, then values of the second
+        row, and so on.
+
+    3.  Added new command for aggregation of graphs. Syntax is:
+
+        gda(
+            rcn= ...,       recode string
+            nfmt =...,      print format for integers, def. 4   
+            fmt = ...,      print format for values, def. 10.4  
+        ) = fname;          output file name
+
+        The command requires a valued (directed or undirected graph) 
+        and always uses only the first graph (of a multigraph).
+
+        The recode string has the following syntax:
+
+            rcn = n1[k11,k12,...],n2[k21,k22,...],...
+
+        meaning that nodes k11,k12,... are aggregated into the new
+        node number n1, k21, k22,... are aggregated into the new node
+        number n2, and so on. Part of the string may look as follows:
+
+            ni[ki1,,ki2,...]
+
+        Then nodes numbers from ki1 to ki2 are aggregated into the
+        new node number ni.
+
+        The aggegated graph is written to the output file specified
+        on the right-hand side, always as an edge list.
+
+    4.  Added a command that can be used to check whether a directed
+        graph is symmetrical, that is, for each pair of nodes i and j,
+        if there is an edge from i to j, there is an edge from j to
+        i (with the same value). Syntax:
+
+            gsym(gn=...);
+
+        gn is the graph number (optional), def. gn = 1.
+    
+    5.  Fixed a bug in the mstand command. Note that the last sentence
+        in the description of this command in the Manual (section 5.1.4.3)
+        is senseless.
+
+    6.  Added the command gde that can be used to create an undirected
+        (multi-)graph from a list of node numbers and object IDs. 
+
+            gde(                                                      
+              df = ...,           output file (required)            
+              ni = ...,           if 1 do not write loops, def. 0  
+              nfmt = ...,         integer print format, def. 4      
+            ) = N,ID1,ID2,...;                                        
+                                                                        
+        The command requires at least two variables on the right-hand side.   
+        N must contain positive integers interpreted as a list of node numbers
+        ID1, ID2, ... can be integer or floating point. Non-negative values   
+        of these variables are interpreted as IDs of properties of the nodes  
+        given by N. (Negative values are ignored.)                  
+                                                                        
+        For each ID variable the command constructs an undirected graph,      
+        altogehter a multigraph. The node set contains all different node     
+        numbers found in variable N.                                          
+                                                                        
+        For each ID variable, the value of an edge (i,j) is calculated as the 
+        number of times that an object with the same property (identified by
+        by ID) belongs both to node i and node j.                                            
+                                                                        
+        The resulting (multi-) graph is written to the output file specified  
+        with the df parameter as an edge list. If ni = 1, loops are not       
+        written to the output file.                                       
+
+    7.  If in command gdp the opt=1 (edge list) option is used, the
+        command now also writes isolated nodes (that don't have valid 
+        edge values) into the output file. They are written collectively
+        at the end of the file.
+
+    8.  Added a new command that can be used to create the union of two
+        graphs, possibly multigraphs. 
+
+            gdu(                                                       
+              df=...,         output file                            
+              sc=...,         substitute for missing values, def. -1 
+              nfmt=...,       integer print format, def. 4             
+              fmt=...,        print format for values, def. 10.4     
+          ) = I,J,V1,...;                                            
+                                                                           
+        The command assumes that a graph (possibly a multigraph), called       
+        graph 1, is already defined with the perm option. In addition, the     
+        command expects on its right-hand side at least three variables from  
+        the current data matrix that can be interpreted as an edge list        
+        defining a second graph, called graph 2. Interpretation is in the      
+        usual way: The first two variables provide node numbers that must be   
+        positive integers. Each additional variable specifies the edge values  
+        of a graph. In this way, also graph 2 can be a multigraph.             
+                                                                         
+        The command creates a new graph consisting of all nodes numbers and    
+        edges that are part of graph 1 or graph 2. The new graph is written as 
+        an edge list to the output file specified with the df parameter. If    
+        one of the graphs contains isolated nodes without valid edge values
+        they are written at the end of the output file.                                                    
+                                                                         
+    9.  Made several changes in the gdd command.
+       
+        a)  Added the following data check: if the data is provided
+            as an edge list (opt=1): If an edge (i,j) occurs two or
+            more times, the command reports an error message and exits.
+
+        b)  The gdd command now provides information about the number
+            of isolated nodes in a graph.
+
+        c)  Added the parameter: sc = x, where x is a non-negative
+            floating point number. Then, only edges with a value greater
+            than, or equal to, x are considered valid. By default, x = 0.
+
+        d)  Added the option 8 in order to allow a definition of graphs
+            by reference to TDA matrices. The syntax is:
+
+            gdd( opt = 8, ...) = A1,A2,...;
+
+            where A1, A2, ... are names of currently defined matrices.
+            All of them must be square and of the same order, say (n,n).
+            The command then creates a graph (or multigraph) with n
+            nodes 1,...,n and edges values given by the matrices.
+            All elements of a matrix which are greater than, or equal to,
+            x (defined with the sc option) contribute a valid edge.
+
+            Note: a) This option to define a relationale data structure
+            is independent of TDA's data matrix. b) It depends, however,
+            on a permanent existence of the matrices used to define the
+            structure. It is, therefore, not possible to automatically
+            overwrite these matrices. If one of the matrices is
+            explicitly deleted with the mfree command, the relational
+            data structure is removed.
+
+   10.  Added the following matrix commands.
+
+        a)  mcsum(A,U)       
+
+            Given an (n,m)-matrix A, the command creates a (1,m)-vector U,
+            with U(j) = A(1,j) + ... + A(n,j).     
+
+        b)  mrsum(A,V)       
+
+            Given an (n,m)-matrix A, the command creates a (n,1)-vector V,
+            with V(i) = A(i,1) + ... + A(i,m).  
+
+            vector R containing the sum of the rows of A.
+
+        c)  mag(A,C,R,B)
+
+            The command expects an (n,m)-matrix A, a (n,1)-vector C and
+            a (1,m)-vector R. Elements of C are interpreted as row indices,
+            elements of R are interpreted as column indices. If these
+            elements are zero the corresponding rows and/or columns of
+            A are dropped. If two or more elements of R and C have the
+            same value, the corresponding elements of A are aggregated.
+
+            Example:
+
+                1 2 3       1                       
+            A = 5 6 7   C = 0  R = 1 4 4   B = 2 8
+                1 2 1       1                       
+
+    11. Fixed a bug in the msrow and mscol commands. Also provided an
+        extended way to specify selection indices:
+
+            msrow(A,<i1,i2,,i3,...>,B
+
+        Any sequence of integers between 1 and the number of rows of A
+        can be specified in between the < and > brackets. If separated
+        by two consecutive commas, the corresponding range of indices
+        is used. Analoguously for the mscol command.
+
+    12. Added new matrix commands:
+
+            mcvec(A,V)
+            mrvec(A,V)
+
+        Given an (m,n)-matrix A, both commands create an (row * col,1)-
+        vector V. The first command stacks the columns of A into V,
+        the second command stacks the rows of A into V.
+
+    13. Added a new type 2 operator:
+
+            vdif(X,Y)
+
+        Given X(i), Y(i), i = 1,...,n, the result of vdif(X,Y) in the
+        i.th record is 1 if X(i) is not equal to any of the values
+        Y(j), for j = 1,...,n; otherwise X(i) is 0. Example:
+
+             X   Y  vdif(X,Y)
+            -----------------
+             1   3      0
+             2   2      0
+             7   8      1
+             9   1      1
+             1   8      0
+
+    14. Added a command to read dBase files.
+
+            rdbf(                                 
+              df=...,       output file (optional)
+            ) = fname;      dBase input file.       
+
+        Note: this command is experimental and will not be supported.
+
+    15. Added options to the gdcon command. The new syntax is:
+
+            gdcon(                                                   
+                opt=...,    1 = only number of reachable nodes       
+                            2 = additionally, the node numbers       
+                            3 = strong components, node list         
+                            4 = strong components, edge list         
+                nfmt=...,   integer print format, def. 4             
+                fmt=...,    print format for values, def. 10.4       
+                gn=...,     graph number, def. 1                     
+                if=...,     input file with node numbers,            
+            ) = fname;                                               
+
+        Opt = 3 creates an output file containing a node list with the
+        following entries for each node:
+
+        column 1 : ID of strong component the node belongs to
+        column 2 : internal node number
+        column 3 : external node number
+
+        Opt = 4 creates an output file containing an edge list where
+        each record has the following entries:
+
+        column 1 : ID of strong component the edge belongs to
+        column 2 : internal node number of first node
+        column 3 : external node number of first node
+        column 4 : internal node number of second node
+        column 5 : external node number of second node
+        column 6 : edge value  
+
+        The print format of the edge value can be controlled with the
+        fmt paramter. Note: for options 3 and 4 the if parameter is
+        ignored.
+
+    16. Added the option
+    
+            df = name_of_outputfile,
+    
+        to the gcliq command. Given this option, the command will create
+        another output file organized as a node list. Each record will
+        contain three entries:
+    
+        column 1 : node number                                        
+        column 2 : number of component the node belongs to            
+        column 3 : number of clique the node belongs to               
+    
+    17. Added the command
+                                                                        
+            gnc(                                                      
+              gn = ...,       graph number, def. 1                  
+              nfmt = ...,     integer format, def. 4                
+              fmt=...,        print format for values, def. 10.4    
+            ) = fname;        output file (required)                  
+                                                                        
+        The command assumes an undirected graph. The output file will contain 
+        one record for each node of the graph with the following entries:         
+                                                                        
+        Col 1: internal node number                                        
+        Col 2: external node number                                        
+        Col 3: ni = degree of node i plus 1 (= number of nodes in the      
+               node-centered network of node i).                           
+        Col 4: ki = number of edges in the node-centered network           
+        Col 5: density, calculated as di = (2 ki)/(ni (ni - 1))            
+
+    18. Modified the gfcf command. 
+
+        a)  The input file parameter (if) is now optional. If not given,
+            the set of input node equals the node set of the graph.
+
+        b)  An additional output file can be specified with the
+
+                df = filename,
+
+            parameter. The output file will contain one record for each
+            input node (these are the nodes given by the if parameter or,
+            if the if parameter is not used, the whole node set of the
+            graph). The first two entries show the internal and external
+            node number, say i. Then follows the number of nodes that
+            can be directly or indirectly controlled by node i. Then
+            follow the external node numbers of the controlled nodes.
+
+        c)  An additional output file can be specified with the
+
+                ptab = filename,
+
+            parameter. This output file will contain one record for each
+            node in the graph. The first two entries show the internal and
+            external node number. Then follows the number of nodes in the
+            set of input nodes (see above) that can directly or indirectly
+            contol the node.
+
+    19. Added the optional dopt parameter to the gdcyc command. If the
+        user specifies dopt = 1, the command terminates after the first
+        cycle has been found. In addition, if opt=3, nothing is written
+        into the output file; instead, the progress in counting the
+        cycles is reported in the standard output.
+
+    20. Added the matrix command
+
+            mpz(A,B,P)
+
+        The command assumes a (n,n)-matrix A. It tries to find a 
+        permutation of the rows of A that puts as many non-zero elements
+        in the main diagonal as possible. The permuted matrix is returned
+        in B. Also returned is an (n,1)-vector P that contains the
+        permutation.
+
+        The algorithm is adapted from ACM algorithm 575 (Permutations
+        for a zero-free diagonal), developed by I.S. Duff.
+
+    21. Added the matrix commands
+
+            mpbl(A,B,P,N,U)     lower block diagonal
+            mpbu(A,B,P,N,U)     upper block diagonal
+
+        Both commands expect an (n,n)-matrix A and try to find a simultaneous
+        permutation of rows and columns to make A a lower or upper block
+        diagonal matrix. The permuted matrix is returned in B. Als returned
+        is an (n,1)-vector P that contains the permutation, an (1,1)-scalar
+        N that contains the number of blocks, and a (k,1)-vector U with k
+        the number of blocks. U(i,1) is the number of the row where the
+        i.th block begins.
+
+        The algorithm is adapted from ACM algorithm 529 (Permutations
+        to block triangular form), developed by I.S. Duff and J.K. Reid.
+
+    22. Added the matrix command
+
+            mnc(A,x,opt,B)                                  
+
+        The command expects a (n,m)-matrix A, a scalar x and a scalar opt.
+        The command creates a new (n,m)-matrix B that has the following
+        values:
+                                                            
+        opt = 1:   bij = 0 if aij <= x        
+        opt = 2:   bij = 0 if aij <  x        
+        opt = 3:   bij = 0 if aij >= x        
+        opt = 4:   bij = 0 if aij >  x                            
+        opt = 5:   bij = 0 if abs(aij) <= x                       
+        opt = 6:   bij = 0 if abs(aij) <  x                       
+        opt = 7:   bij = 0 if abs(aij) >= x                       
+        opt = 8:   bij = 0 if abs(aij) >  x                       
+                                                            
+        otherwise bij = aij.
+
+    23. Added matrix commands for row, column and symmetrical permutations.
+
+        mprow(A,P,B)    A is (n,m), P is (n,1) or (1,n) permutation vector.
+                        B(i,j) = A(P(i),j)
+
+        mpcol(A,P,B)    A is (n,m), P is (m,1) or (1,m) permutation vector.
+                        B(i,j) = A(i,P(j))
+
+        mpsym(A,P,B)    A is (n,n), P is (n,1) or (1,n) permutation vector.
+                        B(i,j) = A(P(i),P(j))
+
+    24. Added the matrix command
+
+        mpinv(P,Q)
+
+        P must be a (n,1) or (1,n) permutation vector. The command 
+        creates the vector Q with Q(P(i)) = i.
+
+    25. Added the matrix command
+
+        mqap(F,D,C,P)
+
+        for an approximate solution of the quadratic assignment problem
+        The command expects (n,n)-matrices F, D and C (n > 1) and tries to
+        find a permutation that minimizes
+
+            sum_i ( c[i,p(i)] + sum_j f[i,j] d[p(i),p(j()] )                            
+
+        The best permutation is returned in the (n,1)-vector P. The best
+        function value is written to standard output.                    
+
+        The algorithm is adapted from CACM algorithm 608 (D.H. West).
+
+        Note: The algorithm expects that the main diagonals of F and D
+        are zero. If the mqap command finds non-zero elements they are
+        set to zero. The number of changes is reported in the
+        standard output.
+
+    26. Added the matrix command
+
+        mcel(A,x,L)
+
+        that creates an edge list from an adjacency matrix. Given an
+        (n,n)-matrix A and a scalar x, the command creates a (m,3)-matrix
+        L organized as an edge list where m is the number of edges.
+        Valid edges are assumed if a(i,j) >= x.
+
+    27. Fixed a bug in the gcset command (compact sets). Also dropped
+        the alg option. The command now always uses the Kruskal
+        algorithm to find a minimum spanning tree.
+
+    28. In the description of the gsp command, it was not mentioned that
+        the algorithm requires a graph defined with opt 1 (edge list).
+        The command now exits with an error message if requested with
+        another option.
+
+    29. Added a matrix command for iterative proportional fitting:       
+
+            mpfit(A,U,V,iter,eps,B)
+
+        The command expects a (n,m)-matrix A, a (1,m)-vector U
+        containing the prescribed column sums, a (n,1)-vector V containing
+        the prescribed row sums, a scalar iter that specifies the maximum
+        number of iterations, and a scalar eps that specifies the 
+        required accuracy. The matrix A must be non-negative and all
+        row and column sums must be positive. Also the following
+        equality should hold: Sum U[j] = Sum V[i]. Otherwise the command
+        will issue a warnings message (but will not terminate).
+
+        The command creates a (n,m)-matrix B that contains the estimates
+        with the prescribed row and column sums.
+
+    30. Added commands for 3d plots.
+
+     a) In order to create 3-dimensional PostScript plots with TDA it is
+        necessary to define a PostScript output file with the psfile
+        command and to set up a 3-dimensional coordinate system with
+        the command
+
+        psetup3(                                                    
+            lonlat=lon,lat,   direction of projection (degrees), def. 30,30   
+            pxa=xa,xb,        logical x axis from xa to xb          
+            pya=ya,yb,        logical y axis from ya to yb          
+            pza=za,zb,        logical z axis from za to zb          
+            pxlen=...,        horizontal size of plot (mm), def 100 
+            psorg=...,        origin of PostScript coord. system, def. 100,100 
+            psscal=...,       scaling, def. 1,1                     
+            psrot=...,        rotation, def. 0                      
+        );                                                          
+
+        This command defines a 3d user coordinate system and, with the   
+        lonlat parameter, a direction for parallel projection of all
+        further plot objects. Note that only the horizontal size of
+        the plot can be specified.    
+
+     b) The command
+
+        pltext3(                                                      
+            xyz = x,y,z,      where the string should begin             
+            fs  = ...,        font size, def. 2mm                       
+            sc  = ...,        1 = centered, def. 0                      
+            r   = ...,        rotation, def. 0                          
+            s   = ...,        marker symbol                             
+        ) = string;                                                    
+
+        plots a string at the position (x,y,z).
+
+     c) The command
+
+        plot3(                                                    
+            geo=...,        1 use geographic coordinates, def. 0  
+            lt=...,         line type, def. 1                     
+            lw=...,         line width, def. 0.2 mm               
+            gs=...,         grey scale value, def. 1 (white)                  
+            s=...,          marker symbol                         
+            fs=...,         font size, def. 2mm                   
+            a=...,          end in arrow                          
+            nc=...,         1 if no clipping                      
+        ) = VX,VY,VZ;       points                                
+                                                                        
+        can be used to plot a sequence of 3d points. The right-hand side
+        must provide the names of three data matrix variables containing
+        the coordinates. Most parameters have the same meaning as in the
+        2-dimensional plot command. In addition, the geo parameter can
+        be used to select between two types of coordinates.
+
+        If geo = 0 (default), the values of VX, VY and VZ are interpreted
+        as standard cartesian coordinates in the given coordinate system.
+
+        If geo = 1, the values are interpreted as geographical coordinates:
+        VX provides the longitude (lon), VY provides the latitude (lat),
+        and VZ provides the distance from the origin (r). It is required 
+        that  -180 <= lon, lat <= +180 and r >= 0.
+
+     d) The command plotp3(...) = x1,y1,z1,x2,y2,z2,...; can be used to
+        plot the sequence of points given on the right-hand side.    
+        Parameters are identical with those in the plot3 command.
+
+     e) The command
+
+        plcurv3(                                                              
+            rx=...,     range of argument: a(d)b                              
+            f1=...,     x1 = f(x)                                             
+            f2=...,     x2 = f(x)                                             
+            f3=...,     x3 = f(x)                                             
+            lt=...,     line type, def. 1 (solid line)                        
+            lw=...,     line width, def. 0.2 (mm)                             
+            nc=...,     1 if no clipping                                      
+        );                                                                    
+         
+        can be used to plot a parameterized curve in a 3d coordinate system.
+        Example:
+
+        psfile = xx.ps;
+        psetup3(
+            pxa = -1.1,1.1,
+            pya = -1.1,1.1,
+            pza = -1.1,1.1,
+        );
+        plcurv3(
+            nc=1,
+            rx = -1(0.1)20,
+            f1 = cos(x),
+            f2 = sin(x),
+            f3 = 0.1 * x,
+        );
+
+
+     f) The command
+
+        plsurf3(                                                              
+            ru=...,     range of first argument: ua,ub,nu,mu                  
+            rv=...,     range of second argument: va,vb,nv,mv                 
+            f1=...,     x1 = f(u,v)                                           
+            f2=...,     x2 = f(u,v)                                           
+            f3=...,     x3 = f(u,v)                                           
+            lt=...,     line type, def. 1 (solid line)                        
+            lw=...,     line width, def. 0.2 (mm)                             
+            cont=...,   cont=1 adds internal contour lines, def. 0                        
+            gs=...,     grey scale value, def. 1 (white)                  
+            nc=...,     1 if no clipping                                      
+        );                                                                    
+
+        can be used to plot a parametrically defined surface. The surface
+        is evaluated on a grid [ua <= u <= ub] and [va <= v <= vb]; nu and
+        nv are the number of points on the grid in the u and v direction,
+        respectively. In addition, mu and mv specify the number of grid   
+        lines that are used to plot the surface. Example:
+
+        psfile = xx.ps;                    
+        psetup3(
+            pxa   = -3,3,              
+            pya   = -3,3,             
+            pza   = -3,3,
+            lonlat = 40, 20,   
+        );
+        plsurf3 (
+            rv = -3,3,30,10,            
+            ru = -3,3,30,10,  
+            f1 = u,                                
+            f2 = v,                              
+            f3 = sin(u * u + v * v) / (u * u + v * v + 0.00001),
+            cont = 1,
+        );
+
+
+-------------------------------------------------------------------------
+Version: TDA 6.4c                                        January 4,  2002
+-------------------------------------------------------------------------
+
+Changes made for version 6.4c:
+
+    1.  The ns (smoothing) option in the plotch command should now
+        display, in most cases, convex pictures. Works only if the number
+        of data points is at least 3.
+
+    2.  Added a new command, rcorr, that can be used to calculate
+        rank correlations (Kendall's tau). The syntax is identical 
+        with that of the cov and corr commands. Note, however, that
+        the rcorr command ignores case weights.
+
+    3.  Added a new command, unf, that can be used for unidimensional
+        unfolding. The syntax is
+
+        unf(                                                          
+            df=...,         create output file                        
+        ) = X1,...,Xm;      variables.                                 
+
+        Values of the variables are interpreted as follows. If the values
+        for case i are: xi1,...,xim, this means:                    
+        a)  alternative j is preferred to alternative k if xij > xik 
+        b)  indifference if xij = xik.                                
+
+        The command checks all m! permutations of the m alternatives
+        (actually only half of them) in order to find the best permutation
+        for an alignment of the input data based on Kendall's tau.
+        Finally, the best permutation is reported in the standard
+        output. The df option can be used to request an output file
+        that contains one record for each case: (1) case number,
+        (2) best aligned rank order, (3) input data, (4) a flag that
+        is 1 if (2) and (3) are different.
+
+    4.  Added the commad ghd to create Hasse diagrams from rank order
+        data. The syntax is
+
+            ghd(
+                df=...,     output file
+                pcf=...,    output file
+            ) = X1,...,Xm;  variables
+
+        Values of the variables are interpreted as follows. If the values
+        for case i are: xi1,...,xim, this means:                    
+        a)  alternative j is preferred to alternative k if xij > xik 
+        b)  indifference if xij = xik.                                
+
+        Nodes are labeled by case numbers. The standard output shows
+        the labels of the minimal nodes in the Hasse diagram. If the
+        df option is used the output file will contain the Hasse
+        diagram as an edge list. The pcf option provides the same edge
+        list in the syntax of the graphviz (dot) program.
+
+    5.  Added the command com to generate combinatorial patterns. The
+        syntax is
+
+            com(
+                opt=..., option, def. 1
+                         1 = all orderes n-tupels
+                         2 = all m-sets that can be created from n integers
+                         3 = all m-tuples 
+                         4 = all permutations of n numbers
+                         5 = all partitions of n
+                         6 = all partitions of n into m > 1 parts
+                         7 = all partitions of n into m subsets
+
+                n=...,          def. 1
+                m=...,          def. 1
+
+            ) = fname;
+
+        The patterns are written into the output file defined by
+        the name fname.
+
+    6.  Added the command
+
+            cro(
+                m = ...,        def. 2
+            ) = fname;
+
+        that can be used to create all rank orders of size m (greater
+        than 1), including all possible tie groups. The rank orders are
+        written into the output file defined by fname. The file contains
+        m + 2 columns. First column is record number, second column
+        is number of tie groups, then follows the rank order.
+
+    7.  Fixed a bug in the dvar option of the rspss1 command.
+
+    8.  The rstata command is now able to read Stata files of release 7 
+        (code 0x0e). Also fixed a bug in the rstata command that 
+        concerns the reading of value labels. (Note: Reading of value
+        labels is only supported for Stata releases 6 and higher.)
+
+        The wstata command can be used to write Stata file of release 7.
+        The new option is ptyp=7.
+
+-------------------------------------------------------------------------
+Version: TDA 6.4a                                         October, 9 2000
+-------------------------------------------------------------------------
+
+Changes made for version 6.4a:
+
+    1.  Added the parameter ns to the plot and plotp commands.
+        This parameter can be used in connection with the dir parameter.
+        If ns=1 the commands only plots horizontal lines. This might
+        be useful, for example, when plotting distribution functions.
+
+    2.  The default maximum number of split variables (MaxSPL) is 
+        now 1000 (instead of previously 100).
+
+    3.  The dstat now gives an error message if the sel option is used
+        in connection with case weights. (Thanks to Thorsten Schneider who
+        pointed out that both options are incompatible.) In order to use
+        case weights case selection should be done with the tsel command.
+
+    4.  We changed the formula for quantile calculation. Given n data in
+        ascending order:
+                                         
+            x(1) <= ... <= x(n)              
+                                         
+        the calculation of a p quantile (0 < p < 1) is now as follows.
+
+        a)  if p(n + 1) <= 1  then Q = x(1)
+
+        b)  if p(n + 1) >= n  then Q = x(n)
+
+        c)  otherwise: Q = (1 - (q - i)) x(i) + (q - i) x(i+1)
+
+            where  q =  p(n + 1) and i = floor(q).
+
+        This should make TDA's quantile calculation the same as used in
+        Stata (and SPSS?). Note, however, that there is no general 
+        standard for quantile calculation in statistical packages.
+
+
+-------------------------------------------------------------------------
+Version: TDA 6.4                                             May, 30 2000
+-------------------------------------------------------------------------
+
+Changes made for version 6.4:
+
+    1.  Changed the mev command for eigenvalue/vector calculations.
+        The command now uses algorithm CACM 343 by J. Grad and
+        M. A. Brebner, see Communications of the ACM 11, 1963, pp.820-26
+        The command now has syntax
+
+            mev(A,ER,EI,EVR,EVI)
+
+        A must be a real (n,n)-matrix. The command returns the (n,1)
+        vectors ER and EI containing, respectively, the real and
+        imaginary parts of the eigenvalues, and the (n,n)-matrices
+        EVR and EVI. The i.th column of EVR contains the real part,
+        the i.th column of EVI contains the imaginary part of the
+        eigenvector corresponding to the i.th eigenvalue.
+
+    2.  Fixed several bugs in the rspss, rspss1 and wspss1 commands. The
+        wspss1 command now recognizes print formats. A free format is 
+        always translated into a 10.4 format.
+
+    3.  Added the following commands:
+
+        edef    without arguments provides information about currently 
+                defined episode data.
+
+        gdd     without arguments provides information about currently 
+                defined relational data.
+
+        arcd    without arguments provides information about a currently
+                data archive.
+
+    4.  Added a new command, dma, that can be used for variants of principal
+        components analysis, including an option for correspondence analysis. 
+        A preliminary description is provided in TDA's help file. There is
+        currently no documentation in the manual.
+
+    5.  Added a new matrix command:
+
+            mtrim(A,ca,ra,cb,rb,R)
+
+        The command expects a (n,m)-matrix A and scalar expressions
+        ca, ra, cb, and rb. It creates a new matrix, R, by deleting
+        the ca first columns of A (if ca >= 0) or adding zero columns
+        (if ca < 0), and correspondingly, the first ra rows of A,
+        the last cb columns of A, and the last rb rows of A.
+
+    6.  In addition to its standard form, one can use the mexpr command
+        in the form
+
+            mexpr(<rsel,csel,a>, expression, Matrix-name)
+
+        The optional string <rsel,csel,a> controls how the matrix
+        expression is evaluated. rsel selects row indices, csel selects
+        column indices of the matrix expression. Only elements selected
+        both by rsel and csel are evaluated via expression, all other
+        elements get a value defined by a.
+
+        a can be a scalar constant or the name of an already existing
+        matrix. rsel and csel can be specified as follows:
+
+            *             selects all row (column) indices
+            i             selects row (column) index i
+           -i             selects all rows (columns) except i
+           (i1,i2,...)    selects rows (columns) i1,i2,...
+          -(i1,i2,...)    selects all rows (columns) expept i1,i2,...
+            i(d)j         selects rows (columns) i, i+d, ...    
+          -(i(d)j)        selects all rows (columns) except
+                          i, i+d, i+2d,... 
+
+    7.  Fixed a bug in the hcls command for hierarchical clustering 
+        (SAHN algorithms).
+
+    8.  Added two new type 2 operators.
+
+        quant(X,p)
+
+        returns the p-quantile of the distribution of variable X.     
+        Calculation of quantiles is done in the same way as described
+        for the quant command.
+
+        quant1(X,Z,p,m)
+
+        also returns the p-quantile of X, but X might contain censored
+        values. This is indicated by values of variable Z. If Z(i) = 0
+        X(i) is assumed to be a censored value; otherwise X(i) is
+        interpreted as uncensored. If the requested quantile cannot
+        be calculated, the operator returns the value m.
+
+    9.  Fixed one more bug in the rspss command.
+
+
+-------------------------------------------------------------------------
+Version: TDA 6.3b                                           April, 6 2000
+-------------------------------------------------------------------------
+
+Changes made for version 6.3b:
+
+    1.  Fixed a bug in the mnvar command.
+
+    2.  Added the following option to the rstata command:
+
+        n = ...,        treatment of variable names
+                        1 : default
+                        2 : translate to upper case letters
+
+    3.  Added the following option to the wstata command:
+
+        n = ...,        treatment of variable names
+                        1 : default
+                        2 : translate to lower case letters
+                        3 : translate to upper case letters
+
+-------------------------------------------------------------------------
+Version: TDA 6.3a                                       December, 23 1999
+-------------------------------------------------------------------------
+
+Changes made for version 6.3a:
+
+    1.  Completely revised the handling of string variables. All
+        previously defined options are no longer valid. We now have the
+        following types of variables (VTyp):
+  
+            1   string variables                                            
+            2   numerical constants                                         
+            3   numerical variables which do not (directly or indirectly)   
+                involve type 2 operators                                    
+            4   numerical variables which (directly or indirectly) involve     
+                type 2 operators                                            
+            5   special variables created temporarily by edef().            
+                                                                            
+        A string variable (vtyp 1) can now become part of TDA's internal
+        data matrix. In this case, not numerical representations as was
+        done in previous versions, but the actual strings are stored in
+        the internal data matrix.
+
+        A string variable always consists of strings of a fixed length.
+        The string size of a string variable is given by a negative   
+        integer, -n, where n is the length of the variable. The storage
+        size of a string variable equals its length.
+
+    2.  As a consequence of the new handling of string variables, the
+        following options are no longer valid:
+
+        a) the maxsv option (there is no longer a separate maximal number
+           of string variables).
+
+        b) the s=... option in the freq, freq1, freq2, rstata, and pdata
+           commands.
+
+        c) the ns=... option in the rspss command.
+
+        d) the afmt parameter in the nvar command.                        
+
+    3.  In order to create string variables with the nvar command one
+        can use the operator
+
+            Variable_name = str(n,m),
+
+        This requires that one has specified a data file with the
+        dfile parameter. TDA then creates a string variable with the
+        specified name and uses the columns n,...,m in the data file 
+        to create the strings.
+
+        Note that the str operator cannot be combined with any other
+        operators. 
+
+    4.  The rspss and rstata commands now recognize string variables which 
+        may be present in an SPSS portable file, or Stata file, and creates
+        corresponding TDA string variables as part of TDA's data matrix.
+        As an implication, there are a few changes in the rspss and
+        rstata commands that will be described below.
+
+    5.  TDA data archives may contain string variables. The type of the
+        variable must be specified in the variable description file
+        with the format entry. In general, each line in a variable
+        description file has the following syntax:
+
+        VNAME is the name of the variable.
+        FN    is the logical file number.
+        OFF   is the offset in the data file records where the
+              variable begins (counting begins with column 0).
+        FMT   is a format information which must be given in one
+              of the following three ways:
+
+              n.m   where n is a positive integer and m is a non-zero
+                    integer. n is used as the length (number of
+                    physical columns) for the variable. n.m is used
+                    as the print format.
+
+              n     where n is a positive integer. Again, n is used
+                    as the length (number of physical columns) for the
+                    variable, and the print format is n.0
+
+              n     where n is a negative integer. The variable is
+                    then recognized as a string variable with
+                    length -n.
+
+    6.  NOTE: whenever TDA expects a numerical variable and the user
+        supplies a string variable, the string variable will be treated.
+        as having the value zero.
+
+        There are, in fact, only a few things that can be done with
+        string variables.
+                         
+    7.  The pdata command recognizes string variables. They are written
+        as strings into the output file. The previously available s
+        parameter is no longer valid.
+
+    8.  There are a few operators that can be used to create numerical
+        variables from string variables. 
+
+        a)  The operator
+
+                strlen(S)
+
+            returns the storage size (length) of the string variable S.
+
+        b)  The operator
+
+                strv(S)
+
+            assumes that S is a string that only consists of digits.
+            If this is the case the operator returns the corresponding
+            numerical value; otherwise the operator returns -1. The
+            storage size of the resulting variable depends on the     
+            length of S. 
+
+        c)  The operator
+
+                strvp(S,n,m)
+
+            creates a numerical variable from columns n,...,m of the
+            string variable S. If it is not possible to convert the
+            sub-string to a numerical value the operator returns -1.
+
+        d)  The operator
+
+                strsp(S)
+
+            creates a numerical variable that sorts the strings in S
+            in ascending order.
+
+    9.  The rstata command now has the following options.
+
+        rstata(                                                 
+            noc=...,         # of records to read, def. all      
+            msys=...,        system missing value code, def. -5    
+            df=...,          write data directly to output file  
+            dvar(...)=...,   create/update variable description file         
+            arcd=...,        create/update archive description file            
+        ) = fname;                                             
+
+        If the Stata file contains string variables these variables are
+        created as part of TDA's internal data matrix or, when using
+        the df option, they are directly written to the output file.
+        The previously available s option is no longer valid.
+
+        a)  If the df parameter is used as  
+
+                dfa = file_name,
+
+            data are appended to the specified file; otherwise, with df=...,
+            a new file is created.
+
+        b)  The dvar parameter has the syntax
+
+                dvar(argument1,argument2,...) = file_name,
+
+            The arguments are optional and can be:
+
+            fn=file_number,     this file number is used in the
+                                variable description file, default is 1.
+
+            p=n,                where n is an integer. Each string variable
+                                will then be partitioned into parts of
+                                n characters length, and corresponding
+                                variable definitions are added to the
+                                variable description file. The additional
+                                variables are of type string.
+
+            pn=n,               same as p=n, but the new variables are of
+                                type numerical.
+
+            p(VNAME)=n,         where VNAME is the name of a variable and
+                                n is a positive integer. Then, if VNAME
+                                is a string variable, only this variable
+                                is partitioned into parts of length n. The
+                                additional variables are of type string.
+
+            pn(VNAME)=n,        same as p(VNAME)=n, but the new variables
+                                are of type numerical.
+
+
+            Note that only one p=n or pn=n parameter can be used. However,
+            the p(VNAME)=n and pn(VNAME)=n parameters are compatible and
+            can be used several times.
+
+            The dvar parameter can also be used as
+
+                dvara(...)=...,
+
+            New variable descriptions are then appended to an already
+            existing file.
+
+        c)  The arcd parameter has syntax
+
+                arcd(parameter1,parameter2) = file_name,
+
+            where the optional arguments can be:
+
+            zoo = file_name,        this file name is then used in the
+                                    archive description file for the
+                                    ZOO archive.
+
+            vdf = file_name,        this file name is then used in the
+                                    archive description file for the
+                                    variable description file. The file
+                                    number for this file is always 999.
+
+            Note that the arcd command is only recognized if the rstata
+            command contains both a df and a dvar parameter. The file
+            name used with the vdf parameter should be the same as that
+            used in the dvar parameter (in order to get valid information
+            about number of records).
+
+        d)  The additional options can be used to ease the creation of
+            a TDA data archive. For example, the following command file
+            would create an archive:
+
+                $"rm xxx.zoo";
+                rstata(
+                    dvar(fn=1) = dv,
+                    df = df,
+                    arcd(zoo=xxx.zoo,vdf=dv) = arcd,
+                ) = xxx.dta;
+                $"zoo ah xxx df";
+                $"zoo ah xxx dv";
+                arcd = arcd;
+                arcc;
+
+        e)  Note: when creating a variable description file TDA tries to
+            recognize value labels which, in a Stata file, are stored at
+            the end of the file. Since this requires that all data has
+            been read, value labels are only recognized if the noc
+            parameter is not used.
+
+        f)  Note: rstata is now able to read Stata files from releases
+            4 and 6.
+
+
+    10. The arcc command now also checks whether the variable names in
+        a variable description file are unique (as required for TDA
+        data archives). If arcc says that variable names are not unique,
+        one can use the arcvc command to investigate and solve the   
+        problem.           
+
+    11. The wstata command now has the following options.
+
+        wstata(                                                 
+            keep = varlist,                                             
+            drop = varlist,                                             
+            sort = varlist,                                             
+            ptyp = ...,         type of stata release, def. 6
+                                4 : for release 4
+                                6 : for release 6
+        ) = output_file_name;                                           
+
+        What kind of Stata file is written depends on the ptyp parameter.
+        By default, files are written for Stata release 6.
+
+        If TDA's data matrix contains string variables these are written
+        into the output file. Note that string variables cannot be used
+        for sorting.
+
+    12. The rspss command for reading SPSS portable files
+        now has the following options.
+
+        rspss(                                                      
+            len= ...,        record length of input file, def.80 
+            noc=...,         # of records to read, def. all      
+            msys=...,        system missing value code, def. -5    
+            fmt=...,         new print format                    
+            df=...,          write data directly to output file  
+            dvar(...)=...,   create/update variable description file         
+            arcd=...,        create/update archive description file            
+        ) = file_name;                                              
+                                                                    
+        If the SPSS file contains string variables these variables are
+        created as part of TDA's internal data matrix or, when using
+        the df option, they are directly written to the output file.
+        The previously available s option is no longer valid.
+
+        The df, dvar, and arcd parameter can be used in the same way
+        as has been described above for the rstata command.
+
+    13. The wspss command for writing SPSS portable files
+        now has the following options.
+
+        wspss(                                                 
+            keep = varlist,                                             
+            drop = varlist,                                             
+            sort = varlist,                                             
+        ) = output_file_name;                                           
+
+        If TDA's data matrix contains string variables these are written
+        into the output file. Note that string variables cannot be used
+        for sorting.
+
+    14. The rdbase command is no longer supported.
+
+    15. Added a new command
+
+        rspss1(                                                   
+            noc=...,            # of records to read, def. all    
+            dvar=...,           file containing value label information
+            msys=...,           system missing value code, def. -5  
+            df=...,             write data to output file             
+        ) = file_name;                                            
+
+        which can be used to read SPSS sav-files (created by            
+        SPSS for Windows on an Intel platform). By default, the data
+        are read into a TDA data matrix (this requires that a data
+        matrix is not already present). Alternatively, when using the
+        df parameter, the data are written directly to the output file
+        specified with the df parameter.
+
+        Note that the dvar option creates only a simplified description
+        of the variables and labels. It does not create a variable
+        description file as it is done in the rspss and rstata commands.
+
+    16. Added a new command
+
+        wspss1(                                                 
+            keep = varlist,                                             
+            drop = varlist,                                             
+            sort = varlist,                                             
+        ) = output_file_name;                                           
+
+        This command writes TDA's internal data matrix (or the variables
+        selected with the keep or drop option) into an output file
+        that can be used as an SPSS sav file. Note that this is a
+        binary file; storage of numerical data conforms to an INTEL
+        platform. Note also that string variables cannot be used
+        for sorting.
+
+    17. Added a new command
+
+        ploth(                                                            
+            x=...,      intervals, required                               
+            w=...,      variable for weights                              
+            s=...,      s=0 (default) classes are left closed             
+                        s=1 classes are left open                         
+            ns=...,     ns=1, don't plot vertical lines, def. ns=0        
+            lt=...,     line type, def. 1 (solid line)                    
+            lw=...,     line width, def. 0.2 (mm)                         
+            gs=...,     grey scale value, def. 1 (white)                  
+            nc=...,     nc=1 if no clipping, def. 0                        
+            df=...,     print table to output file                        
+            fmt=...,    print format for output file, def. 10.4           
+        ) = variable;                                                     
+
+        which can be used to plot a histogram. There must be exactly
+        one variable on the right-hand side. Also one has to use the
+        x parameter to specify a set of intervals (classes) for the
+        histogram. The syntax is
+
+            x=x1,x2,...,xn,   or   x=x1(d)xn,
+
+        x1 must be not greater than the minimum of the values of the
+        variable, and xn must not smaller than the maximum of the
+        values of the variable. The command requires a valid setup
+        for plots and uses the currently defined coordinate system.
+        The heights of the histogram are calculated in such a way
+        that the areas equal the frequencies. A corresponding frequency
+        table can be requested with the df parameter. The output file
+        will then contain n - 1 lines with the following entries:
+
+        1) begin of class
+        2) end of class
+        3) absolute frequency
+        4) relative frequency 
+        5) height of histogram
+
+    18. Added a new command
+
+        plotd(                                                                
+            x=...,      sequence of evaluation points, required               
+            d=...,      bandwidth, def. 1.0                                   
+            k=...,      kernel, def. 1                                        
+                        1 : uniform                                           
+                        2 : triangle                                          
+                        3 : quartic                                           
+                        4 : Epanechnikov                                      
+            lt=...,     line type, def. 1 (solid line)                        
+            lw=...,     line width, def. 0.2 (mm)                             
+            gs=...,     grey scale value, def. 1 (white)                      
+            nc=...,     no clipping option, def. 0                            
+            df=...,     print estimates to output file                            
+            fmt=...,    print format for output file, def. 10.4               
+        ) = variable;                                                         
+
+        for kernel density estimation. There must be exactly one variable
+        name on the right-hand side. Also required is the x parameter
+        to specify a sequence of evaluation points on the x axis, the
+        syntax is
+
+            x = x1,...,xn   or   x=x1(d)xn
+
+        As an option, the estimated density data are written to an output
+        file specified with the df option. The number of records in the    
+        output file equals the number of evaluation points defined with
+        the x parameter. Each record contains two entries: (1) the
+        value of the evaluation point, (2) the corresponding density.
+
+    19. Updated and revised the user's manual and its
+        distribution. Postscript files and zip archives are now
+        directly available from the tda home page.
+
+-------------------------------------------------------------------------
+Version: TDA 6.3                                       December, 12  1999
+-------------------------------------------------------------------------
+
+Changes made for version 6.3:
+
+    1.  Fixed a bug in the command interpreter that might cause
+        core dumps.
+
+    2.  Fixed a bug that caused problems in the rspss command when the
+        SPSS file contains very long variable labels.
+
+    3.  Folowing a suggestion by Stefan Bender, we added a command
+        that might help in merging two event data files. The command is
+
+        ejoin(
+            if1 = ...,          first input file name
+            if2 = ...,          second input file name
+            max = ...,          max block size, def. 1000 records
+            nw  = ...,          max number of levels, def. 1
+            len = ...,          max record length, def. 1000
+            noc = ...,          read max noc records, def. all
+            fmt0=...,           print format for first 8 entries
+            fmt1=...,           print format covariates file 1
+            fmt2=...,           print format covariates file 2
+        ) = name of output file;
+
+        There must be at least one input file. Input files must be
+        free format files where the first 6 entries are as follows:
+
+        Col 1 -  case Id used to identify blocks
+        Col 2 -  number of records (spells) in current block
+        Col 3 -  record (spell) number in current block
+        Col 4 -  starting time of spell
+        Col 5 -  ending time of spell
+        Col 6 -  state (non-negative)
+
+        Any further entries in the file are treated as covariables.
+        Note: the command assumes that the input file is sorted:
+        first w.r.t. case Id, and secondly, inside each block, w.r.t.
+        the starting time.
+
+        If spells are overlapping, the command performs episode
+        splitting and creates as many levels as necessary. (This
+        required an approprite setting of the nw parameter.)
+
+        The output file has the following entries:
+
+        Col 1 -  case Id used to identify blocks
+        Col 2 -  number of records (spells) in current block
+        Col 3 -  record (spell) number in current block
+        Col 4 -  level number (0,1,2,...)
+        Col 5 -  starting time of spell
+        Col 6 -  ending time of spell
+        Col 7 -  state in file 1      
+        Col 8 -  state in file 2      
+        Additional covariables from first file
+        Additional covariables from second file
+
+-------------------------------------------------------------------------
+Version: TDA 6.2f                                          April 25, 1999
+-------------------------------------------------------------------------
+
+Changes made for version 6.2f:
+
+    1.  The ARCHTyp flag in tda.h is now independent of the S_DOS and
+        S_UNIX flags and must explicitly be set when compiling the
+        program according to the type of processor (standard or
+        reversed byte order). In particular, when compiling TDA for
+        Linux one should set ARCHTyp to 2 when, what is most often
+        the case, Linux is based on an Intel processor.
+
+    2.  Fixed a bug that occured when using the mpcov parameter
+        without simultaneously using the pcov parameter.
+    
+    3.  The eval command is obsolete and has been dropped. Use
+        the mpr command insteead.
+
+    4.  Introduced a new type 1 operator that allows to define intervals.
+        The operator is
+
+            iv(a,b)
+
+        or, equivalently,
+
+            [a,b]
+
+        where a and b can be any expressions. The operator returns the
+        interval
+
+            [ min(a,b), max(a,b) ]
+
+        iv(a,b) and [a,b] are called interval operators. An expression
+        is called an interval expression if it contains at least one
+        interval operator.
+
+        Note that interval operators may only be combined with the 
+        following type 1 operators:
+
+        a)  elementary arithmetical operators: + - * /
+
+        b)  exp, log, sin, cos, min, max
+
+        c)  and, or, eq, ne, lt, le, gt, ge, if.
+
+
+    5.  The mpr command can be used to evaluate interval expressions.
+        For example,
+
+            mpr([a,b] + [c,d]);
+
+        prints the sum of the two intervals. As an option, one can use
+        mpr1, instead of mpr. This then will show the resulting interval
+        in square brackets.
+
+    6.  Added the seqpm command for pattern matching in strings. Syntax is
+
+        seqpm(                                                          
+            sn = ...,           number of sequence data structure, def. 1   
+            ps = [...],[...],   definition of max 20 patterns               
+            df = ...,           test output file                            
+            nfmt=...,           integer print format, def. 4  
+            v=...,              add ... variables to output file            
+            dtda=...,           TDA description file                        
+        ) = fname;              name of output file                         
+                                                                        
+        Patterns must be given as follows:                            
+                                                                      
+        ps = [a1,a2,...],[b1,b2,...],...                              
+                                                                      
+        where a1,a2,..., b1,b2,... are one of the folowing characters:
+
+        nonnegative integers for valid states                     
+        ?    matches any character                                
+        *    matches any sequence of characters                   
+        +    any repeat of the previous character                 
+        -    any sequence of identical states
+
+        The contents of the output file can be seen from the TDA
+        description file.
+
+    7.  Fixed a bug in the rspss command that occurred when reading
+        two ore more SPSS portable files in a single call of TDA.
+        Thanks to John Haisken-DeNew.
+
+    8.  Following suggestions by John, we also added the following
+        features.
+
+        1)  The arcvc command now separately informs about number of
+            records and number of variables written to a new varible
+            description file.
+
+        2)  added the following parameter/options to the rspss command.
+
+            a)  the df parameter can be used as dfa=... to append data
+                to the output file.
+
+            b)  the dvar parameter can be used as dvara(fn=)=... to append
+                variable description to the file.
+
+            c)  there is a new parameter
+
+                    arcd = name-of-output-file,
+
+                in order to request another output file that will contain
+                the basic information required for an archive description
+                file. Note that this option will only work in connection
+                with the df and dvar parameters. Note also that you will
+                not get an ready to use archive description but will need
+                to add the archive name and a variable description file.
+
+            d)  the arcd parameter can be used as arca=... to append
+                information to the file.
+
+            e)  there is a new parameter
+
+                    ns = 1,
+
+                this parameter can only be used in connection with the
+                df parameter. If ns=1 is used, string variables that may
+                be present in the SPSS portable file will be written into
+                the output file defined with the df parameter. These
+                variables will then also be recognized in the the 
+                variable description file requested with the dvar parameter
+                and in the archive description file requested with the
+                arcd parameter.
+
+                Default is ns = 0, meaning that string variables are not
+                recognized, and these variables will only be recognized
+                as comments in the variable description file.
+
+            f)  Note: in order to calculate the physical record length that
+                is required for the archive description file, it is assumed
+                that there is an 1-byte EOL character when running under
+                UNIX, and a 2-byte EOL character under DOS etc.
+
+    9.  Added a matrix command
+
+            mdcent(R,A)
+
+        If R is an (n,n) symmetric matrix, the command creates a new
+        (n,n) matrix A that contains the double-centered values of R.
+        (The matrix A might then be used for "classical metric scaling".)
+
+    10. Added the loglin command that can be used to created
+        contingency tables and for estimation of loglinear models.
+        The command is described in section 6.19 of the manual.
+
+    11. Added a new block mode operator
+
+            bnum
+
+        This operator returns the current block number. Block numbers
+        are: 1,2,3,...,m where m is the number of blocks in the data matrix.
+
+    12. Added a new command
+
+            mdefb(MName, mexpr);
+
+        where MName is a matrix name and mexpr is a scalar matrix
+        expression. This command creates a new matrix, MName,
+        corresponding to block mexpr of the current data matrix.
+        The command requires block mode defined with the dblock command.
+        mexpr must evaluate to a valid block number.
+
+    13. Added the matrix command
+                   
+            mlsei(W,me,mi,X);
+
+        expects a (m,n+1) matrix W and two scalar expressions, me and mi,
+        in the following way:
+
+                ( E F )
+            W = ( A B )
+                ( H G )
+
+        where: E is a (me,n) matrix
+               F is a (me,1) vector
+               A is a (ma,n) matrix
+               B is a (ma,1) vector
+               H is a (mi,n) matrix
+               G is a (mi,1) vector
+
+        and ma = m - me - mi. Note: m is defined by the number of rows of
+        the matrix W, me and mi are given as scalar parameter in the
+        command. It is possible to have me >= 0, ma >= 0, and mi >= 0.
+        The command tries to find an (n,1) vector X such that:
+
+            E X  = F     (equality constraints)
+            H X >= G     (inequality constraints)
+
+        and the norm of (AX - B) is minimal in the least squares sense.
+        The algorithm is the same as used for TDA's lsreg command.
+
+
+    14. Added the matrix command
+                   
+            mnls(W,me,k,X);
+
+        expects a (m,n+1) matrix W and two scalar expressions, me and k,
+        in the following way:
+
+            W = ( E F )
+                ( A B )
+
+        where: E is a (me,n) matrix
+               F is a (me,1) vector
+               A is a (ma,n) matrix
+               B is a (ma,1) vector
+
+        and ma = m - me. Note: m is defined by the number of rows of
+        the matrix W, me is given as a scalar parameter in the command
+        and it is possible that me >=0 and ma >= 0.
+
+        The command tries to find an (n,1) vector X such that EX = F
+        (equality constraints) and the norm of (AX - B) is minimal in 
+        the least squares sense. In addition, k is a scalar parameter
+        with 0 <= k <= n and is used to specify non-negativity conditions
+        for the solution vector X:  
+
+            X(k) >= 0, X(k+1) >= 0,..., X(n) >= 0
+
+        If k = n there are no non-negativity constraints; if k = 0 all
+        components of X should be non-negative. Again, the algorithm
+        is the same as used for the lsreg command.
+
+
+-------------------------------------------------------------------------
+Version: TDA 6.2e                                           March 5, 1999
+-------------------------------------------------------------------------
+
+Changes made for version 6.2e:
+
+    1.  Added the command
+
+            plotm (parameter) = X1,Y1,X2,Y2,...;
+
+        where X1,Y1,... are data matrix variables. The command plots
+        a polygon (X1,Y1), (X2,Y2), ..., separately for each case
+        in the data matrix. Parameters are optional and identical
+        with those for the the plot command.
+
+    2.  Added, and updated, commands for relational (graph) data. Here is
+        a list of the new, or modified, commands.
+
+        command                                                   section
+        -----------------------------------------------------------------
+        gcd       creating simple test data                       3.6.3.1
+        gcliq     standard cliques                                7.2.9.1
+        gcon      connected components                            7.2.3.1
+        gcset     compact sets                                    7.2.9.2
+        gcut      cut nodes and blocks                            7.2.3.3 
+        gcyc      fundamental set of cycles                       7.2.6.1
+        gdcon     reachable nodes in digraphs                     7.2.3.2
+        gdcyc     enumeration of cycles                           7.2.6.2
+        gdd       definition of data structure                      3.6.2
+        gdln      direct links                                    7.2.1.1
+        gdp       writing relational data                         3.6.4.1
+        gep       enumeration of paths                            7.2.4.1
+        gev       eigenvalues and eigenvectors                      7.2.7
+        gflow     maximal flows                                   7.2.8.1
+        giset     independent sets                                7.2.9.3
+        gmst      minimum spanning tree                           7.2.5.2
+        gnst      enumeration of spanning tree                    7.2.5.3
+        gni       degree of nodes                                 7.2.1.1
+        gsort     topological sort                                7.2.2.1
+        gsp       all shortest paths                              7.2.4.2
+        gst       depth-first spanning trees                      7.2.5.1
+        gtcl      transitive closure                              7.2.4.3
+        -----------------------------------------------------------------
+        gap       column permutations                             7.3.1.1
+        gqap      quadratic assignment                            7.3.1.2
+        -----------------------------------------------------------------
+        becl      bond energy clustering                          7.5.3.1
+        hcld      simple divisive clustering                      7.5.2.1
+        hcld      partition with minimal diameter                 7.5.2.2
+        hcls      SAHN clustering procedures                      7.5.1.1
+        nncl      nearest-neighbor clustering                     7.5.1.2
+        -----------------------------------------------------------------
+        gbcf      direct/indirect backward control                7.6.1.1
+        gfc       measures of flow control                        7.6.1.3
+        gfcf      direct/indirect forward control                 7.6.1.1
+        gio       integrated ownership                            7.6.1.2
+
+    3.  Fixed a problem that arose when a directed valued graph should
+        be interpreted as undirected (gt = 2 option). The convention now
+        is: if two nodes, i and j, are connected by two directed edges,
+        the edge value of the undirected edge will be the sum of the
+        directed edge values.
+
+    4.  Fixed a bug in the gni command.
+
+    5.  Added a check for the bsel, vsel, and break parameters in the
+        nvar command. These parameters can only be used when
+        the definition of new variables is based on reading data from
+        an archive or from an external data file. Otherwise the nvar
+        command will stop with an error message.
+
+    6.  Updated the tda.hlp file. The current help file is now for
+        TDA version 6.2e.
+
+    x.  Updates in the User's Manual:
+
+        d07         added       relational data
+        d0701       added       introduction and overview
+        d0702       added       some elementary procedures
+        d070201     added    
+
+        d00         updated
+        index       updated
+        ref         updated
+
+-------------------------------------------------------------------------
+Version: TDA 6.2d                                           Oct 4, 1998
+-------------------------------------------------------------------------
+
+Changes made for version 6.2d:
+
+    1.  When combining the noc and isel parameters in the nvar command,
+        reading records from an external data file does no longer stop
+        after having read noc records, but after having created noc
+        data matrix rows. This was suggested by Stefan Bender.
+
+    2.  Added/changed the following typ 1 operators:                
+
+        nocdm           returns the number of data matrix rows
+                        before (independent of) any temporary case
+                        selection.
+
+        noc             returns the number of data matrix rows which
+                        are currently selected.
+
+        nvar            returns the number of currently defined
+                        data matrix variables.
+
+        All operators return zero if there is no data matrix.
+
+        Note: Values of these operators can be found with the mexpr
+        command. For example,
+
+            mexpr(nocdm,NOCDM);
+            mpr(NOCDM);
+
+        prints the value of nocdm.
+
+    3.  The tsel command can now be used also with matrix expressions.
+        It is required, however, that the matrix expression results in
+        a NOCDM x 1 matrix where NOCDM is the number of cases in the 
+        data matrix (before any case selection). 
+
+        For example, creating a NOCDM x 1 matrix S, the command
+
+            tsel = S;
+
+        would select all data matrix rows i where S(i) is not equal
+        to zero. The current value of NOC would then be equal to the
+        numer of non-zero entries in S.
+
+    4.  Added the command
+
+            local (A,B,C,...);
+
+        where A,B,C,... are matrix names. This command can be used inside
+        of macro definitions. The command declares the specified matrix   
+        names as being only locally defined. Then, using these names
+        for matrix operations inside the macro will not conflict with
+        identical names that are already defined outside the macro.
+
+        The command is ignored if used outside of a macro definition.
+
+    5.  Added the command
+      
+            mdeff(X) = fname;
+
+        Given that fname is the name of a standard free-format data
+        file with m data records and n numerical entries in each record,
+        the command creates a m x n matrix X and reads the numerical
+        entries from the data file into the matrix.
+
+    6.  The mpr command has an additional append option. The syntax is
+
+            mpr(X) = fname;         writes matrix X into file fname, or
+
+            mpra(X) = fname;        appends X to file fname.
+
+    7.  Enhanced options for the mexpr command for matrix expressions.
+
+        A matrix-expression can combine matrices, data matrix variables
+        and namelists. Assume
+
+            mexpr(op(A,...,V,...,L,...), R)
+
+        where A,... are matrices, V,... are data matrix variables, and
+        L,... are namelists. Data matrix variables are treated as
+        NOC x 1 matrices, namelists are treated as NOC x m matrices
+        where m is the number of variables contained in the namelist.
+        Consequently, all arguments can be considered as matrices with
+        dimensions, say, row(i) x col(i). The resulting matrix, R, gets
+        dimension
+
+            max {row(i)} x  max {col(i)}
+
+        If one of the matrices (or variables, namelists) has smaller
+        dimensions, its missing rows, or columns, are created by
+        cyclically using the available ones. For example, if a matrix A
+        has n columns, its (n+1)th column will equal its first column,
+        and so on; analogously for rows.
+
+        c)  As a consequence, it is no longer possible to create matrices
+        having names that conflict with already defined variables or
+        namelists.
+
+        d)  Remember that matrix-expressions are evaluated element-wise.
+        For example, with matrices
+
+                1
+            A = 2   and B = (1,2)
+                3
+
+        the command
+
+            mexpr(A * B,R);
+                                          1  2
+        would result in the matrix:  R =  2  4
+                                          3  6
+
+        e)  Matrix-expression may contain type 2 operators. Not allowed
+        are the pre() and suc() operators (but the lag operator will
+        work), and the specific operators for episode and sequence data.
+
+        When a matrix-expression contains type 2 operators, the
+        resulting matrix is calculated as a sequence of column vectors,
+        meaning that the operators apply separately for each of these
+        column vectors. For example,
+
+            mexpr(sort(X),R);
+
+        would separately sort each column of X in ascending order.
+
+    8.  In order to allow the block mode operators for matrix expressions,
+        there is an additional command,
+
+            mexpr1(B,m-expr,R);
+
+        where B is a (m,n) matrix and m-expr is some (row,col) matrix
+        expression. It is required that m >= row. The resulting matrix, R,
+        has dimension  max(m,row) x col and is evaluated from m-expr.
+        While evaluating m-expr, B is used for the definition of blocks,
+        that is, each consecutive number of identical rows in B is
+        treated as a separate block.
+
+
+    9.  A matrix-expression may contain arguments
+
+            X(row,col)          where X is a matrix, or
+            V(row,1)            where V is a data matrix variable, or
+            L(row,col)          where L is a namelist.
+
+        The result is the corresponding element of X, V, or L. For
+        example,
+
+            mexpr(A(row,col),R);
+
+        would create a scalar matrix, R, containing the value of
+        A(row,col). row and col can be any scalar expression.
+
+        Values resulting from row and col expressions must be
+        positive integers. If they exceed the corresponding matrix
+        dimensions, they are cyclically turned around. For example,
+        if the matrix is
+
+            A = (1,2,3),
+
+        then A(1,5) = 2.
+
+        In addition, one can use the following constructs (where X is
+        a matrix, a variable, or a namelist):
+
+            X(row,.)        sum of elements in row             
+            X(.,col)        sum of elements in column
+            X(.,.)          sum of all elements
+
+        All constructs mentioned so far are considered as type 1 
+        operators and get the dimension 1 x 1. There is a further
+        type 2 operators,
+
+            X(i)
+
+        which returns the i.th column of the matrix (or variable, or
+        namelist) X. The returned object has dimension row x 1 where
+        row is the number of rows of object X.
+
+   10.  Whenever the argument of a matrix command refers to an existing
+        matrix, it is now possible to use an arbitrary matrix-expression
+        instead of a single matrix name. So it is possible to combine
+        scalars, matrices, variables and namelists in all matrix commands.
+
+        For example,
+
+            mpr(sin(V));
+
+        where V is a data matrix variable would print the resulting 
+        vector. Consequently, the calc command is obsolete and will
+        be removed.                                  
+
+   11.  A further extension, we introduced an additional concept for
+        vectors, which may be defined using the syntax:
+
+            < e1,e2,... >               for column vectors
+            < e1,e2,... >'              for row vectors
+
+        where e1, e2, ... are any scalar expressions. These vectors are 
+        always treated as column vectors. For example,
+
+            mpr(<1,2,3>');
+
+        would be printed as the row vector
+
+             1 2 3 
+
+        and
+
+            mpr(<1,2,3> + <4,5,6>' );
+   
+        would be printed as the matrix          
+
+            5 6 7
+            6 7 8
+            7 8 9
+
+        If a vector has fewer elements as required by the dimension of
+        its context, it is cyclically updated. For example,
+             
+            mpr(<1,2>' + <3,4,5>')
+
+        would result in the vector
+
+             4 6 6 
+
+        Note 1: The prime character (') is different from the single
+        quotation mark character (`) which can be used to enclose strings.
+
+        Note 2: The prime character can only be used with
+        vectors, not with general matrices or matrix-expressions.
+
+        Note 3: Due to stack size limitations, a directly specified
+        vector can have at most 9 elements. This may be less when the
+        vector is used as part of a more complex expression.
+
+
+   12.  As a consequence of these changes, the following commands are
+        obsolete and no longer supported:
+
+            mhp             Hadamard product  
+            mset            copy one matrix into another 
+            madd/msubb      addition, subtraction
+            msmul           multiplication of matrix with scalar
+            mrsum,mcsum     use mmul(1,...) or mmul(...,1,...) instead
+            calc            calculator, use mpr instead
+
+        Also, for some matrix commands, we have slightly changed the 
+        syntax in order to allow a more unified treatment:
+
+            mdefc(m,n,x,A);     create matrix A
+            mdefi(m,n,I);       create identity matrix I
+            mlp(T,X,Y);         linear programming
+            mlp1(T,p,X,Y);      linear programming with equality constraints
+                 
+            msrow(A,D,R);       select rows
+            mscol(A,D,R);       select columns
+
+        In the last two commands, D is a row or column vector that 
+        provides indices of the rows (in msrow) or columns (in mscol)
+        that are to be selected. This vector can be given by a matrix
+        name or directly with the new vector notation. For example,
+        if
+                    1 2 3
+                A = 4 5 6
+                    7 8 9
+
+        the command
+
+                mscol(A,<1,3,2>,R)
+
+        would result in
+
+                    1 3 2  
+                R = 4 6 5  
+                    7 9 8  
+
+   13.  Added the type 1 operators:
+
+            row(expression)     returns row-dimension of expression
+            col(expression)     returns column-dimension of expression
+
+        Note: the resulting dimension of row() and col() is always 1x1.
+
+   14.  Added the commands   
+
+            msort (A,D,R);
+            msort1(A,D,R);
+            mrank (A,D,R);
+
+        A is a general (m,n) matrix, D is a column vector providing
+        indices of columns of A. The matrix A is then sorted in 
+        ascending order, based on the columns selected by D.
+
+        The msort command returns a (m,n) matrix containing the
+        sorted values of A. The msort1 command does the same but
+        drops rows that occur more than once. The mrank command
+        returns a (m,1) vector containing rank numbers for the
+        sorted rows of A.
+
+   15.  Added the commands
+
+        a)  msetv(expr, X(row,col));
+
+        where expr is a scalar expression, X is the name of an existing
+        matrix, and row and col are scalar expression referring to an
+        existing element of X. The command copies the value of expr
+        into X(row,col).
+
+        b)  mnrow(A,R)
+
+        Given a m x n matrix A (or, in fact, any matrix expression),
+        the command creates a 1 x 1 matrix R
+        containing the number of rows in A, that is, m.
+
+        c)  mncol(A,C)
+
+        Given a m x n matrix A, the command creates a 1 x 1 matrix C
+        containing the number of columns in A, that is, n.
+
+        d)  mnum(x,d,n,A)
+
+        Given values x, d, and n, the command creates a n x 1 matrix
+        A with values
+
+            A(i) = x + (i - 1) * d          (for i = 1,...,n)
+
+        x, d, and n can be 1 x 1 matrices.
+
+        e)  mtrace(A,R);
+
+        Given an (m,n) matrix A, the command returns
+
+            R = sum {A(i,i)}    for i = 1,...,min(m,n)
+
+        f)  mnorm(A,R);
+
+        The command returns the maximal norm of A, that is, the 
+        absolute value of the matrix element that has largest
+        absolute value.
+
+        g)  mnorm1(A,R);
+
+        The command returns the l1 norm of A, that is, the sum of
+        the absolute values of the matrix elements.
+
+        h)  mnorm2(A,R);
+
+        The command returns the l2 (Euclidean) norm of A.
+
+   16.  By default, matrix commands and the repeat, while, and if
+        command do not echo in the standard output (except when
+        errors occur). Verbose behavior can be requested with the
+        command
+
+            silent = -1;
+
+        The silent command without arguments shows the current value.
+
+   17.  Added code in order to allow using most type 1 operators also
+        in combination with type 2 operators. This includes mainly
+        mathematical operators and operators for density and
+        distribution functions.
+
+   18.  Addes a new type 1 operators
+
+            exists(Name)
+
+        where Name is a syntactically valid matrix, variable, or 
+        namelist name. The operator returns 1 if the object denoted by
+        Name exists, otherwise it returns 0. In particular,
+
+            exists()
+
+        returns 0. This is useful in order to check whether $n
+        expressions in macro definitions are actually available when
+        the macro is executed. For example,          
+
+            exists($1)
+
+        when used inside a macro, will be expanded to
+                                     
+            exists(Name)    
+
+        when Name is given for $1 when invoking the macro, and is 
+        expanded into
+
+            exists()
+                                     
+        when the macro argument $1 is not used when invoking the macro.
+        Remember that $n expressions are substituted by their corresponding
+        names, when given by the user, or substituted by Null-strings. 
+        This rule also applies when $n expressions are used inside double
+        quotation marks. The only exception is when $n expressions are
+        inside single quotation marks. For example,
+
+            print("$1 ...");
+
+        will substitute $1 by a valid name, or by the Null-string; but
+
+            print("... `$1' ...")
+
+        will not substitute $1 by a name or the Null-string.
+
+   19.  Added the command
+
+            dblock ( mdef=... ) = varlist;
+
+        All parameters are optional. The command first turns off any
+        possibly active tsel (temporary case) selection. It then creates
+        a data structure that keeps record of data matrix blocks defined
+        by the variables in varlist. Blocks are defined as contiguous
+        blocks of data matrix rows where the variables in varlist have
+        identical values; or, if varlist is empty, each data matrix row
+        is treated as a separate block.
+
+        The dblock command sets the global variable BNOC to the number
+        of blocks that has been found. This number is available with the
+        new type 1 operator 
+
+            bnoc
+
+        If the optional parameter 
+
+            mdef = M,                  
+
+        is used, where M is the name of a matrix, the dblock command
+        creates a NOC x 1 matrix named M and sets
+                
+            M(i,1) = block number of case i.
+
+
+   20.  Added the command
+
+            repsel(
+                id = V,         # optional ID variable
+            )   = S;            # matrix expression
+
+        where S is a matrix-expression with dimension BNOC x 1.
+        The command requires that BNOC has been set with the dblock 
+        command. Like the dblock command, the repsel command turns off
+        any possibly active tsel (temporary case) selection. The repsel
+        command works in two different ways, depending on whether the
+        optional id parameter is used.
+
+        a)  If the id parameter is not used, the command creates a new
+            data matrix where the cases in block i (i=1,...,BNOC) are
+            repeated S(i,1) times, or omitted if S(i,1) <= 0.
+
+        b)  If the name of a variable, say V, is given with the id
+            parameter, the command creates a new data matrix where      
+            block i consists of those cases where the value of V 
+            equals S(i,1).
+
+        The repsel case selection remains valid until
+
+        -   a new repsel command is given,
+        -   the data matrix is cleared,
+        -   a tsel command is given,
+        -   a dblock command is given, or
+        -   the command is explicitly turned off with
+
+                repsel = off;
+
+   21.  Added the type 1 operator 
+
+            rdp1(z)
+
+        This operator returns random numbers according to a Poisson
+        distribution with mean z. z must be a positive number in the
+        interval (0,350). The algorithm is adapted from ACM 369 by
+        Henrry E. Schaffer, cf. Communications of the ACM 13, 1970.
+
+   22.  Added two commands to support the balanced repeated replication
+        (BRR) method. For preliminary information see the (obsolete)
+        TDA Working Paper 1-3, June 1994. The first command is
+
+            brr(
+                ptab = fname,
+            ) = ns,nu;
+
+        where ns is number of strata and nu is number of secu. This 
+        command shows the number of required replications on standard
+        output. If the optional ptab parameter is used, the BRR
+        indicators are written into the output file fname. These
+        data will be identical to those that can be directly created
+        with the matrix command
+
+            mbrr(ns,nu,S);
+
+        This command creates a ns x nr matrix, S, where ns is the
+        number of strata and nr the number of replications, and
+
+            S(i,j) = SECU in strata i for replication j.
+
+        For example, assume a data matrix with variables Strata and
+        SECU. Then, in order to get BRR replications, one can use
+        the following commands:
+
+            dblock = Strata;            creates ns blocks
+            mbrr(ns,nu,S);              creates the S matrix
+            repsel(v=SECU) = S(j);      jth replication
+
+
+   23. The vsel, bsel and break parameters in the nvar command can
+       only be used when reading from an external data file or from
+       a data archive. The nvar command now explicitly tests for this
+       conditions and otherwise returns with an error message.
+
+   24. Contrary to the description of the while and if commands given
+       in the update note for TDA 6.2c, we now require that in
+
+            while (expression);     and
+            if (expression);
+
+       expression must be scalar, i.e., a 1 x 1 matrix.
+
+   25. The repeat command can now be used in the following ways:
+
+       a) repeat(n = expr);
+
+       where expr is a scalar expression that evaluates to a positive
+       integer, say m. The commands in between repeat and endrepeat
+       are then executed m times.
+
+       b) repeat(n = expr,I);
+
+       Given in this form, the command creates a 1 x 1 matrix,    
+       I (arbitrary matrix name), and sets I(1,1) to the value of the
+       interation counter for the repeat loop. It is required that
+       a matrix with the given name (I) does not already exists.
+
+
+-------------------------------------------------------------------------
+Version: TDA 6.2c                                         July 26, 1998
+-------------------------------------------------------------------------
+
+Changes made for version 6.2c:
+
+    1.  Changed the routine to match variables in order to allow sensible
+        results when the matching variable is not unique. Thanks to
+        Beate Ernicke.
+
+    2.  TDA now supports user-defined macros. 
+
+        A macro can be defined with the command
+
+            macrodef(MNAME) = {string1; string2; ... };
+
+        MNAME is an arbitrary string to be used as the name of the
+        macro. string1, string2, etc. must be valid TDA commands, or
+        already defined macro names. MNAME then becomes a new command,
+        and
+
+            MNAME;
+
+        is executed as
+
+            string1;
+            string2;
+            ....
+
+        string1, string2, ... may contain variable arguments,
+        having the predefined names
+
+            $1, $2, ..., $100
+
+        (The maximal number of arguments equals the
+        maximal number of macros, defined by the constant
+        MaxMacro in tda.h. MaxMacro is currently set to the value
+        of 100 but can be changed at compile time.) 
+           
+        When defining a macro, variable arguments must be contiguous,
+        that is, $1,$2,$3,... Apart from this requirement, they can be
+        used in any way. When invoking the macro name with arguments,
+        TDA uses the following ordering:
+
+            MNAME(arg_n+1,arg_n+2,... ) = arg_1,arg_2,...,arg_n;
+
+        arg_i is then substitued for $i in the macro definition.
+        Arguments can be skipped by using consecutive commas. The
+        corresponding argument in the macro definition will then
+        be empty. 
+
+        In order to check the expansion of macros one can use the
+        command:
+
+            expand : MNAME (arguments) = arguments;
+        or
+            expand = MNAME (arguments) = arguments;
+
+        This will show the expanded macros based on the provided
+        arguments but will not execute the commands.
+
+        There are two additional commands:
+
+        a)  macrolist;      gives a list of currently defined macros.
+
+        b)  macroclear;     deletes all currently defined macros.
+
+
+    3.  Added the following command for TDA PostScript files:
+
+        a)  xlog [=psfile];
+
+            shows the plot objects in the currently open PostScript
+            file, or in psfile if given as an argument.
+
+        b)  xdelete = n1,n2,...;
+
+            deletes the plot objects n1,n2,... from the currently
+            active PostScript file.
+
+        c)  xopen = psfile; 
+
+            tries to open psfile as a new PostScript file.
+            psfile must be a TDA PostScript file.
+
+        Note that these commands only work with TDA PostScript files
+        created with TDA 6.2c or later.
+
+    4.  Added commands that allow, to some extent, interactive graphical
+        data exploration. The basic command is
+
+            xshow(dscal=...) [= psfile];
+
+        that allows a preview of the currently active PostScript file,
+        or psfile if given as an argument. The optional dscal parameter
+        can be used to change the default scaling factor, dscal=1.
+
+        This command works fine in an X windows environment. It opens
+        a plot window and shows the plot until the window is closed by
+        typing any key. A somewhat limited version of the command      
+        is available for Windows NT.
+
+        Note that the xshow command interprets the currently defined
+        PostScript file but has only limited capabilities for interpreting
+        PostScript commands. In fact, the interpreter is heavily tied to
+        a special format used for TDA PostScript files. If one needs to
+        preview the complete PostScript file one should not use xshow but,
+        e.g., GhostScript or GhostView.
+
+        There are a few additional commands to support quick creation of
+        PostScript plots. In general, if there is no currently active
+        PostScript file, these commands create a new PostScript file.
+        Otherwise the plot objects created by these commands are added
+        to the currently active PostScript file.
+
+        a)  xplot(
+                opt=...,            1 (default) scatterplot, 2 line plot
+                s=...,              symbol type, def. 1
+                fs=...,             symbol size, def. 1.3 mm
+                lt=...,             line type, def. 1
+                lw=...,             line width, def. 0.2 mm
+                pxlen=...,          length of x axis, def. 120 mm 
+                pylen=...,          length of y axis, def.  80 mm
+
+            ) = X,Y [,G];
+
+            This command creates a scatterplot based on the variables X
+            and Y. A third variable, G, is optional. If added, each set
+            of data points having the same value of G is treated as a
+            separate group and is shown by a separate plot symbol. All
+            other parameters are optional. Note: the s parameter can only
+            be used when there is just one group.      
+
+        b)  xplotf(
+                cn=...,             column numbers of variables, def. cn=1,2
+                gn=...,             column number of group variable 
+                opt=...,            1 (default) scatterplot, 2 line plot
+                s=...,              symbol type, def. 1
+                fs=...,             symbol size, def. 1.3 mm
+                lt=...,             line type, def. 1
+                lw=...,             line width, def. 0.2 mm
+                pxlen=...,          length of x axis, def. 120 mm 
+                pylen=...,          length of y axis, def.  80 mm
+
+            ) = name_of_data_file;
+
+            This command works similar to the xplot command but gets its
+            data diretly from a data file assumed to be a standard free
+            format data file with valid end of line characters.
+
+            1)  By default, the xplotf command uses the first two data columns
+                in the input file to get values for the X and Y variables.
+
+            2)  Optionally, one can use the cn parameter to specify
+                column numbers:
+
+                cn = c1,c2,c3,...,
+
+                defining corresponding variables X1,X2,X3,... This specifies
+                the data point groups
+
+                (X1,X2), (X1,X3), ...
+
+                and a scatterplot, or line plot, is created separately for
+                each group.
+
+            3)  As a further option, one can specify
+
+                cn = c1,c2, gn=c3,
+
+                defining corresponding variables X, Y, and G, respectively.
+                X and Y define the data points, and G is a grouping variable,
+                meaning that each set of (X,Y) values which have the same
+                value in G is treated as a separate group.
+
+
+        c)  xf(     
+                rx = a(d)b,         definition of x axis     
+                lt=...,             line type, def. 1
+                lw=...,             line width, def. 0.2 mm
+                pxlen=...,          length of x axis, def. 120 mm 
+                pylen=...,          length of y axis, def.  80 mm
+
+            ) = function(x);
+
+            This command plots function(x). If there is a currently active
+            PostScript file the function is plotted for the corresponding 
+            x axis. Otherwise, the command created a new PostSript file
+            (named xplot.ps). By default, the function is then plotted
+            for an x axis from 1 to 10. Alternatively, one can define the
+            x axis with
+
+                rx = a (d) b,
+
+            The range is then from a to b, with increments d.
+
+        d)  xconh(
+                lt = ...,           line type, def. 1
+                lw = ...,           line width, def. 0.2
+            );
+
+            Adds convex hulls to the most recent scatterplot. If the
+            scatterplot consists of more than one group, the convex hulls
+            are plotted separately for each group.
+
+        e)  xreg(
+                lt = ...,           line type, def. 1
+                lw = ...,           line width, def. 0.2
+                sig = ...,          sigma for lowess, def. 0.5
+            ) [= n];
+
+            This command adds a regression line to the most recent
+            scatterplot. In case of more than one group, this is done
+            separately for each group.
+
+            n = 1       Lowess, default
+            n = 2       LS regression
+            n = 3       L1 norm regression
+
+    5.  In order to ease the use of estimation results of standard 
+        procedures as input for matrix calculations, we added the following
+        optional parameters.
+
+        mplog  = MatrixName,
+        mppar  = MatrixName,
+        mpcov  = MatrixName,
+        mpgrad = MatrixName,
+
+        If used, the corresponding matrix is created (any already existing
+        matrix with same name is first deleted), and appropriate results
+        of the procedure are written into the matrix. In general, what is
+        written into the matrices depends on the command. For commands
+        using maximum likelihood estimation, the general rule is:
+
+        a)  mplog       will contain the final loglikelihood value
+        b)  mppar       will contain the final parameter estimates
+        c)  mpcov       will contain the final covariance matrix
+        d)  mpgrad      will contain the final case-specific gradients
+             
+        mpgrad can also be used in the following way:
+
+            mpgrad(v=V1,V2,...) = MatrixName,
+
+        Values of the specified variables are then added as additional
+        columns to the matrix.
+
+        Currently, the parameters can be used with the following commands.
+
+        Command     mplog   mppar   mpcov   mpgrad        
+        --------------------------------------------         
+         rate         +       +       +       +
+         qreg         +       +       +       +
+         fmin         +       +       +       +
+         freg         +       +       +       +
+         fml          +       +       +       +
+         frml         +       +       +       +
+         lsreg        +       +       +
+         l1reg        +       +       +
+         dstat                + 
+         quant                + 
+         cov                          +
+         corr                         +
+         atab                 + 
+         ineq                 + 
+
+
+    6.  Reworked matrix commands in order to allow for overwriting of
+        already existing matrices. For example, the command
+
+            mginv(A,A);
+
+        no longer gives a senseless result but returns the g-inverse
+        of A.
+
+    7.  Added the concept of matrix expression as a generalization of
+        standard TDA expressions. Matrix expressions have basically the
+        same syntax as standard expressions but may contain matrix
+        names instead of numerical constants. There is one basic
+        limitation: All matrices used in a matrix expression must have
+        the same dimension, and this then becomes the dimension of the
+        matrix expression. If a matrix expression contains data matrix
+        variables, these variables will be interpreted as (NOC,1)
+        matrices where NOC is the current number of cases selected for
+        TDA's data matrix. Analogously, a namelist containing m variables
+        will be interpreted as a (NOC,m) matrix.
+
+        Matrix expressions are evaluated element-wise by their 
+        cor esponding standard expressions. A standard expression
+        containing only numerical constants and operators is equivalent
+        to a (1,1) matrix expression.
+
+
+    8.  Added the following matrix commands:
+    
+        a)  mexpr(expression,A);
+
+            where expression is a matrix expression. This command creates
+            a new matrix, A, with dimensions defined by expression 
+            and each element set to the corresponding value of expression.
+
+        b)  mdef(A);
+                        
+            copies the currently defined data matrix into the matrix A.    
+
+        c)  mdef(A)=varlist;
+                            
+            creates the matrix A containing the values of the variables
+            specified on the right-hand side. (Namelists can be used.)
+
+        d)  mnvar(A);
+
+            where A is the name of a (m,n) matrix. This command creates
+            a new data matrix with m cases and n variables. Variable names
+            are created by using the matrix name and adding column numbers.
+
+        e)  The mpr command that allows to print matrices into standard output
+            or into an output file can now be used in the following way:
+
+                mpr (A [, string] ) [ = filename];
+
+            If given, the optional string is written in a single line at the
+            beginning, followed by the matrix values.
+
+        f)  mscal1(A,B);
+    
+            Given a (m,n) matrix A, the command returns a (m,n) matrix
+            B with values
+
+                B(i,j) = A(i,j) / Sum(A)      
+
+            where Sum(A) is the sum of all values of A.
+
+        g)  mrsum(A,S);
+
+            Given a (m,n) matrix A, the command returns a (m,1) matrix S
+            containing the sums of the row values of A.
+    
+        h)  mcsum(A,S);
+
+            Given a (m,n) matrix A, the command returns a (1,n) matrix S
+            containing the sums of the column values of A.
+    
+        i)  minvs(A,B);
+
+            Given a positive definite symmetric (m,m) matrix A, the
+            command returns the inverse of A. Values are taken from the
+            lower triangle of A.
+
+        j)  minvd(A,B);
+
+            Given a (m,n) matrix A, the command returns a (m,n) matrix
+            B with B(i,i) = 1 / A(i,i) for i = 1,...,min(m,n). All other
+            elements are set to zero.
+
+        k)  mwvec(A,W,R);
+
+            Given (m,1) vectors A and W, the command creates a (m,1)
+            vector R, with elements
+
+                          Sum[j in I(i)] A(j) * W(j)
+                R(i) =  ------------------------------
+                             Sum[j in I(i)] W(j)
+
+            The sum runs over all j in the index set
+
+                I(i) := { k : k > i }
+
+            R(i) = A(i) if I(i) empty, or the sum of weights is zero.
+
+        l)  mwvec1(A,W,T,R);
+
+            Given (m,1) vectors A, W, and T, the command creates a (m,1)
+            vector R, with elements
+
+                          Sum[j in I(i)] A(j) * W(j)
+                R(i) =  ------------------------------
+                             Sum[j in I(i)] W(j)
+
+            The sum runs over all j in the index set
+
+                I(i) := { k : T(k) > T(i) }
+
+            R(i) = A(i) if I(i) empty, or the sum of weights is zero.
+
+        m)  mple(T,C,F,D);
+
+            Given (m,1) vectors T and C, the command performs a product-
+            limit estimation of the cumulative distribution function 
+            of the values in T. The elements in C are interpreted as
+            censoring information: if C(i) = 0, T(i) is interpreted as
+            NOT censored; if C(i) has a nonzero value, the corresponding
+            T(i) is interpreted as censored. The largest value of T is
+            always interpreted as NOT censored. The command creates two
+            (m,1) vectors F and D. If the command terminates successfully,
+            F will contain the cdf, and D the jumps of the cdf for
+            noncensored values.
+
+    
+    9.  Added commands that allow to control the execution of a series
+        of commands.
+
+        a)  repeat(n=...);
+            ...
+            endrepeat;
+
+            The commands in between repeat and endrepeat are executed
+            unconditionally n times. By default, n = 1.
+
+        b)  while (expression);
+            ...
+            endwhile;
+
+            The commands in between while and endwhile are executed
+            while expression is true. Expression can be any valid 
+            matrix expression (including standard expressions). 
+            Assuming that expression defines a (m,n) matrix, say E,
+            TDA interprets the expression as true if the sum of the
+            absolute values of the elements in E is greater than
+
+                sqrt(EPSI)  [approx 1.e-8]
+
+            where EPSI is the machine precision.  
+
+        Repeat and while commands can be nested up to a level of 100
+        (defined by MaxREP in tda.h).                
+
+        c)  if (expression);
+            ...
+            endif;
+
+            The commnds in between if and endif are executed if 
+            expression is true. Here, expression is treated in the
+            same way as already explained for the while command.
+            If commands can be nested up to 100 levels (see the
+            constant MaxIFLEV in tda.h).
+
+            Also possible is:
+
+            if (expression);
+            ...
+            else;
+            ...
+            endif;
+
+
+        d)  break;
+
+            All commands following break are skipped until the next
+            endrepeat, or endwhile, command. Note that a break command
+            must be inside a loop beginning with repeat or while.
+
+        NOTE: the goto command, mentioned in Section 1.4 of the User's
+        Manual, is no longer supported.
+
+    10. Added a command, "silent", that can be used to control writing
+        of messages.
+
+        silent = 0;     writes all output (default)
+                 1;     suppresses standard output
+                 2;     suppresses standard error output
+                 3;     suppresses both standard, and standard error output
+
+        The command has no influence on "fatal" error messages and writing
+        external files. It cannot be used in interactive mode.
+
+    11. The s parameter in pdata now has the following additional meaning:
+
+        s = 0,  print only numerical representation of string (default)
+        s = 1,  print string and its numerical representation (as before)
+        s = 2,  print string only
+
+    12. Following suggestions by Stefan Bender, we modified the nvar
+        command as follows:
+
+        a)  vsel and break parameters can no longer be used when in
+            block mode.
+
+        b)  the bsel parameter no longer drops, or keeps, whole blocks but 
+            evaluates individual records, meaning 
+
+            bsel = expression,
+
+            selects those records from a block where expression is true
+            (not equal zero). Note, however, that all variables that 
+            invole type 2 parameter are evaluated before bsel is applied,
+            i.e., are evaluated for the complete block.
+
+            On the other hand, the statistics about number of blocks and
+            their minmal and maximal size are evaluated after bsel has
+            been applied.
+
+        c)  Added the following parameters to the nvar command:
+
+            sepc = ...,     separation character when directly writing an
+                            output file with df/df1 option.
+
+                            Default is one blank character, optional:
+
+                            sepc = none,           no separation character
+                            sepc = any_character,
+
+            l0=...,         l0 = 0, use leading blanks (default)
+                            l0 = 1, use leading zeros
+
+
+    13. Added a online help function. This requires the additional file,
+        "tda.hlp", to available in a path where also the executable
+        version of tda can be found. tda.hlp is a plain ASCII text file
+        that contains the text for the help entries.
+
+        The command is
+
+            help;
+
+        or 
+
+            help string;
+
+        The help command without arguments provides a short description
+        of how the help command can be used.
+    
+    14. Archive variables having an integer format with more than 9 
+        digits now get the default storage size <8>, i.e. double precision
+        floating point.
+    
+
+-------------------------------------------------------------------------
+Version: TDA 6.2b                               June 15, 1998
+-------------------------------------------------------------------------
+
+Changes made for version 6.2b:
+
+    1.  Fixed a bug that occurred when the keep list in pdata contains
+        more variables than do acutally exist.
+
+    2.  Fixed a bug that occurred when writing Stata files under DOS.
+
+    3.  Added the parameter sepc=... to the pdata command in order to
+        allow for alternative separation characters in the output file.
+        Default is a single blank character. Optionally one can use
+
+            sepc = none,
+
+        to suppress a separation character, or
+
+            sepc = 'any character',
+
+        Another new parameter is     
+
+            l0 = 1,
+
+        If given with the pdata command, print format fields not fully
+        occupied by a value are filled with leading zeros.
+
+    4.  When reading from a fixed format data file, variables defined
+        by columns that do not exist in an actually read record, now
+        get the missing value code for blank fields (mblnk).
+
+    5.  Added the following commands:
+
+        esort   for sorting huge data files         see: d021205
+        emerge  for merging huge data files         see: d021206
+        eselect for selecting records               see: d021207
+        eskip   for dropping selected columns       see: d021208
+
+    6.  Added the parameter df1 to the nvar command. Like the df parameter,
+        the df1 parameter can be used to directly write data to an output
+        file without creating an internal data matrix. The difference is that,
+        when operating in block mode, the df1 parameter only writes the
+        first record from each block.
+
+    7.  Added two new type 2 operators:
+
+            bfa(V[...])    and    bfr(V[...])
+
+        V is the name of a variable and [...] is the dummy variable operator.
+        The bfa operator returns the number of times that the dummy 
+        variable, i.e. its argument, takes a non-zero value for all records
+        in the current block. The bfr operator returns the corresponding
+        relativ frequency.
+
+    8.  Added the command
+
+            $ string ;
+
+        This command calls a shell in order to execute string. Note: use
+        quotation marks if string contains blank characters.    
+
+    9.  Updates in the User's Manual:
+
+        d021205     added
+        d021206     added
+        d021207     added
+        d021208     added
+        d0612       updated
+        d00         updated
+        index       updated
+
+-------------------------------------------------------------------------
+Version: TDA 6.2a                               May 25, 1998
+-------------------------------------------------------------------------
+
+Changes made for version 6.2a:
+
+    1.  Fixed a bug that occurred when parsing variable lists not 
+        ended by a comma. Thanks to Tak Wing Chan.
+
+    2.  Added a command, npreg, for nonparametric regression with 
+        bivariate data. The command is documented in section
+
+            d061002   
+
+        that has been added to the documentation. An additional command
+        file, npreg1.cf, has been added to the example archive.
+
+    3.  Updates in the User's Manual:
+
+        d061002     added
+        d0610       updated
+        d00         updated
+        index       updated
+        ref         updated
+
+-------------------------------------------------------------------------
+Version: TDA 6.2                                April 13, 1998
+-------------------------------------------------------------------------
+
+                          
+    1.  Checked rspss and rstata commands.                      
+        Added: command cblen for command buffer length,
+        def. 20000.
+        Error message if insufficient command buffer length.
+
+    2.  Corrected a bug in wr_stata(). Didn't recognize the
+        number of variables correctly.
+ 
+    3.  Block mode variable can be of type 2, 3 or 6.
+
+    4.  New command: gio (integrated ownership), with M. Becht.
+        Only experimental, command has been removed later on.
+
+    5.  Fixed a bug in atab command.
+
+    6.  Added a new option for string variables:
+
+            S[len]:ci, or U[len]:ci
+
+        where ci is the i.th logical column and len is the maximal
+        length of the string. The i.th logical column may contain
+        strings of the form:
+
+            string  or  "string"
+
+        If string contains blank characters it should be enclosed
+        in double quotes.
+
+    7.  Changed basic data structures for graph data and
+        adjusted procedures for graphs to the new TDA 6.1 syntax.
+
+    8.  Added prn option to pdata command.
+
+            prn=0   default
+            prn=1   write single variable as triangle matrix
+            prn=2   write single variable as square matrix
+
+    9.  Corrected a bug that occurred when creating type 5
+        variables (in edef command) while temporary case selection
+        is active. Thanks to Francesco Billari.
+
+   10.  Corrected a bug that caused problems when creating
+        several plots in a single command file. Thanks to
+        Uwe Gehring.
+
+   11.  Added commands
+        sma : moving averages
+        smd : running median smoothers
+        spl : smoothing splines
+
+   12.  Fixed a bug that caused the program to become confused
+        in deciding between free variables and data matrix variables
+        when parsing user-defined functions. Also added the option
+        to define multilevel functions.
+
+   13.  Added command l1reg for L1 norm regression.
+
+   14.  Fixed a bug in the automatic differentiation of
+        the eexp() function.
+
+   15.  Transferred part of the logit and probit stuff from TDA
+        5.7 to TDA 6.2. For available models see the manual.
+
+   16.  Added operator bc(n,m) for binomial coefficient.
+
+   17.  Added operator bivn() for bivariate normal distribution 
+        that allows automatic differentiation.
+
+   18.  Added operator mvn() for the multivariate normal distribution.
+
+   19.  Added operator rdmn() to generate multivariate normally
+        distributed random numbers with a correlation matrix that
+        can be defined by the user.
+
+   20.  Added operator poisson() for logarithm of Poisson
+        distribution. Note: automatic differentiation only wrt
+        the first argument, theta.
+
+   21.  Added operator negbin() for logarithm of negative binomial
+        distribution. Note: automatic differentiation only wrt
+        the first two arguments, alpha and gamma.
+
+   22.  The ccov parameter can now be used in ML estimation of
+        user-defined models.
+
+   23.  Added nq parameter to pdata command. Each consecutive set
+        of nq data matrix rows is written as a single record into
+        the output file.
+
+   24.  Added isc parameter to nvar command in order to allow for
+        a definition of separation characters in data input files.
+        Default separation characters are: blank, tab, comma, and
+        semicolon. Any sequence of these characters counts as a
+        single separation character. Alternatively, when using the
+        parameter
+
+            isc = 'x',
+
+        where x is some character, then each single occurrence of
+        this character counts as one separation character.
+        For example, with isc=',', the separation character is a
+        single comma, and a record like
+
+            10,,20
+
+        would result in three values: 10, a missing value, and 20.
+        The missing value type is MBlnk.
+
+   25.  Changed the algorithm for the inverse of the standard
+        normal distribution function. We now use ACM algorithm
+        442 that gives better approximations in the tails of the
+        distribution. The ndi operator now allows for automatic
+        differentiation (but only first derivative).
+
+   26.  Added command line option "i". If the program is invoked as
+
+            tda6 i [commands]
+
+        it remains in memory and shows up with a prompt (:). After
+        the prompt one can input commands. A command can be 
+        continued on several lines and must finally be terminated
+        by a semicolon. It will then be executed and, having given
+        the standard output for that command, the program will show
+        up with a new promt. Termination is with "quit;" or "exit;".
+
+   27.  Fixed a bug in the rstata command that occurred when the
+        Stata file has extension fields. Thanks to Jesper Sorensen.
+
+   28.  Added the command 
+
+            psclose;
+
+        This command immediately closes a currently open PostScript
+        output file. The command will be ignored if no PostScript output
+        file is defined.
+
+   29.  Added the command scplot for scatterplots. The command supports
+        standard scatterplots, sunflower plots, and LOWESS regression 
+        curves.
+
+    
+-------------------------------------------------------------------------
+Version: TDA 6.1                                July 12, 1997
+-------------------------------------------------------------------------

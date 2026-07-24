@@ -1,0 +1,15 @@
+nvar(
+    dfile = gd11.dat,
+    I = c1,
+    J = c2,
+    V = c3,
+);
+gdd = I,J,V;    
+
+gflow ( 
+    fmt = 4.0,
+)= d1;
+gflow ( 
+    opt = 3,
+    fmt = 4.0,
+)= d2;

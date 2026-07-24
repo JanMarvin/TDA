@@ -1,0 +1,18 @@
+nvar(
+    dfile = dh1.dat,
+    X = c1,
+);
+psfile = dh1.ps;
+psetup(
+    pxa = 0,8,
+    pya = 0,0.4,
+    pxlen =  90,
+    pylen =  50,
+);
+plxa(sc=1);
+plya(sc=0.1);
+ploth(
+    x = 0,2,4,6,8,
+    df = df,
+) = X;
+

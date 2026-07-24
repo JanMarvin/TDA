@@ -1,0 +1,19 @@
+# seq8d.cf
+
+nvar(
+    dfile = seq.d4,
+    ID     = c1,
+    Y{0,5,2} = c2,
+    S{0,5,2} = c8,
+    V1     = c14,
+    V2     = c15,
+);
+seqdef(sn=1) = Y0,,Y5;
+seqdef(sn=2) = S0,,S5;
+
+seqmd (
+    ev = [1,1,2],
+    v = V1,V2,
+    xe = [V1],[V2],[1,2,1,4],
+    dtda = t,
+) = out.d;

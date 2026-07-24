@@ -1,0 +1,54 @@
+# frml1m.cf   exponential model with three destination states
+
+nvar(
+    dfile = rrdat.1,   # data file
+                        
+    ID    [3.0] = c1,  # identification number
+    SN    [2.0] = c2,  # spell number
+    TS    [3.0] = c3,  # starting time
+    TF    [3.0] = c4,  # ending time
+    SEX   [2.0] = c5,  # sex (1 men, 2 women)
+    TI    [3.0] = c6,  # interview date
+    TB    [3.0] = c7,  # birth date
+    TE    [3.0] = c8,  # entry into labor market
+    TMAR  [3.0] = c9,  # marriage date (0 if no marriage)
+    PRES  [3.0] = c10, # prestige of current job
+    PRESN [3.0] = c11, # prestige of next job
+    EDU   [2.0] = c12, # highest educational attainment
+
+    COHO1 = ge(TB,348) & le(TB,384), # birth cohort 1
+    COHO2 = ge(TB,468) & le(TB,504), # birth cohort 2
+    COHO3 = ge(TB,588) & le(TB,624), # birth cohort 3
+    W     = SEX[2],                  # women = 1
+   
+    DES [1.0] = if eq(TF,TI) then 0 else
+                if ge(PRESN/PRES - 1,0.2) then 1 else
+                if lt(PRESN/PRES - 1,0.0) then 3 else 2,
+
+    DUR [3.0] = TF - TS + 1,
+);
+
+edef(
+    ts = 0,     # starting time
+    tf = DUR,   # ending time
+    org = 0,    # origin state
+    des = DES,  # destination state
+);
+
+frml (                  
+    xp = -4,0,0,0,     # starting values
+         -4,0,0,0,  
+         -4,0,0,0,  
+
+) = rate1 = exp(a10 + COHO2 * a11 + COHO3 * a12 + W * a13),
+    rate2 = exp(a20 + COHO2 * a21 + COHO3 * a22 + W * a23),
+    rate3 = exp(a30 + COHO2 * a31 + COHO3 * a32 + W * a33),
+    rate  = rate1 + rate2 + rate3,
+    l1    = if(eq(DES,1),log(rate1),
+            if(eq(DES,2),log(rate2),
+            if(eq(DES,3),log(rate3),0))),
+    fn    = l1 - rate * DUR;
+
+
+
+

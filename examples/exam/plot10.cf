@@ -1,0 +1,32 @@
+# plot10.cf    example to show marker symbols
+
+psfile = plot10.ps;  output file
+psetup(
+    pxlen = 100,
+    pylen =  60,
+    pxa  = -2,2,
+    pya  =  0,1,
+);
+plframe;
+
+#plabel = "Available Marker Symbols";
+
+pltext(s= 9,xy=-1.5,0.1) = "marker 9";
+pltext(s= 8,xy=-1.5,0.2) = "marker 8";
+pltext(s= 7,xy=-1.5,0.3) = "marker 7";
+pltext(s= 6,xy=-1.5,0.4) = "marker 6";
+pltext(s= 5,xy=-1.5,0.5) = "marker 5";
+pltext(s= 4,xy=-1.5,0.6) = "marker 4";
+pltext(s= 3,xy=-1.5,0.7) = "marker 3";
+pltext(s= 2,xy=-1.5,0.8) = "marker 2";
+pltext(s= 1,xy=-1.5,0.9) = "marker 1";
+
+pltext(s=17,xy=0,0.2) = "marker 17";
+pltext(s=16,xy=0,0.3) = "marker 16";
+pltext(s=15,xy=0,0.4) = "marker 15";
+pltext(s=14,xy=0,0.5) = "marker 14";
+pltext(s=13,xy=0,0.6) = "marker 13";
+pltext(s=12,xy=0,0.7) = "marker 12";
+pltext(s=11,xy=0,0.8) = "marker 11";
+pltext(s=10,xy=0,0.9) = "marker 10";
+

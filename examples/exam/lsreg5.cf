@@ -1,0 +1,15 @@
+# lsreg5.cf    ls regression with Longley data 
+
+nvar(
+    dfile = lsreg5.dat,     # data file
+    Y  = c1,
+    X1 = c2,
+    X2 = c3,
+    X3 = c4,
+    X4 = c5,
+    X5 = c6,
+    X6 = c7,
+);
+lsreg(
+    tfmt = 13.4,
+) = Y,X1,,X6;

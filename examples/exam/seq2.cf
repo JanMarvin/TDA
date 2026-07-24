@@ -1,0 +1,15 @@
+# seq2.cf
+
+nvar(
+    dfile = seq.d2,
+    ID = c1,
+    Y1 = c2,
+    T1 = c3,
+    Y2 = c4,
+    T2 = c5,
+    Y3 = c6,
+    T3 = c7,
+);
+seqdef(
+    m = 2,
+) = Y1,T1,Y2,T2,Y3,T3;

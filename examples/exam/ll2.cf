@@ -1,0 +1,12 @@
+nvar(
+    dfile = ll2.dat,
+    X1 = c1,
+    X2 = c2,
+    F  = c3,
+    S = c4,
+);
+loglin(
+    w = F,
+    mod = A+B,
+    pres = res,
+) = X1,X2;

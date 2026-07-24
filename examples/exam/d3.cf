@@ -1,0 +1,14 @@
+nvar(
+    dfile = d1.dat,
+    X1 = c1,
+    X2 = c2,
+    X3 = c3,
+    X4 = c4,
+    Y1 = c5,
+    Y2 = c6,
+    Y3 = c7,
+    Y4 = c8,
+    nmrec = 2,
+    fmt = 4.1,
+);
+pdata = d3;

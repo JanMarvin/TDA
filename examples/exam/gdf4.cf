@@ -1,0 +1,59 @@
+# gdf4.cf
+
+nvar(
+    noc = 100,
+    L0 = 0,
+    L1 = 1,
+    L2 = 2,
+    X = case,
+    Y = X + rd(-10,10),
+    H = 110,
+    ONE = 1,
+);
+nvar(
+    RD1 = rd,
+);
+nvar(
+    RD2 = rd(10,90),
+);
+nvar(
+    IS = le(RD1,0.2) & gt(Y,RD2),
+    CEN = not(IS),
+    Y1 = if IS then RD2 else Y,
+);
+pdata(
+    keep = X,L1,X,ONE,X,
+) = gdf3.d;
+pdata(
+    ap = 1,
+    keep = X,L2,Y,CEN,Y1,
+) = gdf3.d;
+
+clear;
+nvar(
+    noc = 2000,
+    dfile = gdf3.d,
+    ID [6.0]    = c1,
+    L1 [1.0]    = c2,
+    Y  [10.6]   = c3,
+    CEN[2.0]    = c4,
+    Y1 [10.6]   = c5,
+);
+gdf(
+    opt = 2,            # method 1
+    prn = 2,
+    grp = ID,L1,
+    yl = Y1,
+    cen = CEN,
+    prot = p,
+) = gdf4.j1;   
+gdf(                    # method 2
+    opt = 3,
+    prn = 2,
+    grp = ID,L1,
+    yl = Y1,
+    cen = CEN,
+    prot = p,
+) = gdf4.j2;   
+
+

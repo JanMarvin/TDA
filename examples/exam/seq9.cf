@@ -1,0 +1,18 @@
+# seq9.cf
+
+nvar(
+    dfile = seq.d1,
+    ID = c1,
+    Y{0,7,2} = c2,
+);
+seqdef = Y0,,Y7;   
+seqlg = d;
+seqgc(
+    dtda = t1,
+) = d1;
+seqsd(
+    dtda = t2,
+) = d2;
+seqen(
+    dtda = t3,
+) = d3;

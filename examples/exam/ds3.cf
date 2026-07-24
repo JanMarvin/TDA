@@ -1,0 +1,25 @@
+# ds3.cf
+
+nvar(
+    dfile = ds3.dat,  # data file
+    Y = c1,
+);
+sma(  
+    gss = 0.5,0.25, 
+    df  = df,
+) = Y;
+sma(  
+    gss = 0.5,0.25,               
+    opt = 2,            # replicate end values
+    dfa = df,
+) = Y;
+sma(  
+    gss = 0.5,0.25,               
+    opt = 2,            # replicate end values
+    r = 2,              # repeat
+    dfa = df,
+) = Y;
+
+
+
+

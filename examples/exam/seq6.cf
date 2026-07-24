@@ -1,0 +1,20 @@
+# seq6.cf
+
+nvar(
+  dfile = d.4,  # data file created with seq5.cf
+  noc = 22,
+  CASE <5>[6.0] = c1 , # case number
+  SN   <2>[2.0] = c2 , # spell number
+  ORG  <5>[2.0] = c3 , # origin state
+  DES  <5>[2.0] = c4 , # destination state
+  TS   <5>[4.0] = c5 , # starting time
+  TF   <5>[4.0] = c6 , # ending time
+);
+seqpe(              # create sequence data
+    id = CASE,
+    org = ORG,
+    des = DES,
+    ts  = TS,
+    tf  = TF,
+    tp  = 0(1)7,
+) = d;

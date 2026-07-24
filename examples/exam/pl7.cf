@@ -1,0 +1,22 @@
+# pl7.cf        Example Moreau et al. 1985
+
+nvar(
+    dfile = rrdat.5,    # data file  
+
+    TF  = c1,           # ending time = duration
+    DES = c2,           # destination state (= status)
+
+    G1 = c3[1],         # definition of two groups
+    G2 = c3[2],
+);
+edef(
+    ts = 0,             # starting time = 0
+    tf = TF,            # ending time = duration
+    org = 0,            # origin state = 0
+    des = DES,          # destination state (= status)
+);
+rate(
+    xa(0,1) = G1,               # included: group 1
+    tp = 0,170.1,354.1,535.1,   # time periods
+
+) = 1;

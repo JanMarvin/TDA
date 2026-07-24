@@ -1,0 +1,16 @@
+# glm3.cf   logit model
+ 
+nvar(
+    dfile = qr1.dat,
+
+    Dose = c1,                         
+    Weight = c2,
+    Response = c3,
+    Log10Dose = log(Dose) / log(10),
+); 
+cwt = Weight;   use case weights
+
+glm(
+    d = 2,                  # binomial distribution
+    v = Response,Log10Dose, # variables
+);

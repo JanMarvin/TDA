@@ -1,0 +1,13 @@
+# glm5.cf 
+ 
+nvar(
+    dfile = glm5.dat,
+    X = c1,                         
+    Y = c2,
+); 
+
+glm(
+    d = 3,          # Poisson distribution
+    v = Y,X,        # variables
+);
+

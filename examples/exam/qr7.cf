@@ -1,0 +1,29 @@
+# qr7.cf    multivariate probit
+
+nvar(
+    dfile = qr4.dat,                 
+    Z1   = c1,        
+    Z2   = c2, 
+    Z3   = c3,        
+    Y    = c4, 
+);
+qreg(
+    m = 6,                  # model selection                
+    nq = 3,                 # number of categories
+    ni = 1,                 # without intercept
+    df = df,                # print data and estimated probabilities
+    dtda = t,               # description file
+
+    xp = -0.1716,0,0,0,     # starting values taken from model with
+                            # zero correlations
+
+    con = b3 = 0,           # keep only sigma(2,1)
+    con = b4 = 0,
+
+    ppar = par,             # print parameter and corr. matrix
+
+    df = df,                # write data and estimated probabilities 
+    dtda = t,
+
+) = Y,(Z1,Z2,Z3);       
+

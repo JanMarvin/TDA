@@ -1,0 +1,9 @@
+rm exam.zoo
+zoo ah exam *.cf 
+zoo ah exam *.dat
+zoo ah exam rrdat.*
+zoo ah exam seq.d*  
+zoo ah exam seqm.d*
+zoo ah exam examz.*
+zoo ah exam makeexam
+touch exam.zoo

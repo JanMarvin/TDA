@@ -1,0 +1,15 @@
+# glm11a.cf       logit/probit model                         
+ 
+nvar(
+    dfile = glm11a.dat,
+    isel = ne(c1,0),
+    D = log(c1),                         
+    N = c2,
+    Y = c3,
+); 
+cwt = N;
+glm(
+    d = 2,          # binomial distribution
+    v = Y,D,        # variables
+);
+

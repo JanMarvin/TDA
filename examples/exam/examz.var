@@ -1,0 +1,29 @@
+# examz.var variable description file for examz.zoo
+
+A1    1        0        2     first variable of dat.1
+  This is some additional information
+  about the first variable.
+
+A2    1        3        5.2   second variable of dat.1
+A3    1        9        2     third variable of dat.1
+
+B1    2        0        1     first variable of dat.2
+B2    2        1        2     second variable of dat.2
+B3    2        4        4.2   third variable of dat.2
+B4    2        8        3     fourth variable of dat.2
+
+C1    3        0        2     first variable of dat.2
+C2    3        3        4     second variable of dat.2
+C3    3        7        2     third variable of dat.2
+
+  Additional information may be given as value labels
+  (1) = label ...
+  (3) = label ...
+  (8) = label ...
+  (9) = missing value 
+
+P1    4        0        1     first variable of dat.p
+P2    4        1        3     second variable of dat.p
+
+
+

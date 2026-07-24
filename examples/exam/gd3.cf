@@ -1,0 +1,30 @@
+psfile = gd3.ps;
+psetup(
+    pxa = 0,9,
+    pya = 0,4,
+    pxlen = 80,
+    pylen = 40,
+);
+plg(
+    node(n=1,gs=0.8) = 3,3,
+    node(n=7,gs=0.8) = 6,3,
+    node(n=8,gs=0.8) = 8,3,
+    node(n=5,gs=0.8) = 1,1,
+    node(n=11,gs=0.8) = 3,1,
+    node(n=12,gs=0.8) = 6,1,
+    node(n= 9,gs=0.8) = 8,1,
+
+    edge(rd=3,ic=3,a=1.5,1.0) =  1,5,
+    edge(ic=5,a=1.5,1.0) =  1,7,
+    edge(rd=3, ic=6,a=1.5,1.0) =  7,1,
+    edge(ic=2,a=1.5,1.0) =  8,8,
+    edge(ic=13,a=1.5,1.0) = 11,12,
+
+    edge(lt=5, ic=4,a=1.5,1.0) =  5,1,
+    edge(lt=5, rd=-3,ic=15,a=1.5,1.0) = 7,1,
+    edge(lt=5, ic=0,a=1.5,1.0) =  8,7,
+    edge(lt=5,  rd=3, ic=14,a=1.5,1.0) = 12,11,
+
+);
+
+

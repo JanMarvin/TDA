@@ -1,0 +1,11 @@
+# plot7.cf  combining PostScript files            
+
+dplot(
+
+    pxlen = 100,         #  length of x axis in mm
+    pylen =  60,         #  length of y axis in mm
+
+    fn = plot3.ps, plot3.ps,
+    fn = plot4.ps, plot4.ps,
+
+) = plot7.ps;           # name of output file

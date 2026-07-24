@@ -1,0 +1,25 @@
+# glm7.cf
+
+nvar(
+    X = rd,
+    Y = -exp(1 + X) * (log(rd) + log(rd)) / 2, # Gamma with form parameter 2
+                                               # and expectation exp(1+X)
+);
+glm(
+    d = 4,
+    link = 2,
+    v = Y,X,
+);
+clear;
+
+nvar(
+    X = rd,
+    Y = -(log(rd) + log(rd)) / ((1 + X) * 2), # Gamma with form parameter 2
+                                              # and expectation 1/(1+X)
+);
+glm(
+    d = 4,
+    v = Y,X,
+    xp = 1,1, # starting values required
+);
+         

@@ -1,0 +1,13 @@
+# l1reg1.cf    l1 regression example, data from Spaeth, p. 317             
+
+nvar(
+    dfile = l1reg1.dat,
+    X1 = c1,
+    X2 = c2,
+    X3 = c3,
+    Y  = c4,
+);
+l1reg(
+    ni=1,       # no intercept
+) = Y,X1,X2,X3;
+

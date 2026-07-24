@@ -1,0 +1,14 @@
+# gd13.cf
+
+nvar(
+    dfile = gd3.dat,
+    I = c1,
+    J = c2,
+    V = c3,
+);
+gdd = I,J,V;
+gfcf(    
+    sc = 49,
+    if = gd13.if,
+
+) = d;

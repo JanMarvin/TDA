@@ -1,0 +1,13 @@
+# cl1.cf
+
+nvar(
+    dfile = co1.dat,  
+    D = c1,
+);
+gdd(opt=7) = D;
+
+gap(
+    df = df,
+    fmt = 3.0,
+) = d;
+

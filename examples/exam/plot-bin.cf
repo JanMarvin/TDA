@@ -1,0 +1,20 @@
+# plot-bin.cf   logit and probit distribution functions
+
+psfile = plot-bin.ps;   output file
+psetup(
+    pxlen =  90,    # length of x axis in mm
+    pylen =  50,    # length of y axis in mm
+
+    pxa   =  -4,4,  # user coordinates on x axis
+    pya   =  0,1,   # user coordinates on y axis
+);
+
+plxa (sc=1,ic=5);                
+plya (sc=1,ic=10);                 
+#plframe;
+
+plotf (rx= -4(0.05)4,lt=1) = exp(x) / (1 + exp(x));
+plotf (rx= -4(0.05)4,lt=6) = nd(x);
+plotf (rx= -4(0.05)4,lt=2) = nd(x * sqrt(3) / pi);
+
+

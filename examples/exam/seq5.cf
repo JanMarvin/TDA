@@ -1,0 +1,40 @@
+# seq5.cf
+
+nvar(
+    dfile = seq.d3,
+    ID[4.1]   = c1,
+    Y{0,7,2} = c2,
+    S1 = c10,
+    T1 = c11,
+    S2 = c12,
+    T2 = c13,
+    S3 = c14,
+    T3 = c15,
+);
+seqdef = Y0,,Y7;    # first sequence data structure
+seqdef(             # second sequence data structure
+    sn = 2,
+    m = 2,
+) = S1,T1,S2,T2,S3,T3;
+
+seqpd(
+    m = 1,
+    v = ID,      
+    dtda = t1,
+)   = d.1;
+seqpd(
+    m = 2,
+    v = ID,      
+    dtda = t2,
+)   = d.2;
+seqpd(
+    m = 3,
+    v = ID,      
+    dtda = t3,
+)   = d.3;
+seqpd(
+    m = 4,
+    v = ID,      
+    dtda = t4,
+)   = d.4;
+

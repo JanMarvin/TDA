@@ -1,0 +1,125 @@
+# gdf3.cf
+
+nvar(
+    noc = 100,
+    L0 = 0,
+    L1 = 1,
+    L2 = 2,
+    X = case,
+    Y = X + rd(-10,10),
+    H = 110,
+    ONE = 1,
+);
+#lsreg = Y,X;
+nvar(
+    RD1 = rd,
+);
+nvar(
+    RD2 = rd(10,90),
+);
+nvar(
+    IS = le(RD1,0.2) & gt(Y,RD2),
+    CEN = not(IS),
+    Y1 = if IS then RD2 else Y,
+);
+#dstat;
+#pdata = d0;
+
+#lsreg1(
+#   yl = Y1,
+#   cen = CEN,
+#   pres = res,
+#) = X;
+
+psfile = gdf3.ps;
+psetup(
+    pxa = 0,102,
+    pya = -10,110,
+);
+plxa(sc=10,ic=0);
+plya(sc=10,ic=0);
+
+tsel = IS[0];
+plot(s=5,lw=0,fs=0.7) = X,Y1;
+
+tsel = IS[1];
+plotm(lw=0.1) = X,Y1,X,H;
+plot(s=4,lw=0, fs=1.0) = X,Y1;
+
+tsel = off;
+pdata(
+    keep = X,L1,X,ONE,X,
+) = gdf3.d;
+pdata(
+    ap = 1,
+    keep = X,L2,Y,CEN,Y1,
+) = gdf3.d;
+
+clear;
+nvar(
+    noc = 2000,
+    dfile = gdf3.d,
+    ID [6.0]    = c1,
+    L1 [1.0]    = c2,
+    Y  [10.6]   = c3,
+    CEN[2.0]    = c4,
+    Y1 [10.6]   = c5,
+);
+#freq = L1,CEN;
+#pdata = d1;
+
+gdf(
+    opt = 1,
+    prn = 2,
+    grp = ID,L1,
+    yl = Y1,
+    cen = CEN,
+) = gdf3.m;   
+
+gdf(
+    opt = 2,
+    prn = 2,
+    grp = ID,L1,
+    yl = Y1,
+    cen = CEN,
+    prot = p,
+) = gdf3.j;   
+
+clear;
+nvar(
+    dfile = gdf3.m,
+    isel = c1[1],
+    X = c2,
+);
+
+nvar(
+    dfile = gdf3.m,
+    isel = c1[2],
+    Y = c4,
+    CEN = c3,
+);
+#pdata = d;
+#lsreg = Y,X;
+
+tsel = CEN[0];
+plot(s=2,lw=0,fs=1.2) = X,Y;
+
+clear;
+nvar(
+    dfile = gdf3.j,
+    X = c8,
+    Y = c9,
+    CEN = c7,
+);
+#pdata = d;
+#lsreg = Y,X;
+
+tsel = CEN[0];
+plot(s=17,lw=0,fs=1.2) = X,Y;
+
+
+
+
+
+
+

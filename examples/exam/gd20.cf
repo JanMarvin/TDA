@@ -1,0 +1,33 @@
+# gd20.cf
+
+nvar(
+    dfile = gd5.dat,
+    I = c1,
+    J = c2,
+    V = c3,
+);
+gdd = I,J,V;
+gep(
+    opt=1,
+)  = d1;
+gep(
+    opt=2,
+)  = d2;
+gep(
+    opt=3,
+)  = d3;
+gep(
+    opt=4,
+)  = d4;
+gep(
+    opt=5,
+#   nfmt = 2,
+    fmt = 5.2,
+)  = d5;
+gep(
+    opt=6,
+#   nfmt = 2,
+    fmt = 5.2,
+)  = d6;
+
+

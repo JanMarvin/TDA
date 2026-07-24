@@ -1,0 +1,16 @@
+# glm12.cf 
+ 
+nvar(
+    dfile = glm12.dat,
+    Time = c1,                         
+    Bac = c2,
+    TT = Time * Time,
+); 
+
+glm(
+    d = 3,                                     
+    link = 2,
+    v = Bac,Time, TT,        # variables
+    mxit = 100,
+);
+

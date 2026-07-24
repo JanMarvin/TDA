@@ -1,0 +1,11 @@
+nvar(
+    dfile = gd12.dat,
+    I = c1,
+    J = c2,
+    V = c3,
+);
+gdd(gt=1) = I,J,V;    
+
+giset = d1;
+giset(cg=1) = d2;
+

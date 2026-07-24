@@ -1,0 +1,27 @@
+# ds4.cf  illustration of running medians                      
+
+nvar(   
+    noc = 20,       # create random data
+    C = case,
+    A = rd,
+    M1 = smd[sm=[3R]](A),
+    M2 = smd[sm=[4253Ht]](A),
+    M3 = smd[sm=[3RSSHt]](A),                 
+);
+psfile = ds4.ps;    
+psetup(
+    pxa = 0,21,        
+    pya = 0,1,             
+    pxlen =  90,
+    pylen =  50,
+);
+plxa(sc=1);
+plya(sc=1,ic=10);
+plot(lt=0,s=5,fs=1.0) = C,M1;
+plot=C,M1;
+plot(lt=5) = C,M2;
+plot(lt=8) = C,M3;
+
+
+
+

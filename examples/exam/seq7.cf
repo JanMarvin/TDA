@@ -1,0 +1,20 @@
+# seq7.cf
+
+nvar(
+    dfile = seq.d1,
+    ID = c1,
+    Y{0,7,2} = c2,
+);
+seqdef = Y0,,Y7;   
+seqsi(
+    m = 1,
+    tp = 1(1)5,
+    dtda = tsi.1,
+    v = ID,
+) = si.d1;
+seqsi(
+    m = 2,
+    tp = 1(1)5,
+    dtda = tsi.2,
+    v = ID,
+) = si.d2;

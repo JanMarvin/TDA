@@ -1,0 +1,25 @@
+# cd1.cf    Poisson regression
+
+nvar(
+    dfile = cd1.dat,
+    isel = ge(c1,0),    # select valid cases
+
+    NDI    = c1,                         
+    Service= c2,
+    B      = c3,
+    C      = c4,
+    D      = c5,
+    E      = c6,
+    C60    = c7,
+    C65    = c8,
+    C70    = c9,
+    P75    = c10,
+    LOGS   = log(Service),
+); 
+
+fml(    # we don't need any parameters
+
+) = xb  = b0 + B * bb + C * bc + D * bd + E * be +
+    C60 * bc60 + C65 * bc65 + C70 * bc70 + P75 * bp75 + LOGS * blogs,
+    exb = exp(xb),
+    fn  = poisson(exb,NDI);

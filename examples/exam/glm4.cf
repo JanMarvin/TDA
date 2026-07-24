@@ -1,0 +1,19 @@
+# glm4.cf       logit model
+ 
+nvar(
+    dfile = glm3.dat,
+    D = log(c1),                         
+    N = c2,
+    Y = c3,
+); 
+
+glm(
+    d = 2,          # binomial distribution
+    v = Y,D,        # variables
+    yw = N,         # count
+);
+glm(
+    d = 2,          # binomial distribution
+    v = Y,D,        # variables
+    yw = N,         # count
+) = log(mue / (1 - mue));   # user-defined link function

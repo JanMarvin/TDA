@@ -1,0 +1,19 @@
+# qr1a.cf
+ 
+nvar(
+    dfile = qr1.dat,
+
+    Dose = c1,                         
+    Weight = c2,
+    Response = c3,
+    Log10Dose = log(Dose) / log(10),
+); 
+cwt = Weight;   use case weights
+
+qreg(
+    res = 1,        # additional output options
+    df = df,        # print data and estimated probabilities
+    dtda = t,       # TDA description file
+    
+) = Response,Log10Dose; 
+

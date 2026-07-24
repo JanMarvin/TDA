@@ -1,0 +1,24 @@
+# plot-ln.cf   log-normal transition rates
+
+psfile = plot-ln.ps;   output file
+psetup(
+    pxlen =  90,    # length of x axis in mm
+    pylen =  50,    # length of y axis in mm
+
+    pxa   =  0,7,   # user coordinates on x axis
+    pya   =  0,1.5, # user coordinates on y axis
+);
+
+plxa (sc=1);                
+plya (sc=0.5);                 
+plframe;
+
+plotf (rx= 0.02(0.02)7,lt=1) = ndf(log(x) / 1.0) / (1.0 * x * (1 - nd(log(x) / 1.0)));
+plotf (rx= 0.02(0.02)7,lt=5) = ndf(log(x) / 0.7) / (0.7 * x * (1 - nd(log(x) / 0.7)));
+plotf (rx= 0.02(0.02)7,lt=6) = ndf(log(x) / 1.3) / (1.3 * x * (1 - nd(log(x) / 1.3)));
+
+pltext (xy=6,0.125) = "b = 1.3";
+pltext (xy=6,0.4  ) = "b = 1.0";
+pltext (xy=6,0.725) = "b = 0.7";
+
+

@@ -1,0 +1,17 @@
+# ehi12.cf  command file for smoothing cumulative baseline rates 
+#           and for calculating first derivatives
+
+nvar(
+    dfile = ehi10.bl,   # data file
+    isel = c1[0],       # select first sub-table
+
+    Time   = c2,        # time axis
+    CRate  = c7,        # fist cum. rate, coho 1
+);
+spl(
+    sig = 0.2,          # smoothing factor
+    deg = 3,            # degree of spline
+    df  = ehi12.bl,     # output file
+    rx = 0(0.5)300,     # range for interpolation
+) = Time,CRate;
+

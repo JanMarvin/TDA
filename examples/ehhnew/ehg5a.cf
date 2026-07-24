@@ -1,0 +1,22 @@
+# ehg5a.cf   command file to plot Weibull rate         
+
+nvar(
+    dfile = ehg5.prs,   
+    isel = gt(c2,0),
+    Time  = c2,
+    Rate  = c5,
+);
+
+psfile = ehg5a.ps;  output file
+psetup(
+    pxlen =  80,    # length of x axis in mm
+    pylen =  40,    # length of y axis in mm
+
+    pxa   = 0,300,  # user coordinates on x axis
+    pya   = 0,0.02, # user coordinates on y axis
+);
+plxa (sc=60,ic=5);     plot x axis
+plya (sc=0.01,ic=5);   plot y axis
+#plframe;               plot frame
+
+plot = Time,Rate;

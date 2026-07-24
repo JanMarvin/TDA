@@ -1,0 +1,15 @@
+# gd33.cf
+
+nvar(
+    dfile = gd5.dat,
+    I = c1,
+    J = c2,
+    V = c3,
+);
+gdd = I,J,V;
+gdcyc(
+    opt = 1,
+) = d1;
+gdcyc(
+    opt = 2,
+) = d2;

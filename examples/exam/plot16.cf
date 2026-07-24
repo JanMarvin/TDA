@@ -1,0 +1,26 @@
+# plot16.cf  
+
+psfile = plot16.ps;  output file
+psetup(
+    pxlen =  90, 
+    pylen =  50, 
+    pxa   = 0,10,
+    pya   =  0,2,
+);
+plxa (sc=1);    plot x axis
+plya (sc=1);    plot y axis
+
+plote (xy=4,1,gs=0.9) = 3,0.3;
+plote (xy=4,1) = 3,0.3,45;
+plote (xy=4,1) = 3,0.3,-45;
+
+pltext(xy=7.3,1.0) = "plote(xy=4,1,gs=0.9) = 3,0.3;";
+pltext(xy=7.3,0.5) = "plote(xy=4,1) = 3,0.3,-45;";
+pltext(xy=7.3,1.5) = "plote(xy=4,1) = 3,0.3,45;";
+plrec=11.5,0,0,0;     update bounding box
+
+
+
+
+
+

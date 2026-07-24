@@ -1,0 +1,20 @@
+# glm4a.cf       probit model
+ 
+nvar(
+    dfile = glm3.dat,
+    D = log(c1),                         
+    N = c2,
+    Y = c3,
+); 
+
+glm(
+    d = 2,          # binomial distribution
+    link = 5,       # probit link function
+    v = Y,D,        # variables
+    yw = N,         # count
+);
+glm(
+    d = 2,          # binomial distribution
+    v = Y,D,        # variables
+    yw = N,         # count
+) = ndi(mue);       # user-defined link function

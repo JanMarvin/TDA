@@ -1,0 +1,14 @@
+# lsreg1.cf    ls regression example data from SAS User Guide II, p.1354
+
+nvar(
+    dfile = lsreg1.dat,     # data file
+    Height = c1,
+    Weight = c2,
+);
+lsreg(
+    pcov = cov,             # write covariance matrix to cov
+    ppar = par,             # write parameter to par
+    df = df,                # write data to df
+    pres = res,             # write residuals to res
+
+) = Weight,Height;          # variables

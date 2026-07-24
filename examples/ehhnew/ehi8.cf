@@ -1,0 +1,48 @@
+# ehi8.cf   Cox model, proportionality test
+
+nvar(
+
+    dfile = rrdat.1,     # data file
+
+    ID     [3.0] = c1,    # identification number
+    NOJ    [2.0] = c2,    # spell number
+    TStart [3.0] = c3,    # starting time
+    TFin   [3.0] = c4,    # ending time
+    SEX    [2.0] = c5,    # sex (1 men, 2 women)
+    TI     [3.0] = c6,    # interview date
+    TB     [3.0] = c7,    # birth date
+    TE     [3.0] = c8,    # entry into labor market
+    TMAR   [3.0] = c9,    # marriage date (0 if no marriage)
+    PRES   [3.0] = c10,   # prestige of current job
+    PRESN  [3.0] = c11,   # prestige of next job
+    EDU    [2.0] = c12,   # highest educational attainment
+
+    # additional variables
+
+    DES [1.0] = if eq(TFin,TI) then 0 else 1,                    
+    TFP [3.0] = TFin - TStart + 1,
+
+    COHO2  =   ge(TB,468) & le(TB,504),  # cohort 2
+    COHO3  =   ge(TB,588) & le(TB,624),  # cohort 3
+    LFX    =   TStart - TE,              # labor force experience
+    PNOJ   =   NOJ - 1,                  # previous number of jobs
+
+    Women  = SEX[2],
+);
+
+edef(           # define single episode data
+
+    ts = 0,     # starting time
+    tf = TFP,   # ending time
+    org = 0,    # origin state
+    des = DES,  # destination state
+);
+rate( 
+    xa (0,1) = EDU,COHO2,COHO3,LFX,PNOJ,PRES,Women,          
+    tp = 0 (12) 96,
+
+)   = 1;
+
+
+
+

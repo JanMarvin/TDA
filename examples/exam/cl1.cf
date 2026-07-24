@@ -1,0 +1,13 @@
+# cl1.cf
+
+nvar(
+    dfile = cl1.dat,  
+    D = c1,
+);
+gdd(opt=4) = D; upper triangle of diss. matrix
+
+hcls(
+    opt = 2,
+    pcf = cl1plot,
+    df = cl1.df,   
+) = d;

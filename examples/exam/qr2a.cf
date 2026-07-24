@@ -1,0 +1,13 @@
+# qr2a.cf    ordinal logit               
+ 
+nvar(
+    dfile = qr2.dat,
+    Y  = c1,                         
+    X1 = c2,
+    X2 = c3,
+); 
+qreg (
+    m = 3,
+    df = df,
+    dtda = t,
+) = Y,X1,X2;

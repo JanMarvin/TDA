@@ -1,0 +1,35 @@
+# qr5.cf
+ 
+nvar(
+    dfile = qr5.dat,
+    Y = c1,                         
+    N = c2,
+    S = c3,
+    X = c4,                      
+    SX = S * X,
+); 
+
+# standard logit model
+
+fml = xb = beta0 + S * beta1 + X * beta2 + SX * beta3,
+      ee = bc(N,Y) * (exp(xb)^Y) / ((1 + exp(xb))^N) ,
+      fn = log(ee);
+
+# logit model with random effects
+
+fml(
+  mina = 4,
+  xp =  -0.5582,0.1459,1.3182,-0.7781,0.1,  # starting values
+)  = xb = beta0 + S * beta1 + X * beta2 + SX * beta3,
+     ee = intn(7,bc(N,Y) * (exp(xb+t*gam)^Y)/((1 + exp(xb+t*gam))^N) ),
+     fn = log(ee);
+
+
+
+
+
+
+
+
+
+

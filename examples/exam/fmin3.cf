@@ -1,0 +1,8 @@
+# fmin3.cf illustration of constraints
+
+fmin(
+    con = b1 + b2 = 0,
+    
+)    = (x - 5)^2 + (y + 6)^2; 
+
+

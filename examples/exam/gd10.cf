@@ -1,0 +1,9 @@
+mfmt= 7.4; 
+mdef(A,4,4)=gd2a.mat;
+mdefi(4,4,I);
+mexpr(I - A,IA);
+mginv(IA,IAI);
+msqrti(IAI,IADI);
+mmul(IADI,IADI,A,IAI,Y);
+mpr(Y);
+

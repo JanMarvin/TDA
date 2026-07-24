@@ -1,0 +1,82 @@
+# gdf1.cf  
+
+nvar(
+    dfile = gdf1.dat,
+    SEL = c1,
+    ID = c2,
+    L1 = c3,
+    YL = c4,
+    CEN = c5,
+);
+
+tsel = SEL[0];      # select example 0
+
+gdf(                # distribution function with exact data
+    yl = YL,
+) = df0;
+gdf(                # survivor function with exact data
+    prn = 1,
+    yl = YL,
+) = ds0;
+gdf(                # expected values with exact data
+    prn = 2,
+    yl = YL,
+) = de0;
+
+tsel = SEL[1];      # select example 1
+
+gdf(                # distribution function with right censored data
+    yl = YL,
+    cen = CEN,
+) = df1;
+gdf(                # survivor function with right censored data
+    prn = 1,
+    yl = YL,
+    cen = CEN,
+) = ds1;
+gdf(                # expected values based on marginal distribution
+    prn = 2,
+    yl = YL,
+    cen = CEN,
+) = de1;
+
+tsel = SEL[2];      # select example 2
+
+gdf(                # marginal distribution function 
+    prn = 0,
+    grp = ID,L1,
+    yl = YL,
+) = df2;
+gdf(                # marginal survivor function 
+    prn = 1,
+    grp = ID,L1,
+    yl = YL,
+) = ds2;
+gdf(                # expected values           
+    prn = 2,
+    grp = ID,L1,
+    yl = YL,
+) = de2;
+
+gdf(                # joint distribution function 
+    opt = 2,
+    prn = 0,
+    grp = ID,L1,
+    yl = YL,
+) = df3;
+gdf(                # joint survivor function 
+    opt = 2,
+    prn = 1,
+    grp = ID,L1,
+    yl = YL,
+) = ds3;
+gdf(                # expected values           
+    opt = 2,
+    prn = 2,
+    grp = ID,L1,
+    yl = YL,
+) = de3;
+
+
+
+

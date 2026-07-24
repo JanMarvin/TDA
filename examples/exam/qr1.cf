@@ -1,0 +1,24 @@
+# qr1.cf
+ 
+nvar(
+    dfile = qr1.dat,
+
+    Dose = c1,                         
+    Weight = c2,
+    Response = c3,
+    Log10Dose = log(Dose) / log(10),
+); 
+cwt = Weight;   use case weights
+
+qreg = Response,Log10Dose;          logit model
+qreg (m=2) = Response,Log10Dose;    probit model
+
+# fml command to estimate same logit model
+
+fml = xb = beta0 + Log10Dose * beta1,
+      fn = Weight * (Response * xb - log(1 + exp(xb)));
+
+# fml command to estimate same probit model
+
+fml = pxb = nd (beta0 + Log10Dose * beta1),
+      fn  = Weight * (Response * log(pxb) + (1 - Response) * log(1 - pxb));

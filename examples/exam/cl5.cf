@@ -1,0 +1,29 @@
+# cl5.cf
+
+nvar(
+    dfile = gd15.dat,  
+    I = c1,
+    J = c2,
+    V = c3,
+);
+gdd(gt=1) = I,J,V;
+
+becl(
+    opt = 1,
+    fmt = 3.0,
+) = d1;
+becl(
+    opt = 2,
+    fmt = 3.0,
+) = d2;
+becl(
+    opt = 3,
+    fmt = 3.0,
+    sc = 0,
+) = d3;
+becl( 
+    opt = 4,
+    fmt = 3.0,
+    sc = 0,
+) = d4;
+

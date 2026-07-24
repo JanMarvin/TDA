@@ -1,0 +1,17 @@
+# glm1.cf   gen. linear model
+
+nvar(
+    dfile = lsreg1.dat,     # data file
+    Height = c1,
+    Weight = c2,
+);
+
+glm(    # use default normal distribution, identity link
+
+    v = Weight,Height,      # variables
+
+    pcov = cov,             # write covariance matrix to cov
+    ppar = par,             # write parameter to par
+    pres = res,             # write residuals to res
+
+);

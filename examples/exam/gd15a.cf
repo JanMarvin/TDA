@@ -1,0 +1,22 @@
+# gd15a.cf
+
+nvar(
+    dfile = gd4.dat,
+    I = c1,
+    J = c2,
+    V = c3,
+);
+gdd(gt=2) = I,J,V;
+
+psfile = gd15a.ps;
+psetup(
+    pxa = 0,1,
+    pya = 0,1,
+    pxlen = 50,
+    pylen = 70,
+);
+pltree(
+    rt = 9,     # root
+    pl = 1,
+    nc = 100,
+);

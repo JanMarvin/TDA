@@ -1,0 +1,10 @@
+nvar(
+    dfile = id1.dat,
+    X1 = c1,
+    X2 = c2,
+    X3 = c3,
+);
+sddf(
+    opt=2,
+    df = df,
+) = X1,,X3;

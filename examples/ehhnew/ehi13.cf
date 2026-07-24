@@ -1,0 +1,19 @@
+# ehi13.cf  command file to plot smoothed baseline rate  
+
+nvar(
+    dfile = ehi12.bl,       # data file
+    Time  = c2,             # time axis
+    Rate  = c4,             # smoothed rate            
+); 
+psfile = ehi13.ps;          # output file
+psetup(
+    pxlen =  80,            # length of x axis in mm
+    pylen =  40,            # length of y axis in mm
+
+    pxa   = 0,240,          # user coordinates on x axis
+    pya   = 0,0.03,         # user coordinates on y axis
+);
+plxa (sc=60,ic=5);          # plot x axis
+plya (sc=0.01,ic=0);        # plot y axis
+
+plot = Time,Rate;

@@ -1,0 +1,22 @@
+# plot17.cf
+# example command file to illustrate plotting of convex hulls
+
+nvar(
+    noc = 100,    
+    X = rd,         
+    Y = rd,        
+);
+
+psfile = plot17.ps;  output file
+psetup(
+    pxlen =  90,   
+    pylen =  50,   
+    pxa = -0.5,1.5,
+    pya = -0.5,1.5,
+);
+plxa (sc=0.5);
+plya (sc=0.5);
+plframe;      
+                   
+plotch(gs=0.95,s=5,fs=0.7) = X,Y;
+

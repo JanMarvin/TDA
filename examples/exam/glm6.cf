@@ -1,0 +1,31 @@
+# glm6.cf
+
+nvar(
+    dfile = cd1.dat,
+    isel = ge(c1,0),
+
+    NDI = c1,
+    Service = c2,
+    B = c3,
+    C = c4,
+    D = c5,
+    E = c6,
+    C60 = c7,
+    C65 = c8,
+    C70 = c9,
+    P75 = c10,
+    LOGS = log(Service),
+);
+glm(
+    d = 3,
+    v = NDI, B, C, D, E, C60, C65, C70, P75, LOGS,
+    lsecon = b9 = 1,
+    mxit = 100,
+);
+
+
+
+
+
+
+

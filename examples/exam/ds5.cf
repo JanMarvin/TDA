@@ -1,0 +1,31 @@
+# ds5.cf
+
+nvar(
+    noc = 100,
+    X[10.4] = case / 10,
+    Z[10.4] = sin(X),
+    Y[10.4] = Z + rd(-0.2,0.2),
+);
+psfile = ds5.ps;    
+psetup(
+    pxa = 0,10,        
+    pya = -1.5,1.5,            
+    pxlen =  90,
+    pylen =  50,
+);
+plxa(sc=1);
+plya(sc=0.5,ic=5,fmt=4.1);
+plot(lt=0,s=2,fs=1.0) = X,Y;
+plot(lt=5) = X,Z;
+
+spl(
+    sig = 1,
+    df = df,
+) = X,Y;
+clear;
+nvar(
+    dfile = df,
+    X[10.4] = c2,          
+    Y[10.4] = c4,                  
+);
+plot = X,Y;

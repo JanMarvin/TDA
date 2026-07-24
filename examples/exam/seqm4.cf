@@ -1,0 +1,14 @@
+# seqm4.cf
+
+nvar(
+    dfile = seqm.d4,
+    Y{1,6,1} = c1,
+);
+seqdef = Y1,,Y6;
+seqm(
+    icost = 1,0.5,
+    df = seqm4.tst,
+    tst = 2,3,
+    dtda = seqm4.tda, 
+) = seqm4.d;
+

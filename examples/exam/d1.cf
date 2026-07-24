@@ -1,0 +1,9 @@
+nvar(
+    dfile = d1.dat,
+    X1 = c1,
+    X2 = c2,
+    X3 = c3,
+    X4 = c4,
+#   fmt = 4.1,
+);
+pdata = d1;

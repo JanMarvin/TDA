@@ -1,0 +1,11 @@
+nvar(
+    dfile = cl1.df,
+    I = c1,
+    J = c2,
+    V = c3,
+);
+gdd = I,J,V;
+hclsp(
+    nlev=4,    
+#   cn = 19,20,
+) = cl1a.d;

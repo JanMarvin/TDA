@@ -1,0 +1,37 @@
+# ple5p.cf  
+# plotting survivor functions with confidence intervals
+   
+nvar(
+    dfile = ple.5,      # data file, output from ple5.cf
+
+    T1 = c1[0] & lt(c3,290),   # first table
+    T2 = c1[1] & lt(c3,290),   # second table
+ 
+    Time = c3,
+    G    = c7,
+    SE   = c8,
+    UBnd = G + 1.96 * SE,  # upper bound of conf.interval
+    LBnd = G - 1.96 * SE,  # lower bound of conf.interval
+);
+psfile = ple5p.ps;  output file
+psetup(
+    pxlen =  90,    # length of x axis in mm
+    pylen =  50,    # length of y axis in mm
+    pxa   = 0,300,  # user coordinates on x axis
+    pya   =  0,1,   # user coordinates on y axis
+);
+plxa (sc=60,ic=5);    plot x axis
+plya (sc=1,ic=10);    plot y axis
+plframe;              plot frame
+
+plot (gs=0.9,sel=T1) = Time,UBnd;
+plot (gs=1.0,sel=T1) = Time,LBnd;
+plot (lt=1,sel=T1)  = Time,G;
+
+plot (gs=0.9,sel=T2) = Time,UBnd;
+plot (gs=1.0,sel=T2) = Time,LBnd;
+plot (lt=5,sel=T2)  = Time,G;
+
+
+
+

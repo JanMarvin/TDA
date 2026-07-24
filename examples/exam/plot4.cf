@@ -1,0 +1,21 @@
+# plot4.cf   example of logarithmic coordinate system      
+
+psfile = plot4.ps;  output file
+psetup(
+    pxlen =  90,    
+    pylen =  50,    
+
+    pxa(log=1) = 1,1000,
+    pya(log=1) = 2,500,
+);
+plxa (sc=10,ic=10); 
+plya (sc=5,ic=0);   
+plframe;             
+
+plxgrid = 10,50,250;
+plygrid = 10,100,1000;
+
+plabel  = "Logarithmic Coordinate System";
+pxlabel = "X axis";
+pylabel(sc=3) = "Y axis";   shift 3 mm to right
+

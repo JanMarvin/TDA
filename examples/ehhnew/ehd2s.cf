@@ -1,0 +1,21 @@
+# ehd2s.cf   product limit estimation for residuals
+
+nvar(
+    dfile = ehd2.res,   #   data file with residuals
+
+    RES  = c8,      # column 8 with residuals
+    ORG  = c2,      # origin state
+    DES  = c3,      # destination state
+);
+edef(
+    ts  = 0,
+    tf  = RES,
+    org = ORG,
+    des = DES,
+);
+ple = ehd2s.ple;
+
+
+
+
+

@@ -1,0 +1,13 @@
+# mat8.cf 
+
+mfmt = 13.10;   
+mdef(A,4,3) = 1,5,0, 2,6,0, 3,7,0, 4,8,0;
+mpr(A);
+
+mginv(A,B);
+mpr(B);
+
+mmul(A,B,C);
+mmul(C,A,D);
+mpr(D);
+

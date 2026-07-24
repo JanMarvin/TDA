@@ -1,0 +1,17 @@
+# qr4.cf    multinomial logit
+
+nvar(
+    dfile = qr4.dat,                 
+    Z1   = c1,        
+    Z2   = c2, 
+    Z3   = c3,        
+    Y    = c4, 
+);
+qreg(
+    m = 5,                  # selection of logit model
+    nq = 3,                 # number of categories
+    ni = 1,                 # without an intercept
+    df = df,                # print data and estimated probabilities
+    dtda = t,               # description file
+) = Y,(Z1,Z2,Z3);       
+

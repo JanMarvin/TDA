@@ -1,0 +1,13 @@
+# gd22.cf
+
+nvar(
+    dfile = gd6.dat,
+    I = c1,
+    J = c2,
+    V = c3,
+);
+gdd = I,J,V;
+
+gsort = d1;
+gsort(opt=2) = d2;
+

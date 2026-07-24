@@ -1,0 +1,30 @@
+# ehc10.cf   command file to plot 3 survivor functions
+
+nvar(
+    dfile = ehc9.ple,       # data file
+    Time = c3,              # time axis (begin of interval)
+    Surv = c7,              # survivor function
+    Upward   = c1[0],       # indicator to select first table
+    Lateral  = c1[1],       # indicator to select second table
+    Downward = c1[2],       # indicator to select third table
+);
+psfile = ehc10.ps;          PostScript output file
+psetup(
+    pxlen =  80,    # length of x axis in mm
+    pylen =  40,    # length of y axis in mm
+
+    pxa   =  0,300, # user coordinates on x axis
+    pya   =  0,1,   # user coordinates on y axis
+);
+plxa (sc=60,ic=5);    plot x axis
+plya (sc=1,ic=10);    plot y axis
+#plframe;              plot frame
+
+plot(lt=1,sel=Upward  ) = Time,Surv;
+plot(lt=5,sel=Lateral ) = Time,Surv;
+plot(lt=8,sel=Downward) = Time,Surv;
+
+pltext(xy=200,0.75) = "upward moves";
+pltext(xy=200,0.3)  = "lateral moves";
+pltext(xy=200,0.55) = "downward moves";
+

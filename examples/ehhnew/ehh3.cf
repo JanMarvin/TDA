@@ -1,0 +1,31 @@
+# ehh3.cf  Graphical test of distributional assumptions: log-logistic
+ 
+nvar(
+    dfile = ehc5.ple,
+ 
+    # select suitable range of time and survivor function 
+ 
+    isel = gt(c3,0) & gt(c7,0) & lt(c7,1), 
+ 
+    Time        = c3,               
+    Surv        = c7,               
+    LogTime     = log(Time),        
+    STransform  = log(1/Surv - 1), 
+);
+lsreg = STransform,LogTime;       request OLS regression
+
+psfile = ehh3.ps;  output file
+psetup(
+    pxlen =  80,    # length of x axis in mm
+    pylen =  40,    # length of y axis in mm
+
+    pxa   = 0,6,    # user coordinates on x axis
+    pya   = -6,2,   # user coordinates on y axis
+);
+plxa (sc=1,ic=5);     plot x axis
+plya (sc=1,ic=2);     plot y axis
+plframe;              plot frame
+
+plot = LogTime,STransform;
+plotp = 0,-5.1604, 6, 2.8004;     plot regression line
+

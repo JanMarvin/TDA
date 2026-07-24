@@ -1,0 +1,35 @@
+# ehc4.cf   command file to plot a survivor function
+
+nvar(
+    dfile = ehc3.ltb,       # data file
+    Case = case,
+    Time = c1,              # time axis (begin of interval)
+    Surv = c3,              # survivor function
+    Men    = le(Case,30),   # values for men
+    Women  = gt(Case,30),   # values for men
+);
+tsel = Case[16,,30] | Case[45,,59];    select second part of tables
+
+psfile = ehc4.ps;           PostScript output file
+psetup(
+    pxlen =  80,    # length of x axis in mm
+    pylen =  40,    # length of y axis in mm
+
+    pxa   =  0,300, # user coordinates on x axis
+    pya   =  0,1,   # user coordinates on y axis
+);
+plxa (sc=60,ic=5);    plot x axis
+plya (sc=1,ic=10);    plot y axis
+#plframe;              plot frame
+
+#plabel  = "Life Table Survivor Function";
+#pxlabel = "Time in Months";
+#pylabel = "Survivor Function";
+
+plot(sel=Men) = Time,Surv;       
+plot(sel=Women,lt=6) = Time,Surv;       
+
+pltext(xy=240,0.25) = Men;
+pltext(xy=240,0.09) = Women;
+pltext(xy=80,0.8) = "Life Table Survivor Function";
+

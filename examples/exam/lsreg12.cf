@@ -1,0 +1,18 @@
+# lsreg12.cf
+
+nvar(
+    dfile = lsreg12.dat,     # data file
+    Y = c1,
+    I = c2,
+    S = c3,           
+    SS = S * S,
+);
+lsreg(
+    df = df12,
+    pcov = cov12,
+    pres = res12,
+    mfmt = -14.6,
+) = I,S,SS;               
+lsreg(
+    s = 1,          # robust cov matrix
+) = I,S,SS;               

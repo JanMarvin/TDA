@@ -1,0 +1,23 @@
+# mat6.cf 
+
+silent=-1;
+mfmt = 13.10;   
+mdef(A,3,3) = 1,1,1, 1,2,0, 1,0,10;
+mpr(A);
+
+mevs(A,E,V);                calculate eigenvalues and vectors
+mpr(E);                     print eigenvalues
+mpr(V);                     print eigenvectors
+
+mmul(A,V,B);                check results
+mpr(B);
+mscol(V,1,V1);
+mexpr(E(1,1)*V1,B1);
+mpr(B1);
+mscol(V,2,V2);
+mexpr(E(2,1)*V2,B2);
+mpr(B2);
+mscol(V,3,V3);
+mexpr(E(3,1)*V3,B3);
+mpr(B3);
+

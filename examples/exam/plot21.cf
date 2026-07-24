@@ -1,0 +1,21 @@
+# plot21.cf
+# contour plot
+
+psfile = plot21.ps;  output file
+psetup(
+    pxlen =  70,
+    pylen =  70,
+    pxa = -2,2,
+    pya = -2,2,
+);
+plxa (sc=1);
+plya (sc=1);
+plframe;    
+
+plotc (x=0.01,0.05,0.1,0.125,0.15,nn=50,50,gs=0.9) =
+    exp(-((x1 + 1)^2 + (x2 + 1)^2) / 2) / (2 * pi) +
+    exp(-((x1 - 1)^2 + (x2 - 1)^2) / 2) / (2 * pi); 
+
+
+
+

@@ -1,0 +1,13 @@
+nvar(               # define data: A = 1,...,101
+    A = case,
+    noc = 101,
+);
+fmin (           
+    prot1 = p,       # protocol file
+    pcov = cov,      # covariance matrix
+    pres = res,      # print individual function values to res
+    v = A,           # add variable A
+
+) = fn = (x - A)^2; # function definition
+
+

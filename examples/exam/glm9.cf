@@ -1,0 +1,15 @@
+# glm9.cf
+
+nvar(
+    X = rd,
+    Mu = 1 + X,
+    Z = rdn^2,
+    X1 = Mu + Mu^2 * Z - Mu * sqrt(2 * Mu * Z + Mu^2 * Z^2),         
+    Y = if le(rd,Mu / (Mu + X1)) then X1 else Mu^2 / X1,
+);
+glm(
+    d = 5,
+    link = 1,
+    xp = 0.5,0.5,
+    v = Y,X,
+);

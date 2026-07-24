@@ -1,0 +1,15 @@
+# plot5.cf 
+
+psfile = plot5.ps;  output file
+psetup(
+    pxlen =  90,
+    pylen =  50,
+
+    pxa   = -2,2,
+    pya   =  0,1,
+);
+plxa (sc=1,ic=2);     plot x axis
+plya (sc=0.5,ic=0);   plot y axis
+
+plxa(sc=1,ic=5,dir=1) = -1,1,1,1;   plot another x axis
+plya(sc=0.5,ic=5,dir=1) = 2,0,2,1;  plot another y axis

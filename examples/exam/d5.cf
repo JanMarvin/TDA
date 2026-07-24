@@ -1,0 +1,13 @@
+nvar(
+    dfile = d1.dat,
+    X1 = c1,
+    X2 = c2,
+    X3 = c3,
+    X4 = c4,
+    fmt = 4.1,
+);
+pdata (
+    keep = X1,X3,X2,X4,
+    nc = 2,
+) = d5;
+

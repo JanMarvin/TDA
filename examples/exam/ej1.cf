@@ -1,0 +1,8 @@
+ejoin(
+    if1 = ej1.dat,
+    if2 = ej2.dat,
+    nw = 3,
+    fmt0 = 4,
+    fmt1 = 8.4,        
+    fmt2 = 8.4,         
+) = ej1.d;

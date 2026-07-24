@@ -1,0 +1,23 @@
+# glm11.cf       logit/probit model with grouped data
+ 
+nvar(
+    dfile = glm11.dat,
+    isel = ne(c1,0),
+    D = log(c1),                         
+    N = c2,
+    Y = c3,
+); 
+
+glm(
+    d = 2,          # binomial distribution
+    v = Y,D,        # variables
+    yw = N,         # count
+);
+
+glm(
+    link = 5,
+    d = 2,          # binomial distribution
+    v = Y,D,        # variables
+    yw = N,         # count
+);
+

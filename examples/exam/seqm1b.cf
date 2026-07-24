@@ -1,0 +1,11 @@
+# seqm1b.cf
+
+nvar(
+    dfile = seqm.d1,
+    Y{1,5,1} = c1,
+);
+seqdef = Y1,,Y5;
+seqm(
+    s = 1,
+    dtda = seqm1b.tda,
+) = seqm1b.d;

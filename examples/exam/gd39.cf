@@ -1,0 +1,14 @@
+nvar(
+    dfile = gd13.dat,
+    I = c1,
+    J = c2,
+    V = c3,
+);
+gdd(gt=2) = I,J,V;    
+gcset = d1;
+gcset(
+    opt = 2,
+    df = df,
+) = d2;
+
+

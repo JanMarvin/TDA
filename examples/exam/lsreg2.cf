@@ -1,0 +1,13 @@
+# lsreg2.cf    
+nvar(
+    dfile = lsreg2.dat,
+    X1 = c1,
+    X2 = c2,
+    Y  = c3,
+);
+lsreg (     
+    ni=1,           # without intercept
+    lsecon = b1 + b2 = 6,
+    lsicon = b1 = 2,
+    lsicon = b2 = 2,
+) = Y,X1,X2;        # variables

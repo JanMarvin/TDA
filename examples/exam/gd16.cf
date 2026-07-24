@@ -1,0 +1,29 @@
+# gd16.cf
+
+nvar(
+    dfile = gd5.dat,
+    I = c1,
+    J = c2,
+    V = c3,
+);
+gdd(gt=1) = I,J,V;
+gtcl(
+    opt = 2,
+    fmt=4.1,
+) = d1;
+gdd(gt=2) = I,J,V;
+gtcl(
+    opt = 2,
+    fmt=4.1,
+) = d2;
+gdd(gt=3) = I,J,V;
+gtcl(
+    opt = 2,
+    fmt=4.1,
+) = d3;
+gdd(gt=4) = I,J,V;
+gtcl(
+    opt = 2,
+    fmt=4.1,
+) = d4;
+

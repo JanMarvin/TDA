@@ -1,0 +1,70 @@
+# rt3.cf    exponential model with period-specific effects
+
+nvar(
+    dfile = rrdat.1,   # data file
+                        
+    ID    [3.0] = c1,  # identification number
+    SN    [2.0] = c2,  # spell number
+    TS    [3.0] = c3,  # starting time
+    TF    [3.0] = c4,  # ending time
+    SEX   [2.0] = c5,  # sex (1 men, 2 women)
+    TI    [3.0] = c6,  # interview date
+    TB    [3.0] = c7,  # birth date
+    TE    [3.0] = c8,  # entry into labor market
+    TMAR  [3.0] = c9,  # marriage date (0 if no marriage)
+    PRES  [3.0] = c10, # prestige of current job
+    PRESN [3.0] = c11, # prestige of next job
+    EDU   [2.0] = c12, # highest educational attainment
+
+    COHO1 = ge(TB,348) & le(TB,384), # birth cohort 1
+    COHO2 = ge(TB,468) & le(TB,504), # birth cohort 2
+    COHO3 = ge(TB,588) & le(TB,624), # birth cohort 3
+    W     = SEX[2],                  # women = 1
+   
+    DES [1.0] = if eq(TF,TI) then 0 else 1,  # destination state
+    DUR [3.0] = TF - TS + 1,
+);
+
+edef(
+    ts = 0,     # starting time
+    tf = DUR,   # ending time
+    org = 0,    # origin state
+    des = DES,  # destination state
+);
+
+rate (
+    tp = 0 (12) 96,
+    xa(0,1) = COHO2,COHO3,W,
+       
+    con = b10 - b11 = 0,
+    con = b11 - b12 = 0,
+    con = b12 - b13 = 0,
+    con = b13 - b14 = 0,
+    con = b14 - b15 = 0,
+    con = b15 - b16 = 0,
+    con = b16 - b17 = 0,
+    con = b17 - b18 = 0,
+
+    con = b19 - b20 = 0,
+    con = b20 - b21 = 0,
+    con = b21 - b22 = 0,
+    con = b22 - b23 = 0,
+    con = b23 - b24 = 0,
+    con = b24 - b25 = 0,
+    con = b25 - b26 = 0,
+    con = b26 - b27 = 0,
+
+    con = b28 - b29 = 0,
+    con = b29 - b30 = 0,
+    con = b30 - b31 = 0,
+    con = b31 - b32 = 0,
+    con = b32 - b33 = 0,
+    con = b33 - b34 = 0,
+    con = b34 - b35 = 0,
+    con = b35 - b36 = 0,
+
+) = 16; 
+
+
+
+

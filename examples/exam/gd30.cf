@@ -1,0 +1,22 @@
+# gd30.cf
+
+nvar(
+    dfile = gd9.dat,
+    I = c1,
+    J = c2,
+    V = c3,
+);
+gdd(gt=1) = I,J,V;     create undirected unvalued graph
+
+gcyc(
+    opt = 1,
+) = d1;
+gcyc(
+    opt = 2,
+) = d2;
+gcyc(
+    opt = 3,
+) = d3;
+gcyc(
+    opt = 4,
+) = d4;

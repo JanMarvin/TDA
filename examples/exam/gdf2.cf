@@ -1,0 +1,59 @@
+# gdf2.cf
+
+#R. Pruitt: J.Statist.Sim.Comp., 45, 1993, 147-167, Table2
+#1 1 1 0
+#1 2 6 1
+#2 1 2 0
+#2 2 4 1
+#3 1 3 0
+#3 2 5 0
+#4 1 4 1
+#4 2 3 1
+#5 1 5 1
+#5 2 2 0
+#6 1 6 1
+#6 2 7 1
+#7 1 7 0
+#7 2 1 0
+#8 1 8 1
+#8 2 8 1
+
+nvar(
+    dfile = gdf2.dat,
+   	ID=c1,
+   	L1=c2,
+   	Y=c3,
+    CEN=c4 
+);
+
+gdf(                # distribution function
+    opt = 2,
+    prn = 0,
+    yl=Y,
+   	cen=CEN,
+   	grp=ID,L1,
+    n= 64,	
+    sc = 0.5,
+) = df5;
+
+gdf(                # survivor function
+    opt = 2,
+    prn = 1,
+    yl=Y,
+   	cen=CEN,
+   	grp=ID,L1,
+    n= 64,	
+    sc = 0.5,
+) = ds5;
+
+gdf(                # expected values  
+    opt = 2,
+    prn = 2,
+    yl=Y,
+   	cen=CEN,
+   	grp=ID,L1,
+    n= 64,	
+    sc = 0.5,
+) = de5;
+
+

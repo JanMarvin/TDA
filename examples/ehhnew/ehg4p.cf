@@ -1,0 +1,30 @@
+# ehg4p.cf   command file for graphical check of generalized residuals
+
+nvar(
+    dfile = ehg4s.ple,
+ 
+    # select suitable range of time and survivor function 
+ 
+    isel = gt(c3,0) & gt(c7,0) & lt(c7,1), 
+ 
+    Time  = c3,         
+    Surv  = c7,         
+    LogSurv = log(Surv),
+);
+psfile = ehg4p.ps;  output file
+psetup(
+    pxlen =  80,    # length of x axis in mm
+    pylen =  40,    # length of y axis in mm
+
+    pxa   = 0,4,    # user coordinates on x axis
+    pya   = -3,0,   # user coordinates on y axis
+);
+plxa (sc=1,ic=0);     plot x axis
+plya (sc=1,ic=0);     plot y axis
+plframe;              plot frame
+
+plot = Time,LogSurv;
+plotp = 0,0,3,-3;   
+pltext(xy=1.5,-0.7) = "Gompertz Model"; 
+
+

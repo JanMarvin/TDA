@@ -1,0 +1,17 @@
+# plot2.cf 
+
+psfile = plot2.ps;  output file
+psetup(
+    pxlen = 100,    # length of x axis in mm
+    pylen = 150,    # length of y axis in mm
+
+    pxa   =  0,595, # user coordinates on x axis
+    pya   =  0,842, # user coordinates on y axis
+);
+plxa (sc=72);  plot x axis
+plya (sc=72);  plot y axis
+plframe(gs=0.95); plot frame
+
+plxgrid = 72,144,216,288,360,432,504,576,648,720,792;
+plygrid = 72,144,216,288,360,432,504,576;
+

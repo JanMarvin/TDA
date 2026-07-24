@@ -1,0 +1,10 @@
+nvar(
+    dfile = ll1.dat,
+    X1 = c1,
+    X2 = c2,
+    H  = c3,
+);
+loglin(
+    w = H,
+    ptab = ll1.tab,
+) = X1,X2;

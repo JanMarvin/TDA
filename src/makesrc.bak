@@ -1,0 +1,8 @@
+rm tdasrc.zip
+zip  tdasrc t*.c
+zip  tdasrc t*.h
+zip  tdasrc make*
+zip  tdasrc t*.lnk
+zip  tdasrc history.txt
+zip  tdasrc tda.hlp
+touch tdasrc.zip

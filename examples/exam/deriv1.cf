@@ -1,0 +1,8 @@
+# deriv1.cf
+
+evalf2(
+    fmt = 12.6,
+    x = 2,
+    y = 5,
+
+)   =  x * y^2;

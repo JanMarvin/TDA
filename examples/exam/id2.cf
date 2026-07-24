@@ -1,0 +1,7 @@
+nvar(
+    dfile = id2.dat,
+    XL = c1 - 30,
+    XH = c1 + 30,
+);
+idf(
+) = XL,XH;

@@ -1,0 +1,17 @@
+# plot12.cf  
+
+psfile = plot12.ps;  output file
+psetup(
+    pxlen =  90, 
+    pylen =  50, 
+    pxa   = -3,3,
+    pya   =  0,1,
+);
+plxa (sc=0.5,fmt=4.1);  plot x axis
+plya (sc=1,ic=10);      plot y axis
+plframe;                plot frame
+
+plotf (rx=0(0.05)3,) = ndf((x - 1.5) / 0.5) / 0.5;
+plotp = 1.5,0,1.5,0.798;
+plotf(rx=-3(0.1)3,gs=0.8) = ndf(x);
+plotp = 0,0,0,0.399;

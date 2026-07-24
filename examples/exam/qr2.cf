@@ -1,0 +1,26 @@
+# qr2.cf    ordinal logit and probit
+ 
+nvar(
+    dfile = qr2.dat,
+    Y  = c1,                         
+    X1 = c2,
+    X2 = c3,
+); 
+qreg (m=3) = Y,X1,X2;     ordinal logit
+qreg (m=4) = Y,X1,X2;     ordinal probit
+
+
+fml(                      # ordinal logit with fml command
+    xp = -2,-3,-4,0,0,
+
+)   = xb     = X1 * beta1 + X2 * beta2,
+      theta0 = 1,
+      theta1 = eexp(alpha1 + xb),
+      theta2 = eexp(alpha2 + xb),
+      theta3 = eexp(alpha3 + xb),
+      ll     = if (eq(Y,0),theta0 - theta1,
+               if (eq(Y,1),theta1 - theta2,
+               if (eq(Y,2),theta2 - theta3, theta3))),
+      fn     = log(ll);
+
+

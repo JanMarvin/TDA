@@ -1,0 +1,26 @@
+# scplot3.cf   illustration of scatterplot command       
+
+psfile = scplot3.ps;  output file
+psetup(
+    pxlen =  90,      # length of x axis in mm
+    pylen =  50,      # length of y axis in mm
+
+    pxa   =  0,3,     # user coordinates on x axis
+    pya   =  -1,2.5,  # user coordinates on y axis
+);
+plxa (sc=1,ic=10);      plot x axis
+plya (sc=1,ic=0);       plot y axis
+
+nvar(                 # create some random data
+    noc = 200,
+    X = rd(0,3),
+    Y = sin(X) + rd,
+);
+
+scplot(     
+    opt = 3,          # lowess            
+    lw = 0.3,         # line width
+    s = 5,            # add symbols
+    fs = 1,
+
+) = X,Y;

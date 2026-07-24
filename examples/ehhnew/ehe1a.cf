@@ -1,0 +1,24 @@
+# ehe1a.cf   command file to plot the transition rate estimated
+#            with ehd1.cf (piecewise constant exponential model)
+
+nvar(
+    dfile = ehe1.prs,       # data file
+    Time = c2,              # time axis (begin of interval)
+    Rate = c5,              # survivor function
+);
+psfile = ehe1a.ps;          PostScript output file
+psetup(
+    pxlen =  90,    # length of x axis in mm
+    pylen =  45,    # length of y axis in mm
+
+    pxa   =  0,300,   # user coordinates on x axis
+    pya   =  0,0.03,  # user coordinates on y axis
+);
+plxa (sc=60,ic=5);      plot x axis
+plya (sc=0.01,ic=2);    plot y axis
+#plframe;                plot frame
+
+plot = Time,Rate;       
+pltext(xy=60,0.025) = "Piecewise Constant Exponential Rate";
+
+

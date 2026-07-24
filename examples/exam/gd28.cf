@@ -1,0 +1,21 @@
+# gd28.cf
+
+nvar(
+    dfile = gd5.dat,
+    I = c1,
+    J = c2,
+    V = c3,
+);
+gdd(gt=2) = I,J,V;     create undirected valued graph
+mdefg(sc=0)=A;         create adjacency matrx
+mpr(A,A);              print to standard output
+mevs(A,E,EV);          calculate eigenvalues, eigenvectors
+mpr(E,E);
+mpr(EV,EV);
+
+gev(
+    n = 4,             # calculate two eigenvalues, eigenvectors
+#   eps = 1.e-12,      # accuracy
+#   mxit = 50,         # max number of iterations
+    prot = p,          # request check in protocol file
+) = d;

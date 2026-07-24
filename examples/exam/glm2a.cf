@@ -1,0 +1,14 @@
+# glm2a.cf   gen. linear model with logarithmic link function
+
+nvar(
+    noc = 100,
+    X = rd(-3,3),
+    Y = exp(3 + X) + rd,
+);
+glm(
+    v = Y,X,            # variables
+    xp = 5,5,           # some bad starting values
+    ab = 1.e-12,1.e12,  # domain of link function
+    mxit = 25,          # need some more iterations
+) = log(mue);           # user-defined link function
+

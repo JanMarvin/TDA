@@ -1,0 +1,13 @@
+# examz.des
+# archive description file for examz.zoo
+
+  examz.zoo
+
+# N  Name     Type  RecLen  Records    NVar
+
+  1  adat.1      1       0       9        3   
+  2  adat.2      1      12       8        4
+  3  adat.3      1      10       4        3   
+  4  adat.p      1       5       9        2
+  9  examz.var   2       0      29        0
+

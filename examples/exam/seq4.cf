@@ -1,0 +1,12 @@
+# seq4.cf
+
+nvar(
+    dfile = seq.d1,
+    ID = c1,
+    Y{0,7,2} = c2,
+);
+seqdef(
+    rc = 9[-1],5[7,3],
+      
+)   = Y0,,Y7;   
+seqpd = d;

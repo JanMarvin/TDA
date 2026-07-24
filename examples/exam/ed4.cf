@@ -1,0 +1,31 @@
+# ed4.cf                               
+
+nvar(
+
+    dfile = ed1.dat,     # data file
+
+    ID    [1.0] = c1,    # identification number
+    SN    [1.0] = c2,    # spell number
+    ORG   [1.0] = c3,    # origin state
+    DES   [1.0] = c4,    # destination state
+    TS    [2.0] = c5,    # starting time
+    TF    [2.0] = c6,    # ending time
+    S1    [2.0] = c7,    # first covariate       
+    S2    [2.0] = c8,    # second covariate
+);
+edef( 
+    ts = TS,    # starting time
+    tf = TF,    # ending time
+    org = ORG,  # origin state
+    des = DES,  # destination state
+
+    SD1   = le(S1,ts), # time-dependent dummy
+    SD2   = le(S2,ts), # time-dependent dummy
+    split = S1,S2,     # episode splitting
+                       # must be the last parameter
+);
+epdat(                  # write data to d
+    v = S1,SD1,S2,SD2,
+    dtda = t,
+) = d;
+

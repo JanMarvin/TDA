@@ -1,0 +1,13 @@
+# glm2.cf   gen. linear model with logarithmic link function
+
+nvar(
+    noc = 100,
+    X = rd(-3,3),
+    Y = exp(3 + X) + rd,
+);
+glm(
+    link = 2,           # logarithmic link function
+    v = Y,X,            # variables
+    xp = 5,5,           # some bad starting values
+);
+

@@ -1,0 +1,7 @@
+# mat1.cf
+
+mdef(I,3,3) = 1,0,0,
+              0,1,0,
+              0,0,1;
+mpr(I);
+mpr(I) = d;     print matrix to output file d
