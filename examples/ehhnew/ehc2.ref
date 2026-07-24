@@ -1,0 +1,59 @@
+Read records:      30     
+TDA. Analysis of Transition Data (6.4p). Fri Jul 24 21:39:00 2026
+Current memory: 390032 bytes.
+
+Reading command file: ehc2.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Case      3   4   0.0  case
+  2 Time      3   4   0.0  c1
+  3 Surv      3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ehc1.ltb
+Free format. Separation character(s): default.
+
+Reading data file: ehc1.ltb
+Read records: 30 
+
+Created a new data matrix.
+Number of cases: 30
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402094 bytes.
+----------------------------------------------------------------------------
+tsel=Case[16,,30]
+New temporary case selection: Case[16,,30]
+Number of selected cases: 15
+----------------------------------------------------------------------------
+psfile=ehc2.ps
+Opened new PostScript file: ehc2.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 80 x 40
+PostScript coordinates. X-axis: 150,377  Y-axis: 460,573
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,         300.0000 
+User coordinates Y axis:           0.0000,           1.0000 
+----------------------------------------------------------------------------
+plxa(sc=60,ic=5)
+----------------------------------------------------------------------------
+plya(sc=1,ic=10)
+----------------------------------------------------------------------------
+plot=Time,Surv
+----------------------------------------------------------------------------
+pltext(xy=80,0.8)=Life Table Survivor Function
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422132 bytes.
+End of program. Fri Jul 24 21:39:00 2026

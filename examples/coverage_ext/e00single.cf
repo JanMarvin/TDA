@@ -1,0 +1,14 @@
+# e00single.cf -- t_e00.c coverage: sde00 on a real ArcInfo E00 line
+# coverage (ARC + LAB, no PAL -> TDA's own line-coverage
+# interpretation), reaching e00_lines. Same source page as
+# e00poly.cf's fixture ("SINGLE.E00").
+
+sde00(df=single.sd, attr=2, fmt=14.6) = single.e00;
+sdnvar(
+    dfile = single.sd,
+    SDID     = c1,
+    SDTyp    = c2,
+    SDN      = c3,
+    SDPtr<5> = rd,
+);
+sdinf();

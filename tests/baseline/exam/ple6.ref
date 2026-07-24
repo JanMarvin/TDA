@@ -1,0 +1,62 @@
+Read records:      40     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:54 2026
+Current memory: 390032 bytes.
+
+Reading command file: ple6.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 TF        3   4   0.0  c1
+  2 Status    3   4   0.0  c2
+  3 Group1    3   4   0.0  c3[1]
+  4 Group2    3   4   0.0  c3[2]
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): rrdat.3
+Free format. Separation character(s): default.
+
+Reading data file: rrdat.3
+Read records: 40 
+
+Created a new data matrix.
+Number of cases: 40
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 406170 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=0, des=Status, ts=0, tf=TF
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0         4         4.00      252.00        0.00      344.00    -
+ 1    0   1        36        36.00      225.28        0.00      323.00    -
+Sum                40        40.00
+
+Number of episodes: 40
+Successfully created new episode data.
+----------------------------------------------------------------------------
+ple(grp=Group1,Group2,csf,)
+Product-limit estimation. Current memory: 406322 bytes.
+
+Sorting episodes according to ending times.
+
+Comparing survivor functions.
+
+SN  Org Des   Test Statistic                 T-Stat   DF   Signif
+-----------------------------------------------------------------
+ 1    0   1    Log-Rank (Savage)             3.1227    1   0.9228
+ 1    0   1    Wilcoxon (Breslow)            2.6510    1   0.8965
+ 1    0   1    Wilcoxon (Tarone-Ware)        2.9767    1   0.9155
+ 1    0   1    Wilcoxon (Prentice)           3.0014    1   0.9168
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426208 bytes.
+End of program. Tue Jul 21 05:46:54 2026

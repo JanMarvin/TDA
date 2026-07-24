@@ -1,0 +1,54 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:54 2026
+Current memory: 390032 bytes.
+
+Reading command file: plot6.cf
+============================================================================
+psfile=plot6.ps
+Opened new PostScript file: plot6.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 50 x 40
+PostScript coordinates. X-axis: 100,242  Y-axis: 600,713
+Origin (PostScript x and y coordinates): 100,600
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,           6.0000 
+User coordinates Y axis:          -1.0000,           1.0000 
+----------------------------------------------------------------------------
+plxa(sc=1)
+----------------------------------------------------------------------------
+plya(sc=1)
+----------------------------------------------------------------------------
+plotf(rx=0(0.1)6)=sin(x1)
+
+Function definition:
+fn      = sin(x1)
+----------------------------------------------------------------------------
+pltext(xy=4,0.2)=Plot 1
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 50 x 30
+PostScript coordinates. X-axis: 270,412  Y-axis: 600,685
+Origin (PostScript x and y coordinates): 270,600
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,           6.0000 
+User coordinates Y axis:          -1.0000,           1.0000 
+----------------------------------------------------------------------------
+plxa(sc=1)
+----------------------------------------------------------------------------
+plya(sc=1)
+----------------------------------------------------------------------------
+plotf(rx=0(0.1)6)=sin(x1)
+
+Function definition:
+fn      = sin(x1)
+----------------------------------------------------------------------------
+pltext(xy=4,0.2)=Plot 2
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390071 bytes.
+End of program. Tue Jul 21 05:46:54 2026

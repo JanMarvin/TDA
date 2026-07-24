@@ -1,0 +1,42 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep  5 11:54:39 2026
+Current memory: 390032 bytes.
+
+Reading command file: gfops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 U         3   4   2.0  c1
+  2 E1        3   4  24.12 icb(0.5,2,2)
+  3 E2        3   4  24.12 icb(0.5,2,3)
+  4 E3        3   4  24.12 icb(0.25,1,1)
+  5 E4        3   4  24.12 td(1.5,10)
+  6 E5        3   4  24.12 td(0-1.5,10)
+  7 E6        3   4  24.12 mr(1.0)
+  8 E7        3   4  24.12 poisson(3,2)
+  9 E8        3   4  24.12 chd(2.5,4)
+ 10 E9        3   4  24.12 icg(2.5,3)
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): one.dat
+Free format. Separation character(s): default.
+
+Reading data file: one.dat
+Read records: 1 
+
+Created a new data matrix.
+Number of cases: 1
+Number of variables: 10
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 430555 bytes.
+----------------------------------------------------------------------------
+pdata(...)=gf.out
+1 records with 9 variables written to: gf.out
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 450575 bytes.
+End of program. Sat Sep  5 11:54:39 2026

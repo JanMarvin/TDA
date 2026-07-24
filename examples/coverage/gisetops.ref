@@ -1,0 +1,71 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:51 2026
+Current memory: 390032 bytes.
+
+Reading command file: gisetops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 I         3   4   0.0  c1
+  2 J         3   4   0.0  c2
+  3 V         3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): edges.dat
+Free format. Separation character(s): default.
+
+Reading data file: edges.dat
+Read records: 4 
+
+Created a new data matrix.
+Number of cases: 4
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402083 bytes.
+----------------------------------------------------------------------------
+gdd(gt=1)=I,J,V
+New graph data. Current memory: 402083 bytes.
+Option 1: edge list.
+
+Minimal level for valid edges: 0
+Number of nodes: 4. Largest node number: 4
+Graph type 1 (undirected, unvalued).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1        4       0        1.000000             0
+
+Successfully created new graph data structure. Current memory: 402337 bytes.
+----------------------------------------------------------------------------
+giset(...)=out_gis.txt
+Independent node sets. Current memory: 402331 bytes.
+Using graph number 1 (undirected, unvalued).
+Max number of iterations: 100 (alpha 0.1, beta 0.1)
+Seed of random number generator: 270001
+Dimension of tuple vector: 0
+Requested minimal size: 2
+
+Number of iterations performed: 100
+Found maximal independent set with 2 elements in iteration 1.
+Found on tuple: 1
+2 records written to: out_gis.txt
+----------------------------------------------------------------------------
+giset(...)=out_gis2.txt
+Independent node sets. Current memory: 402331 bytes.
+Using graph number 1 (undirected, unvalued).
+Max number of iterations: 100 (alpha 0.1, beta 0.1)
+Seed of random number generator: 270001
+Dimension of tuple vector: 2
+Requested minimal size: 2
+
+Number of iterations performed: 33
+Found maximal independent set with 4 elements in iteration 1.
+Found on tuple: 3
+4 records written to: out_gis2.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422121 bytes.
+End of program. Fri Sep  4 15:06:51 2026

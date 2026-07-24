@@ -1,0 +1,253 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 20:53:22 2026
+Current memory: 390032 bytes.
+
+Reading command file: nlregops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X         3   4  10.4  c1
+  2 Y         3   4  10.4  c2
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): nl.dat
+Free format. Separation character(s): default.
+
+Reading data file: nl.dat
+Read records: 40 
+
+Created a new data matrix.
+Number of cases: 40
+Number of variables: 2
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 398066 bytes.
+----------------------------------------------------------------------------
+nlreg(...)
+Nonlinear regression. Current memory: 398066 bytes.
+
+Type: ordinary least squares regression.
+Function: linear predictor [including intercept].
+Derivatives: analytical.
+
+Variables (cross-section)
+-------------------------
+Y   : Y  
+X1  : X  
+
+Number of parameters:            2
+Number of cases:                 40
+Max number of iterations:        50
+Tolerance squared convergence:   1e-08
+Tolerance parameter convergence: 1e-10
+
+
+Convergence reached. Number of iterations: 2. Function calls: 9 (3)
+Type: parameter convergence.
+
+Rank deficiency: 0
+Degrees of freedom: 38
+Sum of squared epsilon: 809.006
+Variance of residuals: 21.2896
+
+Idx  Wave  Variable       Coeff      Error    Coeff/E  Signif
+-------------------------------------------------------------
+  1     -  Intercept    -6.3316     1.5214    -4.1616  0.9998
+  2     1  X             8.8851     0.5135    17.3028  1.0000
+
+----------------------------------------------------------------------------
+nlreg(...)
+Nonlinear regression. Current memory: 398066 bytes.
+
+Type: ordinary least squares regression.
+Function: linear predictor [without intercept].
+Derivatives: analytical.
+
+Variables (cross-section)
+-------------------------
+Y   : Y  
+X1  : X  
+
+Number of parameters:            1
+Number of cases:                 40
+Max number of iterations:        50
+Tolerance squared convergence:   1e-08
+Tolerance parameter convergence: 1e-10
+
+
+Convergence reached. Number of iterations: 2. Function calls: 9 (3)
+Type: squared and parameter convergence.
+
+Rank deficiency: 0
+Degrees of freedom: 39
+Sum of squared epsilon: 1177.71
+Variance of residuals: 30.1978
+
+Idx  Wave  Variable       Coeff      Error    Coeff/E  Signif
+-------------------------------------------------------------
+  1     1  X             7.0098     0.2933    23.9033  1.0000
+
+----------------------------------------------------------------------------
+nlreg(...)=...
+Nonlinear regression. Current memory: 398066 bytes.
+
+Function definition:
+fn      = a*exp(b*X)
+
+Type: ordinary least squares regression.
+Function: user-defined.
+Derivatives: analytical.
+
+Variables (cross-section)
+-------------------------
+Y   : Y  
+X1  : X  
+
+Number of parameters:            2
+Number of cases:                 40
+Max number of iterations:        50
+Tolerance squared convergence:   1e-08
+Tolerance parameter convergence: 1e-10
+
+2 starting value(s) from xp parameter.
+
+Idx  Parameter   Starting value
+  1  a            1.00000000e+00 
+  2  b            5.00000000e-01 
+
+
+Convergence reached. Number of iterations: 8. Function calls: 20 (9)
+Type: squared convergence.
+
+Rank deficiency: 0
+Degrees of freedom: 38
+Sum of squared epsilon: 29.3914
+Variance of residuals: 0.773458
+
+Idx  Parameter         Value        Error      Value/E  Signif
+--------------------------------------------------------------
+  1  a              2.598880     0.090557    28.698844  1.0000
+  2  b              0.591409     0.008095    73.056917  1.0000
+
+Covariance matrix written to: 1
+Estimated values written to: 1
+----------------------------------------------------------------------------
+nlreg(...)
+Nonlinear regression. Current memory: 398066 bytes.
+
+Type: orthogonal distance regression.
+Function: linear predictor [including intercept].
+Derivatives: analytical.
+
+Variables (cross-section)
+-------------------------
+Y   : Y  
+X1  : X  
+
+Number of parameters:            2
+Number of cases:                 40
+Max number of iterations:        50
+Tolerance squared convergence:   1e-08
+Tolerance parameter convergence: 1e-10
+
+
+Convergence reached. Number of iterations: 6. Function calls: 13 (7)
+Type: squared convergence.
+
+Rank deficiency: 0
+Degrees of freedom: 38
+Sum of squared epsilon: 0.0891421
+Sum of squared delta: 8.91447
+Variance of residuals: 0.236937
+
+Idx  Wave  Variable       Coeff      Error    Coeff/E  Signif
+-------------------------------------------------------------
+  1     -  Intercept    -9.2311     1.6884    -5.4673  1.0000
+  2     1  X            10.0003     0.5772    17.3243  1.0000
+
+----------------------------------------------------------------------------
+clear
+Deleted whole data matrix. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X         3   4  10.4  c1
+  2 Y         3   4  10.4  c2
+  3 CW        3   4   2.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): nlc.dat
+Free format. Separation character(s): default.
+
+Reading data file: nlc.dat
+Read records: 40 
+
+Created a new data matrix.
+Number of cases: 40
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402084 bytes.
+----------------------------------------------------------------------------
+nlreg(...)=...
+Nonlinear regression. Current memory: 402084 bytes.
+
+Function definition:
+fn      = a*exp(b*X)
+
+Type: ordinary least squares regression.
+Function: user-defined.
+Derivatives: analytical.
+
+Variables (cross-section)
+-------------------------
+Y   : Y  
+X1  : X  
+
+Number of parameters:            2
+Number of cases:                 40
+Max number of iterations:        50
+Tolerance squared convergence:   1e-08
+Tolerance parameter convergence: 1e-10
+
+Idx  Parameter   Starting value
+  1  a            0.00000000e+00 
+  2  b            0.00000000e+00 
+
+Protocol will be written to: nlprot.out
+Number of censored observations: 32 [80 pct]
+Will perform up to 20 cycles to adjust for censored cases.
+Tolerance for y-convergence: 0.0001
+
+Cycle  0 :      Tolerance     Iterations: 9  Function calls: 19 (10)
+Cycle  1 :      0.1541363051  Iterations: 4  Function calls: 11 (5)
+Cycle  2 :      0.0118836272  Iterations: 3  Function calls: 10 (4)
+Cycle  3 :      0.0006101120  Iterations: 2  Function calls:  9 (3)
+Cycle  4 :      0.0006340843  Iterations: 2  Function calls:  9 (3)
+Cycle  5 :      0.0000503418  Iterations: 2  Function calls:  9 (3)
+
+Convergence reached. Number of iterations: 2. Function calls: 9 (3)
+Type: squared convergence.
+
+Rank deficiency: 0
+Degrees of freedom: 38
+Sum of squared epsilon: 16.2256
+Variance of residuals: 0.42699
+
+Idx  Parameter       Value      Error    Value/E  Signif
+--------------------------------------------------------
+  1  a              3.1134     0.0735    42.3825  1.0000
+  2  b              0.5578     0.0055   100.8806  1.0000
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422122 bytes.
+End of program. Fri Sep  4 20:53:22 2026

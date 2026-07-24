@@ -1,0 +1,114 @@
+Read records:      50     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    0   3.4582498933888e+01  7.2792887681e-01  0.0000e+00       3 (0,0)
+    1   3.4438909420076e+01  3.1784956222e-02  5.3733e-01      11 (0,0)
+    2   3.4417252386359e+01  1.6244105526e-03  1.0187e-01      19 (0,0)
+    3   3.4416632491286e+01  6.3288506154e-05  2.1393e-02      27 (0,0)
+    4   3.4416631991545e+01  7.8343520206e-08  6.2955e-04      35 (0,0)
+
+TDA. Analysis of Transition Data (6.4p). Sat Jul 25 02:03:14 2026
+Current memory: 390032 bytes.
+
+Reading command file: qr7.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Z1        3   4   0.0  c1
+  2 Z2        3   4   0.0  c2
+  3 Z3        3   4   0.0  c3
+  4 Y         3   4   0.0  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): qr4.dat
+Free format. Separation character(s): default.
+
+Reading data file: qr4.dat
+Read records: 50 
+
+Created a new data matrix.
+Number of cases: 50
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 406103 bytes.
+----------------------------------------------------------------------------
+qreg(...)=...
+Quantal response models. Current memory: 406103 bytes.
+
+Model: multivariate probit.
+
+Variables (cross-section)
+-------------------------
+Y       : Y   
+Z1    1 : Z1  
+      2 : Z2  
+      3 : Z3  
+
+Model without intercept.
+Checking available data (pmin=1)
+Number of cases with valid data: 50
+
+Categories of dependent variable.
+Maximum number of categories: 100
+
+Index               0         1         2   (Weighted)
+Category            1         2         3  Observations
+-------------------------------------------------------
+Wave 1   N      14.00     29.00      7.00         50.00
+         Pct    28.00     58.00     14.00  
+
+Maximum likelihood estimation.
+Algorithm 8: CES (tensor model [dopt=0])
+
+Number of model parameters: 4
+Type of covariance matrix: 2
+Maximum number of iterations: 200
+Convergence criterion: 6
+Tolerance for scaled gradient: 1e-05
+Tolerance for scaled parameter change: 1e-08
+Scaling factor: -1
+
+Control of integration (nhp): 6
+Type of parameterization: 1
+4 starting value(s) from xp parameter.
+
+
+Checking constraints.
+Con: 1 * b3 = 0
+Con: 1 * b4 = 0
+
+Number of constraints: 2
+
+Convergence reached in 4 iterations.
+Number of function evaluations: 40 (0,0)
+
+Maximum of log likelihood: -34.4166
+Norm of final gradient vector: 2.84217e-06
+Final scaled gradient: 7.83435e-08
+Final scaled parameter change: 0.000629554
+
+Idx Cat Term   Variable        Coeff      Error    C/Error  Signif
+------------------------------------------------------------------
+  1   -  Z1    Z1            -0.1787     0.0349    -5.1178  1.0000
+------------------------------------------------------------------
+  2   -  S     Sigma 2, 1     0.4134     0.6320     0.6542  0.4870
+  3   -  S     Sigma 3, 1     0.0000     0.0000        ---     ---
+  4   -  S     Sigma 3, 2     0.0000     0.0000        ---     ---
+
+Log likelihood (starting values):   -34.5825 
+Log likelihood (final estimates):   -34.4166 
+
+Parameter estimates written to: par
+
+Data (50 records) written to: df
+TDA description written to: t
+Estimated correlation matrix written to: par
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426150 bytes.
+End of program. Sat Jul 25 02:03:14 2026

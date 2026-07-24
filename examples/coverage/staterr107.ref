@@ -1,0 +1,11 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 21:47:55 2026
+Current memory: 390032 bytes.
+
+Reading command file: staterr107.cf
+============================================================================
+rstata(...)=old107.dta
+Reading Stata file: old107.dta
+Release: 0x6b Can't identify version.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390032 bytes.
+End of program. Fri Sep  4 21:47:55 2026

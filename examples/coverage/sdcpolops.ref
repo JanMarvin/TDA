@@ -1,0 +1,103 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep 12 08:06:26 2026
+Current memory: 390032 bytes.
+
+Reading command file: sdcpolops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X1        3   8   0.0  c1
+  2 Y1        3   8   0.0  c2
+  3 X2        3   8   0.0  c3
+  4 Y2        3   8   0.0  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): bowtie.dat
+Free format. Separation character(s): default.
+
+Reading data file: bowtie.dat
+Read records: 5 
+
+Created a new data matrix.
+Number of cases: 5
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 422104 bytes.
+----------------------------------------------------------------------------
+Construction of polygons from line segments. Current memory: 422104 bytes.
+Tolerance: 0.0001
+Maximal number of segments: 10
+i=  0 0.000000 0.000000 10.000000 0.000000
+i=  1 10.000000 0.000000 5.000000 8.000000
+i=  2 5.000000 8.000000 0.000000 0.000000
+i=  3 10.000000 0.000000 5.000000 -8.000000
+i=  4 5.000000 -8.000000 0.000000 0.000000
+
+After splitting nne=5 nnd=5 nfree=0: 
+i=  0 0.000000 0.000000 10.000000 0.000000 idx=0
+i=  1 5.000000 8.000000 10.000000 0.000000 idx=0
+i=  2 0.000000 0.000000 5.000000 8.000000 idx=0
+i=  3 5.000000 -8.000000 10.000000 0.000000 idx=0
+i=  4 0.000000 0.000000 5.000000 -8.000000 idx=0
+
+nnd=4
+LIST of node coordinates nnd=4
+i=  1 x=0.000000 y=0.000000
+i=  2 x=5.000000 y=-8.000000
+i=  3 x=5.000000 y=8.000000
+i=  4 x=10.000000 y=0.000000
+i=  0 0.000000 0.000000 10.000000 0.000000
+i=  1 5.000000 8.000000 10.000000 0.000000
+i=  2 0.000000 0.000000 5.000000 8.000000
+i=  3 5.000000 -8.000000 10.000000 0.000000
+i=  4 0.000000 0.000000 5.000000 -8.000000
+Number of nodes: 4
+Number of nodes: 10
+Sorting nodes in counterclockwise orientation.
+Searching for polygons.
+Removing nodes with degree less than 2.
+Remaining number of nodes: 4
+Removing cut nodes with degree less than 3.
+
+Next component nnn_nn=4 nid=0
+NO MORE
+Remaining number of nodes: 4.
+
+Component: 1. Nodes: 4. Polygons: k====1
+rn=1     most left rnl=3 a0=1.012197
+found second j0=2
+found j2=4
+found j2=3
+found j2=1
+
+BNodes: 1 2 4 3 
+found j0=1 j1=2
+Next point: 4
+Next point: 1
+found new polygon. np=3
+FINAL degrees nc=1 nnc=3     
+i=  1 deg=  2 cn=   1  
+i=  2 deg=  0 cn=   1  
+i=  3 deg=  2 cn=   1  
+i=  4 deg=  2 cn=   1  
+xcontinue
+found j0=4 j1=3
+Next point: 1
+Next point: 4
+found new polygon. np=3
+FINAL degrees nc=1 nnc=0     
+i=  1 deg=  0 cn=   1  
+i=  2 deg=  0 cn=   1  
+i=  3 deg=  0 cn=   1  
+i=  4 deg=  0 cn=   1  
+Polygons: 2
+Found 2 polygon(s).
+8 records written to: bowtie.sd
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 442151 bytes.
+End of program. Sat Sep 12 08:06:26 2026

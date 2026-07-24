@@ -1,0 +1,68 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:51 2026
+Current memory: 390032 bytes.
+
+Reading command file: mdsops3.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 DI        3   4   3.0  c1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): disint.dat
+Free format. Separation character(s): default.
+
+Reading data file: disint.dat
+Read records: 6 
+
+Created a new data matrix.
+Number of cases: 6
+Number of variables: 1
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 394050 bytes.
+----------------------------------------------------------------------------
+gdd(opt=4)=DI
+New graph data. Current memory: 394050 bytes.
+Option 4: upper triangle.
+
+Minimal level for valid edges: 0
+Number of nodes: 4. Largest node number: 4
+Graph type 2 (undirected, valued, bidirectional edges: minimum).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1        6       0        6.000000             0
+
+Successfully created new graph data structure. Current memory: 394076 bytes.
+----------------------------------------------------------------------------
+uds(alg=3,mxit=10)=uds3out.txt
+Uni-dimensional scaling. Current memory: 394074 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+Number of points: 4
+
+Algorithm 3: approx. quadratic assignment.
+Max number of iterations: 10 (alpha 0.25, beta 0.5).
+
+Performed 10 iterations.
+Best cost value: 80  (found in 1 iterations).
+Checked cost value: 80
+Optimal ordering
+   1    1
+   2    2
+   3    3
+   4    4
+
+Permutation
+   1    1
+   2    2
+   3    3
+   4    4
+
+2 of 15 compares are inconsistent.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 414070 bytes.
+End of program. Fri Sep  4 15:06:51 2026

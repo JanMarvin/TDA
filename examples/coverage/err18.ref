@@ -1,0 +1,29 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep  5 16:51:04 2026
+Current memory: 390032 bytes.
+
+Reading command file: err18.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   8   0.0  c1
+  2 L1        3   8   0.0  c2
+  3 Y         3   8   0.0  c3
+  4 CEN       3   8   0.0  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): empty18.dat
+Free format. Separation character(s): default.
+
+Reading data file: empty18.dat
+Read records: 0 
+Error: no records read from data file.
+No data matrix created.
+No new variables created. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 442151 bytes.
+End of program. Sat Sep  5 16:51:04 2026

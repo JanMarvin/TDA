@@ -1,0 +1,22 @@
+# Pins for the special-function operators.  incbeta's error check
+# tested the pointer rather than *err, so icb returned 0 for interior
+# x; observed by the differential operator fuzzer (tools/fuzz_eval.R)
+# comparing every documented operator against R, and after the
+# one-character change the two agree everywhere tested.  (Practical
+# impact was likely small; the combination seems never to have been
+# exercised.)  Conventions observed by the same fuzzer:
+# mr = hazard rate dnorm/(1-pnorm) (reciprocal of the textbook Mill
+# ratio); td(x,df) = pt(|x|,df), sign-blind; poisson(mean, count),
+# integer count; icb(x,a,b) regularized = R pbeta(x,a,b).
+nvar(dfile=one.dat, U[2.0]=c1,
+  E1[24.12]=icb(0.5,2,2),
+  E2[24.12]=icb(0.5,2,3),
+  E3[24.12]=icb(0.25,1,1),
+  E4[24.12]=td(1.5,10),
+  E5[24.12]=td(0-1.5,10),
+  E6[24.12]=mr(1.0),
+  E7[24.12]=poisson(3,2),
+  E8[24.12]=chd(2.5,4),
+  E9[24.12]=icg(2.5,3),
+);
+pdata(keep=E1,E2,E3,E4,E5,E6,E7,E8,E9) = gf.out;

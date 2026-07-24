@@ -1,0 +1,319 @@
+Read records:      32     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: gdf1.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 SEL       3   4   0.0  c1
+  2 ID        3   4   0.0  c2
+  3 L1        3   4   0.0  c3
+  4 YL        3   4   0.0  c4
+  5 CEN       3   4   0.0  c5
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): gdf1.dat
+Free format. Separation character(s): default.
+
+Reading data file: gdf1.dat
+Read records: 32 
+
+Created a new data matrix.
+Number of cases: 32
+Number of variables: 5
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 410124 bytes.
+----------------------------------------------------------------------------
+tsel=SEL[0]
+New temporary case selection: SEL[0]
+Number of selected cases: 6
+----------------------------------------------------------------------------
+gdf(...)=...
+General distribution functions. Current memory: 410252 bytes.
+
+yl: YL
+Number of cases: 6
+Number of units: 6
+Number of dimensions (level 1): 1
+Number of exact cases: 6
+Number of interval censored cases: 0
+Number of right censored cases: 0
+
+Marginal calculation: distribution functions.
+
+Dimension   1: EDF with exact data.
+
+5 records written to: df0
+----------------------------------------------------------------------------
+gdf(...)=...
+General distribution functions. Current memory: 410252 bytes.
+
+yl: YL
+Number of cases: 6
+Number of units: 6
+Number of dimensions (level 1): 1
+Number of exact cases: 6
+Number of interval censored cases: 0
+Number of right censored cases: 0
+
+Marginal calculation: survivor functions.
+
+Dimension   1: EDF with exact data.
+
+5 records written to: ds0
+----------------------------------------------------------------------------
+gdf(...)=...
+General distribution functions. Current memory: 410252 bytes.
+
+yl: YL
+Number of cases: 6
+Number of units: 6
+Number of dimensions (level 1): 1
+Number of exact cases: 6
+Number of interval censored cases: 0
+Number of right censored cases: 0
+
+Marginal calculation: expected values.
+
+Dimension   1: EDF with exact data.
+
+6 records written to: de0
+----------------------------------------------------------------------------
+tsel=SEL[1]
+Temporary case selection turned off.
+New temporary case selection: SEL[1]
+Number of selected cases: 6
+----------------------------------------------------------------------------
+gdf(...)=...
+General distribution functions. Current memory: 410252 bytes.
+
+yl: YL  cen: CEN
+Number of cases: 6
+Number of units: 6
+Number of dimensions (level 1): 1
+Number of exact cases: 4
+Number of interval censored cases: 0
+Number of right censored cases: 2
+
+Marginal calculation: distribution functions.
+
+Dimension   1: Kaplan-Meier.
+
+4 records written to: df1
+----------------------------------------------------------------------------
+gdf(...)=...
+General distribution functions. Current memory: 410252 bytes.
+
+yl: YL  cen: CEN
+Number of cases: 6
+Number of units: 6
+Number of dimensions (level 1): 1
+Number of exact cases: 4
+Number of interval censored cases: 0
+Number of right censored cases: 2
+
+Marginal calculation: survivor functions.
+
+Dimension   1: Kaplan-Meier.
+
+4 records written to: ds1
+----------------------------------------------------------------------------
+gdf(...)=...
+General distribution functions. Current memory: 410252 bytes.
+
+yl: YL  cen: CEN
+Number of cases: 6
+Number of units: 6
+Number of dimensions (level 1): 1
+Number of exact cases: 4
+Number of interval censored cases: 0
+Number of right censored cases: 2
+
+Marginal calculation: expected values.
+
+Dimension   1: Kaplan-Meier.
+
+6 records written to: de1
+----------------------------------------------------------------------------
+tsel=SEL[2]
+Temporary case selection turned off.
+New temporary case selection: SEL[2]
+Number of selected cases: 8
+----------------------------------------------------------------------------
+gdf(...)=...
+General distribution functions. Current memory: 410252 bytes.
+
+yl: YL
+Number of cases: 8
+Number of units: 4
+Number of dimensions (level 1): 2
+Number of exact cases: 8
+Number of interval censored cases: 0
+Number of right censored cases: 0
+Number of marginal patterns: 1
+
+Pattern  type     units  dimensions
+    1      1          4   1  2 
+
+Dimension  level-1  observations  i-censored  r-censored
+     1         1               4           0           0
+     2         2               4           0           0
+
+Marginal calculation: distribution functions.
+
+Dimension   1: EDF with exact data.
+Dimension   2: EDF with exact data.
+
+7 records written to: df2
+----------------------------------------------------------------------------
+gdf(...)=...
+General distribution functions. Current memory: 410252 bytes.
+
+yl: YL
+Number of cases: 8
+Number of units: 4
+Number of dimensions (level 1): 2
+Number of exact cases: 8
+Number of interval censored cases: 0
+Number of right censored cases: 0
+Number of marginal patterns: 1
+
+Pattern  type     units  dimensions
+    1      1          4   1  2 
+
+Dimension  level-1  observations  i-censored  r-censored
+     1         1               4           0           0
+     2         2               4           0           0
+
+Marginal calculation: survivor functions.
+
+Dimension   1: EDF with exact data.
+Dimension   2: EDF with exact data.
+
+7 records written to: ds2
+----------------------------------------------------------------------------
+gdf(...)=...
+General distribution functions. Current memory: 410252 bytes.
+
+yl: YL
+Number of cases: 8
+Number of units: 4
+Number of dimensions (level 1): 2
+Number of exact cases: 8
+Number of interval censored cases: 0
+Number of right censored cases: 0
+Number of marginal patterns: 1
+
+Pattern  type     units  dimensions
+    1      1          4   1  2 
+
+Dimension  level-1  observations  i-censored  r-censored
+     1         1               4           0           0
+     2         2               4           0           0
+
+Marginal calculation: expected values.
+
+Dimension   1: EDF with exact data.
+Dimension   2: EDF with exact data.
+
+8 records written to: de2
+----------------------------------------------------------------------------
+gdf(...)=...
+General distribution functions. Current memory: 410252 bytes.
+
+yl: YL
+Number of cases: 8
+Number of units: 4
+Number of dimensions (level 1): 2
+Number of exact cases: 8
+Number of interval censored cases: 0
+Number of right censored cases: 0
+Number of marginal patterns: 1
+
+Pattern  type     units  dimensions
+    1      1          4   1  2 
+
+Dimension  level-1  observations  i-censored  r-censored
+     1         1               4           0           0
+     2         2               4           0           0
+
+Joint calculation (method 1): distribution functions.
+
+
+Pattern 1: EDF with exact data.
+Domain
+  1    -1.0000     3.0000 
+  2     1.0000     2.0000 
+
+
+4 records written to: df3
+----------------------------------------------------------------------------
+gdf(...)=...
+General distribution functions. Current memory: 410252 bytes.
+
+yl: YL
+Number of cases: 8
+Number of units: 4
+Number of dimensions (level 1): 2
+Number of exact cases: 8
+Number of interval censored cases: 0
+Number of right censored cases: 0
+Number of marginal patterns: 1
+
+Pattern  type     units  dimensions
+    1      1          4   1  2 
+
+Dimension  level-1  observations  i-censored  r-censored
+     1         1               4           0           0
+     2         2               4           0           0
+
+Joint calculation (method 1): survivor functions.
+
+
+Pattern 1: EDF with exact data.
+Domain
+  1    -1.0000     3.0000 
+  2     1.0000     2.0000 
+
+
+4 records written to: ds3
+----------------------------------------------------------------------------
+gdf(...)=...
+General distribution functions. Current memory: 410252 bytes.
+
+yl: YL
+Number of cases: 8
+Number of units: 4
+Number of dimensions (level 1): 2
+Number of exact cases: 8
+Number of interval censored cases: 0
+Number of right censored cases: 0
+Number of marginal patterns: 1
+
+Pattern  type     units  dimensions
+    1      1          4   1  2 
+
+Dimension  level-1  observations  i-censored  r-censored
+     1         1               4           0           0
+     2         2               4           0           0
+
+Joint calculation (method 1): expected values.
+
+
+Pattern 1: EDF with exact data.
+Domain
+  1    -1.0000     3.0000 
+  2     1.0000     2.0000 
+
+
+4 records written to: de3
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 430180 bytes.
+End of program. Tue Jul 21 05:46:53 2026

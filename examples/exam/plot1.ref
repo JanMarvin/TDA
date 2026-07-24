@@ -1,0 +1,41 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:54 2026
+Current memory: 390032 bytes.
+
+Reading command file: plot1.cf
+============================================================================
+psfile=plot1.ps
+Opened new PostScript file: plot1.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 90 x 50
+PostScript coordinates. X-axis: 150,405  Y-axis: 460,602
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,           6.0000 
+User coordinates Y axis:          -1.0000,           1.0000 
+----------------------------------------------------------------------------
+plxa(sc=1,ic=10)
+----------------------------------------------------------------------------
+plya(sc=1,ic=0)
+----------------------------------------------------------------------------
+plframe
+----------------------------------------------------------------------------
+plotf(rx=0(0.1)6)=sin(x)
+
+Function definition:
+fn      = sin(x)
+----------------------------------------------------------------------------
+plotf1(rx=0(0.1)6)=sin(x)
+
+Function definition:
+fn      = sin(x)
+----------------------------------------------------------------------------
+pltext(xy=2.7,0.6)=sine
+----------------------------------------------------------------------------
+pltext(xy=4.6,0.6)=cosine
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390462 bytes.
+End of program. Tue Jul 21 05:46:54 2026

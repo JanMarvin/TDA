@@ -1,0 +1,46 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep  5 12:18:09 2026
+Current memory: 390032 bytes.
+
+Reading command file: colops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X         3   4   8.2  c1
+  2 G         3   4   4.0  c2
+  3 M         4   4  12.6  mean(X)
+  4 S         4   4  12.6  std(X)
+  5 C         4   4  12.6  cum(X)
+  6 R         4   4   6.1  rank(X)
+  7 SO        4   4   8.2  sort(X)
+  8 CD        4   4   8.4  cd(sort(X))
+  9 L         4   4   8.2  lag(X,1)
+ 10 CH        4   4   4.0  change(G)
+ 11 MV        4   4  12.6  mav(X,1)
+ 12 GM        4   4  12.6  gmean(X,G)
+ 13 GS        4   4  12.6  gsum(X,G)
+ 14 GF        4   4   4.0  gfirst(G)
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): col.dat
+Free format. Separation character(s): default.
+
+Reading data file: col.dat
+Read records: 5 
+
+Created a new data matrix.
+Number of cases: 5
+Number of variables: 14
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 446554 bytes.
+----------------------------------------------------------------------------
+pdata(...)=col.out
+5 records with 10 variables written to: col.out
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 467055 bytes.
+End of program. Sat Sep  5 12:18:09 2026

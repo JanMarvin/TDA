@@ -1,0 +1,98 @@
+Read records:      50     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   5.4930614433405e+01  1.5885133108e+02          --       1 (1,1)
+    2   3.5348467653183e+01  3.3392929688e+01  1.0000e+00       2 (2,2)
+    3   3.3501730192375e+01  7.4240163268e+00  3.0257e-01       3 (3,3)
+    4   3.3359508037804e+01  6.7856503985e-01  1.0226e-01       4 (4,4)
+    5   3.3358140320980e+01  7.1351242688e-03  1.1219e-02       5 (5,5)
+    6   3.3358140167589e+01  8.0943212077e-07  1.2048e-04       6 (6,6)
+TDA. Analysis of Transition Data (6.4p). Sat Jul 25 02:03:12 2026
+Current memory: 390032 bytes.
+
+Reading command file: qr4.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Z1        3   4   0.0  c1
+  2 Z2        3   4   0.0  c2
+  3 Z3        3   4   0.0  c3
+  4 Y         3   4   0.0  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): qr4.dat
+Free format. Separation character(s): default.
+
+Reading data file: qr4.dat
+Read records: 50 
+
+Created a new data matrix.
+Number of cases: 50
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 406103 bytes.
+----------------------------------------------------------------------------
+qreg(...)=...
+Quantal response models. Current memory: 406103 bytes.
+
+Model: multinomial logit.
+
+Variables (cross-section)
+-------------------------
+Y       : Y   
+Z1    1 : Z1  
+      2 : Z2  
+      3 : Z3  
+
+Model without intercept.
+Checking available data (pmin=1)
+Number of cases with valid data: 50
+
+Categories of dependent variable.
+Maximum number of categories: 100
+
+Index               0         1         2   (Weighted)
+Category            1         2         3  Observations
+-------------------------------------------------------
+Wave 1   N      14.00     29.00      7.00         50.00
+         Pct    28.00     58.00     14.00  
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 1
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+
+Convergence reached in 6 iterations.
+Number of function evaluations: 7 (7,7)
+
+Maximum of log likelihood: -33.3581
+Norm of final gradient vector: 8.09432e-07
+Last absolute change of function value: 4.59832e-09
+Last relative change in parameters: 0.000120481
+
+Idx Cat Term   Variable        Coeff      Error    C/Error  Signif
+------------------------------------------------------------------
+  1   -  Z1    Z1            -0.3568     0.0776    -4.5966  1.0000
+
+Log likelihood (starting values):   -54.9306 
+Log likelihood (final estimates):   -33.3581 
+
+Data (50 records) written to: df
+TDA description written to: t
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426150 bytes.
+End of program. Sat Jul 25 02:03:12 2026

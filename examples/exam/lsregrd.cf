@@ -1,0 +1,19 @@
+# lsregrd.cf -- negative control for the EPSI1 patch in prn1_coeff()
+# (t_pgen.c): a genuinely rank-deficient fit (X2 is exactly 2*X1, a
+# perfect linear dependency between predictors, with real, non-zero
+# residual variance from Y so this isolates rank-deficiency specifically
+# from the separate near-zero-residual case in lsregsg.cf/.ref) must
+# still print "---" after the patch. Genuine singularity is caught
+# separately and earlier, algebraically, via lsreg()'s own rank check
+# (ranka != nx1 - ranke forces cov = df = 0), independent of the se[j]
+# threshold this patch changed. See lsregsc.cf/.ref for the positive
+# case this patch actually fixes.
+
+nvar(
+    dfile = rankdef.dat,
+    X1 = c1,
+    X2 = c2,
+    Y  = c3,
+);
+lsreg (
+) = Y,X1,X2;

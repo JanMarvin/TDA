@@ -1,0 +1,87 @@
+Read records:       9     
+
+  Iter  Eigenvalues  Eigenvectors  Criterion
+     1         0            0       4.0000000000e+00
+     3         4            0       8.0440853528e-03
+     7         4            3       3.3393377225e-10
+     9         4            4       3.3393377225e-10
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: gd28.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 I         3   4   0.0  c1
+  2 J         3   4   0.0  c2
+  3 V         3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): gd5.dat
+Free format. Separation character(s): default.
+
+Reading data file: gd5.dat
+Read records: 9 
+
+Created a new data matrix.
+Number of cases: 9
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402083 bytes.
+----------------------------------------------------------------------------
+gdd(gt=2)=I,J,V
+New graph data. Current memory: 402083 bytes.
+Option 1: edge list.
+
+Minimal level for valid edges: 0
+Number of nodes: 5. Largest node number: 5
+Graph type 2 (undirected, valued, bidirectional edges: minimum).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1        9       0        7.000000             0
+
+Successfully created new graph data structure. Current memory: 402477 bytes.
+----------------------------------------------------------------------------
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+A
+      0.0000       1.0000       6.0000       0.0000       0.0000 
+      1.0000       0.0000       0.5000       3.0000       0.5000 
+      6.0000       0.5000       0.0000       7.0000       5.0000 
+      0.0000       3.0000       7.0000       0.0000       4.0000 
+      0.0000       0.5000       5.0000       4.0000       0.0000 
+E
+     12.5389 
+      1.4127 
+      0.1077 
+     -4.2968 
+     -9.7624 
+EV
+      0.3159      -0.7899       0.1961      -0.1839       0.4517 
+      0.1950       0.2690       0.8786      -0.2986      -0.1690 
+      0.6277      -0.2308      -0.1429       0.1815      -0.7067 
+      0.5337       0.3728       0.0579       0.5778       0.4889 
+      0.4283       0.3338      -0.4073      -0.7143       0.1703 
+gev(n=4,prot=p,)=d
+Eigenvalues/vectors. Current memory: 402935 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+Number of eigenvalues/vectors: 4
+Requested accuracy: 1e-06
+Max number of iterations: 30
+Iterations performed: 9
+
+Eigenvalue(s)
+  1      12.601756 
+  2      -9.705023 
+  3      -4.323956 
+  4       1.383690 
+
+5 records written to: d
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422121 bytes.
+End of program. Tue Jul 21 05:46:53 2026

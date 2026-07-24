@@ -1,0 +1,21 @@
+# R project files
+^.*\.Rproj$
+^\.Rproj\.user$
+# Documentation files
+^docs$
+^pkgdown$
+_pkgdown.yml
+README.Rmd
+# Configuration files
+^\.github$
+^\.vscode$
+codecov.yml
+.lintr
+.covrignore
+# Temporary files
+.DS_Store
+\~\$.*\.[a-z]+$
+# TDA
+^inst/examples/gallery/out$
+Rplots.pdf
+^_pkgdown\.yml$

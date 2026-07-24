@@ -1,0 +1,57 @@
+# exprep.cf -- the 37 operators from t_eval.c's OPS[] table that will
+# not evaluate on a bare numeric frame.  They are not broken and do not
+# need a spatial or sequence fixture: they need an EPISODE STRUCTURE to
+# exist first, and to be used in a LATER nvar block than the one that
+# defines it.  Put them in the same block as the edef inputs and every
+# one is a syntax error, which is what made them look unsupported.
+nvar(
+    dfile = ex.dat,
+    ID [2.0] = c1,
+    X  [6.2] = c2,
+    G  [2.0] = c3,
+    TS [2.0] = 0,
+    TF [6.2] = X,
+    ORG[2.0] = 0,
+    DES[2.0] = G,
+);
+edef(ID,TS,TF,ORG,DES);
+nvar(
+    W007 [10.4] = tr(X,G,ID),
+    W008 [10.4] = min,
+    W009 [10.4] = max,
+    W015 [10.4] = icb(X,G,ID),
+    W019 [10.4] = iv(X,G),
+    W021 [10.4] = bc(X,G),
+    W022 [10.4] = bivn(X,G,ID),
+    W023 [10.4] = mvn,
+    W027 [10.4] = intn(X,G),
+    W028 [10.4] = inth(X,G),
+    W029 [10.4] = int(X,G,ID),
+    W041 [10.4] = ndi(X),
+    W050 [10.4] = rdmn(X,G),
+    W056 [10.4] = recode(X,G),
+    W057 [10.4] = recode1(X,G,ID),
+    W060 [10.4] = exists,
+    W062 [10.4] = str(X,G),
+    W063 [10.4] = strlen(X),
+    W064 [10.4] = strvp(X,G,ID),
+    W065 [10.4] = strv(X),
+    W068 [10.4] = sdp(X,G),
+    W090 [10.4] = strsp(X),
+    W091 [10.4] = quant(X,G),
+    W092 [10.4] = quant1(X,G,ID,X),
+    W137 [10.4] = sdxmin,
+    W138 [10.4] = sdxmax,
+    W139 [10.4] = sdymin,
+    W140 [10.4] = sdymax,
+    W141 [10.4] = sdarea,
+    W142 [10.4] = sdlen,
+    W143 [10.4] = t,
+    W144 [10.4] = time,
+    W145 [10.4] = sn,
+    W146 [10.4] = org,
+    W147 [10.4] = des,
+    W148 [10.4] = ts,
+    W149 [10.4] = tf,
+);
+pdata() = out.txt;

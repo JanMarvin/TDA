@@ -1,0 +1,9 @@
+# sdclip: TDA's spatial clipper on a shippable synthetic fixture (the
+# triangle outline in triclip.pnt; distinct names -- shape.sd is
+# sdops/sd3d's own fixture and this case must not touch it).  The
+# clipped vertex set equals an independent R Sutherland-Hodgman
+# implementation exactly (six vertices for the rectangle 2,-1,8,5) --
+# pinned in tdaR's test-phase3.R; this case pins the C side.
+sddcwp(df=triclip.sd, fmt=24.16) = triclip.pnt;
+sdnvar(dfile=triclip.sd, SDID=c1, SDTyp=c2, SDN=c3, SDPtr<5>=rd);
+sdclip(rec=2,-1,8,5) = triclipped.sd;

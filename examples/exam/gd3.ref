@@ -1,0 +1,41 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: gd3.cf
+============================================================================
+psfile=gd3.ps
+Opened new PostScript file: gd3.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 80 x 40
+PostScript coordinates. X-axis: 150,377  Y-axis: 460,573
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,           9.0000 
+User coordinates Y axis:           0.0000,           4.0000 
+----------------------------------------------------------------------------
+plg(...)
+Plot graph. Current memory: 390032 bytes.
+Max number of nodes: 100
+> node(n=1,gs=0.8)=3,3
+> node(n=7,gs=0.8)=6,3
+> node(n=8,gs=0.8)=8,3
+> node(n=5,gs=0.8)=1,1
+> node(n=11,gs=0.8)=3,1
+> node(n=12,gs=0.8)=6,1
+> node(n=9,gs=0.8)=8,1
+> edge(rd=3,ic=3,a=1.5,1.0)=1,5
+> edge(ic=5,a=1.5,1.0)=1,7
+> edge(rd=3,ic=6,a=1.5,1.0)=7,1
+> edge(ic=2,a=1.5,1.0)=8,8
+> edge(ic=13,a=1.5,1.0)=11,12
+> edge(lt=5,ic=4,a=1.5,1.0)=5,1
+> edge(lt=5,rd=-3,ic=15,a=1.5,1.0)=7,1
+> edge(lt=5,ic=0,a=1.5,1.0)=8,7
+> edge(lt=5,rd=3,ic=14,a=1.5,1.0)=12,11
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 396634 bytes.
+End of program. Tue Jul 21 05:46:53 2026

@@ -1,0 +1,80 @@
+TDA. Analysis of Transition Data (6.4q). Thu Sep 17 16:26:57 2026
+Current memory: 390032 bytes.
+
+Reading command file: idf_sc.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 XL        3   4   0.0  c1-30
+  2 XH        3   4   0.0  c1+30
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): id2.dat
+Free format. Separation character(s): default.
+
+Reading data file: id2.dat
+Read records: 11 
+
+Created a new data matrix.
+Number of cases: 11
+Number of variables: 2
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 398122 bytes.
+----------------------------------------------------------------------------
+idf(opt=2,mxit=200,tolf=1e-8)=XL,XH
+Interval-valued distribution. Current memory: 398122 bytes.
+
+  Idx      Partition  Lower Bound  Upper Bound      Mean DF
+    1    1870.000000     0.000000     0.090909     0.000000
+    2    1920.000000     0.000000     0.181818     0.075758
+    3    1930.000000     0.090909     0.181818     0.106061
+    4    1970.000000     0.090909     0.272727     0.166667
+    5    1980.000000     0.181818     0.363636     0.196970
+    6    2000.000000     0.181818     0.454545     0.257576
+    7    2020.000000     0.181818     0.545455     0.348485
+    8    2030.000000     0.272727     0.545455     0.409091
+    9    2040.000000     0.363636     0.545455     0.454545
+   10    2060.000000     0.454545     0.545455     0.515152
+   11    2070.000000     0.454545     0.636364     0.530303
+   12    2080.000000     0.545455     0.727273     0.560606
+   13    2110.000000     0.545455     0.909091     0.651515
+   14    2120.000000     0.545455     1.000000     0.712121
+   15    2130.000000     0.636364     1.000000     0.787879
+   16    2140.000000     0.727273     1.000000     0.848485
+   17    2170.000000     0.909091     1.000000     0.984848
+   18    2180.000000     1.000000     1.000000     1.000000
+
+Iterative calculation of self-consistent distribution.
+Max number of iterations: 200
+Tolerance for convergence: 1e-08
+Convergence reached after 70 iterations.
+
+  Idx      Partition           DF
+    1    1870.000000     0.000000
+    2    1920.000000     0.000000
+    3    1930.000000     0.181818
+    4    1970.000000     0.181818
+    5    1980.000000     0.181818
+    6    2000.000000     0.181818
+    7    2020.000000     0.181818
+    8    2030.000000     0.545455
+    9    2040.000000     0.545455
+   10    2060.000000     0.545455
+   11    2070.000000     0.545455
+   12    2080.000000     0.545455
+   13    2110.000000     0.545455
+   14    2120.000000     0.545455
+   15    2130.000000     1.000000
+   16    2140.000000     1.000000
+   17    2170.000000     1.000000
+   18    2180.000000     1.000000
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 418142 bytes.
+End of program. Thu Sep 17 16:26:57 2026

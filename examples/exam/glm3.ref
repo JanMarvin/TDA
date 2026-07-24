@@ -1,0 +1,77 @@
+Read records:      13     
+
+  Iter    Function Value
+    0   1.0000000000000e+00
+    1   2.7970168292858e-01
+    2   6.5478416478910e-02
+    3   3.2395113311427e-03
+    4   7.4190399104984e-06
+    5   3.8770579691452e-11
+    6   1.3771727244826e-16
+TDA. Analysis of Transition Data (6.4p). Sat Jul 25 02:03:11 2026
+Current memory: 390032 bytes.
+
+Reading command file: glm3.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable   T   S  PFmt  Definition
+--------------------------------------
+  1 Dose       3   4   0.0  c1
+  2 Weight     3   4   0.0  c2
+  3 Response   3   4   0.0  c3
+  4 Log10Dose  3   4   0.0  log(Dose)/log(10)
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): qr1.dat
+Free format. Separation character(s): default.
+
+Reading data file: qr1.dat
+Read records: 13 
+
+Created a new data matrix.
+Number of cases: 13
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 406186 bytes.
+----------------------------------------------------------------------------
+cwt=Weight
+New case weights. Sum of weights: 74
+----------------------------------------------------------------------------
+glm(...)
+Generalized linear models. Current memory: 406186 bytes.
+
+Distribution: binomial.
+Link function: logit.
+
+Variables (cross-section)
+-------------------------
+Y   : Response   
+X1  : Log10Dose  
+
+Estimation with iteratively re-weighted least squares.
+Using weights defined by: Weight
+Number of model parameters: 2
+Maximum number of iterations: 20
+Tolerance for scaled parameter change: 1e-06
+
+Convergence reached in 6 iterations.
+Final scaled parameter change: 1.37717e-16
+
+Rank of data matrix: 2
+Degrees of freedom: 11
+Deviance                           74.2213 
+Fixed scaling factor                1.0000 
+
+Idx  Wave  Variable        Coeff      Error    Coeff/E  Signif
+--------------------------------------------------------------
+  1     -  Intercept     -3.2246     0.8861    -3.6393  0.9961
+  2     1  Log10Dose      5.9702     1.4492     4.1197  0.9983
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426224 bytes.
+End of program. Sat Jul 25 02:03:11 2026

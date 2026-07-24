@@ -1,0 +1,12 @@
+# clpyrops.cf -- t_cl.c coverage: clpyr's df= (secondary distance-
+# matrix output, closes clpyr_ccl) and pcf= (dendrogram plot command
+# file, closes clpyr_den) -- clpyr = "cluster pyramid" (pyramidal
+# clustering), not documented outside its own source header comment.
+# Reuses the g.dat graph fixture already established in aclops.cf/
+# clops.cf.
+
+silent = -1;
+
+nvar(dfile=clops_g.dat, D=c1);
+gdd(opt=4) = D;
+clpyr(opt=1, df=clpyrdist.txt, pcf=clpyrplot.cf) = clpyrout.txt;

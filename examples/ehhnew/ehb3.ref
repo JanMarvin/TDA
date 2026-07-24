@@ -1,0 +1,98 @@
+Read records:     600     
+TDA. Analysis of Transition Data (6.4p). Fri Jul 24 21:39:00 2026
+Current memory: 390032 bytes.
+
+Reading command file: ehb3.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   3.0  c1
+  2 NOJ       3   4   2.0  c2
+  3 TStart    3   4   3.0  c3
+  4 TFin      3   4   3.0  c4
+  5 SEX       3   4   2.0  c5
+  6 TI        3   4   3.0  c6
+  7 TB        3   4   3.0  c7
+  8 TE        3   4   3.0  c8
+  9 TMAR      3   4   3.0  c9
+ 10 PRES      3   4   3.0  c10
+ 11 PRESN     3   4   3.0  c11
+ 12 EDU       3   4   2.0  c12
+ 13 ORG       3   4   1.0  1+2*(NOJ-1)
+ 14 DES       3   4   1.0  if(lt(TFin,TI),ORG+1,ORG)
+ 15 TFC       4   4   3.0  if(eq(NOJ,1),TStart,pre(TFC))
+ 16 TSP       4   4   3.0  TStart-TFC
+ 17 TFP       4   4   3.0  TFin-TFC+1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): rrdat.1
+Free format. Separation character(s): default.
+
+Reading data file: rrdat.1
+Read records: 600 
+
+Created a new data matrix.
+Number of cases: 600
+Number of variables: 17
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 458797 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new multi-episode data. Max number of transitions: 100.
+Definition: id=ID, sn=NOJ, org=ORG, des=DES, ts=TSP, tf=TFP
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    1   1        16        16.00      233.44        0.00      428.00    -
+ 1    1   2       185       185.00       52.73        0.00      326.00    -
+Sum               201       201.00
+----------------------------------------------------------------------------
+ 2    3   3        36        36.00      150.17       13.00      450.00    -
+ 2    3   4       126       126.00       52.30        3.00      406.00    -
+Sum               162       162.00
+----------------------------------------------------------------------------
+ 3    5   5        38        38.00      121.74        9.00      463.00    -
+ 3    5   6        69        69.00       50.36        8.00      403.00    -
+Sum               107       107.00
+----------------------------------------------------------------------------
+ 4    7   7        24        24.00       85.33       52.00      465.00    -
+ 4    7   8        38        38.00       37.71        9.00      329.00    -
+Sum                62        62.00
+----------------------------------------------------------------------------
+ 5    9   9         9         9.00      110.22       66.00      441.00    -
+ 5    9  10        23        23.00       22.61       39.00      348.00    -
+Sum                32        32.00
+----------------------------------------------------------------------------
+ 6   11  11         8         8.00       45.75      151.00      379.00    -
+ 6   11  12        12        12.00       43.75       46.00      324.00    -
+Sum                20        20.00
+----------------------------------------------------------------------------
+ 7   13  13         7         7.00      114.14      132.00      427.00    -
+ 7   13  14         4         4.00       52.75      112.00      368.00    -
+Sum                11        11.00
+----------------------------------------------------------------------------
+ 8   15  15         3         3.00       65.00      129.00      440.00    -
+ 8   15  16         1         1.00       72.00      213.00      285.00    -
+Sum                 4         4.00
+----------------------------------------------------------------------------
+ 9   17  17         1         1.00       34.00      285.00      319.00    *
+Sum                 1         1.00
+----------------------------------------------------------------------------
+Sum               600       600.00
+
+Warning: episodes with * in column Excl do not belong to any transition
+and will be excluded from all estimation procedures.
+
+Number of individuals: 201
+Number of episodes: 600
+Successfully created new episode data.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 478916 bytes.
+End of program. Fri Jul 24 21:39:00 2026

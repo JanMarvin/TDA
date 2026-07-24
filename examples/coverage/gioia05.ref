@@ -1,0 +1,265 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:40 2026
+Current memory: 390032 bytes.
+
+Reading command file: gioia05.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 PL        3   4   8.0  c1
+  2 PU        3   4   8.0  c2
+  3 SL        3   4   8.0  c3
+  4 SU        3   4   8.0  c4
+  5 DL        3   4   8.0  c5
+  6 DU        3   4   8.0  c6
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): patients.dat
+Free format. Separation character(s): default.
+
+Reading data file: patients.dat
+Read records: 11 
+
+Created a new data matrix.
+Number of cases: 11
+Number of variables: 6
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 414140 bytes.
+----------------------------------------------------------------------------
+ivar(...)=...
+Variance of interval-valued variable. Current memory: 414140 bytes.
+
+Starting branch and bound algorithm.
+Maximum number of iterations: 200000
+Maximum number of boxes: 100000
+Tolerance for box width: 0.0001
+Tolerance for function range: 1e-06
+Tolerance for global minimum: 1e-06
+Using derivatives for monotonicity test.
+
+Function minimization.
+Number of iterations performed: 1015
+Number of function evaluations: 1014
+Number of inclusion function evaluations: 2993
+Number of boxes used: 26
+Number of temporarily accepted boxes: 24
+Number of finally accepted boxes: 0
+
+Best minimal function value:      26.8636   best lower bound:      26.8635 
+
+Function maximization.
+Number of iterations performed: 38
+Number of function evaluations: 48
+Number of inclusion function evaluations: 129
+Number of boxes used: 22
+Number of temporarily accepted boxes: 1
+Number of finally accepted boxes: 1
+
+Best maximal function value:     542.0661   best upper bound:     542.0661 
+
+----------------------------------------------------------------------------
+ivar(...)=...
+Variance of interval-valued variable. Current memory: 414140 bytes.
+
+Starting branch and bound algorithm.
+Maximum number of iterations: 200000
+Maximum number of boxes: 100000
+Tolerance for box width: 0.0001
+Tolerance for function range: 1e-06
+Tolerance for global minimum: 1e-06
+Using derivatives for monotonicity test.
+
+Function minimization.
+Number of iterations performed: 618
+Number of function evaluations: 617
+Number of inclusion function evaluations: 1821
+Number of boxes used: 17
+Number of temporarily accepted boxes: 15
+Number of finally accepted boxes: 0
+
+Best minimal function value:     193.0390   best lower bound:     193.0387 
+
+Function maximization.
+Number of iterations performed: 109
+Number of function evaluations: 112
+Number of inclusion function evaluations: 337
+Number of boxes used: 44
+Number of temporarily accepted boxes: 1
+Number of finally accepted boxes: 1
+
+Best maximal function value:    1978.5124   best upper bound:    1978.5124 
+
+----------------------------------------------------------------------------
+ivar(...)=...
+Variance of interval-valued variable. Current memory: 414140 bytes.
+
+Starting branch and bound algorithm.
+Maximum number of iterations: 200000
+Maximum number of boxes: 100000
+Tolerance for box width: 0.0001
+Tolerance for function range: 1e-06
+Tolerance for global minimum: 1e-06
+Using derivatives for monotonicity test.
+
+Function minimization.
+Number of iterations performed: 4165
+Number of function evaluations: 4164
+Number of inclusion function evaluations: 12438
+Number of boxes used: 73
+Number of temporarily accepted boxes: 27
+Number of finally accepted boxes: 0
+
+Best minimal function value:     298.1818   best lower bound:     298.1815 
+
+Function maximization.
+Number of iterations performed: 967
+Number of function evaluations: 969
+Number of inclusion function evaluations: 3077
+Number of boxes used: 379
+Number of temporarily accepted boxes: 1
+Number of finally accepted boxes: 1
+
+Best maximal function value:     830.4132   best upper bound:     830.4132 
+
+----------------------------------------------------------------------------
+clear
+Deleted whole data matrix. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 GL        3   4   8.2  c1
+  2 GU        3   4   8.2  c2
+  3 FL        3   4   8.0  c3
+  4 FU        3   4   8.0  c4
+  5 IL        3   4   8.0  c5
+  6 IU        3   4   8.0  c6
+  7 SL        3   4   8.0  c7
+  8 SU        3   4   8.0  c8
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): oils.dat
+Free format. Separation character(s): default.
+
+Reading data file: oils.dat
+Read records: 8 
+
+Created a new data matrix.
+Number of cases: 8
+Number of variables: 8
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 422176 bytes.
+----------------------------------------------------------------------------
+ivar(...)=...
+Variance of interval-valued variable. Current memory: 422176 bytes.
+
+Starting branch and bound algorithm.
+Maximum number of iterations: 200000
+Maximum number of boxes: 100000
+Tolerance for box width: 0.0001
+Tolerance for function range: 1e-06
+Tolerance for global minimum: 1e-06
+Using derivatives for monotonicity test.
+
+Function minimization.
+Number of iterations performed: 25
+Number of function evaluations: 24
+Number of inclusion function evaluations: 70
+Number of boxes used: 3
+Number of temporarily accepted boxes: 1
+Number of finally accepted boxes: 0
+
+Best minimal function value:     243.964286   best lower bound:     243.964145 
+
+Function maximization.
+Number of iterations performed: 6
+Number of function evaluations: 5
+Number of inclusion function evaluations: 13
+Number of boxes used: 3
+Number of temporarily accepted boxes: 1
+Number of finally accepted boxes: 1
+
+Best maximal function value:     469.484375   best upper bound:     469.484376 
+
+----------------------------------------------------------------------------
+ivar(...)=...
+Variance of interval-valued variable. Current memory: 422176 bytes.
+
+Starting branch and bound algorithm.
+Maximum number of iterations: 200000
+Maximum number of boxes: 100000
+Tolerance for box width: 0.0001
+Tolerance for function range: 1e-06
+Tolerance for global minimum: 1e-06
+Using derivatives for monotonicity test.
+
+Function minimization.
+Number of iterations performed: 82
+Number of function evaluations: 81
+Number of inclusion function evaluations: 241
+Number of boxes used: 5
+Number of temporarily accepted boxes: 1
+Number of finally accepted boxes: 0
+
+Best minimal function value:    2055.104167   best lower bound:    2055.103522 
+
+Function maximization.
+Number of iterations performed: 20
+Number of function evaluations: 19
+Number of inclusion function evaluations: 57
+Number of boxes used: 8
+Number of temporarily accepted boxes: 1
+Number of finally accepted boxes: 1
+
+Best maximal function value:    3575.859375   best upper bound:    3575.859376 
+
+----------------------------------------------------------------------------
+ivar(...)=...
+Variance of interval-valued variable. Current memory: 422176 bytes.
+
+Starting branch and bound algorithm.
+Maximum number of iterations: 200000
+Maximum number of boxes: 100000
+Tolerance for box width: 0.0001
+Tolerance for function range: 1e-06
+Tolerance for global minimum: 1e-06
+Using derivatives for monotonicity test.
+
+Function minimization.
+Number of iterations performed: 200001
+Number of function evaluations: 225127
+Number of inclusion function evaluations: 400885
+Number of boxes used: 25134
+Number of temporarily accepted boxes: 0
+Number of finally accepted boxes: 0
+Warning: 25127 boxes have not been processed.
+
+Best minimal function value:       0.000179   best lower bound: ***
+No certified bound: the search stopped at its limits
+(mxit=, nbox=).  The value above is the best point found,
+not proven optimal.  Raise the limits to certify it.
+
+
+Function maximization.
+Number of iterations performed: 6
+Number of function evaluations: 5
+Number of inclusion function evaluations: 13
+Number of boxes used: 2
+Number of temporarily accepted boxes: 1
+Number of finally accepted boxes: 1
+
+Best maximal function value:     688.000000   best upper bound:     688.000001 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 19814696 bytes.
+End of program. Fri Sep  4 15:06:51 2026

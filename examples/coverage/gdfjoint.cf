@@ -1,0 +1,8 @@
+# gdf joint estimation (opt=2 method 1, opt=3 method 2).  Long-format
+# data: one row per (unit, dimension); grp=ID,L1 names the unit and the
+# margin, and TDA requires distinct L1 values within a unit.  The
+# right-hand side is the OUTPUT data file (per gdf's own syntax box),
+# not an input -- naming the input file there overwrites it.
+nvar(dfile=gjd.dat, ID<8>=c1, L1<8>=c2, Y<8>=c3, CEN<8>=c4);
+gdf(opt=2, yl=Y, cen=CEN, grp=ID,L1) = gj2.out;
+gdf(opt=3, yl=Y, cen=CEN, grp=ID,L1) = gj3.out;

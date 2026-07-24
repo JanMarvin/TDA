@@ -1,0 +1,25 @@
+# exprops4.cf -- operators whose argument counts come from the token
+# table in t_eval.c ({ name, opcode, namelen, nargs }), not from the
+# opcode comments in t_eval2.c, which imply forms the parser rejects.
+nvar(
+    dfile = ex.dat,
+    ID [2.0] = c1,
+    X  [6.2] = c2,
+    G  [2.0] = c3,
+    A1 [8.4] = gfirst(G),
+    A2 [8.4] = glast(G),
+    A3 [8.4] = gsn(G),
+    A4 [8.4] = grec(G),
+    A5 [8.4] = gcnt(G),
+    A6 [8.4] = bfirst,
+    A7 [8.4] = pre(X),
+    A8 [8.4] = cd(X),
+    A9 [8.4] = cdv(X),
+    B1 [8.4] = snum(X),
+    B2 [8.4] = nd(X),
+    B3 [8.4] = mr(X),
+    B4 [8.4] = sum(X),
+    B5 [8.4] = std(X),
+    B6 [8.4] = sma[tp=1(1)3](X),
+);
+pdata() = out.txt;

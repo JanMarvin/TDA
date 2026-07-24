@@ -1,0 +1,6 @@
+nvar(dfile=ivh.dat, XL[8.2]=c1, XU[8.2]=c2, YL[8.2]=c3, YU[8.2]=c4);
+ivreg(opt=3) = YL,YU,XL,XU;
+ivreg(opt=3, ns=1) = YL,YU,XL,XU;
+# user-set limits are respected exactly; forced tiny here to pin the
+# honest not-certified message on the box-overflow path
+ivreg(opt=3, mxit=2, nbox=5) = YL,YU,XL,XU;

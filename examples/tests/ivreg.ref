@@ -1,0 +1,73 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: ivreg.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   3.0  c1
+  2 X         3   4   6.2  c2
+  3 Y         3   4   6.2  c3
+  4 G         3   4   1.0  c4
+  5 T         3   4   3.0  c5
+  6 D         3   4   1.0  c6
+  7 YL        3   4   6.2  c7
+  8 YU        3   4   6.2  c8
+  9 XL        3   4   6.2  c9
+ 10 XU        3   4   6.2  c10
+ 11 P1        3   4   6.3  c11
+ 12 P2        3   4   6.3  c12
+ 13 P3        3   4   6.3  c13
+ 14 TS        2   8   1.0  0
+ 15 ORG       2   8   1.0  0
+ 16 TL        3   4   3.0  T
+ 17 TU        3   4   3.0  T+5
+ 18 G1        3   4   0.0  G[1]
+ 19 G2        3   4   0.0  G[2]
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): d.dat
+Free format. Separation character(s): default.
+
+Reading data file: d.dat
+Read records: 20 
+
+Created a new data matrix.
+Number of cases: 20
+Number of variables: 19
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 458464 bytes.
+----------------------------------------------------------------------------
+ivreg()=YL,YU,XL,XU
+Regression with interval data. Current memory: 458464 bytes.
+
+Minimization.
+Number of data points: 20
+Tolerance for box width: 0.0001
+
+First step: fixed 13 values of Y.
+Mean Y = [     13.100000 ,     13.800000 ]
+Mean X = [      9.150000 ,     12.150000 ]
+Var  X = [     12.087500 ,     36.527500 ]
+
+Second step: fixing values of X (and Y).
+Iteration     bounds of current beta          bounds of x-mean  x-fixed  y-fixed
+      0       -0.987797     0.189018     9.150000    12.150000        0       13
+      1       -0.897085    -0.013562     9.750000    11.550000        8       14
+      2       -0.637140    -0.112690    10.050000    11.400000       11       16
+      3       -0.578949    -0.166643    10.200000    11.100000       14       16
+      4       -0.371739    -0.181598    10.200000    10.950000       15       19
+      5       -0.316292    -0.213843    10.500000    10.950000       17       19
+      6       -0.290975    -0.221401    10.500000    10.800000       18       19
+
+Remaining coordinates: 3
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 478592 bytes.
+End of program. Wed Sep  2 16:02:32 2026

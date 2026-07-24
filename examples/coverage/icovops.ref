@@ -1,0 +1,157 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:51 2026
+Current memory: 390032 bytes.
+
+Reading command file: icovops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 XL        3   4   6.0  c1
+  2 XU        3   4   6.0  c2
+  3 YL        3   4   6.0  c3
+  4 YU        3   4   6.0  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): small3.dat
+Free format. Separation character(s): default.
+
+Reading data file: small3.dat
+Read records: 3 
+
+Created a new data matrix.
+Number of cases: 3
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 406104 bytes.
+----------------------------------------------------------------------------
+icov(...)=...
+Covariance of interval-valued variables. Current memory: 406104 bytes.
+
+Starting branch and bound algorithm.
+Maximum number of iterations: 200000
+Maximum number of boxes: 100000
+Tolerance for box width: 0.0001
+Tolerance for function range: 1e-06
+Tolerance for global minimum: 1e-06
+
+Function minimization.
+Number of iterations performed: 4
+Number of function evaluations: 3
+Number of inclusion function evaluations: 7
+Number of boxes used: 2
+Number of temporarily accepted boxes: 1
+Number of finally accepted boxes: 1
+
+Best minimal function value:    -0.666667   best lower bound:    -0.666668 
+
+Function maximization.
+Number of iterations performed: 4
+Number of function evaluations: 3
+Number of inclusion function evaluations: 7
+Number of boxes used: 2
+Number of temporarily accepted boxes: 1
+Number of finally accepted boxes: 1
+
+Best maximal function value:     7.555556   best upper bound:     7.555557 
+
+----------------------------------------------------------------------------
+icorr(...)=...
+Correlation of interval-valued variables. Current memory: 406104 bytes.
+
+Starting branch and bound algorithm.
+Maximum number of iterations: 200000
+Maximum number of boxes: 100000
+Tolerance for box width: 0.0001
+Tolerance for function range: 1e-06
+Tolerance for global minimum: 1e-06
+
+Function minimization.
+Number of iterations performed: 280
+Number of function evaluations: 311
+Number of inclusion function evaluations: 680
+Number of boxes used: 110
+Number of temporarily accepted boxes: 1
+Number of finally accepted boxes: 1
+
+Best minimal function value:    -0.142857   best lower bound:    -0.142858 
+
+Function maximization.
+Number of iterations performed: 5283
+Number of function evaluations: 5294
+Number of inclusion function evaluations: 13672
+Number of boxes used: 584
+Number of temporarily accepted boxes: 1
+Number of finally accepted boxes: 1
+
+Best maximal function value:     0.893405   best upper bound:     0.893406 
+
+----------------------------------------------------------------------------
+clear
+Deleted whole data matrix. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 PL        3   4   8.0  c1
+  2 PU        3   4   8.0  c2
+  3 SL        3   4   8.0  c3
+  4 SU        3   4   8.0  c4
+  5 DL        3   4   8.0  c5
+  6 DU        3   4   8.0  c6
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): patients.dat
+Free format. Separation character(s): default.
+
+Reading data file: patients.dat
+Read records: 11 
+
+Created a new data matrix.
+Number of cases: 11
+Number of variables: 6
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 414140 bytes.
+----------------------------------------------------------------------------
+icov(...)=...
+Covariance of interval-valued variables. Current memory: 414140 bytes.
+
+Starting branch and bound algorithm.
+Maximum number of iterations: 200000
+Maximum number of boxes: 100000
+Tolerance for box width: 0.0001
+Tolerance for function range: 1e-06
+Tolerance for global minimum: 1e-06
+
+Function minimization.
+Number of iterations performed: 256
+Number of function evaluations: 288
+Number of inclusion function evaluations: 819
+Number of boxes used: 79
+Number of temporarily accepted boxes: 1
+Number of finally accepted boxes: 1
+
+Best minimal function value:    -215.2893   best lower bound:    -215.2893 
+
+Function maximization.
+Number of iterations performed: 91
+Number of function evaluations: 104
+Number of inclusion function evaluations: 284
+Number of boxes used: 31
+Number of temporarily accepted boxes: 1
+Number of finally accepted boxes: 1
+
+Best maximal function value:     791.6694   best upper bound:     791.6694 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 37415228 bytes.
+End of program. Fri Sep  4 15:06:51 2026

@@ -1,0 +1,52 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:52 2026
+Current memory: 390032 bytes.
+
+Reading command file: smdop.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Y         3   8   0.0  c1
+  2 S1        4   8   0.0  smd[sm=[3R]](Y)
+  3 S2        4   8   0.0  smd[sm=[3RSSH],opt=1](Y)
+  4 S3        4   8   0.0  smd[sm=[H],opt=2](Y)
+  5 S4        4   8   0.0  smd[sm=[53RH],opt=3](Y)
+  6 S5        4   8   0.0  smd[sm=[42],opt=1](Y)
+  7 S6        4   8   0.0  smd[sm=[3RSSHt],opt=1](Y)
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): smy.dat
+Free format. Separation character(s): default.
+
+Reading data file: smy.dat
+Read records: 20 
+
+Created a new data matrix.
+Number of cases: 20
+Number of variables: 7
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 446345 bytes.
+----------------------------------------------------------------------------
+dstat=Y,S1,S2,S3,S4,S5,S6
+Descriptive statistics. Current memory: 446345 bytes.
+
+Variable    Minimum    Maximum       Mean   Std.Dev.    Sum of values
+---------------------------------------------------------------------
+Y            1.0700    18.8600     8.6185     6.7859         172.3700
+S1           1.5100    18.8600     8.6305     6.7478         172.6100
+S2           1.7225    18.8600     8.6692     6.6904         173.3850
+S3           1.4900    18.4900     8.6185     6.7175         172.3700
+S4           1.9200    18.8600     9.6601     6.6628         193.2025
+S5           1.7250    18.8600     8.6667     6.7487         173.3350
+S6           1.6350    18.8600     8.6652     6.7934         173.3031
+----------------------------------------------------------------------------
+pdata(...)=Y,S1,S2,S3,S4,S5,S6
+20 records with 7 variables written to: Y,S1,S2,S3,S4,S5,S6
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 468204 bytes.
+End of program. Fri Sep  4 15:06:52 2026

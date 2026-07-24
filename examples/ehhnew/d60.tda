@@ -1,0 +1,20 @@
+nvar(
+  dfile = rrdat.d60,
+  noc = 1021,
+  ID   [6.0] = c1, # id number
+  SN   [3.0] = c2, # spell number
+  NSPL [3.0] = c3, # number of splits
+  SPL  [3.0] = c4, # split number
+  ORG  [3.0] = c5, # origin state
+  DES  [3.0] = c6, # destination state
+  TS   [6.2] = c7, # starting time
+  TF   [6.2] = c8, # ending time
+  TSP [3.0] = c9,
+  TFP [3.0] = c10,
+  EDU [2.0] = c11,
+  COHO2 [1.0] = c12,
+  COHO3 [1.0] = c13,
+  LFX [3.0] = c14,
+  PNOJ [2.0] = c15,
+  PRES [3.0] = c16,
+);

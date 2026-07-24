@@ -1,0 +1,72 @@
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   3.4855100000000e+05  1.0302000000e+04          --       1 (1,1)
+    2   8.5850000000000e+04  5.2580162446e-13  1.0000e+00       2 (2,2)
+TDA. Analysis of Transition Data (6.4p). Sat Jul 25 02:03:08 2026
+Current memory: 390032 bytes.
+
+Reading command file: fmin2.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 A         3   4   0.0  case
+
+Creating a new data matrix.
+Maximum number of cases: 101
+
+Created a new data matrix.
+Number of cases: 101
+Number of variables: 1
+
+End of creating new variables. Current memory: 390455 bytes.
+----------------------------------------------------------------------------
+fmin(...)=...
+Function minimization. Current memory: 390455 bytes.
+
+Function definition:
+fn      = (x-A)^2
+
+Function evaluation: sum over 101 data matrix cases.
+
+
+Function minimization.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 1
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: 1
+
+Idx  Parameter   Starting value
+  1  x            0.00000000e+00 
+
+Protocol will be written to: p
+
+Convergence reached in 2 iterations.
+Number of function evaluations: 3 (3,3)
+
+Minimum of function: 85850
+Norm of final gradient vector: 5.25802e-13
+Last absolute change of function value: 0.753695
+Last relative change in parameters: 1
+
+Idx  Parameter       Value      Error    Value/E  Signif
+--------------------------------------------------------
+  1  x             51.0000     0.0707   721.2489  1.0000
+
+Function (starting values): 348551.0000 
+Function (final estimates): 85850.0000 
+
+Covariance matrix written to: cov
+
+Residuals written to: res
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 391363 bytes.
+End of program. Sat Jul 25 02:03:08 2026

@@ -1,0 +1,30 @@
+TDA. Analysis of Transition Data (6.4p). Fri Jul 24 21:39:00 2026
+Current memory: 390032 bytes.
+
+Reading command file: ple5p.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 T1        3   4   0.0  c1[0]&lt(c3,290)
+  2 T2        3   4   0.0  c1[1]&lt(c3,290)
+  3 Time      3   4   0.0  c3
+  4 G         3   4   0.0  c7
+  5 SE        3   4   0.0  c8
+  6 UBnd      3   4   0.0  G+1.96*SE
+  7 LBnd      3   4   0.0  G-1.96*SE
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ple.5
+Free format. Separation character(s): default.
+
+Can't open data file: ple.5
+No data matrix created.
+No new variables created. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 438528 bytes.
+End of program. Fri Jul 24 21:39:00 2026

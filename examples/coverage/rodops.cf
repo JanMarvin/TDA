@@ -1,0 +1,10 @@
+# rodops.cf -- rank order data, all analysis options
+nvar(
+    dfile = rank.dat,
+    A [2.0] = c1, B [2.0] = c2, C [2.0] = c3, D [2.0] = c4,
+);
+rod(opt=1, df=r1.dat) = A,B,C,D;
+rod(opt=2, df=r2.dat) = A,B,C,D;
+rod(opt=3, s=0, alg=1, df=r3.dat) = A,B,C,D;
+rod(opt=3, s=1, alg=1, df=r4.dat) = A,B,C,D;
+rod(opt=8, df=r8.dat) = A,B,C,D;

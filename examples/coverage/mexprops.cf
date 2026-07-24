@@ -1,0 +1,46 @@
+# mexpr / mexpr1 through the t_eval4 parser: subtraction, division,
+# power, parentheses, the <rsel,csel,u> selection form, and block-mode
+# matrix expressions.  All values hand-checkable: A-B row1 = -1,0,1;
+# selections put log(A) in row 1 / -A in column 2 with u elsewhere;
+# mexpr1 over G-blocks (rows 1-2 | 3-4) gives bmin 3,3,2,2 and
+# range 2,2,6,6.  The cyclic-broadcast semantics themselves are
+# verified against an independent implementation of the documented
+# rule in tools/fuzz_eval.R stage 3.
+mfmt = 14.6;
+mdef(A,2,3) = 1,2,3, 4,5,6;
+mdef(B,2,3) = 2,2,2, 4,4,4;
+mexpr(A - B, R1);
+mpr(R1);
+mexpr(A / B, R2);
+mpr(R2);
+mexpr(A ^ 2, R3);
+mpr(R3);
+mexpr((A + B) * 2, R4);
+mpr(R4);
+mexpr(<1,*,0>, log(A), S1);
+mpr(S1);
+mexpr(<*,2,A>, 0 - A, S2);
+mpr(S2);
+mdef(G,4,1) = 1, 1, 2, 2;
+mdef(X,4,1) = 5, 3, 8, 2;
+mexpr1(G, bmin(X), T1);
+mpr(T1);
+mexpr1(G, bmax(X) - bmin(X), T2);
+mpr(T2);
+# mexp: mexpr's undocumented sibling with TRUE linear algebra -- * is
+# matrix multiplication between matrices (scalar multiplication with a
+# scalar), functions t, cross, ginv, trace, sqrt, eexp.  Verified
+# against base R (ginv arbitrated by the svd pseudoinverse) in
+# tools/fuzz_eval.R stage 6; A*B here = 4,5 / 10,11 by hand.
+mexp(A * B, U1);
+mpr(U1);
+mexp(t(A), U2);
+mpr(U2);
+mexp(cross(A), U3);
+mpr(U3);
+mexp(trace(A * t(A)), U4);
+mpr(U4);
+mexp(ginv(A), U5);
+mpr(U5);
+mexp(A * B * 2 - A * B, U6);
+mpr(U6);

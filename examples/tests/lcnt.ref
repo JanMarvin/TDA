@@ -1,0 +1,14 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: lcnt.cf
+============================================================================
+lcnt()=out.txt
+Frequency distribution of record lengths (without EOL) in file: out.txt
+Max number of records: 1000
+Read 121 records
+Index  Length  Frequency
+    1      33        121
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 416586 bytes.
+End of program. Wed Sep  2 16:02:32 2026

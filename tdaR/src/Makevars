@@ -1,0 +1,8 @@
+# TDA_R_PACKAGE selects the in-process build: exports to R instead of
+# stdout, no exit() on error, and the tda_export_* hooks.
+#
+# S_UNIX / S_DOS / S_XWIN used to be set here too. They are not needed:
+# tda.h and tda_const.h both default S_UNIX to 1 and S_DOS to 0 behind
+# #ifndef, which is exactly what the flags set, and S_XWIN is gone --
+# the X11 front end it guarded is not part of this tree.
+PKG_CPPFLAGS = -DTDA_R_PACKAGE

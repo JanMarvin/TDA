@@ -1,0 +1,9 @@
+nvar(
+  dfile = d1,
+  noc = 6,
+  SEQ1N <5>[6.0] = c1  , # sequence A case number
+  SEQ2N <5>[6.0] = c2  , # sequence B case number
+  SEQ1L <2>[6.0] = c3  , # sequence A length
+  SEQ2L <2>[6.0] = c4  , # sequence B length
+  DIST  <4>[5.2] = c5  , # distance
+);

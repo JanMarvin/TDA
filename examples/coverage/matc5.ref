@@ -1,0 +1,21 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:51 2026
+Current memory: 390032 bytes.
+
+Reading command file: matc5.cf
+============================================================================
+Rank of left-hand side: 2
+      1.1667 
+      2.1667 
+Rank of left-hand side: 2
+      1.1667 
+      2.1667 
+Rank of left-hand side: 0
+      1.0000 
+      3.0000 
+Rank of left-hand side: 1
+      1.5000 
+      1.5000 
+      1.1667 
+      2.1667 
+Current memory: 390032 bytes. Max memory used: 390791 bytes.
+End of program. Fri Sep  4 15:06:51 2026

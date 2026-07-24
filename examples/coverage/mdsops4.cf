@@ -1,0 +1,11 @@
+# mdsops4.cf -- t_mds.c coverage: mdsx (with pcf= and default sc, to
+# reach mds_p/mds_p1/mdsxr_c2/c3/dm/f1). Its own small graph, in its own
+# data matrix -- an 8-point complete graph (dis.dat, reused by
+# mdsops2.cf) returned "Error 2 in mdsxr_m" (number of accepted boxes
+# empty) under the search budgets tried; a 4-point graph converges
+# cleanly. Checked structurally (converges, writes coordinates and a
+# reconstructed distance matrix, plot command file written).
+
+nvar(dfile = dis4.dat, D [9.4] = c1,);
+gdd(opt=4) = D;
+mdsx(opt=1, mxit=100, mxitl=500, nbox=500, pcf=mdsxpcf.cf) = mdsxout.txt;

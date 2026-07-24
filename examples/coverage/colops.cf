@@ -1,0 +1,14 @@
+# Column-operator pins (tda.hlp 5.2.6), values chosen so every result
+# is checkable by hand.  Conventions observed by the differential
+# fuzzer (tools/fuzz_eval.R) and recorded there: lag(X,n) looks n rows
+# forward; change/cntch count the first row as a change; mav(X,n) is a
+# centered mean over rows i-n..i+n truncated at the edges; cd is the
+# empirical CDF (upper step at ties) over ascending input; std uses
+# the n-1 divisor; column statistics accumulate in single precision.
+nvar(dfile=col.dat, X[8.2]=c1, G[4.0]=c2,
+  M[12.6]=mean(X), S[12.6]=std(X), C[12.6]=cum(X),
+  R[6.1]=rank(X), SO[8.2]=sort(X), CD[8.4]=cd(sort(X)),
+  L[8.2]=lag(X,1), CH[4.0]=change(G), MV[12.6]=mav(X,1),
+  GM[12.6]=gmean(X,G), GS[12.6]=gsum(X,G), GF[4.0]=gfirst(G),
+);
+pdata(keep=M,S,R,CD,L,CH,MV,GM,GS,GF) = col.out;

@@ -1,0 +1,44 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: range.cf
+============================================================================
+range(...)=...
+Range of interval-valued function. Current memory: 390032 bytes.
+
+Function definition:
+fn      = x*x
+
+Idx  Parameter   Starting value      Lower bound     Upper bound
+  1  x            0.00000000e+00 -1.00000000e+00  1.00000000e+00 
+
+Starting branch and bound algorithm.
+Maximum number of iterations: 100
+Maximum number of boxes: 100
+Tolerance for box width: 0.0001
+Tolerance for function range: 1e-10
+Tolerance for global minimum: 1e-10
+
+Function minimization.
+Number of iterations performed: 32
+Number of function evaluations: 31
+Number of inclusion function evaluations: 59
+Number of boxes used: 3
+Number of temporarily accepted boxes: 2
+Number of finally accepted boxes: 2
+
+Best minimal function value:      0.000000   best lower bound:     -0.000000 
+
+Function maximization.
+Number of iterations performed: 32
+Number of function evaluations: 31
+Number of inclusion function evaluations: 59
+Number of boxes used: 3
+Number of temporarily accepted boxes: 2
+Number of finally accepted boxes: 0
+
+Best maximal function value:      0.999939   best upper bound:      1.000000 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 393530 bytes.
+End of program. Wed Sep  2 16:02:32 2026

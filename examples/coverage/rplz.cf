@@ -1,0 +1,3 @@
+# rplz: the special PLZ csv layout (semicolon fields, the fourth a
+# comma/colon separated coordinate list).  Synthetic three-record file.
+rplz(df=plz.out) = plz.csv;

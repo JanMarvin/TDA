@@ -1,0 +1,71 @@
+Read records:      10     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: gd37.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 I         3   4   0.0  c1
+  2 J         3   4   0.0  c2
+  3 V         3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): gd12.dat
+Free format. Separation character(s): default.
+
+Reading data file: gd12.dat
+Read records: 10 
+
+Created a new data matrix.
+Number of cases: 10
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402083 bytes.
+----------------------------------------------------------------------------
+gdd(gt=1)=I,J,V
+New graph data. Current memory: 402083 bytes.
+Option 1: edge list.
+
+Minimal level for valid edges: 0
+Number of nodes: 6. Largest node number: 6
+Graph type 1 (undirected, unvalued).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1       10       0        1.000000             0
+
+Successfully created new graph data structure. Current memory: 402545 bytes.
+----------------------------------------------------------------------------
+giset=d1
+Independent node sets. Current memory: 402539 bytes.
+Using graph number 1 (undirected, unvalued).
+Max number of iterations: 100 (alpha 0.1, beta 0.1)
+Seed of random number generator: 270001
+Dimension of tuple vector: 0
+
+Number of iterations performed: 100
+Found maximal independent set with 2 elements in iteration 1.
+Found on tuple: 1
+2 records written to: d1
+----------------------------------------------------------------------------
+giset(...)=d2
+Independent node sets. Current memory: 402539 bytes.
+Using graph number 1 (undirected, unvalued).
+Using complementary graph with 5 edges (5).
+Max number of iterations: 100 (alpha 0.1, beta 0.1)
+Seed of random number generator: 270001
+Dimension of tuple vector: 0
+
+Number of iterations performed: 100
+Found maximal independent set with 4 elements in iteration 1.
+Found on tuple: 1
+4 records written to: d2
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422121 bytes.
+End of program. Tue Jul 21 05:46:53 2026

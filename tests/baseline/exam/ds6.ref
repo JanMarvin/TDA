@@ -1,0 +1,48 @@
+Read records:       7     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:50 2026
+Current memory: 390032 bytes.
+
+Reading command file: ds6.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 G         3   4   0.0  c1
+  2 X1        3   4   0.0  c2
+  3 X2        3   4   0.0  c3
+  4 X3        3   4   0.0  c4
+  5 X4        3   4   0.0  c5
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ds2.dat
+Free format. Separation character(s): default.
+
+Reading data file: ds2.dat
+Read records: 7 
+
+Created a new data matrix.
+Number of cases: 7
+Number of variables: 5
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 410121 bytes.
+----------------------------------------------------------------------------
+segr(g=G,ptab=tab,)=X1,,X4
+Segregation measures. Current memory: 410121 bytes.
+Grouping variable: G
+
+Variable  Classes      Cases    Group_0    Group_1    D-Index    V-Ratio       Gini
+-----------------------------------------------------------------------------------
+X1              2       7.00       3.00       4.00     1.0000     1.0000     1.0000 
+X2              7       7.00       3.00       4.00     1.0000     1.0000     1.0000 
+X3              3       6.00       3.00       3.00     0.0000     0.0000     0.0000 
+X4              2       7.00       3.00       4.00     0.4167     0.1736     0.4167 
+
+Additional data written to: tab
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 430177 bytes.
+End of program. Tue Jul 21 05:46:50 2026

@@ -1,0 +1,232 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep 12 08:06:26 2026
+Current memory: 390032 bytes.
+
+Reading command file: sdrelops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X1        3   8   0.0  c1
+  2 Y1        3   8   0.0  c2
+  3 X2        3   8   0.0  c3
+  4 Y2        3   8   0.0  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): sq2.dat
+Free format. Separation character(s): default.
+
+Reading data file: sq2.dat
+Read records: 8 
+
+Created a new data matrix.
+Number of cases: 8
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 422104 bytes.
+----------------------------------------------------------------------------
+Construction of polygons from line segments. Current memory: 422104 bytes.
+Tolerance: 0.0001
+Maximal number of segments: 16
+i=  0 0.000000 0.000000 10.000000 0.000000
+i=  1 10.000000 0.000000 10.000000 10.000000
+i=  2 10.000000 10.000000 0.000000 10.000000
+i=  3 0.000000 10.000000 0.000000 0.000000
+i=  4 2.000000 2.000000 8.000000 2.000000
+i=  5 8.000000 2.000000 8.000000 8.000000
+i=  6 8.000000 8.000000 2.000000 8.000000
+i=  7 2.000000 8.000000 2.000000 2.000000
+
+After splitting nne=8 nnd=8 nfree=0: 
+i=  0 0.000000 0.000000 10.000000 0.000000 idx=0
+i=  1 10.000000 0.000000 10.000000 10.000000 idx=0
+i=  2 0.000000 10.000000 10.000000 10.000000 idx=0
+i=  3 0.000000 10.000000 0.000000 0.000000 idx=0
+i=  4 2.000000 2.000000 8.000000 2.000000 idx=0
+i=  5 8.000000 2.000000 8.000000 8.000000 idx=0
+i=  6 2.000000 8.000000 8.000000 8.000000 idx=0
+i=  7 2.000000 8.000000 2.000000 2.000000 idx=0
+
+nnd=8
+LIST of node coordinates nnd=8
+i=  1 x=0.000000 y=0.000000
+i=  2 x=0.000000 y=10.000000
+i=  3 x=2.000000 y=2.000000
+i=  4 x=2.000000 y=8.000000
+i=  5 x=8.000000 y=2.000000
+i=  6 x=8.000000 y=8.000000
+i=  7 x=10.000000 y=0.000000
+i=  8 x=10.000000 y=10.000000
+i=  0 0.000000 0.000000 10.000000 0.000000
+i=  1 10.000000 0.000000 10.000000 10.000000
+i=  2 0.000000 10.000000 10.000000 10.000000
+i=  3 0.000000 10.000000 0.000000 0.000000
+i=  4 2.000000 2.000000 8.000000 2.000000
+i=  5 8.000000 2.000000 8.000000 8.000000
+i=  6 2.000000 8.000000 8.000000 8.000000
+i=  7 2.000000 8.000000 2.000000 2.000000
+Number of nodes: 8
+Number of nodes: 16
+Sorting nodes in counterclockwise orientation.
+Searching for polygons.
+Removing nodes with degree less than 2.
+Remaining number of nodes: 8
+Removing cut nodes with degree less than 3.
+
+Next component nnn_nn=4 nid=0
+
+Next component nnn_nn=4 nid=4
+NO MORE
+Remaining number of nodes: 8.
+
+Component: 1. Nodes: 4. Polygons: k====2
+rn=2     most left rnl=8 a0=0.000000
+found second j0=1
+found j2=7
+found j2=8
+found j2=2
+
+BNodes: 2 1 7 8 
+found j0=2 j1=1
+Next point: 7
+Next point: 8
+Next point: 2
+found new polygon. np=4
+FINAL degrees nc=1 nnc=0     
+i=  1 deg=  0 cn=   1  
+i=  2 deg=  0 cn=   1  
+i=  3 deg=  2 cn=   0  
+i=  4 deg=  2 cn=   0  
+i=  5 deg=  2 cn=   0  
+i=  6 deg=  2 cn=   0  
+i=  7 deg=  0 cn=   1  
+i=  8 deg=  0 cn=   1  
+Polygons: 1
+Component: 2. Nodes: 4. Polygons: k====4
+rn=4     most left rnl=6 a0=0.000000
+found second j0=3
+found j2=5
+found j2=6
+found j2=4
+
+BNodes: 4 3 5 6 
+found j0=4 j1=3
+Next point: 5
+Next point: 6
+Next point: 4
+found new polygon. np=4
+FINAL degrees nc=2 nnc=0     
+i=  1 deg=  0 cn=   1  
+i=  2 deg=  0 cn=   1  
+i=  3 deg=  0 cn=   2  
+i=  4 deg=  0 cn=   2  
+i=  5 deg=  0 cn=   2  
+i=  6 deg=  0 cn=   2  
+i=  7 deg=  0 cn=   1  
+i=  8 deg=  0 cn=   1  
+Polygons: 1
+Found 2 polygon(s).
+10 records written to: sq2.sd
+----------------------------------------------------------------------------
+clear
+Deleted whole data matrix. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+sdnvar(...)
+Reading a spatial data file. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 SDID      3   4   0.0  c1
+  2 SDTyp     3   4   0.0  c2
+  3 SDN       3   4   0.0  c3
+  4 SDPtr     3   5  11.0  rd
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): sq2.sd
+Free format. Separation character(s): default.
+Reading data file: sq2.sd
+Read records: 2 
+
+Created a new data matrix.
+Number of cases: 2
+Number of variables: 4
+Missing values in data file(s): none.
+
+Number of points: 0
+Number of lines: 0
+Number of polygons: 2
+Number of unknown objects: 0
+
+Maximal number of points in spatial objects: 4
+Total number of points in spatial objects: 8
+Note: sq2.sd remains opened for further access.
+
+X values. Minimum:         0.0000  Maximum:        10.0000
+Y values. Minimum:         0.0000  Maximum:        10.0000
+
+End of creating new variables. Current memory: 406497 bytes.
+----------------------------------------------------------------------------
+Elementary topological relations. Current memory: 406497 bytes.
+
+1 records written to: rel1.out
+----------------------------------------------------------------------------
+Elementary topological relations. Current memory: 406497 bytes.
+
+1 records written to: rel2.out
+----------------------------------------------------------------------------
+clear
+Deleted whole data matrix. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+sdnvar(...)
+Reading a spatial data file. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 SDID      3   4   0.0  c1
+  2 SDTyp     3   4   0.0  c2
+  3 SDN       3   4   0.0  c3
+  4 SDPtr     3   5  11.0  rd
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): sqt.sd
+Free format. Separation character(s): default.
+Reading data file: sqt.sd
+Read records: 2 
+
+Created a new data matrix.
+Number of cases: 2
+Number of variables: 4
+Missing values in data file(s): none.
+
+Number of points: 0
+Number of lines: 0
+Number of polygons: 2
+Number of unknown objects: 0
+
+Maximal number of points in spatial objects: 4
+Total number of points in spatial objects: 8
+Note: sqt.sd remains opened for further access.
+
+X values. Minimum:         0.0000  Maximum:        10.0000
+Y values. Minimum:         0.0000  Maximum:        10.0000
+
+End of creating new variables. Current memory: 406497 bytes.
+----------------------------------------------------------------------------
+Elementary topological relations. Current memory: 406497 bytes.
+
+1 records written to: relt1.out
+----------------------------------------------------------------------------
+Elementary topological relations. Current memory: 406497 bytes.
+
+0 records written to: relt2.out
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 442151 bytes.
+End of program. Sat Sep 12 08:06:26 2026

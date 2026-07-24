@@ -1,0 +1,11 @@
+nvar(
+  dfile = d2,
+  noc = 8,
+  TIME  <2>[6.0] = c1, # time
+  NST1  <2>[6.0] = c2, # cases in state 1
+  NST3  <2>[6.0] = c3, # cases in state 3
+  NST7  <2>[6.0] = c4, # cases in state 7
+  VALID <2>[6.0] = c5, # cases in valid states
+  NMISS <2>[6.0] = c6, # cases in missing state
+  TOTAL <2>[6.0] = c7, # total number of cases
+);

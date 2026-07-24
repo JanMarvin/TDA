@@ -1,0 +1,9 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:52 2026
+Current memory: 390032 bytes.
+
+Reading command file: xstub.cf
+============================================================================
+Error: xshow needs the X11 front end, which is not part of this build.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390032 bytes.
+End of program. Fri Sep  4 15:06:52 2026

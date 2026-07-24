@@ -1,0 +1,35 @@
+silent = -1;
+nvar(
+    dfile = fnrtb_rrdat.1,
+    ID    [3.0] = c1,
+    SN    [2.0] = c2,
+    TS    [3.0] = c3,
+    TF    [3.0] = c4,
+    SEX   [2.0] = c5,
+    TI    [3.0] = c6,
+    TB    [3.0] = c7,
+    TE    [3.0] = c8,
+    TMAR  [3.0] = c9,
+    PRES  [3.0] = c10,
+    PRESN [3.0] = c11,
+    EDU   [2.0] = c12,
+
+    COHO1 = ge(TB,348) & le(TB,384),
+    COHO2 = ge(TB,468) & le(TB,504),
+    COHO3 = ge(TB,588) & le(TB,624),
+    W     = SEX[2],
+
+    DES [1.0] = if eq(TF,TI) then 0 else 1,
+    DUR [3.0] = TF - TS + 1,
+);
+
+edef(
+    ts = 0,
+    tf = DUR,
+    org = 0,
+    des = DES,
+);
+
+rate(
+    xa(0,1) = COHO2,COHO3,W,
+) = 10;

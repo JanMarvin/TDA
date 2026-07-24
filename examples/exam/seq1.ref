@@ -1,0 +1,52 @@
+Read records:       5     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:58 2026
+Current memory: 390032 bytes.
+
+Reading command file: seq1.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   0.0  c1
+  2 Y0        3   4   0.0  c2
+  3 Y1        3   4   0.0  c3
+  4 Y2        3   4   0.0  c4
+  5 Y3        3   4   0.0  c5
+  6 Y4        3   4   0.0  c6
+  7 Y5        3   4   0.0  c7
+  8 Y6        3   4   0.0  c8
+  9 Y7        3   4   0.0  c9
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): seq.d1
+Free format. Separation character(s): default.
+
+Reading data file: seq.d1
+Read records: 5 
+
+Created a new data matrix.
+Number of cases: 5
+Number of variables: 9
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 426194 bytes.
+----------------------------------------------------------------------------
+seqdef=Y0,,Y7
+Creating a new sequence data structure. Current memory: 426194 bytes.
+Sequence structure number: 1
+Sequence type: 1
+Currently defined sequences:
+
+Sequence          State       Time axis       Number
+Structure Type  Variables  Minimum  Maximum  of States  States
+--------------------------------------------------------------
+     1      1         8          0        7         3    1 3 7
+
+Range of common time axis: 0 to 7.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 446286 bytes.
+End of program. Tue Jul 21 05:46:58 2026

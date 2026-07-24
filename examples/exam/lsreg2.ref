@@ -1,0 +1,65 @@
+Read records:       3     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: lsreg2.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X1        3   4   0.0  c1
+  2 X2        3   4   0.0  c2
+  3 Y         3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): lsreg2.dat
+Free format. Separation character(s): default.
+
+Reading data file: lsreg2.dat
+Read records: 3 
+
+Created a new data matrix.
+Number of cases: 3
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402085 bytes.
+----------------------------------------------------------------------------
+lsreg(...)=...
+Least squares regression. Current memory: 402085 bytes.
+
+Variables (cross-section)
+-------------------------
+Y   : Y   
+X1  : X1  
+X2  : X2  
+
+Model without intercept.
+LSECon: 1 b1 + 1 b2 = 6 
+LSICon: 1 b1 = 2 
+LSICon: 1 b2 = 2 
+Equality constraints: 1
+Inequality constraints: 2
+
+Reading data. Cases: 3
+
+Covariance matrix not calculated.
+Rank of reduced least squares data matrix: 1
+Norm of least squares residuals: 5.74456
+Rank of equality constraints: 1
+Norm of residuals of equality constraints: 0
+
+Sum of squared residuals: 33
+
+Idx  Wave  Variable       Coeff      Error    Coeff/E  Signif
+-------------------------------------------------------------
+  1     1  X1            3.0000        ---        ---     ---
+  2     1  X2            3.0000        ---        ---     ---
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422123 bytes.
+End of program. Tue Jul 21 05:46:53 2026

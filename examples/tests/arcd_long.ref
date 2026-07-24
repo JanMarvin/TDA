@@ -1,0 +1,80 @@
+Reading archive file: data/sub/adata_first_wave_2026.dat
+Read records:      20     
+TDA. Analysis of Transition Data (6.4q). Sun Sep 20 11:01:35 2026
+Current memory: 390032 bytes.
+
+Reading command file: arcd_long.cf
+============================================================================
+arcd=long.zad
+Reading archive description file: long.zad
+ZOO data archive: long.zoo
+Checking definition of files in archive.
+
+FN  Type  RLen  Records  NVar    Size    M  Name
+------------------------------------------------
+  1   1     24       20     3       480  1  data/sub/adata_first_wave_2026.dat
+  2   2     40        3     0       120  1  data/avar_description.dat
+
+----------------------------------------------------------------------------
+arcc
+Archive check. Reading files defined in: long.zad
+
+File:   1  data/sub/adata_first_wave_2026.dat records:      20
+File:   2  data/avar_description.dat          records:       3
+Found 3 variables.
+No errors found.
+----------------------------------------------------------------------------
+arcv()
+Using variable description file: data/avar_description.dat
+# arcd = long.zad;
+# nvar(
+# V1<5>[8.0] = A:V1, # [data/sub/adata_first_wave_2026.dat] first variable
+# V2<5>[8.0] = A:V2, # [data/sub/adata_first_wave_2026.dat] second variable
+# V3<5>[8.0] = A:V3, # [data/sub/adata_first_wave_2026.dat] third variable
+# );
+----------------------------------------------------------------------------
+nvar(...)
+Creating new variables. Current memory: 521989 bytes.
+
+Number of archive variables: 3
+Searching for these variables in archive: long.zoo
+
+Variable  File                                FN  Off  Len  Format  Label
+--------------------------------------------------------------------------
+V1        data/sub/adata_first_wave_2026.dat   1     0    8    8.0   first variable
+V2        data/sub/adata_first_wave_2026.dat   1     8    8    8.0   second variable
+V3        data/sub/adata_first_wave_2026.dat   1    16    8    8.0   third variable
+
+Using archive data file: data/sub/adata_first_wave_2026.dat
+Number of records: 20. Record length: 24.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 V1        3   5   8.0  A:V1
+  2 V2        3   5   8.0  A:V2
+  3 V3        3   5   8.0  A:V3
+
+Creating a new data matrix.
+Maximum number of cases: 20
+
+Read records: 20 
+
+Created a new data matrix.
+Number of cases: 20
+Number of variables: 3
+
+Missing values in numerical variables (blank,star,point,general): none
+
+End of creating new variables. Current memory: 522289 bytes.
+----------------------------------------------------------------------------
+dstat
+Descriptive statistics. Current memory: 522289 bytes.
+
+Variable    Minimum    Maximum       Mean   Std.Dev.    Sum of values
+---------------------------------------------------------------------
+V1           1.0000    20.0000    10.5000     5.9161         210.0000
+V2           1.0000    23.0000    12.3000     6.8832         246.0000
+V3           1.0000    17.0000     8.9000     5.1186         178.0000
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 522463 bytes.
+End of program. Sun Sep 20 11:01:35 2026

@@ -1,0 +1,14 @@
+# t_rep: both repeat forms, nested, with the loop-counter matrices
+# used in expressions each iteration (mpr prints the 1x1 counters;
+# the nested run prints 11,12,21,22).
+repeat (n=3,I);
+mpr(I);
+endrepeat;
+repeat (n=2,I);
+repeat (n=2,J);
+mpr(10*I + J);
+endrepeat;
+endrepeat;
+repeat (n = 1 + 1);
+mpr(7);
+endrepeat;

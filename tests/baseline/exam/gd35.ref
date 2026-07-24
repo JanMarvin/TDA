@@ -1,0 +1,56 @@
+Read records:      10     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: gd35.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 I         3   4   0.0  c1
+  2 J         3   4   0.0  c2
+  3 V         3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): gd11.dat
+Free format. Separation character(s): default.
+
+Reading data file: gd11.dat
+Read records: 10 
+
+Created a new data matrix.
+Number of cases: 10
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402083 bytes.
+----------------------------------------------------------------------------
+gdd=I,J,V
+New graph data. Current memory: 402083 bytes.
+Option 1: edge list.
+
+Minimal level for valid edges: 0
+Number of nodes: 8. Largest node number: 8
+Graph type 4 (directed, valued).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1       10       0       54.000000             0
+
+Successfully created new graph data structure. Current memory: 402625 bytes.
+----------------------------------------------------------------------------
+gflow(fmt=4.0,)=d1
+Maximal flows. Current memory: 402619 bytes.
+Using graph number 1 (directed, valued).
+28 records written to: d1
+----------------------------------------------------------------------------
+gflow(opt=3,fmt=4.0,)=d2
+Maximal flows. Current memory: 402619 bytes.
+Using graph number 1 (directed, valued).
+8 records written to: d2
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422121 bytes.
+End of program. Tue Jul 21 05:46:53 2026

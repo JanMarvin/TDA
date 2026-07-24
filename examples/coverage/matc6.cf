@@ -1,0 +1,26 @@
+# matc6.cf -- t_matc.c coverage batch 6: mexpr's own optional
+# <rowsel,colsel,x> selection prefix (m_expr, via get_mselect and
+# sel_expr -- previously 0% coverage, and previously mistaken for a
+# dispatch failure: get_mselect requires a literal comma immediately
+# after the closing '>', undocumented anywhere but confirmed directly
+# from its own source, i.e. the syntax is
+# "mexpr(<rowsel,colsel,x>,expression,A)" not
+# "mexpr(<rowsel,colsel,x>expression,A)". "*" selects every row/col
+# (checked: identical to the no-selector case); a specific row list
+# selects only those rows, leaving the rest at the constant x (or, in
+# the second case here, values taken from a matrix M via x=M) --
+# both checked exactly by hand against A+1's own values.
+
+mdef(A,3,3) =   4.0, 1.0, 0.5,
+                1.0, 3.0, 0.2,
+                0.5, 0.2, 2.0;
+
+mexpr(<*,*,0>,A+1,B0);
+mpr(B0);
+
+mexpr(<1,*,99>,A+1,B1);
+mpr(B1);
+
+mdef(M,3,3) = 0, 0, 0, 0, 0, 0, 0, 0, 0;
+mexpr(<2,*,M>,A+1,B2);
+mpr(B2);

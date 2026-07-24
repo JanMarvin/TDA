@@ -1,0 +1,165 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:40 2026
+Current memory: 390032 bytes.
+
+Reading command file: ggcliqops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 I         3   4   0.0  c1
+  2 J         3   4   0.0  c2
+  3 V         3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): edges.dat
+Free format. Separation character(s): default.
+
+Reading data file: edges.dat
+Read records: 4 
+
+Created a new data matrix.
+Number of cases: 4
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402083 bytes.
+----------------------------------------------------------------------------
+gdd(gt=1)=I,J,V
+New graph data. Current memory: 402083 bytes.
+Option 1: edge list.
+
+Minimal level for valid edges: 0
+Number of nodes: 4. Largest node number: 4
+Graph type 1 (undirected, unvalued).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1        4       0        1.000000             0
+
+Successfully created new graph data structure. Current memory: 402337 bytes.
+----------------------------------------------------------------------------
+ggcliq(opt=1,min=2)=c1out.txt
+Generalized cliques. Current memory: 402331 bytes.
+Using graph number 1 (undirected, unvalued).
+Option 1: cliques (max path length: 1, min size: 3).
+Algorithm: agglomerative.
+END pn=1
+nptr= 3 : 0 1 2 
+1 records written to: c1out.txt
+----------------------------------------------------------------------------
+ggcliq(opt=2,min=2)=c2out.txt
+Generalized cliques. Current memory: 402331 bytes.
+Using graph number 1 (undirected, unvalued).
+Option 2: clans (max path length: 1, min size: 3).
+Algorithm: agglomerative.
+END pn=1
+nptr= 3 : 0 1 2 
+1 records written to: c2out.txt
+----------------------------------------------------------------------------
+ggcliq(opt=3,min=2)=c3out.txt
+Generalized cliques. Current memory: 402331 bytes.
+Using graph number 1 (undirected, unvalued).
+Option 3: clubs (max path length: 1, min size: 3).
+Algorithm: agglomerative.
+END pn=1
+nptr= 3 : 0 1 2 
+1 records written to: c3out.txt
+----------------------------------------------------------------------------
+ggcliq(opt=1,alg=2,min=2)=c1e.txt
+Generalized cliques. Current memory: 402331 bytes.
+Using graph number 1 (undirected, unvalued).
+Option 1: cliques (max path length: 1, min size: 3).
+Algorithm: enumerative.
+n=3 AcN: 0 1 2 
+ne=0 AcI: 
+n=3 ne=0
+mm=0
+n=3 AcN: 0 1 2 
+ne=0 AcI: 
+n=3 ne=0
+mm=0
+n=4 AcN: 0 1 2 3 
+ne=3 AcI: 3 0 1 
+n=4 ne=3
+mm=1
+fnd : 0 0 0 
+m=1 r= 1 : 0 
+check nodes : 0 1 2 
+FOUND: 0 1 2 
+fnd : 1 0 0 
+m=1 r= 1 : 1 
+check nodes : 1 2 3 
+fnd : 1 0 0 
+m=1 r= 1 : 2 
+check nodes : 0 2 3 
+END pn=1
+nptr= 3 : 0 1 2 
+1 records written to: c1e.txt
+----------------------------------------------------------------------------
+ggcliq(opt=2,alg=2,min=2)=c2e.txt
+Generalized cliques. Current memory: 402331 bytes.
+Using graph number 1 (undirected, unvalued).
+Option 2: clans (max path length: 1, min size: 3).
+Algorithm: enumerative.
+n=3 AcN: 0 1 2 
+ne=0 AcI: 
+n=3 ne=0
+mm=0
+n=3 AcN: 0 1 2 
+ne=0 AcI: 
+n=3 ne=0
+mm=0
+n=4 AcN: 0 1 2 3 
+ne=3 AcI: 3 0 1 
+n=4 ne=3
+mm=1
+fnd : 0 0 0 
+m=1 r= 1 : 0 
+check nodes : 0 1 2 
+FOUND: 0 1 2 
+fnd : 1 0 0 
+m=1 r= 1 : 1 
+check nodes : 1 2 3 
+fnd : 1 0 0 
+m=1 r= 1 : 2 
+check nodes : 0 2 3 
+END pn=1
+nptr= 3 : 0 1 2 
+1 records written to: c2e.txt
+----------------------------------------------------------------------------
+ggcliq(opt=3,alg=2,min=2)=c3e.txt
+Generalized cliques. Current memory: 402331 bytes.
+Using graph number 1 (undirected, unvalued).
+Option 3: clubs (max path length: 1, min size: 3).
+Algorithm: enumerative.
+n=3 AcN: 0 1 2 
+ne=0 AcI: 
+n=3 ne=0
+mm=0
+n=3 AcN: 0 1 2 
+ne=0 AcI: 
+n=3 ne=0
+mm=0
+n=4 AcN: 0 1 2 3 
+ne=3 AcI: 3 0 1 
+n=4 ne=3
+mm=1
+fnd : 0 0 0 
+m=1 r= 1 : 0 
+check nodes : 0 1 2 
+FOUND: 0 1 2 
+fnd : 1 0 0 
+m=1 r= 1 : 1 
+check nodes : 1 2 3 
+fnd : 1 0 0 
+m=1 r= 1 : 2 
+check nodes : 0 2 3 
+END pn=1
+nptr= 3 : 0 1 2 
+1 records written to: c3e.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422121 bytes.
+End of program. Fri Sep  4 15:06:40 2026

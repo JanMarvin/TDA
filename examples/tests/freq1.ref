@@ -1,0 +1,80 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: freq1.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   3.0  c1
+  2 X         3   4   6.2  c2
+  3 Y         3   4   6.2  c3
+  4 G         3   4   1.0  c4
+  5 T         3   4   3.0  c5
+  6 D         3   4   1.0  c6
+  7 YL        3   4   6.2  c7
+  8 YU        3   4   6.2  c8
+  9 XL        3   4   6.2  c9
+ 10 XU        3   4   6.2  c10
+ 11 P1        3   4   6.3  c11
+ 12 P2        3   4   6.3  c12
+ 13 P3        3   4   6.3  c13
+ 14 TS        2   8   1.0  0
+ 15 ORG       2   8   1.0  0
+ 16 TL        3   4   3.0  T
+ 17 TU        3   4   3.0  T+5
+ 18 G1        3   4   0.0  G[1]
+ 19 G2        3   4   0.0  G[2]
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): d.dat
+Free format. Separation character(s): default.
+
+Reading data file: d.dat
+Read records: 20 
+
+Created a new data matrix.
+Number of cases: 20
+Number of variables: 19
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 458464 bytes.
+----------------------------------------------------------------------------
+freq1()=X
+Frequency tables. Current memory: 458464 bytes.
+Maximum number of categories: 1000
+
+Frequency distribution for variable(s): X
+Number of categories: 20
+
+Index    X  Frequency   Pct   Cumulated   Pct
+----------------------------------------------
+    1    2       1.00   5.00       1.00   5.00
+    2    3       1.00   5.00       2.00  10.00
+    3    4       1.00   5.00       3.00  15.00
+    4    5       1.00   5.00       4.00  20.00
+    5    6       1.00   5.00       5.00  25.00
+    6    7       1.00   5.00       6.00  30.00
+    7    8       1.00   5.00       7.00  35.00
+    8    9       1.00   5.00       8.00  40.00
+    9   11       1.00   5.00       9.00  45.00
+   10   12       1.00   5.00      10.00  50.00
+   11   13       1.00   5.00      11.00  55.00
+   12   14       1.00   5.00      12.00  60.00
+   13   15       1.00   5.00      13.00  65.00
+   14   16       1.00   5.00      14.00  70.00
+   15   18       1.00   5.00      15.00  75.00
+   16   19       1.00   5.00      16.00  80.00
+   17   20       1.00   5.00      17.00  85.00
+   18   21       1.00   5.00      18.00  90.00
+   19   22       1.00   5.00      19.00  95.00
+   20   23       1.00   5.00      20.00 100.00
+----------------------------------------------
+Sum             20.00 100.00
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 478626 bytes.
+End of program. Wed Sep  2 16:02:32 2026

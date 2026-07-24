@@ -1,0 +1,12 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:58 2026
+Current memory: 390032 bytes.
+
+Reading command file: seqm1c.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+Syntax error in variable: Y{1,5}=c1
+No new variables created. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390032 bytes.
+End of program. Tue Jul 21 05:46:58 2026

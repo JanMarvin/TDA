@@ -1,0 +1,18 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: int2.cf
+============================================================================
+evalf=...
+Function evaluation. Current memory: 390032 bytes.
+
+Function definition:
+fn      = int(0,1,sqrt(t))
+
+Function without arguments.
+Numerical integration with method 1. Relative error: 0.0001 (0.0001).
+
+      0.6667    function value
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390128 bytes.
+End of program. Tue Jul 21 05:46:53 2026

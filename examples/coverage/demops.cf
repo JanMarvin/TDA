@@ -1,0 +1,8 @@
+# spmod: stationary solution of a Leslie matrix.  Verified against R's
+# eigen: the final growth factor 0.83209 equals the dominant
+# eigenvalue and the stationary vector equals the normalized dominant
+# eigenvector of the Leslie matrix built from F (first row) and S
+# (subdiagonal), to six decimals (session 39).
+nvar(dfile=dem.dat, F[8.4]=c1, S[8.4]=c2, X[8.4]=c3);
+spmod(fmt=12.8) = F,S,X;
+spmod(fmt=12.8, tolf=1.e-10, mxit=500, prot=spprot.out) = F,S,X;

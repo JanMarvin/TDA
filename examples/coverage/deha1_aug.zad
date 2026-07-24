@@ -1,0 +1,8 @@
+# deha1_aug archive description -- file 1 (eha6.dat) is a REAL LZH
+# (method 2) member of the original, unmodified deha1.zoo (shipped in
+# tdaR/inst/extdata/, Blossfeld & Rohwer's own example data); file 2
+# is the small synthetic variable-description member described in
+# build_deha1_aug.py.
+deha1_aug.zoo
+1 eha6.dat 1 13 9 4
+2 eha6var.dat 2 30 4 0

@@ -1,0 +1,59 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:51 2026
+Current memory: 390032 bytes.
+
+Reading command file: ivreg1.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 XL        3   4   4.1  c1
+  2 XH        3   4   4.1  c2
+  3 YL        3   4   4.1  c3
+  4 YH        3   4   4.1  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ivdat.dat
+Free format. Separation character(s): default.
+
+Reading data file: ivdat.dat
+Read records: 4 
+
+Created a new data matrix.
+Number of cases: 4
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 406104 bytes.
+----------------------------------------------------------------------------
+ivreg1(nbox=200,mxit=200,tolf=1e-4)=YL,YH,XL,XH
+Regression with interval data. Current memory: 406104 bytes.
+
+Number of data points: 4
+Number of parameters: 4
+Maximum number of iterations: 200
+Maximum number of boxes: 200
+Tolerance for box width: 0.0001
+Tolerance for function range: 1e-10
+Tolerance for global minimum: 1e-10
+
+Number of iterations performed: 201
+Number of function evaluations: 331
+Number of inclusion function evaluations: 401
+Number of boxes used: 102
+Number of temporarily accepted boxes: 0
+Number of finally accepted boxes: 0
+Warning: 102 boxes have not been processed.
+
+Best minimal function value:      4.263335   best lower bound: ***
+No certified bound: the search stopped at its limits
+(mxit=, nbox=).  The value above is the best point found,
+not proven optimal.  Raise the limits to certify it.
+
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426151 bytes.
+End of program. Fri Sep  4 15:06:51 2026

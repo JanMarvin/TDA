@@ -1,0 +1,20 @@
+# mapgshhs.cf -- t_map.c coverage: sdgshhs (reads a real GSHHS coastline
+# binary), then psetupg + sdpmap draws a regional window of it -- the
+# uploaded gshhs_l.b fixture (10717 polygons worldwide), restricted to
+# level=1 (continents/islands) and a small view/region so the polygon
+# count stays manageable while still exercising the real clipping and
+# drawing code paths on real coastline data, not an invented shape.
+
+sdgshhs(df=coast.sd, level=1) = gshhs_l.b;
+sdnvar(
+    dfile = coast.sd,
+    SDID     = c1,
+    SDTyp    = c2,
+    SDN      = c3,
+    SDPtr<5> = rd,
+);
+
+psfile = gshhsmap.ps;
+psetupg(proj=10, view=-3,51, region=6,4, pxlen=150);
+sdpgrat(lon=-6(2)0, lat=48(2)54, fsx=2, fsy=2, lw=0.1);
+sdpmap();

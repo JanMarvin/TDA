@@ -1,0 +1,27 @@
+# matc5b.cf -- t_matc.c coverage batch 5b: mlp/mlp1 (linear
+# programming). Tableau layout and MAXIMIZE-with-<=-constraints
+# convention read directly from lpf1()'s own doc comment (t_lp.c),
+# not guessed: row 1 is the objective, rows 2.. are constraints with
+# their RHS in the last column, and equality constraints (mlp1's own
+# "p" count) must be the LAST rows of the constraint block. Checked
+# against the textbook Reddy-Mikks-style LP (maximize 3x+5y subject
+# to x<=4, 2y<=12, 3x+2y<=18): the known optimum (x=2, y=6, value=36)
+# is reproduced exactly, and the dual solution satisfies
+# complementary slackness and dual feasibility exactly by hand. mlp1
+# repeats it with the third constraint (already tight at the optimum)
+# turned into an equality, confirming the documented behaviour that
+# equality constraints get their own dual value forced to 0.
+
+silent = -1;
+
+mdef(T,4,3) =   3, 5, 0,
+                1, 0, 4,
+                0, 2, 12,
+                3, 2, 18;
+mlp(T,X,Y);
+mpr(X);
+mpr(Y);
+
+mlp1(T,1,X1,Y1);
+mpr(X1);
+mpr(Y1);

@@ -1,0 +1,144 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:40 2026
+Current memory: 390032 bytes.
+
+Reading command file: exprall.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   2.0  c1
+  2 X         3   4   6.2  c2
+  3 G         3   4   2.0  c3
+  4 W000      3   4  10.4  exp(X)
+  5 W001      3   4  10.4  log(X)
+  6 W002      3   4  10.4  rnd(X)
+  7 W003      3   4  10.4  abs(X)
+  8 W004      3   4  10.4  sign(X)
+  9 W005      3   4  10.4  floor(X)
+ 10 W006      3   4  10.4  ceil(X)
+ 11 W010      3   4  10.4  sqrt(X)
+ 12 W011      3   4  10.4  sin(X)
+ 13 W012      3   4  10.4  cos(X)
+ 14 W013      3   4  10.4  lgam(X)
+ 15 W014      3   4  10.4  icg1(X,G)
+ 16 W016      3   4  10.4  eexp(X)
+ 17 W017      3   4  10.4  digam(X)
+ 18 W018      3   4  10.4  trigam(X)
+ 19 W020      3   4  10.4  icg(X,G)
+ 20 W024      3   4  10.4  poisson(X,G)
+ 21 W025      3   4  10.4  negbin(X,G,ID)
+ 22 W026      3   4  10.4  gclen(X,G,ID,X)
+ 23 W030      3   4  10.4  not(X)
+ 24 W031      3   4  10.4  and(X,G)
+ 25 W032      3   4  10.4  or(X,G)
+ 26 W033      3   4  10.4  eq(X,G)
+ 27 W034      3   4  10.4  ne(X,G)
+ 28 W035      3   4  10.4  lt(X,G)
+ 29 W036      3   4  10.4  le(X,G)
+ 30 W037      3   4  10.4  gt(X,G)
+ 31 W038      3   4  10.4  ge(X,G)
+ 32 W039      3   4  10.4  if(X,G,ID)
+ 33 W040      3   4  10.4  ndf(X)
+ 34 W042      3   4  10.4  nd(X)
+ 35 W043      3   4  10.4  mr(X)
+ 36 W044      3   4  10.4  td(X,G)
+ 37 W045      3   4  10.4  chd(X,G)
+ 38 W046      3   4  10.4  fd(X,G,ID)
+ 39 W047      3   4  10.4  jul(X,G,ID)
+ 40 W048      3   4  10.4  jul1(X,G,ID)
+ 41 W049      3   4  10.4  rd(X,G)
+ 42 W051      3   4  10.4  grd(X)
+ 43 W052      3   4  10.4  july(X)
+ 44 W053      3   4  10.4  julm(X)
+ 45 W054      3   4  10.4  juld(X)
+ 46 W055      3   4  10.4  num(X,G)
+ 47 W058      3   4  10.4  row(X)
+ 48 W059      3   4  10.4  col(X)
+ 49 W061      3   4  10.4  rdp1(X)
+ 50 W069      4   4  10.4  lag(X,G)
+ 51 W070      4   4  10.4  sum(X)
+ 52 W071      4   4  10.4  mean(X)
+ 53 W072      4   4  10.4  std(X)
+ 54 W073      4   4  10.4  cum(X)
+ 55 W074      4   4  10.4  cd(X)
+ 56 W075      4   4  10.4  cdv(X)
+ 57 W076      4   4  10.4  vmin(X)
+ 58 W077      4   4  10.4  vmax(X)
+ 59 W078      4   4  10.4  suc(X)
+ 60 W079      4   4  10.4  pre(X)
+ 61 W080      4   4  10.4  mav(X,G)
+ 62 W081      4   4  10.4  vdif(X,G)
+ 63 W082      4   4  10.4  cmean(X,G)
+ 64 W083      4   4  10.4  cmean1(X,G)
+ 65 W084      4   4  10.4  sort(X)
+ 66 W085      4   4  10.4  snum(X)
+ 67 W086      4   4  10.4  rank(X)
+ 68 W087      4   4  10.4  ndv(X)
+ 69 W088      4   4  10.4  ndv1(X,G)
+ 70 W089      4   4  10.4  ndv2(X,G,ID)
+ 71 W093      4   4  10.4  cnteq(X,G)
+ 72 W094      4   4  10.4  cntne(X,G)
+ 73 W095      4   4  10.4  cntlt(X,G)
+ 74 W096      4   4  10.4  cntgt(X,G)
+ 75 W097      4   4  10.4  cntle(X,G)
+ 76 W098      4   4  10.4  cntge(X,G)
+ 77 W099      4   4  10.4  gcnt(X)
+ 78 W100      4   4  10.4  grec(X)
+ 79 W101      4   4  10.4  gsn(X)
+ 80 W102      4   4  10.4  gfirst(X)
+ 81 W103      4   4  10.4  glast(X)
+ 82 W104      4   4  10.4  gsum(X,G)
+ 83 W105      4   4  10.4  gmean(X,G)
+ 84 W106      4   4  10.4  gstd(X,G)
+ 85 W107      4   4  10.4  gmin(X,G)
+ 86 W108      4   4  10.4  gmax(X,G)
+ 87 W109      4   4  10.4  gsort(X,G)
+ 88 W110      4   4  10.4  gndv(X,G)
+ 89 W111      4   4  10.4  gndv1(X,G,ID)
+ 90 W112      4   4  10.4  change(X)
+ 91 W113      4   4  10.4  cntch(X)
+ 92 W114      4   4  10.4  ccntch(X)
+ 93 W115      4   4  10.4  lagch(X)
+ 94 W118      4   4  10.4  bmin(X)
+ 95 W119      4   4  10.4  bmax(X)
+ 96 W120      4   4  10.4  bfa(X)
+ 97 W121      4   4  10.4  bfr(X)
+ 98 W122      4   4  10.4  bnrec
+ 99 W123      4   4  10.4  brec
+100 W124      4   4  10.4  bfirst
+101 W125      4   4  10.4  blast
+102 W126      4   4  10.4  bnum
+103 W127      4   4  10.4  brd
+104 W128      3   4  10.4  case
+105 W129      3   4  10.4  nvar
+106 W130      2   8  10.4  pi
+107 W131      3   4  10.4  rdn1
+108 W132      3   4  10.4  rdn
+109 W133      3   4  10.4  rd
+110 W134      3   4  10.4  nocdm
+111 W135      3   4  10.4  noc
+112 W136      3   4  10.4  bnoc
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ex.dat
+Free format. Separation character(s): default.
+
+Reading data file: ex.dat
+Read records: 6 
+
+Created a new data matrix.
+Number of cases: 6
+Number of variables: 112
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 838631 bytes.
+----------------------------------------------------------------------------
+pdata(...)=out.txt
+6 records with 112 variables written to: out.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 859221 bytes.
+End of program. Fri Sep  4 15:06:40 2026

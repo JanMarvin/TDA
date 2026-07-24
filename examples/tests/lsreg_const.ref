@@ -1,0 +1,53 @@
+TDA. Analysis of Transition Data (6.4q). Thu Sep 10 21:18:09 2026
+Current memory: 390032 bytes.
+
+Reading command file: lsreg_const.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X1        3   4   0.0  case
+  2 X2        3   4   0.0  case*case/10
+  3 Y         2   8   0.0  5
+
+Creating a new data matrix.
+Maximum number of cases: 20
+
+Created a new data matrix.
+Number of cases: 20
+Number of variables: 3
+
+End of creating new variables. Current memory: 390312 bytes.
+----------------------------------------------------------------------------
+lsreg(...)=...
+Least squares regression. Current memory: 390312 bytes.
+
+Variables (cross-section)
+-------------------------
+Y   : Y   
+X1  : X1  
+X2  : X2  
+
+Model without intercept.
+Equality constraints: 0
+Inequality constraints: 0
+
+Reading data. Cases: 20
+
+Rank of least squares data matrix: 2
+Norm of least squares residuals: 6.7206
+
+Degrees of freedom: 18
+Sum of squared residuals: 45.1664
+Variance of residuals: 2.50924
+
+Idx  Wave  Variable       Coeff      Error    Coeff/E  Signif
+-------------------------------------------------------------
+  1     1  X1            0.9746     0.1185     8.2282  1.0000
+  2     1  X2           -0.3962     0.0746    -5.3076  1.0000
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 391458 bytes.
+End of program. Thu Sep 10 21:18:09 2026

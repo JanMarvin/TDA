@@ -1,0 +1,19 @@
+# e00pts.cf -- t_e00.c coverage: sde00 converts a real ARC/INFO export
+# (input.e00 = the uploaded ARC/INFO export, water-well point coverage, LAB
+# section only -> point interpretation) into a TDA spatial file, then
+# sdnvar + psetupg + sdpmap draws it -- the same real-fixture pattern
+# already used for the shapefile/GSHHS/DCW tests. attr=2 pulls in the
+# attribute table too, exercising the PAT-section attribute path.
+
+sde00(df=e00.sd, attr=2, fmt=14.6, dtda=e00desc.txt) = input.e00;
+sdnvar(
+    dfile = e00.sd,
+    SDID     = c1,
+    SDTyp    = c2,
+    SDN      = c3,
+    SDPtr<5> = rd,
+);
+
+psfile = e00map.ps;
+psetupg(proj=10, view=-77,39.7, region=1,1, pxlen=150);
+sdpmap(s=4, fs=1.5);

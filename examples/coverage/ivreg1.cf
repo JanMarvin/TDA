@@ -1,0 +1,18 @@
+# ivreg1.cf -- t_ireg.c coverage: ivreg1 (interval-data regression via a
+# box search, certified minimum). Same data as ivreg2.cf (tdaR's own
+# roxygen example values, perturbed slightly to avoid the exact-fit
+# degenerate case). Checked structurally: the box search either
+# certifies a solution or reports its own status honestly -- tdaR's own
+# docs note TDA's default 100/100 iteration/box limits rarely complete
+# a real search, so this is not expected to match ivreg2's answer
+# exactly, only to run and terminate cleanly.
+
+nvar(
+    dfile = ivdat.dat,
+    XL [4.1] = c1,
+    XH [4.1] = c2,
+    YL [4.1] = c3,
+    YH [4.1] = c4,
+);
+
+ivreg1(nbox=200, mxit=200, tolf=1e-4) = YL,YH,XL,XH;

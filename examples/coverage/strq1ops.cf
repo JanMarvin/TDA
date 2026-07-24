@@ -1,0 +1,16 @@
+# String variables (str takes CHARACTER columns while cN takes free
+# tokens; the two coexist) and quant1, whose conventions were
+# established by hand-KM arbitration (fuzzer): p is the SURVIVOR level
+# and quantiles interpolate linearly between Kaplan-Meier steps --
+# with events at 12,37,41,66 (25 and 58 censored), S(0.5) sits at
+# 39.4 and S(0.25) at 51, both non-data values, both reproduced
+# exactly by the independent KM computation.
+nvar(dfile=sq.dat, X[6.1]=c1, Z[2.0]=c2, S=str(6,7),
+  E1[8.2]  = strlen(S),
+  E2[12.4] = quant1(X, Z, 0.5, 0),
+  E3[12.4] = quant1(X, Z, 0.25, 0),
+  E4[12.4] = quant1(X, Z, 0.5, 1),
+  E5[12.4] = strv(S),
+);
+pdata(keep=E1,E2,E3,E4,E5,S) = sq.out;
+dstat;

@@ -1,0 +1,45 @@
+# mnrowops.cf -- t_matc.c coverage: mnrow/mncol/mnorm/mnorm1/mnorm2/mtrace
+# (all dispatched through m_nrow's opt switch). tda.hlp documents mnorm
+# as "the absolute value of the matrix element that has largest
+# absolute value" -- confirmed against a mixed-sign matrix where the
+# most-negative element has the largest magnitude, which caught a
+# real bug: the C code took dmax(0, raw value) with no fabs(), so any
+# matrix whose most-negative element outweighs its most-positive one
+# silently returned the WRONG maximum (or 0 if every element is
+# negative). Fixed to dmax(0, fabs(raw value)). mnorm1 (sum of abs)
+# and mnorm2 (Frobenius) already used fabs()/squaring and were never
+# affected -- confirmed by reading, not just re-testing.
+#
+# Case: A = [[-1,2,-3],[4,-9,6]] (mtrace uses min(2,3)=2 diagonal
+# elements: A[1,1]+A[2,2] = -1+-9 = -10).
+#   mnrow = 2, mncol = 3
+#   mnorm (max abs) = 9  (from -9; would have wrongly returned 6
+#     -- the largest RAW value -- before the fix, since -9 < 6)
+#   mnorm1 (sum abs) = 1+2+3+4+9+6 = 25
+#   mnorm2 (Frobenius) = sqrt(1+4+9+16+81+36) = sqrt(147)
+#   mtrace = -10
+
+silent = -1;
+mfmt = 24.16;
+
+mdef(A,2,3) = -1,2,-3, 4,-9,6;
+mnrow(A,NR);
+mncol(A,NC);
+mnorm(A,N0);
+mnorm1(A,N1);
+mnorm2(A,N2);
+mtrace(A,TR);
+mpr(NR);
+mpr(NC);
+mpr(N0);
+mpr(N1);
+mpr(N2);
+mpr(TR);
+
+# an all-negative matrix: the strongest form of the bug -- every
+# raw value is < 0, so the old code's tmp (initialized to 0.0) never
+# updated, silently returning 0 as the "max absolute value" instead
+# of 5 (from -5). Verifies the fix, not just a less-degenerate case.
+mdef(B,2,2) = -1,-3, -2,-5;
+mnorm(B,N3);
+mpr(N3);

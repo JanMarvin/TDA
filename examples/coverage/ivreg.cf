@@ -1,0 +1,21 @@
+# ivreg.cf -- t_ireg.c coverage: ivreg (two-step / heuristic / exact
+# optimization LS regression with interval data), opt=1, opt=2, opt=3.
+# Same data as ivreg2.cf, tdaR's own roxygen example values perturbed
+# slightly to avoid the exact-fit degenerate case ivreg2.cf's own
+# comment documents. opt=2 used to hang (a real bug, fixed this
+# session -- see README's "Proven-bug fixes" section and
+# doc/r-export-plan.md); it terminates cleanly now.
+
+nvar(
+    dfile = ivdat.dat,
+    XL [4.1] = c1,
+    XH [4.1] = c2,
+    YL [4.1] = c3,
+    YH [4.1] = c4,
+);
+
+ivreg(opt=1) = YL,YH,XL,XH;
+
+ivreg(opt=2, n=2) = YL,YH,XL,XH;
+
+ivreg(opt=3) = YL,YH,XL,XH;

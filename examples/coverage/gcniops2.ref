@@ -1,0 +1,63 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:40 2026
+Current memory: 390032 bytes.
+
+Reading command file: gcniops2.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 I         3   4   0.0  c1
+  2 J         3   4   0.0  c2
+  3 V         3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): edges2.dat
+Free format. Separation character(s): default.
+
+Reading data file: edges2.dat
+Read records: 6 
+
+Created a new data matrix.
+Number of cases: 6
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402083 bytes.
+----------------------------------------------------------------------------
+gdd(gt=1)=I,J,V
+New graph data. Current memory: 402083 bytes.
+Option 1: edge list.
+
+Minimal level for valid edges: 0
+Number of nodes: 6. Largest node number: 6
+Graph type 1 (undirected, unvalued).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1        6       0        1.000000             0
+
+Successfully created new graph data structure. Current memory: 402449 bytes.
+----------------------------------------------------------------------------
+gcni(opt=3,prn=2,n=1)=out3.txt
+Comparing neighborhoods. Current memory: 402443 bytes.
+Using graph number 1 (undirected, unvalued).
+Option 3: check for isomorphic neighborhoods (starting points fixed).
+Depth of neighborhood: 1
+
+Number of classes: 1
+6 records written to: out3.txt
+----------------------------------------------------------------------------
+gcni(opt=4,prn=2,n=1)=out4.txt
+Comparing neighborhoods. Current memory: 402443 bytes.
+Using graph number 1 (undirected, unvalued).
+Option 4: check for isomorphic neighborhoods (starting points not fixed).
+Depth of neighborhood: 1
+
+Number of classes: 1
+6 records written to: out4.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422121 bytes.
+End of program. Fri Sep  4 15:06:40 2026

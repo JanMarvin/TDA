@@ -1,0 +1,12 @@
+nvar(
+ dfile = smy.dat,
+ Y<8> = c1,
+ S1<8> = smd[sm=[3R]](Y),
+ S2<8> = smd[sm=[3RSSH],opt=1](Y),
+ S3<8> = smd[sm=[H],opt=2](Y),
+ S4<8> = smd[sm=[53RH],opt=3](Y),
+ S5<8> = smd[sm=[42],opt=1](Y),
+ S6<8> = smd[sm=[3RSSHt],opt=1](Y),
+);
+dstat = Y,S1,S2,S3,S4,S5,S6;
+pdata(fmt=14.6) = Y,S1,S2,S3,S4,S5,S6;

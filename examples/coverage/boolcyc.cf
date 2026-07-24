@@ -1,0 +1,12 @@
+# boolcyc.cf -- a Boolean function with a CYCLIC prime implicant chart.
+# bfa only runs its minimal-cover search when the essential prime
+# implicants fail to cover the chart; on an ordinary function the
+# essentials cover everything and Lawler's methods are never reached.
+# ab' + bc' + ca' has no essential prime implicants at all.
+nvar(
+    dfile = bcyc.dat,
+    Y  [2.0] = c1, X1 [2.0] = c2, X2 [2.0] = c3, X3 [2.0] = c4,
+);
+bfa(alg=1, ptab1=1) = Y,X1,X2,X3;
+bfa(alg=2, ptab1=1) = Y,X1,X2,X3;
+bfa(alg=3, ptab1=1) = Y,X1,X2,X3;

@@ -1,0 +1,91 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:52 2026
+Current memory: 390032 bytes.
+
+Reading command file: unfops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X1        3   4   0.0  c1
+  2 X2        3   4   0.0  c2
+  3 X3        3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): unfdat.dat
+Free format. Separation character(s): default.
+
+Reading data file: unfdat.dat
+Read records: 3 
+
+Created a new data matrix.
+Number of cases: 3
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402086 bytes.
+----------------------------------------------------------------------------
+unf(df=unfout.txt)=X1,X2,X3
+Unfolding. Current memory: 402086 bytes.
+rr: 3 2 1 
+rr: 2 3 1 
+rr: 1 3 2 
+rr: 1 2 3 
+rr: 3 2 1 
+rr: 2 3 1 
+rr: 1 3 2 
+rr: 1 2 3 
+rr: 3 2 1 
+rr: 2 3 1 
+rr: 1 3 2 
+rr: 1 2 3 
+UNFMax=7
+rr: 2 3 1 
+rr: 3 2 1 
+rr: 3 1 2 
+rr: 2 1 3 
+rr: 2 3 1 
+rr: 3 2 1 
+rr: 3 1 2 
+rr: 2 1 3 
+rr: 2 3 1 
+rr: 3 2 1 
+rr: 3 1 2 
+rr: 2 1 3 
+UNFMax=9
+rr: 3 1 2 
+rr: 2 1 3 
+rr: 1 2 3 
+rr: 1 3 2 
+rr: 3 1 2 
+rr: 2 1 3 
+rr: 1 2 3 
+rr: 1 3 2 
+rr: 3 1 2 
+rr: 2 1 3 
+rr: 1 2 3 
+rr: 1 3 2 
+UNFMax=9
+
+Best value (sum of taus): 3
+Best permutation: 2 1 3 
+rr: 2 3 1 
+rr: 3 2 1 
+rr: 3 1 2 
+rr: 2 1 3 
+rr: 2 3 1 
+rr: 3 2 1 
+rr: 3 1 2 
+rr: 2 1 3 
+rr: 2 3 1 
+rr: 3 2 1 
+rr: 3 1 2 
+rr: 2 1 3 
+
+3 records written to: unfout.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422124 bytes.
+End of program. Fri Sep  4 15:06:52 2026

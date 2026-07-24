@@ -1,0 +1,163 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 21:50:00 2026
+Current memory: 390032 bytes.
+
+Reading command file: statawr.cf
+============================================================================
+rstata(...)=rs114.dta
+Reading Stata file: rs114.dta
+Release: 0x72 [version 10]
+Number of variables: 4
+Number of cases: 6
+Data label: Written by R
+Time stamp: 04 Sep 2026 21:15
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Id        3   5   0.0  stata(0xfd)
+  2 X         3   8   0.0  stata(0xff)
+  3 G         3   5   0.0  stata(0xfd)
+  4 Big       3   5   0.0  stata(0xfd)
+
+Reading data to create internal data matrix.
+Maximum number of cases: 6
+Record length: 20
+Allocated 120 bytes for data matrix.
+
+Read 6 records. 
+Created a data matrix with 4 variables and 6 cases.
+Number of system missing values (substituted by -5): 1
+----------------------------------------------------------------------------
+wstata(...)=tdawr.out
+Writing Stata file: tdawr.out
+For Stata release: 10
+6 records with 4 variables written to: tdawr.out
+----------------------------------------------------------------------------
+clear
+Deleted whole data matrix. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+rstata(...)=rs114.dta
+Reading Stata file: rs114.dta
+Release: 0x72 [version 10]
+Number of variables: 4
+Number of cases: 6
+Data label: Written by R
+Time stamp: 04 Sep 2026 21:15
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Id        3   5   0.0  stata(0xfd)
+  2 X         3   8   0.0  stata(0xff)
+  3 G         3   5   0.0  stata(0xfd)
+  4 Big       3   5   0.0  stata(0xfd)
+
+Reading data to create internal data matrix.
+Maximum number of cases: 6
+Record length: 20
+Allocated 120 bytes for data matrix.
+
+Read 6 records. 
+Created a data matrix with 4 variables and 6 cases.
+Number of system missing values (substituted by -5): 1
+----------------------------------------------------------------------------
+wstata(...)=w6.out
+Writing Stata file: w6.out
+For Stata release: 6
+6 records with 4 variables written to: w6.out
+----------------------------------------------------------------------------
+clear
+Deleted whole data matrix. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+rstata(...)=rs114.dta
+Reading Stata file: rs114.dta
+Release: 0x72 [version 10]
+Number of variables: 4
+Number of cases: 6
+Data label: Written by R
+Time stamp: 04 Sep 2026 21:15
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Id        3   5   0.0  stata(0xfd)
+  2 X         3   8   0.0  stata(0xff)
+  3 G         3   5   0.0  stata(0xfd)
+  4 Big       3   5   0.0  stata(0xfd)
+
+Reading data to create internal data matrix.
+Maximum number of cases: 6
+Record length: 20
+Allocated 120 bytes for data matrix.
+
+Read 6 records. 
+Created a data matrix with 4 variables and 6 cases.
+Number of system missing values (substituted by -5): 1
+----------------------------------------------------------------------------
+wstata(...)=w7.out
+Writing Stata file: w7.out
+For Stata release: 7
+6 records with 4 variables written to: w7.out
+----------------------------------------------------------------------------
+clear
+Deleted whole data matrix. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+rstata(...)=rs114.dta
+Reading Stata file: rs114.dta
+Release: 0x72 [version 10]
+Number of variables: 4
+Number of cases: 6
+Data label: Written by R
+Time stamp: 04 Sep 2026 21:15
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Id        3   5   0.0  stata(0xfd)
+  2 X         3   8   0.0  stata(0xff)
+  3 G         3   5   0.0  stata(0xfd)
+  4 Big       3   5   0.0  stata(0xfd)
+
+Reading data to create internal data matrix.
+Maximum number of cases: 6
+Record length: 20
+Allocated 120 bytes for data matrix.
+
+Read 6 records. 
+Created a data matrix with 4 variables and 6 cases.
+Number of system missing values (substituted by -5): 1
+----------------------------------------------------------------------------
+wstata(...)=w4.out
+Writing Stata file: w4.out
+For Stata release: 4
+6 records with 4 variables written to: w4.out
+----------------------------------------------------------------------------
+clear
+Deleted whole data matrix. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+rstata(...)=old105.dta
+Reading Stata file: old105.dta
+Release: 0x69 [version 4]
+Number of variables: 4
+Number of cases: 8
+Data label: Written by R
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Id        3   5   0.0  stata(l)
+  2 X         3   8   0.0  stata(d)
+  3 S         1   3   0.0  stata(3)
+  4 G         3   5   0.0  stata(l)
+
+Reading data to create internal data matrix.
+Maximum number of cases: 8
+Record length: 19
+Allocated 152 bytes for data matrix.
+
+Read 8 records. 
+Created a data matrix with 4 variables and 8 cases.
+Number of system missing values (substituted by -5): 1
+----------------------------------------------------------------------------
+wstata(...)=wstr.out
+Writing Stata file: wstr.out
+For Stata release: 7
+8 records with 4 variables written to: wstr.out
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 391132 bytes.
+End of program. Fri Sep  4 21:50:00 2026

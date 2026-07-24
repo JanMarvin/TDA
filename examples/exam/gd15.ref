@@ -1,0 +1,67 @@
+Read records:      12     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: gd15.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 I         3   4   0.0  c1
+  2 J         3   4   0.0  c2
+  3 V         3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): gd4.dat
+Free format. Separation character(s): default.
+
+Reading data file: gd4.dat
+Read records: 12 
+
+Created a new data matrix.
+Number of cases: 12
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402083 bytes.
+----------------------------------------------------------------------------
+gdd(gt=2)=I,J,V
+New graph data. Current memory: 402083 bytes.
+Option 1: edge list.
+
+Minimal level for valid edges: 0
+Number of nodes: 13. Largest node number: 13
+Graph type 2 (undirected, valued, bidirectional edges: minimum).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1       12       0        4.000000             0
+
+Successfully created new graph data structure. Current memory: 402817 bytes.
+----------------------------------------------------------------------------
+psfile=gd15.ps
+Opened new PostScript file: gd15.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 90 x 50
+PostScript coordinates. X-axis: 150,405  Y-axis: 460,602
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,           1.0000 
+User coordinates Y axis:           0.0000,           1.0000 
+----------------------------------------------------------------------------
+pltree(rt=9,pl=3,nc=100,)
+Plot tree. Current memory: 402811 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+Selected root: 9
+Type of drawing: 3 (axial)
+PostScript output written to: gd15.ps
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422121 bytes.
+End of program. Tue Jul 21 05:46:53 2026

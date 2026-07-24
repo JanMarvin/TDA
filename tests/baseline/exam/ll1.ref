@@ -1,0 +1,48 @@
+Read records:       4     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: ll1.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X1        3   4   0.0  c1
+  2 X2        3   4   0.0  c2
+  3 H         3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ll1.dat
+Free format. Separation character(s): default.
+
+Reading data file: ll1.dat
+Read records: 4 
+
+Created a new data matrix.
+Number of cases: 4
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402085 bytes.
+----------------------------------------------------------------------------
+loglin(...)=...
+Loglinear models. Current memory: 402085 bytes.
+
+Definition and structure of contingency table.
+Frequencies defined by: H
+
+Dimension  Variable   Categories
+  1  A     X1           3 :  1  2  5 
+  2  B     X2           3 :  2  3  4 
+
+Table has 9 cells, 8 counts.
+Table is incomplete: 3 (33.33%) of 9 cells.
+Table written to: ll1.tab
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422317 bytes.
+End of program. Tue Jul 21 05:46:53 2026

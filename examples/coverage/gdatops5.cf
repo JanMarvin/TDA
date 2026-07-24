@@ -1,0 +1,15 @@
+# gdatops5.cf -- t_gdat.c coverage: nvar's block mode (dblock=) and
+# block-mode case selection (bsel= -- vsel='s block-mode counterpart,
+# both use the same gt()/lt()/... comparison syntax). Grp defines two
+# blocks (rows 1-2: Grp=1; rows 3-5: Grp=2). bsel=gt(X,15) drops row 1
+# (X=10) and keeps rows 2-5 (X=20,30,40,50) -- checked by hand
+# (Grp min=1,max=2,mean=1.75,sum=7; X min=20,max=50,mean=35,sum=140).
+
+silent = -1;
+
+nvar(dfile=blockdat.dat,
+    Grp=c1, X=c2,
+    dblock = Grp,
+    bsel = gt(X,15),
+);
+dstat;

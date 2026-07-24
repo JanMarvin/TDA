@@ -1,0 +1,33 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:54 2026
+Current memory: 390032 bytes.
+
+Reading command file: plot21.cf
+============================================================================
+psfile=plot21.ps
+Opened new PostScript file: plot21.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 70 x 70
+PostScript coordinates. X-axis: 150,348  Y-axis: 460,658
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:          -2.0000,           2.0000 
+User coordinates Y axis:          -2.0000,           2.0000 
+----------------------------------------------------------------------------
+plxa(sc=1)
+----------------------------------------------------------------------------
+plya(sc=1)
+----------------------------------------------------------------------------
+plframe
+----------------------------------------------------------------------------
+plotc(...)=...
+Contour plot.
+
+Function definition:
+fn      = exp(-((x1+1)^2+(x2+1)^2)/2)/(2*pi)+exp(-((x1-1)^2+(x2-1)^2)/2)/(2*pi)
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 404254 bytes.
+End of program. Tue Jul 21 05:46:54 2026

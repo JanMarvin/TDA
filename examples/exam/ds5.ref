@@ -1,0 +1,87 @@
+Read records:     100     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:50 2026
+Current memory: 390032 bytes.
+
+Reading command file: ds5.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X         3   4  10.4  case/10
+  2 Z         3   4  10.4  sin(X)
+  3 Y         3   4  10.4  Z+rd(-0.2,0.2)
+
+Creating a new data matrix.
+Maximum number of cases: 100
+
+Created a new data matrix.
+Number of cases: 100
+Number of variables: 3
+
+End of creating new variables. Current memory: 391388 bytes.
+----------------------------------------------------------------------------
+psfile=ds5.ps
+Opened new PostScript file: ds5.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 90 x 50
+PostScript coordinates. X-axis: 150,405  Y-axis: 460,602
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,          10.0000 
+User coordinates Y axis:          -1.5000,           1.5000 
+----------------------------------------------------------------------------
+plxa(sc=1)
+----------------------------------------------------------------------------
+plya(sc=0.5,ic=5,fmt=4.1)
+----------------------------------------------------------------------------
+plot(lt=0,s=2,fs=1.0)=X,Y
+----------------------------------------------------------------------------
+plot(lt=5)=X,Z
+----------------------------------------------------------------------------
+spl(...)=X,Y
+Smoothing spline function. Current memory: 391388 bytes.
+Degree: 2. Smoothing factor: 1
+Max number of iterations: 10
+Max number of knots: 51
+Successful calculation of smoothing spline.
+Actual number of knots: 28
+Interval for interpolation: [0.1,10]
+100 records written to: df
+----------------------------------------------------------------------------
+clear
+Deleted whole data matrix. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X         3   4  10.4  c2
+  2 Y         3   4  10.4  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): df
+Free format. Separation character(s): default.
+
+Reading data file: df
+Read records: 100 
+
+Created a new data matrix.
+Number of cases: 100
+Number of variables: 2
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 398066 bytes.
+----------------------------------------------------------------------------
+plot=X,Y
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 418113 bytes.
+End of program. Tue Jul 21 05:46:50 2026

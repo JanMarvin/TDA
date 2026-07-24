@@ -1,0 +1,73 @@
+Read records:      33     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: lsreg11.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 UTL       3   4   0.0  c1
+  2 ASL       3   4   0.0  c2
+  3 SPA       3   4   0.0  c3
+  4 AVS       3   4   0.0  c4
+  5 ALF       3   4   0.0  c5
+  6 CPM       3   4   0.0  c6
+  7 CSM       3   4   0.0  c7
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): lsreg11.dat
+Free format. Separation character(s): default.
+
+Reading data file: lsreg11.dat
+Read records: 33 
+
+Created a new data matrix.
+Number of cases: 33
+Number of variables: 7
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 418165 bytes.
+----------------------------------------------------------------------------
+lsreg=...
+Least squares regression. Current memory: 418165 bytes.
+
+Variables (cross-section)
+-------------------------
+Y   : CPM  
+X1  : ALF  
+X2  : UTL  
+X3  : ASL  
+X4  : SPA  
+
+Equality constraints: 0
+Inequality constraints: 0
+
+Reading data. Cases: 33
+
+Rank of least squares data matrix: 5
+Norm of least squares residuals: 2.08747
+
+Degrees of freedom: 28
+Sum of squared residuals: 4.35752
+Variance of residuals: 0.155626
+Squared multiple correlation: 0.601276
+Adjusted: 0.544316
+F-statistic: 10.556
+Level of significance: 0.999976
+
+Idx  Wave  Variable       Coeff      Error    Coeff/E  Signif
+-------------------------------------------------------------
+  1     -  Intercept     8.5955     0.9028     9.5212  1.0000
+  2     1  ALF          -7.2114     1.3206    -5.4608  1.0000
+  3     1  UTL          -0.2128     0.0651    -3.2697  0.9971
+  4     1  ASL           0.3328     0.1813     1.8351  0.9229
+  5     1  SPA          -4.9503     1.2170    -4.0678  0.9996
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 438239 bytes.
+End of program. Tue Jul 21 05:46:53 2026

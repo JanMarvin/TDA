@@ -1,0 +1,77 @@
+TDA. Analysis of Transition Data (6.4q). Mon Sep 14 10:46:43 2026
+Current memory: 390032 bytes.
+
+Reading command file: dplotbb1.cf
+============================================================================
+psfile=dplotbb1a.ps
+Opened new PostScript file: dplotbb1a.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 60 x 30
+PostScript coordinates. X-axis: 150,320  Y-axis: 460,545
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,           4.0000 
+User coordinates Y axis:          -3.0000,           0.0000 
+----------------------------------------------------------------------------
+plxa(sc=1,ic=0)
+----------------------------------------------------------------------------
+plya(sc=1,ic=0)
+----------------------------------------------------------------------------
+plframe
+----------------------------------------------------------------------------
+plotp=0,0,3,-3
+----------------------------------------------------------------------------
+pltext(xy=1.5,-0.7)=Short
+----------------------------------------------------------------------------
+> Closed current PostScript file: dplotbb1a.ps
+----------------------------------------------------------------------------
+psfile=dplotbb1b.ps
+Opened new PostScript file: dplotbb1b.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 60 x 30
+PostScript coordinates. X-axis: 150,320  Y-axis: 460,545
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,           4.0000 
+User coordinates Y axis:          -3.0000,           0.0000 
+----------------------------------------------------------------------------
+plxa(sc=1,ic=0)
+----------------------------------------------------------------------------
+plya(sc=1,ic=0)
+----------------------------------------------------------------------------
+plframe
+----------------------------------------------------------------------------
+plotp=0,0,3,-3
+----------------------------------------------------------------------------
+pltext(xy=1.5,-0.7)=A Very Much Longer Label Indeed
+----------------------------------------------------------------------------
+> Closed current PostScript file: dplotbb1b.ps
+----------------------------------------------------------------------------
+dplot(...)=...
+Combining PostScript files. Current memory: 390032 bytes.
+
+Row 1
+dplotbb1b.ps  bounding box: 112 433 395 556  xorg 150  yorg 460
+dplotbb1a.ps  bounding box: 112 433 331 556  xorg 150  yorg 460
+
+Row 2
+dplotbb1a.ps  bounding box: 112 433 331 556  xorg 150  yorg 460
+dplotbb1b.ps  bounding box: 112 433 395 556  xorg 150  yorg 460
+
+Cell size: 283 123
+
+New bounding box: 10 10 350 180
+Scaled with xscale = 0.60106  yscale = 0.691463
+
+Copying input file(s) into output file: dplotbb1.ps
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390064 bytes.
+End of program. Mon Sep 14 10:46:43 2026

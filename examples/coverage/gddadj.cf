@@ -1,0 +1,29 @@
+# gddadj.cf -- t_gg.c coverage: gdd(opt=7), the full-adjacency-matrix
+# graph-definition mode (as opposed to the edge-list mode, opt=1,
+# used by every other graph test in this corpus). Also closes
+# c_visit1 (t_gg.c): gcliq calls c_visit1 instead of c_visit whenever
+# the graph was NOT defined in edge-list form -- GD_TYP is gdd's own
+# opt=, confirmed directly (`ctx->GD_TYP = ctx->PMOPT`, t_gdd.c), not
+# gt= (a different field, GD_GT, for directed/valued).
+#
+# The same triangle+pendant graph as gcniops.cf/ggcliqops.cf (edges
+# 1-2, 2-3, 1-3, 3-4), given this time as its flattened 4x4 adjacency
+# matrix (row-major, one value per data record, NOC=16=4x4).
+#
+# Trap: gdd's own sc= (minimal edge threshold, tda.hlp: "minimal
+# level of valid edges, def. 0") applies here too, and the check is
+# `value >= sc` -- with the default sc=0, a "0" cell in the matrix
+# (meaning "no edge") is >= 0 and gets counted as a valid edge
+# anyway, silently turning the whole matrix into a complete graph
+# (confirmed: without sc=1, gcliq found a bogus size-4 clique across
+# all four nodes, including pairs with no real edge). sc=1 (or any
+# positive value) is required for the matrix's zeros to correctly
+# mean "no edge". With that fix, gcliq finds the same clique {1,2,3}
+# as the edge-list version, confirming the two graph-definition modes
+# agree on the same graph.
+
+silent = -1;
+
+nvar(dfile=adj4.dat, A=c1);
+gdd(opt=7, gt=2, sc=1) = A;
+gcliq(alg=1) = adjout.txt;

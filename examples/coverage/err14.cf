@@ -1,0 +1,10 @@
+# err14.cf -- option value at or outside its documented range.
+# alg=0 is accepted by the option parser (bfa documents 0 as its
+# default) and dma then clamps it to algorithm 1 with a notice --
+# TDA's uniform clamp-to-default design for out-of-range options.
+nvar(
+    dfile = ex.dat,
+    ID [2.0] = c1, X [6.2] = c2, G [2.0] = c3,
+);
+mdef(A,3,3) = a.mat;
+dma(alg=0);

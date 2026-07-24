@@ -1,0 +1,20 @@
+citHeader("To cite tdaR, cite TDA and the package:")
+
+bibentry(
+  bibtype = "Manual",
+  title   = "TDA User's Manual",
+  author  = c(person("Goetz", "Rohwer"), person("Ulrich", "Poetter")),
+  year    = "2009",
+  note    = "Version 6.4",
+  url     = "https://www.stat.rub.de/tda.html"
+)
+
+bibentry(
+  bibtype = "Manual",
+  title   = "tdaR: Transition Data Analysis",
+  author  = c(person("Goetz", "Rohwer"), person("Ulrich", "Poetter"),
+              person("Jan Marvin", "Garbuszus")),
+  year    = "2026",
+  note    = "R package version 0.1.0",
+  url     = "https://github.com/JanMarvin/TDA"
+)

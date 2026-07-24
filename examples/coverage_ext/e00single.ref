@@ -1,0 +1,86 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 08:28:03 2026
+Current memory: 390032 bytes.
+
+Reading command file: e00single.cf
+============================================================================
+sde00(...)=single.e00
+Reading an e00 file. Current memory: 390032 bytes.
+File: single.e00
+
+Section  records    entries
+ARC 2          9          2
+LAB 2          5          2
+TOL 2         11         10
+SIN 2          1          0
+LOG 2          5          2
+IFO 2         24         23
+
+Bounding Box from BND section:
+X:      340100.00000000       340900.00000000
+Y:     4100000.00000000      4100400.00000000
+
+Bounding Box from ARC section:
+X:      340100.00000000       340900.00000000
+Y:     4100000.00000000      4100400.00000000
+
+----------------------------------------------------------------------------
+Interpretation: line coverage.
+Number of lines: 2
+Number of coordinates: 11
+Cannot find a AAT section.
+
+Creating the output file.
+13 records written to: single.sd
+----------------------------------------------------------------------------
+sdnvar(...)
+Reading a spatial data file. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 SDID      3   4   0.0  c1
+  2 SDTyp     3   4   0.0  c2
+  3 SDN       3   4   0.0  c3
+  4 SDPtr     3   5  11.0  rd
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): single.sd
+Free format. Separation character(s): default.
+Reading data file: single.sd
+Read records: 2 
+
+Created a new data matrix.
+Number of cases: 2
+Number of variables: 4
+Missing values in data file(s): none.
+
+Number of points: 0
+Number of lines: 2
+Number of polygons: 0
+Number of unknown objects: 0
+
+Maximal number of points in spatial objects: 7
+Total number of points in spatial objects: 11
+Note: single.sd remains opened for further access.
+
+X values. Minimum:    340100.0000  Maximum:    340900.0000
+Y values. Minimum:   4100000.0000  Maximum:   4100400.0000
+
+End of creating new variables. Current memory: 406545 bytes.
+----------------------------------------------------------------------------
+Information about spatial data. Current memory: 406545 bytes.
+
+Number of points: 0
+
+Number of lines: 2  (number of points: 11)
+XMin: 340100.000000000000   YMin: 4100000.000000000000
+XMax: 340900.000000000000   YMax: 4100400.000000000000
+
+Minimal segment length:   141.421356237310
+Maximal segment length:   800.000000000000
+
+Number of polygons: 0
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426151 bytes.
+End of program. Wed Sep  2 08:28:03 2026

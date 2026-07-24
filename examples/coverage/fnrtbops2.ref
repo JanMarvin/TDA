@@ -1,0 +1,227 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:40 2026
+Current memory: 390032 bytes.
+
+Reading command file: fnrtbops2.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   3.0  c1
+  2 SN        3   4   2.0  c2
+  3 TS        3   4   3.0  c3
+  4 TF        3   4   3.0  c4
+  5 SEX       3   4   2.0  c5
+  6 TI        3   4   3.0  c6
+  7 TB        3   4   3.0  c7
+  8 TE        3   4   3.0  c8
+  9 TMAR      3   4   3.0  c9
+ 10 PRES      3   4   3.0  c10
+ 11 PRESN     3   4   3.0  c11
+ 12 EDU       3   4   2.0  c12
+ 13 COHO2     3   4   0.0  ge(TB,468)&le(TB,504)
+ 14 COHO3     3   4   0.0  ge(TB,588)&le(TB,624)
+ 15 W         3   4   0.0  SEX[2]
+ 16 DES       3   4   1.0  if(eq(TF,TI),0,1)
+ 17 DUR       3   4   3.0  TF-TS+1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): fnrtb_rrdat.1
+Free format. Separation character(s): default.
+
+Reading data file: fnrtb_rrdat.1
+Read records: 600 
+
+Created a new data matrix.
+Number of cases: 600
+Number of variables: 17
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 458731 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=0, des=DES, ts=0, tf=DUR
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       142       142.00      128.18        0.00      428.00    -
+ 1    0   1       458       458.00       49.30        0.00      350.00    -
+Sum               600       600.00
+
+Number of episodes: 600
+Successfully created new episode data.
+----------------------------------------------------------------------------
+rate(...)=7
+Transition rate models. Current memory: 458883 bytes.
+
+Model: Weibull
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 5
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Log-likelihood of exponential null model: -2514.02
+Changed scaling factor for log-likelihood: -0.001
+Using default starting values.
+
+Convergence reached in 6 iterations.
+Number of function evaluations: 7 (7,7)
+
+Maximum of log likelihood: -2473.54
+Norm of final gradient vector: 4.34529e-08
+Last absolute change of function value: 5.00456e-12
+Last relative change in parameters: 4.56362e-05
+
+Idx SN Org Des MT Variable      Coeff      Error    C/Error  Signif
+-------------------------------------------------------------------
+  1  1   0   1  A Constant    -5.0055     0.0906   -55.2452  1.0000
+  2  1   0   1  A COHO2        0.5339     0.1201     4.4448  1.0000
+  3  1   0   1  A COHO3        0.6671     0.1235     5.4003  1.0000
+  4  1   0   1  A W            0.5191     0.1012     5.1274  1.0000
+  5  1   0   1  B Constant    -0.0700     0.0366    -1.9119  0.9441
+
+Log likelihood (starting values): -2514.0201 
+Log likelihood (final estimates): -2473.5432 
+
+----------------------------------------------------------------------------
+rate(...)=8
+Transition rate models. Current memory: 458883 bytes.
+
+Model: Sickle
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 5
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Log-likelihood of exponential null model: -2514.02
+Changed scaling factor for log-likelihood: -0.001
+Using default starting values.
+
+Convergence reached in 7 iterations.
+Number of function evaluations: 10 (10,10)
+
+Maximum of log likelihood: -2466.1
+Norm of final gradient vector: 4.84093e-06
+Last absolute change of function value: 1.11023e-09
+Last relative change in parameters: 0.00044869
+
+Numerical problems.
+  4 : Hessian not positive definite.
+
+Idx SN Org Des MT Variable      Coeff      Error    C/Error  Signif
+-------------------------------------------------------------------
+  1  1   0   1  A Constant    -7.0645     0.1140   -61.9618  1.0000
+  2  1   0   1  A COHO2        0.3926     0.1123     3.4947  0.9995
+  3  1   0   1  A COHO3        0.4363     0.1162     3.7556  0.9998
+  4  1   0   1  A W            0.4232     0.0944     4.4808  1.0000
+  5  1   0   1  B Constant     3.7046     0.0517    71.6511  1.0000
+
+Log likelihood (starting values): -2897.7621 
+Log likelihood (final estimates): -2466.1005 
+
+----------------------------------------------------------------------------
+rate(...)=12
+Transition rate models. Current memory: 458883 bytes.
+
+Model: Log-normal
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 5
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Log-likelihood of exponential null model: -2514.02
+Changed scaling factor for log-likelihood: -0.001
+Using default starting values.
+
+Convergence reached in 6 iterations.
+Number of function evaluations: 7 (7,7)
+
+Maximum of log likelihood: -2437.52
+Norm of final gradient vector: 0.000491553
+Last absolute change of function value: 8.24072e-08
+Last relative change in parameters: 0.00239838
+
+Idx SN Org Des MT Variable      Coeff      Error    C/Error  Signif
+-------------------------------------------------------------------
+  1  1   0   1  A Constant     4.3688     0.0960    45.5055  1.0000
+  2  1   0   1  A COHO2       -0.4608     0.1255    -3.6707  0.9998
+  3  1   0   1  A COHO3       -0.6110     0.1272    -4.8036  1.0000
+  4  1   0   1  A W           -0.3821     0.1062    -3.5992  0.9997
+  5  1   0   1  B Constant     0.2036     0.0342     5.9508  1.0000
+
+Log likelihood (starting values): -2603.1677 
+Log likelihood (final estimates): -2437.5243 
+
+----------------------------------------------------------------------------
+rate(...)=14
+Transition rate models. Current memory: 458883 bytes.
+
+Model: Inverse Gaussian
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 5
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Log-likelihood of exponential null model: -2514.02
+Changed scaling factor for log-likelihood: -0.001
+Using default starting values.
+
+Convergence reached in 6 iterations.
+Number of function evaluations: 7 (7,7)
+
+Maximum of log likelihood: -2434.34
+Norm of final gradient vector: 9.30888e-05
+Last absolute change of function value: 8.96273e-10
+Last relative change in parameters: 0.00415467
+
+Idx SN Org Des MT Variable      Coeff      Error    C/Error  Signif
+-------------------------------------------------------------------
+  1  1   0   1  A Constant     0.0007     0.0015     0.4225  0.3273
+  2  1   0   1  A COHO2        0.0067     0.0024     2.8243  0.9953
+  3  1   0   1  A COHO3        0.0088     0.0026     3.4284  0.9994
+  4  1   0   1  A W            0.0093     0.0021     4.4894  1.0000
+  5  1   0   1  B Constant    -1.7092     0.0311   -55.0104  1.0000
+
+Log likelihood (starting values): -2699.6178 
+Log likelihood (final estimates): -2434.3446 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 478850 bytes.
+End of program. Fri Sep  4 15:06:40 2026

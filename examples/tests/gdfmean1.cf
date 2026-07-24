@@ -1,0 +1,74 @@
+# gdfmean1.cf   gdf joint method 1, expected values, two dimensions
+#
+# gdf_edf3m() averages the exact observations falling in each box of its
+# grid, one mean per dimension. The divide-by-count loop advanced its
+# index outside the loop body, so with two dimensions the first
+# component was divided by the count twice and the second not at all --
+# the second dimension's "mean" stayed a sum. Every expected value that
+# leaned on such a box came out far too large.
+#
+# The same construction as examples/exam/gdf4.cf, self-contained: one
+# hundred units, dimension 1 exact, dimension 2 right censored where a
+# uniform draw falls below 0.2. Before the fix the expected value for
+# the unit whose first dimension is 34 came out 163.1120; after it,
+# 37.6603 -- which is what the manual's own Box 12 of section 6.2.2
+# prints for that row.
+
+nvar(
+    noc = 100,
+    L1 = 1,
+    L2 = 2,
+    X = case,
+    Y = X + rd(-10,10),
+    ONE = 1,
+);
+nvar(
+    RD1 = rd,
+);
+nvar(
+    RD2 = rd(10,90),
+);
+nvar(
+    IS = le(RD1,0.2) & gt(Y,RD2),
+    CEN = not(IS),
+    Y1 = if IS then RD2 else Y,
+);
+pdata(
+    keep = X,L1,X,ONE,X,
+) = gdfmean1.d;
+pdata(
+    ap = 1,
+    keep = X,L2,Y,CEN,Y1,
+) = gdfmean1.d;
+clear;
+nvar(
+    noc = 2000,
+    dfile = gdfmean1.d,
+    ID [6.0] = c1,
+    L1 [1.0] = c2,
+    Y  [10.6] = c3,
+    CEN[2.0] = c4,
+    Y1 [10.6] = c5,
+);
+gdf(
+    opt = 2,
+    prn = 2,
+    grp = ID,L1,
+    yl = Y1,
+    cen = CEN,
+) = gdfmean1.j;
+clear;
+nvar(
+    noc = 2000,
+    dfile = gdfmean1.j,
+    Y2OBS [10.4] = c5,
+    Y2EST [10.4] = c9,
+    Y2CLS [6.0]  = int(c9 / 10),
+);
+# on the console, so the suite's own reference covers it: the largest
+# expected value in dimension 2.  It cannot exceed the domain, and with
+# the box means wrong it did.
+# a frequency table of the expected values rounded to tens, on the
+# console so the suite's own reference covers it: with the box means
+# wrong the table runs far past the domain of the data
+freq = Y2CLS;

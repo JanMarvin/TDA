@@ -1,0 +1,74 @@
+Read records:      19     
+
+  Iter    Function Value
+    0   1.0000000000000e+00
+    1   0.0000000000000e+00
+    2   0.0000000000000e+00
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: glm1.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Height    3   4   0.0  c1
+  2 Weight    3   4   0.0  c2
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): lsreg1.dat
+Free format. Separation character(s): default.
+
+Reading data file: lsreg1.dat
+Read records: 19 
+
+Created a new data matrix.
+Number of cases: 19
+Number of variables: 2
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 398076 bytes.
+----------------------------------------------------------------------------
+glm(...)
+Generalized linear models. Current memory: 398076 bytes.
+
+Distribution: normal.
+Link function: identity.
+
+Variables (cross-section)
+-------------------------
+Y   : Weight  
+X1  : Height  
+
+Estimation with iteratively re-weighted least squares.
+Number of model parameters: 2
+Maximum number of iterations: 20
+Tolerance for scaled parameter change: 1e-06
+
+Data and estimated values written to: res
+
+Convergence reached in 2 iterations.
+Final scaled parameter change: 0
+
+Rank of data matrix: 2
+Degrees of freedom: 17
+Deviance                         2142.4880 
+Pearson statistic                2142.4880 
+ML-based scaling factor           112.7625 
+Deviance-based scaling factor     126.0287 
+
+Idx  Wave  Variable       Coeff      Error    Coeff/E  Signif
+-------------------------------------------------------------
+  1     -  Intercept  -143.0269    32.2746    -4.4316  0.9996
+  2     1  Height        3.8990     0.5161     7.5549  1.0000
+
+Parameter estimates written to: par
+
+Covariance matrix written to: cov
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 418105 bytes.
+End of program. Tue Jul 21 05:46:53 2026

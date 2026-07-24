@@ -1,0 +1,30 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:51 2026
+Current memory: 390032 bytes.
+
+Reading command file: gtopo.cf
+============================================================================
+gtopo(...)=g30.dem
+Reading a GTOPO30 elevation file. Current memory: 390032 bytes.
+File name: g30.dem
+
+Number of rows: 6
+Number of columns: 6
+Coordinates: ulx =  10.00000000000000 uly= 50.00000000000000
+Grid spacing: dx =   1.00000000000000  dy=  1.00000000000000
+
+Range of the grid in decimal degrees.
+Longitude:  10.00000000000000  15.00000000000000
+Latitude:   45.00000000000000  50.00000000000000
+
+Output file: gt.out
+Option: 1
+
+Will use the following range of coordinates.
+Longitude         Pixel  Latitude          Pixel
+ 12.000000000000      2   46.000000000000      4
+ 12.000000000000      2   49.000000000000      1
+
+4 records written to: gt.out
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390056 bytes.
+End of program. Fri Sep  4 15:06:51 2026

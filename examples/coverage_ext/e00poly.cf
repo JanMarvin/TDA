@@ -1,0 +1,21 @@
+# e00poly.cf -- t_e00.c coverage: sde00 on a real ArcInfo E00 polygon
+# coverage (ARC + CNT + LAB + PAL + PRJ sections), reaching the
+# polygon-interpretation path (e00_arc, e00_cnt, e00_pal,
+# e00_polygons) and the projection-info reader (e00_prj, e00_prj_prn)
+# that the uploaded point-only fixture (a LAB-only well
+# coverage) can't reach. This is one of the worked examples from the
+# same ESRI E00-format reference page the user's own upload came
+# from (Appendix A/B, "SAMPLE.E00"), not an invented file.
+
+sde00(df=poly.sd, attr=2, fmt=14.6, dtda=polydesc.txt) = poly.e00;
+sdnvar(
+    dfile = poly.sd,
+    SDID     = c1,
+    SDTyp    = c2,
+    SDN      = c3,
+    SDPtr<5> = rd,
+);
+
+psfile = polymap.ps;
+psetupg(proj=10, view=93.4,37.05, region=0.05,0.05, pxlen=150);
+sdpmap(lt=1, lw=0.2, gs=0.8);

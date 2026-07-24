@@ -1,0 +1,71 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:40 2026
+Current memory: 390032 bytes.
+
+Reading command file: exprops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   2.0  c1
+  2 X         3   4   6.2  c2
+  3 G         3   4   2.0  c3
+  4 A1        3   4   8.4  X+1
+  5 A2        3   4   8.4  X-1
+  6 A3        3   4   8.4  X*2
+  7 A4        3   4   8.4  X/2
+  8 A5        3   4   8.4  X^2
+  9 A6        3   4   8.4  abs(X-3)
+ 10 A7        3   4   8.4  exp(X/10)
+ 11 A8        3   4   8.4  log(X+1)
+ 12 A9        3   4   8.4  sqrt(X)
+ 13 B1        3   4   8.4  sin(X)
+ 14 B2        3   4   8.4  cos(X)
+ 15 B3        3   4   8.4  floor(X)
+ 16 B4        3   4   8.4  ceil(X)
+ 17 B5        3   4   8.4  sign(X-3)
+ 18 B6        3   4   8.4  rnd(X)
+ 19 B7        3   4   8.4  lgam(X+1)
+ 20 B8        3   4   8.4  digam(X+1)
+ 21 C1        3   4   8.4  eq(G,1)
+ 22 C2        3   4   8.4  ne(G,1)
+ 23 C3        3   4   8.4  lt(X,3)
+ 24 C4        3   4   8.4  le(X,3)
+ 25 C5        3   4   8.4  gt(X,3)
+ 26 C6        3   4   8.4  ge(X,3)
+ 27 C7        3   4   8.4  and(gt(X,2),lt(X,5))
+ 28 C8        3   4   8.4  or(lt(X,2),gt(X,5))
+ 29 D1        4   4   8.4  mean(X)
+ 30 D2        4   4   8.4  gmean(X,G)
+ 31 D3        4   4   8.4  gsum(X,G)
+ 32 D4        4   4   8.4  gmin(X,G)
+ 33 D5        4   4   8.4  gmax(X,G)
+ 34 D6        4   4   8.4  gstd(X,G)
+ 35 D8        4   4   8.4  rank(X)
+ 36 E1        4   4   8.4  lag(X,1)
+ 37 E2        4   4   8.4  mav(X,2)
+ 38 E3        4   4   8.4  cum(X)
+ 39 E4        2   8   8.4  pi
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ex.dat
+Free format. Separation character(s): default.
+
+Reading data file: ex.dat
+Read records: 6 
+
+Created a new data matrix.
+Number of cases: 6
+Number of variables: 39
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 543841 bytes.
+----------------------------------------------------------------------------
+pdata(...)=out.txt
+6 records with 39 variables written to: out.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 564431 bytes.
+End of program. Fri Sep  4 15:06:40 2026

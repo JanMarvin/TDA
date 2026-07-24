@@ -1,0 +1,48 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: gdp.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 D         3   4   0.0  c1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): g.dat
+Free format. Separation character(s): default.
+
+Reading data file: g.dat
+Read records: 15 
+
+Created a new data matrix.
+Number of cases: 15
+Number of variables: 1
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 394049 bytes.
+----------------------------------------------------------------------------
+gdd(opt=4)=D
+New graph data. Current memory: 394049 bytes.
+Option 4: upper triangle.
+
+Minimal level for valid edges: 0
+Number of nodes: 6. Largest node number: 6
+Graph type 2 (undirected, valued, bidirectional edges: minimum).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1       15       0       16.000000             0
+
+Successfully created new graph data structure. Current memory: 394075 bytes.
+----------------------------------------------------------------------------
+gdp(...)=out.txt
+Writing graph data. Current memory: 394073 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+30 records written to: out.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 414069 bytes.
+End of program. Wed Sep  2 16:02:32 2026

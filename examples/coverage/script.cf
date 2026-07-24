@@ -1,0 +1,3 @@
+nvar(dfile=blk.dat, ID[4.0]=c1, X[10.3]=c2, dblock=ID, B[10.3]=bmin(X));
+mdef(A,2,2)=1,2,3,4;
+mpr(A);

@@ -1,0 +1,54 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep  5 14:54:50 2026
+Current memory: 390032 bytes.
+
+Reading command file: strq1ops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X         3   4   6.1  c1
+  2 Z         3   4   2.0  c2
+  3 S         1   2   0.0  str(6,7)
+  4 E1        3   4   8.2  strlen(S)
+  5 E2        4   4  12.4  quant1(X,Z,0.5,0)
+  6 E3        4   4  12.4  quant1(X,Z,0.25,0)
+  7 E4        4   4  12.4  quant1(X,Z,0.5,1)
+  8 E5        3   4  12.4  strv(S)
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): sq.dat
+Free format. Separation character(s): default.
+
+Reading data file: sq.dat
+Read records: 6 
+
+Created a new data matrix.
+Number of cases: 6
+Number of variables: 8
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 420409 bytes.
+----------------------------------------------------------------------------
+pdata(...)=sq.out
+6 records with 6 variables written to: sq.out
+----------------------------------------------------------------------------
+dstat
+Descriptive statistics. Current memory: 420409 bytes.
+
+Variable    Minimum    Maximum       Mean   Std.Dev.    Sum of values
+---------------------------------------------------------------------
+X           12.0000    66.0000    39.8333    20.0939         239.0000
+Z            0.0000     1.0000     0.6667     0.5164           4.0000
+S            0.0000     0.0000     0.0000     0.0000           0.0000
+E1           2.0000     2.0000     2.0000     0.0000          12.0000
+E2          39.4000    39.4000    39.4000     0.0000         236.4000
+E3          51.0000    51.0000    51.0000     0.0000         306.0000
+E4          39.4000    39.4000    39.4000     0.0000         236.4000
+E5          -1.0000    -1.0000    -1.0000     0.0000          -6.0000
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 461004 bytes.
+End of program. Sat Sep  5 14:54:50 2026

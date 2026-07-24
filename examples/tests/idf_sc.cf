@@ -1,0 +1,9 @@
+# idf_sc.cf -- idf with opt=2: the self-consistent distribution function
+# of the manual's 8.5.2 equation, finished in t_imat.c (fixes.md); the
+# manual's own income example, id2.dat
+nvar(
+    dfile = id2.dat,
+    XL = c1 - 30,
+    XH = c1 + 30,
+);
+idf(opt=2, mxit=200, tolf=1e-8) = XL,XH;

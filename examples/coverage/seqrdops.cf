@@ -1,0 +1,10 @@
+# seqrdops.cf -- t_seq.c coverage: seqrd (create simple random
+# sequences, standalone -- no prior sequence structure needed).
+# Deterministic across runs (confirmed: two separate runs produced
+# byte-identical output), safe to pin. ns=2 states, len=5 time
+# points, noc=10 sequences -- all 10 output rows contain only
+# values in {1,2}, matching the requested state count exactly.
+
+silent = -1;
+
+seqrd(ns=2, len=5, noc=10) = randseq.txt;

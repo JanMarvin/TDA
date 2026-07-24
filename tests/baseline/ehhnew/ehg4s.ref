@@ -1,0 +1,55 @@
+Read records:     600     
+TDA. Analysis of Transition Data (6.4p). Fri Jul 24 21:39:00 2026
+Current memory: 390032 bytes.
+
+Reading command file: ehg4s.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 RES       3   4   0.0  c8
+  2 ORG       3   4   0.0  c2
+  3 DES       3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ehg4.res
+Free format. Separation character(s): default.
+
+Reading data file: ehg4.res
+Read records: 600 
+
+Created a new data matrix.
+Number of cases: 600
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402089 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=ORG, des=DES, ts=0, tf=RES
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       142       142.00        1.01        0.00        3.37    -
+ 1    0   1       458       458.00        0.69        0.00        3.24    -
+Sum               600       600.00
+
+Number of episodes: 600
+Successfully created new episode data.
+----------------------------------------------------------------------------
+ple=ehg4s.ple
+Product-limit estimation. Current memory: 402241 bytes.
+
+Sorting episodes according to ending times.
+
+Product-limit estimation.
+1 table(s) written to: ehg4s.ple
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422172 bytes.
+End of program. Fri Jul 24 21:39:00 2026

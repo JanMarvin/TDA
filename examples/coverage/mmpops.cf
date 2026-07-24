@@ -1,0 +1,9 @@
+silent = -1;
+mdef(X,6,1) = 5, 3, 4, 6, 2, 7;
+mdef(T,6,1) = 1, 1, 2, 3, 3, 3;
+mmp(X,PLAIN);
+mpr(PLAIN);
+mmp1(X,T,P1);
+mpr(P1);
+mmp2(X,T,P2);
+mpr(P2);

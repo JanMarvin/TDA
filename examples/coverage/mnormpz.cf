@@ -1,0 +1,19 @@
+# Two engine fixes found by independent review (session 37); both were
+# invisible to the existing coverage because of accidental input
+# choices, which is why these inputs are adversarial on purpose.
+#
+# mnorm: documented as the largest ABSOLUTE value, but computed a
+# signed max seeded with 0 -- an all-negative matrix returned 0.
+# Correct answer here: 5.
+mdef(A,2,2) = -1,-3, -2,-5;
+mnorm(A,R);
+mpr(R);
+# mpz: iperm is a gather (m_rperm's contract: (iperm[i],i) non-zero),
+# but the code scattered.  matc2's test matrix had an involution
+# permutation, where the two coincide; this one forces the 3-cycle
+# (1,3,2)->(2,1,3), so B must be the identity and the buggy scatter
+# gave an all-zero diagonal.
+mdef(B,3,3) = 0,0,1, 1,0,0, 0,1,0;
+mpz(B,C,P);
+mpr(C);
+mpr(P);

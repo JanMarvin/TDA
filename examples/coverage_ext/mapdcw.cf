@@ -1,0 +1,17 @@
+# mapdcw.cf -- t_map.c coverage: sddcwp (reads a real DCW Polygon Point
+# ASCII file), then psetupg + sdpmap draws it -- the uploaded
+# zimbabwe.pnt outline, a real country boundary, not an invented shape.
+
+sddcwp(df=zw.sd) = zimbabwe.pnt;
+sdnvar(
+    dfile = zw.sd,
+    SDID     = c1,
+    SDTyp    = c2,
+    SDN      = c3,
+    SDPtr<5> = rd,
+);
+
+psfile = zwmap.ps;
+psetupg(proj=10, view=29,-19, region=5,5, pxlen=150);
+sdpgrat(lon=25(2)33, lat=-22(2)-14, fsx=2, fsy=2, lw=0.1);
+sdpmap();

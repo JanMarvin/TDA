@@ -1,0 +1,76 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:52 2026
+Current memory: 390032 bytes.
+
+Reading command file: pl3ops2.cf
+============================================================================
+psfile=p32.ps
+Opened new PostScript file: p32.ps
+----------------------------------------------------------------------------
+psetup3(...)
+Creating a new 3d coordinate system.
+
+                 x axis           y-axis           z axis
+---------------------------------------------------------
+Begin            0.0000           0.0000           0.0000
+End              6.0000           6.0000          12.0000
+Center           3.0000           3.0000           6.0000
+
+Direction of projection. Longitude: 40  Latitude: 20 (degrees)
+Coordinates of projection plane.
+X direction:          -3.8567           4.5963  Size: 100.00 (mm)
+Y direction:          -2.8911          11.2763  Size: 167.60 (mm)
+Origin of PostScript coordinates: 100,100
+Scaling: 1,1
+Rotation (degrees): 0
+
+----------------------------------------------------------------------------
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X         3   8   0.0  c1
+  2 Y         3   8   0.0  c2
+  3 Z         3   8   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): xyz.dat
+Free format. Separation character(s): default.
+
+Reading data file: xyz.dat
+Read records: 36 
+
+Created a new data matrix.
+Number of cases: 36
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 414083 bytes.
+----------------------------------------------------------------------------
+plsurf3d(...)=X,Y,Z
+Surface of a point set. Current memory: 414083 bytes.
+Algorithm: 1
+
+Range of u and v parameters.
+u:         0.000000         6.000000
+v:         0.000000         6.000000
+
+Size of evalutation grid: 46 x 46 = 2116 points.
+Size of visible grid: 10 x 10 = 100 points.
+
+Bounding box of input data.
+x minimum:       0.000000  maximum:       5.000000
+y minimum:       0.000000  maximum:       5.000000
+z minimum:       0.000000  maximum:       4.989400
+
+Number of data points: 36
+Number of points on the boundary: 20
+Number of arcs in the mesh: 85
+Number of triangles in the mesh: 50
+----------------------------------------------------------------------------
+plcirc3(...)=2
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 483489 bytes.
+End of program. Fri Sep  4 15:06:52 2026

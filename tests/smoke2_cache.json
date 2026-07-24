@@ -1,0 +1,1030 @@
+{
+"acl": [
+"graph",
+"%s() = out.txt;"
+],
+"arcc": [
+"archive",
+"%s;"
+],
+"arcd": [
+"bare",
+"%s();"
+],
+"arcv": [
+"archive",
+"%s();"
+],
+"arcvc": [
+"bare",
+"%s() = out.txt;"
+],
+"atab": [
+"data",
+"%s(tp = 0 (10) 100) = X;"
+],
+"becl": [
+"graph",
+"%s() = out.txt;"
+],
+"bfa": [
+"data",
+"%s() = X,Y;"
+],
+"bfc": [
+"edges",
+"%s() = I,J,V;"
+],
+"brr": [
+"bare",
+"%s() = 5,3,8,3;"
+],
+"clear": [
+"bare",
+"%s();"
+],
+"clearnl": [
+"bare",
+"%s();"
+],
+"clp": [
+"graph",
+"%s() = out.txt;"
+],
+"clpyr": [
+"graph",
+"%s() = out.txt;"
+],
+"clu": [
+"graph",
+"%s() = out.txt;"
+],
+"com": [
+"bare",
+"%s() = out.txt;"
+],
+"conj": [
+"edges",
+"%s() = I,J,V;"
+],
+"corr": [
+"data",
+"%s();"
+],
+"cov": [
+"data",
+"%s();"
+],
+"cro": [
+"bare",
+"%s() = out.txt;"
+],
+"cwt": [
+"bare",
+"%s();"
+],
+"data": [
+"bare",
+"%s;"
+],
+"data1": [
+"bare",
+"%s;"
+],
+"dblock": [
+"data",
+"%s();"
+],
+"diple": [
+"data",
+"%s(df=out.txt) = TS,TL,TU,D;"
+],
+"dltb": [
+"data",
+"%s(df=out.txt) = T,D;"
+],
+"dma": [
+"data",
+"%s();"
+],
+"dmet": [
+"graph",
+"%s() = out.txt;"
+],
+"dmet1": [
+"graph",
+"%s() = out.txt;"
+],
+"dple": [
+"data",
+"%s(df=out.txt) = T,D;"
+],
+"dplot": [
+"bare",
+"%s(fn = b1*b1) = b1;"
+],
+"dsplit": [
+"bare",
+"%s() = out.txt;"
+],
+"dstat": [
+"data",
+"%s();"
+],
+"dump": [
+"bare",
+"%s() = out.txt;"
+],
+"edef": [
+"bare",
+"%s;"
+],
+"ejoin": [
+"bare",
+"%s() = out.txt;"
+],
+"emerge": [
+"bare",
+"%s() = out.txt;"
+],
+"epdat": [
+"episodes",
+"%s() = out.txt;"
+],
+"epsdat": [
+"episodes",
+"%s(tp = 0 (10) 100) = out.txt;"
+],
+"eselect": [
+"bare",
+"%s() = out.txt;"
+],
+"eskip": [
+"bare",
+"%s() = out.txt;"
+],
+"esort": [
+"bare",
+"%s() = out.txt;"
+],
+"etest": [
+"bare",
+"%s() = 1;"
+],
+"evalf": [
+"bare",
+"%s() = 1;"
+],
+"evalfi": [
+"bare",
+"%s() = 1;"
+],
+"expm": [
+"bare",
+"%s() = out.txt;"
+],
+"fmin": [
+"bare",
+"%s() = x*x;"
+],
+"fml": [
+"bare",
+"%s() = x*x;"
+],
+"freg": [
+"bare",
+"%s() = x*x;"
+],
+"freq": [
+"data",
+"%s() = X;"
+],
+"freq1": [
+"data",
+"%s() = X;"
+],
+"freq2": [
+"data",
+"%s() = X,Y;"
+],
+"frml": [
+"episodes",
+"%s() = x*x;"
+],
+"gap": [
+"graph",
+"%s() = out.txt;"
+],
+"gbcf": [
+"edges",
+"%s() = out.txt;"
+],
+"gcd": [
+"bare",
+"%s() = out.txt;"
+],
+"gcliq": [
+"graph",
+"%s() = out.txt;"
+],
+"gcon": [
+"graph",
+"%s() = out.txt;"
+],
+"gcset": [
+"graph",
+"%s() = out.txt;"
+],
+"gcut": [
+"graph",
+"%s() = out.txt;"
+],
+"gcyc": [
+"digraph",
+"%s() = out.txt;"
+],
+"gda": [
+"graph",
+"%s() = out.txt;"
+],
+"gdcon": [
+"edges",
+"%s() = out.txt;"
+],
+"gdcset": [
+"edges",
+"%s() = out.txt;"
+],
+"gdcyc": [
+"edges",
+"%s() = out.txt;"
+],
+"gdd": [
+"bare",
+"%s;"
+],
+"gde": [
+"data",
+"%s(df=out.txt) = T,D;"
+],
+"gdf": [
+"data",
+"%s(yl=Y,cen=D) = Y,X;"
+],
+"gdln": [
+"edges",
+"%s() = out.txt;"
+],
+"gdot": [
+"graph",
+"%s() = out.txt;"
+],
+"gdp": [
+"graph",
+"%s() = out.txt;"
+],
+"gdu": [
+"edges",
+"%s() = I,J,V;"
+],
+"gep": [
+"edges",
+"%s() = out.txt;"
+],
+"gev": [
+"graph",
+"%s() = out.txt;"
+],
+"gfc": [
+"edges",
+"%s() = out.txt;"
+],
+"gfcf": [
+"edges",
+"%s() = out.txt;"
+],
+"gflow": [
+"edges",
+"%s() = out.txt;"
+],
+"ggcliq": [
+"digraph",
+"%s() = out.txt;"
+],
+"ghd": [
+"data",
+"%s() = X;"
+],
+"ghd1": [
+"data",
+"%s() = X;"
+],
+"gio": [
+"edges",
+"%s() = out.txt;"
+],
+"giset": [
+"graph",
+"%s() = out.txt;"
+],
+"glm": [
+"data",
+"%s(v=X,Y);"
+],
+"gloc": [
+"bare",
+"%s() = out.txt;"
+],
+"gmin": [
+"bare",
+"%s() = x*x;"
+],
+"gmst": [
+"graph",
+"%s() = out.txt;"
+],
+"gnc": [
+"graph",
+"%s() = out.txt;"
+],
+"gni": [
+"graph",
+"%s() = out.txt;"
+],
+"gnst": [
+"graph",
+"%s() = out.txt;"
+],
+"gpro": [
+"graph",
+"%s() = out.txt;"
+],
+"gqap": [
+"graph",
+"%s(gn=1, gt=2) = out.txt;"
+],
+"gsort": [
+"edges",
+"%s() = out.txt;"
+],
+"gsp": [
+"edges",
+"%s() = out.txt;"
+],
+"gst": [
+"graph",
+"%s() = out.txt;"
+],
+"gsym": [
+"edges",
+"%s();"
+],
+"gtcl": [
+"graph",
+"%s() = out.txt;"
+],
+"hcld": [
+"graph",
+"%s() = out.txt;"
+],
+"hcls": [
+"graph",
+"%s() = out.txt;"
+],
+"hclsp": [
+"rooted",
+"%s() = out.txt;"
+],
+"help": [
+"bare",
+"%s();"
+],
+"ierr": [
+"bare",
+"%s;"
+],
+"igini": [
+"data",
+"%s(x=0 (10) 100, df=out.txt) = Y,X;"
+],
+"ilsreg": [
+"data",
+"%s(yl=Y,cen=D) = YL,YU,X;"
+],
+"imean": [
+"data",
+"%s() = X,Y;"
+],
+"imreg": [
+"data",
+"%s() = YL,YU,XL,XU;"
+],
+"indep": [
+"data",
+"%s() = X,Y;"
+],
+"ineq": [
+"data",
+"%s() = X;"
+],
+"inpreg": [
+"data",
+"%s(x=1,2,3, df=out.txt) = YL,YU,XL,XU;"
+],
+"int": [
+"bare",
+"%s(ab=0,10) = x*x;"
+],
+"intp": [
+"data",
+"%s(rx=0(1)10, ry=0(1)10, df=out.txt) = X,Y,T;"
+],
+"ivar": [
+"data",
+"%s() = X,Y;"
+],
+"ivar1": [
+"data",
+"%s() = YL,YU;"
+],
+"ivls": [
+"data",
+"%s() = YL,YU,XL,XU;"
+],
+"ivreg": [
+"data",
+"%s() = YL,YU,XL,XU;"
+],
+"ivreg2": [
+"data",
+"%s() = YL,YU,XL,XU;"
+],
+"l1reg": [
+"data",
+"%s() = X;"
+],
+"lcnt": [
+"bare",
+"%s() = out.txt;"
+],
+"loglin": [
+"data",
+"%s() = X;"
+],
+"lsreg": [
+"data",
+"%s() = X;"
+],
+"lsreg1": [
+"data",
+"%s(yl=Y,cen=D) = Y,X;"
+],
+"ltb": [
+"episodes",
+"%s(tp = 0 (10) 100) = out.txt;"
+],
+"mach": [
+"bare",
+"%s;"
+],
+"macroclear": [
+"bare",
+"%s();"
+],
+"macrodef": [
+"bare",
+"%s(M1) = { mem; };"
+],
+"macrolist": [
+"bare",
+"%s();"
+],
+"mdsc": [
+"graph",
+"%s() = out.txt;"
+],
+"mdsm": [
+"graph",
+"%s() = out.txt;"
+],
+"mdsn": [
+"graph",
+"%s() = out.txt;"
+],
+"mdsr": [
+"data",
+"%s(xv=X,Y) = X,Y;"
+],
+"mdsx": [
+"graph",
+"%s() = out.txt;"
+],
+"mem": [
+"bare",
+"%s;"
+],
+"mparse": [
+"bare",
+"%s() = 1;"
+],
+"mproc": [
+"matrix",
+"%s(A,B,C);"
+],
+"mreg": [
+"data",
+"%s() = X;"
+],
+"ndvar": [
+"data",
+"%s(Y1 = dum(G),);"
+],
+"niset": [
+"bare",
+"%s() = 1;"
+],
+"nlist": [
+"data",
+"%s(L1 = X,Y);"
+],
+"nlreg": [
+"data",
+"%s(v=X,Y);"
+],
+"nmca": [
+"edges",
+"%s() = I,J,V;"
+],
+"nncl": [
+"graph",
+"%s() = out.txt;"
+],
+"npreg": [
+"data",
+"%s(x=0 (10) 100, df=out.txt) = Y,X;"
+],
+"pcyc": [
+"data",
+"%s(df=df) = Y;"
+],
+"pdata": [
+"data",
+"%s() = out.txt;"
+],
+"pdatd": [
+"bare",
+"%s() = out.txt;"
+],
+"pdatr": [
+"data",
+"%s() = out.txt;"
+],
+"plabel": [
+"plot",
+"%s() = out.txt;"
+],
+"plcurv3": [
+"plot3",
+"%s();"
+],
+"ple": [
+"episodes",
+"%s();"
+],
+"plframe": [
+"plot",
+"%s();"
+],
+"plg": [
+"plot",
+"%s();"
+],
+"plglob3": [
+"plot3",
+"%s() = 1;"
+],
+"plot": [
+"plot",
+"%s() = X,Y;"
+],
+"plot3": [
+"plot3",
+"%s() = Y,X,X;"
+],
+"plotc": [
+"plot",
+"%s(x=1,2,3) = x*y;"
+],
+"plotch": [
+"plot",
+"%s() = X,Y;"
+],
+"plotcm": [
+"matrix+ps",
+"%s(gs=1,1) = A;"
+],
+"plotd": [
+"plot",
+"%s(tp = 0 (10) 100) = X;"
+],
+"plote": [
+"plot",
+"%s(xy=5,5) = 3,0.3;"
+],
+"plotf": [
+"plot",
+"%s() = x*x;"
+],
+"ploth": [
+"plot",
+"%s(tp = 0 (10) 100) = X;"
+],
+"plotk": [
+"plot",
+"%s() = 5,3,8,3;"
+],
+"plotm": [
+"plot",
+"%s() = X,Y;"
+],
+"ploto": [
+"plot",
+"%s(xy=5,5) = 3;"
+],
+"plotp": [
+"plot",
+"%s() = 5,3,8,3;"
+],
+"plotp3": [
+"plot3",
+"%s() = 5,5,5, 10,10,10;"
+],
+"plotr": [
+"matrix+ps",
+"%s(gs=1,1) = A;"
+],
+"plots": [
+"plot",
+"%s() = X,Y;"
+],
+"plotsp": [
+"plot",
+"%s() = 5,3,8,3;"
+],
+"plrec": [
+"plot",
+"%s() = 5,3,8,3;"
+],
+"plsurf3": [
+"plot3",
+"%s();"
+],
+"pltext": [
+"plot",
+"%s(ab=0,10) = x*x;"
+],
+"pltext3": [
+"plot3",
+"%s(xyz=5,5,5) = label;"
+],
+"pltree": [
+"tree+ps",
+"%s();"
+],
+"plxa": [
+"plot",
+"%s();"
+],
+"plxgrid": [
+"plot",
+"%s() = 1;"
+],
+"plya": [
+"plot",
+"%s();"
+],
+"plygrid": [
+"plot",
+"%s() = 1;"
+],
+"psclose": [
+"bare",
+"%s;"
+],
+"psetup": [
+"plot",
+"%s(pxlen=80, pxa=0,100, pya=0,100);"
+],
+"psetup3": [
+"plot",
+"%s(pxlen=80, pxa=0,100, pya=0,100, pza=0,100);"
+],
+"psetupg": [
+"plot",
+"%s();"
+],
+"ptree": [
+"bare",
+"%s() = out.txt;"
+],
+"pxlabel": [
+"plot",
+"%s() = out.txt;"
+],
+"pylabel": [
+"plot",
+"%s() = out.txt;"
+],
+"qreg": [
+"data",
+"%s() = D;"
+],
+"quant": [
+"data",
+"%s() = X;"
+],
+"range": [
+"bare",
+"%s() = x*x;"
+],
+"rap": [
+"data",
+"%s(df=out.txt) = T,D,X,Y;"
+],
+"rate": [
+"episodes",
+"%s() = 2;"
+],
+"rcorr": [
+"data",
+"%s();"
+],
+"rcsv": [
+"bare",
+"%s() = out.txt;"
+],
+"rdbf": [
+"bare",
+"%s() = electric.dta;"
+],
+"recode": [
+"bare",
+"%s(L1 = X,Y);"
+],
+"repeat": [
+"bare",
+"%s (n = 1);\nendrepeat;"
+],
+"repsel": [
+"dblock",
+"%s() = X;"
+],
+"rfit": [
+"graph",
+"%s() = out.txt;"
+],
+"rfit1": [
+"graph",
+"%s() = out.txt;"
+],
+"rmod": [
+"data",
+"%s() = D;"
+],
+"rod": [
+"data",
+"%s() = X,Y;"
+],
+"rplz": [
+"bare",
+"%s() = out.txt;"
+],
+"rspss1": [
+"bare",
+"%s() = out.txt;"
+],
+"rstata": [
+"bare",
+"%s() = electric.dbf;"
+],
+"rsys": [
+"bare",
+"%s;"
+],
+"rucinet": [
+"bare",
+"%s(df=df) = Y;"
+],
+"scla": [
+"graph",
+"%s() = out.txt;"
+],
+"scplot": [
+"plot",
+"%s() = X,Y;"
+],
+"sdclip": [
+"bare",
+"%s();"
+],
+"sdcpol": [
+"data",
+"%s(df=out.txt) = TS,TL,TU,D;"
+],
+"sddcwp": [
+"bare",
+"%s(df=df) = Y;"
+],
+"sdencl": [
+"bare",
+"%s();"
+],
+"sdgen": [
+"data",
+"%s(id=ID, xyv=X,Y) = out.txt;"
+],
+"sdgshhs": [
+"bare",
+"%s(df=df) = Y;"
+],
+"sdinf": [
+"bare",
+"%s();"
+],
+"sdipol": [
+"bare",
+"%s();"
+],
+"sdlpol": [
+"bare",
+"%s();"
+],
+"sdnl": [
+"bare",
+"%s();"
+],
+"sdnvar": [
+"bare",
+"%s();"
+],
+"sdpdata": [
+"bare",
+"%s();"
+],
+"sdpgeo": [
+"bare",
+"%s() = 1;"
+],
+"sdpgrat": [
+"geo",
+"%s();"
+],
+"sdplot": [
+"bare",
+"%s();"
+],
+"sdplot31": [
+"plot3",
+"%s();"
+],
+"sdplot32": [
+"plot3",
+"%s();"
+],
+"sdplot33": [
+"plot3",
+"%s();"
+],
+"sdpmap": [
+"bare",
+"%s();"
+],
+"sdppol": [
+"bare",
+"%s();"
+],
+"sdrel": [
+"bare",
+"%s();"
+],
+"sdsel": [
+"bare",
+"%s();"
+],
+"sdvd": [
+"data",
+"%s(v=X,Y) = out.txt;"
+],
+"segr": [
+"data",
+"%s(g=G, df=out.txt) = X,Y;"
+],
+"seq": [
+"bare",
+"%s;"
+],
+"sga": [
+"data",
+"%s() = X;"
+],
+"silent": [
+"bare",
+"%s();"
+],
+"sma": [
+"data",
+"%s(tp = 0 (10) 100) = X;"
+],
+"smd": [
+"data",
+"%s(sm=[3], df=out.txt) = X;"
+],
+"spl": [
+"data",
+"%s(sig=1, max=50, rx=0(1)10, df=out.txt) = X,Y;"
+],
+"spmod": [
+"edges",
+"%s() = I,J,V;"
+],
+"subm": [
+"data",
+"%s() = P1,P2,P3;"
+],
+"time": [
+"bare",
+"%s;"
+],
+"triang": [
+"data",
+"%s() = X,Y;"
+],
+"ucl": [
+"graph",
+"%s() = out.txt;"
+],
+"uds": [
+"graph",
+"%s() = out.txt;"
+],
+"unf": [
+"data",
+"%s() = X,Y;"
+],
+"while": [
+"bare",
+"%s (0);\nendwhile;"
+],
+"wspss": [
+"bare",
+"%s() = out.txt;"
+],
+"wspss1": [
+"bare",
+"%s() = out.txt;"
+],
+"wstata": [
+"bare",
+"%s() = out.txt;"
+],
+"wsys": [
+"bare",
+"%s();"
+],
+"xdelete": [
+"plot",
+"%s() = 1;"
+],
+"xdens": [
+"data",
+"%s() = X;"
+],
+"xf": [
+"bare",
+"%s() = x*x;"
+],
+"xlog": [
+"plot",
+"%s();"
+],
+"xlog1": [
+"bare",
+"%s;"
+],
+"xopen": [
+"bare",
+"%s() = out.txt;"
+],
+"xplot": [
+"data",
+"%s() = X,Y;"
+],
+"zreg": [
+"data",
+"%s(yw=D) = Y,X;"
+],
+"zreg1": [
+"data",
+"%s(yw=D) = Y,X;"
+]
+}

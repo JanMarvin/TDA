@@ -1,0 +1,11 @@
+# parmops.cf -- exercise a broad slice of the shared option parser
+nvar(
+    dfile = ex.dat,
+    ID [2.0] = c1, X [6.2] = c2, G [2.0] = c3,
+);
+pdata(fmt=12.6, nfmt=6) = p1.txt;
+pdata(v=X,G) = p2.txt;
+freq(nfmt=5) = G;
+dstat(fmt=10.3) = X;
+dstat(prn=1) = X;
+pdata(min=1, max=5) = p3.txt;

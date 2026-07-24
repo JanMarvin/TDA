@@ -1,0 +1,109 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep 12 08:06:26 2026
+Current memory: 390032 bytes.
+
+Reading command file: sdops.cf
+============================================================================
+sdnvar(...)
+Reading a spatial data file. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 SDID      3   4   0.0  c1
+  2 SDTyp     3   4   0.0  c2
+  3 SDN       3   4   0.0  c3
+  4 SDPtr     3   5  11.0  rd
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): shape.sd
+Free format. Separation character(s): default.
+Reading data file: shape.sd
+Read records: 4 
+
+Created a new data matrix.
+Number of cases: 4
+Number of variables: 4
+Missing values in data file(s): none.
+
+Number of points: 0
+Number of lines: 0
+Number of polygons: 4
+Number of unknown objects: 0
+
+Maximal number of points in spatial objects: 5
+Total number of points in spatial objects: 20
+Note: shape.sd remains opened for further access.
+
+X values. Minimum:         0.0000  Maximum:        11.0000
+Y values. Minimum:         0.0000  Maximum:         8.0000
+
+End of creating new variables. Current memory: 406513 bytes.
+----------------------------------------------------------------------------
+Information about spatial data. Current memory: 406513 bytes.
+
+Number of points: 0
+
+Number of lines: 0
+
+Number of polygons: 4  (number of points: 16)
+XMin:     0.000000000000   YMin:     0.000000000000
+XMax:    11.000000000000   YMax:     8.000000000000
+
+Minimal segment length:     2.000000000000
+Maximal segment length:     2.000000000000
+----------------------------------------------------------------------------
+Information about spatial data. Current memory: 406513 bytes.
+
+Number of points: 0
+
+Number of lines: 0
+
+Number of polygons: 4  (number of points: 16)
+XMin:     0.000000000000   YMin:     0.000000000000
+XMax:    11.000000000000   YMax:     8.000000000000
+
+Minimal segment length:     2.000000000000
+Maximal segment length:     2.000000000000
+
+Polygons with positive orientation: 4
+Polygons with negative orientation: 0
+Polygons with almost zero (less than 1e-06) area: 0
+----------------------------------------------------------------------------
+Enclosing boundaries. Current memory: 406513 bytes.
+Type of boundary: rectangle.
+
+5 records written to: e1.txt
+----------------------------------------------------------------------------
+Selection of spatial objects. Current memory: 406513 bytes.
+Region defined by rectangle: 0, 0, 5, 5
+sdid=1 inside
+sdid=2 inside
+12 records written to: s1.txt
+0 points, 0 lines, 2 polygons.
+----------------------------------------------------------------------------
+Selection of spatial objects. Current memory: 406513 bytes.
+Region defined by rectangle: 2, 1, 9, 7
+sdid=2 inside
+sdid=3 inside
+sdid=4 ni=1
+
+
+
+Nach einfuegen  nn=7  n=4
+j=   0 d=0 nf=  1 x=9.000000 y=6.000000
+j=   1 d=1 nf=  2 x=9.000000 y=6.000000
+j=   2 d=1 nf=  3 x=9.000000 y=7.000000
+j=   3 d=0 nf=  0 x=9.000000 y=6.000000
+j=   4 d=1 nf=  5 x=2.000000 y=1.000000
+j=   5 d=1 nf=  1 x=9.000000 y=1.000000
+j=   6 d=1 nf=  4 x=2.000000 y=7.000000
+Writing polygon 3 n=4 
+Next part k=0
+m=4
+finished
+17 records written to: s2.txt
+0 points, 0 lines, 3 polygons.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426151 bytes.
+End of program. Sat Sep 12 08:06:26 2026

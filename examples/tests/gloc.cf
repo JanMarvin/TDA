@@ -1,0 +1,5 @@
+# gloc.cf -- rewritten: the shipped smoke case ran the old, hard-coded
+# demo (gloc ignored its input then); it now exercises the real command.
+nvar(dfile=gloc.dat, FROM<8>=c1, TO<8>=c2, WVV<8>=c3, WVF<8>=c4);
+gdd(opt=1) = FROM,TO,WVV,WVF;
+gloc(gn=1,2, n=2);

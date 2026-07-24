@@ -1,0 +1,45 @@
+# mqpops2.cf -- t_matc.c coverage: mqp/mqpb/mqpc (quadratic
+# programming; undocumented in tda.hlp). Semantics identified from
+# qld()'s own header (t_qp.c) -- Powell/Schittkowski's ZQPCVX active-
+# set solver: minimize grad'x + 0.5 x'Gx s.t. A(k)x=b(k) for the
+# first meq rows, A(k)x>=b(k) for the rest, xl<=x<=xu. m_mqp maps
+# mqp(C,D,X) to grad=D, G=C, no constraints (huge box bounds);
+# mqpb(C,D,XL,XU,X) adds the box bounds; mqpc(C,D,A,B,me,X) adds
+# general equality (first me rows of A) and inequality (the rest)
+# constraints instead of box bounds -- confirmed by reading all three
+# branches of m_mqp, not assumed from the similar names.
+#
+# All three cases share the objective minimize x1^2+x2^2-2x1-4x2
+# (i.e. C=2*I, D=(-2,-4)), whose unconstrained minimum by hand is
+# (1,2) (derivative 2x1-2=0, 2x2-4=0).
+#
+# Case 1 (mqp): unconstrained -- optimum (1,2) exactly.
+#
+# Case 2 (mqpb): boxed to [0,0.5]^2. The unconstrained optimum lies
+# outside the box in both coordinates and the objective is separable
+# and monotone decreasing toward (1,2) within the box, so both
+# coordinates clip to their upper bound: (0.5,0.5).
+#
+# Case 3 (mqpc): 1 equality (x1+x2=1), 1 inequality (x1>=0.2).
+# Substituting the equality (x2=1-x1) into the objective gives
+# 2x1^2-3 (algebra: x1^2-2x1+(1-x1)^2-4(1-x1) = 2x1^2-3), minimized
+# at x1=0, infeasible against x1>=0.2 -- constrained optimum sits at
+# the active bound (0.2,0.8).
+
+silent = -1;
+mfmt = 24.16;
+
+mdef(C,2,2) = 2,0, 0,2;
+mdef(D,2,1) = -2,-4;
+mqp(C,D,X1);
+mpr(X1);
+
+mdef(XL,2,1) = 0,0;
+mdef(XU,2,1) = 0.5,0.5;
+mqpb(C,D,XL,XU,X2);
+mpr(X2);
+
+mdef(A,2,2) = 1,1, 1,0;
+mdef(B,2,1) = 1,0.2;
+mqpc(C,D,A,B,1,X3);
+mpr(X3);

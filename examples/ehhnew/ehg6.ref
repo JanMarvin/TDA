@@ -1,0 +1,116 @@
+Read records:     600     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   2.5140201213269e+00  1.0047564726e+01          --       1 (1,1)
+    2   2.4712470885731e+00  4.6022121185e+00  1.0000e+00       2 (2,2)
+    3   2.4630841006709e+00  1.0164493158e+00  1.3240e+00       3 (3,3)
+    4   2.4627597138908e+00  5.6403122871e-02  1.8853e-01       4 (4,4)
+    5   2.4627587739355e+00  1.8930777926e-04  9.7132e-03       5 (5,5)
+    6   2.4627587739256e+00  2.1661258228e-09  3.4220e-05       6 (6,6)
+TDA. Analysis of Transition Data (6.4p). Sat Jul 25 02:03:18 2026
+Current memory: 390032 bytes.
+
+Reading command file: ehg6.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   3.0  c1
+  2 NOJ       3   4   2.0  c2
+  3 TStart    3   4   3.0  c3
+  4 TFin      3   4   3.0  c4
+  5 SEX       3   4   2.0  c5
+  6 TI        3   4   3.0  c6
+  7 TB        3   4   3.0  c7
+  8 TE        3   4   3.0  c8
+  9 TMAR      3   4   3.0  c9
+ 10 PRES      3   4   3.0  c10
+ 11 PRESN     3   4   3.0  c11
+ 12 EDU       3   4   2.0  c12
+ 13 DES       3   4   1.0  if(eq(TFin,TI),0,1)
+ 14 TFP       3   4   3.0  TFin-TStart+1
+ 15 COHO2     3   4   0.0  ge(TB,468)&le(TB,504)
+ 16 COHO3     3   4   0.0  ge(TB,588)&le(TB,624)
+ 17 LFX       3   4   0.0  TStart-TE
+ 18 PNOJ      3   4   0.0  NOJ-1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): rrdat.1
+Free format. Separation character(s): default.
+
+Reading data file: rrdat.1
+Read records: 600 
+
+Created a new data matrix.
+Number of cases: 600
+Number of variables: 18
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 462798 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=0, des=DES, ts=0, tf=TFP
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       142       142.00      128.18        0.00      428.00    -
+ 1    0   1       458       458.00       49.30        0.00      350.00    -
+Sum               600       600.00
+
+Number of episodes: 600
+Successfully created new episode data.
+----------------------------------------------------------------------------
+rate(...)=7
+Transition rate models. Current memory: 462950 bytes.
+
+Model: Weibull
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 8
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Log-likelihood of exponential null model: -2514.02
+Changed scaling factor for log-likelihood: -0.001
+Using default starting values.
+
+Convergence reached in 6 iterations.
+Number of function evaluations: 7 (7,7)
+
+Maximum of log likelihood: -2462.76
+Norm of final gradient vector: 2.16613e-06
+Last absolute change of function value: 4.0008e-12
+Last relative change in parameters: 3.42195e-05
+
+Idx SN Org Des MT Variable      Coeff      Error    C/Error  Signif
+-------------------------------------------------------------------
+  1  1   0   1  A Constant    -4.4063     0.3060   -14.3996  1.0000
+  2  1   0   1  A EDU          0.0779     0.0270     2.8848  0.9961
+  3  1   0   1  A COHO2        0.6062     0.1242     4.8821  1.0000
+  4  1   0   1  A COHO3        0.5777     0.1303     4.4318  1.0000
+  5  1   0   1  A LFX         -0.0036     0.0010    -3.5040  0.9995
+  6  1   0   1  A PNOJ         0.0637     0.0484     1.3184  0.8126
+  7  1   0   1  A PRES        -0.0292     0.0060    -4.8396  1.0000
+  8  1   0   1  B Constant    -0.0903     0.0364    -2.4830  0.9870
+
+Log likelihood (starting values): -2514.0201 
+Log likelihood (final estimates): -2462.7588 
+
+Calculating generalized residuals; will be written to: ehg6.res
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 482917 bytes.
+End of program. Sat Jul 25 02:03:18 2026

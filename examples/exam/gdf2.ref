@@ -1,0 +1,193 @@
+Read records:      16     
+Iter  1  Crit  6.37125522e-02
+Iter  2  Crit  2.83077955e-02
+Iter  3  Crit  2.66000777e-02
+Iter  4  Crit  2.39036083e-02
+Iter  5  Crit  1.91596895e-02
+Iter  6  Crit  1.41790360e-02
+Iter  7  Crit  1.00094825e-02
+Iter  8  Crit  6.92109764e-03
+Iter  9  Crit  4.78266180e-03
+Iter 10  Crit  3.35170329e-03
+Iter 11  Crit  2.40598619e-03
+Iter 12  Crit  1.77906454e-03
+Iter 13  Crit  1.35746598e-03
+Iter 14  Crit  1.06744468e-03
+Iter 15  Crit  8.62121582e-04
+Iter  1  Crit  6.37125522e-02
+Iter  2  Crit  2.83077955e-02
+Iter  3  Crit  2.66000777e-02
+Iter  4  Crit  2.39036083e-02
+Iter  5  Crit  1.91596895e-02
+Iter  6  Crit  1.41790360e-02
+Iter  7  Crit  1.00094825e-02
+Iter  8  Crit  6.92109764e-03
+Iter  9  Crit  4.78266180e-03
+Iter 10  Crit  3.35170329e-03
+Iter 11  Crit  2.40598619e-03
+Iter 12  Crit  1.77906454e-03
+Iter 13  Crit  1.35746598e-03
+Iter 14  Crit  1.06744468e-03
+Iter 15  Crit  8.62121582e-04
+Iter  1  Crit  6.37125522e-02
+Iter  2  Crit  2.83077955e-02
+Iter  3  Crit  2.66000777e-02
+Iter  4  Crit  2.39036083e-02
+Iter  5  Crit  1.91596895e-02
+Iter  6  Crit  1.41790360e-02
+Iter  7  Crit  1.00094825e-02
+Iter  8  Crit  6.92109764e-03
+Iter  9  Crit  4.78266180e-03
+Iter 10  Crit  3.35170329e-03
+Iter 11  Crit  2.40598619e-03
+Iter 12  Crit  1.77906454e-03
+Iter 13  Crit  1.35746598e-03
+Iter 14  Crit  1.06744468e-03
+Iter 15  Crit  8.62121582e-04
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: gdf2.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   0.0  c1
+  2 L1        3   4   0.0  c2
+  3 Y         3   4   0.0  c3
+  4 CEN       3   4   0.0  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): gdf2.dat
+Free format. Separation character(s): default.
+
+Reading data file: gdf2.dat
+Read records: 16 
+
+Created a new data matrix.
+Number of cases: 16
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 406104 bytes.
+----------------------------------------------------------------------------
+gdf(...)=...
+General distribution functions. Current memory: 406104 bytes.
+
+yl: Y  cen: CEN
+Number of cases: 16
+Number of units: 8
+Number of dimensions (level 1): 2
+Number of exact cases: 9
+Number of interval censored cases: 0
+Number of right censored cases: 7
+Number of marginal patterns: 1
+
+Pattern  type     units  dimensions
+    1      3          8   1  2 
+
+Dimension  level-1  observations  i-censored  r-censored
+     1         1               8           0           4
+     2         2               8           0           3
+
+Joint calculation (method 1): distribution functions.
+
+
+Pattern 1. Units: 8, dimensions: 2
+Iterative procedure.
+Max iterations: 20  tolerance: 0.001
+Domain (sc=0.5)
+  1     0.5000     8.5000 
+  2     0.5000     8.5000 
+
+Number of boxes in each dimension: 8. Total: 64
+Dimension  i-censored  r-censored  observations
+     1              0           4             8
+     2              0           3             8
+
+Finished after 15 iterations. Max change: 0.000862122
+
+8 records written to: df5
+----------------------------------------------------------------------------
+gdf(...)=...
+General distribution functions. Current memory: 406104 bytes.
+
+yl: Y  cen: CEN
+Number of cases: 16
+Number of units: 8
+Number of dimensions (level 1): 2
+Number of exact cases: 9
+Number of interval censored cases: 0
+Number of right censored cases: 7
+Number of marginal patterns: 1
+
+Pattern  type     units  dimensions
+    1      3          8   1  2 
+
+Dimension  level-1  observations  i-censored  r-censored
+     1         1               8           0           4
+     2         2               8           0           3
+
+Joint calculation (method 1): survivor functions.
+
+
+Pattern 1. Units: 8, dimensions: 2
+Iterative procedure.
+Max iterations: 20  tolerance: 0.001
+Domain (sc=0.5)
+  1     0.5000     8.5000 
+  2     0.5000     8.5000 
+
+Number of boxes in each dimension: 8. Total: 64
+Dimension  i-censored  r-censored  observations
+     1              0           4             8
+     2              0           3             8
+
+Finished after 15 iterations. Max change: 0.000862122
+
+8 records written to: ds5
+----------------------------------------------------------------------------
+gdf(...)=...
+General distribution functions. Current memory: 406104 bytes.
+
+yl: Y  cen: CEN
+Number of cases: 16
+Number of units: 8
+Number of dimensions (level 1): 2
+Number of exact cases: 9
+Number of interval censored cases: 0
+Number of right censored cases: 7
+Number of marginal patterns: 1
+
+Pattern  type     units  dimensions
+    1      3          8   1  2 
+
+Dimension  level-1  observations  i-censored  r-censored
+     1         1               8           0           4
+     2         2               8           0           3
+
+Joint calculation (method 1): expected values.
+
+
+Pattern 1. Units: 8, dimensions: 2
+Iterative procedure.
+Max iterations: 20  tolerance: 0.001
+Domain (sc=0.5)
+  1     0.5000     8.5000 
+  2     0.5000     8.5000 
+
+Number of boxes in each dimension: 8. Total: 64
+Dimension  i-censored  r-censored  observations
+     1              0           4             8
+     2              0           3             8
+
+Finished after 15 iterations. Max change: 0.000862122
+
+8 records written to: de5
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426151 bytes.
+End of program. Tue Jul 21 05:46:53 2026

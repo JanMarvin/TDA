@@ -1,0 +1,6 @@
+# e00info.cf -- t_e00.c coverage: sde00, no df= (summary-only mode:
+# reads the sections and reports counts without writing a spatial
+# file). Real fixture (input.e00 = the uploaded ARC/INFO export, an ARC/INFO
+# export of a water-well point coverage).
+
+sde00() = input.e00;

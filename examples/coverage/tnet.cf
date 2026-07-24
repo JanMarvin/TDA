@@ -1,0 +1,14 @@
+# tnet.cf -- temporal network analysis over a three-wave multigraph
+nvar(
+    dfile = tn.dat,
+    I  [2.0] = c1,
+    J  [2.0] = c2,
+    W1 [2.0] = c3,
+    W2 [2.0] = c4,
+    W3 [2.0] = c5,
+);
+gdd = I,J,W1,W2,W3;
+tnet(opt=1, tp=0(4)16);
+tnet(opt=2, tp=0(4)16);
+tnet(opt=3, tp=0(4)16);
+tnet(opt=4, tp=0(4)16);

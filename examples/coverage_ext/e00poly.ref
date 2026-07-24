@@ -1,0 +1,126 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 08:28:03 2026
+Current memory: 390032 bytes.
+
+Reading command file: e00poly.cf
+============================================================================
+sde00(...)=poly.e00
+Reading an e00 file. Current memory: 390032 bytes.
+File: poly.e00
+
+Section  records    entries
+ARC 2         18          7
+CNT 2          7          4
+LAB 2          5          2
+PAL 2         13          4
+TOL 2         11         10
+SIN 2          1          0
+LOG 2          5          2
+PRJ 2         19          9
+IFO 2         60         59
+
+Projection    UTM
+Zone          13
+Datum         NAD27
+Zunits        NO
+Units         METERS
+Spheroid      CLARKE1866
+Xshift        0.0000000000
+Yshift        0.0000000000
+Parameters
+
+Bounding Box from BND section:
+X:      340099.88000000       340900.12000000
+Y:     4100000.00000000      4100399.50000000
+
+Bounding Box from ARC section:
+X:      340099.88000000       340900.12000000
+Y:     4100000.00000000      4100399.50000000
+
+----------------------------------------------------------------------------
+Interpretation: polygon coverage.
+Number of polygons: 4
+Number of arcs: 15
+
+Reading the PAT section.
+Number of valid entries: 4
+
+Idx  Variable      Type       Format
+------------------------------------
+  1  AREA          numerical   16.3
+  2  PERIMETER     numerical   16.3
+  3  LANDLICP_     numerical   5.0
+  4  LANDLICP-ID   numerical   5.0
+
+Creating the output file.
+Number of polygons in output file: 3
+28 records written to: poly.sd
+TDA description written to: polydesc.txt
+----------------------------------------------------------------------------
+sdnvar(...)
+Reading a spatial data file. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 SDID      3   4   0.0  c1
+  2 SDTyp     3   4   0.0  c2
+  3 SDN       3   4   0.0  c3
+  4 SDPtr     3   5  11.0  rd
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): poly.sd
+Free format. Separation character(s): default.
+Reading data file: poly.sd
+Read records: 3 
+
+Created a new data matrix.
+Number of cases: 3
+Number of variables: 4
+Missing values in data file(s): none.
+
+Number of points: 0
+Number of lines: 0
+Number of polygons: 3
+Number of unknown objects: 0
+
+Maximal number of points in spatial objects: 10
+Total number of points in spatial objects: 25
+Note: poly.sd remains opened for further access.
+
+X values. Minimum:    340099.8800  Maximum:    340900.1200
+Y values. Minimum:   4100000.0000  Maximum:   4100399.5000
+
+End of creating new variables. Current memory: 406593 bytes.
+----------------------------------------------------------------------------
+psfile=polymap.ps
+Opened new PostScript file: polymap.ps
+----------------------------------------------------------------------------
+psetupg(...)
+Set up geographical coordinate system. Current memory: 406593 bytes.
+Cylindrical projection (equidistant).
+View: 93.4,37.05. Region: 0.05,0.05
+
+Selected region longitude:   93.3500 (  93.4000)   93.4500
+Selected region latitude:    37.0000 (  37.0500)   37.1000
+
+Creating a new 2d coordinate system.
+Size (width x height in mm): 150 x 150
+PostScript coordinates. X-axis: 100,525  Y-axis: 100,525
+Origin (PostScript x and y coordinates): 100,100
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:          93.3500,          93.4500 
+User coordinates Y axis:          37.0000,          37.1000 
+----------------------------------------------------------------------------
+sdpmap(...)
+Plot in geographical coordinate system. Current memory: 406593 bytes.
+
+Number of type 1 objects: 0
+Number of type 2 objects: 0
+Number of type 3 objects: 3
+PostScript output written to: polymap.ps
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426151 bytes.
+End of program. Wed Sep  2 08:28:03 2026

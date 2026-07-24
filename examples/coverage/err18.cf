@@ -1,0 +1,6 @@
+# gdf on an empty data matrix: refused with a clear error.  Before the
+# NOC guard in gdf_gcheck() this was a heap-buffer-overflow (VSORTPtr[0]
+# of a zero-length allocation) that aborted the process -- in-process
+# under R, the whole session.
+nvar(dfile=empty18.dat, ID<8>=c1, L1<8>=c2, Y<8>=c3, CEN<8>=c4);
+gdf(opt=2, yl=Y, cen=CEN, grp=ID,L1) = g18.out;

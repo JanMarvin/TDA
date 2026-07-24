@@ -1,0 +1,160 @@
+name: TDA CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  tda:
+    name: TDA / ${{ matrix.os }} / ${{ matrix.compiler }}
+    runs-on: ${{ matrix.runner }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # ── Linux ───────────────────────────────────────────────────────
+          - runner: ubuntu-latest
+            os: Linux
+            compiler: gcc
+            cc: gcc
+
+          - runner: ubuntu-latest
+            os: Linux
+            compiler: clang
+            cc: clang
+
+          # ── macOS ───────────────────────────────────────────────────────
+          - runner: macos-latest
+            os: macOS
+            compiler: clang          # Xcode clang
+            cc: clang
+
+          - runner: macos-latest
+            os: macOS
+            compiler: gcc            # Homebrew gcc
+            cc: gcc-14               # pinned; adjust if Homebrew updates
+            brew_gcc: gcc@14
+
+          # ── Windows (MSYS2 / MinGW-w64) ─────────────────────────────────
+          - runner: windows-latest
+            os: Windows
+            compiler: mingw-gcc
+            cc: gcc
+            msys2_env: MINGW64
+
+    defaults:
+      run:
+        shell: ${{ matrix.runner == 'windows-latest' && 'msys2 {0}' || 'bash' }}
+
+    steps:
+      # ── checkout ──────────────────────────────────────────────────────
+      - uses: actions/checkout@v4
+
+      # ── Windows: install MSYS2 ────────────────────────────────────────
+      - name: Set up MSYS2
+        if: matrix.runner == 'windows-latest'
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: ${{ matrix.msys2_env }}
+          update: true
+          install: >-
+            mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-python
+            make
+
+      # ── macOS: install Homebrew gcc if needed ─────────────────────────
+      - name: Install Homebrew GCC
+        if: matrix.runner == 'macos-latest' && matrix.brew_gcc != ''
+        run: brew install ${{ matrix.brew_gcc }}
+
+      # ── Linux: ensure clang available ─────────────────────────────────
+      - name: Install clang
+        if: matrix.runner == 'ubuntu-latest' && matrix.compiler == 'clang'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y clang
+
+      # ── build ──────────────────────────────────────────────────────────
+      - name: Build
+        working-directory: src
+        run: make CC=${{ matrix.cc }}
+
+      # ── smoke test: binary runs ────────────────────────────────────────
+      - name: Smoke test
+        run: |
+          EXE=src/tda
+          [ -f src/tda.exe ] && EXE=src/tda.exe
+          cd examples/tests && ../../$EXE cf=triang.cf > /dev/null
+
+      # ── regression: exam suite (260 examples) ─────────────────────────
+      - name: Regression – exam
+        run: |
+          EXE=src/tda
+          [ -f src/tda.exe ] && EXE=src/tda.exe
+          python3 tests/check.py $EXE examples/exam examples/ehhnew examples/tests
+          python3 tests/smoke.py $EXE
+
+      # ── upload failure diffs on failure ───────────────────────────────
+      - name: Upload diffs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tda-diffs-${{ matrix.os }}-${{ matrix.compiler }}
+          path: src/tda_diffs/
+          if-no-files-found: ignore
+
+  tdaR:
+    name: tdaR / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # tdaR/src is committed and checked byte-identical against src/.
+      - name: Check tdaR/src is in sync with src/
+        run: python3 tools/check_src_sync.py
+
+      # Linux: r2u serves every CRAN package as an apt binary.
+      - name: Set up R (r2u)
+        if: runner.os == 'Linux'
+        uses: eddelbuettel/github-actions/r2u-setup@master
+
+      - name: Set up R
+        if: runner.os != 'Linux'
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+
+      # Binaries only: CRAN for the Suggests, r-universe for readspss.
+      - name: Install R dependencies
+        shell: bash
+        run: Rscript tools/ci_install_suggests.R
+
+      - name: Install the R package
+        shell: bash
+        run: R CMD INSTALL tdaR
+
+      # Private repo: needs a fine-grained PAT with read access to it, stored
+      # as the EXT_FIXTURES_PAT repository secret.  Secrets are not available
+      # to pull requests from forks, so the tests fall back to skipping there.
+      - name: Fetch ext fixtures
+        if: github.event_name != 'pull_request'
+        uses: actions/checkout@v4
+        with:
+          repository: JanMarvin/tda-ext-fixtures
+          token: ${{ secrets.EXT_FIXTURES_PAT }}
+          path: ext
+
+      - name: Test the R package
+        shell: bash
+        working-directory: tdaR/tests
+        env:
+          TDA_EXT_INPUT: ${{ github.workspace }}/ext
+        run: Rscript test-all.R

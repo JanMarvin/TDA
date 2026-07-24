@@ -1,0 +1,47 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:40 2026
+Current memory: 390032 bytes.
+
+Reading command file: err12.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   2.0  c1
+  2 X         3   4   6.2  c2
+  3 G         3   4   2.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ex.dat
+Free format. Separation character(s): default.
+
+Reading data file: ex.dat
+Read records: 6 
+
+Created a new data matrix.
+Number of cases: 6
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402084 bytes.
+----------------------------------------------------------------------------
+freq(nfmt=99)=G
+Frequency tables. Current memory: 402084 bytes.
+Maximum number of categories: 1000
+
+Frequency distribution for variable(s): G
+Number of categories: 3
+
+Index    G  Frequency   Pct   Cumulated   Pct
+----------------------------------------------
+    1    1       2.00  33.33       2.00  33.33
+    2    2       2.00  33.33       4.00  66.67
+    3    3       2.00  33.33       6.00 100.00
+----------------------------------------------
+Sum              6.00 100.00
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422246 bytes.
+End of program. Fri Sep  4 15:06:40 2026

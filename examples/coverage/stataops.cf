@@ -1,0 +1,39 @@
+# Stata reader, cross-examined against upstream readstata13
+# (github.com/sjewo/readstata13) in session 38: every fixture below was
+# written by readstata13, and every dump equals the source values
+# exactly (NA -> msys, default -5), machine-compared in tdaR's suite.
+# NOTE: refusal cases (unsupported formats) halt a command file, so
+# they live in their own staterr*.cf files.
+clear;
+rstata(df=rs108.out) = rs108.dta;
+clear;
+rstata(df=rs110.out) = rs110.dta;
+clear;
+rstata(df=rs114.out) = rs114.dta;
+# old formats; 102 needed a genuine TDA fix (its data label is 30
+# bytes, not 32 -- authoritative layout: readstata13's writer; TDA had
+# shared 0x66 with 0x68 and shifted every section by two)
+clear;
+rstata(df=old102.out) = old102.dta;
+clear;
+rstata(df=old104.out) = old104.dta;
+clear;
+rstata(df=old105.out) = old105.dta;
+# value labels are read only when a dvar file is requested
+clear;
+rstata(df=lab114.out) = lab114.dta;
+clear;
+rstata(dvar(fn=1)=dvlab.out) = lab114.dta;
+clear;
+rstata(dvar(fn=1)=dv114.out) = rs114.dta;
+# big-endian: old104be.dta is old104.dta byteswapped field-for-field;
+# the values must equal the little-endian read
+clear;
+rstata(df=old104be.out) = old104be.dta;
+clear;
+rstata(df=old104le.out) = old104.dta;
+# reader options
+clear;
+rstata(df=cap4.out, noc=4) = rs114.dta;
+clear;
+rstata(vsel=Id[gt]2) = rs114.dta;

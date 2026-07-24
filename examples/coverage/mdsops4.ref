@@ -1,0 +1,132 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep 12 08:06:26 2026
+Current memory: 390032 bytes.
+
+Reading command file: mdsops4.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 D         3   4   9.4  c1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): dis4.dat
+Free format. Separation character(s): default.
+
+Reading data file: dis4.dat
+Read records: 6 
+
+Created a new data matrix.
+Number of cases: 6
+Number of variables: 1
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 394049 bytes.
+----------------------------------------------------------------------------
+gdd(opt=4)=D
+New graph data. Current memory: 394049 bytes.
+Option 4: upper triangle.
+
+Minimal level for valid edges: 0
+Number of nodes: 4. Largest node number: 4
+Graph type 2 (undirected, valued, bidirectional edges: minimum).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1        6       0        5.000000             0
+
+Successfully created new graph data structure. Current memory: 394075 bytes.
+----------------------------------------------------------------------------
+mdsx(...)=...
+Multidimensional scaling. Current memory: 394073 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+Minmax approach.
+
+Function minimization.
+Algorithm 2: Simplex
+
+Number of model parameters: 5
+Maximum number of iterations: 100
+Starting value of step length: 1
+Convergence criterion: 4
+Tolerance for variance of function values: 1e-10
+Scaling factor: 1
+
+Parameters for step 0 algorithm.
+Max number of iterations: 500
+Maximum number of boxes: 500
+Tolerance for box width: 0.01
+
+dm=5 ip0=0 ip1=3  
+0.000000 3.000000 4.000000 5.000000 
+3.000000 0.000000 4.000000 5.000000 
+4.000000 4.000000 0.000000 3.000000 
+5.000000 5.000000 3.000000 0.000000 
+
+Step  NPnt  Iterations  NBoxes  Accepted  Variance   Min Function
+   0     3          50       9         4            2.9295682e-03
+
+NEU nach step 0 a,b,r  
+1.000000 1.000000 0.000000
+0.000000 0.000000 0.000000
+4.198242 3.397461 0.000000
+6.000000 1.000000 0.000000
+NEW XY nach step 1 fmin=2.60324e-05  
+0 1.000000 1.000000
+1 0.000000 0.000000
+2 4.200036 3.399995
+3 6.000001 1.000000
+
+   1     3          12                    9.45e-11  2.6032413e-05
+   0     4          62      12         7            7.6877073e-01
+
+NEU nach step 0 a,b,r  
+1.000000 1.000000 0.000000
+1.004883 3.885742 0.000000
+4.200036 3.399995 0.000000
+6.000001 1.000000 0.000000
+NEW XY nach step 1 fmin=0.397785  
+0 1.000000 1.000000
+1 1.108430 3.989677
+2 4.666621 3.428226
+3 5.602406 1.000000
+
+   1     4          22                    3.73e-11  3.9778540e-01
+
+Optimal value of criterion: 0.397785
+
+vor sort
+i=  0 ds=0.008357 is=1 js=0
+i=  1 ds=0.397771 is=2 js=0
+i=  2 ds=0.397785 is=2 js=1
+i=  3 ds=0.397594 is=3 js=0
+i=  4 ds=0.397591 is=3 js=1
+i=  5 ds=0.397698 is=3 js=2
+
+nach sort
+i=  0 ds=0.008357 is=1 js=0
+i=  1 ds=0.397591 is=3 js=1
+i=  2 ds=0.397594 is=3 js=0
+i=  3 ds=0.397698 is=3 js=2
+i=  4 ds=0.397771 is=2 js=0
+i=  5 ds=0.397785 is=2 js=1
+
+
+NEU Final values a,b,r  
+1.000000 1.000000 0.198878
+1.108430 3.989677 0.198893
+4.666621 3.428226 0.198893
+5.602406 1.000000 0.198805
+
+Neue Abstandsmatrix
+  0.0000   2.9916   4.3978   4.6024 
+  2.9916   0.0000   3.6022   5.3976 
+  4.3978   3.6022   0.0000   2.6023 
+  4.6024   5.3976   2.6023   0.0000 
+4 records written to: mdsxout.txt
+Output file for plot: mdsxpcf.cf
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 468681 bytes.
+End of program. Sat Sep 12 08:06:26 2026

@@ -1,0 +1,26 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 08:17:03 2026
+Current memory: 390032 bytes.
+
+Reading command file: e00info.cf
+============================================================================
+sde00(...)=input.e00
+Reading an e00 file. Current memory: 390032 bytes.
+File: input.e00
+
+Section  records    entries
+LAB 2        161         80
+TOL 2         11         10
+SIN 2          1          0
+IFO 2        101        100
+
+Bounding Box from BND section:
+X:     5028490.50000000      5056767.00000000
+Y:      424675.72000000       442428.25000000
+
+Bounding Box from LAB section:
+X:     5028490.50000000      5056767.00000000
+Y:      424675.72000000       442428.25000000
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390042 bytes.
+End of program. Wed Sep  2 08:17:03 2026

@@ -1,0 +1,25 @@
+# Replication of Gioia & Lauro (2005), "Basic statistical methods for
+# interval data", Statistica Applicata 17(1): interval variances of the
+# 11-patient pulse/blood-pressure table (their section 2, data from
+# Billard-Diday/Raju) and of three variables of the Ichino oils table
+# (their section 3).  Same estimand as TDA's ivar: the interval of all
+# variances reachable when each observation varies in its interval
+# (1/n denominator, as their eq. 2.1).
+#
+# Outcome: every published MINIMUM is reproduced to print precision.
+# Every published MAXIMUM except saponification is too small in the
+# paper -- their MATLAB fmincon is a local optimizer and the variance
+# maximum sits at a corner of the box; exhaustive corner search (see
+# test-r-comparisons.R) confirms TDA's larger values exactly
+# (e.g. pulse: paper 390.50, exact 542.07).  Saponification's minimum
+# is 0 (all intervals share [190,193]); the best point found is ~0 and
+# the missing certificate at tolerance 1e-6 is reported honestly.
+nvar(dfile=patients.dat, PL[8.0]=c1, PU[8.0]=c2, SL[8.0]=c3, SU[8.0]=c4, DL[8.0]=c5, DU[8.0]=c6);
+ivar(mxit=200000, nbox=100000, fmt=12.4) = PL,PU;
+ivar(mxit=200000, nbox=100000, fmt=12.4) = SL,SU;
+ivar(mxit=200000, nbox=100000, fmt=12.4) = DL,DU;
+clear;
+nvar(dfile=oils.dat, GL[8.2]=c1, GU[8.2]=c2, FL[8.0]=c3, FU[8.0]=c4, IL[8.0]=c5, IU[8.0]=c6, SL[8.0]=c7, SU[8.0]=c8);
+ivar(mxit=200000, nbox=100000, fmt=14.6) = FL,FU;
+ivar(mxit=200000, nbox=100000, fmt=14.6) = IL,IU;
+ivar(mxit=200000, nbox=100000, fmt=14.6) = SL,SU;

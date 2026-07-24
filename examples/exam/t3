@@ -1,0 +1,7 @@
+nvar(
+  dfile = d3,
+  noc = 8,
+  TIME <2>[ 6.0] = c1, # time
+  N    <2>[ 6.0] = c2, # number of cases
+  ENT  <4>[10.4] = c3, # entropy
+);

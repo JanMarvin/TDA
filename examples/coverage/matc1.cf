@@ -1,0 +1,51 @@
+# matc1.cf -- t_matc.c coverage batch 1: column-centering, aggregation,
+# vec/ivec, permutation, mch, mkmet, mpinv. Values checked against a
+# python replica of each command's own algorithm (see doc/coverage-handover.md).
+
+mdef(A,3,3) =   4.0, 1.0, 0.5,
+                1.0, 3.0, 0.2,
+                0.5, 0.2, 2.0;
+
+mcent(A,RC);
+mpr(RC);
+
+mstand(A,RS);
+mpr(RS);
+
+mdcent(A,RD);
+mpr(RD);
+
+mcvec(A,VC);
+mpr(VC);
+
+mrvec(A,VR);
+mpr(VR);
+
+mdef(N3,1,1) = 3;
+mivec(VC,N3,AIV);
+mpr(AIV);
+
+mdef(P,3,1) = 3, 1, 2;
+mpinv(P,Q);
+mpr(Q);
+
+mpsym(A,P,BSY);
+mpr(BSY);
+
+mprow(A,P,BRW);
+mpr(BRW);
+
+mpcol(A,P,BCL);
+mpr(BCL);
+
+mdef(TB,3,3) =  0.0, 1.0, 1.0,
+                3.0, 0.0, 1.0,
+                3.0, 3.0, 0.0;
+mch(TB,MCHV);
+mpr(MCHV);
+
+mdef(RK,3,4) =  1, 1, 2, 3,
+                2, 1, 3, 2,
+                3, 3, 2, 1;
+mkmet(RK,KD);
+mpr(KD);

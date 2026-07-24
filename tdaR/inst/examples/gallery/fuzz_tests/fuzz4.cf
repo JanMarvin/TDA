@@ -1,0 +1,13 @@
+# Fuzz test 4: single-point plot, tiny plot, extreme dash pattern
+psfile = fuzz4.ps;
+psetup(
+    pxa = 4.9999,5.0001,
+    pya = 4.9999,5.0001,
+    pxlen = 100,
+    pylen = 60,
+);
+plxa(sc=0.00002,ic=5);
+plya(sc=0.00002,ic=5);
+plframe;
+pltext(xy=5,5) = "single point";
+ploto(xy=5,5) = 0.00001;

@@ -1,0 +1,8 @@
+# The zero-records refusal: a data file yielding no records used to
+# complete "successfully", leaving a matrix whose variables pointed at
+# nothing; ANY next command touching it crashed (observed session 39
+# by tools/fuzz_parm.py, which mutates documented options over passing
+# seed cases).  nvar now refuses cleanly, and the previously crashing
+# sequence runs to a normal end.
+nvar(dfile=empty.dat, A[4.0]=c1, B[4.0]=c2);
+dstat;

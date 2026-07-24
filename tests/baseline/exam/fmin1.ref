@@ -1,0 +1,50 @@
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   6.1000000000000e+01  1.5620499352e+01          --       1 (1,1)
+    2   0.0000000000000e+00  0.0000000000e+00  1.0000e+00       2 (2,2)
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:50 2026
+Current memory: 390032 bytes.
+
+Reading command file: fmin1.cf
+============================================================================
+fmin=...
+Function minimization. Current memory: 390032 bytes.
+
+Function definition:
+fn      = (x-5)^2+(y+6)^2
+
+
+Function minimization.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: 1
+
+Idx  Parameter   Starting value
+  1  x            0.00000000e+00 
+  2  y            0.00000000e+00 
+
+
+Convergence reached in 2 iterations.
+Number of function evaluations: 2 (2,2)
+
+Minimum of function: 0
+Last absolute change of function value: 1
+Last relative change in parameters: 1
+
+Idx  Parameter       Value      Error    Value/E  Signif
+--------------------------------------------------------
+  1  x              5.0000 
+  2  y             -6.0000 
+
+Function (starting values):    61.0000 
+Function (final estimates):     0.0000 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 391592 bytes.
+End of program. Tue Jul 21 05:46:50 2026

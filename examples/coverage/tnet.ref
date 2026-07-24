@@ -1,0 +1,118 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:52 2026
+Current memory: 390032 bytes.
+
+Reading command file: tnet.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 I         3   4   2.0  c1
+  2 J         3   4   2.0  c2
+  3 W1        3   4   2.0  c3
+  4 W2        3   4   2.0  c4
+  5 W3        3   4   2.0  c5
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): tn.dat
+Free format. Separation character(s): default.
+
+Reading data file: tn.dat
+Read records: 8 
+
+Created a new data matrix.
+Number of cases: 8
+Number of variables: 5
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 410120 bytes.
+----------------------------------------------------------------------------
+gdd=I,J,W1,W2,W3
+New graph data. Current memory: 410120 bytes.
+Option 1: edge list.
+
+Minimal level for valid edges: 0
+Number of nodes: 5. Largest node number: 5
+Graph type 4 (directed, valued).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1        8       0        4.000000             0
+   2        8       0        8.000000             0
+   3        8       0       13.000000             0
+
+Successfully created new graph data structure. Current memory: 410550 bytes.
+----------------------------------------------------------------------------
+tnet(opt=1,tp=0(4)16)
+Temporal networks. Current memory: 410540 bytes.
+
+Valid temporal network.
+Number of nodes: 5
+Number of edges: 8
+Time axis: 4 to 13
+Interpretation: temporal
+
+----------------------------------------------------------------------------
+tnet(opt=2,tp=0(4)16)
+Temporal networks. Current memory: 410540 bytes.
+
+Valid temporal network.
+Number of nodes: 5
+Number of edges: 8
+Time axis: 4 to 13
+Interpretation: temporal
+
+Option 2: creating temporal/historical subgraphs
+
+      Time    nodes    edges
+    0.0000        0        0
+    4.0000        2        1
+    8.0000        5        8
+   12.0000        3        2
+   16.0000        0        0
+
+----------------------------------------------------------------------------
+tnet(opt=3,tp=0(4)16)
+Temporal networks. Current memory: 410540 bytes.
+
+Valid temporal network.
+Number of nodes: 5
+Number of edges: 8
+Time axis: 4 to 13
+Interpretation: temporal
+
+Option 3: distribution of indegrees
+Interpretation: directed
+
+      Time    nodes    edges   frequency of in- or outdegrees (0,1,2,...)
+    0.0000        0        0    0    0    0    0    0    0 
+    4.0000        2        1    1    1    0    0    0    0 
+    8.0000        5        8    1    1    2    1    0    0 
+   12.0000        3        2    2    0    1    0    0    0 
+   16.0000        0        0    0    0    0    0    0    0 
+
+----------------------------------------------------------------------------
+tnet(opt=4,tp=0(4)16)
+Temporal networks. Current memory: 410540 bytes.
+
+Valid temporal network.
+Number of nodes: 5
+Number of edges: 8
+Time axis: 4 to 13
+Interpretation: temporal
+
+Option 4: distribution of outdegrees
+Interpretation: directed
+
+      Time    nodes    edges   frequency of in- or outdegrees (0,1,2,...)
+    0.0000        0        0    0    0    0    0    0    0 
+    4.0000        2        1    1    1    0    0    0    0 
+    8.0000        5        8    1    1    2    1    0    0 
+   12.0000        3        2    1    2    0    0    0    0 
+   16.0000        0        0    0    0    0    0    0    0 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 430176 bytes.
+End of program. Fri Sep  4 15:06:52 2026

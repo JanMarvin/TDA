@@ -1,0 +1,269 @@
+<script>
+(function () {
+  var tkey = "tdaR-theme", fkey = "tdaR-fontsize";
+  var FMIN = 11, FMAX = 26, FSTEP = 1;
+  // auto, light, dark -- auto leaves the attribute off, so the stylesheet's
+  // prefers-color-scheme rule decides.  Nothing stored means auto.
+  var THEMES = ["auto", "light", "dark"];
+  var mode = "auto";
+  function apply(t) {
+    if (t === "auto") document.documentElement.removeAttribute("data-theme");
+    else document.documentElement.setAttribute("data-theme", t);
+  }
+  // The stylesheet's root size, 15px unless the wide-screen rule made it
+  // 17; the zoom factor is measured against it.
+  var BASE = 15;
+  function setZoom(px) {
+    document.documentElement.style.fontSize = px + "px";
+    try { document.documentElement.style.setProperty("--zoom", String(px / BASE)); } catch (e) {}
+  }
+  var saved = null, savedF = null;
+  try { saved = localStorage.getItem(tkey); savedF = localStorage.getItem(fkey); } catch (e) {}
+  if (THEMES.indexOf(saved) >= 0) mode = saved;
+  apply(mode);
+  if (savedF) document.documentElement.style.fontSize = savedF + "px";
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var onResize = [];
+    function refresh() { onResize.forEach(function (f) { f(); }); }
+
+    var ctl = document.createElement("div");
+    ctl.className = "page-controls";
+    document.body.appendChild(ctl);
+
+    function mkbtn(cls, text, title) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = cls; b.textContent = text; b.title = title;
+      ctl.appendChild(b);
+      return b;
+    }
+
+    // Page zoom.  The whole page is sized in rem off the root, the plots
+    // included, so one step here scales text, boxes, tables and figures
+    // alike; --zoom lets the stylesheet let a figure grow past the column
+    // in step.  Needed in the RStudio viewer pane, which has no zoom of
+    // its own and does not pass the IDE's zoom keys on to the page.
+    function fontSize() {
+      return parseFloat(getComputedStyle(document.documentElement).fontSize);
+    }
+    function setFont(px) {
+      px = Math.min(FMAX, Math.max(FMIN, px));
+      setZoom(px);
+      try { localStorage.setItem(fkey, String(px)); } catch (e) {}
+      refresh();
+    }
+    var smaller = mkbtn("font-step", "A\u2212", "Smaller text");
+    var larger = mkbtn("font-step", "A+", "Larger text");
+    smaller.addEventListener("click", function () { setFont(fontSize() - FSTEP); });
+    larger.addEventListener("click", function () { setFont(fontSize() + FSTEP); });
+
+    // The table of contents: folded into a "Contents" line, placed after
+    // the introduction (before the first numbered section) where there
+    // is one, and reachable from a fixed link at the left of the page.
+    var toc = document.getElementById("TOC");
+    if (toc) {
+      var det = document.createElement("details");
+      det.id = "toc-box";
+      var sum = document.createElement("summary");
+      sum.textContent = "Contents";
+      det.appendChild(sum);
+      var first = null;
+      document.querySelectorAll("h2").forEach(function (h) {
+        if (!first && /^\s*\d/.test(h.textContent)) first = h;
+      });
+      (first ? first.parentNode : toc.parentNode).insertBefore(det, first || toc);
+      det.appendChild(toc);
+      var nav = document.createElement("div");
+      nav.className = "side-nav";
+      var a1 = document.createElement("a");
+      a1.href = "#toc-box"; a1.textContent = "Contents";
+      a1.addEventListener("click", function () { det.open = true; });
+      var a2 = document.createElement("a");
+      a2.href = "#"; a2.textContent = "Top";
+      nav.appendChild(a1); nav.appendChild(a2);
+      // On the pkgdown site the vignettes are served from articles/;
+      // give them a way back to the site there (nowhere else does the
+      // path look like this, so the R vignette viewer never shows it).
+      if (/\/articles\/[^\/]+\.html$/.test(location.pathname)) {
+        var a0 = document.createElement("a");
+        a0.href = "../index.html"; a0.textContent = "tdaR";
+        nav.insertBefore(a0, a1);
+      }
+
+      // step through the sections.  The headings are taken in document
+      // order; from inside a section, Prev goes to that section's own
+      // heading first, then to the one before it.
+      var heads = [].slice.call(document.querySelectorAll("h2, h3"));
+      function currentIndex() {
+        var i = -1;
+        for (var k = 0; k < heads.length; k++) {
+          if (heads[k].getBoundingClientRect().top <= 4) i = k; else break;
+        }
+        return i;
+      }
+      function step(d) {
+        var i = currentIndex();
+        var j;
+        if (i < 0) j = d > 0 ? 0 : -1;
+        else if (d < 0 && heads[i].getBoundingClientRect().top < -8) j = i;
+        else j = i + d;
+        if (j < 0) { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
+        if (j > heads.length - 1) j = heads.length - 1;
+        heads[j].scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      function mknav(text, d) {
+        var el = document.createElement("button");
+        el.type = "button"; el.className = "nav-step"; el.textContent = text;
+        el.addEventListener("click", function () { step(d); });
+        nav.appendChild(el);
+        return el;
+      }
+      if (heads.length) { mknav("\u2191 Prev", -1); mknav("\u2193 Next", 1); }
+      document.body.appendChild(nav);
+
+      // The links sit in the left margin, beside the prose column, never
+      // over it.  The column's own position is measured rather than
+      // computed from its width in em, so this holds at any font size and
+      // after the A-/A+ buttons have changed one.
+      var GAP = 12;
+      var room = false, colLeft = 0;
+      function place() {
+        // measured with the block visible: once hidden its width reads 0,
+        // and the next resize would place it from a width of nothing.
+        // clientWidth, not innerWidth: a fixed element is positioned
+        // against the viewport without its scrollbar.
+        var prev = nav.style.display;
+        nav.style.display = "";
+        var left = document.body.getBoundingClientRect().left;
+        var w = nav.offsetWidth;
+        nav.style.display = prev;
+        colLeft = left;
+        room = left >= w + 2 * GAP;
+        if (room) {
+          // clientWidth, so the scrollbar is left out; innerWidth only if
+          // the viewer reports no layout width at all
+          var vw = document.documentElement.clientWidth || window.innerWidth;
+          nav.style.right = (vw - left + GAP) + "px";
+        }
+      }
+      // The margin has to be wide enough to hold the block at all; given
+      // that, it is shown when the pointer moves into the margin itself,
+      // to the left of the prose, and fades out again when it leaves.
+      function navVis() {
+        nav.style.display = room ? "" : "none";
+        if (!room) nav.classList.remove("visible");
+      }
+      onResize.push(function () { place(); navVis(); });
+      place(); navVis();
+      document.addEventListener("mousemove", function (e) {
+        nav.classList.toggle("visible", room && e.clientX <= colLeft);
+      }, { passive: true });
+      nav.addEventListener("focusin", function () { nav.classList.add("visible"); });
+      nav.addEventListener("focusout", function () { nav.classList.remove("visible"); });
+      window.addEventListener("resize", refresh, { passive: true });
+    }
+
+    // a copy button on every box: copies the R code, not the output
+    function copyText(t) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(t);
+      }
+      var ta = document.createElement("textarea");
+      ta.value = t; ta.style.position = "fixed"; ta.style.left = "-1000px";
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta);
+      return Promise.resolve();
+    }
+    document.querySelectorAll("div.box").forEach(function (box) {
+      var code = [];
+      // one entry per command block.  pre.r and div.sourceCode are the two
+      // shapes knitr writes for it; selecting the inner <code> as well
+      // would take every block twice.
+      // folded code is still in the page, just not shown: the button
+      // copies it exactly as it copies any other box's
+      box.querySelectorAll("pre.r, div.sourceCode").forEach(function (el) {
+        code.push(el.textContent.replace(/\n$/, ""));
+      });
+      if (!code.length) return;
+      var cb = document.createElement("button");
+      cb.type = "button"; cb.className = "copy-code"; cb.textContent = "copy R";
+      cb.title = "Copy this box's R code (not its output)";
+      cb.addEventListener("click", function () {
+        copyText(code.join("\n\n")).then(function () {
+          cb.textContent = "copied"; setTimeout(function () { cb.textContent = "copy R"; }, 1200);
+        });
+      });
+      box.insertBefore(cb, box.firstChild);
+    });
+    // plots: click to zoom to the window, click again to restore
+    document.querySelectorAll("svg.plot").forEach(function (el) {
+      el.addEventListener("click", function () { el.classList.toggle("zoomed"); });
+    });
+
+    // Last, and on its own: nothing above depends on it, and a browser
+    // that objects to any of it must not lose the contents box or the
+    // buttons.
+    try {
+      var b0 = parseFloat(getComputedStyle(document.documentElement).fontSize);
+      if (b0 > 0 && !savedF) BASE = b0;
+    // The keys and the trackpad gesture a browser uses for zoom, taken
+    // only when the page sits in a frame -- the RStudio viewer pane,
+    // which shows the page in an iframe and zooms nothing itself.  In a
+    // browser tab the browser's own zoom is left alone.
+    var framed = false;
+    try { framed = window.self !== window.top; } catch (e) { framed = true; }
+    document.addEventListener("keydown", function (e) {
+      if (!framed || !(e.metaKey || e.ctrlKey) || e.altKey) return;
+      var k = e.key;
+      if (k === "+" || k === "=") setFont(fontSize() + FSTEP);
+      else if (k === "-" || k === "_") setFont(fontSize() - FSTEP);
+      else if (k === "0") setFont(BASE);
+      else return;
+      e.preventDefault();
+    });
+    // A pinch: Chromium (which RStudio's viewer is) reports it as a wheel
+    // event with ctrlKey set; WebKit sends gesture events with a scale.
+    document.addEventListener("wheel", function (e) {
+      if (!framed || !e.ctrlKey) return;
+      e.preventDefault();
+      setFont(fontSize() - e.deltaY * 0.05);
+    }, { passive: false });
+    var gestureBase = 0;
+    document.addEventListener("gesturestart", function (e) {
+      if (!framed) return;
+      gestureBase = fontSize(); e.preventDefault();
+    });
+    document.addEventListener("gesturechange", function (e) {
+      if (!framed) return;
+      if (gestureBase) setFont(gestureBase * e.scale);
+      e.preventDefault();
+    });
+
+    // the button names the setting in force, not the one a click would
+    // bring; with three of them the other reading is ambiguous
+    var b = mkbtn("theme-toggle", "", "Colour scheme: follow the system, light, or dark");
+    function label() { b.textContent = mode.charAt(0).toUpperCase() + mode.slice(1); }
+    label();
+    b.addEventListener("click", function () {
+      mode = THEMES[(THEMES.indexOf(mode) + 1) % THEMES.length];
+      apply(mode);
+      try { localStorage.setItem(tkey, mode); } catch (e) {}
+      label();
+    });
+
+    // The controls stay out of the way until the pointer comes up to
+    // them.  Where there is no pointer at all they are left visible; the
+    // stylesheet's hover media query does that.
+    function ctlVis(y) {
+      ctl.classList.toggle("visible", y <= window.innerHeight * 0.25);
+    }
+    document.addEventListener("mousemove", function (e) { ctlVis(e.clientY); },
+                              { passive: true });
+    ctl.addEventListener("focusin", function () { ctl.classList.add("visible"); });
+    ctl.addEventListener("focusout", function () { ctl.classList.remove("visible"); });
+
+    } catch (e) {}
+  });
+})();
+</script>

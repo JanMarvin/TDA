@@ -1,0 +1,294 @@
+url: https://janmarvin.github.io/TDA/
+lang: en
+
+template:
+  bootstrap: 5
+  light-switch: true
+
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+    right: [search, github]
+
+articles:
+- title: Vignettes
+  navbar: ~
+  contents:
+  - tdaR
+  - ehhnew
+  - beyond-the-manual
+
+reference:
+- title: Running TDA and reading its output
+  desc: The command-file interface, TDA's help, the methods of fitted objects, convergence control, and accounting for what a run printed.
+  contents:
+  - tdaR-package
+  - tdaR-methods
+  - tda_run
+  - tda_help
+  - tda_manual_map
+  - tda_options
+  - tda_read_table
+  - tda_payload
+  - tda_output_audit
+  - tda_diagnostics
+  - tda_estimates
+  - tda_control
+
+- title: Data
+  desc: The example data, building TDA's input, variables and random numbers.
+  contents:
+  - tda_rrdat
+  - tda_interval_wages
+  - tda_write_data
+  - tda_pdatr
+  - tda_ndvar
+  - tda_derive
+  - tda_recode
+  - tda_repsel
+  - tda_strings
+  - tda_cwt_norm
+  - tda_dblock
+  - tda_rd
+  - tda_rng
+
+- title: Reading and writing files
+  desc: Statistical packages, spreadsheets, archives, spatial and other formats, and TDA's record-file utilities.
+  contents:
+  - tda_read_spss
+  - tda_read_stata
+  - tda_read_sys
+  - tda_read_xls
+  - tda_read_dbf
+  - tda_read_ucinet
+  - tda_read_shapefile
+  - tda_read_spatial
+  - tda_gtopo
+  - tda_rcsv
+  - tda_rsys
+  - tda_rplz
+  - tda_esort
+  - tda_ccnt
+  - tda_write_foreign
+  - tda_arcd
+  - tda_arcv
+  - tda_arcvc
+  - unzoo
+
+- title: Descriptive statistics
+  desc: Summaries, frequency tables, correlation and covariance, inequality and segregation measures, replication weights.
+  contents:
+  - tda_dstat
+  - tda_freq1
+  - tda_quant
+  - tda_rcorr
+  - tda_cov
+  - tda_brr
+  - tda_ineq
+  - tda_segr
+  - tda_subm
+  - tda_independence
+
+- title: Episode data and transition rate models
+  desc: Episode splitting, life tables, product-limit and interval-censored estimation, rate models, user-defined rate models.
+  contents:
+  - tda_episodes
+  - tda_split
+  - tda_transitions
+  - tda_ltb
+  - tda_mple
+  - tda_midf
+  - tda_midf1
+  - tda_midf2
+  - tda_midf3
+  - tda_survivor
+  - tda_rates
+  - tda_rate
+  - tda_rap
+  - tda_constrain
+  - tda_frml
+  - tda_gdf
+  - plot.tda_ple
+
+- title: Regression
+  contents:
+  - tda_lsreg
+  - tda_glm
+  - tda_qreg
+  - tda_loglin
+  - tda_l1reg
+  - tda_freg
+  - tda_mreg
+  - tda_nlreg
+  - tda_npreg
+  - tda_zreg
+  - tda_fml
+  - tda_mlrc_design
+  - lvl
+
+- title: Interval-valued data
+  contents:
+  - tda_bounds
+  - tda_icov
+  - tda_idf
+  - tda_imean
+  - tda_ilsreg
+  - tda_imreg
+  - tda_inpreg
+  - tda_isd
+  - tda_ivar
+  - tda_ivar1
+  - tda_ivreg
+  - tda_sddf
+  - tda_evalfi
+
+- title: Smoothing, interpolation and expressions
+  contents:
+  - tda_sma
+  - tda_smd
+  - tda_mwvec
+  - tda_spl
+  - tda_interp
+  - tda_isotonic
+  - tda_expressions
+
+- title: Optimization
+  desc: Function evaluation, integration and minimisation; linear, quadratic and 0-1 programming; constrained least squares; assignment and location problems.
+  contents:
+  - tda_integrate
+  - tda_niset
+  - tda_mlp
+  - tda_mlpi
+  - tda_mls
+  - tda_mqp
+  - tda_mqap
+  - tda_gap
+  - tda_gap_permute
+  - tda_gqap
+  - tda_locate_line
+
+- title: Matrix algebra
+  desc: TDA's matrix commands, including the Leslie-matrix iteration it keeps among them.
+  contents:
+  - tda_mat
+  - tda_mag
+  - tda_mcath
+  - tda_mcel
+  - tda_mcent
+  - tda_mch
+  - tda_mmul
+  - tda_mcross
+  - tda_mrsum
+  - tda_mcvec
+  - tda_mdiag
+  - tda_mev
+  - tda_mevs
+  - tda_eigen
+  - tda_minvs
+  - tda_mkp
+  - tda_mnc
+  - tda_mnrow
+  - tda_mpbl
+  - tda_mpfit
+  - tda_mpinv
+  - tda_mpit
+  - tda_spmod
+  - tda_mpz
+  - tda_msort
+  - tda_mscal1
+  - tda_msqrtd
+  - tda_msrow
+  - tda_msvd
+  - tda_mtrim
+
+- title: Clustering, scaling, rank-order and Boolean analysis
+  desc: Cluster analysis, principal components and factor analysis, multidimensional scaling and unfolding, Procrustes rotation, conjoint, Rasch and rank-order methods, combinatorial patterns, Boolean functions.
+  contents:
+  - tda_cluster
+  - tda_cutree
+  - tda_clpyr
+  - tda_scla
+  - tda_dma
+  - tda_pdatd
+  - tda_dmet
+  - tda_dmet1
+  - tda_mds
+  - tda_mdsn
+  - tda_mdsr
+  - tda_mproc
+  - tda_unf
+  - tda_conjoint
+  - tda_conj
+  - tda_rmod
+  - tda_sga
+  - tda_rod
+  - tda_mkmet
+  - tda_rank_orders
+  - tda_com
+  - tda_pcyc
+  - tda_bfc
+  - tda_boolean_min
+
+- title: Sequence analysis
+  contents:
+  - tda_seq_info
+  - tda_seqgc
+  - tda_seqm
+  - tda_seqmd
+  - tda_seqpd
+  - tda_seqpe
+  - tda_seqpm
+
+- title: Graphs and networks
+  desc: Graph objects and TDA's graph analyses -- components, paths, flows, cliques, trees, temporal networks.
+  contents:
+  - tda_graph
+  - tda_g
+  - tda_g_analyses
+  - tda_gde
+  - tda_gdu
+  - tda_gfcf
+  - tda_ghd
+  - tda_gpro
+  - tda_mdefg
+  - tda_rfit
+  - tda_tnet
+  - tda_ptree
+  - tda_ucl
+  - plot.tda_graph
+
+- title: Spatial data
+  contents:
+  - tda_spatial
+  - tda_sd
+  - tda_sd_analyses
+  - tda_sd_ps3
+  - tda_map
+  - tda_polygons
+  - tda_triang
+  - plot.tda_spatial
+
+- title: PostScript plotting
+  desc: TDA's plot commands, and reading the PostScript they write.
+  contents:
+  - tda_ps
+  - tda_ps3
+  - tda_pl
+  - tda_pl_arc
+  - tda_pl_axis
+  - tda_pl_graph
+  - tda_pl_hist
+  - tda_pl_panel
+  - tda_pl_regression
+  - tda_pl_scatter
+  - tda_plotcm
+  - tda_plotr
+  - tda_plotsp
+  - tda_plcirc3
+  - tda_plglob3
+  - tda_plsurf3
+  - tda_ps_objects
+  - tda_combine_ps
+  - tda_read_ps
+  - tda_plot_ps
+  - tda_check_ps

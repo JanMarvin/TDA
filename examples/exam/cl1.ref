@@ -1,0 +1,58 @@
+Read records:      55     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:50 2026
+Current memory: 390032 bytes.
+
+Reading command file: cl1.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 D         3   4   0.0  c1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): cl1.dat
+Free format. Separation character(s): default.
+
+Reading data file: cl1.dat
+Read records: 55 
+
+Created a new data matrix.
+Number of cases: 55
+Number of variables: 1
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 394049 bytes.
+----------------------------------------------------------------------------
+gdd(opt=4)=D
+New graph data. Current memory: 394049 bytes.
+Option 4: upper triangle.
+
+Minimal level for valid edges: 0
+Number of nodes: 11. Largest node number: 11
+Graph type 2 (undirected, valued, bidirectional edges: minimum).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1       55       0       55.000000             0
+
+Successfully created new graph data structure. Current memory: 394075 bytes.
+----------------------------------------------------------------------------
+hcls(opt=2,pcf=cl1plot,df=cl1.df,)=d
+SAHN clustering. Current memory: 394073 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+
+Option 2: complete-link.
+
+Index function is monotone.
+Ultrametric condition: 0
+Fit of distances: 175.054
+
+10 records written to: d
+20 records written to: cl1.df
+Output file for plot of dendrogram: cl1plot
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 414069 bytes.
+End of program. Tue Jul 21 05:46:50 2026

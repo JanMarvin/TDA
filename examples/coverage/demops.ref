@@ -1,0 +1,63 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep  5 15:06:46 2026
+Current memory: 390032 bytes.
+
+Reading command file: demops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 F         3   4   8.4  c1
+  2 S         3   4   8.4  c2
+  3 X         3   4   8.4  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): dem.dat
+Free format. Separation character(s): default.
+
+Reading data file: dem.dat
+Read records: 4 
+
+Created a new data matrix.
+Number of cases: 4
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402083 bytes.
+----------------------------------------------------------------------------
+spmod(fmt=12.8)=F,S,X
+Stationary solution of Leslie-matrix. Current memory: 402083 bytes.
+Max number of iterations: 100
+Tolerance for convergence: 1e-06
+
+Convergence after 16 iterations.
+Final growth factor:   0.83209253 
+Max difference in stationary vector: 1.01706e-06
+Sum of Y = 1
+Sum of next Y = 0.832093
+   1       0.25023056       0.20821517       0.20821498
+   2       0.27065192       0.22520749       0.22520744
+   3       0.26021322       0.21652154       0.21652148
+   4       0.21890430       0.18214925       0.18214864
+----------------------------------------------------------------------------
+spmod(fmt=12.8,tolf=1.e-10,mxit=500,prot=spprot.out)=F,S,X
+Stationary solution of Leslie-matrix. Current memory: 402083 bytes.
+Max number of iterations: 500
+Tolerance for convergence: 1e-10
+
+Convergence after 29 iterations.
+Final growth factor:   0.83209306 
+Max difference in stationary vector: 7.3249e-11
+Protocol written to: spprot.out
+Sum of Y = 1
+Sum of next Y = 0.832093
+   1       0.25023052       0.20821508       0.20821508
+   2       0.27065178       0.22520747       0.22520747
+   3       0.26021299       0.21652142       0.21652142
+   4       0.21890471       0.18214909       0.18214909
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422121 bytes.
+End of program. Sat Sep  5 15:06:46 2026

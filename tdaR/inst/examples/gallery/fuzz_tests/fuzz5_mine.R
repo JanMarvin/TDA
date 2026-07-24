@@ -1,0 +1,15 @@
+library(tdaR)
+
+p <- tda_ps(xlim = c(-50, 50), ylim = c(-50, 50), width = 90, height = 90)
+p <- tda_pl_frame(p)
+p <- tda_pl_lines(p, x = c(-40, 40), y = c(-40, -40), lw = 5)
+p <- tda_pl_lines(p, x = c(-40, 40), y = c(40, 40), lw = 0.01)
+p <- tda_pl_ellipse(p, at = c(-20, 0), axes = c(15, 15), gray = 0.3)
+p <- tda_pl_ellipse(p, at = c(0, 0), axes = c(15, 15), gray = 0.6)
+p <- tda_pl_ellipse(p, at = c(20, 0), axes = c(15, 15), gray = 0.9)
+p <- tda_pl_text(p, "BIG", at = c(0, -25), fs = 5)
+p <- tda_pl_text(p, "tiny", at = c(0, -30), fs = 0.3)
+
+png("fuzz5_mine.png", width = 550, height = 550)
+plot(p)
+dev.off()

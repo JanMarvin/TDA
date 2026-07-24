@@ -1,0 +1,64 @@
+Read records:       5     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: gd32.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 I         3   4   0.0  c1
+  2 J         3   4   0.0  c2
+  3 V         3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): gd10.dat
+Free format. Separation character(s): default.
+
+Reading data file: gd10.dat
+Read records: 5 
+
+Created a new data matrix.
+Number of cases: 5
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402083 bytes.
+----------------------------------------------------------------------------
+gdd(gt=1)=I,J,V
+New graph data. Current memory: 402083 bytes.
+Option 1: edge list.
+
+Minimal level for valid edges: 0
+Number of nodes: 4. Largest node number: 4
+Graph type 1 (undirected, unvalued).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1        5       0        5.000000             0
+
+Successfully created new graph data structure. Current memory: 402361 bytes.
+----------------------------------------------------------------------------
+gnst(opt=1,)=d1
+Enumeration of spanning trees. Current memory: 402355 bytes.
+Using graph number 1 (undirected, unvalued).
+
+Component  nodes    trees
+     1         4        8
+
+8 records written to: d1
+----------------------------------------------------------------------------
+gnst(opt=2,)=d2
+Enumeration of spanning trees. Current memory: 402355 bytes.
+Using graph number 1 (undirected, unvalued).
+
+Component  nodes    trees
+     1         4        8
+
+24 records written to: d2
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422121 bytes.
+End of program. Tue Jul 21 05:46:53 2026

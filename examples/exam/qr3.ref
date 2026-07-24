@@ -1,0 +1,178 @@
+Read records:      45     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   9.3508342712421e+02  1.1578827056e+03          --       1 (1,1)
+    2   8.4096670643769e+02  1.6627006600e+02  1.0000e+00       2 (2,2)
+    3   8.2782610315033e+02  5.1696098219e+01  6.8775e-01       3 (3,3)
+    4   8.2676513041627e+02  3.9860833137e+00  1.9020e-01       4 (4,4)
+    5   8.2674843449322e+02  7.5245843467e-02  2.9684e-02       5 (5,5)
+    6   8.2674842787284e+02  3.1686692713e-05  6.0099e-04       6 (6,6)
+    7   8.2674842787284e+02  5.7614982180e-12  2.4796e-07       7 (7,7)
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   9.3508342712421e+02  1.1578827056e+03          --       1 (1,1)
+    2   8.4096670643769e+02  1.6627006600e+02  1.0000e+00       2 (2,2)
+    3   8.2782610315033e+02  5.1696098219e+01  6.8775e-01       3 (3,3)
+    4   8.2676513041627e+02  3.9860833137e+00  1.9020e-01       4 (4,4)
+    5   8.2674843449322e+02  7.5245843467e-02  2.9684e-02       5 (5,5)
+    6   8.2674842787284e+02  3.1686692981e-05  6.0099e-04       6 (6,6)
+    7   8.2674842787284e+02  5.7975557468e-12  2.4796e-07       7 (7,7)
+TDA. Analysis of Transition Data (6.4p). Sat Jul 25 02:03:12 2026
+Current memory: 390032 bytes.
+
+Reading command file: qr3.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X         3   4   0.0  c1
+  2 Weight    3   4   0.0  c2
+  3 Y         3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): qr3.dat
+Free format. Separation character(s): default.
+
+Reading data file: qr3.dat
+Read records: 45 
+
+Created a new data matrix.
+Number of cases: 45
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402088 bytes.
+----------------------------------------------------------------------------
+cwt=Weight
+New case weights. Sum of weights: 581
+----------------------------------------------------------------------------
+qreg(...)=...
+Quantal response models. Current memory: 402088 bytes.
+
+Model: multinomial logit.
+
+Variables (cross-section)
+-------------------------
+Y   : Y  
+X1  : X  
+
+Checking available data (pmin=1)
+Number of cases with valid data: 45
+
+Categories of dependent variable.
+Maximum number of categories: 100
+
+Index               0         1         2         3         4   (Weighted)
+Category            1         2         3         4         5  Observations
+---------------------------------------------------------------------------
+Wave 1   N      70.00    149.00    175.00    132.00     55.00        581.00
+         Pct    12.05     25.65     30.12     22.72      9.47  
+
+Using case weights defined by: Weight
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 8
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+
+Convergence reached in 7 iterations.
+Number of function evaluations: 8 (8,8)
+
+Maximum of log likelihood: -826.748
+Norm of final gradient vector: 5.7615e-12
+Last absolute change of function value: 1.37511e-15
+Last relative change in parameters: 2.47957e-07
+
+Idx Cat Term   Variable        Coeff      Error    C/Error  Signif
+------------------------------------------------------------------
+  1   2  I     Intercept      7.2428     1.3578     5.3342  1.0000
+  2   2  X     X             -0.5035     0.1024    -4.9187  1.0000
+------------------------------------------------------------------
+  3   3  I     Intercept      8.3752     1.3438     6.2326  1.0000
+  4   3  X     X             -0.5842     0.1014    -5.7582  1.0000
+------------------------------------------------------------------
+  5   4  I     Intercept     11.3662     1.3897     8.1788  1.0000
+  6   4  X     X             -0.8723     0.1073    -8.1304  1.0000
+------------------------------------------------------------------
+  7   5  I     Intercept     11.1873     1.5042     7.4373  1.0000
+  8   5  X     X             -0.9375     0.1202    -7.7979  1.0000
+
+Log likelihood (starting values):  -935.0834 
+Log likelihood (final estimates):  -826.7484 
+
+----------------------------------------------------------------------------
+fml=...
+ML estimation of user-defined model. Current memory: 402088 bytes.
+
+Function definition:
+xb2     = exp(beta20+X*beta21)
+xb3     = exp(beta30+X*beta31)
+xb4     = exp(beta40+X*beta41)
+xb5     = exp(beta50+X*beta51)
+xbb     = 1+xb2+xb3+xb4+xb5
+ll      = if(eq(Y,1),1/xbb,if(eq(Y,2),xb2/xbb,if(eq(Y,3),xb3/xbb,if(eq(Y,4),xb4/xbb,xb5/xbb))))
+fn      = Weight*log(ll)
+
+Function evaluation: sum over 45 data matrix cases.
+
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 8
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Idx  Parameter   Starting value
+  1  beta20       0.00000000e+00 
+  2  beta21       0.00000000e+00 
+  3  beta30       0.00000000e+00 
+  4  beta31       0.00000000e+00 
+  5  beta40       0.00000000e+00 
+  6  beta41       0.00000000e+00 
+  7  beta50       0.00000000e+00 
+  8  beta51       0.00000000e+00 
+
+
+Convergence reached in 7 iterations.
+Number of function evaluations: 8 (8,8)
+
+Maximum of log likelihood: -826.748
+Norm of final gradient vector: 5.79756e-12
+Last absolute change of function value: 1.37511e-15
+Last relative change in parameters: 2.47957e-07
+
+Idx  Parameter       Value      Error    Value/E  Signif
+--------------------------------------------------------
+  1  beta20         7.2428     1.3578     5.3342  1.0000
+  2  beta21        -0.5035     0.1024    -4.9187  1.0000
+  3  beta30         8.3752     1.3438     6.2326  1.0000
+  4  beta31        -0.5842     0.1014    -5.7582  1.0000
+  5  beta40        11.3662     1.3897     8.1788  1.0000
+  6  beta41        -0.8723     0.1073    -8.1304  1.0000
+  7  beta50        11.1873     1.5042     7.4373  1.0000
+  8  beta51        -0.9375     0.1202    -7.7979  1.0000
+
+Log likelihood (starting values):  -935.0834 
+Log likelihood (final estimates):  -826.7484 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422126 bytes.
+End of program. Sat Jul 25 02:03:12 2026

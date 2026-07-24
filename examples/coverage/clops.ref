@@ -1,0 +1,97 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:40 2026
+Current memory: 390032 bytes.
+
+Reading command file: clops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 D         3   4   0.0  c1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): clops_g.dat
+Free format. Separation character(s): default.
+
+Reading data file: clops_g.dat
+Read records: 15 
+
+Created a new data matrix.
+Number of cases: 15
+Number of variables: 1
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 394049 bytes.
+----------------------------------------------------------------------------
+gdd(opt=4)=D
+New graph data. Current memory: 394049 bytes.
+Option 4: upper triangle.
+
+Minimal level for valid edges: 0
+Number of nodes: 6. Largest node number: 6
+Graph type 2 (undirected, valued, bidirectional edges: minimum).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1       15       0       16.000000             0
+
+Successfully created new graph data structure. Current memory: 394075 bytes.
+----------------------------------------------------------------------------
+hcld(alg=2,max=3)=hcldout.txt
+Hierarchical divisive clustering. Current memory: 394073 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+Algorithm 2: minimal diameter splits.
+6 records written to: hcldout.txt
+----------------------------------------------------------------------------
+clp(meth=1)=clpout1.txt
+Partitional clustering. Current memory: 394073 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+
+Method: 1
+Number of clusters: 2
+Number of random restarts: 1
+Maximal number of iterations: 15
+
+   1  0    30.0000   3    15.0000   3    15.0000 
+
+Best solution: 1
+6 records written to: clpout1.txt
+----------------------------------------------------------------------------
+clp(meth=3)=clpout3.txt
+Partitional clustering. Current memory: 394073 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+
+Method: 3
+Number of clusters: 2
+Number of random restarts: 1
+Maximal number of iterations: 15
+
+   1  0     5.0000   3     2.5000   3     2.5000 
+
+Best solution: 1
+6 records written to: clpout3.txt
+----------------------------------------------------------------------------
+clp(meth=4,nc=3)=clpout4.txt
+Partitional clustering. Current memory: 394073 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+
+Method: 4
+Find 3 points with maximal min-distance.
+CLP_DMIN=4
+NEW CLP_DMIN=7
+Best value: 7
+Points: 1 3 5 
+----------------------------------------------------------------------------
+scla()=sclaout.txt
+Find separable clusters. Current memory: 394073 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+Number of nodes: 6
+
+6 isolated points: 1,2,3,4,5,6
+Remaining number of points: 0
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 414069 bytes.
+End of program. Fri Sep  4 15:06:40 2026

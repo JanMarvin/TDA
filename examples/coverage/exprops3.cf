@@ -1,0 +1,11 @@
+# exprops3.cf -- expression evaluator: smoothing, group navigation, dummies
+nvar(
+    dfile = ex.dat,
+    ID [2.0] = c1,
+    X  [6.2] = c2,
+    G  [2.0] = c3,
+    N5 [8.4] = rd(1,6),
+    P2 [8.4] = exists(X),
+    P3 [8.4] = eexp(X / 10),
+);
+pdata() = out.txt;

@@ -1,0 +1,209 @@
+Read records:     761     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   2.5845701196631e+00  5.6410154029e-02          --       1 (1,1)
+    2   2.5654535265639e+00  2.3874508127e-03  1.0000e+00       2 (2,2)
+    3   2.5654257002704e+00  3.2043586544e-06  4.6769e-02       3 (3,3)
+    4   2.5654257002330e+00  8.9428344060e-12  5.1413e-05       4 (4,4)
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   2.5845701196631e+00  6.1519544739e-02          --       1 (1,1)
+    2   2.5625424778642e+00  2.6869758553e-03  1.0000e+00       2 (2,2)
+    3   2.5625089354869e+00  3.6517955597e-06  5.3126e-02       3 (3,3)
+    4   2.5625089354314e+00  1.7387556233e-11  7.7331e-05       4 (4,4)
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   2.5845701196631e+00  6.1519544739e-02          --       1 (1,1)
+    2   2.5625424778642e+00  2.6869758553e-03  1.0000e+00       2 (2,2)
+    3   2.5625089354869e+00  3.6517955584e-06  5.3126e-02       3 (3,3)
+    4   2.5625089354314e+00  1.7388706722e-11  7.7331e-05       4 (4,4)
+TDA. Analysis of Transition Data (6.4p). Sat Jul 25 02:06:40 2026
+Current memory: 390032 bytes.
+
+Reading command file: pl5.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   6.0  c1
+  2 SN        3   4   3.0  c2
+  3 NSPL      3   4   3.0  c3
+  4 SPL       3   4   3.0  c4
+  5 ORG       3   4   3.0  c5
+  6 DES       3   4   3.0  c6
+  7 TS        3   4   6.2  c7
+  8 TF        3   4   6.2  c8
+  9 COHO1     3   4   0.0  c9
+ 10 COHO2     3   4   0.0  c10
+ 11 COHO3     3   4   0.0  c11
+ 12 W         3   4   0.0  c12
+ 13 MDATE     3   4   0.0  c13
+ 14 MARR      3   4   0.0  le(MDATE,TS)
+
+Creating a new data matrix.
+Maximum number of cases: 761
+
+Using data file(s): pl4.dat
+Free format. Separation character(s): default.
+Reading maximal 761 records.
+
+Reading data file: pl4.dat
+Read records: 761 
+
+Created a new data matrix.
+Number of cases: 761
+Number of variables: 14
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 432956 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=ORG, des=DES, ts=TS, tf=TF
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       303       303.00       76.35        0.00      428.00    -
+ 1    0   1       458       458.00       38.53        0.00      350.00    -
+Sum               761       761.00
+
+Type 5 variables (dependent on current episode data).
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 MARR1     5   4   0.0  le(MDATE,ts)
+
+Number of episodes: 761
+Errors in evaluating type 5 variables: 0
+Successfully created new episode data.
+----------------------------------------------------------------------------
+rate(...)=1
+Transition rate models. Current memory: 436207 bytes.
+
+Model: Cox (partial likelihood)
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 3
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Log-likelihood of exponential null model: -2514.02
+Changed scaling factor for log-likelihood: -0.001
+Using default starting values.
+Sorting episodes according to starting times.
+Sorting episodes according to ending times.
+
+Convergence reached in 4 iterations.
+Number of function evaluations: 5 (5,5)
+
+Maximum of log likelihood: -2565.43
+Norm of final gradient vector: 8.94283e-09
+Last absolute change of function value: 1.45831e-11
+Last relative change in parameters: 5.14129e-05
+
+Idx SN Org Des MT Variable      Coeff      Error    C/Error  Signif
+-------------------------------------------------------------------
+  1  1   0   1  A COHO2        0.3797     0.1134     3.3501  0.9992
+  2  1   0   1  A COHO3        0.4585     0.1177     3.8937  0.9999
+  3  1   0   1  A W            0.4078     0.0949     4.2988  1.0000
+
+Log likelihood (starting values): -2584.5701 
+Log likelihood (final estimates): -2565.4257 
+
+----------------------------------------------------------------------------
+rate(...)=1
+Transition rate models. Current memory: 436207 bytes.
+
+Model: Cox (partial likelihood)
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 4
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Log-likelihood of exponential null model: -2514.02
+Changed scaling factor for log-likelihood: -0.001
+Using default starting values.
+Sorting episodes according to starting times.
+Sorting episodes according to ending times.
+
+Convergence reached in 4 iterations.
+Number of function evaluations: 5 (5,5)
+
+Maximum of log likelihood: -2562.51
+Norm of final gradient vector: 1.73876e-08
+Last absolute change of function value: 2.16259e-11
+Last relative change in parameters: 7.73306e-05
+
+Idx SN Org Des MT Variable      Coeff      Error    C/Error  Signif
+-------------------------------------------------------------------
+  1  1   0   1  A COHO2        0.3920     0.1135     3.4548  0.9994
+  2  1   0   1  A COHO3        0.4668     0.1179     3.9604  0.9999
+  3  1   0   1  A W            0.3947     0.0950     4.1543  1.0000
+  4  1   0   1  A MARR        -0.2408     0.1000    -2.4083  0.9840
+
+Log likelihood (starting values): -2584.5701 
+Log likelihood (final estimates): -2562.5089 
+
+----------------------------------------------------------------------------
+rate(...)=1
+Transition rate models. Current memory: 436207 bytes.
+
+Model: Cox (partial likelihood)
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 4
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Log-likelihood of exponential null model: -2514.02
+Changed scaling factor for log-likelihood: -0.001
+Using default starting values.
+Sorting episodes according to starting times.
+Sorting episodes according to ending times.
+
+Convergence reached in 4 iterations.
+Number of function evaluations: 5 (5,5)
+
+Maximum of log likelihood: -2562.51
+Norm of final gradient vector: 1.73887e-08
+Last absolute change of function value: 2.16271e-11
+Last relative change in parameters: 7.73306e-05
+
+Idx SN Org Des MT Variable      Coeff      Error    C/Error  Signif
+-------------------------------------------------------------------
+  1  1   0   1  A COHO2        0.3920     0.1135     3.4548  0.9994
+  2  1   0   1  A COHO3        0.4668     0.1179     3.9604  0.9999
+  3  1   0   1  A W            0.3947     0.0950     4.1543  1.0000
+  4  1   0   1  A MARR1       -0.2408     0.1000    -2.4083  0.9840
+
+Log likelihood (starting values): -2584.5701 
+Log likelihood (final estimates): -2562.5089 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 462423 bytes.
+End of program. Sat Jul 25 02:06:40 2026

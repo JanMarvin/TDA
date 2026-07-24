@@ -1,0 +1,28 @@
+# ggcliqops.cf -- t_gg.c coverage: ggcliq ("Generalized cliques"),
+# undocumented in tda.hlp (found via its own source header comment).
+# Sweeps opt=1/2/3 (cliques/clans/clubs) x alg=1/2 (agglomerative/
+# enumerative) on the triangle+pendant graph from gcniops.cf. With
+# the default max-path-length (sc=1), clans and clubs reduce to
+# plain cliques (a distance-1-bounded subgraph is just a clique), so
+# all six calls correctly find the same clique: the triangle
+# {1,2,3} -- confirmed by hand, and consistent across every opt/alg
+# combination, which is itself the expected behaviour at sc=1.
+#
+# Found, not fixed: the alg=2 (enumerative) path prints unconditional
+# debug output (`printf1(ctx, "n=%d AcN: ",n)` and similar, t_gg.c
+# ~lines 3801-4031) -- these use printf1, which is silenced only by
+# `silent=1` or `silent=3`, not by the normal quiet default. Same
+# class as the "leftover debug printouts" already noted elsewhere in
+# this project (mreg, etc.) -- left as a recorded finding, not fixed,
+# since this is a coverage session.
+
+silent = -1;
+
+nvar(dfile=edges.dat, I=c1, J=c2, V=c3);
+gdd(gt=1) = I,J,V;
+ggcliq(opt=1, min=2) = c1out.txt;
+ggcliq(opt=2, min=2) = c2out.txt;
+ggcliq(opt=3, min=2) = c3out.txt;
+ggcliq(opt=1, alg=2, min=2) = c1e.txt;
+ggcliq(opt=2, alg=2, min=2) = c2e.txt;
+ggcliq(opt=3, alg=2, min=2) = c3e.txt;

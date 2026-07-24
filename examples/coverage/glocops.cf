@@ -1,0 +1,11 @@
+# gloc: one-dimensional multifacility location.  Nodes 1..n= are the
+# variable points, the rest the fixed points in line order; graph 1
+# carries the variable-variable weights, graph 2 the variable-fixed
+# weights (one shared edge list, two value columns).  The answer
+# (variable point -> fixed point) is spacing-invariant and is verified
+# against brute force in tdaR's test-r-comparisons.R.
+nvar(dfile=gedges.dat, FROM<8>=c1, TO<8>=c2, WVV<8>=c3, WVF<8>=c4);
+gdd(opt=1) = FROM,TO,WVV,WVF;
+gloc(gn=1,2, n=2);
+# one variable point: the 1-median branch
+gloc(gn=1,2, n=1);

@@ -1,0 +1,31 @@
+# matc5c.cf -- t_matc.c coverage batch 5c: mqp/mqpb/mqpc (quadratic
+# programming: unconstrained, box-bounded, linearly constrained).
+# The argument order was confirmed by reading the qld() call inside
+# m_mqp directly: the FIRST argument is the Hessian, the second the
+# linear term (opposite of the syntax box's own "C,D" labels, which
+# name the Hessian "C" and the linear vector "D" -- not a
+# discrepancy, just an unusual naming choice, confirmed working as
+# coded). All three checked against a hand-derived analytical
+# solution: minimize 0.5*(2*x1^2 + 4*x2^2) - 4*x1 - 8*x2, whose
+# unconstrained optimum is x=(2,2) (gradient zero there, checked by
+# hand). mqpb adds an upper bound x1<=1, which binds -- optimum
+# becomes (1,2), x2 unaffected. mqpc adds the equality x1+x2=3
+# instead, solved by hand via a Lagrange multiplier -- optimum
+# (4/3, 5/3).
+
+silent = -1;
+
+mdef(QH,2,2) = 2, 0, 0, 4;
+mdef(QC,2,1) = -4, -8;
+mqp(QH,QC,X0);
+mpr(X0);
+
+mdef(XL,2,1) = -100, -100;
+mdef(XU,2,1) = 1, 100;
+mqpb(QH,QC,XL,XU,XB);
+mpr(XB);
+
+mdef(QA,1,2) = 1, 1;
+mdef(QB,1,1) = 3;
+mqpc(QH,QC,QA,QB,1,XC);
+mpr(XC);

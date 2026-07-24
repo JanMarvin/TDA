@@ -1,0 +1,20 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: etest.cf
+============================================================================
+etest()=1
+Test of eigenvalue/vector calculation. Current memory: 390032 bytes.
+Algorithm: 1
+
+1
+  1.00000000000e+00 
+
+(  1)   1.00000000000e+00   0.00000000000e+00   [eigenvalue]
+
+        1.00000000000e+00   0.00000000000e+00   [eigenvector]
+
+        0.00000000000e+00   0.00000000000e+00   [check]
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390154 bytes.
+End of program. Wed Sep  2 16:02:32 2026

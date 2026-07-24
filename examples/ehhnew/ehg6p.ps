@@ -1,0 +1,900 @@
+%!PS-Adobe-2.0 EPSF-1.2
+%%Title: ehg6p.ps
+%%Creator: TDA 6.4
+%%CreationDate: Wed Sep 16 20:40:39 2026
+%%BoundingBox:   112   433   388   584
+%%BeginProlog
+/TDAdict 200 dict def % define local dictionary
+TDAdict begin         % push dictionary onto the dictionary stack
+/reencsmalldict 12 dict def % obtain dict for reencoding
+/ReEncodeSmall
+{
+    reencsmalldict begin
+    /newcodesandnames exch def
+    /newfontname exch def
+    /basefontname exch def
+    /basefontdict basefontname findfont def
+    /newfont basefontdict maxlength dict def
+    basefontdict
+    { exch dup /FID ne
+    { dup /Encoding eq
+    { exch dup length array copy newfont 3 1 roll put }
+    { exch newfont 3 1 roll put }
+    ifelse }
+    {pop pop }
+    ifelse }
+    forall
+    newfont /FontName newfontname put
+    newcodesandnames aload pop
+    newcodesandnames length 2 idiv
+    { newfont /Encoding get 3 1 roll put}
+    repeat newfontname newfont definefont pop
+    end 
+} def
+/spanvec [
+8#0 /NUL
+8#1 /Eth
+8#2 /eth
+8#3 /Lslash
+8#4 /lslash
+8#5 /Scaron
+8#6 /scaron
+8#7 /Yacute
+8#10 /yacute
+8#11 /HT
+8#12 /LF
+8#13 /Thorn
+8#14 /thorn
+8#15 /CR
+8#16 /Zcaron
+8#17 /zcaron
+8#20 /DLE
+8#21 /DC1
+8#22 /DC2
+8#23 /DC3
+8#24 /DC4
+8#25 /onehalf
+8#26 /onequarter
+8#27 /onesuperior
+8#30 /threequarters
+8#31 /threesuperior
+8#32 /twosuperior
+8#33 /brokenbar
+8#34 /minus
+8#35 /multiply
+8#36 /RS
+8#37 /US
+8#200 /Adieresis
+8#201 /Aring
+8#202 /Ccedilla
+8#203 /Eacute
+8#204 /Ntilde
+8#205 /Odieresis
+8#206 /Udieresis
+8#207 /aacute
+8#210 /agrave
+8#211 /acircumflex
+8#212 /adieresis
+8#213 /atilde
+8#214 /aring
+8#215 /ccedilla
+8#216 /eacute
+8#217 /egrave
+8#220 /ecircumflex
+8#221 /edieresis
+8#222 /iacute
+8#223 /igrave
+8#224 /icircumflex
+8#225 /idieresis
+8#226 /ntilde
+8#227 /oacute
+8#230 /ograve
+8#231 /ocircumflex
+8#232 /odieresis
+8#233 /otilde
+8#234 /uacute
+8#235 /ugrave
+8#236 /ucircumflex
+8#237 /udieresis
+8#240 /dagger
+8#241 /degree
+8#242 /cent
+8#243 /sterling
+8#244 /section
+8#245 /bullet
+8#246 /paragraph
+8#247 /germandbls
+8#250 /registered
+8#251 /copyright
+8#252 /trademark
+8#253 /acute
+8#254 /dieresis
+8#255 /notequal
+8#256 /AE
+8#257 /Oslash
+8#260 /infinity
+8#261 /plusminus
+8#262 /lessequal
+8#263 /greaterequal
+8#264 /yen
+8#265 /mu
+8#266 /Gamma
+8#267 /summation
+8#270 /product
+8#271 /pi
+8#272 /integral
+8#273 /ordfeminine
+8#274 /ordmasculine
+8#275 /Omega
+8#276 /ae
+8#277 /oslash
+8#300 /questiondown
+8#301 /exclamdown
+8#302 /logicalnot
+8#303 /radical
+8#304 /florin
+8#305 /approxequal
+8#306 /Delta
+8#307 /guillemotleft
+8#310 /guillemotright
+8#311 /ellipsis
+8#312 /nbspace
+8#313 /Agrave
+8#314 /Atilde
+8#315 /Otilde
+8#316 /OE
+8#317 /oe
+8#320 /endash
+8#321 /emdash
+8#322 /quotedblleft
+8#323 /quotedblright
+8#324 /quoteleft
+8#325 /quoteright
+8#326 /divide
+8#327 /lozenge
+8#330 /ydieresis
+8#331 /Ydieresis
+8#332 /fraction
+8#333 /currency
+8#334 /guilsinglleft
+8#335 /guilsinglright
+8#336 /fi
+8#337 /fl
+8#340 /daggerdbl
+8#341 /periodcentered
+8#342 /quotesinglbase
+8#343 /quotedblbase
+8#344 /perthousand
+8#345 /Acircumflex
+8#346 /Ecircumflex
+8#347 /Aacute
+8#350 /Edieresis
+8#351 /Egrave
+8#352 /Iacute
+8#353 /Icircumflex
+8#354 /Idieresis
+8#355 /Igrave
+8#356 /Oacute
+8#357 /Ocircumflex
+8#360 /apple
+8#361 /Ograve
+8#362 /Uacute
+8#363 /Ucircumflex
+8#364 /Ugrave
+8#365 /dotlessi
+8#366 /circumflex
+8#367 /tilde
+8#370 /macron
+8#371 /breve
+8#372 /dotaccent
+8#373 /ring
+8#374 /cedilla
+8#375 /hungarumlaut
+8#376 /ogonek
+8#377 /caron
+] def
+/m  {moveto} bind def
+/rm {rmoveto} bind def
+/l  {lineto} bind def
+/rl {rlineto} bind def
+
+/fsiz 0 def % font size
+/FT {/TFont findfont fsiz scalefont setfont} bind def
+/FS {/Symbol findfont fsiz scalefont setfont} bind def
+
+/ssiz 1 def % half size of symbol
+/lpt  0 def % size of numerical labels
+/str 20 string def
+/xmin 0 def
+
+/sclear { % clear area for string
+gsave currentpoint pop -2 add fsiz 4 div m
+dup stringwidth exch 4 add exch rl
+0 setlinecap fsiz 2 add setlinewidth
+1 setgray stroke grestore
+} def
+/center { % center a string
+    dup stringwidth pop
+    2 div neg 0 rm
+} def
+/aright { % right justified
+    dup stringwidth pop
+    neg 0 rm
+} def
+/adjust { % adjust for y axis labels
+    dup stringwidth pop
+    neg lpt 3 div neg rm
+    currentpoint pop xmin lt {currentpoint pop /xmin exch def} if
+} def
+/invers {
+    1 setgray fill 0 setgray
+} def
+/circle {
+    newpath ssiz 0 360 arc
+} def
+/cross {
+    gsave
+    ssiz neg 0 rm ssiz 2 mul 0 rl
+    ssiz neg ssiz rm 0 ssiz 2 mul neg rl
+    stroke
+    grestore
+} def
+/xsym {
+    gsave
+    45 rotate    ssiz neg 0 rm ssiz 2 mul 0 rl
+    ssiz neg ssiz rm 0 ssiz 2 mul neg rl
+    stroke
+    grestore
+} def
+/square {
+    gsave
+    ssiz neg ssiz neg rm ssiz 2 mul 0 rl
+    0 ssiz 2 mul rl ssiz 2 mul neg 0 rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+/trian1 {
+    gsave
+    ssiz neg ssiz neg rm ssiz 2 mul 0 rl
+    ssiz neg ssiz 2 mul rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+/trian2 {
+    gsave
+    ssiz neg ssiz rm ssiz ssiz 2 mul neg rl
+    ssiz ssiz 2 mul rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+/rhomb {
+    gsave
+    ssiz neg 0 rm ssiz ssiz neg rl
+    ssiz ssiz rl ssiz neg ssiz rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+end         % pop TDAdict off the dictionary stack
+%%EndProlog
+TDAdict begin
+/Times-Roman /TFont spanvec ReEncodeSmall
+
+% define current coordinate system
+% xorg=150 yorg=460 pxlen=80.00 pylen=40.00
+/xorg 150 def
+/yorg 460 def
+xorg yorg translate
+/rf  0.00 def rf rotate
+/sfx  1.00 def
+/sfy  1.00 def
+sfx sfy scale
+
+%#Parameter: 150 460 80 40 0 -3 4 0 0 0 1 1 0
+1 setlinecap
+1 setlinejoin
+
+
+%#1: plxa(sc=1,ic=0)
+%#x-axis
+/fsiz  8.50 def FT
+[] 0 setdash
+0.5670 setlinewidth
+ 0.00  0.00 m
+226.80  0.00 l
+stroke
+ 0.00  0.00 m
+0 -5.10 rl
+%#stroke
+%#text:  0.00 -13.61  8.50 1 0 0
+gsave
+0 -8.50 rm
+(0) center
+show
+grestore
+stroke
+56.70  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 56.70 -13.61  8.50 1 0 1
+gsave
+0 -8.50 rm
+(1) center
+show
+grestore
+stroke
+113.40  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 113.40 -13.61  8.50 1 0 2
+gsave
+0 -8.50 rm
+(2) center
+show
+grestore
+stroke
+170.10  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 170.10 -13.61  8.50 1 0 3
+gsave
+0 -8.50 rm
+(3) center
+show
+grestore
+stroke
+226.80  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 226.80 -13.61  8.50 1 0 4
+gsave
+0 -8.50 rm
+(4) center
+show
+grestore
+stroke
+
+%#2: plya(sc=1,ic=0)
+%#y-axis
+/fsiz  8.50 def FT
+/lpt  8.50 def
+/xmin 0 def
+[] 0 setdash
+0.5670 setlinewidth
+ 0.00  0.00 m
+ 0.00 113.40 l
+stroke
+ 0.00  0.00 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 -1.70  8.50 2 0 -3
+gsave
+-2.83 0 rm
+(-3) adjust
+show
+grestore
+stroke
+ 0.00 37.80 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 36.10  8.50 2 0 -2
+gsave
+-2.83 0 rm
+(-2) adjust
+show
+grestore
+stroke
+ 0.00 75.60 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 73.90  8.50 2 0 -1
+gsave
+-2.83 0 rm
+(-1) adjust
+show
+grestore
+stroke
+ 0.00 113.40 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 111.70  8.50 2 0 0
+gsave
+-2.83 0 rm
+(0) adjust
+show
+grestore
+stroke
+
+%#3: plframe
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+0 0 m
+226.80 0 l
+226.80 113.40 l
+0 113.40 l
+0 0 l
+closepath
+stroke
+grestore
+
+%#4: plot=Time,LogSurv
+gsave
+ 0.57  0.57 m
+ 0.57 113.40 l
+226.80 113.40 l
+226.80  0.57 l
+closepath
+clip
+newpath
+0.5670 setlinewidth
+[] 0 setdash
+ 1.13 113.34 m
+ 1.70 113.27 l
+ 2.84 113.21 l
+ 2.84 113.15 l
+ 3.40 113.08 l
+ 3.40 113.02 l
+ 3.40 112.95 l
+ 3.40 112.89 l
+ 3.97 112.83 l
+ 3.97 112.76 l
+ 3.97 112.70 l
+ 3.97 112.63 l
+ 3.97 112.57 l
+ 3.97 112.50 l
+ 4.54 112.44 l
+ 4.54 112.37 l
+ 4.54 112.30 l
+ 5.10 112.24 l
+ 5.10 112.17 l
+ 5.10 112.11 l
+ 5.10 112.04 l
+ 5.67 111.97 l
+ 5.67 111.91 l
+ 5.67 111.84 l
+ 5.67 111.77 l
+ 5.67 111.71 l
+ 6.24 111.64 l
+ 6.24 111.57 l
+ 6.24 111.51 l
+ 6.24 111.44 l
+ 6.24 111.37 l
+ 6.24 111.30 l
+ 6.24 111.24 l
+ 6.80 111.17 l
+ 6.80 111.10 l
+ 6.80 111.03 l
+ 7.37 110.96 l
+ 7.37 110.90 l
+ 7.37 110.83 l
+ 7.37 110.76 l
+ 7.37 110.69 l
+ 7.37 110.62 l
+ 7.37 110.55 l
+ 7.94 110.48 l
+ 7.94 110.41 l
+ 7.94 110.34 l
+ 7.94 110.27 l
+ 7.94 110.20 l
+ 8.51 110.13 l
+ 8.51 110.06 l
+ 8.51 109.99 l
+ 8.51 109.92 l
+ 8.51 109.84 l
+ 8.51 109.77 l
+ 8.51 109.70 l
+ 8.51 109.63 l
+ 8.51 109.56 l
+ 8.51 109.49 l
+ 8.51 109.41 l
+ 8.51 109.34 l
+ 9.07 109.27 l
+ 9.07 109.20 l
+ 9.07 109.12 l
+ 9.07 109.05 l
+ 9.07 108.91 l
+ 9.64 108.83 l
+ 9.64 108.76 l
+ 9.64 108.69 l
+ 9.64 108.61 l
+ 9.64 108.54 l
+ 9.64 108.46 l
+ 9.64 108.39 l
+10.21 108.32 l
+10.21 108.24 l
+10.21 108.17 l
+10.21 108.09 l
+10.21 108.02 l
+10.21 107.94 l
+10.21 107.86 l
+10.77 107.79 l
+10.77 107.71 l
+10.77 107.64 l
+10.77 107.56 l
+10.77 107.48 l
+10.77 107.33 l
+10.77 107.25 l
+11.34 107.18 l
+11.34 107.02 l
+11.34 106.94 l
+11.34 106.87 l
+11.34 106.79 l
+11.34 106.71 l
+11.91 106.63 l
+11.91 106.55 l
+11.91 106.47 l
+11.91 106.39 l
+12.47 106.31 l
+12.47 106.23 l
+12.47 106.15 l
+12.47 106.07 l
+12.47 105.99 l
+13.04 105.91 l
+13.04 105.83 l
+13.04 105.75 l
+13.04 105.67 l
+13.04 105.59 l
+13.04 105.51 l
+13.04 105.43 l
+13.04 105.34 l
+13.04 105.26 l
+13.04 105.18 l
+13.04 105.10 l
+13.61 105.01 l
+13.61 104.93 l
+13.61 104.85 l
+13.61 104.77 l
+13.61 104.68 l
+13.61 104.60 l
+13.61 104.52 l
+13.61 104.43 l
+13.61 104.35 l
+14.18 104.26 l
+14.18 104.18 l
+14.18 104.09 l
+14.18 104.01 l
+14.74 103.92 l
+14.74 103.84 l
+14.74 103.75 l
+14.74 103.67 l
+14.74 103.58 l
+14.74 103.49 l
+14.74 103.41 l
+15.31 103.32 l
+15.31 103.23 l
+15.31 103.14 l
+15.31 103.06 l
+15.31 102.97 l
+15.31 102.88 l
+15.88 102.79 l
+15.88 102.70 l
+15.88 102.61 l
+15.88 102.52 l
+15.88 102.43 l
+16.44 102.34 l
+16.44 102.25 l
+16.44 102.16 l
+16.44 102.07 l
+16.44 101.98 l
+16.44 101.89 l
+16.44 101.80 l
+16.44 101.71 l
+17.01 101.62 l
+17.01 101.53 l
+17.01 101.43 l
+17.01 101.34 l
+17.01 101.25 l
+17.01 101.16 l
+17.01 101.06 l
+17.58 100.97 l
+17.58 100.88 l
+17.58 100.78 l
+17.58 100.69 l
+17.58 100.59 l
+17.58 100.50 l
+17.58 100.40 l
+18.14 100.31 l
+18.14 100.21 l
+18.14 100.11 l
+18.14 100.02 l
+18.14 99.92 l
+18.14 99.82 l
+18.71 99.73 l
+18.71 99.63 l
+19.28 99.53 l
+19.28 99.43 l
+19.28 99.33 l
+19.84 99.23 l
+19.84 99.13 l
+19.84 99.03 l
+19.84 98.93 l
+19.84 98.83 l
+19.84 98.73 l
+19.84 98.63 l
+20.41 98.53 l
+20.41 98.43 l
+20.41 98.33 l
+20.41 98.22 l
+20.41 97.92 l
+20.41 97.81 l
+20.41 97.71 l
+20.41 97.61 l
+20.98 97.50 l
+20.98 97.40 l
+20.98 97.29 l
+20.98 97.19 l
+21.55 97.08 l
+21.55 96.98 l
+21.55 96.87 l
+22.11 96.76 l
+22.11 96.66 l
+22.11 96.55 l
+22.68 96.44 l
+22.68 96.33 l
+22.68 96.22 l
+23.25 96.11 l
+23.25 96.00 l
+23.25 95.89 l
+23.25 95.56 l
+23.81 95.45 l
+23.81 95.34 l
+23.81 95.22 l
+23.81 95.11 l
+23.81 94.99 l
+23.81 94.88 l
+23.81 94.77 l
+24.38 94.65 l
+24.38 94.54 l
+24.38 94.42 l
+24.38 94.31 l
+24.38 94.19 l
+24.38 94.07 l
+24.95 93.96 l
+24.95 93.84 l
+24.95 93.72 l
+24.95 93.60 l
+24.95 93.48 l
+24.95 93.37 l
+25.51 93.25 l
+25.51 93.13 l
+25.51 93.01 l
+26.08 92.89 l
+26.08 92.76 l
+26.65 92.64 l
+26.65 92.52 l
+26.65 92.40 l
+27.22 92.15 l
+27.22 92.02 l
+27.22 91.90 l
+27.78 91.77 l
+27.78 91.64 l
+27.78 91.52 l
+27.78 91.39 l
+27.78 91.26 l
+27.78 91.13 l
+28.35 91.00 l
+28.35 90.87 l
+28.35 90.74 l
+28.92 90.61 l
+28.92 90.48 l
+28.92 90.35 l
+28.92 90.21 l
+28.92 90.08 l
+28.92 89.95 l
+28.92 89.81 l
+28.92 89.68 l
+29.48 89.55 l
+29.48 89.41 l
+29.48 89.27 l
+30.05 89.14 l
+30.05 89.00 l
+30.05 88.86 l
+30.62 88.73 l
+30.62 88.45 l
+30.62 88.31 l
+30.62 88.17 l
+30.62 88.03 l
+31.19 87.89 l
+31.19 87.75 l
+31.19 87.61 l
+31.75 87.46 l
+31.75 87.32 l
+31.75 87.17 l
+31.75 87.03 l
+31.75 86.88 l
+31.75 86.74 l
+31.75 86.59 l
+32.32 86.44 l
+32.32 86.29 l
+32.32 86.15 l
+32.32 86.00 l
+32.32 85.85 l
+32.89 85.70 l
+33.45 85.54 l
+33.45 85.39 l
+33.45 85.24 l
+34.02 85.08 l
+34.02 84.93 l
+34.02 84.77 l
+34.59 84.62 l
+34.59 84.46 l
+35.15 84.30 l
+35.72 84.14 l
+35.72 83.99 l
+36.29 83.83 l
+36.29 83.50 l
+36.29 83.34 l
+36.29 83.18 l
+36.29 83.01 l
+36.85 82.85 l
+36.85 82.68 l
+37.42 82.52 l
+37.42 82.35 l
+37.42 82.18 l
+37.42 82.01 l
+37.99 81.84 l
+37.99 81.67 l
+37.99 81.50 l
+38.56 81.33 l
+38.56 81.16 l
+38.56 80.99 l
+38.56 80.81 l
+39.12 80.64 l
+39.12 80.46 l
+39.12 80.29 l
+39.12 80.11 l
+39.12 79.93 l
+39.69 79.75 l
+39.69 79.57 l
+40.26 79.39 l
+40.82 79.21 l
+40.82 79.02 l
+40.82 78.84 l
+40.82 78.65 l
+41.39 78.46 l
+41.39 78.28 l
+41.39 78.09 l
+41.96 77.90 l
+41.96 77.71 l
+42.53 77.52 l
+42.53 77.32 l
+43.09 77.13 l
+43.09 76.93 l
+43.66 76.74 l
+43.66 76.54 l
+44.23 76.34 l
+44.23 76.14 l
+44.23 75.94 l
+44.79 75.73 l
+47.06 75.52 l
+47.06 75.31 l
+48.20 75.10 l
+48.20 74.88 l
+48.20 74.67 l
+48.20 74.45 l
+48.20 74.23 l
+48.20 74.01 l
+48.76 73.79 l
+48.76 73.56 l
+49.33 73.33 l
+49.33 73.10 l
+50.46 72.87 l
+51.03 72.64 l
+51.03 72.41 l
+51.60 72.17 l
+51.60 71.93 l
+52.16 71.69 l
+52.16 71.45 l
+52.73 71.21 l
+53.30 70.97 l
+53.30 70.72 l
+53.86 70.47 l
+53.86 70.22 l
+54.43 69.97 l
+55.00 69.72 l
+55.57 69.46 l
+56.13 69.20 l
+58.40 68.94 l
+58.97 68.68 l
+58.97 68.15 l
+59.53 67.88 l
+59.53 67.61 l
+59.53 67.33 l
+60.10 67.05 l
+60.67 66.77 l
+61.24 66.49 l
+61.80 66.20 l
+61.80 65.91 l
+62.94 65.62 l
+63.50 65.32 l
+64.64 65.02 l
+65.20 64.72 l
+66.34 64.41 l
+68.61 64.09 l
+68.61 63.77 l
+69.17 63.45 l
+70.88 63.12 l
+71.44 62.78 l
+71.44 62.43 l
+71.44 62.08 l
+71.44 61.73 l
+72.01 61.37 l
+72.01 61.01 l
+72.58 60.64 l
+73.14 60.27 l
+73.14 59.90 l
+73.14 59.53 l
+73.71 59.15 l
+75.98 58.76 l
+76.55 58.38 l
+77.68 57.98 l
+77.68 57.59 l
+79.38 57.19 l
+79.38 56.78 l
+79.38 56.37 l
+80.51 55.95 l
+80.51 55.53 l
+81.65 55.10 l
+81.65 54.66 l
+82.22 54.22 l
+82.78 53.77 l
+84.48 53.32 l
+85.62 52.86 l
+87.32 52.37 l
+89.02 51.87 l
+89.59 51.37 l
+89.59 50.86 l
+94.12 50.34 l
+95.82 49.78 l
+96.39 49.21 l
+100.36 48.62 l
+100.36 48.03 l
+101.49 47.41 l
+102.06 46.77 l
+102.63 46.11 l
+104.90 45.42 l
+106.60 44.68 l
+109.43 43.90 l
+111.13 43.11 l
+112.27 42.27 l
+112.83 41.43 l
+114.53 40.53 l
+116.23 39.63 l
+124.74 38.64 l
+125.87 37.61 l
+128.71 36.51 l
+130.98 35.38 l
+137.78 34.22 l
+138.92 33.02 l
+139.48 31.78 l
+143.45 30.41 l
+150.26 28.86 l
+153.66 27.26 l
+158.19 25.49 l
+161.59 23.45 l
+167.83 21.16 l
+174.64 18.13 l
+191.65 13.68 l
+stroke
+grestore
+
+%#5: plotp=0,0,3,-3
+gsave
+ 0.57  0.57 m
+ 0.57 113.40 l
+226.80 113.40 l
+226.80  0.57 l
+closepath
+clip
+newpath
+0.5670 setlinewidth
+[] 0 setdash
+ 0.00 113.40 m
+170.10  0.00 l
+stroke
+grestore
+
+%#6: pltext(xy=1.5,-0.7)=Weibull Model
+%#text: 85.05 86.94  8.50 0 0 Weibull Model
+gsave
+85.05 86.94 translate
+0 0 m
+/fsiz  8.50 def FT (Weibull Model) show
+grestore
+showpage

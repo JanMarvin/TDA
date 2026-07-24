@@ -1,0 +1,137 @@
+Read records:     600     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   1.6552963281333e+04  1.0970128342e+04         --        1 (1,0)
+    2   8.3239140348763e+03  5.7023266483e+03         --        2 (2,0)
+    3   4.2956420911422e+03  2.1198727265e+03         --        3 (3,0)
+    4   3.2989644048943e+03  1.0283457917e+03         --        4 (4,0)
+    5   2.8651338265502e+03  4.6638371790e+02         --        5 (5,0)
+    6   2.7442577438242e+03  2.6821292134e+02         --        6 (6,0)
+    7   2.7198749209110e+03  2.3895103920e+02         --        7 (7,0)
+    8   2.7030575035274e+03  2.3833535094e+02         --        8 (8,0)
+    9   2.6597586228547e+03  2.7870914406e+02         --        9 (9,0)
+   10   2.6092878212128e+03  2.8842137206e+02         --       10 (10,0)
+   11   2.5648386056543e+03  1.2902238843e+02         --       11 (11,0)
+   12   2.5618483455203e+03  1.1295765986e+02         --       12 (12,0)
+   13   2.5498085296767e+03  6.6680074820e+01         --       13 (13,0)
+   14   2.5400447169187e+03  6.4742501928e+01         --       14 (14,0)
+   15   2.5309810086730e+03  5.8095027835e+01         --       15 (15,0)
+   16   2.5265668260832e+03  7.4765002676e+00         --       16 (16,0)
+   17   2.5263766467579e+03  1.8875600677e+00         --       17 (17,0)
+   18   2.5263743368620e+03  1.8601958045e-01         --       18 (18,0)
+   19   2.5263742762501e+03  5.6268695154e-02         --       19 (19,0)
+   20   2.5263742723623e+03  1.8752166019e-03         --       20 (20,0)
+   21   2.5263742723586e+03  6.2059432105e-05         --       21 (21,0)
+   22   2.5263742723586e+03  3.3669633605e-07         --       22 (22,0)
+
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: frml8.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   3.0  c1
+  2 SN        3   4   2.0  c2
+  3 TS        3   4   3.0  c3
+  4 TF        3   4   3.0  c4
+  5 SEX       3   4   2.0  c5
+  6 TI        3   4   3.0  c6
+  7 TB        3   4   3.0  c7
+  8 TE        3   4   3.0  c8
+  9 TMAR      3   4   3.0  c9
+ 10 PRES      3   4   3.0  c10
+ 11 PRESN     3   4   3.0  c11
+ 12 EDU       3   4   2.0  c12
+ 13 COHO1     3   4   0.0  ge(TB,348)&le(TB,384)
+ 14 COHO2     3   4   0.0  ge(TB,468)&le(TB,504)
+ 15 COHO3     3   4   0.0  ge(TB,588)&le(TB,624)
+ 16 W         3   4   0.0  SEX[2]
+ 17 DES       3   4   1.0  if(eq(TF,TI),0,1)
+ 18 DUR       3   4   3.0  TF-TS+1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): rrdat.1
+Free format. Separation character(s): default.
+
+Reading data file: rrdat.1
+Read records: 600 
+
+Created a new data matrix.
+Number of cases: 600
+Number of variables: 18
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 462843 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=0, des=DES, ts=0, tf=DUR
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       142       142.00      128.18        0.00      428.00    -
+ 1    0   1       458       458.00       49.30        0.00      350.00    -
+Sum               600       600.00
+
+Number of episodes: 600
+Successfully created new episode data.
+----------------------------------------------------------------------------
+frml(...)=...
+ML estimation of user-defined rate model. Current memory: 462995 bytes.
+
+Function definition:
+sigma   = exp(s)
+lambda  = exp(l)/(1+exp(l))
+beta    = exp(b)
+ff      = sigma*exp(beta*lambda^tf)
+ff1     = ff+1
+dens    = -(ff*beta*lambda^tf*log(lambda))/(ff1*ff1)
+surv    = 1-1/ff1
+fn      = if(des,log(dens),log(surv))
+
+Function evaluation: sum over 600 data matrix cases.
+Using episode data.
+
+
+Maximum likelihood estimation.
+Algorithm 4: BFGS
+
+Number of model parameters: 3
+Type of covariance matrix: 2
+Maximum number of iterations: 100
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Idx  Parameter   Starting value
+  1  b            0.00000000e+00 
+  2  l            0.00000000e+00 
+  3  s            0.00000000e+00 
+
+
+Convergence reached in 22 iterations.
+Number of function evaluations: 23 (23,1)
+
+Maximum of log likelihood: -2526.37
+Norm of final gradient vector: 3.36696e-07
+
+Idx  Parameter       Value      Error    Value/E  Signif
+--------------------------------------------------------
+  1  b              1.5856     0.0378    41.9814  1.0000
+  2  l              3.8236     0.0599    63.8607  1.0000
+  3  s             -1.8379     0.1305   -14.0821  1.0000
+
+Log likelihood (starting values): -16552.9633 
+Log likelihood (final estimates): -2526.3743 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 482962 bytes.
+End of program. Tue Jul 21 05:46:53 2026

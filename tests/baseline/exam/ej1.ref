@@ -1,0 +1,22 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:50 2026
+Current memory: 390032 bytes.
+
+Reading command file: ej1.cf
+============================================================================
+ejoin(...)=ej1.d
+Join two event data files. Current memory: 390032 bytes.
+
+Outputfile : ej1.d
+Max block size: 1000
+Max number of levels: 3
+Max record length: 1000
+Inputfile 1: ej1.dat  (8 variables)
+Inputfile 2: ej2.dat  (7 variables)
+
+Read 6 records (2 blocks) from: ej1.dat
+Read 2 records (1 blocks) from: ej2.dat
+Number of common blocks: 1
+16 records written to ej1.d
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 520188 bytes.
+End of program. Tue Jul 21 05:46:50 2026

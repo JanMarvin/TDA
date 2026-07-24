@@ -1,0 +1,6 @@
+# plsurf3d: surface through data points; plcirc3: a circle in 3-d.
+psfile = p32.ps;
+psetup3(pxa=0,6, pya=0,6, pza=0,12, view=40,20);
+nvar(dfile=xyz.dat, X<8>=c1, Y<8>=c2, Z<8>=c3);
+plsurf3d(ru=0,6,10,5, rv=0,6,10,5) = X,Y,Z;
+plcirc3(xyz=3,3,6, dvec=0,0,1) = 2;

@@ -1,0 +1,130 @@
+Read records:     600     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   2.5264193150373e+03  3.1844217923e+01          --       1 (1,1)
+    2   2.5227299513756e+03  6.5111282634e+00  1.0000e+00       2 (2,2)
+    3   2.5226841371242e+03  9.0512065157e-02  5.2192e-02       3 (3,3)
+    4   2.5226841265798e+03  1.7067246444e-05  1.2038e-03       4 (4,4)
+    5   2.5226841265798e+03  1.0974304992e-12  1.2119e-07       5 (5,5)
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: frml8a.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   3.0  c1
+  2 SN        3   4   2.0  c2
+  3 TS        3   4   3.0  c3
+  4 TF        3   4   3.0  c4
+  5 SEX       3   4   2.0  c5
+  6 TI        3   4   3.0  c6
+  7 TB        3   4   3.0  c7
+  8 TE        3   4   3.0  c8
+  9 TMAR      3   4   3.0  c9
+ 10 PRES      3   4   3.0  c10
+ 11 PRESN     3   4   3.0  c11
+ 12 EDU       3   4   2.0  c12
+ 13 COHO1     3   4   0.0  ge(TB,348)&le(TB,384)
+ 14 COHO2     3   4   0.0  ge(TB,468)&le(TB,504)
+ 15 COHO3     3   4   0.0  ge(TB,588)&le(TB,624)
+ 16 W         3   4   0.0  SEX[2]
+ 17 DES       3   4   1.0  if(eq(TF,TI),0,1)
+ 18 DUR       3   4   3.0  TF-TS+1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): rrdat.1
+Free format. Separation character(s): default.
+
+Reading data file: rrdat.1
+Read records: 600 
+
+Created a new data matrix.
+Number of cases: 600
+Number of variables: 18
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 462843 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=0, des=DES, ts=0, tf=DUR
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       142       142.00      128.18        0.00      428.00    -
+ 1    0   1       458       458.00       49.30        0.00      350.00    -
+Sum               600       600.00
+
+Number of episodes: 600
+Successfully created new episode data.
+----------------------------------------------------------------------------
+frml(...)=...
+ML estimation of user-defined rate model. Current memory: 462995 bytes.
+
+Function definition:
+sigma   = exp(sig)
+lambda  = exp(lam)/(1+exp(lam))
+beta    = exp(a0+COHO2*a1+COHO3*a2+W*a3)
+ff      = sigma*exp(beta*lambda^tf)
+ff1     = ff+1
+dens    = -(ff*beta*lambda^tf*log(lambda))/(ff1*ff1)
+surv    = 1-1/ff1
+fn      = if(des,log(dens),log(surv))
+
+Function evaluation: sum over 600 data matrix cases.
+Using episode data.
+
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 6
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+6 starting value(s) from xp parameter.
+
+Idx  Parameter   Starting value
+  1  a0           1.58000000e+00 
+  2  a1           0.00000000e+00 
+  3  a2           0.00000000e+00 
+  4  a3           0.00000000e+00 
+  5  lam          3.82000000e+00 
+  6  sig         -1.84000000e+00 
+
+
+Convergence reached in 5 iterations.
+Number of function evaluations: 6 (6,6)
+
+Maximum of log likelihood: -2522.68
+Norm of final gradient vector: 1.09743e-12
+Last absolute change of function value: 5.4079e-16
+Last relative change in parameters: 1.21188e-07
+
+Idx  Parameter       Value      Error    Value/E  Signif
+--------------------------------------------------------
+  1  a0             1.6988     0.0587    28.9490  1.0000
+  2  a1            -0.1360     0.0638    -2.1306  0.9669
+  3  a2            -0.1648     0.0658    -2.5056  0.9878
+  4  a3            -0.0203     0.0537    -0.3788  0.2952
+  5  lam            3.8138     0.0601    63.4589  1.0000
+  6  sig           -1.8299     0.1304   -14.0292  1.0000
+
+Log likelihood (starting values): -2526.4193 
+Log likelihood (final estimates): -2522.6841 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 482962 bytes.
+End of program. Tue Jul 21 05:46:53 2026

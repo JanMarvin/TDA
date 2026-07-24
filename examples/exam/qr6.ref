@@ -1,0 +1,138 @@
+Read records:      45     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    0   9.3511673634197e+02  6.6339802973e+05  0.0000e+00       9 (0,0)
+    1   9.3420433351190e+02  1.7754200859e+00  1.9621e-03      62 (0,0)
+    2   8.3561761987643e+02  2.7748895896e-01  9.9947e-01     116 (0,0)
+    3   8.2846875116906e+02  2.6763314834e-02  4.5957e-01     171 (0,0)
+    4   8.2823245621698e+02  9.8417578547e-04  1.0185e-01     224 (0,0)
+    5   8.2823199082516e+02  2.5696850145e-06  5.0093e-03     277 (0,0)
+
+TDA. Analysis of Transition Data (6.4p). Sat Jul 25 02:03:12 2026
+Current memory: 390032 bytes.
+
+Reading command file: qr6.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X         3   4   0.0  c1
+  2 Weight    3   4   0.0  c2
+  3 Y         3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): qr3.dat
+Free format. Separation character(s): default.
+
+Reading data file: qr3.dat
+Read records: 45 
+
+Created a new data matrix.
+Number of cases: 45
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402088 bytes.
+----------------------------------------------------------------------------
+cwt=Weight
+New case weights. Sum of weights: 581
+----------------------------------------------------------------------------
+qreg(...)=...
+Quantal response models. Current memory: 402088 bytes.
+
+Model: multivariate probit.
+
+Variables (cross-section)
+-------------------------
+Y   : Y  
+X1  : X  
+
+Checking available data (pmin=1)
+Number of cases with valid data: 45
+
+Categories of dependent variable.
+Maximum number of categories: 100
+
+Index               0         1         2         3         4   (Weighted)
+Category            1         2         3         4         5  Observations
+---------------------------------------------------------------------------
+Wave 1   N      70.00    149.00    175.00    132.00     55.00        581.00
+         Pct    12.05     25.65     30.12     22.72      9.47  
+
+Using case weights defined by: Weight
+
+Maximum likelihood estimation.
+Algorithm 8: CES (tensor model [dopt=0])
+
+Number of model parameters: 18
+Type of covariance matrix: 2
+Maximum number of iterations: 200
+Convergence criterion: 6
+Tolerance for scaled gradient: 1e-05
+Tolerance for scaled parameter change: 1e-08
+Scaling factor: -1
+
+Control of integration (nhp): 6
+Type of parameterization: 1
+Protocol will be written to: p
+
+Checking constraints.
+Con: 1 * b9 = 0
+Con: 1 * b10 = 0
+Con: 1 * b11 = 0
+Con: 1 * b12 = 0
+Con: 1 * b13 = 0
+Con: 1 * b14 = 0
+Con: 1 * b15 = 0
+Con: 1 * b16 = 0
+Con: 1 * b17 = 0
+Con: 1 * b18 = 0
+
+Number of constraints: 10
+
+Convergence reached in 5 iterations.
+Number of function evaluations: 321 (0,0)
+
+Maximum of log likelihood: -828.232
+Norm of final gradient vector: 0.00294527
+Final scaled gradient: 2.56969e-06
+Final scaled parameter change: 0.00500931
+
+Idx Cat Term   Variable        Coeff      Error    C/Error  Signif
+------------------------------------------------------------------
+  1   2  I     Intercept      2.8003     0.5530     5.0639  1.0000
+  2   2  X     X             -0.1915     0.0431    -4.4465  1.0000
+------------------------------------------------------------------
+  3   3  I     Intercept      3.3703     0.5456     6.1773  1.0000
+  4   3  X     X             -0.2320     0.0426    -5.4508  1.0000
+------------------------------------------------------------------
+  5   4  I     Intercept      4.8489     0.5611     8.6426  1.0000
+  6   4  X     X             -0.3740     0.0445    -8.3971  1.0000
+------------------------------------------------------------------
+  7   5  I     Intercept      4.5686     0.6055     7.5447  1.0000
+  8   5  X     X             -0.3867     0.0493    -7.8405  1.0000
+------------------------------------------------------------------
+  9   -  S     Sigma 2, 1     0.0000     0.0000        ---     ---
+ 10   -  S     Sigma 3, 1     0.0000     0.0000        ---     ---
+ 11   -  S     Sigma 3, 2     0.0000     0.0000        ---     ---
+ 12   -  S     Sigma 4, 1     0.0000     0.0000        ---     ---
+ 13   -  S     Sigma 4, 2     0.0000     0.0000        ---     ---
+ 14   -  S     Sigma 4, 3     0.0000     0.0000        ---     ---
+ 15   -  S     Sigma 5, 1     0.0000     0.0000        ---     ---
+ 16   -  S     Sigma 5, 2     0.0000     0.0000        ---     ---
+ 17   -  S     Sigma 5, 3     0.0000     0.0000        ---     ---
+ 18   -  S     Sigma 5, 4     0.0000     0.0000        ---     ---
+
+Log likelihood (starting values):  -935.1167 
+Log likelihood (final estimates):  -828.2320 
+
+Parameter estimates written to: par
+
+Estimated correlation matrix written to: par
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422126 bytes.
+End of program. Sat Jul 25 02:03:14 2026

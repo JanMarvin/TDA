@@ -1,0 +1,50 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:40 2026
+Current memory: 390032 bytes.
+
+Reading command file: exprops4.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   2.0  c1
+  2 X         3   4   6.2  c2
+  3 G         3   4   2.0  c3
+  4 A1        4   4   8.4  gfirst(G)
+  5 A2        4   4   8.4  glast(G)
+  6 A3        4   4   8.4  gsn(G)
+  7 A4        4   4   8.4  grec(G)
+  8 A5        4   4   8.4  gcnt(G)
+  9 A6        4   4   8.4  bfirst
+ 10 A7        4   4   8.4  pre(X)
+ 11 A8        4   4   8.4  cd(X)
+ 12 A9        4   4   8.4  cdv(X)
+ 13 B1        4   4   8.4  snum(X)
+ 14 B2        3   4   8.4  nd(X)
+ 15 B3        3   4   8.4  mr(X)
+ 16 B4        4   4   8.4  sum(X)
+ 17 B5        4   4   8.4  std(X)
+ 18 B6        4   4   8.4  sma[tp=1(1)3](X)
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ex.dat
+Free format. Separation character(s): default.
+
+Reading data file: ex.dat
+Read records: 6 
+
+Created a new data matrix.
+Number of cases: 6
+Number of variables: 18
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 462585 bytes.
+----------------------------------------------------------------------------
+pdata(...)=out.txt
+6 records with 18 variables written to: out.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 483199 bytes.
+End of program. Fri Sep  4 15:06:40 2026

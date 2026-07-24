@@ -1,0 +1,103 @@
+Read records:      34     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: lsreg12.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Y         3   4   0.0  c1
+  2 I         3   4   0.0  c2
+  3 S         3   4   0.0  c3
+  4 SS        3   4   0.0  S*S
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): lsreg12.dat
+Free format. Separation character(s): default.
+
+Reading data file: lsreg12.dat
+Read records: 34 
+
+Created a new data matrix.
+Number of cases: 34
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 406126 bytes.
+----------------------------------------------------------------------------
+lsreg(...)=...
+Least squares regression. Current memory: 406126 bytes.
+
+Variables (cross-section)
+-------------------------
+Y   : I   
+X1  : S   
+X2  : SS  
+
+Equality constraints: 0
+Inequality constraints: 0
+
+Reading data. Cases: 34
+Data written to: df12
+
+Rank of least squares data matrix: 3
+Norm of least squares residuals: 32.8712
+
+Degrees of freedom: 31
+Sum of squared residuals: 1080.51
+Variance of residuals: 34.8553
+Squared multiple correlation: 0.99468
+Adjusted: 0.994336
+F-statistic: 2897.77
+Level of significance: 1
+
+Residuals written to: res12
+Covariance matrix written to: cov12
+
+Idx  Wave  Variable       Coeff      Error    Coeff/E  Signif
+-------------------------------------------------------------
+  1     -  Intercept    -2.3452     3.4009    -0.6896  0.5044
+  2     1  S             1.9481     0.1040    18.7246  1.0000
+  3     1  SS           -0.0018     0.0006    -3.2247  0.9970
+
+----------------------------------------------------------------------------
+lsreg(...)=...
+Least squares regression. Current memory: 406126 bytes.
+
+Variables (cross-section)
+-------------------------
+Y   : I   
+X1  : S   
+X2  : SS  
+
+Equality constraints: 0
+Inequality constraints: 0
+
+Reading data. Cases: 34
+
+Rank of least squares data matrix: 3
+Norm of least squares residuals: 32.8712
+
+Degrees of freedom: 31
+Sum of squared residuals: 1080.51
+Variance of residuals: 34.8553
+Squared multiple correlation: 0.99468
+Adjusted: 0.994336
+F-statistic: 2897.77
+Level of significance: 1
+Calculating White's covariance matrix.
+
+Idx  Wave  Variable       Coeff      Error    Coeff/E  Signif
+-------------------------------------------------------------
+  1     -  Intercept    -2.3452     4.0832    -0.5744  0.4301
+  2     1  S             1.9481     0.1342    14.5166  1.0000
+  3     1  SS           -0.0018     0.0008    -2.2601  0.9690
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426164 bytes.
+End of program. Tue Jul 21 05:46:53 2026

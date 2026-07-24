@@ -1,0 +1,6 @@
+# xshow: the X11 screen front end (t_xwin.c) was never part of this
+# source tree; the command explains that instead of silently doing
+# nothing.  This pins the refusal.  xconh, xreg and xplotf are the
+# same class (they need a live plot window) but TDA halts a command
+# file at the first error, so only the first can be pinned here.
+xshow;

@@ -1,0 +1,99 @@
+TDA. Analysis of Transition Data (6.4q). Sun Sep  6 15:31:20 2026
+Current memory: 390032 bytes.
+
+Reading command file: mapdcw.cf
+============================================================================
+sddcwp(...)=zimbabwe.pnt
+Conversion of DCW polygon point data file. Current memory: 390032 bytes.
+Input file: zimbabwe.pnt
+First record: zimbabwe
+
+Number of records: 1887
+Number of data blocks: 1
+Number of empty blocks: 0
+Number of data points: 1883
+Maximal number of points per object: 1883
+1885 records written to: zw.sd
+Number of type 1 objects: 1
+Number of type 3 objects: 1
+----------------------------------------------------------------------------
+sdnvar(...)
+Reading a spatial data file. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 SDID      3   4   0.0  c1
+  2 SDTyp     3   4   0.0  c2
+  3 SDN       3   4   0.0  c3
+  4 SDPtr     3   5  11.0  rd
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): zw.sd
+Free format. Separation character(s): default.
+Reading data file: zw.sd
+Read records: 2 
+
+Created a new data matrix.
+Number of cases: 2
+Number of variables: 4
+Missing values in data file(s): none.
+
+Number of points: 1
+Number of lines: 0
+Number of polygons: 1
+Number of unknown objects: 0
+
+Maximal number of points in spatial objects: 1882
+Total number of points in spatial objects: 1883
+Note: zw.sd remains opened for further access.
+
+X values. Minimum:        25.2370  Maximum:        33.0563
+Y values. Minimum:       -22.4177  Maximum:       -15.6088
+
+End of creating new variables. Current memory: 436545 bytes.
+----------------------------------------------------------------------------
+psfile=zwmap.ps
+Opened new PostScript file: zwmap.ps
+----------------------------------------------------------------------------
+psetupg(...)
+Set up geographical coordinate system. Current memory: 436545 bytes.
+Cylindrical projection (equidistant).
+View: 29,-19. Region: 5,5
+
+Selected region longitude:   24.0000 (  29.0000)   34.0000
+Selected region latitude:   -24.0000 ( -19.0000)  -14.0000
+
+Creating a new 2d coordinate system.
+Size (width x height in mm): 150 x 150
+PostScript coordinates. X-axis: 100,525  Y-axis: 100,525
+Origin (PostScript x and y coordinates): 100,100
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:          24.0000,          34.0000 
+User coordinates Y axis:         -24.0000,         -14.0000 
+----------------------------------------------------------------------------
+sdpgrat(...)
+Graticule for geographical coordinate system. Current memory: 436545 bytes.
+Drawing grid lines (meridians).
+Drawing grid lines (parallels).
+mapgrid_lat: GDPROJ=10 GDPROJA=0
+----------------------------------------------------------------------------
+sdpmap(...)
+Plot in geographical coordinate system. Current memory: 436545 bytes.
+imin=1428 imax=523
+xmin=25.237 xmax=33.0563
+ymin=-22.4177 ymax=-15.6088
+xmin=24,-24 xmax=34,-14
+ni=1882 n=1882
+INSIDE
+
+Number of type 1 objects: 1
+Number of type 2 objects: 0
+Number of type 3 objects: 1. Plotted: 1 (parts)
+PostScript output written to: zwmap.ps
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 527121 bytes.
+End of program. Sun Sep  6 15:31:20 2026

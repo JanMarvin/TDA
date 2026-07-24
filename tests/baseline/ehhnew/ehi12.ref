@@ -1,0 +1,45 @@
+Read records:     262     
+TDA. Analysis of Transition Data (6.4p). Fri Jul 24 21:39:00 2026
+Current memory: 390032 bytes.
+
+Reading command file: ehi12.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Time      3   4   0.0  c2
+  2 CRate     3   4   0.0  c7
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+Input select (isel): c1[0]
+
+Using data file(s): ehi10.bl
+Free format. Separation character(s): default.
+
+Reading data file: ehi10.bl
+Read records: 262 
+Selected for data matrix: 131 records.
+
+Created a new data matrix.
+Number of cases: 131
+Number of variables: 2
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 398073 bytes.
+----------------------------------------------------------------------------
+spl(...)=Time,CRate
+Smoothing spline function. Current memory: 398073 bytes.
+Degree: 3. Smoothing factor: 0.2
+Max number of iterations: 10
+Max number of knots: 66
+Successful calculation of smoothing spline.
+Actual number of knots: 13
+Interval for interpolation: [0,350]
+Request is interpolation in [0,300], increment: 0.5
+602 records written to: ehi12.bl
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 418183 bytes.
+End of program. Fri Jul 24 21:39:00 2026

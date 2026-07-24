@@ -1,0 +1,1060 @@
+%!PS-Adobe-2.0 EPSF-1.2
+%%Title: gdf3.ps
+%%Creator: TDA 6.4
+%%CreationDate: Wed Sep 16 20:40:36 2026
+%%BoundingBox:   101   433   512   698
+%%BeginProlog
+/TDAdict 200 dict def % define local dictionary
+TDAdict begin         % push dictionary onto the dictionary stack
+/reencsmalldict 12 dict def % obtain dict for reencoding
+/ReEncodeSmall
+{
+    reencsmalldict begin
+    /newcodesandnames exch def
+    /newfontname exch def
+    /basefontname exch def
+    /basefontdict basefontname findfont def
+    /newfont basefontdict maxlength dict def
+    basefontdict
+    { exch dup /FID ne
+    { dup /Encoding eq
+    { exch dup length array copy newfont 3 1 roll put }
+    { exch newfont 3 1 roll put }
+    ifelse }
+    {pop pop }
+    ifelse }
+    forall
+    newfont /FontName newfontname put
+    newcodesandnames aload pop
+    newcodesandnames length 2 idiv
+    { newfont /Encoding get 3 1 roll put}
+    repeat newfontname newfont definefont pop
+    end 
+} def
+/spanvec [
+8#0 /NUL
+8#1 /Eth
+8#2 /eth
+8#3 /Lslash
+8#4 /lslash
+8#5 /Scaron
+8#6 /scaron
+8#7 /Yacute
+8#10 /yacute
+8#11 /HT
+8#12 /LF
+8#13 /Thorn
+8#14 /thorn
+8#15 /CR
+8#16 /Zcaron
+8#17 /zcaron
+8#20 /DLE
+8#21 /DC1
+8#22 /DC2
+8#23 /DC3
+8#24 /DC4
+8#25 /onehalf
+8#26 /onequarter
+8#27 /onesuperior
+8#30 /threequarters
+8#31 /threesuperior
+8#32 /twosuperior
+8#33 /brokenbar
+8#34 /minus
+8#35 /multiply
+8#36 /RS
+8#37 /US
+8#200 /Adieresis
+8#201 /Aring
+8#202 /Ccedilla
+8#203 /Eacute
+8#204 /Ntilde
+8#205 /Odieresis
+8#206 /Udieresis
+8#207 /aacute
+8#210 /agrave
+8#211 /acircumflex
+8#212 /adieresis
+8#213 /atilde
+8#214 /aring
+8#215 /ccedilla
+8#216 /eacute
+8#217 /egrave
+8#220 /ecircumflex
+8#221 /edieresis
+8#222 /iacute
+8#223 /igrave
+8#224 /icircumflex
+8#225 /idieresis
+8#226 /ntilde
+8#227 /oacute
+8#230 /ograve
+8#231 /ocircumflex
+8#232 /odieresis
+8#233 /otilde
+8#234 /uacute
+8#235 /ugrave
+8#236 /ucircumflex
+8#237 /udieresis
+8#240 /dagger
+8#241 /degree
+8#242 /cent
+8#243 /sterling
+8#244 /section
+8#245 /bullet
+8#246 /paragraph
+8#247 /germandbls
+8#250 /registered
+8#251 /copyright
+8#252 /trademark
+8#253 /acute
+8#254 /dieresis
+8#255 /notequal
+8#256 /AE
+8#257 /Oslash
+8#260 /infinity
+8#261 /plusminus
+8#262 /lessequal
+8#263 /greaterequal
+8#264 /yen
+8#265 /mu
+8#266 /Gamma
+8#267 /summation
+8#270 /product
+8#271 /pi
+8#272 /integral
+8#273 /ordfeminine
+8#274 /ordmasculine
+8#275 /Omega
+8#276 /ae
+8#277 /oslash
+8#300 /questiondown
+8#301 /exclamdown
+8#302 /logicalnot
+8#303 /radical
+8#304 /florin
+8#305 /approxequal
+8#306 /Delta
+8#307 /guillemotleft
+8#310 /guillemotright
+8#311 /ellipsis
+8#312 /nbspace
+8#313 /Agrave
+8#314 /Atilde
+8#315 /Otilde
+8#316 /OE
+8#317 /oe
+8#320 /endash
+8#321 /emdash
+8#322 /quotedblleft
+8#323 /quotedblright
+8#324 /quoteleft
+8#325 /quoteright
+8#326 /divide
+8#327 /lozenge
+8#330 /ydieresis
+8#331 /Ydieresis
+8#332 /fraction
+8#333 /currency
+8#334 /guilsinglleft
+8#335 /guilsinglright
+8#336 /fi
+8#337 /fl
+8#340 /daggerdbl
+8#341 /periodcentered
+8#342 /quotesinglbase
+8#343 /quotedblbase
+8#344 /perthousand
+8#345 /Acircumflex
+8#346 /Ecircumflex
+8#347 /Aacute
+8#350 /Edieresis
+8#351 /Egrave
+8#352 /Iacute
+8#353 /Icircumflex
+8#354 /Idieresis
+8#355 /Igrave
+8#356 /Oacute
+8#357 /Ocircumflex
+8#360 /apple
+8#361 /Ograve
+8#362 /Uacute
+8#363 /Ucircumflex
+8#364 /Ugrave
+8#365 /dotlessi
+8#366 /circumflex
+8#367 /tilde
+8#370 /macron
+8#371 /breve
+8#372 /dotaccent
+8#373 /ring
+8#374 /cedilla
+8#375 /hungarumlaut
+8#376 /ogonek
+8#377 /caron
+] def
+/m  {moveto} bind def
+/rm {rmoveto} bind def
+/l  {lineto} bind def
+/rl {rlineto} bind def
+
+/fsiz 0 def % font size
+/FT {/TFont findfont fsiz scalefont setfont} bind def
+/FS {/Symbol findfont fsiz scalefont setfont} bind def
+
+/ssiz 1 def % half size of symbol
+/lpt  0 def % size of numerical labels
+/str 20 string def
+/xmin 0 def
+
+/sclear { % clear area for string
+gsave currentpoint pop -2 add fsiz 4 div m
+dup stringwidth exch 4 add exch rl
+0 setlinecap fsiz 2 add setlinewidth
+1 setgray stroke grestore
+} def
+/center { % center a string
+    dup stringwidth pop
+    2 div neg 0 rm
+} def
+/aright { % right justified
+    dup stringwidth pop
+    neg 0 rm
+} def
+/adjust { % adjust for y axis labels
+    dup stringwidth pop
+    neg lpt 3 div neg rm
+    currentpoint pop xmin lt {currentpoint pop /xmin exch def} if
+} def
+/invers {
+    1 setgray fill 0 setgray
+} def
+/circle {
+    newpath ssiz 0 360 arc
+} def
+/cross {
+    gsave
+    ssiz neg 0 rm ssiz 2 mul 0 rl
+    ssiz neg ssiz rm 0 ssiz 2 mul neg rl
+    stroke
+    grestore
+} def
+/xsym {
+    gsave
+    45 rotate    ssiz neg 0 rm ssiz 2 mul 0 rl
+    ssiz neg ssiz rm 0 ssiz 2 mul neg rl
+    stroke
+    grestore
+} def
+/square {
+    gsave
+    ssiz neg ssiz neg rm ssiz 2 mul 0 rl
+    0 ssiz 2 mul rl ssiz 2 mul neg 0 rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+/trian1 {
+    gsave
+    ssiz neg ssiz neg rm ssiz 2 mul 0 rl
+    ssiz neg ssiz 2 mul rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+/trian2 {
+    gsave
+    ssiz neg ssiz rm ssiz ssiz 2 mul neg rl
+    ssiz ssiz 2 mul rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+/rhomb {
+    gsave
+    ssiz neg 0 rm ssiz ssiz neg rl
+    ssiz ssiz rl ssiz neg ssiz rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+end         % pop TDAdict off the dictionary stack
+%%EndProlog
+TDAdict begin
+/Times-Roman /TFont spanvec ReEncodeSmall
+
+% define current coordinate system
+% xorg=150 yorg=460 pxlen=120.00 pylen=80.00
+/xorg 150 def
+/yorg 460 def
+xorg yorg translate
+/rf  0.00 def rf rotate
+/sfx  1.00 def
+/sfy  1.00 def
+sfx sfy scale
+
+%#Parameter: 150 460 120 80 0 -10 102 110 0 0 1 1 0
+1 setlinecap
+1 setlinejoin
+
+
+%#1: plxa(sc=10,ic=0)
+%#x-axis
+/fsiz  8.50 def FT
+[] 0 setdash
+0.5670 setlinewidth
+ 0.00  0.00 m
+340.20  0.00 l
+stroke
+ 0.00  0.00 m
+0 -5.10 rl
+%#stroke
+%#text:  0.00 -13.61  8.50 1 0 0
+gsave
+0 -8.50 rm
+(0) center
+show
+grestore
+stroke
+33.35  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 33.35 -13.61  8.50 1 0 10
+gsave
+0 -8.50 rm
+(10) center
+show
+grestore
+stroke
+66.71  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 66.71 -13.61  8.50 1 0 20
+gsave
+0 -8.50 rm
+(20) center
+show
+grestore
+stroke
+100.06  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 100.06 -13.61  8.50 1 0 30
+gsave
+0 -8.50 rm
+(30) center
+show
+grestore
+stroke
+133.41  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 133.41 -13.61  8.50 1 0 40
+gsave
+0 -8.50 rm
+(40) center
+show
+grestore
+stroke
+166.76  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 166.76 -13.61  8.50 1 0 50
+gsave
+0 -8.50 rm
+(50) center
+show
+grestore
+stroke
+200.12  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 200.12 -13.61  8.50 1 0 60
+gsave
+0 -8.50 rm
+(60) center
+show
+grestore
+stroke
+233.47  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 233.47 -13.61  8.50 1 0 70
+gsave
+0 -8.50 rm
+(70) center
+show
+grestore
+stroke
+266.82  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 266.82 -13.61  8.50 1 0 80
+gsave
+0 -8.50 rm
+(80) center
+show
+grestore
+stroke
+300.18  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 300.18 -13.61  8.50 1 0 90
+gsave
+0 -8.50 rm
+(90) center
+show
+grestore
+stroke
+333.53  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 333.53 -13.61  8.50 1 0 100
+gsave
+0 -8.50 rm
+(100) center
+show
+grestore
+stroke
+
+%#2: plya(sc=10,ic=0)
+%#y-axis
+/fsiz  8.50 def FT
+/lpt  8.50 def
+/xmin 0 def
+[] 0 setdash
+0.5670 setlinewidth
+ 0.00  0.00 m
+ 0.00 226.80 l
+stroke
+ 0.00  0.00 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 -1.70  8.50 2 0 -10
+gsave
+-2.83 0 rm
+(-10) adjust
+show
+grestore
+stroke
+ 0.00 18.90 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 17.20  8.50 2 0 0
+gsave
+-2.83 0 rm
+(0) adjust
+show
+grestore
+stroke
+ 0.00 37.80 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 36.10  8.50 2 0 10
+gsave
+-2.83 0 rm
+(10) adjust
+show
+grestore
+stroke
+ 0.00 56.70 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 55.00  8.50 2 0 20
+gsave
+-2.83 0 rm
+(20) adjust
+show
+grestore
+stroke
+ 0.00 75.60 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 73.90  8.50 2 0 30
+gsave
+-2.83 0 rm
+(30) adjust
+show
+grestore
+stroke
+ 0.00 94.50 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 92.80  8.50 2 0 40
+gsave
+-2.83 0 rm
+(40) adjust
+show
+grestore
+stroke
+ 0.00 113.40 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 111.70  8.50 2 0 50
+gsave
+-2.83 0 rm
+(50) adjust
+show
+grestore
+stroke
+ 0.00 132.30 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 130.60  8.50 2 0 60
+gsave
+-2.83 0 rm
+(60) adjust
+show
+grestore
+stroke
+ 0.00 151.20 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 149.50  8.50 2 0 70
+gsave
+-2.83 0 rm
+(70) adjust
+show
+grestore
+stroke
+ 0.00 170.10 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 168.40  8.50 2 0 80
+gsave
+-2.83 0 rm
+(80) adjust
+show
+grestore
+stroke
+ 0.00 189.00 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 187.30  8.50 2 0 90
+gsave
+-2.83 0 rm
+(90) adjust
+show
+grestore
+stroke
+ 0.00 207.90 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 206.20  8.50 2 0 100
+gsave
+-2.83 0 rm
+(100) adjust
+show
+grestore
+stroke
+ 0.00 226.80 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 225.10  8.50 2 0 110
+gsave
+-2.83 0 rm
+(110) adjust
+show
+grestore
+stroke
+
+%#3: plot(s=5,lw=0,fs=0.7)=X,Y1
+gsave
+ 0.57  0.57 m
+ 0.57 226.80 l
+340.20 226.80 l
+340.20  0.57 l
+closepath
+clip
+newpath
+/ssiz 0.99 def
+%#symbol: 5  3.34  2.99  0.99
+ 3.34  2.99 circle fill
+%#symbol: 5  6.67 39.67  0.99
+ 6.67 39.67 circle fill
+%#symbol: 5 10.01  9.23  0.99
+10.01  9.23 circle fill
+%#symbol: 5 13.34 34.02  0.99
+13.34 34.02 circle fill
+%#symbol: 5 16.68 43.14  0.99
+16.68 43.14 circle fill
+%#symbol: 5 20.01 29.18  0.99
+20.01 29.18 circle fill
+%#symbol: 5 23.35 20.27  0.99
+23.35 20.27 circle fill
+%#symbol: 5 26.68 24.57  0.99
+26.68 24.57 circle fill
+%#symbol: 5 30.02 34.49  0.99
+30.02 34.49 circle fill
+%#symbol: 5 33.35 55.30  0.99
+33.35 55.30 circle fill
+%#symbol: 5 36.69 55.47  0.99
+36.69 55.47 circle fill
+%#symbol: 5 40.02 54.95  0.99
+40.02 54.95 circle fill
+%#symbol: 5 43.36 47.47  0.99
+43.36 47.47 circle fill
+%#symbol: 5 46.69 45.77  0.99
+46.69 45.77 circle fill
+%#symbol: 5 50.03 49.88  0.99
+50.03 49.88 circle fill
+%#symbol: 5 53.36 40.75  0.99
+53.36 40.75 circle fill
+%#symbol: 5 56.70 34.02  0.99
+56.70 34.02 circle fill
+%#symbol: 5 60.04 34.43  0.99
+60.04 34.43 circle fill
+%#symbol: 5 63.37 40.66  0.99
+63.37 40.66 circle fill
+%#symbol: 5 66.71 52.96  0.99
+66.71 52.96 circle fill
+%#symbol: 5 70.04 53.71  0.99
+70.04 53.71 circle fill
+%#symbol: 5 73.38 54.25  0.99
+73.38 54.25 circle fill
+%#symbol: 5 76.71 57.72  0.99
+76.71 57.72 circle fill
+%#symbol: 5 80.05 45.64  0.99
+80.05 45.64 circle fill
+%#symbol: 5 83.38 55.90  0.99
+83.38 55.90 circle fill
+%#symbol: 5 86.72 77.69  0.99
+86.72 77.69 circle fill
+%#symbol: 5 90.05 61.79  0.99
+90.05 61.79 circle fill
+%#symbol: 5 93.39 84.53  0.99
+93.39 84.53 circle fill
+%#symbol: 5 96.72 86.94  0.99
+96.72 86.94 circle fill
+%#symbol: 5 100.06 79.92  0.99
+100.06 79.92 circle fill
+%#symbol: 5 103.39 80.82  0.99
+103.39 80.82 circle fill
+%#symbol: 5 106.73 93.63  0.99
+106.73 93.63 circle fill
+%#symbol: 5 110.06 91.25  0.99
+110.06 91.25 circle fill
+%#symbol: 5 116.74 91.25  0.99
+116.74 91.25 circle fill
+%#symbol: 5 123.41 99.60  0.99
+123.41 99.60 circle fill
+%#symbol: 5 126.74 77.80  0.99
+126.74 77.80 circle fill
+%#symbol: 5 130.08 97.76  0.99
+130.08 97.76 circle fill
+%#symbol: 5 133.41 88.51  0.99
+133.41 88.51 circle fill
+%#symbol: 5 136.75 86.89  0.99
+136.75 86.89 circle fill
+%#symbol: 5 140.08 95.73  0.99
+140.08 95.73 circle fill
+%#symbol: 5 146.75 89.65  0.99
+146.75 89.65 circle fill
+%#symbol: 5 153.42 102.74  0.99
+153.42 102.74 circle fill
+%#symbol: 5 156.76 123.14  0.99
+156.76 123.14 circle fill
+%#symbol: 5 160.09 104.75  0.99
+160.09 104.75 circle fill
+%#symbol: 5 166.76 118.76  0.99
+166.76 118.76 circle fill
+%#symbol: 5 170.10 121.88  0.99
+170.10 121.88 circle fill
+%#symbol: 5 173.44 112.93  0.99
+173.44 112.93 circle fill
+%#symbol: 5 176.77 114.52  0.99
+176.77 114.52 circle fill
+%#symbol: 5 180.11 139.27  0.99
+180.11 139.27 circle fill
+%#symbol: 5 183.44 113.08  0.99
+183.44 113.08 circle fill
+%#symbol: 5 186.78 141.81  0.99
+186.78 141.81 circle fill
+%#symbol: 5 190.11 129.70  0.99
+190.11 129.70 circle fill
+%#symbol: 5 193.45 113.40  0.99
+193.45 113.40 circle fill
+%#symbol: 5 196.78 143.99  0.99
+196.78 143.99 circle fill
+%#symbol: 5 200.12 118.01  0.99
+200.12 118.01 circle fill
+%#symbol: 5 203.45 130.91  0.99
+203.45 130.91 circle fill
+%#symbol: 5 206.79 120.57  0.99
+206.79 120.57 circle fill
+%#symbol: 5 210.12 135.35  0.99
+210.12 135.35 circle fill
+%#symbol: 5 213.46 143.05  0.99
+213.46 143.05 circle fill
+%#symbol: 5 216.79 132.52  0.99
+216.79 132.52 circle fill
+%#symbol: 5 220.13 140.70  0.99
+220.13 140.70 circle fill
+%#symbol: 5 223.46 140.68  0.99
+223.46 140.68 circle fill
+%#symbol: 5 233.47 136.32  0.99
+233.47 136.32 circle fill
+%#symbol: 5 236.81 161.42  0.99
+236.81 161.42 circle fill
+%#symbol: 5 240.14 165.82  0.99
+240.14 165.82 circle fill
+%#symbol: 5 246.81 144.15  0.99
+246.81 144.15 circle fill
+%#symbol: 5 253.48 151.16  0.99
+253.48 151.16 circle fill
+%#symbol: 5 256.82 172.90  0.99
+256.82 172.90 circle fill
+%#symbol: 5 260.15 149.23  0.99
+260.15 149.23 circle fill
+%#symbol: 5 266.82 173.55  0.99
+266.82 173.55 circle fill
+%#symbol: 5 270.16 177.69  0.99
+270.16 177.69 circle fill
+%#symbol: 5 273.49 157.62  0.99
+273.49 157.62 circle fill
+%#symbol: 5 276.83 165.20  0.99
+276.83 165.20 circle fill
+%#symbol: 5 286.84 165.09  0.99
+286.84 165.09 circle fill
+%#symbol: 5 290.17 196.55  0.99
+290.17 196.55 circle fill
+%#symbol: 5 293.51 168.07  0.99
+293.51 168.07 circle fill
+%#symbol: 5 296.84 193.43  0.99
+296.84 193.43 circle fill
+%#symbol: 5 300.18 173.05  0.99
+300.18 173.05 circle fill
+%#symbol: 5 303.51 199.80  0.99
+303.51 199.80 circle fill
+%#symbol: 5 306.85 180.08  0.99
+306.85 180.08 circle fill
+%#symbol: 5 313.52 213.95  0.99
+313.52 213.95 circle fill
+%#symbol: 5 316.85 215.31  0.99
+316.85 215.31 circle fill
+%#symbol: 5 320.19 208.50  0.99
+320.19 208.50 circle fill
+%#symbol: 5 323.52 220.13  0.99
+323.52 220.13 circle fill
+%#symbol: 5 326.86 197.13  0.99
+326.86 197.13 circle fill
+%#symbol: 5 330.19 222.49  0.99
+330.19 222.49 circle fill
+%#symbol: 5 333.53 212.81  0.99
+333.53 212.81 circle fill
+grestore
+
+%#4: plotm(lw=0.1)=X,Y1,X,H [case 1]
+gsave
+ 0.57  0.57 m
+ 0.57 226.80 l
+340.20 226.80 l
+340.20  0.57 l
+closepath
+clip
+newpath
+0.2835 setlinewidth
+[] 0 setdash
+113.40 70.58 m
+113.40 226.80 l
+stroke
+grestore
+
+%#5: plotm(lw=0.1)=X,Y1,X,H [case 2]
+gsave
+ 0.57  0.57 m
+ 0.57 226.80 l
+340.20 226.80 l
+340.20  0.57 l
+closepath
+clip
+newpath
+0.2835 setlinewidth
+[] 0 setdash
+120.07 76.36 m
+120.07 226.80 l
+stroke
+grestore
+
+%#6: plotm(lw=0.1)=X,Y1,X,H [case 3]
+gsave
+ 0.57  0.57 m
+ 0.57 226.80 l
+340.20 226.80 l
+340.20  0.57 l
+closepath
+clip
+newpath
+0.2835 setlinewidth
+[] 0 setdash
+143.42 47.93 m
+143.42 226.80 l
+stroke
+grestore
+
+%#7: plotm(lw=0.1)=X,Y1,X,H [case 4]
+gsave
+ 0.57  0.57 m
+ 0.57 226.80 l
+340.20 226.80 l
+340.20  0.57 l
+closepath
+clip
+newpath
+0.2835 setlinewidth
+[] 0 setdash
+150.09 101.18 m
+150.09 226.80 l
+stroke
+grestore
+
+%#8: plotm(lw=0.1)=X,Y1,X,H [case 5]
+gsave
+ 0.57  0.57 m
+ 0.57 226.80 l
+340.20 226.80 l
+340.20  0.57 l
+closepath
+clip
+newpath
+0.2835 setlinewidth
+[] 0 setdash
+163.43 114.68 m
+163.43 226.80 l
+stroke
+grestore
+
+%#9: plotm(lw=0.1)=X,Y1,X,H [case 6]
+gsave
+ 0.57  0.57 m
+ 0.57 226.80 l
+340.20 226.80 l
+340.20  0.57 l
+closepath
+clip
+newpath
+0.2835 setlinewidth
+[] 0 setdash
+226.80 114.37 m
+226.80 226.80 l
+stroke
+grestore
+
+%#10: plotm(lw=0.1)=X,Y1,X,H [case 7]
+gsave
+ 0.57  0.57 m
+ 0.57 226.80 l
+340.20 226.80 l
+340.20  0.57 l
+closepath
+clip
+newpath
+0.2835 setlinewidth
+[] 0 setdash
+230.14 108.50 m
+230.14 226.80 l
+stroke
+grestore
+
+%#11: plotm(lw=0.1)=X,Y1,X,H [case 8]
+gsave
+ 0.57  0.57 m
+ 0.57 226.80 l
+340.20 226.80 l
+340.20  0.57 l
+closepath
+clip
+newpath
+0.2835 setlinewidth
+[] 0 setdash
+243.48 113.21 m
+243.48 226.80 l
+stroke
+grestore
+
+%#12: plotm(lw=0.1)=X,Y1,X,H [case 9]
+gsave
+ 0.57  0.57 m
+ 0.57 226.80 l
+340.20 226.80 l
+340.20  0.57 l
+closepath
+clip
+newpath
+0.2835 setlinewidth
+[] 0 setdash
+250.15 142.24 m
+250.15 226.80 l
+stroke
+grestore
+
+%#13: plotm(lw=0.1)=X,Y1,X,H [case 10]
+gsave
+ 0.57  0.57 m
+ 0.57 226.80 l
+340.20 226.80 l
+340.20  0.57 l
+closepath
+clip
+newpath
+0.2835 setlinewidth
+[] 0 setdash
+263.49 92.14 m
+263.49 226.80 l
+stroke
+grestore
+
+%#14: plotm(lw=0.1)=X,Y1,X,H [case 11]
+gsave
+ 0.57  0.57 m
+ 0.57 226.80 l
+340.20 226.80 l
+340.20  0.57 l
+closepath
+clip
+newpath
+0.2835 setlinewidth
+[] 0 setdash
+280.16 120.13 m
+280.16 226.80 l
+stroke
+grestore
+
+%#15: plotm(lw=0.1)=X,Y1,X,H [case 12]
+gsave
+ 0.57  0.57 m
+ 0.57 226.80 l
+340.20 226.80 l
+340.20  0.57 l
+closepath
+clip
+newpath
+0.2835 setlinewidth
+[] 0 setdash
+283.50 137.89 m
+283.50 226.80 l
+stroke
+grestore
+
+%#16: plotm(lw=0.1)=X,Y1,X,H [case 13]
+gsave
+ 0.57  0.57 m
+ 0.57 226.80 l
+340.20 226.80 l
+340.20  0.57 l
+closepath
+clip
+newpath
+0.2835 setlinewidth
+[] 0 setdash
+310.18 82.94 m
+310.18 226.80 l
+stroke
+grestore
+
+%#17: plot(s=4,lw=0,fs=1.0)=X,Y1
+gsave
+ 0.57  0.57 m
+ 0.57 226.80 l
+340.20 226.80 l
+340.20  0.57 l
+closepath
+clip
+newpath
+/ssiz 1.42 def
+%#symbol: 4 113.40 70.58  1.42
+113.40 70.58 circle invers 113.40 70.58 circle stroke
+%#symbol: 4 120.07 76.36  1.42
+120.07 76.36 circle invers 120.07 76.36 circle stroke
+%#symbol: 4 143.42 47.93  1.42
+143.42 47.93 circle invers 143.42 47.93 circle stroke
+%#symbol: 4 150.09 101.18  1.42
+150.09 101.18 circle invers 150.09 101.18 circle stroke
+%#symbol: 4 163.43 114.68  1.42
+163.43 114.68 circle invers 163.43 114.68 circle stroke
+%#symbol: 4 226.80 114.37  1.42
+226.80 114.37 circle invers 226.80 114.37 circle stroke
+%#symbol: 4 230.14 108.50  1.42
+230.14 108.50 circle invers 230.14 108.50 circle stroke
+%#symbol: 4 243.48 113.21  1.42
+243.48 113.21 circle invers 243.48 113.21 circle stroke
+%#symbol: 4 250.15 142.24  1.42
+250.15 142.24 circle invers 250.15 142.24 circle stroke
+%#symbol: 4 263.49 92.14  1.42
+263.49 92.14 circle invers 263.49 92.14 circle stroke
+%#symbol: 4 280.16 120.13  1.42
+280.16 120.13 circle invers 280.16 120.13 circle stroke
+%#symbol: 4 283.50 137.89  1.42
+283.50 137.89 circle invers 283.50 137.89 circle stroke
+%#symbol: 4 310.18 82.94  1.42
+310.18 82.94 circle invers 310.18 82.94 circle stroke
+grestore
+
+%#18: plot(s=2,lw=0,fs=1.2)=X,Y
+gsave
+ 0.57  0.57 m
+ 0.57 226.80 l
+340.20 226.80 l
+340.20  0.57 l
+closepath
+clip
+newpath
+/ssiz 1.70 def
+%#symbol: 2 113.40 142.35  1.70
+113.40 142.35 circle invers 113.40 142.35 m xsym
+%#symbol: 2 120.07 142.35  1.70
+120.07 142.35 circle invers 120.07 142.35 m xsym
+%#symbol: 2 143.42 131.85  1.70
+143.42 131.85 circle invers 143.42 131.85 m xsym
+%#symbol: 2 150.09 157.15  1.70
+150.09 157.15 circle invers 150.09 157.15 m xsym
+%#symbol: 2 163.43 163.29  1.70
+163.43 163.29 circle invers 163.43 163.29 m xsym
+%#symbol: 2 226.80 162.21  1.70
+226.80 162.21 circle invers 226.80 162.21 m xsym
+%#symbol: 2 230.14 159.24  1.70
+230.14 159.24 circle invers 230.14 159.24 m xsym
+%#symbol: 2 243.48 161.17  1.70
+243.48 161.17 circle invers 243.48 161.17 m xsym
+%#symbol: 2 250.15 179.70  1.70
+250.15 179.70 circle invers 250.15 179.70 m xsym
+%#symbol: 2 263.49 152.98  1.70
+263.49 152.98 circle invers 263.49 152.98 m xsym
+%#symbol: 2 280.16 165.48  1.70
+280.16 165.48 circle invers 280.16 165.48 m xsym
+%#symbol: 2 283.50 174.66  1.70
+283.50 174.66 circle invers 283.50 174.66 m xsym
+%#symbol: 2 310.18 146.13  1.70
+310.18 146.13 circle invers 310.18 146.13 m xsym
+grestore
+
+%#19: plot(s=17,lw=0,fs=1.2)=X,Y
+gsave
+ 0.57  0.57 m
+ 0.57 226.80 l
+340.20 226.80 l
+340.20  0.57 l
+closepath
+clip
+newpath
+/ssiz 1.70 def
+%#symbol: 17 113.40 90.08  1.70
+113.40 90.08 m rhomb stroke grestore cross
+%#symbol: 17 120.07 90.08  1.70
+120.07 90.08 m rhomb stroke grestore cross
+%#symbol: 17 143.42 106.24  1.70
+143.42 106.24 m rhomb stroke grestore cross
+%#symbol: 17 150.09 111.37  1.70
+150.09 111.37 m rhomb stroke grestore cross
+%#symbol: 17 163.43 121.67  1.70
+163.43 121.67 m rhomb stroke grestore cross
+%#symbol: 17 226.80 135.01  1.70
+226.80 135.01 m rhomb stroke grestore cross
+%#symbol: 17 230.14 135.01  1.70
+230.14 135.01 m rhomb stroke grestore cross
+%#symbol: 17 243.48 159.75  1.70
+243.48 159.75 m rhomb stroke grestore cross
+%#symbol: 17 250.15 159.75  1.70
+250.15 159.75 m rhomb stroke grestore cross
+%#symbol: 17 263.49 159.75  1.70
+263.49 159.75 m rhomb stroke grestore cross
+%#symbol: 17 280.16 174.59  1.70
+280.16 174.59 m rhomb stroke grestore cross
+%#symbol: 17 283.50 174.59  1.70
+283.50 174.59 m rhomb stroke grestore cross
+%#symbol: 17 310.18 207.80  1.70
+310.18 207.80 m rhomb stroke grestore cross
+grestore
+showpage

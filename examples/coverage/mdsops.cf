@@ -1,0 +1,12 @@
+# mdsops.cf -- multidimensional scaling, principal coordinates
+nvar(dfile = dis.dat, D [9.4] = c1,);
+gdd(opt=4) = D;
+mdsc(opt=1) = m1.txt;
+mdsc(opt=2, df=m2.dat) = m2.txt;
+mdsn(ndim=2, opt=1) = n1.txt;
+mdsn(ndim=2, opt=2) = n2.txt;
+mdsn(ndim=2, opt=3) = n3.txt;
+mdsn(ndim=1) = n4.txt;
+mdsn(ndim=3, mxit=50) = n5.txt;
+mdsn1(ndim=2) = q1.txt;
+mdsn1(ndim=2, opt=2) = q2.txt;

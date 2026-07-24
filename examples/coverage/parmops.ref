@@ -1,0 +1,70 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:51 2026
+Current memory: 390032 bytes.
+
+Reading command file: parmops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   2.0  c1
+  2 X         3   4   6.2  c2
+  3 G         3   4   2.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ex.dat
+Free format. Separation character(s): default.
+
+Reading data file: ex.dat
+Read records: 6 
+
+Created a new data matrix.
+Number of cases: 6
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402084 bytes.
+----------------------------------------------------------------------------
+pdata(...)=p1.txt
+6 records with 3 variables written to: p1.txt
+----------------------------------------------------------------------------
+pdata(...)=p2.txt
+6 records with 3 variables written to: p2.txt
+----------------------------------------------------------------------------
+freq(nfmt=5)=G
+Frequency tables. Current memory: 402084 bytes.
+Maximum number of categories: 1000
+
+Frequency distribution for variable(s): G
+Number of categories: 3
+
+Index    G  Frequency   Pct   Cumulated   Pct
+----------------------------------------------
+    1    1       2.00  33.33       2.00  33.33
+    2    2       2.00  33.33       4.00  66.67
+    3    3       2.00  33.33       6.00 100.00
+----------------------------------------------
+Sum              6.00 100.00
+----------------------------------------------------------------------------
+dstat(fmt=10.3)=X
+Descriptive statistics. Current memory: 402084 bytes.
+
+Variable    Minimum    Maximum       Mean   Std.Dev.    Sum of values
+---------------------------------------------------------------------
+X             1.500      5.500      3.083      1.463          18.5000
+----------------------------------------------------------------------------
+dstat(prn=1)=X
+Descriptive statistics. Current memory: 402084 bytes.
+
+Variable    Minimum    Maximum       Mean   Std.Dev.    Sum of values
+---------------------------------------------------------------------
+X            1.5000     5.5000     3.0833     1.4634          18.5000
+----------------------------------------------------------------------------
+pdata(...)=p3.txt
+6 records with 3 variables written to: p3.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422246 bytes.
+End of program. Fri Sep  4 15:06:51 2026

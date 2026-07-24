@@ -1,0 +1,24 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: mach.cf
+============================================================================
+mach
+Some parameters of the current machine:
+Base of the machine: 2
+Largest integer: 2147483647
+Rounding seems proper
+Seems to be: IEEE 'round to nearest' style
+Bits used for the mantissa: 53
+Machine epsilon: 2.220446049250313e-16
+Machine epsilon (rounded): 2.220446049250313e-16
+Not a twos-complement machine, with gradual underflow.
+Seems to be the IEEE standard.
+Minimum exponent before underflow: -1021
+Smallest normalized number: 2.225073858507201e-308
+Maximum exponent before overflow: 1024
+Largest normalized number: 1.797693134862316e+308
+Safe minimum: 2.225073858507201e-308
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390032 bytes.
+End of program. Wed Sep  2 16:02:32 2026

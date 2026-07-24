@@ -1,0 +1,1072 @@
+%!PS-Adobe-2.0 EPSF-1.2
+%%Title: gd12.ps
+%%Creator: TDA 6.4
+%%CreationDate: Wed Sep 16 20:40:36 2026
+%%BoundingBox:   145   455   438   606
+%%BeginProlog
+/TDAdict 200 dict def % define local dictionary
+TDAdict begin         % push dictionary onto the dictionary stack
+/reencsmalldict 12 dict def % obtain dict for reencoding
+/ReEncodeSmall
+{
+    reencsmalldict begin
+    /newcodesandnames exch def
+    /newfontname exch def
+    /basefontname exch def
+    /basefontdict basefontname findfont def
+    /newfont basefontdict maxlength dict def
+    basefontdict
+    { exch dup /FID ne
+    { dup /Encoding eq
+    { exch dup length array copy newfont 3 1 roll put }
+    { exch newfont 3 1 roll put }
+    ifelse }
+    {pop pop }
+    ifelse }
+    forall
+    newfont /FontName newfontname put
+    newcodesandnames aload pop
+    newcodesandnames length 2 idiv
+    { newfont /Encoding get 3 1 roll put}
+    repeat newfontname newfont definefont pop
+    end 
+} def
+/spanvec [
+8#0 /NUL
+8#1 /Eth
+8#2 /eth
+8#3 /Lslash
+8#4 /lslash
+8#5 /Scaron
+8#6 /scaron
+8#7 /Yacute
+8#10 /yacute
+8#11 /HT
+8#12 /LF
+8#13 /Thorn
+8#14 /thorn
+8#15 /CR
+8#16 /Zcaron
+8#17 /zcaron
+8#20 /DLE
+8#21 /DC1
+8#22 /DC2
+8#23 /DC3
+8#24 /DC4
+8#25 /onehalf
+8#26 /onequarter
+8#27 /onesuperior
+8#30 /threequarters
+8#31 /threesuperior
+8#32 /twosuperior
+8#33 /brokenbar
+8#34 /minus
+8#35 /multiply
+8#36 /RS
+8#37 /US
+8#200 /Adieresis
+8#201 /Aring
+8#202 /Ccedilla
+8#203 /Eacute
+8#204 /Ntilde
+8#205 /Odieresis
+8#206 /Udieresis
+8#207 /aacute
+8#210 /agrave
+8#211 /acircumflex
+8#212 /adieresis
+8#213 /atilde
+8#214 /aring
+8#215 /ccedilla
+8#216 /eacute
+8#217 /egrave
+8#220 /ecircumflex
+8#221 /edieresis
+8#222 /iacute
+8#223 /igrave
+8#224 /icircumflex
+8#225 /idieresis
+8#226 /ntilde
+8#227 /oacute
+8#230 /ograve
+8#231 /ocircumflex
+8#232 /odieresis
+8#233 /otilde
+8#234 /uacute
+8#235 /ugrave
+8#236 /ucircumflex
+8#237 /udieresis
+8#240 /dagger
+8#241 /degree
+8#242 /cent
+8#243 /sterling
+8#244 /section
+8#245 /bullet
+8#246 /paragraph
+8#247 /germandbls
+8#250 /registered
+8#251 /copyright
+8#252 /trademark
+8#253 /acute
+8#254 /dieresis
+8#255 /notequal
+8#256 /AE
+8#257 /Oslash
+8#260 /infinity
+8#261 /plusminus
+8#262 /lessequal
+8#263 /greaterequal
+8#264 /yen
+8#265 /mu
+8#266 /Gamma
+8#267 /summation
+8#270 /product
+8#271 /pi
+8#272 /integral
+8#273 /ordfeminine
+8#274 /ordmasculine
+8#275 /Omega
+8#276 /ae
+8#277 /oslash
+8#300 /questiondown
+8#301 /exclamdown
+8#302 /logicalnot
+8#303 /radical
+8#304 /florin
+8#305 /approxequal
+8#306 /Delta
+8#307 /guillemotleft
+8#310 /guillemotright
+8#311 /ellipsis
+8#312 /nbspace
+8#313 /Agrave
+8#314 /Atilde
+8#315 /Otilde
+8#316 /OE
+8#317 /oe
+8#320 /endash
+8#321 /emdash
+8#322 /quotedblleft
+8#323 /quotedblright
+8#324 /quoteleft
+8#325 /quoteright
+8#326 /divide
+8#327 /lozenge
+8#330 /ydieresis
+8#331 /Ydieresis
+8#332 /fraction
+8#333 /currency
+8#334 /guilsinglleft
+8#335 /guilsinglright
+8#336 /fi
+8#337 /fl
+8#340 /daggerdbl
+8#341 /periodcentered
+8#342 /quotesinglbase
+8#343 /quotedblbase
+8#344 /perthousand
+8#345 /Acircumflex
+8#346 /Ecircumflex
+8#347 /Aacute
+8#350 /Edieresis
+8#351 /Egrave
+8#352 /Iacute
+8#353 /Icircumflex
+8#354 /Idieresis
+8#355 /Igrave
+8#356 /Oacute
+8#357 /Ocircumflex
+8#360 /apple
+8#361 /Ograve
+8#362 /Uacute
+8#363 /Ucircumflex
+8#364 /Ugrave
+8#365 /dotlessi
+8#366 /circumflex
+8#367 /tilde
+8#370 /macron
+8#371 /breve
+8#372 /dotaccent
+8#373 /ring
+8#374 /cedilla
+8#375 /hungarumlaut
+8#376 /ogonek
+8#377 /caron
+] def
+/m  {moveto} bind def
+/rm {rmoveto} bind def
+/l  {lineto} bind def
+/rl {rlineto} bind def
+
+/fsiz 0 def % font size
+/FT {/TFont findfont fsiz scalefont setfont} bind def
+/FS {/Symbol findfont fsiz scalefont setfont} bind def
+
+/ssiz 1 def % half size of symbol
+/lpt  0 def % size of numerical labels
+/str 20 string def
+/xmin 0 def
+
+/sclear { % clear area for string
+gsave currentpoint pop -2 add fsiz 4 div m
+dup stringwidth exch 4 add exch rl
+0 setlinecap fsiz 2 add setlinewidth
+1 setgray stroke grestore
+} def
+/center { % center a string
+    dup stringwidth pop
+    2 div neg 0 rm
+} def
+/aright { % right justified
+    dup stringwidth pop
+    neg 0 rm
+} def
+/adjust { % adjust for y axis labels
+    dup stringwidth pop
+    neg lpt 3 div neg rm
+    currentpoint pop xmin lt {currentpoint pop /xmin exch def} if
+} def
+/invers {
+    1 setgray fill 0 setgray
+} def
+/circle {
+    newpath ssiz 0 360 arc
+} def
+/cross {
+    gsave
+    ssiz neg 0 rm ssiz 2 mul 0 rl
+    ssiz neg ssiz rm 0 ssiz 2 mul neg rl
+    stroke
+    grestore
+} def
+/xsym {
+    gsave
+    45 rotate    ssiz neg 0 rm ssiz 2 mul 0 rl
+    ssiz neg ssiz rm 0 ssiz 2 mul neg rl
+    stroke
+    grestore
+} def
+/square {
+    gsave
+    ssiz neg ssiz neg rm ssiz 2 mul 0 rl
+    0 ssiz 2 mul rl ssiz 2 mul neg 0 rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+/trian1 {
+    gsave
+    ssiz neg ssiz neg rm ssiz 2 mul 0 rl
+    ssiz neg ssiz 2 mul rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+/trian2 {
+    gsave
+    ssiz neg ssiz rm ssiz ssiz 2 mul neg rl
+    ssiz ssiz 2 mul rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+/rhomb {
+    gsave
+    ssiz neg 0 rm ssiz ssiz neg rl
+    ssiz ssiz rl ssiz neg ssiz rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+end         % pop TDAdict off the dictionary stack
+%%EndProlog
+TDAdict begin
+/Times-Roman /TFont spanvec ReEncodeSmall
+
+% define current coordinate system
+% xorg=150 yorg=460 pxlen=100.00 pylen=50.00
+/xorg 150 def
+/yorg 460 def
+xorg yorg translate
+/rf  0.00 def rf rotate
+/sfx  1.00 def
+/sfy  1.00 def
+sfx sfy scale
+
+%#Parameter: 150 460 100 50 0 2 11 7.5 0 0 1 1 0
+1 setlinecap
+1 setlinejoin
+
+
+%#1: graph
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+68.25 114.69 14.18 90 180 arc
+stroke
+68.25 91.49 14.18 180 270 arc
+71.65 128.86 m
+68.25 128.86 l
+54.07 114.69 m
+54.07 91.49 l
+68.25 77.32 m
+69.95 77.32 l
+stroke
+grestore
+gsave
+71.65 77.32 m
+ 0.49  0.71 scale
+-7 2 rl
+1 -2 rl
+-1 -2 rl
+closepath
+fill
+stroke
+grestore
+gsave
+54.07 103.09 m
+-5.67 -5.67 rm
+0 11.34 rl
+11.34 0 rl
+0 -11.34 rl
+-11.34 0 rl
+closepath
+gsave
+1 setgray
+fill
+grestore
+gsave
+ 5.67  2.83 rm
+/fsiz  8.50 def FT (50) center show
+grestore
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+77.32 82.99 m
+77.32 123.19 l
+stroke
+grestore
+gsave
+77.32 123.19 m
+90.00 rotate
+ 0.49  0.71 scale
+-7 2 rl
+1 -2 rl
+-1 -2 rl
+closepath
+fill
+stroke
+grestore
+gsave
+77.32 103.09 m
+-5.67 -5.67 rm
+0 11.34 rl
+11.34 0 rl
+0 -11.34 rl
+-11.34 0 rl
+closepath
+gsave
+1 setgray
+fill
+grestore
+gsave
+ 5.67  2.83 rm
+/fsiz  8.50 def FT (10) center show
+grestore
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+77.32 77.32 m
+123.79 100.56 l
+stroke
+grestore
+gsave
+123.79 100.56 m
+26.57 rotate
+ 0.49  0.71 scale
+-7 2 rl
+1 -2 rl
+-1 -2 rl
+closepath
+fill
+stroke
+grestore
+gsave
+100.56 88.94 m
+-5.67 -5.67 rm
+0 11.34 rl
+11.34 0 rl
+0 -11.34 rl
+-11.34 0 rl
+closepath
+gsave
+1 setgray
+fill
+grestore
+gsave
+ 5.67  2.83 rm
+/fsiz  8.50 def FT (50) center show
+grestore
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+82.99 77.32 m
+123.19 77.32 l
+stroke
+grestore
+gsave
+123.19 77.32 m
+ 0.49  0.71 scale
+-7 2 rl
+1 -2 rl
+-1 -2 rl
+closepath
+fill
+stroke
+grestore
+gsave
+103.09 77.32 m
+-5.67 -5.67 rm
+0 11.34 rl
+11.34 0 rl
+0 -11.34 rl
+-11.34 0 rl
+closepath
+gsave
+1 setgray
+fill
+grestore
+gsave
+ 5.67  2.83 rm
+/fsiz  8.50 def FT (50) center show
+grestore
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+128.86 103.09 m
+175.34 79.85 l
+stroke
+grestore
+gsave
+175.34 79.85 m
+333.43 rotate
+ 0.49  0.71 scale
+-7 2 rl
+1 -2 rl
+-1 -2 rl
+closepath
+fill
+stroke
+grestore
+gsave
+152.10 91.47 m
+-5.67 -5.67 rm
+0 11.34 rl
+11.34 0 rl
+0 -11.34 rl
+-11.34 0 rl
+closepath
+gsave
+1 setgray
+fill
+grestore
+gsave
+ 5.67  2.83 rm
+/fsiz  8.50 def FT (30) center show
+grestore
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+226.28 77.32 m
+186.08 77.32 l
+stroke
+grestore
+gsave
+186.08 77.32 m
+180.00 rotate
+ 0.49  0.71 scale
+-7 2 rl
+1 -2 rl
+-1 -2 rl
+closepath
+fill
+stroke
+grestore
+gsave
+206.18 77.32 m
+-5.67 -5.67 rm
+0 11.34 rl
+11.34 0 rl
+0 -11.34 rl
+-11.34 0 rl
+closepath
+gsave
+1 setgray
+fill
+grestore
+gsave
+ 5.67  2.83 rm
+/fsiz  8.50 def FT (15) center show
+grestore
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+128.86 77.32 m
+175.34 54.08 l
+stroke
+grestore
+gsave
+175.34 54.08 m
+333.43 rotate
+ 0.49  0.71 scale
+-7 2 rl
+1 -2 rl
+-1 -2 rl
+closepath
+fill
+stroke
+grestore
+gsave
+152.10 65.70 m
+-5.67 -5.67 rm
+0 11.34 rl
+11.34 0 rl
+0 -11.34 rl
+-11.34 0 rl
+closepath
+gsave
+1 setgray
+fill
+grestore
+gsave
+ 5.67  2.83 rm
+/fsiz  8.50 def FT (50) center show
+grestore
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+77.32 71.65 m
+77.32 31.44 l
+stroke
+grestore
+gsave
+77.32 31.44 m
+270.00 rotate
+ 0.49  0.71 scale
+-7 2 rl
+1 -2 rl
+-1 -2 rl
+closepath
+fill
+stroke
+grestore
+gsave
+77.32 51.55 m
+-5.67 -5.67 rm
+0 11.34 rl
+11.34 0 rl
+0 -11.34 rl
+-11.34 0 rl
+closepath
+gsave
+1 setgray
+fill
+grestore
+gsave
+ 5.67  2.83 rm
+/fsiz  8.50 def FT (20) center show
+grestore
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+128.86 77.32 m
+81.33 29.78 l
+stroke
+grestore
+gsave
+81.33 29.78 m
+225.00 rotate
+ 0.49  0.71 scale
+-7 2 rl
+1 -2 rl
+-1 -2 rl
+closepath
+fill
+stroke
+grestore
+gsave
+105.10 53.55 m
+-5.67 -5.67 rm
+0 11.34 rl
+11.34 0 rl
+0 -11.34 rl
+-11.34 0 rl
+closepath
+gsave
+1 setgray
+fill
+grestore
+gsave
+ 5.67  2.83 rm
+/fsiz  8.50 def FT (40) center show
+grestore
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+128.86 71.65 m
+128.86 31.44 l
+stroke
+grestore
+gsave
+128.86 31.44 m
+270.00 rotate
+ 0.49  0.71 scale
+-7 2 rl
+1 -2 rl
+-1 -2 rl
+closepath
+fill
+stroke
+grestore
+gsave
+128.86 51.55 m
+-5.67 -5.67 rm
+0 11.34 rl
+11.34 0 rl
+0 -11.34 rl
+-11.34 0 rl
+closepath
+gsave
+1 setgray
+fill
+grestore
+gsave
+ 5.67  2.83 rm
+/fsiz  8.50 def FT (30) center show
+grestore
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+174.74 25.77 m
+134.53 25.77 l
+stroke
+grestore
+gsave
+134.53 25.77 m
+180.00 rotate
+ 0.49  0.71 scale
+-7 2 rl
+1 -2 rl
+-1 -2 rl
+closepath
+fill
+stroke
+grestore
+gsave
+154.64 25.77 m
+-5.67 -5.67 rm
+0 11.34 rl
+11.34 0 rl
+0 -11.34 rl
+-11.34 0 rl
+closepath
+gsave
+1 setgray
+fill
+grestore
+gsave
+ 5.67  2.83 rm
+/fsiz  8.50 def FT (22) center show
+grestore
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+88.66 16.70 11.34 180 270 arc
+stroke
+220.61 16.70 11.34 270 360 arc
+77.32 20.10 m
+77.32 16.70 l
+88.66  5.36 m
+220.61  5.36 l
+231.95 18.40 m
+231.95 16.70 l
+stroke
+grestore
+gsave
+231.95 20.10 m
+90.00 rotate
+ 0.49  0.71 scale
+-7 2 rl
+1 -2 rl
+-1 -2 rl
+closepath
+fill
+stroke
+grestore
+gsave
+154.64  5.36 m
+-5.67 -5.67 rm
+0 11.34 rl
+11.34 0 rl
+0 -11.34 rl
+-11.34 0 rl
+closepath
+gsave
+1 setgray
+fill
+grestore
+gsave
+ 5.67  2.83 rm
+/fsiz  8.50 def FT (30) center show
+grestore
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+180.41 51.55 m
+226.88 28.31 l
+stroke
+grestore
+gsave
+226.88 28.31 m
+333.43 rotate
+ 0.49  0.71 scale
+-7 2 rl
+1 -2 rl
+-1 -2 rl
+closepath
+fill
+stroke
+grestore
+gsave
+203.65 39.93 m
+-5.67 -5.67 rm
+0 11.34 rl
+11.34 0 rl
+0 -11.34 rl
+-11.34 0 rl
+closepath
+gsave
+1 setgray
+fill
+grestore
+gsave
+ 5.67  2.83 rm
+/fsiz  8.50 def FT (30) center show
+grestore
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+231.95 25.77 m
+184.42 73.31 l
+stroke
+grestore
+gsave
+184.42 73.31 m
+135.00 rotate
+ 0.49  0.71 scale
+-7 2 rl
+1 -2 rl
+-1 -2 rl
+closepath
+fill
+stroke
+grestore
+gsave
+208.19 49.54 m
+-5.67 -5.67 rm
+0 11.34 rl
+11.34 0 rl
+0 -11.34 rl
+-11.34 0 rl
+closepath
+gsave
+1 setgray
+fill
+grestore
+gsave
+ 5.67  2.83 rm
+/fsiz  8.50 def FT (20) center show
+grestore
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+82.99 25.77 m
+123.19 25.77 l
+stroke
+grestore
+gsave
+123.19 25.77 m
+ 0.49  0.71 scale
+-7 2 rl
+1 -2 rl
+-1 -2 rl
+closepath
+fill
+stroke
+grestore
+gsave
+103.09 25.77 m
+-5.67 -5.67 rm
+0 11.34 rl
+11.34 0 rl
+0 -11.34 rl
+-11.34 0 rl
+closepath
+gsave
+1 setgray
+fill
+grestore
+gsave
+ 5.67  2.83 rm
+/fsiz  8.50 def FT (30) center show
+grestore
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+134.53 77.32 m
+174.74 77.32 l
+stroke
+grestore
+gsave
+174.74 77.32 m
+ 0.49  0.71 scale
+-7 2 rl
+1 -2 rl
+-1 -2 rl
+closepath
+fill
+stroke
+grestore
+gsave
+154.64 77.32 m
+-5.67 -5.67 rm
+0 11.34 rl
+11.34 0 rl
+0 -11.34 rl
+-11.34 0 rl
+closepath
+gsave
+1 setgray
+fill
+grestore
+gsave
+ 5.67  2.83 rm
+/fsiz  8.50 def FT (10) center show
+grestore
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+152.06 100.51 28.35 0 90 arc
+180.41 82.99 m
+180.41 100.51 l
+152.06 128.86 m
+84.69 128.86 l
+stroke
+grestore
+gsave
+82.99 128.86 m
+180.00 rotate
+ 0.49  0.71 scale
+-7 2 rl
+1 -2 rl
+-1 -2 rl
+closepath
+fill
+stroke
+grestore
+gsave
+131.70 128.86 m
+-5.67 -5.67 rm
+0 11.34 rl
+11.34 0 rl
+0 -11.34 rl
+-11.34 0 rl
+closepath
+gsave
+1 setgray
+fill
+grestore
+gsave
+ 5.67  2.83 rm
+/fsiz  8.50 def FT (40) center show
+grestore
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+77.32 128.86  5.67 0 360 arc
+gsave
+ 0.8000 setgray fill grestore
+stroke
+grestore
+%#text: 77.32 126.18  8.50 1 0 9
+gsave
+77.32 126.18 translate
+0 0 m
+/fsiz  8.50 def FT (9) center
+show
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+77.32 77.32 m
+-5.67 -5.67 rm
+0 11.34 rl
+11.34 0 rl
+0 -11.34 rl
+closepath
+gsave
+ 0.8000 setgray fill grestore
+stroke
+grestore
+%#text: 77.32 74.63  8.50 1 0 1
+gsave
+77.32 74.63 translate
+0 0 m
+/fsiz  8.50 def FT (1) center
+show
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+128.86 77.32  5.67 0 360 arc
+gsave
+ 0.8000 setgray fill grestore
+stroke
+grestore
+%#text: 128.86 74.63  8.50 1 0 3
+gsave
+128.86 74.63 translate
+0 0 m
+/fsiz  8.50 def FT (3) center
+show
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+128.86 103.09  5.67 0 360 arc
+gsave
+ 0.8000 setgray fill grestore
+stroke
+grestore
+%#text: 128.86 100.41  8.50 1 0 2
+gsave
+128.86 100.41 translate
+0 0 m
+/fsiz  8.50 def FT (2) center
+show
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+180.41 77.32  5.67 0 360 arc
+gsave
+ 0.8000 setgray fill grestore
+stroke
+grestore
+%#text: 180.41 74.63  8.50 1 0 4
+gsave
+180.41 74.63 translate
+0 0 m
+/fsiz  8.50 def FT (4) center
+show
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+231.95 77.32  5.67 0 360 arc
+gsave
+ 0.8000 setgray fill grestore
+stroke
+grestore
+%#text: 231.95 74.63  8.50 1 0 10
+gsave
+231.95 74.63 translate
+0 0 m
+/fsiz  8.50 def FT (10) center
+show
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+77.32 25.77  5.67 0 360 arc
+gsave
+ 0.8000 setgray fill grestore
+stroke
+grestore
+%#text: 77.32 23.09  8.50 1 0 7
+gsave
+77.32 23.09 translate
+0 0 m
+/fsiz  8.50 def FT (7) center
+show
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+128.86 25.77  5.67 0 360 arc
+gsave
+ 0.8000 setgray fill grestore
+stroke
+grestore
+%#text: 128.86 23.09  8.50 1 0 6
+gsave
+128.86 23.09 translate
+0 0 m
+/fsiz  8.50 def FT (6) center
+show
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+180.41 51.55  5.67 0 360 arc
+gsave
+ 0.8000 setgray fill grestore
+stroke
+grestore
+%#text: 180.41 48.86  8.50 1 0 5
+gsave
+180.41 48.86 translate
+0 0 m
+/fsiz  8.50 def FT (5) center
+show
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+231.95 25.77  5.67 0 360 arc
+gsave
+ 0.8000 setgray fill grestore
+stroke
+grestore
+%#text: 231.95 23.09  8.50 1 0 8
+gsave
+231.95 23.09 translate
+0 0 m
+/fsiz  8.50 def FT (8) center
+show
+grestore
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+180.41 25.77  5.67 0 360 arc
+gsave
+ 0.8000 setgray fill grestore
+stroke
+grestore
+%#text: 180.41 23.09  8.50 1 0 11
+gsave
+180.41 23.09 translate
+0 0 m
+/fsiz  8.50 def FT (11) center
+show
+grestore
+showpage

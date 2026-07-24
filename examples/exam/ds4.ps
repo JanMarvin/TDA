@@ -1,0 +1,734 @@
+%!PS-Adobe-2.0 EPSF-1.2
+%%Title: ds4.ps
+%%Creator: TDA 6.4
+%%CreationDate: Wed Sep 16 20:40:35 2026
+%%BoundingBox:   123   433   416   613
+%%BeginProlog
+/TDAdict 200 dict def % define local dictionary
+TDAdict begin         % push dictionary onto the dictionary stack
+/reencsmalldict 12 dict def % obtain dict for reencoding
+/ReEncodeSmall
+{
+    reencsmalldict begin
+    /newcodesandnames exch def
+    /newfontname exch def
+    /basefontname exch def
+    /basefontdict basefontname findfont def
+    /newfont basefontdict maxlength dict def
+    basefontdict
+    { exch dup /FID ne
+    { dup /Encoding eq
+    { exch dup length array copy newfont 3 1 roll put }
+    { exch newfont 3 1 roll put }
+    ifelse }
+    {pop pop }
+    ifelse }
+    forall
+    newfont /FontName newfontname put
+    newcodesandnames aload pop
+    newcodesandnames length 2 idiv
+    { newfont /Encoding get 3 1 roll put}
+    repeat newfontname newfont definefont pop
+    end 
+} def
+/spanvec [
+8#0 /NUL
+8#1 /Eth
+8#2 /eth
+8#3 /Lslash
+8#4 /lslash
+8#5 /Scaron
+8#6 /scaron
+8#7 /Yacute
+8#10 /yacute
+8#11 /HT
+8#12 /LF
+8#13 /Thorn
+8#14 /thorn
+8#15 /CR
+8#16 /Zcaron
+8#17 /zcaron
+8#20 /DLE
+8#21 /DC1
+8#22 /DC2
+8#23 /DC3
+8#24 /DC4
+8#25 /onehalf
+8#26 /onequarter
+8#27 /onesuperior
+8#30 /threequarters
+8#31 /threesuperior
+8#32 /twosuperior
+8#33 /brokenbar
+8#34 /minus
+8#35 /multiply
+8#36 /RS
+8#37 /US
+8#200 /Adieresis
+8#201 /Aring
+8#202 /Ccedilla
+8#203 /Eacute
+8#204 /Ntilde
+8#205 /Odieresis
+8#206 /Udieresis
+8#207 /aacute
+8#210 /agrave
+8#211 /acircumflex
+8#212 /adieresis
+8#213 /atilde
+8#214 /aring
+8#215 /ccedilla
+8#216 /eacute
+8#217 /egrave
+8#220 /ecircumflex
+8#221 /edieresis
+8#222 /iacute
+8#223 /igrave
+8#224 /icircumflex
+8#225 /idieresis
+8#226 /ntilde
+8#227 /oacute
+8#230 /ograve
+8#231 /ocircumflex
+8#232 /odieresis
+8#233 /otilde
+8#234 /uacute
+8#235 /ugrave
+8#236 /ucircumflex
+8#237 /udieresis
+8#240 /dagger
+8#241 /degree
+8#242 /cent
+8#243 /sterling
+8#244 /section
+8#245 /bullet
+8#246 /paragraph
+8#247 /germandbls
+8#250 /registered
+8#251 /copyright
+8#252 /trademark
+8#253 /acute
+8#254 /dieresis
+8#255 /notequal
+8#256 /AE
+8#257 /Oslash
+8#260 /infinity
+8#261 /plusminus
+8#262 /lessequal
+8#263 /greaterequal
+8#264 /yen
+8#265 /mu
+8#266 /Gamma
+8#267 /summation
+8#270 /product
+8#271 /pi
+8#272 /integral
+8#273 /ordfeminine
+8#274 /ordmasculine
+8#275 /Omega
+8#276 /ae
+8#277 /oslash
+8#300 /questiondown
+8#301 /exclamdown
+8#302 /logicalnot
+8#303 /radical
+8#304 /florin
+8#305 /approxequal
+8#306 /Delta
+8#307 /guillemotleft
+8#310 /guillemotright
+8#311 /ellipsis
+8#312 /nbspace
+8#313 /Agrave
+8#314 /Atilde
+8#315 /Otilde
+8#316 /OE
+8#317 /oe
+8#320 /endash
+8#321 /emdash
+8#322 /quotedblleft
+8#323 /quotedblright
+8#324 /quoteleft
+8#325 /quoteright
+8#326 /divide
+8#327 /lozenge
+8#330 /ydieresis
+8#331 /Ydieresis
+8#332 /fraction
+8#333 /currency
+8#334 /guilsinglleft
+8#335 /guilsinglright
+8#336 /fi
+8#337 /fl
+8#340 /daggerdbl
+8#341 /periodcentered
+8#342 /quotesinglbase
+8#343 /quotedblbase
+8#344 /perthousand
+8#345 /Acircumflex
+8#346 /Ecircumflex
+8#347 /Aacute
+8#350 /Edieresis
+8#351 /Egrave
+8#352 /Iacute
+8#353 /Icircumflex
+8#354 /Idieresis
+8#355 /Igrave
+8#356 /Oacute
+8#357 /Ocircumflex
+8#360 /apple
+8#361 /Ograve
+8#362 /Uacute
+8#363 /Ucircumflex
+8#364 /Ugrave
+8#365 /dotlessi
+8#366 /circumflex
+8#367 /tilde
+8#370 /macron
+8#371 /breve
+8#372 /dotaccent
+8#373 /ring
+8#374 /cedilla
+8#375 /hungarumlaut
+8#376 /ogonek
+8#377 /caron
+] def
+/m  {moveto} bind def
+/rm {rmoveto} bind def
+/l  {lineto} bind def
+/rl {rlineto} bind def
+
+/fsiz 0 def % font size
+/FT {/TFont findfont fsiz scalefont setfont} bind def
+/FS {/Symbol findfont fsiz scalefont setfont} bind def
+
+/ssiz 1 def % half size of symbol
+/lpt  0 def % size of numerical labels
+/str 20 string def
+/xmin 0 def
+
+/sclear { % clear area for string
+gsave currentpoint pop -2 add fsiz 4 div m
+dup stringwidth exch 4 add exch rl
+0 setlinecap fsiz 2 add setlinewidth
+1 setgray stroke grestore
+} def
+/center { % center a string
+    dup stringwidth pop
+    2 div neg 0 rm
+} def
+/aright { % right justified
+    dup stringwidth pop
+    neg 0 rm
+} def
+/adjust { % adjust for y axis labels
+    dup stringwidth pop
+    neg lpt 3 div neg rm
+    currentpoint pop xmin lt {currentpoint pop /xmin exch def} if
+} def
+/invers {
+    1 setgray fill 0 setgray
+} def
+/circle {
+    newpath ssiz 0 360 arc
+} def
+/cross {
+    gsave
+    ssiz neg 0 rm ssiz 2 mul 0 rl
+    ssiz neg ssiz rm 0 ssiz 2 mul neg rl
+    stroke
+    grestore
+} def
+/xsym {
+    gsave
+    45 rotate    ssiz neg 0 rm ssiz 2 mul 0 rl
+    ssiz neg ssiz rm 0 ssiz 2 mul neg rl
+    stroke
+    grestore
+} def
+/square {
+    gsave
+    ssiz neg ssiz neg rm ssiz 2 mul 0 rl
+    0 ssiz 2 mul rl ssiz 2 mul neg 0 rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+/trian1 {
+    gsave
+    ssiz neg ssiz neg rm ssiz 2 mul 0 rl
+    ssiz neg ssiz 2 mul rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+/trian2 {
+    gsave
+    ssiz neg ssiz rm ssiz ssiz 2 mul neg rl
+    ssiz ssiz 2 mul rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+/rhomb {
+    gsave
+    ssiz neg 0 rm ssiz ssiz neg rl
+    ssiz ssiz rl ssiz neg ssiz rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+end         % pop TDAdict off the dictionary stack
+%%EndProlog
+TDAdict begin
+/Times-Roman /TFont spanvec ReEncodeSmall
+
+% define current coordinate system
+% xorg=150 yorg=460 pxlen=90.00 pylen=50.00
+/xorg 150 def
+/yorg 460 def
+xorg yorg translate
+/rf  0.00 def rf rotate
+/sfx  1.00 def
+/sfy  1.00 def
+sfx sfy scale
+
+%#Parameter: 150 460 90 50 0 0 21 1 0 0 1 1 0
+1 setlinecap
+1 setlinejoin
+
+
+%#1: plxa(sc=1)
+%#x-axis
+/fsiz  8.50 def FT
+[] 0 setdash
+0.5670 setlinewidth
+ 0.00  0.00 m
+255.15  0.00 l
+stroke
+ 0.00  0.00 m
+0 -5.10 rl
+%#stroke
+%#text:  0.00 -13.61  8.50 1 0 0
+gsave
+0 -8.50 rm
+(0) center
+show
+grestore
+stroke
+12.15  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 12.15 -13.61  8.50 1 0 1
+gsave
+0 -8.50 rm
+(1) center
+show
+grestore
+stroke
+24.30  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 24.30 -13.61  8.50 1 0 2
+gsave
+0 -8.50 rm
+(2) center
+show
+grestore
+stroke
+36.45  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 36.45 -13.61  8.50 1 0 3
+gsave
+0 -8.50 rm
+(3) center
+show
+grestore
+stroke
+48.60  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 48.60 -13.61  8.50 1 0 4
+gsave
+0 -8.50 rm
+(4) center
+show
+grestore
+stroke
+60.75  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 60.75 -13.61  8.50 1 0 5
+gsave
+0 -8.50 rm
+(5) center
+show
+grestore
+stroke
+72.90  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 72.90 -13.61  8.50 1 0 6
+gsave
+0 -8.50 rm
+(6) center
+show
+grestore
+stroke
+85.05  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 85.05 -13.61  8.50 1 0 7
+gsave
+0 -8.50 rm
+(7) center
+show
+grestore
+stroke
+97.20  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 97.20 -13.61  8.50 1 0 8
+gsave
+0 -8.50 rm
+(8) center
+show
+grestore
+stroke
+109.35  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 109.35 -13.61  8.50 1 0 9
+gsave
+0 -8.50 rm
+(9) center
+show
+grestore
+stroke
+121.50  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 121.50 -13.61  8.50 1 0 10
+gsave
+0 -8.50 rm
+(10) center
+show
+grestore
+stroke
+133.65  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 133.65 -13.61  8.50 1 0 11
+gsave
+0 -8.50 rm
+(11) center
+show
+grestore
+stroke
+145.80  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 145.80 -13.61  8.50 1 0 12
+gsave
+0 -8.50 rm
+(12) center
+show
+grestore
+stroke
+157.95  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 157.95 -13.61  8.50 1 0 13
+gsave
+0 -8.50 rm
+(13) center
+show
+grestore
+stroke
+170.10  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 170.10 -13.61  8.50 1 0 14
+gsave
+0 -8.50 rm
+(14) center
+show
+grestore
+stroke
+182.25  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 182.25 -13.61  8.50 1 0 15
+gsave
+0 -8.50 rm
+(15) center
+show
+grestore
+stroke
+194.40  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 194.40 -13.61  8.50 1 0 16
+gsave
+0 -8.50 rm
+(16) center
+show
+grestore
+stroke
+206.55  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 206.55 -13.61  8.50 1 0 17
+gsave
+0 -8.50 rm
+(17) center
+show
+grestore
+stroke
+218.70  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 218.70 -13.61  8.50 1 0 18
+gsave
+0 -8.50 rm
+(18) center
+show
+grestore
+stroke
+230.85  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 230.85 -13.61  8.50 1 0 19
+gsave
+0 -8.50 rm
+(19) center
+show
+grestore
+stroke
+243.00  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 243.00 -13.61  8.50 1 0 20
+gsave
+0 -8.50 rm
+(20) center
+show
+grestore
+stroke
+255.15  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 255.15 -13.61  8.50 1 0 21
+gsave
+0 -8.50 rm
+(21) center
+show
+grestore
+stroke
+
+%#2: plya(sc=1,ic=10)
+%#y-axis
+/fsiz  8.50 def FT
+/lpt  8.50 def
+/xmin 0 def
+[] 0 setdash
+0.5670 setlinewidth
+ 0.00  0.00 m
+ 0.00 141.75 l
+stroke
+ 0.00  0.00 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 -1.70  8.50 2 0 0
+gsave
+-2.83 0 rm
+(0) adjust
+show
+grestore
+stroke
+ 0.00 14.18 m
+-3.57 0 rl
+stroke
+ 0.00 28.35 m
+-3.57 0 rl
+stroke
+ 0.00 42.53 m
+-3.57 0 rl
+stroke
+ 0.00 56.70 m
+-3.57 0 rl
+stroke
+ 0.00 70.88 m
+-3.57 0 rl
+stroke
+ 0.00 85.05 m
+-3.57 0 rl
+stroke
+ 0.00 99.23 m
+-3.57 0 rl
+stroke
+ 0.00 113.40 m
+-3.57 0 rl
+stroke
+ 0.00 127.58 m
+-3.57 0 rl
+stroke
+ 0.00 141.75 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 140.05  8.50 2 0 1
+gsave
+-2.83 0 rm
+(1) adjust
+show
+grestore
+stroke
+
+%#3: plot(lt=0,s=5,fs=1.0)=C,M1
+gsave
+ 0.57  0.57 m
+ 0.57 141.75 l
+255.15 141.75 l
+255.15  0.57 l
+closepath
+clip
+newpath
+0.5670 setlinewidth
+/ssiz 1.42 def
+%#symbol: 5 12.15  4.13  1.42
+12.15  4.13 circle fill
+%#symbol: 5 24.30 13.37  1.42
+24.30 13.37 circle fill
+%#symbol: 5 36.45 99.24  1.42
+36.45 99.24 circle fill
+%#symbol: 5 48.60 99.24  1.42
+48.60 99.24 circle fill
+%#symbol: 5 60.75 99.24  1.42
+60.75 99.24 circle fill
+%#symbol: 5 72.90 66.91  1.42
+72.90 66.91 circle fill
+%#symbol: 5 85.05 35.45  1.42
+85.05 35.45 circle fill
+%#symbol: 5 97.20 35.45  1.42
+97.20 35.45 circle fill
+%#symbol: 5 109.35 65.54  1.42
+109.35 65.54 circle fill
+%#symbol: 5 121.50 130.04  1.42
+121.50 130.04 circle fill
+%#symbol: 5 133.65 130.04  1.42
+133.65 130.04 circle fill
+%#symbol: 5 145.80 121.00  1.42
+145.80 121.00 circle fill
+%#symbol: 5 157.95 85.89  1.42
+157.95 85.89 circle fill
+%#symbol: 5 170.10 80.75  1.42
+170.10 80.75 circle fill
+%#symbol: 5 182.25 72.42  1.42
+182.25 72.42 circle fill
+%#symbol: 5 194.40 39.42  1.42
+194.40 39.42 circle fill
+%#symbol: 5 206.55  7.08  1.42
+206.55  7.08 circle fill
+%#symbol: 5 218.70  7.08  1.42
+218.70  7.08 circle fill
+%#symbol: 5 230.85 17.80  1.42
+230.85 17.80 circle fill
+%#symbol: 5 243.00 56.85  1.42
+243.00 56.85 circle fill
+grestore
+
+%#4: plot=C,M1
+gsave
+ 0.57  0.57 m
+ 0.57 141.75 l
+255.15 141.75 l
+255.15  0.57 l
+closepath
+clip
+newpath
+0.5670 setlinewidth
+[] 0 setdash
+12.15  4.13 m
+24.30 13.37 l
+36.45 99.24 l
+48.60 99.24 l
+60.75 99.24 l
+72.90 66.91 l
+85.05 35.45 l
+97.20 35.45 l
+109.35 65.54 l
+121.50 130.04 l
+133.65 130.04 l
+145.80 121.00 l
+157.95 85.89 l
+170.10 80.75 l
+182.25 72.42 l
+194.40 39.42 l
+206.55  7.08 l
+218.70  7.08 l
+230.85 17.80 l
+243.00 56.85 l
+stroke
+grestore
+
+%#5: plot(lt=5)=C,M2
+gsave
+ 0.57  0.57 m
+ 0.57 141.75 l
+255.15 141.75 l
+255.15  0.57 l
+closepath
+clip
+newpath
+0.5670 setlinewidth
+[2 2] 0 setdash
+12.15  4.13 m
+24.30 41.00 l
+36.45 75.65 l
+48.60 89.06 l
+60.75 81.97 l
+72.90 66.43 l
+85.05 56.62 l
+97.20 57.01 l
+109.35 75.02 l
+121.50 105.77 l
+133.65 120.27 l
+145.80 114.36 l
+157.95 97.95 l
+170.10 78.23 l
+182.25 56.37 l
+194.40 34.25 l
+206.55 23.31 l
+218.70 21.85 l
+230.85 30.60 l
+243.00 56.85 l
+stroke
+grestore
+
+%#6: plot(lt=8)=C,M3
+gsave
+ 0.57  0.57 m
+ 0.57 141.75 l
+255.15 141.75 l
+255.15  0.57 l
+closepath
+clip
+newpath
+0.5670 setlinewidth
+[6 2] 0 setdash
+12.15  4.13 m
+24.30 15.68 l
+36.45 36.47 l
+48.60 75.20 l
+60.75 99.53 l
+72.90 73.16 l
+85.05 37.62 l
+97.20 35.45 l
+109.35 65.54 l
+121.50 104.24 l
+133.65 121.90 l
+145.80 115.10 l
+157.95 96.72 l
+170.10 80.58 l
+182.25 61.47 l
+194.40 33.92 l
+206.55 11.19 l
+218.70  3.90 l
+230.85 19.32 l
+243.00 56.85 l
+stroke
+grestore
+showpage

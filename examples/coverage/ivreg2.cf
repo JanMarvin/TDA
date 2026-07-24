@@ -1,0 +1,19 @@
+# ivreg2.cf -- t_ireg.c coverage: ivreg2 (interval-data regression,
+# direct calculation). Data is exactly tdaR's own roxygen example
+# (R/interval.R): xlo=1..4, xhi=xlo+1, ylo=2+0.5*xlo, yhi=ylo+1 --
+# noise-free, so the exact answer is alpha=2, beta=0.5.
+
+nvar(
+    dfile = ivdat.dat,
+    XL [4.1] = c1,
+    XH [4.1] = c2,
+    YL [4.1] = c3,
+    YH [4.1] = c4,
+);
+
+ivreg2(opt=1) = YL,YH,XL,XH;
+
+ivreg2(opt=2, slen=1, sred=0.5) = YL,YH,XL,XH;
+
+ivreg2(opt=3) = YL,YH,XL,XH;
+

@@ -1,0 +1,53 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:40 2026
+Current memory: 390032 bytes.
+
+Reading command file: gddadj.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 A         3   4   0.0  c1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): adj4.dat
+Free format. Separation character(s): default.
+
+Reading data file: adj4.dat
+Read records: 16 
+
+Created a new data matrix.
+Number of cases: 16
+Number of variables: 1
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 394049 bytes.
+----------------------------------------------------------------------------
+gdd(opt=7,gt=2,sc=1)=A
+New graph data. Current memory: 394049 bytes.
+Option 7: full adjacency matrix (variables).
+
+Minimal level for valid edges: 1
+Number of nodes: 4. Largest node number: 4
+Graph type 2 (undirected, valued, bidirectional edges: minimum).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1        8       0        1.000000             0
+
+Successfully created new graph data structure. Current memory: 394075 bytes.
+----------------------------------------------------------------------------
+gcliq(alg=1)=adjout.txt
+Cliques. Current memory: 394073 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+Algorithm: Bron-Kerbosch.
+Number of components: 1
+Components with at least 3 members: 1
+Cliques with at least 3 members: 1
+Maximal clique size: 3
+1 records written to: adjout.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 414069 bytes.
+End of program. Fri Sep  4 15:06:40 2026

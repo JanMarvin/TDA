@@ -1,0 +1,108 @@
+Read records:      13     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   5.1292891361436e+01  6.3558038800e+00          --       1 (1,1)
+    2   3.7993594271585e+01  9.8854313453e-01  1.0000e+00       2 (2,2)
+    3   3.7143054719059e+01  2.2157068067e-01  2.7970e-01       3 (3,3)
+    4   3.7110723814450e+01  1.1911045468e-02  6.5478e-02       4 (4,4)
+    5   3.7110653791326e+01  2.9503833857e-05  3.2395e-03       5 (5,5)
+    6   3.7110653790961e+01  1.5979368564e-10  7.4190e-06       6 (6,6)
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:54 2026
+Current memory: 390032 bytes.
+
+Reading command file: qr1a.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable   T   S  PFmt  Definition
+--------------------------------------
+  1 Dose       3   4   0.0  c1
+  2 Weight     3   4   0.0  c2
+  3 Response   3   4   0.0  c3
+  4 Log10Dose  3   4   0.0  log(Dose)/log(10)
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): qr1.dat
+Free format. Separation character(s): default.
+
+Reading data file: qr1.dat
+Read records: 13 
+
+Created a new data matrix.
+Number of cases: 13
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 406186 bytes.
+----------------------------------------------------------------------------
+cwt=Weight
+New case weights. Sum of weights: 74
+----------------------------------------------------------------------------
+qreg(...)=...
+Quantal response models. Current memory: 406186 bytes.
+
+Model: binary logit.
+
+Variables (cross-section)
+-------------------------
+Y   : Response   
+X1  : Log10Dose  
+
+Checking available data (pmin=1)
+Number of cases with valid data: 13
+
+Categories of dependent variable.
+Maximum number of categories: 100
+
+Index               0         1   (Weighted)
+Category            0         1  Observations
+---------------------------------------------
+Wave 1   N      36.00     38.00         74.00
+         Pct    48.65     51.35  
+
+Using case weights defined by: Weight
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 2
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+
+Convergence reached in 6 iterations.
+Number of function evaluations: 7 (7,7)
+
+Maximum of log likelihood: -37.1107
+Norm of final gradient vector: 1.59794e-10
+Last absolute change of function value: 9.82354e-12
+Last relative change in parameters: 7.41904e-06
+
+Idx Cat Term   Variable        Coeff      Error    C/Error  Signif
+------------------------------------------------------------------
+  1   1  I     Intercept     -3.2246     0.8861    -3.6393  0.9997
+  2   1  X     Log10Dose      5.9702     1.4492     4.1197  1.0000
+
+Log likelihood (starting values):   -51.2929 
+Log likelihood (final estimates):   -37.1107 
+
+Data (13 records) written to: df
+TDA description written to: t
+
+Standardized coefficients.
+
+Idx Cat Term   Variable       Coeff     Exp(C)  Exp(C*SD)   Std.Dev.
+--------------------------------------------------------------------
+  1   1  I     Intercept    -3.2246     0.0398     1.0000     0.0000 
+  2   1  X     Log10Dose     5.9702   391.5761     1.0000     0.0000 
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426224 bytes.
+End of program. Tue Jul 21 05:46:54 2026

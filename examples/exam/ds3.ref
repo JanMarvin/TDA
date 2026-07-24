@@ -1,0 +1,55 @@
+Read records:       5     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:50 2026
+Current memory: 390032 bytes.
+
+Reading command file: ds3.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Y         3   4   0.0  c1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ds3.dat
+Free format. Separation character(s): default.
+
+Reading data file: ds3.dat
+Read records: 5 
+
+Created a new data matrix.
+Number of cases: 5
+Number of variables: 1
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 394049 bytes.
+----------------------------------------------------------------------------
+sma(...)=Y
+Moving averages. Current memory: 394049 bytes.
+Weights: 0.25 0.5 0.25
+Sum of weights: 1
+Using: copy-on end-value rule.
+Repeat factor: 1
+5 records written to: df
+----------------------------------------------------------------------------
+sma(...)=Y
+Moving averages. Current memory: 394049 bytes.
+Weights: 0.25 0.5 0.25
+Sum of weights: 1
+Using: replicate end-value rule.
+Repeat factor: 1
+5 records written to: df
+----------------------------------------------------------------------------
+sma(...)=Y
+Moving averages. Current memory: 394049 bytes.
+Weights: 0.25 0.5 0.25
+Sum of weights: 1
+Using: replicate end-value rule.
+Repeat factor: 2
+5 records written to: df
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 414069 bytes.
+End of program. Tue Jul 21 05:46:50 2026

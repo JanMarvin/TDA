@@ -1,0 +1,66 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:51 2026
+Current memory: 390032 bytes.
+
+Reading command file: pl3ops.cf
+============================================================================
+psfile=pl3.ps
+Opened new PostScript file: pl3.ps
+----------------------------------------------------------------------------
+psetup3(...)
+Creating a new 3d coordinate system.
+
+                 x axis           y-axis           z axis
+---------------------------------------------------------
+Begin           -3.0000          -3.0000          -3.0000
+End              3.0000           3.0000           3.0000
+Center           0.0000           0.0000           0.0000
+
+Direction of projection. Longitude: 40  Latitude: 20 (degrees)
+Coordinates of projection plane.
+X direction:          -4.2265           4.2265  Size: 100.00 (mm)
+Y direction:          -4.2646           4.2646  Size: 100.90 (mm)
+Origin of PostScript coordinates: 100,100
+Scaling: 1,1
+Rotation (degrees): 0
+
+----------------------------------------------------------------------------
+plsurf3(...)
+Plot parametrically defined surface. Current memory: 390032 bytes.
+
+Range of u and v parameters.
+u:        -3.000000         3.000000
+v:        -3.000000         3.000000
+
+Size of evalutation grid: 291 x 291 = 84681 points.
+Size of visible grid: 30 x 30 = 900 points.
+
+
+Function definition (f1):
+fn      = u
+
+Function definition (f2):
+fn      = v
+
+Function definition (f3):
+fn      = sin(u*u+v*v)/(u*u+v*v+0.00001)
+
+             u              v        f1(u,v)        f2(u,v)        f3(u,v)
+       -3.0000        -3.0000        -3.0000        -3.0000        -0.0417
+       -3.0000         3.0000        -3.0000         3.0000        -0.0417
+        3.0000        -3.0000         3.0000        -3.0000        -0.0417
+        3.0000         3.0000         3.0000         3.0000        -0.0417
+
+----------------------------------------------------------------------------
+plcurv3(...)
+
+Function definition (f1):
+fn      = cos(x)
+
+Function definition (f2):
+fn      = sin(x)
+
+Function definition (f3):
+fn      = 0.1*x
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 2422427 bytes.
+End of program. Fri Sep  4 15:06:52 2026

@@ -1,0 +1,200 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:40 2026
+Current memory: 390032 bytes.
+
+Reading command file: boolfa.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Y         3   4   2.0  c1
+  2 X1        3   4   2.0  c2
+  3 X2        3   4   2.0  c3
+  4 X3        3   4   2.0  c4
+  5 X4        3   4   2.0  c5
+  6 X5        3   4   2.0  c6
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): bool.dat
+Free format. Separation character(s): default.
+
+Reading data file: bool.dat
+Read records: 32 
+
+Created a new data matrix.
+Number of cases: 32
+Number of variables: 6
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 414139 bytes.
+----------------------------------------------------------------------------
+bfa(...)=...
+Boolean function analysis. Current memory: 414139 bytes.
+
+Number of arguments: 5
+Rows of truth table: 32
+- with y = 0 : 11
+- with y = 1 : 21
+- both       : 0
+- undefined  : 0
+
+Table written to: 1
+
+Found 5 prime implicants.
+    0 : 0---1    X1'.X5
+    1 : --11-    X3.X4
+    2 : -1--1    X2.X5
+    3 : -1-1-    X2.X4
+    4 : 11---    X1.X2
+
+Allocating prime implicant chart (5 x 21 = 105 bytes).
+Found 4 essential prime implicants.
+Removing essential implicants; reduced chart: 1 x 0
+
+Final selection of prime implicants.
+0---1 + --11- + -1-1- + 11---
+
+X1'.X5 + X3.X4 + X2.X4 + X1.X2
+
+Final check: 0 errors.
+----------------------------------------------------------------------------
+bfa(...)=...
+Boolean function analysis. Current memory: 414139 bytes.
+
+Number of arguments: 5
+Rows of truth table: 32
+- with y = 0 : 11
+- with y = 1 : 21
+- both       : 0
+- undefined  : 0
+
+
+Found 5 prime implicants.
+    0 : 0---1    X1'.X5
+    1 : --11-    X3.X4
+    2 : -1--1    X2.X5
+    3 : -1-1-    X2.X4
+    4 : 11---    X1.X2
+
+Allocating prime implicant chart (5 x 21 = 105 bytes).
+Found 4 essential prime implicants.
+Removing essential implicants; reduced chart: 1 x 0
+
+Final selection of prime implicants.
+0---1 + --11- + -1-1- + 11---
+
+X1'.X5 + X3.X4 + X2.X4 + X1.X2
+
+Final check: 0 errors.
+----------------------------------------------------------------------------
+bfa(...)=...
+Boolean function analysis. Current memory: 414139 bytes.
+
+Number of arguments: 5
+Rows of truth table: 32
+- with y = 0 : 11
+- with y = 1 : 21
+- both       : 0
+- undefined  : 0
+
+
+Found 5 prime implicants.
+    0 : 0---1    X1'.X5
+    1 : --11-    X3.X4
+    2 : -1--1    X2.X5
+    3 : -1-1-    X2.X4
+    4 : 11---    X1.X2
+
+Allocating prime implicant chart (5 x 21 = 105 bytes).
+Found 4 essential prime implicants.
+Removing essential implicants; reduced chart: 1 x 0
+
+Final selection of prime implicants.
+0---1 + --11- + -1-1- + 11---
+
+X1'.X5 + X3.X4 + X2.X4 + X1.X2
+
+Final check: 0 errors.
+----------------------------------------------------------------------------
+bfa(...)=...
+Boolean function analysis. Current memory: 414139 bytes.
+
+Number of arguments: 5
+Rows of truth table: 32
+- with y = 0 : 11
+- with y = 1 : 21
+- both       : 0
+- undefined  : 0
+
+
+Found 5 prime implicants.
+    0 : 0---1    X1'.X5
+    1 : --11-    X3.X4
+    2 : -1--1    X2.X5
+    3 : -1-1-    X2.X4
+    4 : 11---    X1.X2
+
+Allocating prime implicant chart (5 x 21 = 105 bytes).
+Found 4 essential prime implicants.
+Removing essential implicants; reduced chart: 1 x 0
+
+Final selection of prime implicants.
+0---1 + --11- + -1-1- + 11---
+
+X1'.X5 + X3.X4 + X2.X4 + X1.X2
+
+Final check: 0 errors.
+----------------------------------------------------------------------------
+bfa(...)=...
+Boolean function analysis. Current memory: 414139 bytes.
+
+Number of arguments: 5
+Rows of truth table: 32
+- with y = 0 : 11
+- with y = 1 : 21
+- both       : 0
+- undefined  : 0
+
+
+Found 5 prime implicants.
+    0 : 0---1    X1'.X5
+    1 : --11-    X3.X4
+    2 : -1--1    X2.X5
+    3 : -1-1-    X2.X4
+    4 : 11---    X1.X2
+
+Allocating prime implicant chart (5 x 21 = 105 bytes).
+Found 4 essential prime implicants.
+Removing essential implicants; reduced chart: 1 x 0
+
+Final selection of prime implicants.
+0---1 + --11- + -1-1- + 11---
+
+X1'.X5 + X3.X4 + X2.X4 + X1.X2
+
+Final check: 0 errors.
+----------------------------------------------------------------------------
+bfa(...)=...
+Boolean function analysis. Current memory: 414139 bytes.
+
+Number of arguments: 5
+Rows of truth table: 32
+- with y = 0 : 11
+- with y = 1 : 21
+- both       : 0
+- undefined  : 0
+
+
+Found 5 prime implicants.
+    0 : 0---1    X1'.X5
+    1 : --11-    X3.X4
+    2 : -1--1    X2.X5
+    3 : -1-1-    X2.X4
+    4 : 11---    X1.X2
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 1664648 bytes.
+End of program. Fri Sep  4 15:06:40 2026

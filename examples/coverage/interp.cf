@@ -1,0 +1,11 @@
+# interp.cf -- triangulation and interpolation, all three algorithms
+nvar(
+    dfile = xyz.dat,
+    X [6.1] = c1,
+    Y [6.1] = c2,
+    Z [9.4] = c3,
+);
+triang() = X,Y;
+intp(alg=1, rx=0(1)5, ry=0(1)5, df=i1.dat) = X,Y,Z;
+intp(alg=2, rx=0(1)5, ry=0(1)5, df=i2.dat) = X,Y,Z;
+intp(alg=3, rx=0(1)5, ry=0(1)5, df=i3.dat) = X,Y,Z;

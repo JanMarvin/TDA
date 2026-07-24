@@ -1,0 +1,17 @@
+# matfit.cf -- matrix reductions, concatenation, and normalisation
+mfmt = 10.4;
+mdef(A,3,3) = a.mat;
+mdefi(3,3,I);
+mexpr(A + I, S);
+mls(S,LS);
+mcathv(A,I,CH);
+mnrow(A,NRW);
+mnc(A,1.0,1,NCB);
+mtransp(CH,CHT);
+mexpr(A * I, AI);
+mexpr(A - I, AM);
+mfree(AI);
+mpr(LS);
+mpr(CH);
+mpr(NRW);
+mpr(AM);

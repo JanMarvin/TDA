@@ -1,0 +1,64 @@
+Read records:       9     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: gd17.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 I         3   4   0.0  c1
+  2 J         3   4   0.0  c2
+  3 V1        3   4   0.0  c3
+  4 V2        3   4   0.0  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): gd1.dat
+Free format. Separation character(s): default.
+
+Reading data file: gd1.dat
+Read records: 9 
+
+Created a new data matrix.
+Number of cases: 9
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 406102 bytes.
+----------------------------------------------------------------------------
+gdd(gt=2)=I,J,V1,V2
+New graph data. Current memory: 406102 bytes.
+Option 1: edge list.
+
+Minimal level for valid edges: 0
+Number of nodes: 7. Largest node number: 12
+Graph type 2 (undirected, valued, bidirectional edges: minimum).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1        5       1       13.000000             2
+   2        4       0       15.000000             1
+
+Successfully created new graph data structure. Current memory: 406514 bytes.
+----------------------------------------------------------------------------
+gcut(opt=1,)=d1
+Cut nodes and blocks. Current memory: 406506 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+Number of components: 4
+Number of cut nodes: 1
+Number of blocks: 3
+4 records written to: d1
+----------------------------------------------------------------------------
+gcut(opt=2,)=d2
+Cut nodes and blocks. Current memory: 406506 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+Number of components: 4
+Number of cut nodes: 1
+Number of blocks: 3
+7 records written to: d2
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426149 bytes.
+End of program. Tue Jul 21 05:46:53 2026

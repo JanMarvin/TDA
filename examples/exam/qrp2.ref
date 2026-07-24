@@ -1,0 +1,43 @@
+Read records:     500     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:56 2026
+Current memory: 390032 bytes.
+
+Reading command file: qrp2.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Y1        3   4   0.0  c1
+  2 Y2        3   4   0.0  c2
+  3 Y3        3   4   0.0  c3
+  4 Y4        3   4   0.0  c4
+  5 Y5        3   4   0.0  c5
+  6 X1        3   4   9.6  c6
+  7 X2        3   4   9.6  c7
+  8 X3        3   4   9.6  c8
+  9 X4        3   4   9.6  c9
+ 10 X5        3   4   9.6  c10
+
+Creating a new data matrix.
+Maximum number of cases: 500
+
+Using data file(s): qrp1.dat
+Free format. Separation character(s): default.
+Reading maximal 500 records.
+
+Reading data file: qrp1.dat
+Read records: 500 
+
+Created a new data matrix.
+Number of cases: 500
+Number of variables: 10
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 410213 bytes.
+----------------------------------------------------------------------------
+Unknown command: qresp
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 430314 bytes.
+End of program. Tue Jul 21 05:46:56 2026

@@ -1,0 +1,34 @@
+# dplotbb1.cf   dplot with input files of unequal bounding box
+#
+# Two panels drawn identically except for the length of their pltext
+# label.  TDA's bounding box reserves room for the text, so the panel
+# with the longer label declares a wider box than its neighbour.  The
+# cells must still come out the same size and the columns must line up
+# with the row below, which is what this checks: the two rows are the
+# same pair in opposite order, so a layout that sizes each cell from
+# its own file puts the second column in two different places.
+
+psfile = dplotbb1a.ps;
+psetup(pxlen = 60, pylen = 30, pxa = 0,4, pya = -3,0,);
+plxa (sc=1,ic=0);
+plya (sc=1,ic=0);
+plframe;
+plotp = 0,0,3,-3;
+pltext(xy=1.5,-0.7) = "Short";
+psclose;
+
+psfile = dplotbb1b.ps;
+psetup(pxlen = 60, pylen = 30, pxa = 0,4, pya = -3,0,);
+plxa (sc=1,ic=0);
+plya (sc=1,ic=0);
+plframe;
+plotp = 0,0,3,-3;
+pltext(xy=1.5,-0.7) = "A Very Much Longer Label Indeed";
+psclose;
+
+dplot(
+    pxlen = 120,
+    pylen =  60,
+    fn = dplotbb1a.ps, dplotbb1b.ps,
+    fn = dplotbb1b.ps, dplotbb1a.ps,
+) = dplotbb1.ps;

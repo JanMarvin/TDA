@@ -1,0 +1,47 @@
+Read records:       5     
+Writing: strsp.out
+Records written:       5     
+TDA. Analysis of Transition Data (6.4q). Sun Sep  6 11:08:07 2026
+Current memory: 390032 bytes.
+
+Reading command file: strspops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 S         1   6   0.0  str(1,6)
+  2 R         4   4   4.0  strsp(S)
+  3 L         3   4   4.0  strlen(S)
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): strsp.dat
+Free format. Separation character(s): default.
+
+Reading data file: strsp.dat
+Read records: 5 
+
+Created a new data matrix.
+Number of cases: 5
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 404134 bytes.
+----------------------------------------------------------------------------
+pdata=strsp.out
+5 records with 3 variables written to: strsp.out
+----------------------------------------------------------------------------
+dstat
+Descriptive statistics. Current memory: 404134 bytes.
+
+Variable    Minimum    Maximum       Mean   Std.Dev.    Sum of values
+---------------------------------------------------------------------
+S            0.0000     0.0000     0.0000     0.0000           0.0000
+R            1.0000     4.0000     2.2000     1.3038          11.0000
+L            6.0000     6.0000     6.0000     0.0000          30.0000
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 444590 bytes.
+End of program. Sun Sep  6 11:08:07 2026

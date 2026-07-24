@@ -1,0 +1,110 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 08:18:05 2026
+Current memory: 390032 bytes.
+
+Reading command file: e00pts.cf
+============================================================================
+sde00(...)=input.e00
+Reading an e00 file. Current memory: 390032 bytes.
+File: input.e00
+
+Section  records    entries
+LAB 2        161         80
+TOL 2         11         10
+SIN 2          1          0
+IFO 2        101        100
+
+Bounding Box from BND section:
+X:     5028490.50000000      5056767.00000000
+Y:      424675.72000000       442428.25000000
+
+Bounding Box from LAB section:
+X:     5028490.50000000      5056767.00000000
+Y:      424675.72000000       442428.25000000
+
+----------------------------------------------------------------------------
+Interpretation: point coverage.
+Number of points: 80
+
+Reading the PAT section.
+Number of valid entries: 5
+
+Idx  Variable    Type       Format
+----------------------------------
+  1  AREA        numerical   16.3
+  2  PERIMETER   numerical   16.3
+  3  WELLS_      numerical   5.0
+  4  WELLS-ID    numerical   5.0
+  5  DATA        string      30
+
+Creating the output file.
+160 records written to: e00.sd
+TDA description written to: e00desc.txt
+----------------------------------------------------------------------------
+sdnvar(...)
+Reading a spatial data file. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 SDID      3   4   0.0  c1
+  2 SDTyp     3   4   0.0  c2
+  3 SDN       3   4   0.0  c3
+  4 SDPtr     3   5  11.0  rd
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): e00.sd
+Free format. Separation character(s): default.
+Reading data file: e00.sd
+Read records: 80 
+
+Created a new data matrix.
+Number of cases: 80
+Number of variables: 4
+Missing values in data file(s): none.
+
+Number of points: 80
+Number of lines: 0
+Number of polygons: 0
+Number of unknown objects: 0
+
+Maximal number of points in spatial objects: 1
+Total number of points in spatial objects: 80
+Note: e00.sd remains opened for further access.
+
+X values. Minimum:   5028490.5000  Maximum:   5056767.0000
+Y values. Minimum:    424675.7200  Maximum:    442428.2500
+
+End of creating new variables. Current memory: 406449 bytes.
+----------------------------------------------------------------------------
+psfile=e00map.ps
+Opened new PostScript file: e00map.ps
+----------------------------------------------------------------------------
+psetupg(...)
+Set up geographical coordinate system. Current memory: 406449 bytes.
+Cylindrical projection (equidistant).
+View: -77,39.7. Region: 1,1
+
+Selected region longitude:  -78.0000 ( -77.0000)  -76.0000
+Selected region latitude:    38.7000 (  39.7000)   40.7000
+
+Creating a new 2d coordinate system.
+Size (width x height in mm): 150 x 150
+PostScript coordinates. X-axis: 100,525  Y-axis: 100,525
+Origin (PostScript x and y coordinates): 100,100
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:         -78.0000,         -76.0000 
+User coordinates Y axis:          38.7000,          40.7000 
+----------------------------------------------------------------------------
+sdpmap(...)
+Plot in geographical coordinate system. Current memory: 406449 bytes.
+
+Number of type 1 objects: 80
+Number of type 2 objects: 0
+Number of type 3 objects: 0
+PostScript output written to: e00map.ps
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426151 bytes.
+End of program. Wed Sep  2 08:18:05 2026

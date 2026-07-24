@@ -1,0 +1,20 @@
+# matc7.cf -- t_matc.c coverage batch 7: mlpi (0-1 integer LP, CACM
+# 449). Objective not stated anywhere in the source; determined
+# empirically against brute force over all 0-1 vectors:
+#   maximize  A[1,]x + B[1]   over x in {0,1}^n
+#   subject to A[i,]x >= B[i] for i = 2..m
+# B[1] is a constant added to the reported Value. Verified: brute
+# force over all 16 combinations gives max=5 at x=(0,0,1,1),
+# Value=5+5=10, matching TDA's own output exactly. The second case
+# has two tied optimal solutions by construction (x1+x2>=1 and
+# -x1-x2>=-1 force exactly one of x1,x2 to be 1) -- TDA reports both.
+
+silent = -1;
+
+mdef(A,3,4) = 2,-3,4,1, 1,1,1,1, -1,2,0,1;
+mdef(B,3,1) = 5, 2, 1;
+mlpi(A,B,10);
+
+mdef(C,3,2) = 1,1, 1,1, -1,-1;
+mdef(E,3,1) = 0, 1, -1;
+mlpi(C,E,10);

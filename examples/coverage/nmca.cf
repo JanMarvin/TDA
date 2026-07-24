@@ -1,0 +1,3 @@
+# nmca: non-metric conjoint analysis; R rank order, X1..Xm integer dims.
+nvar(dfile=nm.dat, X1<8>=c1, X2<8>=c2, R<8>=c3);
+nmca(nfmt=2) = R,X1,X2;

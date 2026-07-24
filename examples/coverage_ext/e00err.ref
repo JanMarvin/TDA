@@ -1,0 +1,15 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 08:29:29 2026
+Current memory: 390032 bytes.
+
+Reading command file: e00err.cf
+============================================================================
+sde00(...)=truncated.e00
+Reading an e00 file. Current memory: 390032 bytes.
+File: truncated.e00
+
+Section  records    entries
+ARC 2 
+Error -3 while reading the input file.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390046 bytes.
+End of program. Wed Sep  2 08:29:29 2026

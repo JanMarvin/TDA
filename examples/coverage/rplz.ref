@@ -1,0 +1,15 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:52 2026
+Current memory: 390032 bytes.
+
+Reading command file: rplz.cf
+============================================================================
+rplz(...)=plz.csv
+Reading a plz file. Current memory: 390032 bytes.
+File name: plz.csv
+
+Number of records: 4
+Maximal record length: 37
+3 records written to: plz.out
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390079 bytes.
+End of program. Fri Sep  4 15:06:52 2026

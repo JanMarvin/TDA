@@ -1,0 +1,309 @@
+Protocol: nonlinear regression.
+Ordinary least squares regression.
+Number of model parameters: 2
+
+Starting values.
+  0.00000000000e+00   0.00000000000e+00 
+
+Factor for trust region radius
+  1.00000000000e+00 
+Initial weighted sum of epsilon
+  1.84317496608e+04 
+Parameter scale factors
+  1.00000000000e+00   1.00000000000e+00 
+
+Number of good digits: 15
+Accuracy: 2.22045e-16
+
+Iteration: 1
+Current number of function calls: 7 (1)
+
+Parameter
+  1.67696776390e+01   0.00000000000e+00 
+Reciprocal condition number
+  1.00000000000e+00 
+Norm of errors
+  8.47517913448e+01 
+
+Iteration: 2
+Current number of function calls: 8 (2)
+
+Parameter
+  1.67696776390e+01   0.00000000000e+00 
+Reciprocal condition number
+  9.57245417438e-03 
+Norm of errors
+  8.47517913448e+01 
+
+Iteration: 2
+Current number of function calls: 11 (2)
+
+Parameter
+  1.00623279542e+01   2.40233442365e-01 
+Reciprocal condition number
+  9.57245417438e-03 
+Norm of errors
+  4.81485616467e+01 
+
+Iteration: 3
+Current number of function calls: 12 (3)
+
+Parameter
+  3.87347746554e+00   4.17386483311e-01 
+Reciprocal condition number
+  8.88470043741e-03 
+Norm of errors
+  4.12625633748e+01 
+
+Iteration: 4
+Current number of function calls: 13 (4)
+
+Parameter
+  1.96232349988e+00   6.31663479633e-01 
+Reciprocal condition number
+  1.50484533444e-02 
+Norm of errors
+  1.56427430213e+01 
+
+Iteration: 5
+Current number of function calls: 14 (5)
+
+Parameter
+  2.58532149957e+00   5.84424816789e-01 
+Reciprocal condition number
+  1.87099953011e-02 
+Norm of errors
+  7.17042113757e+00 
+
+Iteration: 6
+Current number of function calls: 15 (6)
+
+Parameter
+  2.59626989454e+00   5.91793110371e-01 
+Reciprocal condition number
+  1.57969188792e-02 
+Norm of errors
+  5.42220058300e+00 
+
+Iteration: 7
+Current number of function calls: 16 (7)
+
+Parameter
+  2.59897862802e+00   5.91399913872e-01 
+Reciprocal condition number
+  1.55230997331e-02 
+Norm of errors
+  5.42138357286e+00 
+
+Iteration: 8
+Current number of function calls: 17 (8)
+
+Parameter
+  2.59887776392e+00   5.91409161538e-01 
+Reciprocal condition number
+  1.55191839439e-02 
+Norm of errors
+  5.42138348184e+00 
+
+Iteration: 9
+Current number of function calls: 18 (9)
+
+Parameter
+  2.59888019216e+00   5.91408940783e-01 
+Reciprocal condition number
+  1.55194827549e-02 
+Norm of errors
+  5.42138348179e+00 
+
+End of iterations.
+Squared convergence.
+Factor for trust region radius
+  1.00000000000e+00 
+Initial weighted sum of epsilon
+  5.18168458119e+01 
+Parameter scale factors
+  3.84781108039e-01   3.84781108039e-01 
+
+Number of good digits: 15
+Accuracy: 2.22045e-16
+
+Iteration: 1
+Current number of function calls: 7 (1)
+
+Parameter
+  3.05211859177e+00   5.58585018545e-01 
+Reciprocal condition number
+  1.55194755075e-02 
+Norm of errors
+  4.33588287555e+00 
+
+Iteration: 2
+Current number of function calls: 8 (2)
+
+Parameter
+  3.07263208728e+00   5.60017833632e-01 
+Reciprocal condition number
+  1.41891049517e-02 
+Norm of errors
+  3.95697435195e+00 
+
+Iteration: 3
+Current number of function calls: 9 (3)
+
+Parameter
+  3.07245737312e+00   5.60017459021e-01 
+Reciprocal condition number
+  1.40616531355e-02 
+Norm of errors
+  3.95696583146e+00 
+
+Iteration: 4
+Current number of function calls: 10 (4)
+
+Parameter
+  3.07245742779e+00   5.60017454750e-01 
+Reciprocal condition number
+  1.40624169729e-02 
+Norm of errors
+  3.95696583146e+00 
+
+End of iterations.
+Squared convergence.
+Factor for trust region radius
+  1.00000000000e+00 
+Initial weighted sum of epsilon
+  1.61549033211e+01 
+Parameter scale factors
+  3.25472369757e-01   3.25472369757e-01 
+
+Number of good digits: 15
+Accuracy: 2.22045e-16
+
+Iteration: 1
+Current number of function calls: 7 (1)
+
+Parameter
+  3.10924470284e+00   5.57928726629e-01 
+Reciprocal condition number
+  1.40624168505e-02 
+Norm of errors
+  3.98610298975e+00 
+
+Iteration: 2
+Current number of function calls: 8 (2)
+
+Parameter
+  3.10940859816e+00   5.57931516495e-01 
+Reciprocal condition number
+  1.39604721160e-02 
+Norm of errors
+  3.98609264207e+00 
+
+Iteration: 3
+Current number of function calls: 9 (3)
+
+Parameter
+  3.10940847901e+00   5.57931525489e-01 
+Reciprocal condition number
+  1.39597041378e-02 
+Norm of errors
+  3.98609264207e+00 
+
+End of iterations.
+Squared convergence.
+Factor for trust region radius
+  1.00000000000e+00 
+Initial weighted sum of epsilon
+  1.60814816903e+01 
+Parameter scale factors
+  3.21604577447e-01   3.21604577447e-01 
+
+Number of good digits: 15
+Accuracy: 2.55482e-16
+
+Iteration: 1
+Current number of function calls: 7 (1)
+
+Parameter
+  3.11130613431e+00   5.57913633951e-01 
+Reciprocal condition number
+  1.39597044048e-02 
+Norm of errors
+  4.00946120050e+00 
+
+Iteration: 2
+Current number of function calls: 8 (2)
+
+Parameter
+  3.11130672445e+00   5.57913598837e-01 
+Reciprocal condition number
+  1.39521434813e-02 
+Norm of errors
+  4.00946120049e+00 
+
+End of iterations.
+Squared convergence.
+Factor for trust region radius
+  1.00000000000e+00 
+Initial weighted sum of epsilon
+  1.62081168005e+01 
+Parameter scale factors
+  3.21408362648e-01   3.21408362648e-01 
+
+Number of good digits: 15
+Accuracy: 2.22045e-16
+
+Iteration: 1
+Current number of function calls: 7 (1)
+
+Parameter
+  3.11327751512e+00   5.57808618301e-01 
+Reciprocal condition number
+  1.39521419117e-02 
+Norm of errors
+  4.02581824715e+00 
+
+Iteration: 2
+Current number of function calls: 8 (2)
+
+Parameter
+  3.11328080693e+00   5.57808408097e-01 
+Reciprocal condition number
+  1.39465795845e-02 
+Norm of errors
+  4.02581824699e+00 
+
+End of iterations.
+Squared convergence.
+Factor for trust region radius
+  1.00000000000e+00 
+Initial weighted sum of epsilon
+  1.62256792077e+01 
+Parameter scale factors
+  3.21204562651e-01   3.21204562651e-01 
+
+Number of good digits: 15
+Accuracy: 2.22045e-16
+
+Iteration: 1
+Current number of function calls: 7 (1)
+
+Parameter
+  3.11343754311e+00   5.57808360596e-01 
+Reciprocal condition number
+  1.39465712202e-02 
+Norm of errors
+  4.02810490871e+00 
+
+Iteration: 2
+Current number of function calls: 8 (2)
+
+Parameter
+  3.11343754311e+00   5.57808360596e-01 
+Reciprocal condition number
+  1.39459100088e-02 
+Norm of errors
+  4.02810490871e+00 
+
+End of iterations.
+Squared convergence.

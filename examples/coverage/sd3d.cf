@@ -1,0 +1,14 @@
+# sd3d.cf -- three-dimensional spatial plotting
+sdnvar(
+    dfile = shape.sd,
+    SDID     = c1,
+    SDTyp    = c2,
+    SDN      = c3,
+    SDPtr<5> = rd,
+);
+psfile = sd3.ps;
+psetup3(pxlen=80, pxa=0,12, pya=0,10, pza=0,5,);
+sdplot31(zval=1.0, s=2);
+sdplot32(zval=2.0);
+sdplot33(zval=0.5);
+psclose;

@@ -1,0 +1,11 @@
+nvar(
+  dfile = d.4,
+  noc = 26,
+  CASE <5>[6.0] = c1 , # case number
+  SN   <2>[2.0] = c2 , # spell number
+  ORG  <5>[2.0] = c3 , # origin state
+  DES  <5>[2.0] = c4 , # destination state
+  TS   <5>[4.0] = c5 , # starting time
+  TF   <5>[4.0] = c6 , # ending time
+  ID <4>[4.1] = c7 ,
+);

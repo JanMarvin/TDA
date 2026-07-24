@@ -1,0 +1,129 @@
+Read records:     600     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   2.5845701196631e+00  4.7219400251e-02          --       1 (1,1)
+    2   2.5509870264800e+00  2.5963651282e-03  1.0000e+00       2 (2,2)
+    3   2.5508900153858e+00  1.8646340622e-05  6.3773e-02       3 (3,3)
+    4   2.5508900104373e+00  1.0748655200e-09  4.8931e-04       4 (4,4)
+TDA. Analysis of Transition Data (6.4p). Sat Jul 25 02:06:40 2026
+Current memory: 390032 bytes.
+
+Reading command file: pl8m.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   3.0  c1
+  2 SN        3   4   2.0  c2
+  3 TS        3   4   3.0  c3
+  4 TF        3   4   3.0  c4
+  5 SEX       3   4   2.0  c5
+  6 TI        3   4   3.0  c6
+  7 TB        3   4   3.0  c7
+  8 TE        3   4   3.0  c8
+  9 TMAR      3   4   3.0  c9
+ 10 PRES      3   4   3.0  c10
+ 11 PRESN     3   4   3.0  c11
+ 12 EDU       3   4   2.0  c12
+ 13 COHO1     3   4   0.0  ge(TB,348)&le(TB,384)
+ 14 COHO2     3   4   0.0  ge(TB,468)&le(TB,504)
+ 15 COHO3     3   4   0.0  ge(TB,588)&le(TB,624)
+ 16 W         3   4   0.0  SEX[2]
+ 17 DES       3   4   1.0  if(eq(TF,TI),0,
+                         if(ge(PRESN/PRES-1,0.2),1,
+                         if(lt(PRESN/PRES-1,0.0),3,2)))
+ 18 DUR       3   4   3.0  TF-TS+1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): rrdat.1
+Free format. Separation character(s): default.
+
+Reading data file: rrdat.1
+Read records: 600 
+
+Created a new data matrix.
+Number of cases: 600
+Number of variables: 18
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 463185 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=0, des=DES, ts=0, tf=DUR
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       142       142.00      128.18        0.00      428.00    -
+ 1    0   1        85        85.00       44.81        0.00      326.00    -
+ 1    0   2       218       218.00       46.01        0.00      350.00    -
+ 1    0   3       155       155.00       56.40        0.00      332.00    -
+Sum               600       600.00
+
+Number of episodes: 600
+Successfully created new episode data.
+----------------------------------------------------------------------------
+rate(...)=1
+Transition rate models. Current memory: 463441 bytes.
+
+Model: Cox (partial likelihood)
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 9
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Log-likelihood of exponential null model: -2986.95
+Changed scaling factor for log-likelihood: -0.001
+Using default starting values.
+Sorting episodes according to ending times.
+
+Convergence reached in 4 iterations.
+Number of function evaluations: 5 (5,5)
+
+Maximum of log likelihood: -2550.89
+Norm of final gradient vector: 1.07487e-06
+Last absolute change of function value: 1.9399e-09
+Last relative change in parameters: 0.000489307
+
+Idx SN Org Des MT Variable      Coeff      Error    C/Error  Signif
+-------------------------------------------------------------------
+  1  1   0   1  A COHO2        0.0893     0.2640     0.3381  0.2647
+  2  1   0   1  A COHO3        0.1624     0.2696     0.6024  0.4531
+  3  1   0   1  A W           -0.2411     0.2352    -1.0254  0.6948
+-------------------------------------------------------------------
+  4  1   0   2  A COHO2        0.5017     0.1641     3.0564  0.9978
+  5  1   0   2  A COHO3        0.5487     0.1714     3.2010  0.9986
+  6  1   0   2  A W            0.1879     0.1387     1.3547  0.8245
+-------------------------------------------------------------------
+  7  1   0   3  A COHO2        0.3726     0.1964     1.8966  0.9421
+  8  1   0   3  A COHO3        0.4909     0.2039     2.4069  0.9839
+  9  1   0   3  A W            1.0651     0.1678     6.3482  1.0000
+
+Log likelihood (starting values): -2584.5701 
+Log likelihood (final estimates): -2550.8900 
+
+
+Global Goodness-of-fit.
+
+SN  Org  Des        TStat    DF   Signif
+----------------------------------------
+ 1    0    1      15.9066    24   0.1086
+ 1    0    2      25.5454    24   0.6234
+ 1    0    3      38.5791    24   0.9698
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 486791 bytes.
+End of program. Sat Jul 25 02:06:40 2026

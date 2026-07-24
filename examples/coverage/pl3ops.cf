@@ -1,0 +1,28 @@
+# Parametric 3-d plotting: plsurf3 (arguments u,v; ru=/rv= as a,b,n,m)
+# and plcurv3 (argument x; rx= as a(d)b).  The function arguments are
+# lowercase -- TDA's expression lexer sends an uppercase-first token to
+# the variable namespace, so cos(U) is an undefined-variable error while
+# cos(u) is the declared function argument.  Both examples are the
+# manual's own.
+psfile = pl3.ps;
+psetup3(
+    pxa = -3,3,
+    pya = -3,3,
+    pza = -3,3,
+    view = 40,20,
+);
+plsurf3(
+    ru = -3,3,30,10,
+    rv = -3,3,30,10,
+    f1 = u,
+    f2 = v,
+    f3 = sin(u * u + v * v) / (u * u + v * v + 0.00001),
+    cont = 1,
+);
+plcurv3(
+    nc = 1,
+    rx = -1(0.1)20,
+    f1 = cos(x),
+    f2 = sin(x),
+    f3 = 0.1 * x,
+);

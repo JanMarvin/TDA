@@ -1,0 +1,6 @@
+# err11.cf -- option value outside its documented range
+nvar(
+    dfile = ex.dat,
+    ID [2.0] = c1, X [6.2] = c2, G [2.0] = c3,
+);
+loglin(mxit=-5) = X,G;

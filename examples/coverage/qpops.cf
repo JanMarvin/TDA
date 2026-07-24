@@ -1,0 +1,19 @@
+# qpops.cf -- constrained least squares: mlsei and mnls drive the QP solver
+mfmt = 10.4;
+mdef(W,5,3) = w.mat;
+mlsei(W,1,2,X1);
+mpr(X1);
+mnls(W,1,2,X2);
+mpr(X2);
+mdef(C,2,2) = c.mat;
+mdef(D,2,1) = dv.mat;
+mqp(C,D,QX);
+mpr(QX);
+mdef(XL,2,1) = xl.mat;
+mdef(XU,2,1) = xu.mat;
+mqpb(C,D,XL,XU,QB);
+mpr(QB);
+mdef(AC,1,2) = amat.mat;
+mdef(BC,1,1) = bvec.mat;
+mqpc(C,D,AC,BC,1,QC);
+mpr(QC);

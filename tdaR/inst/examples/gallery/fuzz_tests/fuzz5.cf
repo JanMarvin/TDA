@@ -1,0 +1,16 @@
+# Fuzz test 5: extreme line widths, negative coords, overlapping fills
+psfile = fuzz5.ps;
+psetup(
+    pxa = -50,50,
+    pya = -50,50,
+    pxlen = 90,
+    pylen = 90,
+);
+plframe;
+plotp(lw=5) = -40,-40,40,-40;
+plotp(lw=0.01) = -40,40,40,40;
+plote(xy=-20,0,gs=0.3) = 15,15;
+plote(xy=0,0,gs=0.6) = 15,15;
+plote(xy=20,0,gs=0.9) = 15,15;
+pltext(xy=0,-25,fs=5) = "BIG";
+pltext(xy=0,-30,fs=0.3) = "tiny";

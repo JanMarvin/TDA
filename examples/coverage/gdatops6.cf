@@ -1,0 +1,14 @@
+# gdatops6.cf -- t_gdat.c coverage: nvar's ffmt= error path. A
+# malformed fixed-format spec triggers a separate syntax-error print
+# (prn_nve) from match='s own (gdatops4.cf) -- kept in its own file
+# since running both failing nvar() calls in one command file left
+# state that prevented this one from being reached (confirmed: the
+# same case alone reaches prn_nve at 90.91%, combined with the
+# match= case first it dropped to 0%).
+
+silent = -1;
+
+nvar(dfile=vseldat.dat,
+    A=c1, B=c2,
+    ffmt = garbage_not_valid,
+);

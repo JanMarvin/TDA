@@ -1,0 +1,23 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: xf.cf
+============================================================================
+xf()=x*x
+XF. Current memory: 390032 bytes.
+
+Function definition:
+fn      = x*x
+
+X Min 1  Max 10
+Y Min 1  Max 100
+
+New PostScript file: xplot.ps
+Size (width x height in mm): 120 x 80
+PostScript coordinates. X-axis: 150,490  Y-axis: 460,687
+Origin (PostScript x and y coordinates): 150,460
+User coordinates X axis: 1,10
+User coordinates Y axis: 0,110
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 393298 bytes.
+End of program. Wed Sep  2 16:02:32 2026

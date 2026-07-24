@@ -1,0 +1,123 @@
+Read records:     600     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   2.5140201213269e+00  1.2444677045e+01          --       1 (1,1)
+    2   2.4860349186090e+00  1.7706611007e+01  1.0000e+00       2 (2,2)
+    3   2.4615304981614e+00  3.1789797391e+00  6.2089e+00       3 (3,3)
+    4   2.4596353961038e+00  2.4028408618e-01  1.0089e+00       4 (4,4)
+    5   2.4595951276454e+00  5.6888654744e-03  1.1966e-01       5 (5,5)
+    6   2.4595950854662e+00  6.2307885349e-06  3.3530e-03       6 (6,6)
+    7   2.4595950854661e+00  7.8649629693e-12  3.2885e-06       7 (7,7)
+TDA. Analysis of Transition Data (6.4p). Sat Jul 25 02:03:18 2026
+Current memory: 390032 bytes.
+
+Reading command file: ehg7.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   3.0  c1
+  2 NOJ       3   4   2.0  c2
+  3 TStart    3   4   3.0  c3
+  4 TFin      3   4   3.0  c4
+  5 SEX       3   4   2.0  c5
+  6 TI        3   4   3.0  c6
+  7 TB        3   4   3.0  c7
+  8 TE        3   4   3.0  c8
+  9 TMAR      3   4   3.0  c9
+ 10 PRES      3   4   3.0  c10
+ 11 PRESN     3   4   3.0  c11
+ 12 EDU       3   4   2.0  c12
+ 13 DES       3   4   1.0  if(eq(TFin,TI),0,1)
+ 14 TFP       3   4   3.0  TFin-TStart+1
+ 15 COHO2     3   4   0.0  ge(TB,468)&le(TB,504)
+ 16 COHO3     3   4   0.0  ge(TB,588)&le(TB,624)
+ 17 LFX       3   4   0.0  TStart-TE
+ 18 PNOJ      3   4   0.0  NOJ-1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): rrdat.1
+Free format. Separation character(s): default.
+
+Reading data file: rrdat.1
+Read records: 600 
+
+Created a new data matrix.
+Number of cases: 600
+Number of variables: 18
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 462798 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=0, des=DES, ts=0, tf=TFP
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       142       142.00      128.18        0.00      428.00    -
+ 1    0   1       458       458.00       49.30        0.00      350.00    -
+Sum               600       600.00
+
+Number of episodes: 600
+Successfully created new episode data.
+----------------------------------------------------------------------------
+rate(...)=7
+Transition rate models. Current memory: 462950 bytes.
+
+Model: Weibull
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 14
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Log-likelihood of exponential null model: -2514.02
+Changed scaling factor for log-likelihood: -0.001
+Using default starting values.
+
+Convergence reached in 7 iterations.
+Number of function evaluations: 8 (8,8)
+
+Maximum of log likelihood: -2459.6
+Norm of final gradient vector: 7.86496e-09
+Last absolute change of function value: 2.20276e-14
+Last relative change in parameters: 3.28853e-06
+
+Idx SN Org Des MT Variable      Coeff      Error    C/Error  Signif
+-------------------------------------------------------------------
+  1  1   0   1  A Constant    -4.4951     0.3073   -14.6293  1.0000
+  2  1   0   1  A EDU          0.0858     0.0274     3.1351  0.9983
+  3  1   0   1  A COHO2        0.5985     0.1285     4.6586  1.0000
+  4  1   0   1  A COHO3        0.5582     0.1297     4.3040  1.0000
+  5  1   0   1  A LFX         -0.0032     0.0011    -2.9481  0.9968
+  6  1   0   1  A PNOJ         0.0571     0.0496     1.1512  0.7503
+  7  1   0   1  A PRES        -0.0290     0.0061    -4.7176  1.0000
+  8  1   0   1  B Constant    -0.1613     0.2224    -0.7252  0.5317
+  9  1   0   1  B EDU         -0.0027     0.0188    -0.1441  0.1146
+ 10  1   0   1  B COHO2        0.0835     0.0856     0.9751  0.6705
+ 11  1   0   1  B COHO3        0.2017     0.0914     2.2051  0.9726
+ 12  1   0   1  B LFX          0.0010     0.0007     1.4443  0.8513
+ 13  1   0   1  B PNOJ        -0.0385     0.0363    -1.0614  0.7115
+ 14  1   0   1  B PRES         0.0005     0.0041     0.1249  0.0994
+
+Log likelihood (starting values): -2514.0201 
+Log likelihood (final estimates): -2459.5951 
+
+Calculating generalized residuals; will be written to: ehg7.res
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 482917 bytes.
+End of program. Sat Jul 25 02:03:18 2026

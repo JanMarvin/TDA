@@ -1,0 +1,237 @@
+---
+title: "Beyond the Manual"
+lang: en
+output:
+  rmarkdown::html_vignette:
+    css: tda-manual.css
+    highlight: null
+    toc: true
+    toc_depth: 2
+    includes:
+      in_header: theme-toggle.html
+pkgdown:
+  as_is: true
+vignette: >
+  %\VignetteIndexEntry{Beyond the Manual}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+source("tda-hooks.R")
+library(tdaR)
+# the North Carolina shapefile belongs to the sf package: the shapefile
+# boxes run when sf is installed and are skipped otherwise
+has_sf <- requireNamespace("sf", quietly = TRUE)
+```
+
+The *TDA User's Manual* stops at chapter 8, and development did not. The
+spatial commands, the file readers for formats that postdate the manual,
+and TDA's online help are all in the program and in none of its
+documentation. This is what is there.
+
+## What happens inside
+
+There is no reimplementation. TDA's C, context-threaded and compiled
+into the package, runs unchanged; a wrapper writes the command file
+TDA would have been given, hands it over in memory, and reads the
+answer back. Every object therefore carries the run it came from.
+
+```{r inside, box = "One fit, and the run underneath it"}
+d <- tda_rrdat()
+fit <- tda_rate(Surv(TFP, DES) ~ EDU, d)
+cat(fit$run$commands, sep = "\n")
+```
+
+The answer arrives on two channels. The console is what TDA printed --
+`tda_output()` shows all of it, and `tda_diagnostics()` the lines
+that are errors, warnings or notes, which TDA otherwise leaves in the
+middle of its output for the reader to find. The exports are the doubles
+behind the numbers TDA printed: coefficients, covariance matrices,
+tables, and a tap on every number the console formatter was handed. A
+wrapper takes its numbers from the exports and uses the text only to
+find its way around, so `coef()` holds the double TDA computed, not a
+number re-read from a print format.
+
+```{r inside2, box = "Printed, and computed"}
+grep("EDU", fit$run$output, value = TRUE)
+sprintf("%.17g", coef(fit)[["EDU"]])
+names(fit$run$exports)
+```
+
+`tda_output_audit()` is the check that this holds: it classifies every
+line TDA printed as boilerplate, an echo of the input, a setting, a
+diagnostic, or a number that is in the object or in the exports, and
+reports whatever is none of those. The package's tests run it over
+every example in this manual and over the 634 command files of TDA's
+own regression suite.
+
+```{r inside3, box = "Where every line went"}
+attr(tda_output_audit(fit), "summary")
+```
+
+## Spatial data
+
+TDA holds points, lines and polygons in a spatial structure of its own,
+and has about twenty commands over it. None of them appears in the
+manual.
+
+`tda_spatial()` builds the structure from a data frame. `type = 1` is
+points; `type = 3` groups consecutive rows sharing an `id` into one
+polygon each.
+
+```{r sd1, box = "A spatial structure, and what is in it"}
+set.seed(7)
+pts <- data.frame(id = 1:12, x = round(runif(12), 3), y = round(runif(12), 3))
+s <- tda_spatial(pts)
+tda_sd_info(s)
+```
+
+`tda_sd_voronoi()` is the Voronoi diagram. What `sdvd` writes is itself a
+spatial data file -- points for the vertices, lines for the edges -- so
+the result plots with the same machinery the input does.
+
+```{r sd2, box = "The Voronoi diagram of those points", fig.height = 4.2}
+v <- tda_sd_voronoi(s, opt = 2)
+plot(v, xlim = c(-0.2, 1.2), ylim = c(-0.2, 1.2))
+```
+
+`tda_sd_select()` keeps what falls inside a rectangle and
+`tda_sd_clip()` cuts to it. Both want the rectangle given; TDA will not
+guess one.
+
+```{r sd3, box = "Selecting and clipping to a region"}
+tda_sd_select(s, rec = "0,0,0.5,0.5")$table
+tda_sd_clip(s, c(0, 0, 0.5, 0.5))$table
+```
+
+Polygons are the same structure with `type = 3`. `tda_sd_data()` gives
+the vertices back as an ordinary data frame, which is the form most
+things in R want.
+
+```{r sd4, box = "Two square polygons"}
+poly <- data.frame(id = c(1, 1, 1, 1, 2, 2, 2, 2),
+                   x  = c(0, 2, 2, 0, 3, 5, 5, 3),
+                   y  = c(0, 0, 2, 2, 0, 0, 2, 2))
+sp <- tda_spatial(poly, type = 3)
+tda_sd_data(sp)$table
+```
+
+## Reading a shapefile
+
+`tda_read_shapefile()` reads geometry and attaches the `.dbf` attribute
+table as `$attributes`. The manual documents SPSS and Stata files and
+nothing else; shapefiles, E00, DCW, GSHHS, `.dbf` and BIFF `.xls` are all
+readable and all undocumented. The file is the North Carolina SIDS
+shapefile that the sf package ships, read here by TDA itself; these
+boxes run when sf is installed.
+
+```{r shp, box = "North Carolina counties, read through TDA", eval = has_sf}
+nc <- tda_read_shapefile(system.file("shape/nc.shp", package = "sf"))
+tda_sd_info(nc)
+head(nc$attributes[, c("AREA", "PERIMETER", "NAME", "FIPS")])
+```
+
+The geometry is TDA's, so TDA's plotting draws it.
+
+```{r shpplot, box = "The same counties, drawn by TDA", eval = has_sf, fig.height = 3}
+plot(nc)
+```
+
+`tda_sd_enclosing()` gives the bounding box or the convex hull of
+everything in the structure, and `tda_sd_data()` the vertices.
+
+```{r shp2, box = "The bounding box, and the vertices", eval = has_sf}
+tda_sd_enclosing(nc)$table
+head(tda_sd_data(nc)$table)
+```
+
+Some of these commands compare one object type against another in the
+same structure. A set of polygons on its own has no lines or points for
+them to find, and saying so is the right answer rather than an error.
+
+```{r shp3, box = "Nothing to report, correctly", eval = has_sf}
+tda_sd_neighbours(nc)$text
+```
+
+## TDA's help
+
+The program carries its help text for every command, and
+`tda_help()` reads it. This is the fastest way to find what a command's
+options are actually called, since the R wrappers deliberately do not
+expose all of them by name.
+
+```{r help, box = "tda_help"}
+cat(head(tda_help("ploth"), 20), sep = "\n")
+```
+
+## Running TDA directly
+
+`tda_run()` takes command-file text and runs it, which is the escape
+hatch for anything without a wrapper. `tda_block()` builds one command
+from named arguments so the syntax does not have to be written by hand.
+
+```{r run, box = "A command file, from R"}
+d <- data.frame(X = c(1, 2, 3, 4), Y = c(2, 4, 6, 9))
+res <- tda_run(c(tda_nvar(d), "dstat;"), data = d)
+cat(grep("^ *(Variable|X|Y)", res$output, value = TRUE), sep = "\n")
+```
+
+Every wrapper returns its `$run`, so the command file a call
+generated can always be read back. This is worth knowing when a result
+looks wrong: the question is usually what TDA was asked, not what it
+computed.
+
+```{r run2, box = "What a wrapper actually sent"}
+fit <- tda_lsreg(Y ~ X, d)
+cat(fit$run$commands, sep = "\n")
+```
+
+## The expression language
+
+TDA's operators are available without a data set through
+`tda_evalf()`, and its distribution functions are the ones the manual
+lists in 5.2.5 -- `nd`, `ndf`, `td`, `chd`, `fd`, `mr`, `poisson`,
+`negbin`. They agree with R's, which is checked by a differential fuzzer
+on every run of the test suite, so either side gives the same numbers.
+
+```{r expr, box = "The same quantity, twice"}
+sprintf("%.17g", c(tda_evalf("nd(x)", options = list(x = 1.96))$value,
+                   pnorm(1.96)))
+sprintf("%.17g", c(tda_evalf("mr(x)", options = list(x = 0.5))$value,
+                   dnorm(0.5) / (1 - pnorm(0.5))))
+```
+
+## Character data
+
+TDA holds fixed-width string variables, and a character or factor column
+reaches it: `tda_nvar()` declares it as `str(n,m)` and `tda_strings()`
+brings it back. The four string operators -- `strlen`, `strsp`, `strv`,
+`strvp` -- work on it.
+
+```{r str, box = "Strings through TDA"}
+d2 <- data.frame(ID = 1:3, Name = c("Ashe", "Alleghany", "Surry"),
+                 Area = c(0.114, 0.061, 0.143))
+res <- tda_run(c(tda_nvar(d2), "pdata() = out.txt;"), data = d2)
+tda_strings(res)
+```
+
+## Graphs
+
+Chapter 7 of the manual covers relational data, and the 31 `tda_g_*`
+commands implement it: components, cliques, cut points, spanning trees,
+cycles, flows, shortest paths, and the social-network measures of 7.6.
+They are documented but easy to miss, so one example, on a small graph.
+
+```{r graph, box = "A graph, and some of what TDA asks of it"}
+e <- data.frame(from = c(1, 1, 2, 3, 4, 5, 5),
+                to   = c(2, 3, 3, 4, 5, 6, 7))
+g <- tda_graph(e, directed = FALSE)
+tda_g_degrees(g)
+tda_g_components(g)
+tda_g_cutpoints(g)
+```
+
+```{r graphplot, box = "The same graph, drawn by TDA", fig.height = 3.4}
+plot(g)
+```

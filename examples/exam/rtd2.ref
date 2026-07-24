@@ -1,0 +1,109 @@
+Read records:     600     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   2.5114459426237e+00  8.3143253364e-02          --       1 (1,1)
+    2   2.4746463377284e+00  5.5444988285e-02  1.0000e+00       2 (2,2)
+    3   2.4724276935470e+00  2.7418959662e-03  8.3411e-02       3 (3,3)
+    4   2.4724212210861e+00  9.2133548112e-06  8.2012e-03       4 (4,4)
+    5   2.4724212209971e+00  1.3176277669e-10  3.8340e-05       5 (5,5)
+TDA. Analysis of Transition Data (6.4p). Sat Jul 25 02:03:15 2026
+Current memory: 390032 bytes.
+
+Reading command file: rtd2.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   3.0  c1
+  2 SN        3   4   2.0  c2
+  3 TS        3   4   3.0  c3
+  4 TF        3   4   3.0  c4
+  5 SEX       3   4   2.0  c5
+  6 TI        3   4   3.0  c6
+  7 TB        3   4   3.0  c7
+  8 TE        3   4   3.0  c8
+  9 TMAR      3   4   3.0  c9
+ 10 PRES      3   4   3.0  c10
+ 11 PRESN     3   4   3.0  c11
+ 12 EDU       3   4   2.0  c12
+ 13 COHO1     3   4   0.0  ge(TB,348)&le(TB,384)
+ 14 COHO2     3   4   0.0  ge(TB,468)&le(TB,504)
+ 15 COHO3     3   4   0.0  ge(TB,588)&le(TB,624)
+ 16 W         3   4   0.0  SEX[2]
+ 17 DES       3   4   1.0  if(eq(TF,TI),0,1)
+ 18 DUR       3   4   3.0  TF-TS+1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): rrdat.1
+Free format. Separation character(s): default.
+
+Reading data file: rrdat.1
+Read records: 600 
+
+Created a new data matrix.
+Number of cases: 600
+Number of variables: 18
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 462843 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=0, des=DES, ts=0, tf=DUR
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       142       142.00      128.18        0.00      428.00    -
+ 1    0   1       458       458.00       49.30        0.00      350.00    -
+Sum               600       600.00
+
+Number of episodes: 600
+Successfully created new episode data.
+----------------------------------------------------------------------------
+rate(...)=21
+Transition rate models. Current memory: 462995 bytes.
+
+Model: Discrete time complementary log-log, degree 0.
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 4
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Log-likelihood of exponential null model: -2514.02
+Changed scaling factor for log-likelihood: -0.001
+Using default starting values.
+
+Convergence reached in 5 iterations.
+Number of function evaluations: 6 (6,6)
+
+Maximum of log likelihood: -2472.42
+Norm of final gradient vector: 1.31763e-07
+Last absolute change of function value: 3.60256e-11
+Last relative change in parameters: 3.83396e-05
+
+Idx SN Org Des MT Variable      Coeff      Error    C/Error  Signif
+-------------------------------------------------------------------
+  1  1   0   1  A Constant    -5.0081     0.0843   -59.4116  1.0000
+  2  1   0   1  A COHO2        0.5371     0.1120     4.7959  1.0000
+  3  1   0   1  A COHO3        0.6773     0.1152     5.8768  1.0000
+  4  1   0   1  A W            0.5094     0.0942     5.4044  1.0000
+
+Log likelihood (starting values): -2511.4459 
+Log likelihood (final estimates): -2472.4212 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 482962 bytes.
+End of program. Sat Jul 25 02:03:15 2026

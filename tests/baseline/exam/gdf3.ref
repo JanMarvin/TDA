@@ -1,0 +1,320 @@
+Writing: gdf3.d
+Records written:     100     
+Writing: gdf3.d
+Records written:     100     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: gdf3.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 L0        2   8   0.0  0
+  2 L1        2   8   0.0  1
+  3 L2        2   8   0.0  2
+  4 X         3   4   0.0  case
+  5 Y         3   4   0.0  X+rd(-10,10)
+  6 H         2   8   0.0  110
+  7 ONE       2   8   0.0  1
+
+Creating a new data matrix.
+Maximum number of cases: 100
+
+Created a new data matrix.
+Number of cases: 100
+Number of variables: 7
+
+End of creating new variables. Current memory: 391053 bytes.
+----------------------------------------------------------------------------
+nvar(...)
+Creating new variables. Current memory: 391053 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 RD1       3   4   0.0  rd
+
+New variables will be added to existing data matrix.
+Trivial matching.
+
+Added 1 variable(s) to existing data matrix.
+Number of cases with no match: 0
+
+End of creating new variables. Current memory: 391472 bytes.
+----------------------------------------------------------------------------
+nvar(...)
+Creating new variables. Current memory: 391472 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 RD2       3   4   0.0  rd(10,90)
+
+New variables will be added to existing data matrix.
+Trivial matching.
+
+Added 1 variable(s) to existing data matrix.
+Number of cases with no match: 0
+
+End of creating new variables. Current memory: 391922 bytes.
+----------------------------------------------------------------------------
+nvar(...)
+Creating new variables. Current memory: 391922 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 IS        3   4   0.0  le(RD1,0.2)&gt(Y,RD2)
+  2 CEN       3   4   0.0  not(IS)
+  3 Y1        3   4   0.0  if(IS,RD2,Y)
+
+New variables will be added to existing data matrix.
+Trivial matching.
+
+Added 3 variable(s) to existing data matrix.
+Number of cases with no match: 0
+
+End of creating new variables. Current memory: 393367 bytes.
+----------------------------------------------------------------------------
+psfile=gdf3.ps
+Opened new PostScript file: gdf3.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 120 x 80
+PostScript coordinates. X-axis: 150,490  Y-axis: 460,687
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,         102.0000 
+User coordinates Y axis:         -10.0000,         110.0000 
+----------------------------------------------------------------------------
+plxa(sc=10,ic=0)
+----------------------------------------------------------------------------
+plya(sc=10,ic=0)
+----------------------------------------------------------------------------
+tsel=IS[0]
+New temporary case selection: IS[0]
+Number of selected cases: 87
+----------------------------------------------------------------------------
+plot(s=5,lw=0,fs=0.7)=X,Y1
+----------------------------------------------------------------------------
+tsel=IS[1]
+Temporary case selection turned off.
+New temporary case selection: IS[1]
+Number of selected cases: 13
+----------------------------------------------------------------------------
+plotm(lw=0.1)=X,Y1,X,H
+----------------------------------------------------------------------------
+plot(s=4,lw=0,fs=1.0)=X,Y1
+----------------------------------------------------------------------------
+tsel=off
+Temporary case selection turned off.
+Number of cases: 100
+----------------------------------------------------------------------------
+pdata(...)=gdf3.d
+100 records with 5 variables written to: gdf3.d
+----------------------------------------------------------------------------
+pdata(...)=gdf3.d
+100 records with 5 variables written to: gdf3.d
+----------------Read records:     200     
+Iter  1  Crit  8.53163004e-03
+Iter  2  Crit  3.64201143e-03
+Iter  3  Crit  1.96260214e-03
+Iter  4  Crit  1.00584328e-03
+Iter  5  Crit  5.01513481e-04
+Read records:     200     
+Read records:     200     
+------------------------------------------------------------
+clear
+Deleted whole data matrix. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   6.0  c1
+  2 L1        3   4   1.0  c2
+  3 Y         3   4  10.6  c3
+  4 CEN       3   4   2.0  c4
+  5 Y1        3   4  10.6  c5
+
+Creating a new data matrix.
+Maximum number of cases: 2000
+
+Using data file(s): gdf3.d
+Free format. Separation character(s): default.
+Reading maximal 2000 records.
+
+Reading data file: gdf3.d
+Read records: 200 
+
+Created a new data matrix.
+Number of cases: 200
+Number of variables: 5
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 430122 bytes.
+----------------------------------------------------------------------------
+gdf(...)=...
+General distribution functions. Current memory: 430122 bytes.
+
+yl: Y1  cen: CEN
+Number of cases: 200
+Number of units: 100
+Number of dimensions (level 1): 2
+Number of exact cases: 187
+Number of interval censored cases: 0
+Number of right censored cases: 13
+Number of marginal patterns: 1
+
+Pattern  type     units  dimensions
+    1      3        100   1  2 
+
+Dimension  level-1  observations  i-censored  r-censored
+     1         1             100           0           0
+     2         2             100           0          13
+
+Marginal calculation: expected values.
+
+Dimension   1: EDF with exact data.
+Dimension   2: Kaplan-Meier.
+
+200 records written to: gdf3.m
+----------------------------------------------------------------------------
+gdf(...)=...
+General distribution functions. Current memory: 430122 bytes.
+
+yl: Y1  cen: CEN
+Number of cases: 200
+Number of units: 100
+Number of dimensions (level 1): 2
+Number of exact cases: 187
+Number of interval censored cases: 0
+Number of right censored cases: 13
+Number of marginal patterns: 1
+
+Pattern  type     units  dimensions
+    1      3        100   1  2 
+
+Dimension  level-1  observations  i-censored  r-censored
+     1         1             100           0           0
+     2         2             100           0          13
+
+Joint calculation (method 1): expected values.
+
+
+Pattern 1. Units: 100, dimensions: 2
+Iterative procedure.
+Max iterations: 20  tolerance: 0.001
+Domain
+  1     1.0000   100.0000 
+  2    -8.4179   107.7180 
+
+Number of boxes in each dimension: 10. Total: 100
+Dimension  i-censored  r-censored  observations
+     1              0           0           100
+     2              0          13           100
+
+Finished after 5 iterations. Max change: 0.000501513
+
+100 records written to: gdf3.j
+----------------------------------------------------------------------------
+clear
+Deleted whole data matrix. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X         3   4   0.0  c2
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+Input select (isel): c1[1]
+
+Using data file(s): gdf3.m
+Free format. Separation character(s): default.
+
+Reading data file: gdf3.m
+Read records: 200 
+Selected for data matrix: 100 records.
+
+Created a new data matrix.
+Number of cases: 100
+Number of variables: 1
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 394049 bytes.
+----------------------------------------------------------------------------
+nvar(...)
+Creating new variables. Current memory: 394049 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Y         3   4   0.0  c4
+  2 CEN       3   4   0.0  c3
+Input select (isel): c1[2]
+
+Using data file(s): gdf3.m
+Free format. Separation character(s): default.
+
+New variables will be added to existing data matrix.
+Trivial matching.
+
+Reading data file: gdf3.m
+Read records: 200 
+Selected for data matrix: 100 records.
+
+Added 2 variable(s)Read records:     100     
+ to existing data matrix.
+Number of cases with no match: 0
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402085 bytes.
+----------------------------------------------------------------------------
+tsel=CEN[0]
+New temporary case selection: CEN[0]
+Number of selected cases: 13
+----------------------------------------------------------------------------
+plot(s=2,lw=0,fs=1.2)=X,Y
+----------------------------------------------------------------------------
+clear
+Deleted whole data matrix. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X         3   4   0.0  c8
+  2 Y         3   4   0.0  c9
+  3 CEN       3   4   0.0  c7
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): gdf3.j
+Free format. Separation character(s): default.
+
+Reading data file: gdf3.j
+Read records: 100 
+
+Created a new data matrix.
+Number of cases: 100
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402085 bytes.
+----------------------------------------------------------------------------
+tsel=CEN[0]
+New temporary case selection: CEN[0]
+Number of selected cases: 13
+----------------------------------------------------------------------------
+plot(s=17,lw=0,fs=1.2)=X,Y
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 450178 bytes.
+End of program. Tue Jul 21 05:46:53 2026

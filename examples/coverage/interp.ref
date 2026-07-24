@@ -1,0 +1,98 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:51 2026
+Current memory: 390032 bytes.
+
+Reading command file: interp.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X         3   4   6.1  c1
+  2 Y         3   4   6.1  c2
+  3 Z         3   4   9.4  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): xyz.dat
+Free format. Separation character(s): default.
+
+Reading data file: xyz.dat
+Read records: 36 
+
+Created a new data matrix.
+Number of cases: 36
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402083 bytes.
+----------------------------------------------------------------------------
+triang()=X,Y
+Triangulation of a point set. Current memory: 402083 bytes.
+
+Bounding box of input data.
+x minimum:       0.000000  maximum:       5.000000
+y minimum:       0.000000  maximum:       5.000000
+
+Number of data points: 36
+Number of points on the boundary: 20
+Number of arcs in the mesh: 85
+Number of triangles in the mesh: 50
+
+----------------------------------------------------------------------------
+intp(alg=1,rx=0(1)5,ry=0(1)5,df=i1.dat)=X,Y,Z
+Interpolation of a point set. Current memory: 402083 bytes.
+Algorithm: 1
+
+Bounding box of input data.
+x minimum:       0.000000  maximum:       5.000000
+y minimum:       0.000000  maximum:       5.000000
+z minimum:       0.000000  maximum:       4.989400
+
+Requested range of interpolated points.
+x - from:       0.000000 to       5.000000  increment:       1.000000
+y - from:       0.000000 to       5.000000  increment:       1.000000
+
+Number of data points: 36
+Number of points on the boundary: 20
+Number of arcs in the mesh: 85
+Number of triangles in the mesh: 50
+36 records written to: i1.dat
+----------------------------------------------------------------------------
+intp(alg=2,rx=0(1)5,ry=0(1)5,df=i2.dat)=X,Y,Z
+Interpolation of a point set. Current memory: 402083 bytes.
+Algorithm: 2
+
+Bounding box of input data.
+x minimum:       0.000000  maximum:       5.000000
+y minimum:       0.000000  maximum:       5.000000
+z minimum:       0.000000  maximum:       4.989400
+
+Requested range of interpolated points.
+x - from:       0.000000 to       5.000000  increment:       1.000000
+y - from:       0.000000 to       5.000000  increment:       1.000000
+
+Number of data points: 36
+Number of points on the boundary: 20
+Number of arcs in the mesh: 85
+Number of triangles in the mesh: 50
+36 records written to: i2.dat
+----------------------------------------------------------------------------
+intp(alg=3,rx=0(1)5,ry=0(1)5,df=i3.dat)=X,Y,Z
+Interpolation of a point set. Current memory: 402083 bytes.
+Algorithm: 3
+
+Bounding box of input data.
+x minimum:       0.000000  maximum:       5.000000
+y minimum:       0.000000  maximum:       5.000000
+z minimum:       0.000000  maximum:       4.989400
+
+Requested range of interpolated points.
+x - from:       0.000000 to       5.000000  increment:       1.000000
+y - from:       0.000000 to       5.000000  increment:       1.000000
+
+36 records written to: i3.dat
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422121 bytes.
+End of program. Fri Sep  4 15:06:51 2026

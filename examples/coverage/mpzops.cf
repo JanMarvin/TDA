@@ -1,0 +1,35 @@
+# mpzops.cf -- t_matc.c coverage: mpz (row permutation for a zero-free
+# diagonal, ACM 575, Duff). m_rperm's own header (t_mata.c) documents
+# the permutation array precisely: iperm[i] must satisfy
+# A(iperm(i),i) != 0 for every i -- a GATHER index (build the result
+# as B[i,:]=A[P[i],:]). m_mpz's own output-construction loop applied
+# it as a SCATTER instead (B[P[i],:]=A[i,:]) -- confirmed a real bug,
+# not a documentation gap: on a 3x3 pure permutation matrix with an
+# exact, forced, unique perfect matching, the scatter form returned
+# an all-zero diagonal despite TDA's own "Number of non-zeros: 3"
+# diagnostic confirming a full matching was found. Fixed to build B
+# via gather, matching iperm's own documented contract.
+#
+# Case 1: A has a unique nonzero per row forming a 3-cycle
+# (A[1,3]=A[2,1]=A[3,2]=1, zero elsewhere) -- the only zero-free
+# permutation is the one recovering the identity; B must come back
+# as the 3x3 identity matrix exactly.
+#
+# Case 2: A = [[0,1,2],[3,0,4],[0,5,0]]. By hand: col1 needs row2
+# (A[2,1]=3, only nonzero in col1), col2 needs row3 (A[3,2]=5, only
+# nonzero in col2), col3 then must use row1 (A[1,3]=2) since row2 is
+# taken -- P=(2,3,1), and B=[[3,0,4],[0,5,0],[0,1,2]], diagonal
+# (3,5,2), all nonzero.
+
+silent = -1;
+mfmt = 24.16;
+
+mdef(A1,3,3) = 0,0,1, 1,0,0, 0,1,0;
+mpz(A1,B1,P1);
+mpr(B1);
+mpr(P1);
+
+mdef(A2,3,3) = 0,1,2, 3,0,4, 0,5,0;
+mpz(A2,B2,P2);
+mpr(B2);
+mpr(P2);

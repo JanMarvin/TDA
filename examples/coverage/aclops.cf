@@ -1,0 +1,14 @@
+# aclops.cf -- t_cl.c coverage: acl ("clustering with assignment",
+# undocumented in tda.hlp, found via source header comment). The
+# existing project test (examples/tests/acl.cf) calls acl() with no
+# cn= at all, which only reached 13.8% of the function; supplying
+# real cluster-size candidates (cn=2,3, "1 <= k1,k2 <= n/2" per the
+# source doc) and the secondary df= output together reach 85.37%.
+# Reuses the same graph fixture (g.dat) and gdd setup as the
+# existing test.
+
+silent = -1;
+
+nvar(dfile=aclops_g.dat, D=c1);
+gdd(opt=4) = D;
+acl(cn=2,3, df=aclweights.txt) = aclout.txt;

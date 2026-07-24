@@ -1,0 +1,6 @@
+nvar(
+  dfile = written.txt,
+  noc = 5,
+  A       <4>[0.0] = c1,
+  B       <4>[0.0] = c2,
+);

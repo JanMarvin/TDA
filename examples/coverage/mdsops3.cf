@@ -1,0 +1,9 @@
+# mdsops3.cf -- t_mds.c coverage: uds(alg=3), which the manual says
+# "presupposes an integer-valued distance matrix" -- a fresh small
+# integer graph (4 nodes, 6 edges) in its own data matrix, separate from
+# mdsops2.cf's graph. Checked structurally (valid permutation printed,
+# program terminates without error).
+
+nvar(dfile = disint.dat, DI [3.0] = c1,);
+gdd(opt=4) = DI;
+uds(alg=3, mxit=10) = uds3out.txt;

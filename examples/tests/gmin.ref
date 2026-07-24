@@ -1,0 +1,43 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: gmin.cf
+============================================================================
+gmin(...)=...
+Global minimization. Current memory: 390032 bytes.
+
+Function definition:
+fn      = x*x
+
+Idx  Parameter   Starting value      Lower bound     Upper bound
+  1  x            0.00000000e+00 -1.00000000e+00  1.00000000e+00 
+
+Starting branch and bound algorithm.
+Maximum number of iterations: 100
+Maximum number of boxes: 100
+Tolerance for box width: 0.0001
+Tolerance for function range: 1e-10
+Tolerance for global minimum: 1e-10
+
+Number of iterations performed: 32
+Number of function evaluations: 31
+Number of inclusion function evaluations: 59
+Number of boxes used: 3
+Number of temporarily accepted boxes: 2
+Number of finally accepted boxes: 2
+
+Best minimal function value:      0.000000   best lower bound:     -0.000000 
+
+Box  Acc  Width             Lower function bound  Upper function bound
+  1    2  6.1035156250e-05 -0.00000000000000e+00  3.72529029846191e-09
+  2    2  6.1035156250e-05  0.00000000000000e+00  3.72529029846191e-09
+
+Box  Idx  Parameter
+  1    1  x                -0.000061      0.000000 
+
+Box  Idx  Parameter
+  2    1  x                 0.000000      0.000061 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 393530 bytes.
+End of program. Wed Sep  2 16:02:32 2026

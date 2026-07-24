@@ -1,0 +1,64 @@
+TDA. Analysis of Transition Data (6.4p). Sat Aug 22 08:50:52 2026
+Current memory: 390032 bytes.
+
+Reading command file: glmsc.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X         3   4   0.0  c1
+  2 X2        3   4   0.0  c2
+  3 Y         3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): glm_test.dat
+Free format. Separation character(s): default.
+
+Reading data file: glm_test.dat
+Read records: 60 
+
+Created a new data matrix.
+Number of cases: 60
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402084 bytes.
+----------------------------------------------------------------------------
+glm(...)
+Generalized linear models. Current memory: 402084 bytes.
+
+Distribution: binomial.
+Link function: logit.
+
+Variables (cross-section)
+-------------------------
+Y   : Y   
+X1  : X   
+X2  : X2  
+
+Estimation with iteratively re-weighted least squares.
+Number of model parameters: 3
+Maximum number of iterations: 20
+Tolerance for scaled parameter change: 1e-06
+
+Convergence reached in 6 iterations.
+Final scaled parameter change: 3.35633e-16
+
+Rank of data matrix: 3
+Degrees of freedom: 57
+Deviance                          6.1499450358e+01 
+Fixed scaling factor              1.0000000000e+00 
+
+Idx  Wave  Variable               Coeff              Error            Coeff/E  Signif
+-------------------------------------------------------------------------------------
+  1     -  Intercept  -5.2925580249e+00   1.9483310497e+00  -2.7164572601e+00  0.9913
+  2     1  X           5.0707722389e-02   2.4397082211e-02   2.0784338861e+00  0.9578
+  3     1  X2         -1.1474820043e-04   6.9005479080e-05  -1.6628853528e+00  0.8982
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422122 bytes.
+End of program. Sat Aug 22 08:50:52 2026

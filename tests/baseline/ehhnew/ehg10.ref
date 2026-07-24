@@ -1,0 +1,112 @@
+Read records:     600     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   2.6031676686613e+00  6.6669935317e-01          --       1 (1,1)
+    2   2.4781276618828e+00  2.2630835301e-01  1.0000e+00       2 (2,2)
+    3   2.4567633754699e+00  3.4040343287e-02  8.3618e-01       3 (3,3)
+    4   2.4561384043968e+00  1.1731120039e-03  1.4886e-01       4 (4,4)
+    5   2.4561376286342e+00  1.5519070472e-06  5.4025e-03       5 (5,5)
+    6   2.4561376286328e+00  2.8712066237e-12  6.9526e-06       6 (6,6)
+TDA. Analysis of Transition Data (6.4p). Fri Jul 24 21:39:00 2026
+Current memory: 390032 bytes.
+
+Reading command file: ehg10.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   3.0  c1
+  2 NOJ       3   4   2.0  c2
+  3 TStart    3   4   3.0  c3
+  4 TFin      3   4   3.0  c4
+  5 SEX       3   4   2.0  c5
+  6 TI        3   4   3.0  c6
+  7 TB        3   4   3.0  c7
+  8 TE        3   4   3.0  c8
+  9 TMAR      3   4   3.0  c9
+ 10 PRES      3   4   3.0  c10
+ 11 PRESN     3   4   3.0  c11
+ 12 EDU       3   4   2.0  c12
+ 13 DES       3   4   1.0  if(eq(TFin,TI),0,1)
+ 14 TFP       3   4   3.0  TFin-TStart+1
+ 15 COHO2     3   4   0.0  ge(TB,468)&le(TB,504)
+ 16 COHO3     3   4   0.0  ge(TB,588)&le(TB,624)
+ 17 LFX       3   4   0.0  TStart-TE
+ 18 PNOJ      3   4   0.0  NOJ-1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): rrdat.1
+Free format. Separation character(s): default.
+
+Reading data file: rrdat.1
+Read records: 600 
+
+Created a new data matrix.
+Number of cases: 600
+Number of variables: 18
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 462798 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=0, des=DES, ts=0, tf=TFP
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       142       142.00      128.18        0.00      428.00    -
+ 1    0   1       458       458.00       49.30        0.00      350.00    -
+Sum               600       600.00
+
+Number of episodes: 600
+Successfully created new episode data.
+----------------------------------------------------------------------------
+rate(...)=12
+Transition rate models. Current memory: 462950 bytes.
+
+Model: Log-normal
+
+Model without covariates.
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 2
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Log-likelihood of exponential null model: -2514.02
+Changed scaling factor for log-likelihood: -0.001
+Using default starting values.
+
+Convergence reached in 6 iterations.
+Number of function evaluations: 7 (7,7)
+
+Maximum of log likelihood: -2456.14
+Norm of final gradient vector: 2.87121e-09
+Last absolute change of function value: 5.56888e-13
+Last relative change in parameters: 6.95264e-06
+
+Idx SN Org Des MT Variable      Coeff      Error    C/Error  Signif
+-------------------------------------------------------------------
+  1  1   0   1  A Constant     3.8852     0.0548    70.8561  1.0000
+  2  1   0   1  B Constant     0.2436     0.0342     7.1252  1.0000
+
+Log likelihood (starting values): -2603.1677 
+Log likelihood (final estimates): -2456.1376 
+
+Calculating estimated rates.
+[ 1] prate(tab=0(1)300)=ehg10.prs
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 482917 bytes.
+End of program. Fri Jul 24 21:39:00 2026

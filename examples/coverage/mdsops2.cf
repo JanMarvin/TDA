@@ -1,0 +1,19 @@
+# mdsops2.cf -- t_mds.c coverage: dmet1, gpro (with df= and pcf= to reach
+# gpro_df/gpro_pcf), uds alg=1/2 (branch-and-bound and approx. QA, to
+# reach uds_qa1), mdsx (with pcf= and sc>0 to reach
+# mds_p/mds_p1/mdsxr_c2/c3/f1/dm). Outputs are checked structurally (file
+# written, program terminates with no error, distances/coordinates in a
+# plausible range) rather than against a hand-traced numeric answer --
+# these are iterative geometric search algorithms (branch-and-bound
+# seriation, interval-arithmetic circle packing) with no single
+# hand-predictable result for a random instance.
+
+nvar(dfile = dis.dat, D [9.4] = c1,);
+gdd(opt=4) = D;
+
+dmet1(gn=1, mxit=5) = dmet1out.txt;
+
+gpro(alg=1, mxit=20, df=gprodf.txt, pcf=gpropcf.cf) = groout.txt;
+
+uds(alg=1) = uds1out.txt;
+uds(alg=2) = uds2out.txt;

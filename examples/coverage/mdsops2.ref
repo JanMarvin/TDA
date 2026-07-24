@@ -1,0 +1,121 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:51 2026
+Current memory: 390032 bytes.
+
+Reading command file: mdsops2.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 D         3   4   9.4  c1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): dis.dat
+Free format. Separation character(s): default.
+
+Reading data file: dis.dat
+Read records: 28 
+
+Created a new data matrix.
+Number of cases: 28
+Number of variables: 1
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 394049 bytes.
+----------------------------------------------------------------------------
+gdd(opt=4)=D
+New graph data. Current memory: 394049 bytes.
+Option 4: upper triangle.
+
+Minimal level for valid edges: 0
+Number of nodes: 8. Largest node number: 8
+Graph type 2 (undirected, valued, bidirectional edges: minimum).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1       28       0       10.929900             0
+
+Successfully created new graph data structure. Current memory: 394075 bytes.
+----------------------------------------------------------------------------
+dmet1(gn=1,mxit=5)=dmet1out.txt
+Change distance matrix into metric. Current memory: 394073 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+Maximal number of iterations: 5
+Tolerance for maximal deviation: 0.0001
+
+Maximal deviation in input data: 0
+----------------------------------------------------------------------------
+gpro(alg=1,mxit=20,df=gprodf.txt,pcf=gpropcf.cf)=groout.txt
+Projection of proximities. Current memory: 394073 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+
+Algorithm 1: direct search.
+Starting value of step length: 1
+Step length reduction factor: 0.5
+Minimum value of step length: 0.0001
+Max number of iterations: 20
+
+Performed iterations: 15 (14179 function calls)
+Final stress: 3.32934e-05
+
+8 records written to: groout.txt
+28 records written to: gprodf.txt
+Output file for plot of configuration: gpropcf.cf
+----------------------------------------------------------------------------
+uds(alg=1)=uds1out.txt
+Uni-dimensional scaling. Current memory: 394073 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+Number of points: 8
+
+Algorithm 1: Branch and bound (Defays 1978).
+UDSDPP = 46.5716
+Enter uds_r n=8 k=0 E0: 4 8 7 1 5 6 3 2    F0 = 7725.96
+
+Best solution: 7725.96
+
+Index  X-value     Object  Permutation
+   1      5.9465       4          4
+   2      4.2167       8          8
+   3      2.2832       7          7
+   4      0.7873       1          1
+   5      0.0016       5          5
+   6     -3.3197       6          6
+   7     -4.0731       3          3
+   8     -5.8424       2          2
+
+Distance between original and fitted matrix: 7.86163
+Mean difference between original and fitted distances: 0.795169
+----------------------------------------------------------------------------
+uds(alg=2)=uds2out.txt
+Uni-dimensional scaling. Current memory: 394073 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+Number of points: 8
+
+Algorithm 2: approx. quadratic assignment.
+Best function value: 1132.52
+Optimal ordering
+   1    4
+   2    8
+   3    7
+   4    1
+   5    5
+   6    6
+   7    3
+   8    2
+
+Permutation
+   1    4
+   2    8
+   3    7
+   4    1
+   5    5
+   6    6
+   7    3
+   8    2
+
+25 of 378 compares are inconsistent.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 414069 bytes.
+End of program. Fri Sep  4 15:06:51 2026

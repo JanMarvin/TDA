@@ -1,0 +1,27 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep  5 16:51:43 2026
+Current memory: 390032 bytes.
+
+Reading command file: gddnoc.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 A         3   4   4.0  c1
+  2 B         3   4   4.0  c2
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): empty.dat
+Free format. Separation character(s): default.
+
+Reading data file: empty.dat
+Read records: 0 
+Error: no records read from data file.
+No data matrix created.
+No new variables created. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 418095 bytes.
+End of program. Sat Sep  5 16:51:43 2026

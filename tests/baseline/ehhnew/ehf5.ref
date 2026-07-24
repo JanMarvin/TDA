@@ -1,0 +1,77 @@
+Read records:     600     
+Writing episode data to: rrdat.d60
+TDA. Analysis of Transition Data (6.4p). Fri Jul 24 21:39:00 2026
+Current memory: 390032 bytes.
+
+Reading command file: ehf5.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable   T   S  PFmt  Definition
+--------------------------------------
+  1 ID         3   4   3.0  c1
+  2 NOJ        3   4   2.0  c2
+  3 TStart     3   4   3.0  c3
+  4 TFin       3   4   3.0  c4
+  5 SEX        3   4   2.0  c5
+  6 TI         3   4   3.0  c6
+  7 TB         3   4   3.0  c7
+  8 TE         3   4   3.0  c8
+  9 TMAR       3   4   3.0  c9
+ 10 PRES       3   4   3.0  c10
+ 11 PRESN      3   4   3.0  c11
+ 12 EDU        3   4   2.0  c12
+ 13 DES        3   4   1.0  if(eq(TFin,TI),0,1)
+ 14 TSP        2   8   3.0  0
+ 15 TFP        3   4   3.0  TFin-TStart+1
+ 16 COHO2      3   4   1.0  ge(TB,468)&le(TB,504)
+ 17 COHO3      3   4   1.0  ge(TB,588)&le(TB,624)
+ 18 LFX        3   4   3.0  TStart-TE
+ 19 PNOJ       3   4   2.0  NOJ-1
+ 20 Split_60   2   8   0.0  60
+ 21 Split_120  2   8   0.0  120
+ 22 Split_180  2   8   0.0  180
+ 23 Split_240  2   8   0.0  240
+ 24 Split_300  2   8   0.0  300
+ 25 Split_360  2   8   0.0  360
+ 26 Split_420  2   8   0.0  420
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): rrdat.1
+Free format. Separation character(s): default.
+
+Reading data file: rrdat.1
+Read records: 600 
+
+Created a new data matrix.
+Number of cases: 600
+Number of variables: 26
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 463060 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=0, des=DES, ts=TSP, tf=TFP
+Episode splitting with variable(s): Split_60,Split_120,Split_180,Split_240,Split_300,Split_360,Split_420
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       142       142.00      128.18        0.00      428.00    -
+ 1    0   1       458       458.00       49.30        0.00      350.00    -
+Sum               600       600.00
+
+Number of episodes: 600
+Number of splits: 1021
+Successfully created new episode data.
+----------------------------------------------------------------------------
+epdat(...)=rrdat.d60
+Episode data: 1021 records written to: rrdat.d60
+TDA description written to: d60.tda
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 483179 bytes.
+End of program. Fri Jul 24 21:39:00 2026

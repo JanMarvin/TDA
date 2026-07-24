@@ -1,0 +1,75 @@
+TDA. Analysis of Transition Data (6.4q). Thu Sep 17 06:36:26 2026
+Current memory: 390032 bytes.
+
+Reading command file: mdsm.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 D         3   4   0.0  c1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): g.dat
+Free format. Separation character(s): default.
+
+Reading data file: g.dat
+Read records: 15 
+
+Created a new data matrix.
+Number of cases: 15
+Number of variables: 1
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 394049 bytes.
+----------------------------------------------------------------------------
+gdd(opt=4)=D
+New graph data. Current memory: 394049 bytes.
+Option 4: upper triangle.
+
+Minimal level for valid edges: 0
+Number of nodes: 6. Largest node number: 6
+Graph type 2 (undirected, valued, bidirectional edges: minimum).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1       15       0       16.000000             0
+
+Successfully created new graph data structure. Current memory: 394075 bytes.
+----------------------------------------------------------------------------
+mdsm(...)=...
+Metric MDS. Current memory: 394073 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+Function minimization.
+Algorithm 7: CES (quadratic model [dopt=1])
+
+Number of model parameters: 10
+Maximum number of iterations: 100
+Convergence criterion: 6
+Tolerance for scaled gradient: 1e-05
+Tolerance for scaled parameter change: 1e-08
+Scaling factor: 1
+
+
+Convergence reached in 13 iterations.
+Number of function evaluations: 939 (14,0)
+
+Minimum of function: 1.11241
+Final scaled gradient: 2.15235e-07
+Final scaled parameter change: 0.00011826
+
+Best function value:       1.112410 (stress: 0.030835)
+Coordinates
+  1     0.0000     0.0000 
+  2     1.3742     3.5602 
+  3     5.2875     3.8515 
+  4     8.2733     5.7424 
+  5     9.7930     9.0083 
+  6    10.0775    12.7439 
+
+1 records written to out.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 414069 bytes.
+End of program. Thu Sep 17 06:36:26 2026

@@ -1,0 +1,20 @@
+# mapshp_azi.cf -- t_map.c coverage: same real nc-shp shapefile, but
+# drawn with the azimuthal (orthographic) projection (proj=20) and a
+# geodesic-connected sdpgeo line, to reach the azimuthal grid/polygon
+# code paths (map_line_azi, gd_proj_inv/p, mapgrid_lon/lat_azi*, etc.)
+# that the cylindrical projection in mapshp.cf never touches.
+
+sdshp(fmt=24.16, df=shape.sd) = shape;
+sdnvar(
+    dfile = shape.sd,
+    SDID     = c1,
+    SDTyp    = c2,
+    SDN      = c3,
+    SDPtr<5> = rd,
+);
+
+psfile = mapazi.ps;
+psetupg(proj=20, view=-80,35, rhem=30, pxlen=150);
+sdpgrat(lon=-84(2)-76, lat=32(2)38, fsx=2, fsy=2, lw=0.1);
+sdpmap();
+sdpgeo(ct=1, s=4) = -84.0,33.8,-76.0,36.2;

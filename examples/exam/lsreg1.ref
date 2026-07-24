@@ -1,0 +1,68 @@
+Read records:      19     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: lsreg1.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Height    3   4   0.0  c1
+  2 Weight    3   4   0.0  c2
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): lsreg1.dat
+Free format. Separation character(s): default.
+
+Reading data file: lsreg1.dat
+Read records: 19 
+
+Created a new data matrix.
+Number of cases: 19
+Number of variables: 2
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 398076 bytes.
+----------------------------------------------------------------------------
+lsreg(...)=...
+Least squares regression. Current memory: 398076 bytes.
+
+Variables (cross-section)
+-------------------------
+Y   : Weight  
+X1  : Height  
+
+Equality constraints: 0
+Inequality constraints: 0
+
+Reading data. Cases: 19
+Data written to: df
+
+Rank of least squares data matrix: 2
+Norm of least squares residuals: 46.287
+
+Degrees of freedom: 17
+Sum of squared residuals: 2142.49
+Variance of residuals: 126.029
+Squared multiple correlation: 0.770507
+Adjusted: 0.757007
+F-statistic: 57.0763
+Level of significance: 0.999999
+
+Residuals written to: res
+Covariance matrix written to: cov
+
+Idx  Wave  Variable       Coeff      Error    Coeff/E  Signif
+-------------------------------------------------------------
+  1     -  Intercept  -143.0269    32.2746    -4.4316  0.9996
+  2     1  Height        3.8990     0.5161     7.5549  1.0000
+
+Parameter estimates written to: par
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 418105 bytes.
+End of program. Tue Jul 21 05:46:53 2026

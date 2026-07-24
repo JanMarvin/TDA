@@ -1,0 +1,25 @@
+# rfitops.cf -- t_mds.c coverage: rfit/rfit1 ("Fit of binary
+# relation(s)", undocumented in tda.hlp, found via source header
+# comments -- both share the literal same syntax box text, another
+# instance of the project's recurring stale-doc pattern, this time
+# a full duplicate rather than a wrong keyword). Both fit the
+# "closest" relation (via linear programming) satisfying requested
+# structural properties (rel=: 1 reflexive, 2 symmetric, 3
+# antisymmetric, 4 transitive, 5 complete) to a directed, valued
+# graph. Requires a VALUED graph specifically ("Error: graph must be
+# valued" on an unvalued attempt, confirmed directly) -- gdd(gt=4).
+# Graph: edges 1->2, 2->3, 1->3 (a simple asymmetric relation, no
+# loops). Verified structurally: the symmetric fit for rel=2
+# correctly returns a genuinely symmetric matrix (the diagonal/
+# identity solution here, which trivially satisfies the symmetry
+# constraint) -- not independently re-derived as the LP's true
+# optimum, given the algorithm's own objective isn't documented
+# anywhere either.
+
+silent = -1;
+
+nvar(dfile=reledges.dat, I=c1, J=c2, V=c3);
+gdd(gt=4) = I,J,V;
+rfit(rel=2) = rfitout.txt;
+rfit(rel=1,4) = rfitout2.txt;
+rfit1(rel=2) = rfit1out.txt;

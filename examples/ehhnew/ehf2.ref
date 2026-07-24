@@ -1,0 +1,108 @@
+Read records:     761     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   2.5140201213269e+00  5.9124908048e-02          --       1 (1,1)
+    2   2.4988342356876e+00  1.7520167851e-02  1.0000e+00       2 (2,2)
+    3   2.4985337177775e+00  3.0418749575e-04  2.6307e-02       3 (3,3)
+    4   2.4985336105114e+00  1.0830711429e-07  9.3169e-04       4 (4,4)
+TDA. Analysis of Transition Data (6.4p). Fri Jul 24 21:39:00 2026
+Current memory: 390032 bytes.
+
+Reading command file: ehf2.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   6.0  c1
+  2 SN        3   4   3.0  c2
+  3 NSPL      3   4   3.0  c3
+  4 SPL       3   4   3.0  c4
+  5 ORG       3   4   3.0  c5
+  6 DES       3   4   3.0  c6
+  7 TS        3   4   6.2  c7
+  8 TF        3   4   6.2  c8
+  9 TSP       3   4   3.0  c9
+ 10 TFP       3   4   3.0  c10
+ 11 EDU       3   4   2.0  c11
+ 12 COHO2     3   4   1.0  c12
+ 13 COHO3     3   4   1.0  c13
+ 14 LFX       3   4   3.0  c14
+ 15 PNOJ      3   4   2.0  c15
+ 16 PRES      3   4   3.0  c16
+ 17 MarrDate  3   4   3.0  c17
+ 18 SEX       3   4   2.0  c18
+ 19 MARR      3   4   0.0  le(MarrDate,TS)
+
+Creating a new data matrix.
+Maximum number of cases: 761
+
+Using data file(s): rrdat.s1
+Free format. Separation character(s): default.
+Reading maximal 761 records.
+
+Reading data file: rrdat.s1
+Read records: 761 
+
+Created a new data matrix.
+Number of cases: 761
+Number of variables: 19
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 448284 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=ORG, des=DES, ts=TS, tf=TF
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       303       303.00       76.35        0.00      428.00    -
+ 1    0   1       458       458.00       38.53        0.00      350.00    -
+Sum               761       761.00
+
+Number of episodes: 761
+Successfully created new episode data.
+----------------------------------------------------------------------------
+rate(...)=2
+Transition rate models. Current memory: 448436 bytes.
+
+Model: Exponential
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 2
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Log-likelihood of exponential null model: -2514.02
+Changed scaling factor for log-likelihood: -0.001
+Using default starting values.
+
+Convergence reached in 4 iterations.
+Number of function evaluations: 5 (5,5)
+
+Maximum of log likelihood: -2498.53
+Norm of final gradient vector: 0.000108307
+Last absolute change of function value: 4.29316e-08
+Last relative change in parameters: 0.000931695
+
+Idx SN Org Des MT Variable      Coeff      Error    C/Error  Signif
+-------------------------------------------------------------------
+  1  1   0   1  A Constant    -4.2129     0.0639   -65.9430  1.0000
+  2  1   0   1  A MARR        -0.5212     0.0937    -5.5629  1.0000
+
+Log likelihood (starting values): -2514.0201 
+Log likelihood (final estimates): -2498.5336 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 468457 bytes.
+End of program. Fri Jul 24 21:39:00 2026

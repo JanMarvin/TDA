@@ -1,0 +1,2 @@
+#       starting  ending  sequence    last        total
+# Case      time    time    length  occurrence  occurrence

@@ -1,0 +1,14 @@
+# The mp*= capture options (t_matf): command results written into
+# matrices, using the commands that document them -- atab (mppar),
+# corr/cov (mpcov), and fmin (mplog + mppar + mpcov together).
+# Self-verifying: mpr repeats the printed results in matrix form, and
+# fmin's captured parameters are the known minimum (2, -1).
+nvar(dfile=nl.dat, X[10.4]=c1, Y[10.4]=c2);
+mfmt = 14.6;
+atab(x=0,1,2,3,4,5, mppar=AT) = X;
+mpr(AT);
+corr(mpcov=CR) = X,Y;
+mpr(CR);
+fmin(mina=4, xp=0.2,0.2, mppar=FP, mpcov=FC, mplog=FL) = (x - 2)^2 + (y + 1)^2;
+mpr(FP);
+mpr(FL);

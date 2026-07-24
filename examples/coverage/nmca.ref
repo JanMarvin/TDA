@@ -1,0 +1,44 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:51 2026
+Current memory: 390032 bytes.
+
+Reading command file: nmca.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X1        3   8   0.0  c1
+  2 X2        3   8   0.0  c2
+  3 R         3   8   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): nm.dat
+Free format. Separation character(s): default.
+
+Reading data file: nm.dat
+Read records: 4 
+
+Created a new data matrix.
+Number of cases: 4
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 414085 bytes.
+----------------------------------------------------------------------------
+nmca(...)=...
+Non-metric conjoint analysis. Current memory: 414085 bytes.
+
+Rank order variable: R
+Dimension  Variable   Categories
+     1      X1           2 :  1  2 
+     2      X2           2 :  1  2 
+
+Found: ( 1 , 2 ) ( 1 , 2 ) 
+
+Found 1 partial orders.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 434123 bytes.
+End of program. Fri Sep  4 15:06:51 2026

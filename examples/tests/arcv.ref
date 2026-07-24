@@ -1,0 +1,27 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: arcv.cf
+============================================================================
+arcd=tda.zad
+Reading archive description file: tda.zad
+ZOO data archive: tda.zoo
+Checking definition of files in archive.
+
+FN  Type  RLen  Records  NVar    Size    M  Name
+------------------------------------------------
+  1   1     24       20     3       480  1  adata.dat
+  2   2     40        3     0       120  1  avar.dat
+
+----------------------------------------------------------------------------
+arcv()
+Using variable description file: avar.dat
+# arcd = tda.zad;
+# nvar(
+# V1<5>[8.0] = A:V1, # [adata.dat] first variable
+# V2<5>[8.0] = A:V2, # [adata.dat] second variable
+# V3<5>[8.0] = A:V3, # [adata.dat] third variable
+# );
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 521989 bytes.
+End of program. Wed Sep  2 16:02:32 2026

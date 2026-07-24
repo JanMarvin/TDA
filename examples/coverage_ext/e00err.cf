@@ -1,0 +1,6 @@
+# e00err.cf -- t_e00.c coverage: sde00's error path (e00_err), reached
+# by truncating a real E00 file mid-record (the first 3 lines of the
+# same fixture e00single.cf reads in full) rather than
+# fabricating a malformed one from scratch.
+
+sde00() = truncated.e00;

@@ -1,0 +1,41 @@
+Read records:       5     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: id1a.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 XL        3   4   0.0  c1
+  2 XH        3   4   0.0  c2
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): id1a.dat
+Free format. Separation character(s): default.
+
+Reading data file: id1a.dat
+Read records: 5 
+
+Created a new data matrix.
+Number of cases: 5
+Number of variables: 2
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 398068 bytes.
+----------------------------------------------------------------------------
+iddf(...)=...
+Distribution of interval-valued discrete variable. Current memory: 398068 bytes.
+Range of variable: [1,3]
+Iterative calculation of self-consistent distribution.
+Max number of iterations: 50
+Tolerance for convergence: 0.001
+Convergence reached after 4 iterations.
+3 records written to: df
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 418097 bytes.
+End of program. Tue Jul 21 05:46:53 2026

@@ -1,0 +1,17 @@
+# clops.cf -- t_cl.c coverage: hcld's alg=2 (hierarchical divisive
+# clustering, "minimal diameter splits" -- the existing project test
+# only used the default alg=1) and clp's meth=4 (undocumented in
+# tda.hlp, which lists only meth=1/2/3; found via source: "Find N
+# points with maximal min-distance", a max-min diversity selection).
+# Reuses the same graph fixture (g.dat) and gdd setup as the
+# existing acl/hcld/clp tests.
+
+silent = -1;
+
+nvar(dfile=clops_g.dat, D=c1);
+gdd(opt=4) = D;
+hcld(alg=2, max=3) = hcldout.txt;
+clp(meth=1) = clpout1.txt;
+clp(meth=3) = clpout3.txt;
+clp(meth=4, nc=3) = clpout4.txt;
+scla() = sclaout.txt;

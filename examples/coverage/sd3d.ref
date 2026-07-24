@@ -1,0 +1,82 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:52 2026
+Current memory: 390032 bytes.
+
+Reading command file: sd3d.cf
+============================================================================
+sdnvar(...)
+Reading a spatial data file. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 SDID      3   4   0.0  c1
+  2 SDTyp     3   4   0.0  c2
+  3 SDN       3   4   0.0  c3
+  4 SDPtr     3   5  11.0  rd
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): shape.sd
+Free format. Separation character(s): default.
+Reading data file: shape.sd
+Read records: 4 
+
+Created a new data matrix.
+Number of cases: 4
+Number of variables: 4
+Missing values in data file(s): none.
+
+Number of points: 0
+Number of lines: 0
+Number of polygons: 4
+Number of unknown objects: 0
+
+Maximal number of points in spatial objects: 5
+Total number of points in spatial objects: 20
+Note: shape.sd remains opened for further access.
+
+X values. Minimum:         0.0000  Maximum:        11.0000
+Y values. Minimum:         0.0000  Maximum:         8.0000
+
+End of creating new variables. Current memory: 406513 bytes.
+----------------------------------------------------------------------------
+psfile=sd3.ps
+Opened new PostScript file: sd3.ps
+----------------------------------------------------------------------------
+psetup3(...)
+Creating a new 3d coordinate system.
+
+                 x axis           y-axis           z axis
+---------------------------------------------------------
+Begin            0.0000           0.0000           0.0000
+End             12.0000          10.0000           5.0000
+Center           6.0000           5.0000           2.5000
+
+Direction of projection. Longitude: 30  Latitude: 30 (degrees)
+Coordinates of projection plane.
+X direction:          -6.0000           8.6603  Size:  80.00 (mm)
+Y direction:          -7.6962           4.3301  Size:  65.63 (mm)
+Origin of PostScript coordinates: 100,100
+Scaling: 1,1
+Rotation (degrees): 0
+
+----------------------------------------------------------------------------
+sdplot31(...)
+Plot type 1 objects (3d). Current memory: 406513 bytes.
+Number of type 1 objects: 0
+PostScript output for 0 object(s) written to: sd3.ps
+----------------------------------------------------------------------------
+sdplot32(...)
+Plot type 2 objects (3d). Current memory: 406513 bytes.
+Number of type 2 objects: 0
+PostScript output for 0 object(s) written to: sd3.ps
+----------------------------------------------------------------------------
+sdplot33(...)
+Plot type 3 objects (3d). Current memory: 406513 bytes.
+Number of type 3 objects: 4
+PostScript output for 4 object(s) written to: sd3.ps
+----------------------------------------------------------------------------
+> Closed current PostScript file: sd3.ps
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426151 bytes.
+End of program. Fri Sep  4 15:06:52 2026

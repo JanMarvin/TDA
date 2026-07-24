@@ -1,0 +1,617 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 07:15:29 2026
+Current memory: 390032 bytes.
+
+Reading command file: mapshp_azi2.cf
+============================================================================
+sdshp(...)=shape
+Reading a shape file. Current memory: 390032 bytes.
+File: shape
+
+Reading the index file.
+Version: 1000
+Shape type: Polygon (5)
+Number of shapes: 100
+
+Bounding box X:         -84.32385254          -75.45697784
+Bounding box Y:          33.88199234           36.58964920
+
+Reading the dbf file.
+Number of records: 100
+Record length: 434
+Number of fields: 14
+
+Idx  Type  Length  D.Count  Name
+--------------------------------
+  1    0      24       15   AREA
+  2    0      24       15   PERIMETER
+  3    0      24       15   CNTY_
+  4    0      24       15   CNTY_ID
+  5    1      80        0   NAME
+  6    1      80        0   FIPS
+  7    0      24       15   FIPSNO
+  8    0       9        0   CRESS_ID
+  9    0      24       15   BIR74
+ 10    0      24       15   SID74
+ 11    0      24       15   NWBIR74
+ 12    0      24       15   BIR79
+ 13    0      24       15   SID79
+ 14    0      24       15   NWBIR79
+
+Creating the output data file: shape.sd
+Object-description records: 108. Data records: 2529
+Total number of records written to output file: 2637
+Note: 6 shapes contain more than one part.
+
+----------------------------------------------------------------------------
+sdnvar(...)
+Reading a spatial data file. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 SDID      3   4   0.0  c1
+  2 SDTyp     3   4   0.0  c2
+  3 SDN       3   4   0.0  c3
+  4 SDPtr     3   5  11.0  rd
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): shape.sd
+Free format. Separation character(s): default.
+Reading data file: shape.sd
+Read records: 108 
+
+Created a new data matrix.
+Number of cases: 108
+Number of variables: 4
+Missing values in data file(s): none.
+
+Number of points: 0
+Number of lines: 0
+Number of polygons: 108
+Number of unknown objects: 0
+
+Maximal number of points in spatial objects: 53
+Total number of points in spatial objects: 2529
+Note: shape.sd remains opened for further access.
+
+X values. Minimum:       -84.3239  Maximum:       -75.4570
+Y values. Minimum:        33.8820  Maximum:        36.5896
+
+End of creating new variables. Current memory: 407281 bytes.
+----------------------------------------------------------------------------
+psfile=mapazi2.ps
+Opened new PostScript file: mapazi2.ps
+----------------------------------------------------------------------------
+psetupg(...)
+Set up geographical coordinate system. Current memory: 407281 bytes.
+Azimuthal projection (orthographic).
+View: -80,35. Circular area. Size (rhem) = 90
+
+GDLonD=90 GDLonMin=-170 GDLonMax=10
+
+Creating a new 2d coordinate system.
+Size (width x height in mm): 150 x 150
+PostScript coordinates. X-axis: 100,525  Y-axis: 100,525
+Origin (PostScript x and y coordinates): 100,100
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:          -1.0000,           1.0000 
+User coordinates Y axis:          -1.0000,           1.0000 
+----------------------------------------------------------------------------
+sdpgrat(...)
+Graticule for geographical coordinate system. Current memory: 407281 bytes.
+Drawing bounds of selected region.
+Drawing grid lines (meridians).
+
+geodesic: lona=-90 35 lonb=-90 80
+ax=5.01586e-17 -0.819152 0.573576 apx=-0.142244 0.00713802 0.989806
+rx=0.142244 -0.806707 0.573576
+nx=0.707107 4.32978e-17 0
+cosphi=0.142244
+b=0.142244
+la=1 lb=1
+
+ra=89.5868 rb=134.587
+apz=0.989806 bpz=0.704946
+
+r1=225.413 r2=270.413 b=0.142244
+
+geodesic: lona=90 35 lonb=90 80
+ax=5.01586e-17 0.819152 0.573576 apx=0.142244 0.932555 -0.331826
+rx=0.142244 -0.806707 0.573576
+nx=-0.707107 4.32978e-17 0
+cosphi=-0.142244
+b=0.142244
+la=1 lb=0
+
+ra=19.5868 rb=25.4132
+apz=-0.331826 bpz=0.424779
+
+r1=0 r2=25.4132 b=0.142244
+
+geodesic: lona=-90 35 lonb=-90 -80
+ax=5.01586e-17 -0.819152 0.573576 apx=-0.142244 0.00713802 0.989806
+rx=0.142244 -0.806707 0.573576
+nx=-0.906308 -5.54953e-17 0
+cosphi=-0.142244
+b=0.142244
+la=1 lb=0
+
+ra=89.5868 rb=25.4132
+apz=0.989806 bpz=-0.424779
+
+r1=270.413 r2=360 b=0.142244
+
+geodesic: lona=-80 35 lonb=-80 80
+ax=0.142244 -0.806707 0.573576 apx=-2.77556e-17 0 1
+rx=0.142244 -0.806707 0.573576
+nx=0.696364 0.122788 -3.46945e-18
+cosphi=1.68119e-17
+b=1.68119e-17
+la=1 lb=1
+
+ra=90 rb=135
+apz=1 bpz=0.707107
+
+r1=225 r2=270 b=1.68119e-17
+
+geodesic: lona=100 35 lonb=100 80
+ax=-0.142244 0.806707 0.573576 apx=1.11022e-16 0.939693 -0.34202
+rx=0.142244 -0.806707 0.573576
+nx=-0.696364 -0.122788 -3.46945e-18
+cosphi=-1.20571e-16
+b=1.20571e-16
+la=1 lb=0
+
+ra=20 rb=25
+apz=-0.34202 bpz=0.422618
+
+r1=0 r2=25 b=1.20571e-16
+
+geodesic: lona=-80 35 lonb=-80 -80
+ax=0.142244 -0.806707 0.573576 apx=-2.77556e-17 0 1
+rx=0.142244 -0.806707 0.573576
+nx=-0.892539 -0.157379 -3.46945e-18
+cosphi=-2.19571e-18
+b=2.19571e-18
+la=1 lb=1
+
+ra=90 rb=25
+apz=1 bpz=-0.422618
+
+r1=270 r2=360 b=2.19571e-18
+
+geodesic: lona=-70 35 lonb=-70 80
+ax=0.280166 -0.769751 0.573576 apx=0.142244 0.00713802 0.989806
+rx=0.142244 -0.806707 0.573576
+nx=0.664463 0.241845 0
+cosphi=-0.142244
+b=0.142244
+la=0 lb=0
+
+ra=89.5868 rb=134.587
+apz=0.989806 bpz=0.704946
+
+r1=89.5868 r2=134.587 b=0.142244
+
+geodesic: lona=110 35 lonb=110 80
+ax=-0.280166 0.769751 0.573576 apx=-0.142244 0.932555 -0.331826
+rx=0.142244 -0.806707 0.573576
+nx=-0.664463 -0.241845 0
+cosphi=0.142244
+b=0.142244
+la=0 lb=1
+
+ra=19.5868 rb=25.4132
+apz=-0.331826 bpz=0.424779
+
+r1=334.587 r2=360 b=0.142244
+
+geodesic: lona=-70 35 lonb=-70 -80
+ax=0.280166 -0.769751 0.573576 apx=0.142244 0.00713802 0.989806
+rx=0.142244 -0.806707 0.573576
+nx=-0.851651 -0.309976 0
+cosphi=0.142244
+b=0.142244
+la=0 lb=1
+
+ra=89.5868 rb=25.4132
+apz=0.989806 bpz=-0.424779
+
+r1=0 r2=89.5868 b=0.142244
+
+geodesic: lona=-60 35 lonb=-60 80
+ax=0.409576 -0.709406 0.573576 apx=0.280166 0.0283352 0.959533
+rx=0.142244 -0.806707 0.573576
+nx=0.612372 0.353553 1.38778e-17
+cosphi=-0.280166
+b=0.280166
+la=0 lb=0
+
+ra=88.3085 rb=133.309
+apz=0.959533 bpz=0.698528
+
+r1=88.3085 r2=133.309 b=0.280166
+
+geodesic: lona=120 35 lonb=120 80
+ax=-0.409576 0.709406 0.573576 apx=-0.280166 0.911357 -0.301553
+rx=0.142244 -0.806707 0.573576
+nx=-0.612372 -0.353553 6.93889e-18
+cosphi=0.280166
+b=0.280166
+la=0 lb=1
+
+ra=18.3085 rb=26.6915
+apz=-0.301553 bpz=0.431197
+
+r1=333.309 r2=360 b=0.280166
+
+geodesic: lona=-60 35 lonb=-60 -80
+ax=0.409576 -0.709406 0.573576 apx=0.280166 0.0283352 0.959533
+rx=0.142244 -0.806707 0.573576
+nx=-0.784886 -0.453154 1.38778e-17
+cosphi=0.280166
+b=0.280166
+la=0 lb=1
+
+ra=88.3085 rb=26.6915
+apz=0.959533 bpz=-0.431197
+
+r1=0 r2=88.3085 b=0.280166
+
+geodesic: lona=-50 35 lonb=-50 80
+ax=0.526541 -0.627507 0.573576 apx=0.409576 0.0629475 0.910102
+rx=0.142244 -0.806707 0.573576
+nx=0.541675 0.454519 0
+cosphi=-0.409576
+b=0.409576
+la=0 lb=0
+
+ra=86.0434 rb=131.043
+apz=0.910102 bpz=0.68805
+
+r1=86.0434 r2=131.043 b=0.409576
+
+geodesic: lona=130 35 lonb=130 80
+ax=-0.526541 0.627507 0.573576 apx=-0.409576 0.876745 -0.252122
+rx=0.142244 -0.806707 0.573576
+nx=-0.541675 -0.454519 0
+cosphi=0.409576
+b=0.409576
+la=0 lb=1
+
+ra=16.0434 rb=28.9566
+apz=-0.252122 bpz=0.441675
+
+r1=331.043 r2=360 b=0.409576
+
+geodesic: lona=-50 35 lonb=-50 -80
+ax=0.526541 -0.627507 0.573576 apx=0.409576 0.0629475 0.910102
+rx=0.142244 -0.806707 0.573576
+nx=-0.694272 -0.582563 0
+cosphi=0.409576
+b=0.409576
+la=0 lb=1
+
+ra=86.0434 rb=28.9566
+apz=0.910102 bpz=-0.441675
+
+r1=0 r2=86.0434 b=0.409576
+
+geodesic: lona=-40 35 lonb=-40 80
+ax=0.627507 -0.526541 0.573576 apx=0.526541 0.109923 0.843013
+rx=0.142244 -0.806707 0.573576
+nx=0.454519 0.541675 0
+cosphi=-0.526541
+b=0.526541
+la=0 lb=0
+
+ra=82.5709 rb=127.571
+apz=0.843013 bpz=0.673828
+
+r1=82.5709 r2=127.571 b=0.526541
+
+geodesic: lona=140 35 lonb=140 80
+ax=-0.627507 0.526541 0.573576 apx=-0.526541 0.829769 -0.185034
+rx=0.142244 -0.806707 0.573576
+nx=-0.454519 -0.541675 0
+cosphi=0.526541
+b=0.526541
+la=0 lb=1
+
+ra=12.5709 rb=32.4291
+apz=-0.185034 bpz=0.455897
+
+r1=327.571 r2=360 b=0.526541
+
+geodesic: lona=-40 35 lonb=-40 -80
+ax=0.627507 -0.526541 0.573576 apx=0.526541 0.109923 0.843013
+rx=0.142244 -0.806707 0.573576
+nx=-0.582563 -0.694272 0
+cosphi=0.526541
+b=0.526541
+la=0 lb=1
+
+ra=82.5709 rb=32.4291
+apz=0.843013 bpz=-0.455897
+
+r1=0 r2=82.5709 b=0.526541
+
+geodesic: lona=-30 35 lonb=-30 80
+ax=0.709406 -0.409576 0.573576 apx=0.627507 0.167835 0.760307
+rx=0.142244 -0.806707 0.573576
+nx=0.353553 0.612372 0
+cosphi=-0.627507
+b=0.627507
+la=0 lb=0
+
+ra=77.5518 rb=122.552
+apz=0.760307 bpz=0.656295
+
+r1=77.5518 r2=122.552 b=0.627507
+
+geodesic: lona=150 35 lonb=150 80
+ax=-0.709406 0.409576 0.573576 apx=-0.627507 0.771858 -0.102327
+rx=0.142244 -0.806707 0.573576
+nx=-0.353553 -0.612372 0
+cosphi=0.627507
+b=0.627507
+la=0 lb=1
+
+ra=7.5518 rb=37.4482
+apz=-0.102327 bpz=0.47343
+
+r1=322.552 r2=360 b=0.627507
+
+geodesic: lona=-30 35 lonb=-30 -80
+ax=0.709406 -0.409576 0.573576 apx=0.627507 0.167835 0.760307
+rx=0.142244 -0.806707 0.573576
+nx=-0.453154 -0.784886 0
+cosphi=0.627507
+b=0.627507
+la=0 lb=1
+
+ra=77.5518 rb=37.4482
+apz=0.760307 bpz=-0.47343
+
+r1=0 r2=77.5518 b=0.627507
+
+geodesic: lona=-20 35 lonb=-20 80
+ax=0.769751 -0.280166 0.573576 apx=0.709406 0.234923 0.664495
+rx=0.142244 -0.806707 0.573576
+nx=0.241845 0.664463 0
+cosphi=-0.709406
+b=0.709406
+la=0 lb=0
+
+ra=70.5296 rb=115.53
+apz=0.664495 bpz=0.635985
+
+r1=70.5296 r2=115.53 b=0.709406
+
+geodesic: lona=160 35 lonb=160 80
+ax=-0.769751 0.280166 0.573576 apx=-0.709406 0.704769 -0.00651511
+rx=0.142244 -0.806707 0.573576
+nx=-0.241845 -0.664463 -6.93889e-18
+cosphi=0.709406
+b=0.709406
+la=0 lb=1
+
+ra=0.529645 rb=44.4704
+apz=-0.00651511 bpz=0.49374
+
+r1=315.53 r2=360 b=0.709406
+
+geodesic: lona=-20 35 lonb=-20 -80
+ax=0.769751 -0.280166 0.573576 apx=0.709406 0.234923 0.664495
+rx=0.142244 -0.806707 0.573576
+nx=-0.309976 -0.851651 0
+cosphi=0.709406
+b=0.709406
+la=0 lb=1
+
+ra=70.5296 rb=44.4704
+apz=0.664495 bpz=-0.49374
+
+r1=0 r2=70.5296 b=0.709406
+
+geodesic: lona=-10 35 lonb=-10 80
+ax=0.806707 -0.142244 0.573576 apx=0.769751 0.309149 0.558489
+rx=0.142244 -0.806707 0.573576
+nx=0.122788 0.696364 3.46945e-18
+cosphi=-0.769751
+b=0.769751
+la=0 lb=0
+
+ra=61.0334 rb=106.033
+apz=0.558489 bpz=0.613513
+
+r1=61.0334 r2=106.033 b=0.769751
+
+geodesic: lona=170 35 lonb=170 80
+ax=-0.806707 0.142244 0.573576 apx=-0.769751 0.630543 0.099491
+rx=0.142244 -0.806707 0.573576
+nx=-0.122788 -0.696364 3.46945e-18
+cosphi=0.769751
+b=0.769751
+la=1 lb=1
+
+ra=8.96655 rb=53.9666
+apz=0.099491 bpz=0.516212
+
+r1=306.033 r2=351.033 b=0.769751
+
+geodesic: lona=-10 35 lonb=-10 -80
+ax=0.806707 -0.142244 0.573576 apx=0.769751 0.309149 0.558489
+rx=0.142244 -0.806707 0.573576
+nx=-0.157379 -0.892539 3.46945e-18
+cosphi=0.769751
+b=0.769751
+la=0 lb=1
+
+ra=61.0334 rb=53.9666
+apz=0.558489 bpz=-0.516212
+
+r1=0 r2=61.0334 b=0.769751
+
+geodesic: lona=0 35 lonb=0 80
+ax=0.819152 0 0.573576 apx=0.806707 0.388258 0.44551
+rx=0.142244 -0.806707 0.573576
+nx=0 0.707107 0
+cosphi=-0.806707
+b=0.806707
+la=0 lb=0
+
+ra=48.9281 rb=93.9281
+apz=0.44551 bpz=0.589563
+
+r1=48.9281 r2=93.9281 b=0.806707
+
+geodesic: lona=180 35 lonb=180 80
+ax=-0.819152 1.00317e-16 0.573576 apx=-0.806707 0.551434 0.21247
+rx=0.142244 -0.806707 0.573576
+nx=-8.65956e-17 -0.707107 0
+cosphi=0.806707
+b=0.806707
+la=1 lb=1
+
+ra=21.0719 rb=66.0719
+apz=0.21247 bpz=0.540162
+
+r1=293.928 r2=338.928 b=0.806707
+
+geodesic: lona=0 35 lonb=0 -80
+ax=0.819152 0 0.573576 apx=0.806707 0.388258 0.44551
+rx=0.142244 -0.806707 0.573576
+nx=0 -0.906308 0
+cosphi=0.806707
+b=0.806707
+la=0 lb=1
+
+ra=48.9281 rb=66.0719
+apz=0.44551 bpz=-0.540162
+
+r1=0 r2=48.9281 b=0.806707
+Drawing grid lines (parallels).
+mapgrid_lat: GDPROJ=20 GDPROJA=3
+----------------------------------------------------------------------------
+sdpmap(...)
+Plot in geographical coordinate system. Current memory: 407281 bytes.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+Projection not supported.
+
+Number of type 1 objects: 0
+Number of type 2 objects: 0
+Number of type 3 objects: 108
+PostScript output written to: mapazi2.ps
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426151 bytes.
+End of program. Wed Sep  2 07:15:29 2026

@@ -1,0 +1,157 @@
+section,our_box,caption,manual_box,verdict,note
+3.3.3,1,rrdat.1 read and named,Box 3,match,first nine records identical (ID NOJ TS TF SEX TI TB TE TMAR PRES PRESN EDU); Box 1 (raw file listing) and Box 2 (variable list) are the same content in another form; Box 4 (ed1.cf) is what tda_rrdat() derives
+3.3.3,2,"Episode data, single destination",Box 5,match,"142 / 458 episodes, sums 600; our table adds mean duration and TS/TF range columns TDA prints in its own episode table"
+3.3.3,3,"Episode data, four destinations",Box 7,match,"142 / 84 / 219 / 155, ed2.cf's gt coding; Box 6 (ed2.cf) is tda_rrdat(states = 4)"
+5.1.4.1,4-9,Elementary matrix commands,none,no manual box,the manual gives syntax only for mnrow..mag; our boxes show each command on a small matrix
+5.1.4.2,10,"msort, msort1, mrank",none,no manual box,syntax only in the manual
+5.1.4.3,11,"mcent, mstand, mscal1",none,no manual box,syntax only in the manual
+5.1.4.4,12,The three norms,none,no manual box,syntax only in the manual
+5.1.4.5,13,"minvd, minvs",none,no manual box,minvd/minvs have syntax only; our small examples
+5.1.4.5,14,mginv and A B A = A,Box 1,match,"Bg equals the manual's B to 10 digits (-0.55 -0.225 0.25 0.125 0 0 ...), ABA = A"
+5.1.4.6,15,mchol,none,no manual box,syntax only
+5.1.4.7,16,mls,Box 1,match,"B = (1,1); rank 2; our residual 5.6e-16 against the manual's 4.44e-16 is machine rounding of zero"
+5.1.4.8,17,mlse,Box 1,match,"x = (0.4087,0.4302,0.6246) after the byrow fix"
+5.1.4.9,18,mlsi,Box 1,match,"x = (1,1); mlsi has no residual, hence NA"
+5.1.4.11,19,mev and mevs,Boxes 1-3,explained difference,"mev on the defective 4x4 example: eigenvalues agree to 7 digits, the repeated-eigenvalue vectors differ from the 2002 box (machine dependent); mevs 3x3 example (Box 3) matches; TDA 6.4p orders mevs descending, the manual ascending"
+5.1.4.12,20,msvd1 against mevs,Box 2,match,"Q, U, V identical to 10 digits; mevs E descending (TDA 6.4p) where the box shows ascending -- same values"
+5.1.4.13,21,mlp with one equality,Box 1,match,"x = (1,1), y = (1,0)"
+5.1.4.14,22,"mproc, mnum",none,no manual box,syntax only
+5.2.2,23,evalf,none,no manual box,syntax only
+5.2.4,24,TDA's own random numbers,none,no manual box,syntax only; tda_rng is verified elsewhere against ed4/ehd4
+5.2.6.6,25,change and cntch,Box 1,match,"record mode 7 changes, block mode 3/2/4 -- both tables identical"
+5.2.6.7,26,gcnt grec gmean gstd,Box 1,match,all six rows identical
+5.3.3,59,evalf2 (deriv1.cf),Box 1,match,"value 50, gradient (25,20), Hessian ((0,10),(10,4))"
+5.4.1,60,integrate (int1.cf),Box 1,match,"vignette example changed to the manual's int1.cf: sqrt(x) on 0..1, approximation 0.666667, 43 function calls"
+5.4.2,29,"int() operator (int2, int3)",Box 1,match,"int2: 0.6667 (TDA's 0.6666669 at rel. error 1e-4, the manual prints 0.6667); int3: 13.5"
+5.5.1,62,sma: ds3.cf,Box 3,match,all three output files identical (1.0/3.5/5.75/6.25/6.0; 1.5/...; 2.0/3.5625/5.3125/6.0625/6.0625)
+5.5.2,63,smd: ds4.cf,Box 2 + figure,match (vignette reworked),"previous box used invented data; now ds4.cf's three smoothers via the smd operator, plotted as the manual's figure; TDA's own random numbers so the data are the manual's"
+5.5.3,64,spl: ds5.cf,Box 2 + figure,match (vignette reworked),"previous box used invented data; now the sine-plus-noise of ds5.cf with sig = 1, plotted"
+5.6.1,65,fmin1.cf,Box 2,match,"x = 5, y = -6, minimum 0 in 2 iterations"
+5.6.1,66,fmin2.cf,Box 3,match (estimate),"x = 51 as in the box; the standard error differs (0.0707 in fmin from the Hessian, 2.93 in freg as a regression error) -- a different error definition, not a different fit"
+6.2.1,61,dstat on ds1.dat,Box 3,match,min/max/mean/sd/sum for X1..X4 identical; columns now named X1..X4 as in the manual
+6.2.2,62,gdf: exact data,Box 3,match,F 0.1667..1.0; survivor and expected-value forms shown too
+6.2.2,63,gdf: right censored,Boxes 4-5,match,"F 0.1667/0.375/0.6875/1.0; expected 3/4.5/4.125/1/4/5 (DELTA passed negated, as the vignette says)"
+6.2.3,64,quant,none,no manual box,6.2.3 has no example; our box uses R's cars
+6.2.4,65,freq and freq2,Boxes 2-3,match,"joint table of X1,X2,X3 (X4 removed -- it is not in ds2.cf) and the freq2 X2 x X1 table with all four percentages"
+6.2.5,66,atab,Box 1,match,"classes -1..2.5 by 0.5, frequencies 3/1, means; column names now TDA's own (lower upper count weighted mean_X3 mean_X4)"
+6.2.6,67,corr,Box 1,match,correlation matrix identical (0.4472 0.7746 -0.8241 ...)
+6.2.7,41,freq2 contingency,Box 1,match,"df 3, chi-square 4.0 / 5.5452, phi 1, Cramer's V 1, C 0.7071, lambdas ..."
+6.2.8,42-45,"scatter, sunflower, lowess",Boxes 1 (scplot1-3) + figures,match,"same generator (X = rd(0,3), Y = sin(X) + rd, 200 cases), same options (s=5 fs=1; opt=2 nn=15,10 fss=3; opt=3 lowess); plot sizes set to the manual's 90 x 50 mm"
+6.2.9,82,histogram (dh1.cf),Box 1 + figure,match,"classes 0,2,4,6,8 on dh1.dat"
+6.2.10,83,density (dh2.cf),Box 1 + figure,not covered,"a plot, no estimates in its .ref to compare"
+6.4.2,75,ineq,Box 1,match,cases/min/max/mean/sd/coefficient of variation/Gini identical for X1..X4 (X3 has one valid case)
+6.4.3,76,segr,Box 3,match,"classes 2/7/3/2, cases, group counts, D, variance ratio, Gini all as printed"
+6.5.1,50,life table 30-month intervals,Boxes 3-4,match,"all 15 rows: entering/censored/exposed/events and survivor/std.err/density/rate identical (0.61945 0.02006 0.00691 ...); tables now shown in full, not head()"
+6.5.1,51,estimate as a data frame,Box 4 (second part),match,same rows with confidence limits added
+6.5.2,87,ple with case weights (ple1.cf),Box 4,match,both groups' full tables (ple.1) identical; now shown in full
+6.5.2,89,ple2.cf: one destination,Box 5,match,events 2/5/9/3/10/9... per time as in ple.2 (box added)
+6.5.2,,ple3.cf: four destinations + plot,Example 3 / Figure 1,not covered,"only 2 of 6 reference values appear in any box: not reproduced, or reproduced in a form that shares no numbers"
+6.5.3,83,quantiles (qo=),Box 1,match,all 15 rows of the survivor-order quantiles after the qo= fix
+6.5.4,93,ple6.cf comparison,Box (test table),match,3.1227 / 2.6510 / 2.9767 / 3.0014 after the rdataframe WSum fix
+6.5.4,85,men and women + bands,figure,vignette extra,"the job data by sex, for the plot that follows"
+6.5.5,96,epsdat (ed5.cf),Box 2,match,state counts per time identical; Total/Missing columns from the file header
+6.6.1,88,seqlg,Box 1,match,start/end/length per case identical (0 7 8; 0 7 8; 1 7 7; 0 5 6; 0 7 8) plus gap columns
+6.6.2,89,seqgc,Box 1,match,SLEN NDS NEV DUR1 DUR3 DUR7 ... per case identical (8 3 4 1 4; 8 3 4 2 3; 7 2 2 4 2; 6 2 1 2 4; 8 3 4 1 4)
+6.6.3,90,seqsd and seqen,Box 1 (seqsd),match,NST1/NST3/NST7/valid/nmiss/total per time identical; seqen (entropy) has no box in the manual
+6.6.4,91,seqpm,Box 1 (output),match,"cases 1,4,5: length 8/6/8, matches 5 2 1 / 2 2 1 / 5 2 1"
+6.7.2.2,101,seqm (seqm1.cf),6.7.2.3 Box 4,match,distances 2 2 2 4 2 2 between the four sequences of seqm.d1
+6.7.2.2,65,alignment behind the distance,6.7.2.3 Boxes 5-6,match,s=1 distance by time (0 0 2 2 2 2 ...) and s=2 (lcs) attributes
+6.7.2.3,66,substitution cost matrix (seqm2/seqm3),Box 12,match,the DP matrix of pair 2_1 identical (44 numbers)
+6.7.2.3,,seqm2.cf test output (Box 9),Box 9,not covered,"the tst=2 alignment listing; not wrapped, recorded as not covered in an earlier session"
+6.7.2.4,104,indel costs (seqm4.cf),Box 3,match,"three matrices identical: default 2/4 2/6 4 2/8 6 4 2; icost=1,0.5; icost=1,0"
+6.7.2.5,105,data-based substitution costs (seqm5.cf),Box (seqm5.d),match,1.3333 2.6667 4.0 5.3333 ... as seqm5.d
+6.9.1,,lsreg (lsreg1.cf),Box 3,match,"intercept -143.0269 (32.2746), Height 3.8990 (0.5161); R2 0.7705, adjusted 0.757, F 57.0763; the manual also prints norm of residuals 46.287 and residual variance 126.029, which are sqrt/ratio of the same sums"
+6.9.1.2,,equality and inequality constraints (lsreg2.cf),Box 3,match,"X1 = 3, X2 = 3 with the constraints, sum of squared residuals 33"
+6.9.1.3,,dummy variables (lsreg3.cf),Box 2,match,"Intercept 1.0452, Y 7.778e-4, Y2 -1.332e-8, NE -0.7874, NC -0.0393, SO 0.4297, WE 0.3970; R2 0.9739, adj 0.9708; the dgroup rows are ordered alphabetically by R, by the group list in TDA"
+6.10.1,100,l1reg (l1reg4.cf),Box 4,match,"32.7143 (16.8621), 1.5952 (0.9462), -0.0952 (0.5537)"
+6.10.2,73-74,npreg + plot,Box 2 + figure,match (same generator),"the manual's npreg1.cf: X = rd, Y = sin(2 pi X^3)^3 + 0.32 rdn, 256 cases, quartic kernel bandwidth 0.1; the plot is the manual's figure (no numeric box)"
+6.11.2,155,fml: exponential model (fml1.cf),Box 2,match (final),"a0 -5.0114 (0.0843), a1 0.5341, a2 0.6738, a3 0.5065; log likelihood -2475.44 final estimates identical; only the starting log likelihood differs (TDA reports the value at its own default starting parameters, ours at the ones tda_qreg/tda_rate begins from). Same in fml1: the final matches, the start does not."
+6.12.2,113,binary logit (qr1.cf),Boxes 3, 5, 6,match,"-3.2246 (0.8861), 5.9702 (1.4492), logLik -37.11; standardized coefficients and the prediction table of Box 6 identical"
+6.12.2,77,probit,Box 4,match,"-1.8127 (0.4493), 3.4181 (0.7455), logLik -37.2804"
+6.12.2.1,"113,116",grouped logit with and without a random effect (qr5.cf),Boxes 3-4,match,without: -0.5582 0.1459 1.3182 -0.7781 (logLik -54.937); with gam: -0.5481 0.0965 1.3369 -0.8104 gam 0.2368 (logLik -53.7562)
+6.12.3,117,ordinal logit and probit (qr2.cf),Boxes 3-5,match (final),"logit: alphas -1.7466/-3.1531/-4.2253, X1 1.0121, X2 1.3100, logLik -24.4642; the prediction table (Box 5) identical; probit (Box 4) -1.0868/-1.9059/-2.5413, 0.6122, 0.7563 final estimates identical; only the starting log likelihood differs (TDA reports the value at its own default starting parameters, ours at the ones tda_qreg/tda_rate begins from). Same in fml1: the final matches, the start does not."
+6.12.3,80,ordinal logit as a likelihood,Box 2 (qr2a.cf?),match,reaches the same estimates and log likelihood as the qreg fit (-24.4642)
+6.12.4,119,multinomial logit (qr3.cf),Box 2,match,all eight coefficients and logLik -826.748
+6.12.4,120,multinomial logit over lvl() (qr4.cf),Boxes 4-5,match,"Z1 -0.3568 (0.0776), logLik -33.3581; prediction table identical"
+6.12.5,121,multivariate probit (qr6.cf),Box 2,match,logLik -828.232 and all coefficients; the ten constrained sigmas zero as in the box
+6.12.5,122,multivariate probit over lvl() (qr7.cf),Box 4,match,"Z1 -0.1787, Sigma 2,1 0.4134, logLik -34.4166"
+6.14.1,123,Poisson regression (cd1.cf),Boxes 3-4,match,"all ten coefficients, the constrained fit with blogs = 1"
+6.14.2,124,negative binomial (cd2.cf),Box 2,match (with a caveat),coefficients as printed; sig is unidentified (error two orders larger than the value) and its final digits differ (-14.77 box / -15.06 here); said in the vignette
+6.15.2.1,89,"glm Gaussian identity and log (glm1, glm2)",glm1 Box 2; glm2 Box 4,match,"identity link = lsreg1's fit; log link 3.0128 (0.0020), 0.9958 (0.0008), deviance 19.9937"
+6.15.2.2,90,"binomial models (glm1 qr1, glm3, glm4)",glm3 Box 2; glm4 Box 5,match,"logit -3.2246/5.9702; glm3 (probit with trials) -4.8869 (0.6429), 3.1035 (0.3877); the hand-written link gives the same"
+6.15.2.3,89,"Poisson family (glm5, glm6)",glm5 Box 3; glm6 Box 5,match,0.8673 / 1.1754; the offset model -6.4059 ... with LOGS = 1
+6.15.2.4,90,"Gamma (glm7, glm8)",Boxes 2, 3, 5,match,log link 0.9620 (0.0624); reciprocal 1.0082/1.0223; glm8a's two fits
+6.15.2.5,129,inverse Gaussian (glm9.cf),Box 2,match,1.07 / 0.81 (the box prints two digits at the column cut)
+6.16.1,94,freg (Gallant),Box 2,match,"a1 -0.0259 a2 1.0157 a3 -1.1157 a4 -0.5049, errors, minimum 0.0305, 9 iterations"
+6.17.2.1,"131,132",rt1.cf,Boxes 2-3,match,"-5.0114 (0.0843) 0.5341 0.6738 0.5065, logLik -2475.44, 5 iterations"
+6.17.2.1,"131,132",residuals and prate (rt1.cf),Boxes 6-7,match,generalized residuals rows 1-4 and 595-600 identical; rate table 0(5)100 identical (survivor 0.8972 0.8050 ...)
+6.17.2.1,134,"rt1m.cf: three transitions, relative risks",Box 5 (+ rt1m coefficient box),match,episodes 85/218/155 with the ge coding; coefficients -6.3412 0.3012 0.4999 -0.0957 / -5.7548 ...; relative risks 1.3514 1.6485 0.9088 ...
+6.17.2.2,135,piecewise constant (rt2.cf),Box 1 + rt2.ref,match,period table 0-12 ... 96-; Period-1 -5.2070 (0.1520) ... COHO2 0.4367
+6.17.2.2,136,rt2c.cf constraints,rt2c.ref,fixed,"the vignette had invented constraints (b1..b5, b6=b7, b8=b9); now all nine periods equal as rt2c.cf, which gives rt1's -5.0114 back"
+6.17.2.3,137,period-specific effects (rt3.cf),Box 2,match,137 numbers of Box 2 reproduce (Period-1 -5.0470 ... COHO2 by period 0.4474 0.5783 0.4240 ...)
+6.17.3.1,103,"polynomial rates (rt4, rt5)",Boxes 1-2,match,"type I: -4.4325 0.2452 0.3411 0.3175, Beta-1 -7.6085e-5, Beta-2 1.4274e-7, logLik -2454.04; type II as rt5.ref"
+6.17.3.2,140,Gompertz-Makeham (rt6.cf),rt6.ref (manual box is the syntax),match,B: -4.5114 0.4595 0.4147 0.2860; C: -0.0060 -0.0016 0.0011 0.0026 -- as rt6.ref; the manual's box for this section shows only the command
+6.17.3.3,142,Weibull (rt7.cf),Box 1,match,"-5.0055 0.5339 0.6671 0.5191, B -0.0700, logLik -2473.5432"
+6.17.3.4,144,sickle (rt8.cf),rt8.ref,match,"-7.0645 0.3926 0.4363 0.4232, B 3.7046"
+6.17.3.5,146,log-logistic (rt9.cf),Box 1,match,"-4.3546 0.4792 0.5927 0.3989, B 0.3307, logLik -2442.3017"
+6.17.3.6,148,log-normal (rt12.cf),rt12.ref,match,"4.3688 -0.4608 -0.6110 -0.3821, B 0.2036, logLik -2437.52"
+6.17.3.7,150,generalized gamma (rt13.cf),rt13.ref,match,"with kgam = 1 (default) the generalized gamma is the Weibull reparametrised: 5.0055 ..., B 0.0700, logLik -2473.54 -- identical to TDA's own rt13.ref"
+6.17.3.8,153,inverse Gaussian (rt14.cf),Box 1,match,"0.0007 0.0067 0.0088 0.0093, B -1.7092, logLik -2434.3446"
+6.17.5.1,112,frml1.cf exponential,Box 2,match,-5.0114 0.5341 0.6738 0.5065
+6.17.5.1,157,frml2.cf / frml2c.cf piecewise by hand,Box 4 + frml2.ref,added and match,"the vignette lacked frml2; now TDA's own likelihood block: a1..a9 -5.2070 ... b 0.4367 0.5162 0.4336, and with the constraints rt1's values"
+6.17.5.1,"134,156",frml1m.cf three competing rates,frml1m.ref,match,a10..a33 identical (-6.3412 ... 1.1156)
+6.17.5.1,111,frml3/frml4 Weibull and log-normal,Boxes 5-6 + refs,match,5.0055 ... b0 -0.0700 (frml3); 4.3688 ... b0 0.2036 (frml4)
+6.17.5.1,159,frml5.cf generalized gamma,Box 7,added and match,kk = 1 reproduces the Weibull: 5.0055 -0.5339 -0.6671 -0.5191 0.0700
+6.17.5.2,160,Hernes model (frml8.cf),Box 2,match,"b 1.5856 (0.0378), l 3.8236, s -1.8379"
+6.17.5.3,"157,161",Coale-McNeil (frml9.cf),Box 2,match,"l -3.0653, m 2.8902, s 1.8505; three starting values given so TDA does not warn"
+6.17.6.2,153,discrete-time logistic (rt20),rt20.ref,match,-5.0056 0.5402 0.6822 0.5133 (the manual's box in 6.17.6.2 shows the command only)
+6.17.6.3,154,complementary log-log (rt21),Box 1,match,-5.0081 0.5371 0.6773 0.5094
+6.17.7.1,164,Cox pl1.cf and pl1m.cf,Boxes 3-4 + pl1m.ref,match,"0.3797 0.4585 0.4078, logLik -2565.4257; three transitions on the ge coding as pl1m.ref"
+6.17.7.2,,time-dependent covariate pl2.cf,Box 2,not covered,only 2 of 14 reference values appear in any box: not reproduced
+6.17.7.3,118,episode splitting pl4/pl5,pl5.ref (the manual's boxes are the command files),match,"761 pieces; without MARR the pl1 values, with MARR the pl2 values"
+6.17.7.4,167,proportionality test pl6.cf,Box 2,match,0.3816 0.4381 0.5840 WTEST 0.2196
+6.17.7.4,"164,168",pl7.cf within periods,Box 4,match,G1 -0.2666; goodness of fit 10.2351 on 3 df (after the tp= fix)
+6.17.7.4,121,pl8/pl8m goodness of fit,Box 5,match,37.1084/24/0.9573 and the three transitions 15.9066 25.5454 38.5791
+6.17.7.5,170,stratified Cox pl9.cf,Box 2,match,"pl9.cf is a grouped model (grp = G1,G2 on COHO2/COHO3); this box is the episode splitting of pl4/pl5 and never reproduced it -- the tag was wrong, not the numbers"
+6.17.7.6,167,baseline rate pl10.cf,Box 2,match,Time/Events/Censored/RiskSet/Surv/CumRate rows identical
+6.18.2,168,"seq_info, seqev, seqevd (seq8.cf)",Boxes 3-4,match,"event counts 4 (type 1,2) and 3 (2,1); seqevd on structure 1: 1 0 1 / 1 2 3 / 0 0 0 / 1 1 2 / 1 0 1"
+6.18.3,165,"seqmd (seq8, seq8c)",Boxes 2-5,match,"nine episode rows with period indicators, with V1 V2, with xe=[V1],[V2] (V1_D V2_D as Box 4), and seq8d.cf's counting form [1,2,1,4] (E_2_1 ED_2_1 E0..E4, TDA's own column names; the box's right-hand columns are cut in the manual text and were checked against TDA's own output)"
+6.19.1,170,loglin table (ll1.cf),Box 3,match,nine cells X1 x X2 with counts 3 0 0 0 0 3 0 2 0
+6.19.2,171,loglin residuals (ll2.cf),Boxes 4-5,match,"fitted 2.4706 4.5294 0.7059 1.2941 2.8235 5.1765, residuals, parameters 0.8344 0.3731 -0.8797 -0.3031"
+7.2.1.1,178,gni (gd4.cf),Box 1,explained difference,"degrees identical except the loop at node 8: TDA 6.4p counts it in its own column (NL), the 2002 box counted it in ID/OD too; columns now named per value variable"
+7.2.1.2,170,gdln,Box 1,match,1: 5 7; 7: 1; 8: 8; 11: 12 -- now a data frame with a links list column
+7.2.2.1,180,gsort (gd22.cf),Box 2,match,i N(i) L(i): 1 1 4 / 2 2 5 / 3 4 1 / 4 5 2 / 5 7 3; columns now index node level
+7.2.3.1,"181,189",gcon (gd7.cf),Box 1,match,components (1 4 1 1) ... (3 2 7 12) on graph 2; columns component size index node
+7.2.3.2,182,gdcon opt=2 (gd8.cf),Box 1,match,reachable-node records identical to gd8's own output file d
+7.2.3.3,183,gcut (gd26.cf),Box 1,match,cut nodes and blocks identical to gd26's output files
+7.2.4.1,184,gep (gd20.cf),Boxes 1-3,match,options 1 and 2 identical to gd20's d1/d2 (all 16/16/17 numbers)
+7.2.4.2,186,gsp (gd27.cf),Box 1,match,"reachable nodes and distances per node identical to gd27's d1; columns index node then (to,dist) pairs"
+7.2.4.3,187,gtcl (gd16.cf),Box 1,match,closure matrices for the undirected and the directed reading
+7.2.5.1,188,gst (gd24.cf),Box 2,match,"T N(i) N(j) value: two trees, edges 1-2(1) 2-4(2) 4-5(3) 3-5(4) / 6-8(8) 6-7(9)"
+7.2.5.2,191,gmst (gd25.cf),Box 1,match,same six edges (the minimum tree coincides here)
+7.2.5.3,192,gnst (gd32.cf),Box 1,match,number of spanning trees and the trees themselves as gd32's d1/d2
+7.2.6.1,182,gcyc opt=1 (gd30.cf),Box 1,match,fundamental cycles 1 6 1 3 / 1 2 5 6 1 2 / ... as the box
+7.2.6.2,196,gdcyc (gd33.cf),Box 1,match,directed cycles identical to gd33's d1
+7.2.8.1,197,gflow (gd35.cf),Box 1,match after C fix,six-column pair records (1 1 2 1 2 30 ...); the stray prefix of TDA 6.4p's first record is fixed in t_gio.c
+7.2.9.1,199,gcliq (gd42.cf),Box 1,match,both algorithms' listings
+7.2.9.2,144,"giset / gcset (gd37, gd39)",Box 1,match,identical to the command files' own outputs
+7.3.1.1,204,gap (co1.cf),Box 2,match,p = 6 4 3 1 5 2 and the permuted matrix
+7.3.1.2,205,gqap (co2.cf),Box 2,match,p = 2 1 3
+7.5.1.1,206,hcls opt=2 (cl1.cf),Box 3,match,levels 1 2 4 7 8 13 24 33 34 55 with Ci/Cj 3 6 / 1 8 / 2 9 / 5 11 / 1 2 / 3 4 / 3 10 / 1 5 / 3 7 / 1 3
+7.5.1.1,207,hclsp (cl1a.cf),Box 4,match,"the four-level cut; Boxes 5-6 (plot of the dendrogram, cl1b) not covered -- plotting of dendrograms is not wrapped"
+7.5.1.2,208,nncl (cl2.cf),Boxes 1-2,match,cluster numbers per node with sc=10 and with ns=2
+7.5.2.1,209,hcld (cl3.cf),Box 2,match,cluster 2 = 3 4 6 7 10; 3 = 1 2 5 8 9 11; 4 = 4 7 ...
+7.5.3.1,212,becl (cl5.cf),Box 3,match,permutation 3 2 5 4 1 (opt 1) and the permuted edge list (opt 2)
+7.6.1.1,213,gfcf (gd13.cf),Box 2,match,"node 1 controls 2..9, 9 controls 1..8, 3 controls 5; the pair table with L S M R is the pairs attribute"
+7.6.1.3,217,gfc (gd41.cf),Box 1,match,flow centrality records identical to gd41's output; columns i j node_i node_j f1..
+8.3.2,154,evalfi1,Box 1,match,"[0, 0.8415] and the derivative's inclusion [0.5403, 1]; the derivative half was missing, added"
+8.4.1,209,gmin,Box 2,match with tol_fe = 1e-6,"TDA 6.4p's default tolfe 1e-10 leaves the minimum's box temporarily accepted (same in the standalone); with 1e-6 the box [4.71237, 4.71245] is accepted as in the manual; the second box the manual lists (x near 10.99) lies outside the search interval [0,10] and is a 2002-version artefact; boxes/estimates now parsed into the result"
+8.4.2,210,range,none (syntax),no manual example,"range of sin(x) on [0,10] = [-1, 1]"
+8.5.1,206,sddf / iddf (id1.cf),Box 2,match,lower/upper/mean 0.2 0.4 0.3 / 0.2 0.6 0.4 / ... and the self-consistent 0.2766 0.4468 0.2766
+8.5.2,207,idf (id2.cf),Box 2,match,lower/upper bounds per point identical (18 points; the manual's box shows 14)
+8.6.1,213,imean,none (syntax),no manual box,"[2022.727, 2082.727]"
+8.6.2,214,ivariance,none (syntax),no manual box,interval variance bounds
+3.6.5,6,plg: the graph of gd1.dat (gd3.cf),Figure 3.6.2-2,figure,drawn with tda_pl_graph from the gallery script gd3.R
+3.6.6,9,pltree (gd15.cf),figure,figure,"plot(g, layout = ""tree"") with rt = 9, pl = 3"
+7.2.4.1,185,gd18.cf drawing,figure,figure,curved arrows and edge values as the manual
+7.2.5.1,189,gd21.cf drawing,Figure 7.2.5.1-1,figure,gd7.dat first component

@@ -1,0 +1,17 @@
+nvar(
+  dfile = pl4.dat,
+  noc = 761,
+  ID   [6.0] = c1, # id number
+  SN   [3.0] = c2, # spell number
+  NSPL [3.0] = c3, # number of splits
+  SPL  [3.0] = c4, # split number
+  ORG  [3.0] = c5, # origin state
+  DES  [3.0] = c6, # destination state
+  TS   [6.2] = c7, # starting time
+  TF   [6.2] = c8, # ending time
+  COHO1 [0.0] = c9,
+  COHO2 [0.0] = c10,
+  COHO3 [0.0] = c11,
+  W [0.0] = c12,
+  MDATE [0.0] = c13,
+);

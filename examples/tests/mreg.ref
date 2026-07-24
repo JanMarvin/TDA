@@ -1,0 +1,79 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: mreg.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   3.0  c1
+  2 X         3   4   6.2  c2
+  3 Y         3   4   6.2  c3
+  4 G         3   4   1.0  c4
+  5 T         3   4   3.0  c5
+  6 D         3   4   1.0  c6
+  7 YL        3   4   6.2  c7
+  8 YU        3   4   6.2  c8
+  9 XL        3   4   6.2  c9
+ 10 XU        3   4   6.2  c10
+ 11 P1        3   4   6.3  c11
+ 12 P2        3   4   6.3  c12
+ 13 P3        3   4   6.3  c13
+ 14 TS        2   8   1.0  0
+ 15 ORG       2   8   1.0  0
+ 16 TL        3   4   3.0  T
+ 17 TU        3   4   3.0  T+5
+ 18 G1        3   4   0.0  G[1]
+ 19 G2        3   4   0.0  G[2]
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): d.dat
+Free format. Separation character(s): default.
+
+Reading data file: d.dat
+Read records: 20 
+
+Created a new data matrix.
+Number of cases: 20
+Number of variables: 19
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 458464 bytes.
+----------------------------------------------------------------------------
+mreg(...)=X
+Monotone regression. Current memory: 458464 bytes.
+
+Variables (cross-section)
+-------------------------
+Y   : X  
+
+Mean of dep. variable: 12.4
+Stand. dev. of dep. variable: 6.55286
+Number of tie blocks: 20 (no ties).
+
+Handling ties option: 1
+Max number of iterations: 50
+Tolerance for stress: 1e-06
+Tolerance for parameter change: 1e-06
+Number of parameters: 1
+
+  Iter         Stress           Par Change    Norm of Residuals
+    1   0.0000000000000e+00  1.0000000000e+00  2.9305289625e+01
+
+Performed 1 iterations.
+Final stress: 0
+Final parameter change: 1
+Final norm of least squares residuals: 29.3053
+Rank of design matrix: 1
+
+
+Idx  Wave  Variable       Coeff      Error    Coeff/E  Signif
+-------------------------------------------------------------
+  1     -  Intercept     8.0000        ---        ---     ---
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 478592 bytes.
+End of program. Wed Sep  2 16:02:32 2026

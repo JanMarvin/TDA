@@ -1,0 +1,52 @@
+Read records:       7     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:50 2026
+Current memory: 390032 bytes.
+
+Reading command file: dh2.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X         3   4   0.0  c1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): dh1.dat
+Free format. Separation character(s): default.
+
+Reading data file: dh1.dat
+Read records: 7 
+
+Created a new data matrix.
+Number of cases: 7
+Number of variables: 1
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 394049 bytes.
+----------------------------------------------------------------------------
+psfile=dh2.ps
+Opened new PostScript file: dh2.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 90 x 50
+PostScript coordinates. X-axis: 150,405  Y-axis: 460,602
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,           8.0000 
+User coordinates Y axis:           0.0000,           0.6000 
+----------------------------------------------------------------------------
+plxa(sc=1)
+----------------------------------------------------------------------------
+plya(sc=0.1)
+----------------------------------------------------------------------------
+plotd(k=2,x=0(0.1)8,df=df,)=X
+Max height of density: 0.571429
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 414069 bytes.
+End of program. Tue Jul 21 05:46:50 2026

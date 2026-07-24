@@ -1,0 +1,18 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: mparse.cf
+============================================================================
+mparse()=1
+
+ Cnt        Typ        Val   Dimension
+--------------------------------------
+   0          0     1.0000  
+
+Dimension: 1 x 1. Max stack length: 1. Max matrix size: 1
+
+      1.0000 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 402074 bytes.
+End of program. Wed Sep  2 16:02:32 2026

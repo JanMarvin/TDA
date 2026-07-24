@@ -1,0 +1,99 @@
+Read records:      20     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   2.7524532086891e+01  4.7742684138e+00          --       1 (1,1)
+    2   2.4510330848726e+01  7.1658608726e-01  1.5756e+00       2 (2,2)
+    3   2.4464333835415e+01  3.2551981662e-02  9.5013e-02       3 (3,3)
+    4   2.4464187751634e+01  1.7016655537e-04  3.8151e-03       4 (4,4)
+    5   2.4464187748130e+01  5.2009685389e-09  1.8186e-05       5 (5,5)
+TDA. Analysis of Transition Data (6.4p). Sat Jul 25 02:03:12 2026
+Current memory: 390032 bytes.
+
+Reading command file: qr2a.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Y         3   4   0.0  c1
+  2 X1        3   4   0.0  c2
+  3 X2        3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): qr2.dat
+Free format. Separation character(s): default.
+
+Reading data file: qr2.dat
+Read records: 20 
+
+Created a new data matrix.
+Number of cases: 20
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402085 bytes.
+----------------------------------------------------------------------------
+qreg(...)=...
+Quantal response models. Current memory: 402085 bytes.
+
+Model: ordinal logit.
+
+Variables (cross-section)
+-------------------------
+Y   : Y   
+X1  : X1  
+X2  : X2  
+
+Model without intercept.
+Checking available data (pmin=1)
+Number of cases with valid data: 20
+
+Categories of dependent variable.
+Maximum number of categories: 100
+
+Index               0         1         2         3   (Weighted)
+Category            0         1         2         3  Observations
+-----------------------------------------------------------------
+Wave 1   N       5.00      5.00      4.00      6.00         20.00
+         Pct    25.00     25.00     20.00     30.00  
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 5
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+
+Convergence reached in 5 iterations.
+Number of function evaluations: 6 (6,6)
+
+Maximum of log likelihood: -24.4642
+Norm of final gradient vector: 5.20097e-09
+Last absolute change of function value: 1.43247e-10
+Last relative change in parameters: 1.81865e-05
+
+Idx Cat Term   Variable        Coeff      Error    C/Error  Signif
+------------------------------------------------------------------
+  1   -  I 1   Alpha 1       -1.7466     1.3020    -1.3414  0.8202
+  2   -  I 2   Alpha 2       -3.1531     1.4312    -2.2032  0.9724
+  3   -  I 3   Alpha 3       -4.2253     1.5565    -2.7146  0.9934
+  4   -  X     X1             1.0121     0.4637     2.1826  0.9709
+  5   -  X     X2             1.3100     0.8949     1.4639  0.8568
+
+Log likelihood (starting values):   -27.5245 
+Log likelihood (final estimates):   -24.4642 
+
+Data (20 records) written to: df
+TDA description written to: t
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422123 bytes.
+End of program. Sat Jul 25 02:03:12 2026

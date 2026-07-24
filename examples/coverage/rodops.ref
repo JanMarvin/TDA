@@ -1,0 +1,227 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:52 2026
+Current memory: 390032 bytes.
+
+Reading command file: rodops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 A         3   4   2.0  c1
+  2 B         3   4   2.0  c2
+  3 C         3   4   2.0  c3
+  4 D         3   4   2.0  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): rank.dat
+Free format. Separation character(s): default.
+
+Reading data file: rank.dat
+Read records: 30 
+
+Created a new data matrix.
+Number of cases: 30
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 406100 bytes.
+----------------------------------------------------------------------------
+rod(opt=1,df=r1.dat)=A,B,C,D
+Rank order data. Current memory: 406100 bytes.
+4 4 2 1 
+1 4 3 2 
+4 4 2 3 
+1 4 3 2 
+3 2 4 1 
+4 3 2 1 
+1 4 2 3 
+3 3 4 1 
+2 4 3 1 
+4 1 2 3 
+4 4 3 1 
+1 3 2 4 
+2 2 3 1 
+4 1 2 3 
+4 3 1 2 
+2 2 4 1 
+1 2 4 3 
+3 1 2 4 
+2 3 1 4 
+3 3 1 4 
+4 2 3 1 
+3 2 1 4 
+2 3 1 4 
+1 4 2 3 
+4 3 1 2 
+1 1 4 3 
+1 3 2 4 
+1 1 3 4 
+1 2 3 4 
+1 3 2 4 
+
+Creating standard format rank orders.
+30 records written to: r1.dat
+Max size of tie blocks: 2
+
+----------------------------------------------------------------------------
+rod(opt=2,df=r2.dat)=A,B,C,D
+Rank order data. Current memory: 406100 bytes.
+4 4 2 1 
+1 4 3 2 
+4 4 2 3 
+1 4 3 2 
+3 2 4 1 
+4 3 2 1 
+1 4 2 3 
+3 3 4 1 
+2 4 3 1 
+4 1 2 3 
+4 4 3 1 
+1 3 2 4 
+2 2 3 1 
+4 1 2 3 
+4 3 1 2 
+2 2 4 1 
+1 2 4 3 
+3 1 2 4 
+2 3 1 4 
+3 3 1 4 
+4 2 3 1 
+3 2 1 4 
+2 3 1 4 
+1 4 2 3 
+4 3 1 2 
+1 1 4 3 
+1 3 2 4 
+1 1 3 4 
+1 2 3 4 
+1 3 2 4 
+
+Distance matrix (s = 0).
+30 records written to: r2.dat
+
+----------------------------------------------------------------------------
+rod(opt=3,s=0,alg=1,df=r3.dat)=A,B,C,D
+Rank order data. Current memory: 406100 bytes.
+4 4 2 1 
+1 4 3 2 
+4 4 2 3 
+1 4 3 2 
+3 2 4 1 
+4 3 2 1 
+1 4 2 3 
+3 3 4 1 
+2 4 3 1 
+4 1 2 3 
+4 4 3 1 
+1 3 2 4 
+2 2 3 1 
+4 1 2 3 
+4 3 1 2 
+2 2 4 1 
+1 2 4 3 
+3 1 2 4 
+2 3 1 4 
+3 3 1 4 
+4 2 3 1 
+3 2 1 4 
+2 3 1 4 
+1 4 2 3 
+4 3 1 2 
+1 1 4 3 
+1 3 2 4 
+1 1 3 4 
+1 2 3 4 
+1 3 2 4 
+
+Searching for median rank orders (alg=1).
+Minimal sum of distances (s = 0, mc=75): 161
+Number of rank orders: 1
+
+  1 :  1  4  2  3 
+
+----------------------------------------------------------------------------
+rod(opt=3,s=1,alg=1,df=r4.dat)=A,B,C,D
+Rank order data. Current memory: 406100 bytes.
+4 4 2 1 
+1 4 3 2 
+4 4 2 3 
+1 4 3 2 
+3 2 4 1 
+4 3 2 1 
+1 4 2 3 
+3 3 4 1 
+2 4 3 1 
+4 1 2 3 
+4 4 3 1 
+1 3 2 4 
+2 2 3 1 
+4 1 2 3 
+4 3 1 2 
+2 2 4 1 
+1 2 4 3 
+3 1 2 4 
+2 3 1 4 
+3 3 1 4 
+4 2 3 1 
+3 2 1 4 
+2 3 1 4 
+1 4 2 3 
+4 3 1 2 
+1 1 4 3 
+1 3 2 4 
+1 1 3 4 
+1 2 3 4 
+1 3 2 4 
+
+Searching for mean rank orders (alg=1).
+Minimal sum of distances (s = 1, mc=75): 981
+Number of rank orders: 1
+
+  1 :  1  1  1  1 
+
+----------------------------------------------------------------------------
+rod(opt=8,df=r8.dat)=A,B,C,D
+Rank order data. Current memory: 406100 bytes.
+4 4 2 1 
+1 4 3 2 
+4 4 2 3 
+1 4 3 2 
+3 2 4 1 
+4 3 2 1 
+1 4 2 3 
+3 3 4 1 
+2 4 3 1 
+4 1 2 3 
+4 4 3 1 
+1 3 2 4 
+2 2 3 1 
+4 1 2 3 
+4 3 1 2 
+2 2 4 1 
+1 2 4 3 
+3 1 2 4 
+2 3 1 4 
+3 3 1 4 
+4 2 3 1 
+3 2 1 4 
+2 3 1 4 
+1 4 2 3 
+4 3 1 2 
+1 1 4 3 
+1 3 2 4 
+1 1 3 4 
+1 2 3 4 
+1 3 2 4 
+
+Tabulate rank orders.
+Found 20 different rank orders.
+Sum of weights: 30
+20 records written to: r8.dat
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426147 bytes.
+End of program. Fri Sep  4 15:06:52 2026

@@ -1,0 +1,40 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:40 2026
+Current memory: 390032 bytes.
+
+Reading command file: exprep.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   2.0  c1
+  2 X         3   4   6.2  c2
+  3 G         3   4   2.0  c3
+  4 TS        2   8   2.0  0
+  5 TF        3   4   6.2  X
+  6 ORG       2   8   2.0  0
+  7 DES       3   4   2.0  G
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ex.dat
+Free format. Separation character(s): default.
+
+Reading data file: ex.dat
+Read records: 6 
+
+Created a new data matrix.
+Number of cases: 6
+Number of variables: 7
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 410170 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Already used: ID
+Could not create new episode data.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 430208 bytes.
+End of program. Fri Sep  4 15:06:40 2026

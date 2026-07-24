@@ -1,0 +1,109 @@
+Read records:     600     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   2.2595669140789e+00  3.0968657447e-02          --       1 (1,1)
+    2   2.2505911290610e+00  1.1617001950e-03  1.0000e+00       2 (2,2)
+    3   2.2505832248430e+00  2.9623548527e-06  3.6994e-02       3 (3,3)
+    4   2.2505832248108e+00  8.8278295520e-12  4.2766e-05       4 (4,4)
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:54 2026
+Current memory: 390032 bytes.
+
+Reading command file: pl9.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   3.0  c1
+  2 SN        3   4   2.0  c2
+  3 TS        3   4   3.0  c3
+  4 TF        3   4   3.0  c4
+  5 SEX       3   4   2.0  c5
+  6 TI        3   4   3.0  c6
+  7 TB        3   4   3.0  c7
+  8 TE        3   4   3.0  c8
+  9 TMAR      3   4   3.0  c9
+ 10 PRES      3   4   3.0  c10
+ 11 PRESN     3   4   3.0  c11
+ 12 EDU       3   4   2.0  c12
+ 13 COHO1     3   4   0.0  ge(TB,348)&le(TB,384)
+ 14 COHO2     3   4   0.0  ge(TB,468)&le(TB,504)
+ 15 COHO3     3   4   0.0  ge(TB,588)&le(TB,624)
+ 16 G1        3   4   0.0  SEX[1]
+ 17 G2        3   4   0.0  SEX[2]
+ 18 DES       3   4   1.0  if(eq(TF,TI),0,1)
+ 19 DUR       3   4   3.0  TF-TS+1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): rrdat.1
+Free format. Separation character(s): default.
+
+Reading data file: rrdat.1
+Read records: 600 
+
+Created a new data matrix.
+Number of cases: 600
+Number of variables: 19
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 466890 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=0, des=DES, ts=0, tf=DUR
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       142       142.00      128.18        0.00      428.00    -
+ 1    0   1       458       458.00       49.30        0.00      350.00    -
+Sum               600       600.00
+
+Number of episodes: 600
+Successfully created new episode data.
+----------------------------------------------------------------------------
+rate(...)=1
+Transition rate models. Current memory: 467042 bytes.
+
+Model: Cox (partial likelihood)
+Stratified with 2 groups.
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 2
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Log-likelihood of exponential null model: -2514.02
+Changed scaling factor for log-likelihood: -0.001
+Using default starting values.
+Sorting episodes according to ending times.
+
+Convergence reached in 4 iterations.
+Number of function evaluations: 5 (5,5)
+
+Maximum of log likelihood: -2250.58
+Norm of final gradient vector: 8.82783e-09
+Last absolute change of function value: 1.43084e-11
+Last relative change in parameters: 4.27658e-05
+
+Idx SN Org Des MT Variable      Coeff      Error    C/Error  Signif
+-------------------------------------------------------------------
+  1  1   0   1  A COHO2        0.3840     0.1133     3.3878  0.9993
+  2  1   0   1  A COHO3        0.4428     0.1183     3.7433  0.9998
+
+Log likelihood (starting values): -2259.5669 
+Log likelihood (final estimates): -2250.5832 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 489186 bytes.
+End of program. Tue Jul 21 05:46:54 2026

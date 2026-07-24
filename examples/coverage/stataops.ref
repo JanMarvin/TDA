@@ -1,0 +1,308 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 21:47:55 2026
+Current memory: 390032 bytes.
+
+Reading command file: stataops.cf
+============================================================================
+clear
+No data matrix (command ignored).
+----------------------------------------------------------------------------
+rstata(...)=rs108.dta
+Reading Stata file: rs108.dta
+Release: 0x6c [version 6]
+Number of variables: 4
+Number of cases: 6
+Data label: Written by R
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Id        3   5   0.0  stata(l)
+  2 X         3   8   0.0  stata(d)
+  3 G         3   5   0.0  stata(l)
+  4 Big       3   5   0.0  stata(l)
+
+Data will be directly written to output file: rs108.out
+Read 6 records. 
+6 records written to: rs108.out
+Number of system missing values (substituted by -5): 1
+----------------------------------------------------------------------------
+clear
+No data matrix (command ignored).
+----------------------------------------------------------------------------
+rstata(...)=rs110.dta
+Reading Stata file: rs110.dta
+Release: 0x6e [version 7]
+Number of variables: 4
+Number of cases: 6
+Data label: Written by R
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Id        3   5   0.0  stata(l)
+  2 X         3   8   0.0  stata(d)
+  3 G         3   5   0.0  stata(l)
+  4 Big       3   5   0.0  stata(l)
+
+Data will be directly written to output file: rs110.out
+Read 6 records. 
+6 records written to: rs110.out
+Number of system missing values (substituted by -5): 1
+----------------------------------------------------------------------------
+clear
+No data matrix (command ignored).
+----------------------------------------------------------------------------
+rstata(...)=rs114.dta
+Reading Stata file: rs114.dta
+Release: 0x72 [version 10]
+Number of variables: 4
+Number of cases: 6
+Data label: Written by R
+Time stamp: 04 Sep 2026 21:15
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Id        3   5   0.0  stata(0xfd)
+  2 X         3   8   0.0  stata(0xff)
+  3 G         3   5   0.0  stata(0xfd)
+  4 Big       3   5   0.0  stata(0xfd)
+
+Data will be directly written to output file: rs114.out
+Read 6 records. 
+6 records written to: rs114.out
+Number of system missing values (substituted by -5): 1
+----------------------------------------------------------------------------
+clear
+No data matrix (command ignored).
+----------------------------------------------------------------------------
+rstata(...)=old102.dta
+Reading Stata file: old102.dta
+Release: 0x66 [version 3]
+Number of variables: 4
+Number of cases: 8
+Data label: Written by R
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Id        3   5   0.0  stata(l)
+  2 X         3   8   0.0  stata(d)
+  3 S         1   3   0.0  stata(3)
+  4 G         3   5   0.0  stata(l)
+
+Data will be directly written to output file: old102.out
+Read 8 records. 
+8 records written to: old102.out
+Number of system missing values (substituted by -5): 1
+----------------------------------------------------------------------------
+clear
+No data matrix (command ignored).
+----------------------------------------------------------------------------
+rstata(...)=old104.dta
+Reading Stata file: old104.dta
+Release: 0x68 [version 3]
+Number of variables: 4
+Number of cases: 8
+Data label: Written by R
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Id        3   5   0.0  stata(l)
+  2 X         3   8   0.0  stata(d)
+  3 S         1   3   0.0  stata(3)
+  4 G         3   5   0.0  stata(l)
+
+Data will be directly written to output file: old104.out
+Read 8 records. 
+8 records written to: old104.out
+Number of system missing values (substituted by -5): 1
+----------------------------------------------------------------------------
+clear
+No data matrix (command ignored).
+----------------------------------------------------------------------------
+rstata(...)=old105.dta
+Reading Stata file: old105.dta
+Release: 0x69 [version 4]
+Number of variables: 4
+Number of cases: 8
+Data label: Written by R
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Id        3   5   0.0  stata(l)
+  2 X         3   8   0.0  stata(d)
+  3 S         1   3   0.0  stata(3)
+  4 G         3   5   0.0  stata(l)
+
+Data will be directly written to output file: old105.out
+Read 8 records. 
+8 records written to: old105.out
+Number of system missing values (substituted by -5): 1
+----------------------------------------------------------------------------
+clear
+No data matrix (command ignored).
+----------------------------------------------------------------------------
+rstata(...)=lab114.dta
+Reading Stata file: lab114.dta
+Release: 0x72 [version 10]
+Number of variables: 3
+Number of cases: 6
+Data label: Written by R
+Time stamp: 04 Sep 2026 21:41
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Id        3   5   0.0  stata(0xfd)
+  2 G         3   5   0.0  stata(0xfd)
+  3 Z         3   8   0.0  stata(0xff)
+
+Data will be directly written to output file: lab114.out
+Read 6 records. 
+6 records written to: lab114.out
+Number of system missing values (substituted by -5): 1
+----------------------------------------------------------------------------
+clear
+No data matrix (command ignored).
+----------------------------------------------------------------------------
+rstata(...)=lab114.dta
+Reading Stata file: lab114.dta
+Release: 0x72 [version 10]
+Number of variables: 3
+Number of cases: 6
+Data label: Written by R
+Time stamp: 04 Sep 2026 21:41
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Id        3   5   0.0  stata(0xfd)
+  2 G         3   5   0.0  stata(0xfd)
+  3 Z         3   8   0.0  stata(0xff)
+
+Reading data to create internal data matrix.
+Maximum number of cases: 6
+Record length: 16
+Allocated 96 bytes for data matrix.
+
+Read 6 records. 
+Created a data matrix with 3 variables and 6 cases.
+Number of system missing values (substituted by -5): 1
+Variable description file written to: dvlab.out
+----------------------------------------------------------------------------
+clear
+Deleted whole data matrix. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+rstata(...)=rs114.dta
+Reading Stata file: rs114.dta
+Release: 0x72 [version 10]
+Number of variables: 4
+Number of cases: 6
+Data label: Written by R
+Time stamp: 04 Sep 2026 21:15
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Id        3   5   0.0  stata(0xfd)
+  2 X         3   8   0.0  stata(0xff)
+  3 G         3   5   0.0  stata(0xfd)
+  4 Big       3   5   0.0  stata(0xfd)
+
+Reading data to create internal data matrix.
+Maximum number of cases: 6
+Record length: 20
+Allocated 120 bytes for data matrix.
+
+Read 6 records. 
+Created a data matrix with 4 variables and 6 cases.
+Number of system missing values (substituted by -5): 1
+Variable description file written to: dv114.out
+----------------------------------------------------------------------------
+clear
+Deleted whole data matrix. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+rstata(...)=old104be.dta
+Reading Stata file: old104be.dta
+Release: 0x68 [version 3]
+Number of variables: 4
+Number of cases: 8
+Data label: Written by R
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Id        3   5   0.0  stata(l)
+  2 X         3   8   0.0  stata(d)
+  3 S         1   3   0.0  stata(3)
+  4 G         3   5   0.0  stata(l)
+
+Data will be directly written to output file: old104be.out
+Read 8 records. 
+8 records written to: old104be.out
+Number of system missing values (substituted by -5): 1
+----------------------------------------------------------------------------
+clear
+No data matrix (command ignored).
+----------------------------------------------------------------------------
+rstata(...)=old104.dta
+Reading Stata file: old104.dta
+Release: 0x68 [version 3]
+Number of variables: 4
+Number of cases: 8
+Data label: Written by R
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Id        3   5   0.0  stata(l)
+  2 X         3   8   0.0  stata(d)
+  3 S         1   3   0.0  stata(3)
+  4 G         3   5   0.0  stata(l)
+
+Data will be directly written to output file: old104le.out
+Read 8 records. 
+8 records written to: old104le.out
+Number of system missing values (substituted by -5): 1
+----------------------------------------------------------------------------
+clear
+No data matrix (command ignored).
+----------------------------------------------------------------------------
+rstata(...)=rs114.dta
+Reading Stata file: rs114.dta
+Maximum number of cases: 4
+Release: 0x72 [version 10]
+Number of variables: 4
+Number of cases: 6
+Data label: Written by R
+Time stamp: 04 Sep 2026 21:15
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Id        3   5   0.0  stata(0xfd)
+  2 X         3   8   0.0  stata(0xff)
+  3 G         3   5   0.0  stata(0xfd)
+  4 Big       3   5   0.0  stata(0xfd)
+
+Data will be directly written to output file: cap4.out
+Read 4 records. 
+4 records written to: cap4.out
+Warning: file contains more than 4 records.
+Number of system missing values (substituted by -5): 1
+----------------------------------------------------------------------------
+clear
+No data matrix (command ignored).
+----------------------------------------------------------------------------
+rstata(...)=rs114.dta
+Reading Stata file: rs114.dta
+Record selection (vsel): Id[gt]2
+Release: 0x72 [version 10]
+Number of variables: 4
+Number of cases: 6
+Data label: Written by R
+Time stamp: 04 Sep 2026 21:15
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Id        3   5   0.0  stata(0xfd)
+  2 X         3   8   0.0  stata(0xff)
+  3 G         3   5   0.0  stata(0xfd)
+  4 Big       3   5   0.0  stata(0xfd)
+
+Syntax error (-4) in vsel expression.
+Error type: expression contains undefined operator or argument.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 481158 bytes.
+End of program. Fri Sep  4 21:47:55 2026

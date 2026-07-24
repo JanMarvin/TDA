@@ -1,0 +1,2 @@
+# format 107 is not in TDA's version table: clean refusal, pinned
+rstata() = old107.dta;

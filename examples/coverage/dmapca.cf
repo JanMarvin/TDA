@@ -1,0 +1,12 @@
+# dmapca.cf -- principal components, factor analysis, correspondence analysis
+nvar(
+    dfile = pca.dat,
+    V1 [9.3] = c1,
+    V2 [9.3] = c2,
+    V3 [9.3] = c3,
+    V4 [9.3] = c4,
+);
+dma(alg=1, opt=1);
+dma(alg=1, opt=2);
+dma(alg=1, opt=3);
+dma(alg=3);

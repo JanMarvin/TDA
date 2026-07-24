@@ -1,0 +1,20 @@
+# t_map residue (session 41): azimuthal grid meridians drawn as
+# geodesic arcs (explicit lon= meridians under proj=20 engage
+# mapgrid_lon_azi1 -> map_geodesic_a), and a polygon only partially
+# inside the clip region (the plist path).
+sdnvar(dfile=mapops.sd, SDID=c1, SDTyp=c2, SDN=c3, SDPtr<5>=rd);
+psfile = mapres1.ps;
+psetupg(proj=20, view=15,54, rhem=40, region=30,30, pxlen=100);
+sdpgrat(cont=1, lon=0,10,20,30, lat=40,50,60, sc=15, lw=0.1);
+sdpmap(lt=1, lw=0.2);
+# clip window cutting through the polygon near 15E 54N; note the
+# multi-fragment clip result (m>2, the plist path) is not reachable
+# with this convex fixture -- it needs a clip that shatters the
+# polygon into several pieces, and the m==2 case (window wholly
+# inside the polygon) returns before drawing by construction
+psfile = mapres2.ps;
+psetupg(proj=10, view=12.6,54.2, region=1,1, pxlen=80);
+sdpmap(lt=1, lw=0.2);
+psfile = mapres3.ps;
+psetupg(proj=20, view=0,90, rhem=60, region=40,40, pxlen=100);
+sdpgrat(cont=1, lon=0,45,90,135,180, lat=50,70, sc=20, lw=0.1);

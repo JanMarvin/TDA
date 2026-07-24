@@ -1,0 +1,89 @@
+Read records:     131     
+TDA. Analysis of Transition Data (6.4p). Fri Jul 24 21:39:00 2026
+Current memory: 390032 bytes.
+
+Reading command file: ehh1.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Time      3   4   0.0  c3
+  2 Surv      3   4   0.0  c7
+  3 LogSurv   3   4   0.0  log(Surv)
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+Input select (isel): gt(c3,0)&gt(c7,0)&lt(c7,1)
+
+Using data file(s): ehc5.ple
+Free format. Separation character(s): default.
+
+Reading data file: ehc5.ple
+Read records: 131 
+Selected for data matrix: 130 records.
+
+Created a new data matrix.
+Number of cases: 130
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402114 bytes.
+----------------------------------------------------------------------------
+lsreg=...
+Least squares regression. Current memory: 402114 bytes.
+
+Variables (cross-section)
+-------------------------
+Y   : LogSurv  
+X1  : Time     
+
+Equality constraints: 0
+Inequality constraints: 0
+
+Reading data. Cases: 130
+
+Rank of least squares data matrix: 2
+Norm of least squares residuals: 2.30679
+
+Degrees of freedom: 128
+Sum of squared residuals: 5.32127
+Variance of residuals: 0.0415724
+Squared multiple correlation: 0.880922
+Adjusted: 0.879991
+F-statistic: 946.922
+Level of significance: 1
+
+Idx  Wave  Variable       Coeff      Error    Coeff/E  Signif
+-------------------------------------------------------------
+  1     -  Intercept    -0.3527     0.0280   -12.6000  1.0000
+  2     1  Time         -0.0075     0.0002   -30.7721  1.0000
+
+----------------------------------------------------------------------------
+psfile=ehh1.ps
+Opened new PostScript file: ehh1.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 80 x 40
+PostScript coordinates. X-axis: 150,377  Y-axis: 460,573
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,         300.0000 
+User coordinates Y axis:          -3.0000,           0.0000 
+----------------------------------------------------------------------------
+plxa(sc=60,ic=5)
+----------------------------------------------------------------------------
+plya(sc=1,ic=10)
+----------------------------------------------------------------------------
+plframe
+----------------------------------------------------------------------------
+plot=Time,LogSurv
+----------------------------------------------------------------------------
+plotp=0,-0.3527,300,-2.6027
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422320 bytes.
+End of program. Fri Jul 24 21:39:00 2026

@@ -1,0 +1,15 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: rdbf.cf
+============================================================================
+rdbf(...)=electric.dta
+Reading a dBase file. Current memory: 390032 bytes.
+File name: electric.dta
+
+Number of records: 1310723
+Record length: 0
+This is probably not a dbf file.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390032 bytes.
+End of program. Wed Sep  2 16:02:32 2026

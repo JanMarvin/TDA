@@ -1,0 +1,5 @@
+# gtopo: read a GTOPO30 elevation grid (raw big-endian int16).  The
+# 6x6 test grid is synthetic; option 1 reads one longitude across a
+# latitude range.
+gtopo(rows=6, cols=6, ulx=10, uly=50, dx=1, dy=1,
+      lon=12, lat=46,49, df=gt.out) = g30.dem;

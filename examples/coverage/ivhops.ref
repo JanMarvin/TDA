@@ -1,0 +1,146 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:51 2026
+Current memory: 390032 bytes.
+
+Reading command file: ivhops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 XL        3   4   8.2  c1
+  2 XU        3   4   8.2  c2
+  3 YL        3   4   8.2  c3
+  4 YU        3   4   8.2  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ivh.dat
+Free format. Separation character(s): default.
+
+Reading data file: ivh.dat
+Read records: 2 
+
+Created a new data matrix.
+Number of cases: 2
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 406104 bytes.
+----------------------------------------------------------------------------
+ivreg(opt=3)=YL,YU,XL,XU
+Regression with interval data. Current memory: 406104 bytes.
+
+Minimization.
+Number of data points: 2
+Tolerance for box width: 0.0001
+
+First step: fixed 2 values of Y.
+Mean Y = [      2.500000 ,      2.500000 ]
+Mean X = [      1.500000 ,      2.500000 ]
+Var  X = [      1.000000 ,      4.000000 ]
+
+Second step: fixing values of X (and Y).
+Iteration     bounds of current beta          bounds of x-mean  x-fixed  y-fixed
+      0        0.375000     1.000000     1.500000     2.500000        0        2
+
+Remaining coordinates: 2
+
+Third step: additional optimization (opt=3).
+Number of parameters: 2
+Maximum number of iterations: 20000
+Maximum number of boxes: 2000
+Tolerance for box width: 0.0001
+Tolerance for function range: 1e-10
+Tolerance for global minimum: 1e-10
+
+Number of iterations performed: 48
+Number of function evaluations: 47
+Number of inclusion function evaluations: 94
+Number of boxes used: 21
+Number of temporarily accepted boxes: 1
+Number of finally accepted boxes: 1
+
+Best minimal function value:      0.750000   best lower bound:      0.750000 
+
+----------------------------------------------------------------------------
+ivreg(opt=3,ns=1)=YL,YU,XL,XU
+Regression with interval data. Current memory: 406104 bytes.
+
+Maximization.
+Number of data points: 2
+Tolerance for box width: 0.0001
+
+First step: fixed 2 values of Y.
+Mean Y = [      3.000000 ,      3.000000 ]
+Mean X = [      1.500000 ,      2.500000 ]
+Var  X = [      1.000000 ,      4.000000 ]
+
+Second step: fixing values of X (and Y).
+Iteration     bounds of current beta          bounds of x-mean  x-fixed  y-fixed
+      0        2.000000     6.000000     1.500000     2.500000        0        2
+
+Remaining coordinates: 2
+
+Third step: additional optimization (opt=3).
+Number of parameters: 2
+Maximum number of iterations: 20000
+Maximum number of boxes: 2000
+Tolerance for box width: 0.0001
+Tolerance for function range: 1e-10
+Tolerance for global minimum: 1e-10
+
+Number of iterations performed: 34
+Number of function evaluations: 33
+Number of inclusion function evaluations: 67
+Number of boxes used: 14
+Number of temporarily accepted boxes: 1
+Number of finally accepted boxes: 1
+
+Best minimal function value:      3.000000   best lower bound:      3.000000 
+
+----------------------------------------------------------------------------
+ivreg(opt=3,mxit=2,nbox=5)=YL,YU,XL,XU
+Regression with interval data. Current memory: 406104 bytes.
+
+Minimization.
+Number of data points: 2
+Tolerance for box width: 0.0001
+
+First step: fixed 2 values of Y.
+Mean Y = [      2.500000 ,      2.500000 ]
+Mean X = [      1.500000 ,      2.500000 ]
+Var  X = [      1.000000 ,      4.000000 ]
+
+Second step: fixing values of X (and Y).
+Iteration     bounds of current beta          bounds of x-mean  x-fixed  y-fixed
+      0        0.375000     1.000000     1.500000     2.500000        0        2
+
+Remaining coordinates: 2
+
+Third step: additional optimization (opt=3).
+Number of parameters: 2
+Maximum number of iterations: 2
+Maximum number of boxes: 5
+Tolerance for box width: 0.0001
+Tolerance for function range: 1e-10
+Tolerance for global minimum: 1e-10
+
+Number of iterations performed: 3
+Number of function evaluations: 5
+Number of inclusion function evaluations: 5
+Number of boxes used: 3
+Number of temporarily accepted boxes: 0
+Number of finally accepted boxes: 0
+Warning: 3 boxes have not been processed.
+
+Best minimal function value:      0.923077   best lower bound: ***
+No certified bound: the search stopped at its limits
+(mxit=, nbox=).  The value above is the best point found,
+not proven optimal.  Raise the limits to certify it.
+
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 506364 bytes.
+End of program. Fri Sep  4 15:06:51 2026

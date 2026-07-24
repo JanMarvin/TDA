@@ -1,0 +1,23 @@
+# matops.cf -- matrix commands: decompositions, inverses, reductions
+mfmt = 10.4;
+mdef(A,3,3) = a.mat;
+mdefi(3,3,I);
+mtransp(A,AT);
+mexpr(A + AT, S);
+mchol(S,L);
+msqrtd(S,SR);
+minvs(S,SI);
+mev(S,ER,EI,EVR,EVI);
+msvd(A,Q);
+mdiag(Q,DG);
+mcsum(A,CS);
+mrsum(A,RS);
+mscal1(A,A2);
+mkp(I,A,KP);
+mpr(A);
+mpr(S);
+mpr(L);
+mpr(SI);
+mpr(ER);
+mpr(Q);
+mpr(KP);

@@ -1,0 +1,107 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: conj.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 I         3   4   0.0  c1
+  2 J         3   4   0.0  c2
+  3 V         3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): e.dat
+Free format. Separation character(s): default.
+
+Reading data file: e.dat
+Read records: 9 
+
+Created a new data matrix.
+Number of cases: 9
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402083 bytes.
+----------------------------------------------------------------------------
+gdd=I,J,V
+New graph data. Current memory: 402083 bytes.
+Option 1: edge list.
+
+Minimal level for valid edges: 0
+Number of nodes: 6. Largest node number: 6
+Graph type 4 (directed, valued).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1        9       0        9.000000             0
+
+Successfully created new graph data structure. Current memory: 402521 bytes.
+----------------------------------------------------------------------------
+conj(...)=...
+Conjoint analysis. Current memory: 402515 bytes.
+
+Rank order variable: I
+Dimension  Variable   Categories
+     1      J            6 :  1  2  3  4  5  6 
+     2      V            9 :  1  2  3  4  5  6  7  8  9 
+
+Mean of rank order variable: 3
+Stand. dev. of rank order variable: 1.63299
+
+Algorithm: alternating least squares.
+
+Indicator variables for design matrix:
+
+Idx  Dimension  Variable    Category
+  1       1      J              2
+  2       1      J              3
+  3       1      J              4
+  4       1      J              5
+  5       1      J              6
+  6       2      V              2
+  7       2      V              3
+  8       2      V              4
+  9       2      V              5
+ 10       2      V              6
+ 11       2      V              7
+ 12       2      V              8
+ 13       2      V              9
+
+Number of tie blocks: 6 
+
+Handling ties option: 1
+Max number of iterations: 50
+Tolerance for stress: 1e-06
+Tolerance for parameter change: 1e-06
+Number of parameters: 14
+
+Performed 1 iterations.
+Final stress: 6.01727e-16
+Final parameter change: 1
+Final norm of least squares residuals: 0
+Rank of design matrix: 9
+
+Idx  Dimension  Variable    Category  Coefficient
+  0       -      Const           -        1.1724 
+  1       1      J               2       -0.1724 
+  2       1      J               3        0.4138 
+  3       1      J               4        0.4138 
+  4       1      J               5        0.9138 
+  5       1      J               6        1.4138 
+  6       2      V               2        0.4138 
+  7       2      V               3        1.4138 
+  8       2      V               4        1.9138 
+  9       2      V               5        2.4138 
+ 10       2      V               6        4.8276 
+ 11       2      V               7       -0.0862 
+ 12       2      V               8       -0.5862 
+ 13       2      V               9        0.4138 
+
+Type of equivalence: 1
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422121 bytes.
+End of program. Wed Sep  2 16:02:32 2026

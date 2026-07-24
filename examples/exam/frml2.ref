@@ -1,0 +1,158 @@
+Read records:     600     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   2.5789483851604e+03  1.8104002367e+02          --       1 (1,1)
+    2   2.4521897850807e+03  5.2764340239e+01  1.0000e+00       2 (2,2)
+    3   2.4342345845655e+03  9.2818043691e+00  3.5885e-01       3 (3,3)
+    4   2.4333826953559e+03  5.6424036400e-01  7.0098e-02       4 (4,4)
+    5   2.4333756838363e+03  6.6887011359e-03  7.1129e-03       5 (5,5)
+    6   2.4333756812664e+03  2.9509639441e-06  1.5212e-04       6 (6,6)
+    7   2.4333756812664e+03  1.4754821362e-06  3.5063e-08       8 (8,8)
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:50 2026
+Current memory: 390032 bytes.
+
+Reading command file: frml2.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   3.0  c1
+  2 SN        3   4   2.0  c2
+  3 TS        3   4   3.0  c3
+  4 TF        3   4   3.0  c4
+  5 SEX       3   4   2.0  c5
+  6 TI        3   4   3.0  c6
+  7 TB        3   4   3.0  c7
+  8 TE        3   4   3.0  c8
+  9 TMAR      3   4   3.0  c9
+ 10 PRES      3   4   3.0  c10
+ 11 PRESN     3   4   3.0  c11
+ 12 EDU       3   4   2.0  c12
+ 13 COHO1     3   4   0.0  ge(TB,348)&le(TB,384)
+ 14 COHO2     3   4   0.0  ge(TB,468)&le(TB,504)
+ 15 COHO3     3   4   0.0  ge(TB,588)&le(TB,624)
+ 16 W         3   4   0.0  SEX[2]
+ 17 DES       3   4   1.0  if(eq(TF,TI),0,1)
+ 18 DUR       3   4   3.0  TF-TS+1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): rrdat.1
+Free format. Separation character(s): default.
+
+Reading data file: rrdat.1
+Read records: 600 
+
+Created a new data matrix.
+Number of cases: 600
+Number of variables: 18
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 462843 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=0, des=DES, ts=0, tf=DUR
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       142       142.00      128.18        0.00      428.00    -
+ 1    0   1       458       458.00       49.30        0.00      350.00    -
+Sum               600       600.00
+
+Number of episodes: 600
+Successfully created new episode data.
+----------------------------------------------------------------------------
+frml(...)=...
+ML estimation of user-defined rate model. Current memory: 462995 bytes.
+
+Function definition:
+bb      = COHO2*b1+COHO3*b2+W*b3
+p1      = ge(tf,0)&lt(tf,12)
+p2      = ge(tf,12)&lt(tf,24)
+p3      = ge(tf,24)&lt(tf,36)
+p4      = ge(tf,36)&lt(tf,48)
+p5      = ge(tf,48)&lt(tf,60)
+p6      = ge(tf,60)&lt(tf,72)
+p7      = ge(tf,72)&lt(tf,84)
+p8      = ge(tf,84)&lt(tf,96)
+p9      = ge(tf,96)
+rr      = if(p1,a1,if(p2,a2,if(p3,a3,if(p4,a4,if(p5,a5,if(p6,a6,if(p7,a7,if(p8,a8,if(p9,a9,0)))))))))
+s1      = 12*exp(a1+bb)
+s2      = s1+12*exp(a2+bb)
+s3      = s2+12*exp(a3+bb)
+s4      = s3+12*exp(a4+bb)
+s5      = s4+12*exp(a5+bb)
+s6      = s5+12*exp(a6+bb)
+s7      = s6+12*exp(a7+bb)
+s8      = s7+12*exp(a8+bb)
+lsurv   = if(p1,tf*exp(a1+bb),if(p2,s1+(tf-12)*exp(a2+bb),if(p3,s2+(tf-24)*exp(a3+bb),if(p4,s3+(tf-36)*exp(a4+bb),if(p5,s4+(tf-48)*exp(a5+bb),if(p6,s5+(tf-60)*exp(a6+bb),if(p7,s6+(tf-72)*exp(a7+bb),if(p8,s7+(tf-84)*exp(a8+bb),if(p9,s8+(tf-96)*exp(a9+bb),0)))))))))
+l1      = if(DES,rr+bb,0)
+fn      = l1-lsurv
+
+Function evaluation: sum over 600 data matrix cases.
+Using episode data.
+
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 12
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+12 starting value(s) from xp parameter.
+
+Idx  Parameter   Starting value
+  1  a1          -4.00000000e+00 
+  2  a2          -4.00000000e+00 
+  3  a3          -4.00000000e+00 
+  4  a4          -4.00000000e+00 
+  5  a5          -4.00000000e+00 
+  6  a6          -4.00000000e+00 
+  7  a7          -4.00000000e+00 
+  8  a8          -4.00000000e+00 
+  9  a9          -4.00000000e+00 
+ 10  b1           0.00000000e+00 
+ 11  b2           0.00000000e+00 
+ 12  b3           0.00000000e+00 
+
+
+Convergence reached in 7 iterations.
+Number of function evaluations: 9 (9,9)
+
+Maximum of log likelihood: -2433.38
+Norm of final gradient vector: 1.47548e-06
+Last absolute change of function value: 3.73758e-16
+Last relative change in parameters: 3.50634e-08
+
+Idx  Parameter       Value      Error    Value/E  Signif
+--------------------------------------------------------
+  1  a1            -5.2070     0.1520   -34.2464  1.0000
+  2  a2            -4.5473     0.1312   -34.6574  1.0000
+  3  a3            -4.2675     0.1296   -32.9389  1.0000
+  4  a4            -4.7784     0.1690   -28.2758  1.0000
+  5  a5            -4.7300     0.1779   -26.5924  1.0000
+  6  a6            -4.7862     0.1987   -24.0857  1.0000
+  7  a7            -5.1366     0.2523   -20.3568  1.0000
+  8  a8            -6.0783     0.4137   -14.6917  1.0000
+  9  a9            -5.4198     0.1281   -42.3123  1.0000
+ 10  b1             0.4367     0.1133     3.8534  0.9999
+ 11  b2             0.5162     0.1182     4.3688  1.0000
+ 12  b3             0.4336     0.0949     4.5687  1.0000
+
+Log likelihood (starting values): -2578.9484 
+Log likelihood (final estimates): -2433.3757 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 499381 bytes.
+End of program. Tue Jul 21 05:46:51 2026

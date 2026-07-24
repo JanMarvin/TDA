@@ -1,0 +1,11 @@
+# gdatops4.cf -- t_gdat.c coverage: nvar's match= error path. An
+# undefined variable name in match= triggers a syntax-error print
+# (prn_nve1). Not meant to succeed -- exercises the diagnostic print
+# itself, not a data outcome.
+
+silent = -1;
+
+nvar(dfile=vseldat.dat,
+    A=c1, B=c2,
+    match = NOSUCHVAR1,NOSUCHVAR2,
+);

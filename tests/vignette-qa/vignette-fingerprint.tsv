@@ -1,0 +1,277 @@
+tdaR	The data file rrdat.1, read and named	120	4b0a731f43e6b03a
+tdaR	Episode data, single destination state	20	034be17334953171
+tdaR	Episode data, alternative destination states	41	8608f023d1e66e57
+tdaR	ed3.cf: multi-episode data	193	3bdc3abea9cb5145
+tdaR	gd2.cf	36	4430c79f930d2f87
+tdaR	plg: the graph of gd1.dat (gd3.cf)	75	d701a4ec091b9f74
+tdaR	gd15a.cf	41	eff35e71b46079be
+tdaR	gd15b.cf	41	8bdc4a263e84e64b
+tdaR	pltree (gd15.cf)	41	e35eb4b7f04f36f0
+tdaR	seq.d2 read both ways (seq3.cf)	145	e496179b8eacc0c9
+tdaR	seqpd (seq5.cf)	659	bcde39b7f177ce4f
+tdaR	seqsi (seq6.cf)	217	5e5596d39fc2e1ed
+tdaR	ejoin (ej1.cf)	215	f2c7e51959c7fa79
+tdaR	plot1.cf	23	6f0d3d65ef2dd74d
+tdaR	plot2.cf	14	e141f990e45d6b4b
+tdaR	plot3.cf	15	b03d633298d4ea5d
+tdaR	plot4.cf	17	8001ba0f0be532a9
+tdaR	plot5.cf	24	6ac484687bd59f12
+tdaR	plot6.cf	38	9ef1e4e56af88ff3
+tdaR	plot7.cf	70	7c639c4f0b043c87
+tdaR	plot8.cf	17	1280661e22f5f252
+tdaR	plot9.cf	15	7b4ba3f442870e14
+tdaR	plot10.cf	16	af66b36d6dc80e2f
+tdaR	plots.cf	95	e07187346eb650ff
+tdaR	plot11.cf	16	b05e44d714271f60
+tdaR	plot12.cf	31	04423c2749405456
+tdaR	plot13.cf	75	a101ea6910dfdca2
+tdaR	plot14.cf	95	c3ade78c884d5d1e
+tdaR	plot15.cf	86	070ad2640353d694
+tdaR	plot16.cf	47	41f2550eebb7c665
+tdaR	plot17.cf	14	5901778f0b88b81a
+tdaR	plot18.cf	5	8e93d4c226189c5a
+tdaR	plot19.cf	22	73887792260e48cc
+tdaR	plot20.cf	23	fadcde6c71283511
+tdaR	plot21.cf	31	7123191d78056291
+tdaR	Shape, product, transpose, trace	25	31721eaad94e4abb
+tdaR	Diagonals	52	b6d46e24b55257cb
+tdaR	Elementwise square roots	24	f84af7ab3036b3dc
+tdaR	Concatenating, summing, selecting, trimming	81	f72ead9357ce1fa8
+tdaR	Vectorising, Kronecker product, permutations	113	3aa664bdd11195a1
+tdaR	Gaussian elimination	35	2830f07445a1140c
+tdaR	msort, msort1, mrank	49	5bfa9ebc7c706ed7
+tdaR	mcent, mstand, mscal1	34	0c549334cb54df29
+tdaR	The three norms	6	8555fed775fb6303
+tdaR	minvd, minvs	42	4338908b07010896
+tdaR	A generalized inverse, and the identity that defines it	56	97a610b10d465c0a
+tdaR	mchol	26	ed73d8312eacb980
+tdaR	mls	40	cd2b8fa6b7743016
+tdaR	mlse	41	cab034f5a7e23397
+tdaR	mlsi	39	d22a1de9e69f0231
+tdaR	mev and mevs	155	9547083af001f630
+tdaR	msvd1 against mevs	80	ae18da47538204ca
+tdaR	mlp with one equality row	45	cfa0f42814702941
+tdaR	mproc, mnum	41	95951415ace4d6f4
+tdaR	evalf	7	eee59408789fc141
+tdaR	TDA’s random numbers	13	4a79474c945aa092
+tdaR	change and cntch, record mode and block mode	231	4f8f650688e88e04
+tdaR	gcnt, grec, gmean, gstd	90	619e84a78d03f0c4
+tdaR	evalf2: a function, its gradient and Hessian (deriv1.cf)	10	c42af77a06729a4f
+tdaR	integrate: int1.cf	12	d8ddc7468a4acb09
+tdaR	int() inside an expression (int2.cf, int3.cf)	11	4a625eca0acc60b6
+tdaR	sma: the three smoothings of ds3.cf	89	52353e1712de89a2
+tdaR	smd: the three smoothers of ds4.cf	53	93b8d6c75802538b
+tdaR	smd: ds4.cf, drawn	20	bb5c47ae4058020b
+tdaR	spl: ds5.cf	61	80490a54c373b6f8
+tdaR	spl: ds5.cf, drawn	15	55bdc2e6a5b51229
+tdaR	fmin: fmin1.cf	13	12d53fabaf45fbe2
+tdaR	fmin with data: fmin2.cf	13	b1a5bdb5e2edd590
+tdaR	dstat on ds1.dat	33	fbcf619c9544eea1
+tdaR	gdf: exact data (the manual’s Box 3)	81	7a2033bb3664830e
+tdaR	gdf: right censored data (Boxes 4 and 5)	56	1108c1b9e03bdfd9
+tdaR	gdf: the joint distribution (Box 6)	78	37f89eb8c2062635
+tdaR	gdf: joint distribution, censored (Boxes 9 and 10)	160	c706a6f3636b4f57
+tdaR	gdf: the two joint methods (Box 12)	137	b7a4b2735f5ce145
+tdaR	quant	34	4b75a025063786b9
+tdaR	freq and freq2	106	077b886586934265
+tdaR	atab	57	0fdc1b88da157b47
+tdaR	corr	27	77ee39a58692c1d0
+tdaR	freq2 with contingency measures	92	c30093631e266b74
+tdaR	Points from TDA’s generator	3	7740bc7af6bf637d
+tdaR	A scatterplot	11	cb56731d731343de
+tdaR	A sunflower plot	12	9507a9cb8455ee8f
+tdaR	A scatterplot with a lowess smooth	12	4c6ee5ba05410e46
+tdaR	A histogram (dh1.cf)	17	f910a4b20832ebc0
+tdaR	A kernel density estimate (dh2.cf)	13	5f4f3edd6398efe0
+tdaR	ineq	35	68457b0d00cc4ad0
+tdaR	segr	42	7e7dd2343a92ff7b
+tdaR	A life table, 30-month intervals	258	47d186ea86fdd796
+tdaR	The estimate as a data frame (ple1.cf)	135	87b1edec8931f5a9
+tdaR	Product-limit estimation with case weights	220	f863ccb2b2bdea81
+tdaR	ple2.cf: the job data, one destination	216	a31cdab0db42a4a6
+tdaR	Sub-survivor functions, four destination states	21	049e2093701dfcb3
+tdaR	One survivor function per destination state	19	eddd2408e3c01b10
+tdaR	Quantiles of the survivor function	95	d13b9bbc638db381
+tdaR	ple6.cf: comparing two survivor functions	31	336dcb9f990b606a
+tdaR	Men and women	30	550e1f78ad08b947
+tdaR	Survivor functions with confidence bands	16	5a43483cc7023706
+tdaR	epsdat: state distributions (ed5.cf)	119	8a8705dd29d091d0
+tdaR	seqlg: length and gaps	57	e20021d36693de56
+tdaR	seqgc	77	d879813df6483434
+tdaR	seqsd and seqen	103	ba4a2e050efcec4c
+tdaR	seqpm	31	da36394dbb0309db
+tdaR	seqm (seqm1.cf)	15	36e784138f5e8977
+tdaR	The alignment behind the distance	98	d2fe45ce53b5dced
+tdaR	A substitution cost matrix	118	3a92abd32d0b7cd6
+tdaR	seqm’s s= option (seqm1b.cf, seqm1c.cf)	155	67c1cf5d23b1ae8c
+tdaR	indel costs (seqm4.cf)	63	ee14a6770e249a34
+tdaR	seqm5.cf: substitution costs based on the data	20	f6f568ff93eb6cdd
+tdaR	lsreg	27	48dc45d36d78de9c
+tdaR	Equality and inequality constraints	36	912618aa22d07982
+tdaR	A regression per region	74	5014477060a793af
+tdaR	l1reg	38	16e3d0b794e70a51
+tdaR	A curve that is hard to recover, plus noise	3	e4ba812d845c3b09
+tdaR	npreg: the kernel estimate	46	889d33e3c35b3e83
+tdaR	npreg, against the curve it is estimating	19	a1e2cf8c18aa3f65
+tdaR	An exponential model written as a likelihood (frml1.cf)	56	150a9aa2433227b7
+tdaR	Binary logit (qr1.cf)	197	cbe8726ee56b617f
+tdaR	The same data, probit	24	0849d701acef5e8d
+tdaR	plot-bin.cf	27	e6ac4d5fb004c1ae
+tdaR	A grouped logit, with and without a random effect (qr5.cf)	97	eecac00c86b91fbe
+tdaR	Ordinal logit and probit (qr2.cf)	339	15425f5d7c837204
+tdaR	The ordinal logit as a likelihood	90	eec15a5dd82cb434
+tdaR	Multinomial logit (qr3.cf)	83	7c7d4436afe10f99
+tdaR	A multinomial logit over lvl() columns (qr4.cf)	606	dda8dc80a83e5d61
+tdaR	Multivariate probit (qr6.cf)	150	50ff690834c3775b
+tdaR	Multivariate probit over lvl() columns (qr7.cf)	75	488ec8d6154dffa5
+tdaR	Poisson regression, free and with an offset (cd1.cf)	166	4009241bb00519bb
+tdaR	cd2.cf: a negative binomial count model	88	7cb56bdd2a69d5c4
+tdaR	glm, Gaussian, identity and log links	55	6ff5eb2bfcfb8b21
+tdaR	Binomial models, selected and hand-written links	84	e1dca490f937a9fc
+tdaR	The Poisson family	107	56c65d3d5035354b
+tdaR	The Gamma family, log and inverse links	136	f9ff55bf8c34d195
+tdaR	The inverse Gaussian family (glm9.cf)	37	17489eb9e3e45e89
+tdaR	freg: Gallant’s example (freg1.cf)	55	d3b8f2395b746381
+tdaR	The command file rt1.cf, in R	62	7592540536178293
+tdaR	rt1.cf: generalized residuals and the rate table	278	f4849162366d878d
+tdaR	The estimates, at full precision	10	6f7a0cfdac57a7cb
+tdaR	rt1m.cf: three transitions, and the relative risks (frml1m.cf)	355	8e9a8cc313bd0518
+tdaR	A piecewise constant exponential (rt2.cf)	181	48958a9f8413f336
+tdaR	rt2c.cf: all periods constrained equal	135	21b3bdf4578413f9
+tdaR	Period-specific effects (rt3.cf)	369	1fae684bba606f29
+tdaR	The model numbers	21	dc2391733b02ea85
+tdaR	Polynomial rates	148	7a0ef9d81c63b70b
+tdaR	Gompertz-Makeham (rt6.cf)	80	70c30b995b358cf4
+tdaR	plot-gm.cf	35	2d45846c5674afbe
+tdaR	Weibull (rt7.cf)	54	321f2c3827eb2671
+tdaR	plot-wei.cf	52	251f825483aa960b
+tdaR	Sickle (rt8.cf)	54	6f02ed88365cf55c
+tdaR	plot-sic.cf	36	9495fcfee611f5ed
+tdaR	Log-logistic (rt9.cf)	54	9eaa7b16486c47c6
+tdaR	plot-ll.cf	56	8d6c0e0024a14d37
+tdaR	Log-normal (rt12.cf)	54	9dd63a32867b9db3
+tdaR	plot-ln.cf	35	915a3583d6111123
+tdaR	Generalized gamma (rt13.cf)	54	76f58b33acd74015
+tdaR	plot-g1.cf	43	201fd1dd46a5fe01
+tdaR	plot-g2.cf	56	dbdd62095fcc0ad4
+tdaR	Inverse Gaussian (rt14.cf)	54	6d875b9f5339bb68
+tdaR	plot-ig.cf	47	27818d9fb22b6f9f
+tdaR	An exponential model as frml (fml1.cf)	58	ae6cdde27024efe3
+tdaR	Three competing rates (frml1m.cf)	160	b55d3432951d26e5
+tdaR	frml2.cf, frml2c.cf: the piecewise constant model, by hand	538	152312d90ba0410e
+tdaR	Weibull and log-normal, written out	144	cd480d396ce8ab66
+tdaR	frml5.cf: the generalized gamma, written out	72	533dddc64323d32c
+tdaR	The Hernes model (frml8.cf)	43	f4db6e0838a0c2e9
+tdaR	The Coale-McNeil model (frml9.cf)	41	32a7b742922944d8
+tdaR	Discrete time logistic	46	66e051c3f1acbe6f
+tdaR	Complementary log-log	46	cc96a30a5b3302e6
+tdaR	pl1.cf and pl1m.cf: Cox models with one and three transitions	136	8d73de2f36a70d9d
+tdaR	A time-dependent covariate	48	1e436c677df8e5f7
+tdaR	pl4.cf, pl5.cf: episode splitting	90	4a1551e4188ddcea
+tdaR	A test of proportionality (pl6.cf)	48	af025942dc901147
+tdaR	The effect within periods (pl7.cf)	45	6546e18465663b62
+tdaR	pl8.cf, pl8m.cf: goodness of fit over periods	41	67e20d4ecc80f276
+tdaR	A stratified Cox model (pl9.cf)	30	1232b5393ea46de2
+tdaR	The baseline rate at given covariate values (pl1r.cf)	60	62c1d5c490925349
+tdaR	seq_info, seqev and seqevd	80	05973ccdc2b7f793
+tdaR	Episodes derived from sequences	232	5990d6b4bd4d2fa9
+tdaR	seqmd with xe= (seq8c.cf)	138	dee60f8638691307
+tdaR	seqmd with event counting (seq8d.cf)	235	0132537dea3cb658
+tdaR	loglin on a contingency table	54	8b769af33623f5d9
+tdaR	A loglinear model with residuals	125	cbb3ee8dc0c62a9d
+tdaR	gni: in-degree, out-degree and loops per value variable (gd4.cf)	83	d444d2163137eb28
+tdaR	gdln: forward links	52	a89e202a9d3baa5e
+tdaR	gsort (gd22.cf)	72	1f02d2fcccb5c16f
+tdaR	gcon: components of graph 2 (gd7.cf)	79	acaca40552eabb7e
+tdaR	gdcon: reachable nodes (gd8.cf)	29	456d1d166bbcc1c0
+tdaR	gcut (gd26.cf)	73	017fff69938339c3
+tdaR	gep (gd20.cf)	1389	b3671cfc796e0487
+tdaR	The directed graph of gd5.dat, drawn (gd18.cf)	57	e594a63f25ac1e07
+tdaR	gsp (gd27.cf)	66	177772af36b1369a
+tdaR	gtcl (gd16.cf)	189	9b423e9258ebd0c2
+tdaR	gst (gd24.cf)	33	f8bed6ed500159b8
+tdaR	gd7.dat drawn (gd21.cf)	56	3b451d9c826bd3d9
+tdaR	gd23.cf	49	48ce88a984a63bb0
+tdaR	gmst (gd25.cf)	31	ca9a41eb7f147eee
+tdaR	gnst (gd32.cf)	244	fce74adc59998280
+tdaR	gd31.cf	27	86687513761c98e8
+tdaR	gcyc, options 1 to 4	1303	3215e8371e62fb80
+tdaR	gd29.cf	58	d78f2616c0ab2a1a
+tdaR	gdcyc (gd33.cf)	151	cfbe76cf6d316f7f
+tdaR	gflow (gd35.cf)	301	ac4b0868606084e1
+tdaR	gd34.cf	63	190454a6363c38c5
+tdaR	gcliq (gd42.cf)	77	303da876a86ed166
+tdaR	gd43.cf	43	0982a812bc6fc02e
+tdaR	giset and gcset	113	f3bfd3ee34fcf72d
+tdaR	gd38.cf	51	90be4ad4d8bc9069
+tdaR	gd36.cf	51	780524b8c8ea6f71
+tdaR	gap (co1.cf)	71	600d4f95d2ed3602
+tdaR	gqap (co2.cf)	76	b1ddd07b541b08d9
+tdaR	hcls: complete-link clustering (cl1.cf)	59	e2171ef62cbb504f
+tdaR	hclsp: the dendrogram cut at four levels (cl1a.cf)	52	fb7b1a2a47b02a60
+tdaR	nncl (cl2.cf)	99	6615e12e410045ef
+tdaR	hcld (cl3.cf)	127	93eaf9d5c2765562
+tdaR	hcld, second algorithm	116	3bd8613307dea1c8
+tdaR	cl3p.cf	35	d38cbbc41c77a9f9
+tdaR	becl (cl5.cf)	209	b5cd661234c67e5f
+tdaR	gfcf (gd13.cf)	119	fe56dc84156641d6
+tdaR	gbcf (gd14.cf)	291	c8259c0076613855
+tdaR	gd12.cf	121	fd9f5c33e295e718
+tdaR	gio (gd11.cf)	107	cbfffa57a22e8643
+tdaR	gd9.cf	68	93f7c362d0d21fb8
+tdaR	gfc (gd41.cf)	109	7290e5a3dbc15c14
+tdaR	gd40.cf	39	600cf1b2b1d054dd
+tdaR	An inclusion function and its derivative (evalfi1)	8	965566614dcb6989
+tdaR	gmin	22	f84074c42408de0c
+tdaR	range	8	2fb91194b15eaac1
+tdaR	Distribution of a set-valued discrete variable	85	46956db59cc76909
+tdaR	Distribution of an interval-valued variable	103	039dcf8774e9b22d
+tdaR	imean	5	7fb245a3255a0703
+tdaR	ivariance	9	6c6c5c11dbb708ab
+ehhnew	The data, and the book’s covariates	5	bad3729fcafba5f0
+ehhnew	ehb1, ehb2: the data and the episodes [book pp. 43-52, Boxes 2.2.1-2.2.5]	298	03294b14494bc9fd
+ehhnew	ehb3: multi-episode data [book pp. 53-55, Boxes 2.2.6-2.2.8]	294	c908a32935bec077
+ehhnew	ehc1, ehc3: life tables [book pp. 60-66, Boxes 3.1.1-3.1.4]	157	0d796c87d5679263
+ehhnew	ehc2: the life table survivor function [book p. 65, Fig. 3.1.1]	12	5da3b6dfecdb3908
+ehhnew	ehc2a, ehc2b: the density and the rate [book p. 65, Fig. 3.1.1]	24	c5905a800336e6da
+ehhnew	ehc4: survivor functions by sex [book p. 67, Fig. 3.1.2]	19	391893a621086f5c
+ehhnew	ehc5, ehc7, ehc9: product-limit estimation [book pp. 74-83, Boxes 3.2.1-3.2.2, 3.3.1-3.3.4a, 3.3.4b]	393	c650913fe0726cc4
+ehhnew	ehc6, ehc10: the estimated survivor functions [book pp. 76-85, Box 3.2.3; Fig. 3.2.1, Fig. 3.2.3]	42	3ebde8a4b43c0edf
+ehhnew	ehc8: with confidence bands [book p. 78, Fig. 3.3.1]	22	d619b11d64be69d3
+ehhnew	ehd1, ehd2: exponential models [book pp. 91-98, Boxes 4.1.1-4.1.5]	276	d5981534bf3cbfc0
+ehhnew	ehd3: three destinations [book pp. 102-104, Boxes 4.2.1-4.2.2]	226	486512e31e01353a
+ehhnew	ehd4, ehd5: subsamples, one transition at a time [book pp. 106-110, Boxes 4.2.3-4.2.6]	194	265ce67eb279c23b
+ehhnew	Box 4.2.7: standardized against unstandardized estimates [book p. 111, Box 4.2.7]	115	69dd2cdbccccf75b
+ehhnew	ehd6: cohort effects constrained equal [book pp. 112-113, Boxes 4.2.8-4.2.9]	250	d54bde8e5d110ee5
+ehhnew	ehd7: a multi-episode model [book pp. 115-118, Boxes 4.3.1-4.3.2a, 4.3.2b]	306	94a4c1a73373f37b
+ehhnew	The piecewise constant helper	3	202d1a18ac37cc00
+ehhnew	ehe1, ehe2: piecewise constant exponential [book pp. 122-127, Boxes 5.2.1-5.2.2, 5.3.1-5.3.2]	360	df5db74591949f5d
+ehhnew	ehe1a: the estimated rate [book pp. 122-124, Boxes 5.2.1-5.2.2; Fig. 5.2.1]	13	4c2420d1085e239a
+ehhnew	ehe3: three periods [book pp. 129-130, Boxes 5.4.1-5.4.2]	247	93a22673e567f1cf
+ehhnew	ehf1, ehf5: the split episode data [book pp. 143-154, Boxes 6.4.1-6.4.2, 6.5.1-6.5.2]	249	4c986e09c6b20f64
+ehhnew	ehf2, ehf3: episode splitting at marriage [book pp. 145-149, Boxes 6.4.3-6.4.6]	138	25a8658d23722e9a
+ehhnew	ehf4: marriage, by sex [book pp. 150-151, Boxes 6.4.7-6.4.8]	101	82a9367a8c6b4da8
+ehhnew	ehf6: splitting on a fixed grid [book pp. 155-156, Boxes 6.5.3-6.5.4]	103	f992852f415de8b5
+ehhnew	Box 6.5.5: the grid at 60, 24 and 12 months [book p. 157, Box 6.5.5]	65	5fe42fad950385e2
+ehhnew	The two fits each family gets	5	c00acc5a30374adc
+ehhnew	ehg1, ehg5, ehg8, ehg10, ehg12: five families [book pp. 183-210, Boxes 7.2.1-7.2.2, 7.3.1-7.3.2, 7.4.1-7.4.2, 7.5.1-7.5.2, 7.6.1-7.6.2]	144	390099d8c92cb948
+ehhnew	ehg1a, ehg5a, ehg8a, ehg10a, ehg12a: the five fitted rates [book pp. 185-211, Fig. 7.2.2, Fig. 7.3.2, Fig. 7.4.2, Fig. 7.5.2, Fig. 7.6.2]	55	af71b10ad8a5bbd8
+ehhnew	ehg2, ehg6, ehg9, ehg11, ehg13: with covariates [book pp. 186-212, Boxes 7.2.3-7.2.4, 7.3.3-7.3.4, 7.4.3-7.4.4, 7.5.3-7.5.4, 7.6.3-7.6.4]	387	5e9b003cbb663bc8
+ehhnew	ehg3, ehg4, ehg7: covariates on more than one term [book pp. 188-197, Boxes 7.2.5-7.2.8, 7.3.5-7.3.6]	441	92d94627d7b0906a
+ehhnew	ehh1 to ehh4: the four transformations [book pp. 215-218, Boxes 8.1.1-8.1.3]	80	464e45eb9862c331
+ehhnew	ehh1, ehh2, ehh3, ehh4: the transformed survivor functions [book pp. 215-217, Boxes 8.1.1-8.1.2; Fig. 8.1.1]	86	3a79f11af1a15b79
+ehhnew	ehd2.res, ehd2s: the pseudoresiduals and their survivor function [book pp. 97-225, Boxes 4.1.4-4.1.5, 8.2.1, 8.2.3-8.2.5]	286	809e3f02d1763f48
+ehhnew	ehd2p: log S against the residual, with its reference line [book p. 226, Box 8.2.6]	22	b0be8280ddcae155
+ehhnew	ehd2p to ehg13p: the pseudoresidual check [book pp. 226-227, Box 8.2.6; Fig. 8.2.1]	22	2a407b4051e4157b
+ehhnew	ehi1: a Cox model [book pp. 232-243, Boxes 9.1.2, 9.3.3]	60	c4696f48a79046ac
+ehhnew	ehi2: marriage as a time-varying covariate [book pp. 233-235, Boxes 9.1.3, 9.2.1-9.2.2]	86	01d346dc2b078524
+ehhnew	ehi3, ehi4, ehi5: Cox models on the split episodes [book pp. 237-239, Boxes 9.2.3-9.2.6]	210	f82c2ea21160bfdd
+ehhnew	ehi7, ehi8: proportional hazards [book pp. 243-245, Boxes 9.3.2, 9.3.4-9.3.5]	152	0d293d0c8d149e3c
+ehhnew	ehi6: the graphical check [book pp. 241-242, Box 9.3.1; Fig. 9.3.1]	19	cbf6973e9c198d7c
+ehhnew	ehi9: a stratified Cox model [book pp. 246-247, Boxes 9.3.6-9.3.7]	76	a99b76e48a876c11
+ehhnew	ehi10: the baseline rate, two cohorts [book pp. 249-250, Boxes 9.4.1-9.4.2]	224	e26366c2a1c39273
+ehhnew	ehi11: the two cohorts’ cumulated rates [book p. 250, Fig. 9.4.1]	20	217bd4f868b7871d
+ehhnew	ehi12: the cumulated rate smoothed [book p. 251]	30	7551dc498a0353ff
+ehhnew	ehi13: the smoothed baseline rate [book p. 251, Fig. 9.4.2]	11	7b2681b1f568ec3e
+ehhnew	Boxes 10.2.1, 10.2.2: gamma mixtures [book pp. 268-271, Boxes 10.2.1-10.2.2]	154	ccabb53687e44cf6
+ehhnew	The product-limit survivor function (no book box)	10	e92d0299ea5ce5f5

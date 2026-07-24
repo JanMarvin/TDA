@@ -1,0 +1,58 @@
+# mlsops.cf -- t_matc.c coverage: the constrained least-squares family
+# (mls, mlse, mlsi, mlsei, mnls; mlsei1 is pinned separately in
+# mlsei1ops.cf). Semantics are TDA's own documented ones from tda.hlp
+# (##mls/##mlse/##mlsi/##mlsei/##mnls), not guesses -- mlse/mlsi do
+# NOT take a separate me/mi count the way an earlier session's
+# handover assumed: mlse solves/least-squares-fits the WHOLE S as
+# equations, mlsi treats the whole S as inequalities. Confirmed
+# empirically too: an overdetermined, inconsistent 3-equation/2-
+# unknown mlse instance below returns the plain OLS fit, not an error
+# -- mlse and mls are the exact same lsei() call under the hood.
+#
+# Case 1 (mls / mlse, identical call): x1+x2=4, x1-x2=0, x1+2x2=10
+# (overdetermined, inconsistent). Normal equations by hand:
+# 3x1+2x2=14, 2x1+6x2=24 -> x1=18/7, x2=22/7. Both commands must
+# return the identical result since m_mls's opt=0 and opt=1 branches
+# call lsei() with the same arguments.
+#
+# Case 2 (mlsi): x1>=1, x2>=2, x1+x2>=5 (all three rows are
+# inequalities). The all-inequality, no-data-row lsei() call returns
+# a minimum-norm feasible point; hand-checked separately in
+# test-r-comparisons.R against a small grid search rather than here,
+# since "minimum norm among all feasible points" isn't a single hand
+# arithmetic step -- this pin only confirms the run succeeds and the
+# result satisfies every constraint.
+#
+# Case 3 (mlsei): 1 equality (x1+x2=3), 2 least-squares rows (x1~2,
+# x2~3), 1 inequality (x1-x2>=0). Substituting the equality into the
+# least-squares objective gives (x1-2)^2+(1-x1)^2, unconstrained
+# minimum at x1=1 -- infeasible against x1-x2>=0 combined with the
+# equality (needs x1>=1.5) -- so the constrained optimum sits at the
+# active bound x1=1.5, x2=1.5. TDA matches exactly.
+#
+# Case 4 (mnls): 2 least-squares rows, x1~-2, x2~3, no equality,
+# k=0 (all variables >= 0). Separable objective clips the infeasible
+# coordinate to its bound: x1=0 (clipped from -2), x2=3 (already
+# feasible). TDA matches exactly.
+
+silent = -1;
+mfmt = 24.16;
+
+mdef(S1,3,3) = 1,1,4, 1,-1,0, 1,2,10;
+mls(S1,X1);
+mpr(X1);
+mdef(S1e,3,3) = 1,1,4, 1,-1,0, 1,2,10;
+mlse(S1e,X1e);
+mpr(X1e);
+
+mdef(S2,3,3) = 1,0,1, 0,1,2, 1,1,5;
+mlsi(S2,X2);
+mpr(X2);
+
+mdef(S3,4,3) = 1,1,3, 1,0,2, 0,1,3, 1,-1,0;
+mlsei(S3,1,1,X3);
+mpr(X3);
+
+mdef(S4,2,3) = 1,0,-2, 0,1,3;
+mnls(S4,0,0,X4);
+mpr(X4);

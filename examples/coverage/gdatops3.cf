@@ -1,0 +1,17 @@
+# gdatops3.cf -- t_gdat.c coverage: nvar's write-through mode. df=
+# (a *different* df= from gcni's/giset's own -- this one is nvar's
+# own "write directly to a file, skip the data matrix" mode,
+# confirmed from source: `ctx->GDFNPtr = p + 3; ctx->GDFlg = 1;`)
+# combined with dtda= (create a TDA description file for what was
+# written). Both output files' content checked exactly: written.txt
+# reproduces the 5 input records verbatim; descout.tda is a valid
+# nvar() block correctly referencing written.txt with the right
+# variable names and case count.
+
+silent = -1;
+
+nvar(dfile=vseldat.dat,
+    A=c1, B=c2,
+    df = written.txt,
+    dtda = descout.tda,
+);

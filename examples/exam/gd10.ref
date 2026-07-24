@@ -1,0 +1,12 @@
+TDA. Analysis of Transition Data (6.4q). Mon Aug 31 06:00:21 2026
+Current memory: 390032 bytes.
+
+Reading command file: gd10.cf
+============================================================================
+Pseudorank of IA: 4
+ 0.0375  0.1250  0.1250  0.1250 
+ 0.1250  0.0375  0.1250  0.1250 
+ 0.1250  0.1250  0.0375  0.1250 
+ 0.1250  0.1250  0.1250  0.0375 
+Current memory: 390032 bytes. Max memory used: 410190 bytes.
+End of program. Mon Aug 31 06:00:21 2026

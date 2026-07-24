@@ -1,0 +1,94 @@
+Read records:      48     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: lsreg3.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 G         3   4   0.0  c2
+  2 Y         3   4   0.0  c3
+  3 NE        3   4   0.0  c4
+  4 NC        3   4   0.0  c5
+  5 SO        3   4   0.0  c6
+  6 WE        3   4   0.0  c7
+  7 Y2        3   4   0.0  Y*Y
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): lsreg3.dat
+Free format. Separation character(s): default.
+
+Reading data file: lsreg3.dat
+Read records: 48 
+
+Created a new data matrix.
+Number of cases: 48
+Number of variables: 7
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 418181 bytes.
+----------------------------------------------------------------------------
+nlist(...)
+New namelist: DL = NE,NC,SO,WE
+----------------------------------------------------------------------------
+lsreg(...)=...
+Least squares regression. Current memory: 418189 bytes.
+
+Variables (cross-section)
+-------------------------
+Y   : G   
+X1  : Y   
+X2  : Y2  
+X3  : NE  
+X4  : NC  
+X5  : SO  
+X6  : WE  
+
+Processing dgrp option.
+Group selection: [DL]
+
+Variable     cases       weight
+-------------------------------
+NE              12       0.2500
+NC              12       0.2500
+SO              12       0.2500
+WE              12       0.2500
+
+Equality constraints: 1
+Inequality constraints: 0
+
+Reading data. Cases: 48
+
+Rank of reduced least squares data matrix: 6
+Norm of least squares residuals: 3.50111
+Rank of equality constraints: 1
+Norm of residuals of equality constraints: 0
+
+Degrees of freedom: 42
+Sum of squared residuals: 12.2578
+Variance of residuals: 0.291852
+Squared multiple correlation: 0.973878
+Adjusted: 0.970768
+
+Idx  Wave  Variable           Coeff          Error        Coeff/E  Signif
+-------------------------------------------------------------------------
+  1     -  Intercept   1.045236e+00   1.978744e-01   5.282321e+00  1.0000
+  2     1  Y           7.778210e-04            ---            ---     ---
+  3     1  Y2         -1.332484e-08            ---            ---     ---
+  4     1  NE         -7.873645e-01   1.351198e-01  -5.827160e+00  1.0000
+  5     1  NC         -3.929084e-02   1.351144e-01  -2.907968e-01  0.2274
+  6     1  SO          4.296827e-01   1.351670e-01   3.178902e+00  0.9972
+  7     1  WE          3.969727e-01   1.350824e-01   2.938745e+00  0.9947
+
+DGroup  weighted adj. stand. dev.
+---------------------------------
+[DL]                4.718767e-01 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 438255 bytes.
+End of program. Tue Jul 21 05:46:53 2026

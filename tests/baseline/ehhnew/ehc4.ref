@@ -1,0 +1,67 @@
+Read records:      59     
+TDA. Analysis of Transition Data (6.4p). Fri Jul 24 21:39:00 2026
+Current memory: 390032 bytes.
+
+Reading command file: ehc4.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Case      3   4   0.0  case
+  2 Time      3   4   0.0  c1
+  3 Surv      3   4   0.0  c3
+  4 Men       3   4   0.0  le(Case,30)
+  5 Women     3   4   0.0  gt(Case,30)
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ehc3.ltb
+Free format. Separation character(s): default.
+
+Reading data file: ehc3.ltb
+Read records: 59 
+
+Created a new data matrix.
+Number of cases: 59
+Number of variables: 5
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 410200 bytes.
+----------------------------------------------------------------------------
+tsel=Case[16,,30]|Case[45,,59]
+New temporary case selection: Case[16,,30]|Case[45,,59]
+Number of selected cases: 30
+----------------------------------------------------------------------------
+psfile=ehc4.ps
+Opened new PostScript file: ehc4.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 80 x 40
+PostScript coordinates. X-axis: 150,377  Y-axis: 460,573
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,         300.0000 
+User coordinates Y axis:           0.0000,           1.0000 
+----------------------------------------------------------------------------
+plxa(sc=60,ic=5)
+----------------------------------------------------------------------------
+plya(sc=1,ic=10)
+----------------------------------------------------------------------------
+plot(sel=Men)=Time,Surv
+----------------------------------------------------------------------------
+plot(sel=Women,lt=6)=Time,Surv
+----------------------------------------------------------------------------
+pltext(xy=240,0.25)=Men
+----------------------------------------------------------------------------
+pltext(xy=240,0.09)=Women
+----------------------------------------------------------------------------
+pltext(xy=80,0.8)=Life Table Survivor Function
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 430238 bytes.
+End of program. Fri Jul 24 21:39:00 2026

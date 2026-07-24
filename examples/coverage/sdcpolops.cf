@@ -1,0 +1,13 @@
+# sdcpolops.cf -- t_sdr.c coverage: sdcpol on a "bowtie" shape (two
+# triangles sharing an edge, 5 raw segments), giving two nodes of
+# degree 3 (the shared edge's endpoints, each also connecting to one
+# triangle apex) -- closes sdp_sort, which is only reached for nodes
+# with more than 2 adjacent edges (a plain closed polygon's corners
+# are all degree 2, which is why the simpler square fixtures used
+# elsewhere in this corpus never reach it). Correctly finds 2
+# polygons (the two triangles).
+
+silent = -1;
+
+nvar(dfile=bowtie.dat, X1<8>=c1, Y1<8>=c2, X2<8>=c3, Y2<8>=c4);
+sdcpol(opt=3, df=bowtie.sd) = X1,Y1,X2,Y2;

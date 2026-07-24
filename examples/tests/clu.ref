@@ -1,0 +1,188 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: clu.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 D         3   4   0.0  c1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): g.dat
+Free format. Separation character(s): default.
+
+Reading data file: g.dat
+Read records: 15 
+
+Created a new data matrix.
+Number of cases: 15
+Number of variables: 1
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 394049 bytes.
+----------------------------------------------------------------------------
+gdd(opt=4)=D
+New graph data. Current memory: 394049 bytes.
+Option 4: upper triangle.
+
+Minimal level for valid edges: 0
+Number of nodes: 6. Largest node number: 6
+Graph type 2 (undirected, valued, bidirectional edges: minimum).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1       15       0       16.000000             0
+
+Successfully created new graph data structure. Current memory: 394075 bytes.
+----------------------------------------------------------------------------
+clu(...)=...
+LS fit of ultrametric distances). Current memory: 394073 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+CLDis 4
+7
+4
+10
+7
+4
+13
+10
+7
+4
+16
+13
+10
+7
+4
+
+Function minimization.
+Algorithm 7: CES (quadratic model [dopt=1])
+
+Number of model parameters: 15
+Maximum number of iterations: 100
+Convergence criterion: 6
+Tolerance for scaled gradient: 1e-05
+Tolerance for scaled parameter change: 1e-08
+Scaling factor: 1
+
+Variance of distances: 14
+    4.0000    -0.6847
+    7.0000     7.3037
+    4.0000     3.0038
+   10.0000     6.5440
+    7.0000     9.2857
+    4.0000     4.1647
+   13.0000     7.6384
+   10.0000     6.3376
+    7.0000     5.7050
+    4.0000     1.2472
+   16.0000    18.0258
+   13.0000     6.5466
+   10.0000     7.7205
+    7.0000     9.5550
+    4.0000     4.9382
+ld=149.995 pd=515.133 rho=0.291178
+Iteration 1  CLRho=0.291178
+
+Convergence reached in 2 iterations.
+Number of function evaluations: 410 (3,0)
+
+Minimum of function: 53.2499
+Final scaled gradient: 1.36359e-07
+Final scaled parameter change: 0.052328
+
+Change in parameter vector: 11.6634
+Iteration 2  CLRho=2.91178
+
+Convergence reached in 3 iterations.
+Number of function evaluations: 547 (4,0)
+
+Minimum of function: 104.587
+Final scaled gradient: 1.25098e-06
+Final scaled parameter change: 0.372651
+
+Change in parameter vector: 6.5949
+Iteration 3  CLRho=29.1178
+
+Convergence reached in 1 iterations.
+Number of function evaluations: 273 (2,0)
+
+Minimum of function: 115.626
+Final scaled gradient: 1.12247e-06
+Final scaled parameter change: 0.055215
+
+Change in parameter vector: 1.02643
+Iteration 4  CLRho=291.178
+
+Convergence reached in 1 iterations.
+Number of function evaluations: 273 (2,0)
+
+Minimum of function: 116.861
+Final scaled gradient: 9.58925e-08
+Final scaled parameter change: 0.00610911
+
+Change in parameter vector: 0.115114
+Iteration 5  CLRho=2911.78
+
+Convergence reached in 1 iterations.
+Number of function evaluations: 273 (2,0)
+
+Minimum of function: 116.986
+Final scaled gradient: 9.80984e-09
+Final scaled parameter change: 0.00061744
+
+Change in parameter vector: 0.011652
+Iteration 6  CLRho=29117.8
+
+Convergence reached in 1 iterations.
+Number of function evaluations: 273 (2,0)
+
+Minimum of function: 116.999
+Final scaled gradient: 1.34202e-09
+Final scaled parameter change: 6.18105e-05
+
+Change in parameter vector: 0.00116663
+Iteration 7  CLRho=291178
+
+Convergence reached in 2 iterations.
+Number of function evaluations: 410 (3,0)
+
+Minimum of function: 117
+Final scaled gradient: 4.89498e-10
+Final scaled parameter change: 6.19756e-11
+
+Change in parameter vector: 0.000116677
+Iteration 8  CLRho=2.91178e+06
+
+Convergence reached in 2 iterations.
+Number of function evaluations: 410 (3,0)
+
+Minimum of function: 117
+Final scaled gradient: 2.43883e-09
+Final scaled parameter change: 6.57091e-12
+
+Change in parameter vector: 1.16679e-05
+    4.0000     4.0000     4.0000
+    7.0000     5.5000     5.5000
+    4.0000     5.5000     5.5000
+   10.0000    10.0000    10.0000
+    7.0000    10.0000    10.0000
+    4.0000    10.0000    10.0000
+   13.0000    10.0000    10.0000
+   10.0000    10.0000    10.0000
+    7.0000    10.0000    10.0000
+    4.0000     4.0000     4.0000
+   16.0000    10.0000    10.0000
+   13.0000    10.0000    10.0000
+   10.0000    10.0000    10.0000
+    7.0000     5.5000     5.5000
+    4.0000     5.5000     5.5000
+Final value of L(D): 117
+Final value of P(D): 4.77682e-12
+Ultrametric condition: 4.77682e-12
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 414069 bytes.
+End of program. Wed Sep  2 16:02:32 2026

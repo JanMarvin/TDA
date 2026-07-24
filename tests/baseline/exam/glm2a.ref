@@ -1,0 +1,84 @@
+
+  Iter    Function Value
+    0   2.4999140841440e-01
+    1   3.3329706457063e-01
+    2   4.9982211029315e-01
+    3   9.9859144191100e-01
+    4   9.9849907896679e-01
+    5   9.9592083602349e-01
+    6   4.9882847960100e-01
+    7   3.2851823322050e-01
+    8   2.3728929046267e-01
+    9   1.6784955529218e-01
+   10   8.2892119336398e-02
+   11   1.1356305586344e-01
+   12   9.3549239363646e-01
+   13   2.4847695664112e+00
+   14   6.3984270597167e-01
+   15   5.6250134987892e-02
+   16   4.0703517017396e-03
+   17   2.8688637763286e-05
+   18   1.0916039072661e-07
+   19   4.1331327249594e-10
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: glm2a.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X         3   4   0.0  rd(-3,3)
+  2 Y         3   4   0.0  exp(3+X)+rd
+
+Creating a new data matrix.
+Maximum number of cases: 100
+
+Created a new data matrix.
+Number of cases: 100
+Number of variables: 2
+
+End of creating new variables. Current memory: 390965 bytes.
+----------------------------------------------------------------------------
+glm(...)=...
+Generalized linear models. Current memory: 390965 bytes.
+
+Function definition:
+fn      = log(mue)
+
+Distribution: normal.
+Link function: user-defined.
+Domain of link function: (1e-12,1e+12)
+
+Variables (cross-section)
+-------------------------
+Y   : Y  
+X1  : X  
+
+Estimation with iteratively re-weighted least squares.
+Number of model parameters: 2
+Maximum number of iterations: 25
+Tolerance for scaled parameter change: 1e-06
+2 starting value(s) from xp parameter.
+
+
+Convergence reached in 19 iterations.
+Final scaled parameter change: 4.13313e-10
+
+Rank of data matrix: 2
+Degrees of freedom: 98
+Deviance                           19.9937 
+Pearson statistic                  19.9937 
+ML-based scaling factor             0.1999 
+Deviance-based scaling factor       0.2040 
+
+Idx  Wave  Variable       Coeff      Error    Coeff/E  Signif
+-------------------------------------------------------------
+  1     -  Intercept     3.0128     0.0020  1524.0440  1.0000
+  2     1  X             0.9958     0.0008  1299.1800  1.0000
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 396357 bytes.
+End of program. Tue Jul 21 05:46:53 2026

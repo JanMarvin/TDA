@@ -1,0 +1,16 @@
+# matc7b.cf -- t_matc.c coverage batch 7b: mldes (design matrix for
+# MLRC models). Z is n x q (one row per object), G is n x 1 with
+# group labels in consecutive runs. D comes out n^2 x (q^2+1) --
+# declared by the command itself, no need to size it first. Semantics
+# traced directly from the source and verified cell-for-cell: the row
+# for the ordered pair (kk,k) -- rows in kk-major order -- is
+#   [ z_k[i1]*z_kk[i2] for i2=1..q (outer), i1=1..q (inner), then
+#     1 if k==kk else 0 ]
+# when k and kk are in the same group, all zero otherwise.
+
+silent = -1;
+
+mdef(Z,3,2) = 1,2, 3,4, 5,6;
+mdef(G,3,1) = 1, 1, 2;
+mldes(Z,G,D);
+mpr(D);

@@ -1,0 +1,2 @@
+# format 103 is not in TDA's version table: clean refusal, pinned
+rstata() = old103.dta;

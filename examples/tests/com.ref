@@ -1,0 +1,12 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: com.cf
+============================================================================
+com()=out.txt
+Combinatorial patterns. Current memory: 390032 bytes.
+Option 1: all n-tuples (n=1).
+1 records written to: out.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390040 bytes.
+End of program. Wed Sep  2 16:02:32 2026

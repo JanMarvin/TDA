@@ -1,0 +1,7 @@
+# pdataops2.cf -- pdata's sort= option, with genuinely unsorted
+# input data so the reordering is actually visible (a case sorted
+# already by construction wouldn't tell sort= from a no-op).
+silent = -1;
+mdef(A,4,3) = 7,8,9, 1,2,3, 10,11,12, 4,5,6;
+mnvar(A);
+pdata(sort=A1) = sorted.dat;

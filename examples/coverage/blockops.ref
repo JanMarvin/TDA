@@ -1,0 +1,47 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep  5 13:12:42 2026
+Current memory: 390032 bytes.
+
+Reading command file: blockops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   4.0  c1
+  2 X         3   4  10.3  c2
+  3 B1        4   4  10.3  bmin(X)
+  4 B2        4   4  10.3  bmax(X)
+  5 B3        4   4   6.0  bnrec
+  6 B4        4   4   6.0  brec
+  7 B5        4   4   4.0  bfirst
+  8 B6        4   4   4.0  blast
+  9 B7        4   4   6.0  bnum
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): blk.dat
+Free format. Separation character(s): default.
+
+Block mode defined by variable: ID
+
+Reading data file: blk.dat
+Read records: 6 
+
+Created a new data matrix.
+Number of cases: 6
+Number of variables: 9
+
+Number of blocks: 3
+Min number of cases per block: 1
+Max number of cases per block: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 426241 bytes.
+----------------------------------------------------------------------------
+pdata(...)=blk.out
+6 records with 7 variables written to: blk.out
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 446558 bytes.
+End of program. Sat Sep  5 13:12:42 2026

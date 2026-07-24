@@ -1,0 +1,6 @@
+# err02.cf -- a refusal path: this command is EXPECTED to fail
+nvar(
+    dfile = ex.dat,
+    ID [2.0] = c1, X [6.2] = c2, G [2.0] = c3,
+);
+pdata(fmt=notanumber) = e2.txt;

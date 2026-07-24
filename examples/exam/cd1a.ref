@@ -1,0 +1,125 @@
+Read records:      40     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   1.6115777786960e+05  2.3552341889e+05          --       1 (1,1)
+    2   5.8245413338299e+04  8.6508765318e+04  1.0000e+00       2 (2,2)
+    3   2.0609005329549e+04  3.1689803082e+04  7.3108e-01       3 (3,3)
+    4   6.9827382566673e+03  1.1524291021e+04  6.6528e-01       4 (4,4)
+    5   2.1800883996046e+03  4.1091747236e+03  6.4385e-01       5 (5,5)
+    6   6.0109315421404e+02  1.3900209938e+03  6.3500e-01       6 (6,6)
+    7   1.6222212288909e+02  4.1033185996e+02  6.2268e-01       7 (7,7)
+    8   7.6922731983200e+01  8.7844830074e+01  5.7251e-01       8 (8,8)
+    9   6.8498038906800e+01  9.8207003958e+00  4.0288e-01       9 (9,9)
+   10   6.8281043211442e+01  2.9041590574e-01  1.2104e-01      10 (10,10)
+   11   6.8280769941904e+01  3.8599128770e-04  5.5061e-03      11 (11,11)
+   12   6.8280769941387e+01  7.3660869244e-10  8.0966e-06      12 (12,12)
+TDA. Analysis of Transition Data (6.4p). Sat Jul 25 02:03:08 2026
+Current memory: 390032 bytes.
+
+Reading command file: cd1a.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 NDI       3   4   0.0  c1
+  2 Service   3   4   0.0  c2
+  3 B         3   4   0.0  c3
+  4 C         3   4   0.0  c4
+  5 D         3   4   0.0  c5
+  6 E         3   4   0.0  c6
+  7 C60       3   4   0.0  c7
+  8 C65       3   4   0.0  c8
+  9 C70       3   4   0.0  c9
+ 10 P75       3   4   0.0  c10
+ 11 LOGS      3   4   0.0  log(Service)
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+Input select (isel): ge(c1,0)
+
+Using data file(s): cd1.dat
+Free format. Separation character(s): default.
+
+Reading data file: cd1.dat
+Read records: 40 
+Selected for data matrix: 34 records.
+
+Created a new data matrix.
+Number of cases: 34
+Number of variables: 11
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 434261 bytes.
+----------------------------------------------------------------------------
+fml(...)=...
+ML estimation of user-defined model. Current memory: 434261 bytes.
+
+Function definition:
+xb      = b0+B*bb+C*bc+D*bd+E*be+C60*bc60+C65*bc65+C70*bc70+P75*bp75+LOGS*blogs
+exb     = exp(xb)
+fn      = poisson(exb,NDI)
+
+Function evaluation: sum over 34 data matrix cases.
+
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 10
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Idx  Parameter   Starting value
+  1  b0           0.00000000e+00 
+  2  bb           0.00000000e+00 
+  3  bc           0.00000000e+00 
+  4  bc60         0.00000000e+00 
+  5  bc65         0.00000000e+00 
+  6  bc70         0.00000000e+00 
+  7  bd           0.00000000e+00 
+  8  be           0.00000000e+00 
+  9  blogs        0.00000000e+00 
+ 10  bp75         0.00000000e+00 
+
+
+Checking constraints.
+Con: 1 * b9 = 1
+
+Number of constraints: 1
+Try to find consistent starting values.
+Rank of constraints: 1
+
+Convergence reached in 12 iterations.
+Number of function evaluations: 13 (13,13)
+
+Maximum of log likelihood: -68.2808
+Norm of final gradient vector: 7.36609e-10
+Last absolute change of function value: 7.57134e-12
+Last relative change in parameters: 8.09664e-06
+
+Idx  Parameter       Value      Error    Value/E  Signif
+--------------------------------------------------------
+  1  b0            -6.4059     0.2174   -29.4600  1.0000
+  2  bb            -0.5433     0.1776    -3.0595  0.9978
+  3  bc            -0.6874     0.3290    -2.0891  0.9633
+  4  bc60           0.6971     0.1496     4.6587  1.0000
+  5  bc65           0.8184     0.1698     4.8207  1.0000
+  6  bc70           0.4534     0.2332     1.9446  0.9482
+  7  bd            -0.0760     0.2906    -0.2614  0.2062
+  8  be             0.3256     0.2359     1.3803  0.8325
+  9  blogs          1.0000        ---        ---     ---
+ 10  bp75           0.3845     0.1183     3.2507  0.9988
+
+Log likelihood (starting values): -161157.7779 
+Log likelihood (final estimates):   -68.2808 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 454398 bytes.
+End of program. Sat Jul 25 02:03:08 2026

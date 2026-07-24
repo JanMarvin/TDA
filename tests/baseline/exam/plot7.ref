@@ -1,0 +1,23 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:54 2026
+Current memory: 390032 bytes.
+
+Reading command file: plot7.cf
+============================================================================
+dplot(...)=...
+Combining PostScript files. Current memory: 390032 bytes.
+
+Row 1
+plot4.ps  bounding box: 101 433 427 623  xorg 150  yorg 460
+plot4.ps  bounding box: 101 433 427 623  xorg 150  yorg 460
+
+Row 2
+plot3.ps  bounding box: 101 433 416 623  xorg 150  yorg 460
+plot3.ps  bounding box: 101 433 416 623  xorg 150  yorg 460
+
+New bounding box: 10 10 293 180
+Scaled with xscale = 0.434816  yscale = 0.447632
+
+Copying input file(s) into output file: plot7.ps
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390032 bytes.
+End of program. Tue Jul 21 05:46:54 2026

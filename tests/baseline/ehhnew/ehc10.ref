@@ -1,0 +1,65 @@
+Read records:     226     
+TDA. Analysis of Transition Data (6.4p). Fri Jul 24 21:39:00 2026
+Current memory: 390032 bytes.
+
+Reading command file: ehc10.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Time      3   4   0.0  c3
+  2 Surv      3   4   0.0  c7
+  3 Upward    3   4   0.0  c1[0]
+  4 Lateral   3   4   0.0  c1[1]
+  5 Downward  3   4   0.0  c1[2]
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ehc9.ple
+Free format. Separation character(s): default.
+
+Reading data file: ehc9.ple
+Read records: 226 
+
+Created a new data matrix.
+Number of cases: 226
+Number of variables: 5
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 410222 bytes.
+----------------------------------------------------------------------------
+psfile=ehc10.ps
+Opened new PostScript file: ehc10.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 80 x 40
+PostScript coordinates. X-axis: 150,377  Y-axis: 460,573
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,         300.0000 
+User coordinates Y axis:           0.0000,           1.0000 
+----------------------------------------------------------------------------
+plxa(sc=60,ic=5)
+----------------------------------------------------------------------------
+plya(sc=1,ic=10)
+----------------------------------------------------------------------------
+plot(lt=1,sel=Upward)=Time,Surv
+----------------------------------------------------------------------------
+plot(lt=5,sel=Lateral)=Time,Surv
+----------------------------------------------------------------------------
+plot(lt=8,sel=Downward)=Time,Surv
+----------------------------------------------------------------------------
+pltext(xy=200,0.75)=upward moves
+----------------------------------------------------------------------------
+pltext(xy=200,0.3)=lateral moves
+----------------------------------------------------------------------------
+pltext(xy=200,0.55)=downward moves
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 430296 bytes.
+End of program. Fri Jul 24 21:39:00 2026

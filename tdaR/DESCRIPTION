@@ -1,0 +1,30 @@
+Package: tdaR
+Type: Package
+Title: Transition Data Analysis
+Version: 0.1.0
+Authors@R: c(
+    person("Goetz", "Rohwer", role = c("aut", "cph")),
+    person("Ulrich", "Poetter", role = c("aut", "cph")),
+    person("Jan Marvin", "Garbuszus", role = c("aut", "cre"),
+           email = "jan.garbuszus@ruhr-uni-bochum.de"))
+Description: An R interface to 'TDA' 6.4, Goetz Rohwer's and Ulrich Poetter's
+    program for transition data analysis, built into the package as a library.
+    Its event history and transition rate models, regression, sequence,
+    cluster, graph and spatial methods and its matrix language are available
+    as R functions that take data frames and return R objects. The package
+    keeps the program and its methods usable and documented, and reproduces
+    results obtained with 'TDA'.
+URL: https://github.com/JanMarvin/TDA, https://janmarvin.github.io/TDA, https://www.stat.rub.de/tda.html
+BugReports: https://github.com/JanMarvin/TDA/issues
+Copyright: see inst/COPYRIGHTS
+Language: en-GB
+Depends: R (>= 3.5.0)
+Imports: stats, utils
+Suggests: testit, sf, zoo, survival, systemfit, readspss, readstata13,
+    readxl, foreign, igraph, knitr, rmarkdown, MASS
+License: GPL (>= 2)
+VignetteBuilder: knitr
+Encoding: UTF-8
+NeedsCompilation: yes
+Config/roxygen2/version: 8.1.0
+Remotes: JanMarvin/readspss

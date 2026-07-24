@@ -1,0 +1,8 @@
+psfile = mdsxpcf.cf.ps;
+psetup(pxlen=100,pylen=100,pxa=0,6,pya=0.7,4.3);
+plxa(sc=1,ic=0);
+plya(sc=1,ic=10);
+ploto(xy=1,1,lt=1,nc=1)=0.198878;
+ploto(xy=1.10843,3.98968,lt=1,nc=1)=0.198893;
+ploto(xy=4.66662,3.42823,lt=1,nc=1)=0.198893;
+ploto(xy=5.60241,1,lt=1,nc=1)=0.198805;

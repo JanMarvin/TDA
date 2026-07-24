@@ -1,0 +1,22 @@
+# unfops.cf -- t_mds.c coverage: unf (unfolding of rank data,
+# documented in tda.hlp). Values are per-case preference rankings
+# for 3 alternatives (X1,X2,X3); the command finds the permutation
+# of alternatives that best aligns all cases' rankings via Kendall's
+# tau, and with df= set, writes per-case alignment records.
+#
+# PROVEN BUG, FIXED: unf1() (called whenever df= is set) had a
+# leftover debug exit(0) right after its first-iteration debug
+# print (`tda_out("vor unf2\n"); ...; exit(0);`), killing the whole
+# process before writing anything and before returning to the rest
+# of the command file -- silent truncation, the same failure class
+# as the dmet1/ivreg2(opt=3) bugs fixed earlier in this project.
+# Confirmed directly: before the fix, the run died after one line of
+# debug output with no completion trailer at all; after, it
+# correctly reports "Best permutation", writes all 3 records, and
+# exits normally. Fixed in both src/t_mds.c and tdaR/src/t_mds.c;
+# see README.md's Proven-bug-fixes section.
+
+silent = -1;
+
+nvar(dfile=unfdat.dat, X1=c1, X2=c2, X3=c3);
+unf(df=unfout.txt) = X1,X2,X3;

@@ -1,0 +1,11 @@
+# fmin with analytic derivatives (dopt=0, the symbolic-derivative
+# engine in t_eval2) on functions with known minima; the fuzzer
+# (tools/fuzz_eval.R stage 4) triangulates analytic vs numerical
+# derivatives vs R optim across algorithms 3-6 -- all agree.  One
+# neutral observation from the same runs: algorithm 6 stops early on
+# the exponential problem in BOTH derivative modes, so it is a
+# property of that algorithm's stopping rule, not of the derivatives.
+fmin(mina=4, xp=0.2,0.2, mxit=500) = (x - 2)^2 + (y + 1)^2;
+fmin(mina=5, xp=0.2,0.2, mxit=500) = (1 - x)^2 + 5 * (y - x^2)^2;
+fmin(mina=5, dopt=1, xp=0.2,0.2, mxit=500) = (1 - x)^2 + 5 * (y - x^2)^2;
+fmin(mina=3, xp=0.5,0.5, mxit=800) = exp(x - 1) - x + (y - 0.5)^2;

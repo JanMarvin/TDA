@@ -1,0 +1,28 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: int3a.cf
+============================================================================
+evalf2(...)=...
+Function evaluation. Current memory: 390032 bytes.
+
+Function definition:
+fn      = int(x,y*z,2*z^2+0*t)
+
+Arguments: x=0 y=2 z=1.5
+
+Numerical integration with method 1. Relative error: 0.0001 (0.0001).
+
+     13.5000    function value
+     -4.5000    gradient x
+      6.7500    gradient y
+     27.0000    gradient z
+      0.0000    hessian  x x
+      0.0000    hessian  y x
+      0.0000    hessian  y y
+     -6.0000    hessian  z x
+     13.5000    hessian  z y
+     36.0000    hessian  z z
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 392190 bytes.
+End of program. Tue Jul 21 05:46:53 2026

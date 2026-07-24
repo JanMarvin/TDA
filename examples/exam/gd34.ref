@@ -1,0 +1,43 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: gd34.cf
+============================================================================
+psfile=gd34.ps
+Opened new PostScript file: gd34.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 80 x 40
+PostScript coordinates. X-axis: 150,377  Y-axis: 460,573
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,          11.0000 
+User coordinates Y axis:          -1.0000,           7.0000 
+----------------------------------------------------------------------------
+plg(...)
+Plot graph. Current memory: 390032 bytes.
+Max number of nodes: 100
+> node(n=4,gs=0.8)=3,1
+> node(n=1,gs=0.8)=3,5
+> node(n=8,gs=0.8)=1,3
+> node(n=6,gs=0.8)=8,1
+> node(n=3,gs=0.8)=8,5
+> node(n=7,gs=0.8)=10,3
+> node(n=2,gs=0.8)=6,5
+> node(n=5,gs=0.8)=4.5,3
+> edge(ic=40,a=1.5,1.0)=8,1
+> edge(ic=20,a=1.5,1.0)=8,4
+> edge(ic=30,a=1.5,1.0)=1,2
+> edge(ic=17,a=1.5,1.0)=6,4
+> edge(ic=10,a=1.5,1.0)=2,3
+> edge(ic=32,a=1.5,1.0)=6,7
+> edge(ic=22,a=1.5,1.0)=3,7
+> edge(ic=37,a=1.5,1.0)=2,6
+> edge(ic=54,a=1.5,1.0)=4,5
+> edge(ic=50,a=1.5,1.0)=5,3
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 396634 bytes.
+End of program. Tue Jul 21 05:46:53 2026

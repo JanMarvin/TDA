@@ -1,0 +1,100 @@
+TDA. Analysis of Transition Data (6.4q). Thu Sep 17 06:36:26 2026
+Current memory: 390032 bytes.
+
+Reading command file: mdsn.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 D         3   4   0.0  c1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): g.dat
+Free format. Separation character(s): default.
+
+Reading data file: g.dat
+Read records: 15 
+
+Created a new data matrix.
+Number of cases: 15
+Number of variables: 1
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 394049 bytes.
+----------------------------------------------------------------------------
+gdd(opt=4)=D
+New graph data. Current memory: 394049 bytes.
+Option 4: upper triangle.
+
+Minimal level for valid edges: 0
+Number of nodes: 6. Largest node number: 6
+Graph type 2 (undirected, valued, bidirectional edges: minimum).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1       15       0       16.000000             0
+
+Successfully created new graph data structure. Current memory: 394075 bytes.
+----------------------------------------------------------------------------
+mdsn(...)=...
+Nonmetric MDS. Current memory: 394073 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+Number of points: 6
+Number of dimensions: 2
+Largest distance value: 16
+Number of ties: 10
+Handling of ties: ignored.
+
+Parameters for iterative minimization.
+Maximal number of iterations: 300
+Initial step length: 0.2
+Tolerance for norm of gradient: 1e-06
+Tolerance for stress: 0.0001
+
+Number of random repeats: 1
+
+
+Repeat 1
+Iteration   1  stress 0.260505  norm of grad: 0.233536
+Iteration   2  stress 0.216749  norm of grad: 0.195252
+Iteration   3  stress 0.168548  norm of grad: 0.138708
+Iteration   4  stress 0.137018  norm of grad: 0.142623
+Iteration   5  stress 0.0963189  norm of grad: 0.217335
+Iteration   6  stress 0.0751821  norm of grad: 0.224094
+Iteration   7  stress 0.0592365  norm of grad: 0.317332
+Iteration   8  stress 0.0492266  norm of grad: 0.406919
+Iteration   9  stress 0.0363225  norm of grad: 0.321762
+Iteration  10  stress 0.0194872  norm of grad: 0.290991
+Iteration  11  stress 0.0167096  norm of grad: 0.312532
+Iteration  12  stress 0.0117568  norm of grad: 0.387042
+Iteration  13  stress 0.007425  norm of grad: 0.29562
+Iteration  14  stress 0.00373781  norm of grad: 0.351478
+Iteration  15  stress 0.00309124  norm of grad: 0.301279
+Iteration  16  stress 0.00171224  norm of grad: 0.393113
+Iteration  17  stress 0.00121977  norm of grad: 0.295732
+Iteration  18  stress 0.000668504  norm of grad: 0.316621
+Iteration  19  stress 0.000570461  norm of grad: 0.301888
+Iteration  20  stress 0.00036365  norm of grad: 0.407673
+Iteration  21  stress 0.000226059  norm of grad: 0.294441
+Iteration  22  stress 0.000107105  norm of grad: 0.301107
+Found configuration with stress: 9.31794e-05
+Best stress value (in repeat 1): 9.31794e-05
+
+Final best stress value: 9.31794e-05
+Coordinates
+  1    -0.8256     0.1036 
+  2    -0.5556    -0.1452 
+  3    -0.1762    -0.1894 
+  4     0.1983    -0.2657 
+  5     0.3706     0.4258 
+  6     0.9886     0.0710 
+
+6 records written to mdsn_d.txt
+15 records written to mdsn_s.txt
+1 records written to out.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 414069 bytes.
+End of program. Thu Sep 17 06:36:26 2026

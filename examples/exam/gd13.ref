@@ -1,0 +1,55 @@
+Read records:      17     
+
+TDA. Analysis of Transition Data (6.4q). Mon Aug 31 06:00:21 2026
+Current memory: 390032 bytes.
+
+Reading command file: gd13.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 I         3   4   0.0  c1
+  2 J         3   4   0.0  c2
+  3 V         3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): gd3.dat
+Free format. Separation character(s): default.
+
+Reading data file: gd3.dat
+Read records: 17 
+
+Created a new data matrix.
+Number of cases: 17
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402083 bytes.
+----------------------------------------------------------------------------
+gdd=I,J,V
+New graph data. Current memory: 402083 bytes.
+Option 1: edge list.
+
+Minimal level for valid edges: 0
+Number of nodes: 11. Largest node number: 11
+Graph type 4 (directed, valued).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1       17       0       50.000000             0
+
+Successfully created new graph data structure. Current memory: 402869 bytes.
+----------------------------------------------------------------------------
+gfcf(sc=49,if=gd13.if,)=d
+Forward control flows. Current memory: 402863 bytes.
+Using graph number 1 (directed, valued).
+Minimum level of influence: 49
+Number of input nodes: 3
+Number of nodes controlling at least one other node: 2
+16 records written to: d
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422121 bytes.
+End of program. Mon Aug 31 06:00:21 2026

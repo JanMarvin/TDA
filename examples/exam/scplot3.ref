@@ -1,0 +1,46 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:58 2026
+Current memory: 390032 bytes.
+
+Reading command file: scplot3.cf
+============================================================================
+psfile=scplot3.ps
+Opened new PostScript file: scplot3.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 90 x 50
+PostScript coordinates. X-axis: 150,405  Y-axis: 460,602
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,           3.0000 
+User coordinates Y axis:          -1.0000,           2.5000 
+----------------------------------------------------------------------------
+plxa(sc=1,ic=10)
+----------------------------------------------------------------------------
+plya(sc=1,ic=0)
+----------------------------------------------------------------------------
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X         3   4   0.0  rd(0,3)
+  2 Y         3   4   0.0  sin(X)+rd
+
+Creating a new data matrix.
+Maximum number of cases: 200
+
+Created a new data matrix.
+Number of cases: 200
+Number of variables: 2
+
+End of creating new variables. Current memory: 391738 bytes.
+----------------------------------------------------------------------------
+scplot(...)=X,Y
+Scatterplot. Current memory: 391738 bytes.
+Lowess: sig=0.5 ns=2 d=0
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 402182 bytes.
+End of program. Tue Jul 21 05:46:58 2026

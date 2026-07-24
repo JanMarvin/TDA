@@ -1,0 +1,12 @@
+# lsreg_const.cf -- lsreg without intercept on a constant response.
+# ssq is 0, so the squared multiple correlation is never computed; the
+# F-statistic test used to read it uninitialised and printed garbage.
+# The reference pins its absence.
+
+nvar(
+    noc = 20,
+    X1 = case,
+    X2 = case * case / 10,
+    Y = 5,
+);
+lsreg(ni=1) = Y,X1,X2;

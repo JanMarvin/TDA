@@ -1,0 +1,20 @@
+# ejfmt.cf -- ejoin with a fmt1= format longer than 7 characters.
+# get_fmt() passed sizeof(pointer) as the buffer size, so "%13.10f " was
+# cut to "%13.10f" and neighbouring columns ran together in the file.
+# Reading the file back pins the separators.
+
+ejoin(
+    if1 = ejfmt1.dat,
+    if2 = ejfmt2.dat,
+    nw = 3,
+    fmt0 = 4,
+    fmt1 = 13.10,
+    fmt2 = 8.4,
+) = ejfmt.d;
+
+nvar(
+    dfile = ejfmt.d,
+    A1 = c1, A2 = c2, A3 = c3, A4 = c4, A5 = c5, A6 = c6,
+    A7 = c7, A8 = c8, A9 = c9, A10 = c10, A11 = c11,
+);
+dstat;

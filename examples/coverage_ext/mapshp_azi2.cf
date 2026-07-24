@@ -1,0 +1,19 @@
+# mapshp_azi2.cf -- t_map.c coverage: same real nc-shp shapefile and
+# azimuthal projection as mapshp_azi.cf, but with cont=1 (draw the
+# selected-region bound, reaching mapgrid_bounds) and a graticule
+# sequence that crosses the equator/prime meridian's special-case
+# label path.
+
+sdshp(fmt=24.16, df=shape.sd) = shape;
+sdnvar(
+    dfile = shape.sd,
+    SDID     = c1,
+    SDTyp    = c2,
+    SDN      = c3,
+    SDPtr<5> = rd,
+);
+
+psfile = mapazi2.ps;
+psetupg(proj=20, view=-80,35, rhem=45, pxlen=150);
+sdpgrat(cont=1, lon=-90(10)0, lat=0(10)80, fsx=2, fsy=2, fmt=5.1, lw=0.1);
+sdpmap();

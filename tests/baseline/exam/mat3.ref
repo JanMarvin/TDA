@@ -1,0 +1,14 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: mat3.cf
+============================================================================
+ -0.47440000  -0.49930000  -0.72500000  -0.86150000 
+  0.58400000  -0.79470000   0.16520000   0.00000000 
+ -0.65870000  -0.34500000   0.66870000   0.00000000 
+Rank of left-hand side: 3
+  0.40872542 
+  0.43019126 
+  0.62456022 
+Current memory: 390032 bytes. Max memory used: 390458 bytes.
+End of program. Tue Jul 21 05:46:53 2026

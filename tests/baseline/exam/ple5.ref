@@ -1,0 +1,60 @@
+Read records:     600     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:54 2026
+Current memory: 390032 bytes.
+
+Reading command file: ple5.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 TS        3   4   3.0  c3
+  2 TF        3   4   3.0  c4
+  3 SEX       3   4   2.0  c5
+  4 TI        3   4   3.0  c6
+  5 DES       3   4   1.0  if(eq(TF,TI),0,1)
+  6 DUR       3   4   3.0  TF-TS+1
+  7 MEN       3   4   1.0  SEX[1]
+  8 WOMEN     3   4   1.0  SEX[2]
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): rrdat.1
+Free format. Separation character(s): default.
+
+Reading data file: rrdat.1
+Read records: 600 
+
+Created a new data matrix.
+Number of cases: 600
+Number of variables: 8
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 422403 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=0, des=DES, ts=0, tf=DUR
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       142       142.00      128.18        0.00      428.00    -
+ 1    0   1       458       458.00       49.30        0.00      350.00    -
+Sum               600       600.00
+
+Number of episodes: 600
+Successfully created new episode data.
+----------------------------------------------------------------------------
+ple(grp=MEN,WOMEN,)=ple.5
+Product-limit estimation. Current memory: 422555 bytes.
+
+Sorting episodes according to ending times.
+
+Product-limit estimation.
+2 table(s) written to: ple.5
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 442468 bytes.
+End of program. Tue Jul 21 05:46:54 2026

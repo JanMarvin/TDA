@@ -1,0 +1,53 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: ggcliq.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 I         3   4   0.0  c1
+  2 J         3   4   0.0  c2
+  3 V         3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): e.dat
+Free format. Separation character(s): default.
+
+Reading data file: e.dat
+Read records: 9 
+
+Created a new data matrix.
+Number of cases: 9
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402083 bytes.
+----------------------------------------------------------------------------
+gdd(gt=2)=I,J,V
+New graph data. Current memory: 402083 bytes.
+Option 1: edge list.
+
+Minimal level for valid edges: 0
+Number of nodes: 6. Largest node number: 6
+Graph type 2 (undirected, valued, bidirectional edges: minimum).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1        9       0        9.000000             0
+
+Successfully created new graph data structure. Current memory: 402521 bytes.
+----------------------------------------------------------------------------
+ggcliq()=out.txt
+Generalized cliques. Current memory: 402515 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+Option 1: cliques (max path length: 1, min size: 3).
+Algorithm: agglomerative.
+END pn=0
+0 records written to: out.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422121 bytes.
+End of program. Wed Sep  2 16:02:32 2026

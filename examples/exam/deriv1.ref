@@ -1,0 +1,23 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:50 2026
+Current memory: 390032 bytes.
+
+Reading command file: deriv1.cf
+============================================================================
+evalf2(...)=...
+Function evaluation. Current memory: 390032 bytes.
+
+Function definition:
+fn      = x*y^2
+
+Arguments: x=2 y=5
+
+
+   50.000000    function value
+   25.000000    gradient x
+   20.000000    gradient y
+    0.000000    hessian  x x
+   10.000000    hessian  y x
+    4.000000    hessian  y y
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 391344 bytes.
+End of program. Tue Jul 21 05:46:50 2026

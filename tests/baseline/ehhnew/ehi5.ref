@@ -1,0 +1,118 @@
+Read records:     761     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   2.5845701196631e+00  1.1460889852e+01          --       1 (1,1)
+    2   2.5308075718280e+00  2.8659913518e+00  1.0000e+00       2 (2,2)
+    3   2.5284646821700e+00  2.4590470122e-01  4.1848e-01       3 (3,3)
+    4   2.5284461282439e+00  2.5363021907e-03  4.2423e-02       4 (4,4)
+    5   2.5284461263363e+00  2.6662463260e-07  4.0960e-04       5 (5,5)
+TDA. Analysis of Transition Data (6.4p). Fri Jul 24 21:39:00 2026
+Current memory: 390032 bytes.
+
+Reading command file: ehi5.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   6.0  c1
+  2 SN        3   4   3.0  c2
+  3 NSPL      3   4   3.0  c3
+  4 SPL       3   4   3.0  c4
+  5 ORG       3   4   3.0  c5
+  6 DES       3   4   3.0  c6
+  7 TS        3   4   6.2  c7
+  8 TF        3   4   6.2  c8
+  9 TSP       3   4   3.0  c9
+ 10 TFP       3   4   3.0  c10
+ 11 EDU       3   4   2.0  c11
+ 12 COHO2     3   4   1.0  c12
+ 13 COHO3     3   4   1.0  c13
+ 14 LFX       3   4   3.0  c14
+ 15 PNOJ      3   4   2.0  c15
+ 16 PRES      3   4   3.0  c16
+ 17 MarrDate  3   4   3.0  c17
+ 18 SEX       3   4   2.0  c18
+ 19 MARR      3   4   0.0  le(MarrDate,TS)
+ 20 MarrMen   3   4   0.0  MARR&SEX[1]
+
+Creating a new data matrix.
+Maximum number of cases: 761
+
+Using data file(s): rrdat.s1
+Free format. Separation character(s): default.
+Reading maximal 761 records.
+
+Reading data file: rrdat.s1
+Read records: 761 
+
+Created a new data matrix.
+Number of cases: 761
+Number of variables: 20
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 451408 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=ORG, des=DES, ts=TS, tf=TF
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       303       303.00       76.35        0.00      428.00    -
+ 1    0   1       458       458.00       38.53        0.00      350.00    -
+Sum               761       761.00
+
+Number of episodes: 761
+Successfully created new episode data.
+----------------------------------------------------------------------------
+rate(...)=1
+Transition rate models. Current memory: 451560 bytes.
+
+Model: Cox (partial likelihood)
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 8
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Log-likelihood of exponential null model: -2514.02
+Changed scaling factor for log-likelihood: -0.001
+Using default starting values.
+Sorting episodes according to starting times.
+Sorting episodes according to ending times.
+
+Convergence reached in 5 iterations.
+Number of function evaluations: 6 (6,6)
+
+Maximum of log likelihood: -2528.45
+Norm of final gradient vector: 0.000266625
+Last absolute change of function value: 7.5445e-10
+Last relative change in parameters: 0.000409595
+
+Idx SN Org Des MT Variable      Coeff      Error    C/Error  Signif
+-------------------------------------------------------------------
+  1  1   0   1  A EDU          0.0792     0.0241     3.2867  0.9990
+  2  1   0   1  A COHO2        0.3767     0.1158     3.2537  0.9989
+  3  1   0   1  A COHO3        0.2928     0.1243     2.3556  0.9815
+  4  1   0   1  A LFX         -0.0045     0.0010    -4.4408  1.0000
+  5  1   0   1  A PNOJ         0.1012     0.0449     2.2524  0.9757
+  6  1   0   1  A PRES        -0.0252     0.0054    -4.6858  1.0000
+  7  1   0   1  A MARR         0.5046     0.1303     3.8733  0.9999
+  8  1   0   1  A MarrMen     -0.8608     0.1420    -6.0624  1.0000
+
+Log likelihood (starting values): -2584.5701 
+Log likelihood (final estimates): -2528.4461 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 478392 bytes.
+End of program. Fri Jul 24 21:39:00 2026

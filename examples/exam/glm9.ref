@@ -1,0 +1,67 @@
+
+  Iter    Function Value
+    0   5.3079093602266e-01
+    1   1.0836449454390e-02
+    2   6.2683688297616e-04
+    3   3.6245842400695e-05
+    4   2.0958373289082e-06
+    5   1.2118719139309e-07
+    6   7.0073844504748e-09
+TDA. Analysis of Transition Data (6.4p). Sat Jul 25 02:03:11 2026
+Current memory: 390032 bytes.
+
+Reading command file: glm9.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X         3   4   0.0  rd
+  2 Mu        3   4   0.0  1+X
+  3 Z         3   4   0.0  rdn^2
+  4 X1        3   4   0.0  Mu+Mu^2*Z-Mu*sqrt(2*Mu*Z+Mu^2*Z^2)
+  5 Y         3   4   0.0  if(le(rd,Mu/(Mu+X1)),X1,Mu^2/X1)
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Created a new data matrix.
+Number of cases: 1000
+Number of variables: 5
+
+End of creating new variables. Current memory: 410701 bytes.
+----------------------------------------------------------------------------
+glm(...)
+Generalized linear models. Current memory: 410701 bytes.
+
+Distribution: inverse Gaussian.
+Link function: identity.
+
+Variables (cross-section)
+-------------------------
+Y   : Y  
+X1  : X  
+
+Estimation with iteratively re-weighted least squares.
+Number of model parameters: 2
+Maximum number of iterations: 20
+Tolerance for scaled parameter change: 1e-06
+2 starting value(s) from xp parameter.
+
+
+Convergence reached in 6 iterations.
+Final scaled parameter change: 7.00738e-09
+
+Rank of data matrix: 2
+Degrees of freedom: 998
+Deviance                         1933.9975 
+
+Idx  Wave  Variable       Coeff      Error    Coeff/E  Signif
+-------------------------------------------------------------
+  1     -  Intercept     1.0702     0.0867    12.3497  1.0000
+  2     1  X             0.8148     0.1909     4.2690  1.0000
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 458893 bytes.
+End of program. Sat Jul 25 02:03:11 2026

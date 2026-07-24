@@ -1,0 +1,12 @@
+# indep: delta-independence of two integer variables -- for each subset
+# of Y's property space, the largest gap between P(X=x | Y in subset)
+# and P(X=x).  Verified against direct computation in R
+# (test-r-comparisons.R).  The second data set starts away from 1 on
+# both axes (the shipped indexing crashed on any such input), the last
+# call uses the y= partition option.
+nvar(dfile=iv.dat, X<8>=c1, Y<8>=c2);
+indep = X,Y;
+clear;
+nvar(dfile=iv2.dat, X<8>=c1, Y<8>=c2);
+indep = X,Y;
+indep(y=4) = X,Y;

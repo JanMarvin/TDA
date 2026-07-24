@@ -1,0 +1,24 @@
+# matc6b.cf -- t_matc.c coverage batch 6b: mexpr1 (block-mode
+# expression evaluation). B's own consecutive-identical-rows define
+# blocks; the expression is evaluated once per block, over that
+# block's own row range (traced directly from source: the k1/k loop
+# compares each row of B to the running block's first row, and calls
+# eval_mexpr(k1,k,...) whenever it differs or the last row is
+# reached). Checked with the identity expression (X itself), where
+# blocking cannot change the answer -- confirms the mechanism writes
+# back the exact input regardless of block count: 2 blocks (rows
+# 1-2, 3-4) and 4 single-row blocks (every row its own block, the
+# other branch of the same detection loop) both reproduce X exactly.
+
+mdef(X,4,2) =   1, 2,
+                3, 4,
+                5, 6,
+                7, 8;
+
+mdef(BLK2,4,1) = 1, 1, 2, 2;
+mexpr1(BLK2,X,A2);
+mpr(A2);
+
+mdef(BLK4,4,1) = 1, 2, 3, 4;
+mexpr1(BLK4,X,A4);
+mpr(A4);

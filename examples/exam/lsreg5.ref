@@ -1,0 +1,77 @@
+Read records:      16     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: lsreg5.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Y         3   4   0.0  c1
+  2 X1        3   4   0.0  c2
+  3 X2        3   4   0.0  c3
+  4 X3        3   4   0.0  c4
+  5 X4        3   4   0.0  c5
+  6 X5        3   4   0.0  c6
+  7 X6        3   4   0.0  c7
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): lsreg5.dat
+Free format. Separation character(s): default.
+
+Reading data file: lsreg5.dat
+Read records: 16 
+
+Created a new data matrix.
+Number of cases: 16
+Number of variables: 7
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 418157 bytes.
+----------------------------------------------------------------------------
+lsreg(...)=...
+Least squares regression. Current memory: 418157 bytes.
+
+Variables (cross-section)
+-------------------------
+Y   : Y   
+X1  : X1  
+X2  : X2  
+X3  : X3  
+X4  : X4  
+X5  : X5  
+X6  : X6  
+
+Equality constraints: 0
+Inequality constraints: 0
+
+Reading data. Cases: 16
+
+Rank of least squares data matrix: 7
+Norm of least squares residuals: 914.562
+
+Degrees of freedom: 9
+Sum of squared residuals: 836424
+Variance of residuals: 92936
+Squared multiple correlation: 0.995479
+Adjusted: 0.992465
+F-statistic: 330.285
+Level of significance: 1
+
+Idx  Wave  Variable          Coeff         Error       Coeff/E  Signif
+----------------------------------------------------------------------
+  1     -  Intercept -3482258.1299   890420.3117       -3.9108  0.9964
+  2     1  X1              15.0617       84.9149        0.1774  0.1369
+  3     1  X2              -0.0358        0.0335       -1.0695  0.6873
+  4     1  X3              -2.0202        0.4884       -4.1364  0.9975
+  5     1  X4              -1.0332        0.2143       -4.8220  0.9991
+  6     1  X5              -0.0511        0.2261       -0.2261  0.1738
+  7     1  X6            1829.1512      455.4785        4.0159  0.9970
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 438231 bytes.
+End of program. Tue Jul 21 05:46:53 2026

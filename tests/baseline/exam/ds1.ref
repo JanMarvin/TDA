@@ -1,0 +1,90 @@
+Read records:       4     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:50 2026
+Current memory: 390032 bytes.
+
+Reading command file: ds1.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X1        3   4   0.0  c1
+  2 X2        3   4   0.0  c2
+  3 X3        3   4   0.0  c3
+  4 X4        3   4   0.0  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ds1.dat
+Free format. Separation character(s): default.
+
+Reading data file: ds1.dat
+Read records: 4 
+
+Created a new data matrix.
+Number of cases: 4
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 406104 bytes.
+----------------------------------------------------------------------------
+dstat
+Descriptive statistics. Current memory: 406104 bytes.
+
+Variable    Minimum    Maximum       Mean   Std.Dev.    Sum of values
+---------------------------------------------------------------------
+X1           1.0000     4.0000     2.5000     1.2910          10.0000
+X2           1.0000     7.0000     4.0000     3.4641          16.0000
+X3          -1.0000     2.0000    -0.2500     1.5000          -1.0000
+X4           0.0001     0.1000     0.0278     0.0484           0.1111
+----------------------------------------------------------------------------
+atab(x=-10(0.5)10,)=X3,X4
+Aggregated table. Current memory: 406104 bytes.
+
+X: X3        Minimum:      -1.0000  Maximum:       2.0000
+Y: X4        Minimum:       0.0001  Maximum:       0.1000
+
+     Lower      Upper  Frequency   Weighted    Mean(X)    Mean(Y)
+-----------------------------------------------------------------
+   -1.0000    -0.5000          3     3.0000    -1.0000     0.0370 
+   -0.5000     0.0000          0     0.0000     0.0000     0.0000 
+    0.0000     0.5000          0     0.0000     0.0000     0.0000 
+    0.5000     1.0000          0     0.0000     0.0000     0.0000 
+    1.0000     1.5000          0     0.0000     0.0000     0.0000 
+    1.5000     2.0000          0     0.0000     0.0000     0.0000 
+    2.0000     2.5000          1     1.0000     2.0000     0.0001 
+----------------------------------------------------------------------------
+corr
+Correlation matrix. Current memory: 406104 bytes.
+
+            X1      X2      X3      X4 
+--------------------------------------
+X1      1.0000 
+X2      0.4472  1.0000 
+X3      0.7746  0.5774  1.0000 
+X4     -0.8241 -0.5426 -0.3815  1.0000 
+----------------------------------------------------------------------------
+cov
+Covariance matrix. Current memory: 406104 bytes.
+
+            X1      X2      X3      X4 
+--------------------------------------
+X1      1.6667 
+X2      2.0000 12.0000 
+X3      1.5000  3.0000  2.2500 
+X4     -0.0515 -0.0909 -0.0277  0.0023 
+----------------------------------------------------------------------------
+ineq=X1,,X4
+Inequality measures. Current memory: 406104 bytes.
+
+Variable   Cases    Minimum    Maximum       Mean     StdDev     VCoeff       Gini
+----------------------------------------------------------------------------------
+X1             4     1.0000     4.0000     2.5000     1.2910     0.5164     0.3333 
+X2             4     1.0000     7.0000     4.0000     3.4641     0.8660     0.5000 
+X3             1     2.0000     2.0000     2.0000     0.0000     0.0000     0.0000 
+X4             4     0.0001     0.1000     0.0278     0.0484     1.7410     0.9262 
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426151 bytes.
+End of program. Tue Jul 21 05:46:50 2026

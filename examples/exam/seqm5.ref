@@ -1,0 +1,70 @@
+Read records:       5     
+Total alignments: 10
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:58 2026
+Current memory: 390032 bytes.
+
+Reading command file: seqm5.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Y1        3   4   0.0  c1
+  2 Y2        3   4   0.0  c2
+  3 Y3        3   4   0.0  c3
+  4 Y4        3   4   0.0  c4
+  5 Y5        3   4   0.0  c5
+  6 Y6        3   4   0.0  c6
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): seqm.d4
+Free format. Separation character(s): default.
+
+Reading data file: seqm.d4
+Read records: 5 
+
+Created a new data matrix.
+Number of cases: 5
+Number of variables: 1
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 414140 bytes.
+----------------------------------------------------------------------------
+seqdef=Y1,,Y6
+Creating a new sequence data structure. Current memory: 414140 bytes.
+Sequence structure number: 1
+Sequence type: 1
+Currently defined sequences:
+
+Sequence          State       Time axis       Number
+Structure Type  Variables  Minimum  Maximum  of States  States
+--------------------------------------------------------------
+     1      1         6          0        5         2    0 1
+
+Range of common time axis: 0 to 5.
+----------------------------------------------------------------------------
+seqm(...)=seqm5.d
+Sequence proximity measures. Current memory: 414160 bytes.
+Optimal matching.
+Using sequence data structure 1.
+Number of states: 2. Max sequence length: 6
+Test output will be written to: seqm5.tst
+
+Default indel cost: 1.
+Substitution cost based on data, type 2.
+
+Starting alignment procedure.
+Number of sequences (cases): 5
+Sequences with zero length or internal gaps: 0
+Sequences used for alignment: 5
+
+Number of alignments: 10
+10 record(s) written to output file: seqm5.d
+Maximum distance between sequences 5 and 1: 5.33333
+TDA description written to: seqm5.tda
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 434205 bytes.
+End of program. Tue Jul 21 05:46:58 2026

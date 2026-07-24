@@ -1,0 +1,14 @@
+# beclops.cf -- t_cl.c coverage: becl's alg=2 (row permutations,
+# be_cl1's own opt=2 -- NOT the same "opt=" as becl's own output-
+# format option, confirmed by tracing be_cl1's two call sites
+# directly: PMALG==1|3 uses opt=1 (be_ccheck), PMALG==2|3 uses opt=2
+# (be_rcheck) -- a genuine internal-variable-name collision between
+# two different functions in this same file, not a doc error this
+# time). The existing project test (examples/exam/cl5.cf) only
+# exercises the default alg=1. Reuses the g.dat graph fixture.
+
+silent = -1;
+
+nvar(dfile=clops_g.dat, D=c1);
+gdd(opt=4) = D;
+becl(alg=2, opt=2, fmt=3.0) = beclout2.txt;

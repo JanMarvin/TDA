@@ -1,0 +1,20 @@
+# Fuzz test 1: degenerate and extreme geometry
+psfile = fuzz1.ps;
+psetup(
+    pxa = -1000,1000,
+    pya = -0.0001,0.0001,
+    pxlen = 100,
+    pylen = 60,
+);
+plxa(sc=200,ic=5);
+plya(sc=0.00002,ic=5);
+plframe;
+
+# zero-length line
+plotp = 0,0,0,0;
+# huge circle radius relative to plot
+ploto(xy=-500,-0.00005,gs=0.9) = 5000;
+# very long text string
+pltext(xy=-900,0.00007) = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+# text with special characters that could break parsing
+pltext(xy=0,-0.00008) = "50% (a,b) [test] {x}";

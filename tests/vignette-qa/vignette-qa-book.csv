@@ -1,0 +1,128 @@
+book box,book page,book box caption,command file,vignette box,verdict,note
+2.2.1,43,Variables in data file rrdat .1,,2,match,
+2.2.2,43,First records of data file rrdat .1,,2,match,
+2.2.3,46,Command file ehbl. cf,ehb1,2,shown,the vignette box carries the R equivalent of this command file
+2.2.4,51,Command file ehb2. cf,ehb2,2,shown,the vignette box carries the R equivalent of this command file
+2.2.5,52,Result of using command file ehb2. cf (Box 2.2.4),ehb2,2,match,"142 censored / 458 events, means 128.18 and 49.30, TF max 428 / 350"
+2.2.6,53,Command file ehb3. cf for multi-episode data,ehb3,3,shown,the vignette box carries the R equivalent of this command file
+2.2.7,54,Example of multl-episode data for three lndlvlduals,,3,match,
+2.2.8,55,Result of using command file ehb3. cf (Box 2.2 6),ehb3,3,match,"multi-episode table: spell 1 16/185, spell 2 36/126, spell 3 38/69 ... (the vignette had wrongly used ehb3 for four destination states; corrected); spell 9's single censored episode is excluded with TDA's warning, said in the text"
+3.1.1,60,Command file ehcl. cf (life table estimation),ehc1,4,shown,the vignette box carries the R equivalent of this command file
+3.1.2,61,Result of using command file ehc1.cf (Box 3 1 1),ehc1,4,match,"life table over 30-month intervals: entering 600/349/213/147/106 ..., survivor 0.61945 ..., all 15 rows (book shows the same; vignette prints the first five rows of the summary)"
+3.1.3,64,Command file e h c l . cf to plot a survivor function,ehc1,4,shown,survivor functions for men and women
+3.1.4,66,P a r t of c o m m a n d file ehc3.cf (life table estimation),ehc3,4,match,
+3.2.1,74,Part of commandfile ehc5. cf (Kaplan-Meier estlmatlon),ehc5,8,match,
+3.2.2,75,Result of command file ehc5.cf (Box 3.2.1),ehc5,8,match (head),"product-limit table: the first rows (2: 600 2 0 0.9967 ...) identical The book prints only part of this file and so does the vignette: the first ten rows, with the code beside them for the rest."
+3.2.3,76,Command file ehc6. cf to plot a survivor function,ehc6,9,shown,the vignette box carries the R equivalent of this command file
+3.3.1,77,Part of command file ehc7. cf (comparing survivor functions),ehc7,8,shown,men and women with grey-scaled 95% confidence bands
+3.3.2,80,Results of command file ehc7.cf (Box 3.3.1),ehc7,8,match,the four test statistics 20.6032 / 9.3647 / 14.3267 / 10.6951 (after the rdataframe WSum fix)
+3.3.3,82,Command file ehc9. cf,ehc9,8,shown,the vignette box carries the R equivalent of this command file
+3.3.4a,83,Part 1 (upward moves) of output file ehc9.ple,ehc9,8,match (head),"the vignette box carries the R equivalent of this command file The book prints only part of this file and so does the vignette: the first ten rows, with the code beside them for the rest."
+3.3.4b,83,Part 2 (lateral moves) of output file ehc9.ple,ehc9,8,match (head),"the vignette box carries the R equivalent of this command file The book prints only part of this file and so does the vignette: the first ten rows, with the code beside them for the rest."
+4.1.1,91,Command file ehdl.cf (exponential model without covarlates),ehd1,11,shown,the vignette box carries the R equivalent of this command file
+4.1.2,93,Results of using command file ehdl. cf (Box 4 1.1),ehd1,11,match,"Constant -5.0057 (0.0468), logLik -2831.11"
+4.1.3,94,Table of estimated rates (output file ehdl .prs),ehd1,11,match,the rate table 0(10)300: survivor 0.9352 0.8746 ... rate 0.006706 constant
+4.1.4,97,Part of command file ehd2.cf (exponential model with covariates),ehd2,"11,33",shown,the vignette box carries the R equivalent of this command file
+4.1.5,98,Results of using command file ehd2. cf (Box 4.1 4),ehd2,"11,33",match,"-4.4894 0.0773 0.6080 0.6108 -0.0032 0.0596 -0.0280, logLik -2465.99"
+4.2.1,102,Part of command file ehd3. cf,ehd3,12,shown,the vignette box carries the R equivalent of this command file
+4.2.2,104,Results of using command file ehd3.cf (Box 4.2.1),ehd3,12,match,"the three-destination model, 21 coefficients; logLik -2286.09"
+4.2.3,106,Command file ehd4. cf,ehd4,13,shown,the vignette box carries the R equivalent of this command file
+4.2.4,107,Command file ehd5. cf,ehd5,13,shown,the vignette box carries the R equivalent of this command file
+4.2.5,108,Results of using command file ehd4. cf (Box 4 2.3),ehd4,13,match,the men-only subsample (ehd4) and the women (ehd5)
+4.2.6,110,Results of using command file ehd5. cf (Box 4.2 4),ehd5,13,match,
+4.2.7,111,Comparison of standardized and unstandardized estimates,,14,match,"the book's side-by-side summary, added as its own box: upward moves identical in both columns, lateral 219 events against 90, downward 155 against 79; COHO3's C/Error falls 3.95 -> 1.78 and LFX -2.26 -> -1.10, which is the point the section makes"
+4.2.8,112,Command file ehd6. cf,ehd6,15,shown,the vignette box carries the R equivalent of this command file
+4.2.9,113,Results of using command file ehd6.cf (Box 4 2.8),ehd6,15,match,COHO2 = COHO3 constrained: 0.6094 both; logLik -2465.99
+4.3.1,115,Command file ehd7.cf (multi-episode exponential model),ehd7,16,shown,the vignette box carries the R equivalent of this command file
+4.3.2a,117,Result (first part) of using command file ehd7. cf (Box 4.3.1),ehd7,16,match,
+4.3.2b,118,Result (second part) of using command file ehd7.cf (Box 4.3.1),ehd7,16,match,
+5.2.1,122,Command file ehel. cf (piecewise constant exponential model),ehe1,18,shown,the vignette box carries the R equivalent of this command file
+5.2.2,123,Estimation results of command file ehel. cf (Box 5.2.1),ehe1,18,match,eight period constants -5.2038 ... -5.6981
+5.3.1,126,Command file ehe2.cf,ehe2,18,shown,the vignette box carries the R equivalent of this command file
+5.3.2,127,Estimation results of command file ehe2. cf (Box 5.3 1),ehe2,18,match,period constants and the six covariates
+5.4.1,129,Command file ehe3. cf,ehe3,20,shown,the vignette box carries the R equivalent of this command file
+5.4.2,130,Estlmation results of command file ehe3.cf (Box 5.4.1),ehe3,20,match,three periods with period-specific effects
+6.4.1,143,Command file ehf 1. cf,ehf1,21,shown,the vignette box carries the R equivalent of this command file
+6.4.2,144,First records of rrdat. sl (generated with ehf 1.cf in Box 6 4 1),ehf1,21,match,first records of the split data now shown
+6.4.3,145,Command file ehf 2 . cf,ehf2,22,shown,the vignette box carries the R equivalent of this command file
+6.4.4,146,Result of command file ehf2.cf (Box 6.4 3),ehf2,22,match,MARR -0.2410 (0.0996) after the split; 761 pieces
+6.4.5,148,Command file ehf3. cf,ehf3,22,shown,the vignette box carries the R equivalent of this command file
+6.4.6,149,Result of command file ehf3. cf (Box 6.4.5),ehf3,22,match,with the covariates: MARR -0.2405
+6.4.7,150,Part of command file ehf4. cf,ehf4,23,shown,the vignette box carries the R equivalent of this command file
+6.4.8,151,Result of command file ehf4. cf (Box 6 4 7),ehf4,23,match,"MARR -0.7124, MarrMen 0.7213 (marriage by sex)"
+6.5.1,153,Part of command file ehf5.cf,ehf5,21,shown,the vignette box carries the R equivalent of this command file
+6.5.2,154,First records of data file rrdat .d60,ehf5,21,match,first records of the grid-split data now shown
+6.5.3,155,Command file ehf6. cf,ehf6,24,shown,the vignette box carries the R equivalent of this command file
+6.5.4,156,Result of command file e h f 6 . cf (Box 6 5.3),ehf6,24,match,the model on the 60-month grid: LFX60 -0.0076
+6.5.5,157,"Exponential model with episode spllts (60, 24, and 12 months)",,25,match,"the three grids' estimates, side by side"
+7.2.1,183,Command file ehgl. cf (Gompertz model without covarlates),ehg1,27,shown,the vignette box carries the R equivalent of this command file
+7.2.2,184,Part of TDA's standard output using ehgl.cf (Box 7.2.1),ehg1,27,match,
+7.2.3,186,Command file ehg2. cf (Gompertz model with covariates),ehg2,29,shown,the vignette box carries the R equivalent of this command file
+7.2.4,187,Part of TDA’s standard output using ehg2. cf (Box 7.2 3),ehg2,29,match,
+7.2.5,188,Part of command file ehg3.cf (Gompertz model with covariates),ehg3,30,shown,the vignette box carries the R equivalent of this command file
+7.2.6,188,Part of TDA's standard output using ehg3.cf (Box 7 2 5 ),ehg3,30,match,
+7.2.7,189,Part of command file ehg4. cf (Gompertz model with covarlates),ehg4,30,shown,the vignette box carries the R equivalent of this command file
+7.2.8,190,Part of TDA's standard output using ehg4. cf (Box 7.2.7),ehg4,30,match,
+7.3.1,193,Part of command file ehg5. cf (Weibull model without covarlates),ehg5,27,shown,the vignette box carries the R equivalent of this command file
+7.3.2,193,Part of TDA's standard output usmg ehg5.cf (Box 7 3 1),ehg5,27,match,
+7.3.3,195,Part of command file ehg6.cf (Weibull model with covarlates),ehg6,29,shown,the vignette box carries the R equivalent of this command file
+7.3.4,195,Part of TDA's standard output using ehg6.cf (Box 7 3 3),ehg6,29,match,
+7.3.5,196,Part of command file ehg7. cf (Weibull model with covariates),ehg7,30,shown,the vignette box carries the R equivalent of this command file
+7.3.6,197,Part of TDA’s standard output using ehg7. cf (Box 7.3.5),ehg7,30,match,
+7.4.1,200,Part of command file ehg8.cf (Log-logistic modelwithout covarlates),ehg8,27,shown,the vignette box carries the R equivalent of this command file
+7.4.2,200,Part of TDA's standard output using ehg8.cf (Box 7.4.1),ehg8,27,match,
+7.4.3,202,Part of command file ehg9.cf (Log-logistic model with covariates),ehg9,29,shown,the vignette box carries the R equivalent of this command file
+7.4.4,203,Part of TDA's standard output using ehg9.cf (Box 7.4 3),ehg9,29,match,
+7.5.1,206,Part of command file ehglO.cf (Log-normal model without covari-,ehg10,27,shown,the vignette box carries the R equivalent of this command file
+7.5.2,206,Part of TDA's standard output using ehglO.cf (Box 7 5.1),ehg10,27,match,
+7.5.3,207,Part of command file ehgll .cf (Log-normal model),ehg11,29,shown,the vignette box carries the R equivalent of this command file
+7.5.4,207,Part of TDA's standard output using ehgll.cf (Box 7 5.3),ehg11,29,match,
+7.6.1,210,P a r t of c o m m a n d file ehgl2.cf (Slckle model without covarlates),ehg12,27,match,
+7.6.2,210,P a r t of TDA's s t a n d a r d o u t p u t u s i n g ehgi2.cf (Box 7.6.1),ehg12,27,match,
+7.6.3,211,Part of command file ehgi3.cf (Sickle model with covarlates),ehg13,29,shown,the vignette box carries the R equivalent of this command file
+7.6.4,212,Part of TDA's standard output using ehgl3.cf (Box 7.6 3),ehg13,29,match,
+8.1.1,215,Command file ehhl. cf (graphical check of exponential distribution),ehh1,"31,32",shown,the vignette box carries the R equivalent of this command file
+8.1.2,216,Part of TDA's standard output using command file ehhl .cf,ehh1,"31,32",match (last digit),"the four regressions reproduce ehh1/ehh2/ehh4.ref exactly once the survivor function is rounded to the five decimals ehc5.ple carries, which is what the command files read; ehh3's two t statistics come out -66.9338 / 72.3629 against TDA's -66.9337 / 72.3628 -- one in the last printed digit of a ratio whose coefficient and standard error are both exact"
+8.1.3,218,Regression results for graphical checks,,31,match (last digit),"the four regressions reproduce ehh1/ehh2/ehh4.ref exactly once the survivor function is rounded to the five decimals ehc5.ple carries, which is what the command files read; ehh3's two t statistics come out -66.9338 / 72.3629 against TDA's -66.9337 / 72.3628 -- one in the last printed digit of a ratio whose coefficient and standard error are both exact"
+8.2.1,221,Variables in TDA’s output files for pseudoresiduals,,33,match,the column layout of a .res file; box 33 prints the residuals frame with those columns
+8.2.2,222,Calculation of pseudoresiduals in TDA,,,no example,"a formula/algorithm box, not a run: nothing to reproduce"
+8.2.3,223,Part of ehd2.res (Pseudoresiduals for exponentialmodel),,33,match,"the .res file, not a command file of its own: checked against the book directly, cases 1-10 and 595-600, Rate / Survivor Function / Residual all identical at four decimals"
+8.2.4,224,Command file ehd2s. cf (product-limit estimation for residuals),ehd2s,33,shown,the vignette box carries the R equivalent of this command file
+8.2.5,225,Part of ehd2s.ple (Box 8 2 4),ehd2s,33,match (head),"product-limit estimate on the residuals The book prints only part of this file and so does the vignette: the first ten rows, with the code beside them for the rest."
+8.2.6,226,Command file ehd2p.cf (graphical check of pseudoresiduals),ehd2p,"34,35",shown,"log S against the residual with the standard-exponential reference line (plotp = 0,0,3,-3) and the pltext label, as the command file draws them; the curve alone carries no information"
+9.1.1,231,Partial likelihood algorlthm in TDA,,,no example,"a formula/algorithm box, not a run: nothing to reproduce"
+9.1.2,232,Part of command file ehll .cf (Cox model),ehi1,36,shown,the vignette box carries the R equivalent of this command file
+9.1.3,233,Estimation results usmg command file ehii.cf (Box 9.1.2),ehi1,36,match,"the scan spells ehi1.cf as ""ehii.cf""; the box cites Box 9.1.2, which is ehi1"
+9.2.1,235,Part of command file ehi2.cf (time-dependent covariates),ehi2,37,shown,the vignette box carries the R equivalent of this command file
+9.2.2,235,Estimation results of command file ehi2.cf (Box 9 2.1),ehi2,37,match,MARR as a time-varying covariate
+9.2.3,237,Command file ehi3. cf (Cox model with episode splitting),ehi3,38,shown,the vignette box carries the R equivalent of this command file
+9.2.4,238,Part of command file ehi4.cf (Cox model with time-dependent co-,ehi4,38,shown,the vignette box carries the R equivalent of this command file
+9.2.5,239,Part of command file ehi5.cf (Cox model with time-dependent co-,ehi5,38,shown,the vignette box carries the R equivalent of this command file
+9.2.6,239,Estimation results with command file ehi5. cf (Box 9.2.5),ehi5,38,match,the split-data Cox models
+9.3.1,241,Command file ehi6.cf (graphical proportionality check),ehi6,40,shown,the vignette box carries the R equivalent of this command file
+9.3.2,243,Part of command file eh17. cf (test of proportionality),ehi7,39,shown,the vignette box carries the R equivalent of this command file
+9.3.3,243,Estimation results using command file ehil.cf (Box 9.3 2),ehi7,39,match,"the scan spells ehi7.cf as ""ehil.cf""; the box cites Box 9.3.2, which is ehi7"
+9.3.4,245,Part of command file e h i 8 . cf (test of proportionality),ehi8,39,shown,log(-log(G(t))) against t for men and women -- the graphical proportionality check
+9.3.5,245,Estimation results using command file eh18. cf (Box 9.3.4),ehi8,39,match,
+9.3.6,246,P a r t of c o m m a n d file ehi9.cf (stratification),ehi9,41,match,
+9.3.7,247,Estimation results using command file eh19. cf (Box 9.3.6),ehi9,41,match,stratified by sex
+9.4.1,249,Part of command file ehllO.cf (baseline rate calculation),ehi10,42,shown,the vignette box carries the R equivalent of this command file
+9.4.2,249,Part of output file ehll0.bl (Box 9.4.1),ehi10,42,match,"the baseline rate file: time, events, risk set, survivor, cumulative rate"
+10.2.1,268,Estimatlon results of ehd2. cf with a gamma mixture,,44,match,"no .cf ships for the mixtures: checked against Box 10.2.1 directly, all eight rows of Coeff/Error/T-Stat identical, D Constant -0.8019 0.1837 -4.3659, logLik -2442.13; exp(-0.8019) = 0.448 and the LR test 47.7 on 1 df as the text gives them"
+10.2.2,271,Estimation results of ehg6. cf with a gamma mixture distribution,,44,match,"checked against Box 10.2.2 directly: all nine rows identical, B Constant 0.6693 0.0880 7.6057, D Constant 0.7833 0.1716 4.5648, both log likelihoods -2521.7850 / -2410.7125"
+Fig. 3.1.1,65,"Survivor function, density and transition rate from the life table",ehc2 ehc2a ehc2b,"5,6",match,"the three plots of ehc2.cf, ehc2a.cf and ehc2b.cf, on the command files' own axes"
+Fig. 3.1.2,67,Survivor functions for men and women,ehc4,7,match,
+Fig. 3.2.1,76,"Survivor function, product-limit estimation",ehc6,9,match,
+Fig. 3.2.3,85,"Survivor functions for upward, lateral and downward moves",ehc10,9,match,"the same box, by destination"
+Fig. 3.3.1,78,Survivor functions for men and women with 95% bands,ehc8,10,match,"grey-scaled confidence bands, as TDA draws them"
+Fig. 5.2.1,124,Piecewise constant transition rate,ehe1a,19,match,
+Fig. 7.2.2,185,Gompertz transition rate,ehg1a,28,match,
+Fig. 7.3.2,194,Weibull transition rate,ehg5a,28,match,
+Fig. 7.4.2,201,Log-logistic transition rate,ehg8a,28,match,
+Fig. 7.5.2,206,Log-normal transition rate,ehg10a,28,match,
+Fig. 7.6.2,211,Sickle transition rate,ehg12a,28,match,"all five on the same axes, 0-300 months against 0-0.02, as the command files set them"
+Fig. 8.1.1,217,"Transformed survivor functions, graphical checks",ehh1 ehh2 ehh3 ehh4,"31,32",match,"the four panels with their regression lines (box 33); the fits themselves are box 32, where the coefficients and t statistics reproduce ehh1.ref exactly once the survivor function is rounded to the five decimals ehc5.ple carries"
+Fig. 8.2.1,227,"Graphical check of pseudoresiduals, eight models",ehd2p ehe2p ehe3p ehg2p ehg6p ehg9p ehg11p ehg13p,"34,35",match,"the book's own arrangement on page 227: exponential, Gompertz, Weibull, sickle down the left column, the two piecewise constant models, log-logistic and log-normal down the right"
+Fig. 9.3.1,242,Graphical proportionality check for men and women,ehi6,40,match,log(-log(G(t))) against t
+Fig. 9.4.1,250,Cumulative baseline rates for cohorts 1 and 3,ehi11,42,match,
+Fig. 9.4.2,251,Smoothed baseline rate for cohort 1,ehi13,43,match,"numerical differentiation of the cumulative rate, smoothed with a cubic spline"

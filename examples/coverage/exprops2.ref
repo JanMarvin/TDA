@@ -1,0 +1,58 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:40 2026
+Current memory: 390032 bytes.
+
+Reading command file: exprops2.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   2.0  c1
+  2 X         3   4   6.2  c2
+  3 G         3   4   2.0  c3
+  4 F1        3   4   8.4  jul(1,1,2000)
+  5 F2        3   4   8.4  juld(jul(1,1,2000))
+  6 F3        3   4   8.4  julm(jul(1,1,2000))
+  7 F4        3   4   8.4  july(jul(1,1,2000))
+  8 H1        4   4   8.4  cnteq(G,1)
+  9 H2        4   4   8.4  cntne(G,1)
+ 10 H3        4   4   8.4  cntlt(X,3)
+ 11 H4        4   4   8.4  cntle(X,3)
+ 12 H5        4   4   8.4  cntgt(X,3)
+ 13 H6        4   4   8.4  cntge(X,3)
+ 14 I1        4   4   8.4  ndv(G)
+ 15 I2        4   4   8.4  ndv1(G,1)
+ 16 I3        4   4   8.4  ndv2(G,1,2)
+ 17 I4        4   4   8.4  quant(X,0.5)
+ 18 I5        3   4   8.4  poisson(2.0,1)
+ 19 I6        3   4   8.4  negbin(1.0,2.0,1)
+ 20 I7        3   4   8.4  bivn(0.5,0.5,0.2)
+ 21 J1        3   4   8.4  noc
+ 22 J2        3   4   8.4  nvar
+ 23 J4        3   4   8.4  num(X,2)
+ 24 K1        3   4   8.4  min(X,3)
+ 25 K2        3   4   8.4  max(X,3)
+ 26 K3        3   4   8.4  ID%2
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ex.dat
+Free format. Separation character(s): default.
+
+Reading data file: ex.dat
+Read records: 6 
+
+Created a new data matrix.
+Number of cases: 6
+Number of variables: 26
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 495315 bytes.
+----------------------------------------------------------------------------
+pdata(...)=out.txt
+6 records with 26 variables written to: out.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 515905 bytes.
+End of program. Fri Sep  4 15:06:40 2026

@@ -1,0 +1,12 @@
+# gdatops2.cf -- t_gdat.c coverage: nvar's break= (see gdatops.cf's
+# header for the vsel=/break= comparison syntax note). A=(1,2,3,4,5);
+# break=gt(A,3) stops reading once A>3 (at row 4), excluding the
+# triggering row -- keeps rows 1-3 (A=1,2,3). Checked by hand.
+
+silent = -1;
+
+nvar(dfile=vseldat.dat,
+    A=c1, B=c2,
+    break = gt(A,3),
+);
+dstat;

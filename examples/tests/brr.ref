@@ -1,0 +1,14 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: brr.cf
+============================================================================
+brr()=5,3,8,3
+Creating orthogonal weights.
+Power of Galois field: 3
+Number of replications: 27
+Generating polynomial:     0 0 1 
+Polynomial for arithmetic: 1 1 1 1 
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390032 bytes.
+End of program. Wed Sep  2 16:02:32 2026

@@ -1,0 +1,10 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: recode.cf
+============================================================================
+recode(...)
+Undefined variable: L1=X,Y).
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390032 bytes.
+End of program. Wed Sep  2 16:02:32 2026

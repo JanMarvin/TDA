@@ -1,0 +1,143 @@
+Read records:     600     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   2.5647869545141e+03  3.0526892854e+02          --       1 (1,1)
+    2   2.4902938269696e+03  1.6166490552e+02  1.0000e+00       3 (3,3)
+    3   2.4741928238045e+03  2.5664636071e+01  3.3354e+00       4 (4,4)
+    4   2.4735884329731e+03  3.5865061980e+00  3.7959e-01       5 (5,5)
+    5   2.4735522036957e+03  1.4204925284e+00  3.6050e-02       6 (6,6)
+    6   2.4735451596117e+03  6.7648266421e-01  1.6086e-02       7 (7,7)
+    7   2.4735436570350e+03  3.2707213032e-01  7.3143e-03       8 (8,8)
+    8   2.4735433322883e+03  1.5962573524e-01  3.3568e-03       9 (9,9)
+    9   2.4735432614681e+03  7.8548888146e-02  1.5471e-03      10 (10,10)
+   10   2.4735432458957e+03  3.8950530745e-02  7.1455e-04      11 (11,11)
+   11   2.4735432424418e+03  1.9455780070e-02  3.3038e-04      12 (12,12)
+   12   2.4735432416683e+03  9.7851205277e-03  1.5285e-04      13 (13,13)
+   13   2.4735432414931e+03  4.9528554663e-03  7.0742e-05      14 (14,14)
+   14   2.4735432414529e+03  2.5215936466e-03  3.2752e-05      15 (15,15)
+   15   2.4735432414436e+03  1.2905090551e-03  1.5167e-05      16 (16,16)
+   16   2.4735432414414e+03  6.6350205230e-04  7.0256e-06      17 (17,17)
+TDA. Analysis of Transition Data (6.4p). Sat Jul 25 02:03:09 2026
+Current memory: 390032 bytes.
+
+Reading command file: frml5a.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   3.0  c1
+  2 SN        3   4   2.0  c2
+  3 TS        3   4   3.0  c3
+  4 TF        3   4   3.0  c4
+  5 SEX       3   4   2.0  c5
+  6 TI        3   4   3.0  c6
+  7 TB        3   4   3.0  c7
+  8 TE        3   4   3.0  c8
+  9 TMAR      3   4   3.0  c9
+ 10 PRES      3   4   3.0  c10
+ 11 PRESN     3   4   3.0  c11
+ 12 EDU       3   4   2.0  c12
+ 13 COHO1     3   4   0.0  ge(TB,348)&le(TB,384)
+ 14 COHO2     3   4   0.0  ge(TB,468)&le(TB,504)
+ 15 COHO3     3   4   0.0  ge(TB,588)&le(TB,624)
+ 16 W         3   4   0.0  SEX[2]
+ 17 DES       3   4   1.0  if(eq(TF,TI),0,1)
+ 18 DUR       3   4   3.0  TF-TS+1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): rrdat.1
+Free format. Separation character(s): default.
+
+Reading data file: rrdat.1
+Read records: 600 
+
+Created a new data matrix.
+Number of cases: 600
+Number of variables: 18
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 462843 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=0, des=DES, ts=0, tf=DUR
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       142       142.00      128.18        0.00      428.00    -
+ 1    0   1       458       458.00       49.30        0.00      350.00    -
+Sum               600       600.00
+
+Number of episodes: 600
+Successfully created new episode data.
+----------------------------------------------------------------------------
+niset(rerr=1.e-6,)=1
+Numerical integration with method 1. Relative error: 1e-06 (0.0001).
+----------------------------------------------------------------------------
+frml(...)=...
+ML estimation of user-defined rate model. Current memory: 462995 bytes.
+
+Function definition:
+kk      = 1
+aa      = a0+COHO2*a1+COHO3*a2+W*a3
+bb      = exp(b0)
+zz      = (log(tf)-aa)/bb
+qt      = kk*exp(zz/sqrt(kk))
+rr      = (kk-0.5)*log(kk)+(sqrt(kk)*zz-qt)-(b0+log(tf)+lgam(kk))
+icc     = int(0,qt,exp(-t)*t^(kk-1))
+fn      = if(DES,rr,log(1-icc/exp(lgam(kk))))
+
+Function evaluation: sum over 600 data matrix cases.
+Using episode data.
+
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 5
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+5 starting value(s) from xp parameter.
+
+Idx  Parameter   Starting value
+  1  a0           5.00000000e+00 
+  2  a1           0.00000000e+00 
+  3  a2           0.00000000e+00 
+  4  a3           0.00000000e+00 
+  5  b0           0.00000000e+00 
+
+
+Convergence reached in 16 iterations.
+Number of function evaluations: 18 (18,18)
+Numerical integration with method 1. Relative error: 1e-06 (0.0001).
+
+Maximum of log likelihood: -2473.54
+Norm of final gradient vector: 0.000663502
+Last absolute change of function value: 8.92565e-13
+Last relative change in parameters: 7.02563e-06
+
+Idx  Parameter       Value      Error    Value/E  Signif
+--------------------------------------------------------
+  1  a0             5.0055     0.0668    74.9627  1.0000
+  2  a1            -0.5339     0.0881    -6.0592  1.0000
+  3  a2            -0.6671     0.0952    -7.0057  1.0000
+  4  a3            -0.5191     0.0767    -6.7694  1.0000
+  5  b0             0.0700     0.0333     2.1013  0.9644
+
+Log likelihood (starting values): -2564.7870 
+Log likelihood (final estimates): -2473.5432 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 482962 bytes.
+End of program. Sat Jul 25 02:03:10 2026

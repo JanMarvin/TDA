@@ -1,0 +1,46 @@
+Writing: qrp1.dat
+Records written:     500     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:56 2026
+Current memory: 390032 bytes.
+
+Reading command file: qrp1.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 BETA      2   8   0.0  1
+  2 X1        3   4   9.6  0.1+rd(-0.5,0.5)
+  3 XI0       3   4   0.0  rdn
+  4 EPS1      3   4   0.0  sqrt(1-0.1*0.1)*rdn+0.1*XI0
+  5 X2        3   4   9.6  0.2+0.5*X1+rd(-0.5,0.5)
+  6 EPS2      3   4   0.0  sqrt(1-0.2*0.2)*rdn+0.2*XI0
+  7 X3        3   4   9.6  0.3+0.5*X2+rd(-0.5,0.5)
+  8 EPS3      3   4   0.0  sqrt(1-0.4*0.4)*rdn+0.4*XI0
+  9 X4        3   4   9.6  0.4+0.5*X3+rd(-0.5,0.5)
+ 10 EPS4      3   4   0.0  sqrt(1-0.6*0.6)*rdn+0.6*XI0
+ 11 X5        3   4   9.6  0.5+0.5*X4+rd(-0.5,0.5)
+ 12 EPS5      3   4   0.0  sqrt(1-0.8*0.8)*rdn+0.8*XI0
+ 13 SLambda   3   4   0.0  X1-X2+X3-X4+2*X5
+ 14 Y1        3   4   0.0  ge(-1+X1*BETA+SLambda+EPS1,0)
+ 15 Y2        3   4   0.0  ge(-1+X2*BETA+SLambda+EPS2,0)
+ 16 Y3        3   4   0.0  ge(-1+X3*BETA+SLambda+EPS3,0)
+ 17 Y4        3   4   0.0  ge(-1+X4*BETA+SLambda+EPS4,0)
+ 18 Y5        3   4   0.0  ge(-1+X5*BETA+SLambda+EPS5,0)
+
+Creating a new data matrix.
+Maximum number of cases: 500
+
+Created a new data matrix.
+Number of cases: 500
+Number of variables: 18
+
+End of creating new variables. Current memory: 426566 bytes.
+----------------------------------------------------------------------------
+pdata(...)=qrp1.dat
+500 records with 10 variables written to: qrp1.dat
+TDA description written to: qrp1.tda
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426622 bytes.
+End of program. Tue Jul 21 05:46:56 2026

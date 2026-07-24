@@ -1,0 +1,11 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: cro.cf
+============================================================================
+cro()=out.txt
+Creating rank orders. Current memory: 390032 bytes.
+3 records written to: out.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390124 bytes.
+End of program. Wed Sep  2 16:02:32 2026

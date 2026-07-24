@@ -1,0 +1,147 @@
+{{#as_is}}
+<link rel="stylesheet" href="tda-manual.css">
+<style>
+  /* pkgdown's frame around the vignette: the navbar keeps Bootstrap's
+     font, and pkgdown's code styling (syntax colours, boxed pre blocks,
+     linked function names) is taken back so the boxes look as they do
+     in the package. */
+  .navbar, .navbar *, footer, footer * { font-family: var(--bs-body-font-family); }
+  /* Bootstrap's border-box sizing and column gutters would take 52px
+     off the vignette's 39em column; give the column back. */
+  body { box-sizing: content-box; }
+  .container.template-article { max-width: none; padding: 0; margin: 0; }
+  .template-article .row { margin: 0; }
+  .template-article main { padding: 0; max-width: none; }
+  .template-article main p, .template-article main li,
+  .template-article main dd {
+    -webkit-hyphens: auto; hyphens: auto;
+    -webkit-hyphenate-limit-before: 3; -webkit-hyphenate-limit-after: 3;
+  }
+  /* Bootstrap has a .figure class of its own; the vignette's p.figure
+     and its centred plot must not pick it up. */
+  .template-article main p.figure {
+    display: block !important; text-align: center !important;
+    margin: 0.6em 0 !important; overflow-x: auto !important;
+  }
+  .template-article main svg.plot {
+    display: block !important; margin: 0 auto !important;
+    max-width: calc(100% * var(--zoom, 1)) !important; height: auto !important;
+  }
+  .template-article main svg.plot.zoomed {
+    width: 96vw !important; height: 96vh !important; max-width: none !important;
+    margin: 0 !important; z-index: 1040;
+  }
+  .template-article main pre,
+  .template-article main pre code,
+  .template-article main code,
+  .template-article main code span,
+  .template-article main pre a {
+    color: var(--fg) !important;
+    background: transparent !important;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+                 "Liberation Mono", "Courier New", monospace !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    text-decoration: none !important;
+  }
+  .template-article main pre,
+  .template-article main div.sourceCode {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0.45em 0 !important;
+    font-size: 0.82em !important;
+  }
+  /* tda-manual.css sizes code at 0.82em on every level, so a line in a
+     <pre><code> block is 0.82 x 0.82 of the text, as in the package. */
+  .template-article main code,
+  .template-article main pre code { font-size: 0.82em !important; padding: 0 !important; }
+  .template-article main .box pre.r,
+  .template-article main .box div.sourceCode {
+    border-left: 2px solid var(--border) !important;
+    padding-left: 0.6em !important;
+  }
+  .template-article main .box pre.r + pre,
+  .template-article main .box div.sourceCode + pre { margin-top: 0.2em !important; }
+  .template-article main .btn-copy-ex { display: none; }
+  /* Bootstrap's reboot sets what neither the vignette's stylesheet nor
+     html_vignette's sets; revert those to the browser defaults the
+     package rendering has. */
+  .template-article main h1, .template-article main h2,
+  .template-article main h3, .template-article main h4 { line-height: revert; }
+  .template-article main h1 { margin-top: revert; }
+  .template-article main svg.plot { vertical-align: revert; }
+  .template-article main summary { margin: 0; }
+  .template-article main blockquote { padding: 0; }
+  .template-article main code { border-radius: 0 !important; white-space: pre-wrap; }
+  .template-article main .box pre code { white-space: pre; }
+  .template-article main table {
+    display: table; width: auto; max-width: none; overflow-x: visible;
+    vertical-align: revert; border-collapse: collapse; border: 0;
+    margin: 0 0 1.2em 0 !important; font-size: 0.9em; color: var(--fg);
+  }
+  .template-article main thead, .template-article main tbody,
+  .template-article main tr { border: 0; vertical-align: revert; background: transparent; }
+  .template-article main th, .template-article main td {
+    padding: 0.15em 0.9em 0.15em 0 !important; text-align: left;
+    background: transparent !important; color: inherit; border: 0;
+    vertical-align: revert; box-shadow: none;
+  }
+  .template-article main th { font-weight: revert; }
+  .template-article main thead th { border-bottom: 1px solid var(--border); }
+</style>
+<script>
+  // pkgdown's light switch sets data-bs-theme on <html>; the vignette's
+  // stylesheet reads data-theme.  Mirror the one into the other so the
+  // navbar switch changes the page, and the page's own buttons still work.
+  (function () {
+    var root = document.documentElement;
+    function mirror() {
+      var t = root.getAttribute("data-bs-theme");
+      if (t === "dark" || t === "light") root.setAttribute("data-theme", t);
+      else root.removeAttribute("data-theme");
+    }
+    if (root.hasAttribute("data-bs-theme")) mirror();
+    new MutationObserver(mirror).observe(root, { attributes: true, attributeFilter: ["data-bs-theme"] });
+  })();
+</script>
+$for(header-includes)$
+$header-includes$
+$endfor$
+<div class="row">
+  <main id="main" class="col-12" lang="en">
+<h1 class="title">$title$</h1>
+$if(toc)$
+<div id="TOC">
+$table-of-contents$
+</div>
+$endif$
+$body$
+  </main>
+</div>
+{{/as_is}}
+{{^as_is}}
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+<div class="row">
+  <main id="main" class="col-md-9">
+    <div class="page-header">
+      {{#logo}}<img src="{{logo.src}}" class="logo" alt="" >{{/logo}}
+      <h1>{{{pagetitle}}}</h1>
+      {{#source}}<small class="dont-index">{{{.}}}</small>{{/source}}
+      <div class="d-none name"><code>{{filename}}</code></div>
+    </div>
+$body$
+  </main>
+  {{#toc}}
+  <aside class="col-md-3">
+    <nav id="toc">
+      <h2>{{#translate}}{{on_this_page}}{{/translate}}</h2>
+    </nav>
+  </aside>
+  {{/toc}}
+</div>
+{{/as_is}}

@@ -1,0 +1,28 @@
+# seqmops.cf -- t_seq.c coverage: seqm's m=2 mode ("comparing
+# parallel sequences", undocumented in tda.hlp -- found via source),
+# which needs sn= as a COMMA-SEPARATED PAIR (sn=1,2 -- not a
+# separate sn1= keyword, confirmed from t_parm.c's own sscanf
+# pattern). Two identical sequence data structures (sn=1 and sn=2,
+# both from the same data) are compared; since they're identical,
+# every pairwise distance is correctly 0 ("Maximum distance in case
+# 0: 0"). Also exercises clear=<var> on a variable that's part of an
+# active sequence data structure, which correctly detects the
+# dependency and deallocates the structure first ("Deallocated 1
+# sequence data structure(s)").
+
+silent = -1;
+
+nvar(
+    dfile = seqops_seq.d2,
+    ID = c1,
+    Y1 = c2,
+    T1 = c3,
+    Y2 = c4,
+    T2 = c5,
+    Y3 = c6,
+    T3 = c7,
+);
+seqdef(sn=1, m=2) = Y1,T1,Y2,T2,Y3,T3;
+seqdef(sn=2, m=2) = Y1,T1,Y2,T2,Y3,T3;
+seqm(m=2, sn=1,2) = seqmpar.txt;
+clear = Y1;

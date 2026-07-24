@@ -1,0 +1,89 @@
+Read records:       9     
+
+
+
+
+
+
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: gd20.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 I         3   4   0.0  c1
+  2 J         3   4   0.0  c2
+  3 V         3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): gd5.dat
+Free format. Separation character(s): default.
+
+Reading data file: gd5.dat
+Read records: 9 
+
+Created a new data matrix.
+Number of cases: 9
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402083 bytes.
+----------------------------------------------------------------------------
+gdd=I,J,V
+New graph data. Current memory: 402083 bytes.
+Option 1: edge list.
+
+Minimal level for valid edges: 0
+Number of nodes: 5. Largest node number: 5
+Graph type 4 (directed, valued).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1        9       0        7.000000             0
+
+Successfully created new graph data structure. Current memory: 402477 bytes.
+----------------------------------------------------------------------------
+gep(opt=1,)=d1
+Enumeration of paths. Current memory: 402471 bytes.
+Using graph number 1 (directed, valued).
+Max number of paths (nodes: 3,5): 5
+20 records written to: d1
+----------------------------------------------------------------------------
+gep(opt=2,)=d2
+Enumeration of paths. Current memory: 402471 bytes.
+Using graph number 1 (directed, valued).
+Max number of paths (nodes: 3,5): 5
+45 records written to: d2
+----------------------------------------------------------------------------
+gep(opt=3,)=d3
+Enumeration of paths. Current memory: 402471 bytes.
+Using graph number 1 (directed, valued).
+Max number of paths (nodes: 3,5): 5
+5 records written to: d3
+----------------------------------------------------------------------------
+gep(opt=4,)=d4
+Enumeration of paths. Current memory: 402471 bytes.
+Using graph number 1 (directed, valued).
+Max number of paths (nodes: 3,5): 5
+5 records written to: d4
+----------------------------------------------------------------------------
+gep(opt=5,fmt=5.2,)=d5
+Enumeration of paths. Current memory: 402471 bytes.
+Using graph number 1 (directed, valued).
+Max number of paths (nodes: 3,5): 5
+20 records written to: d5
+----------------------------------------------------------------------------
+gep(opt=6,fmt=5.2,)=d6
+Enumeration of paths. Current memory: 402471 bytes.
+Using graph number 1 (directed, valued).
+Max number of paths: 100
+Max number of paths (nodes: 3,5): 5
+45 records written to: d6
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422121 bytes.
+End of program. Tue Jul 21 05:46:53 2026

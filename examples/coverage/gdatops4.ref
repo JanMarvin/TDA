@@ -1,0 +1,12 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:40 2026
+Current memory: 390032 bytes.
+
+Reading command file: gdatops4.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+Syntax error or undefined variable: match=NOSUCHVAR1,NOSUCHVAR2,)
+No new variables created. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390066 bytes.
+End of program. Fri Sep  4 15:06:40 2026

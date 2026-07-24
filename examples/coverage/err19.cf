@@ -1,0 +1,6 @@
+# gloc without n=: refused.  As shipped, gloc ignored its input and
+# solved a data set hard-coded into the source; it now reads the graphs
+# and requires n= (the variable/fixed split).
+nvar(dfile=gedges.dat, FROM<8>=c1, TO<8>=c2, WVV<8>=c3, WVF<8>=c4);
+gdd(opt=1) = FROM,TO,WVV,WVF;
+gloc(gn=1,2);

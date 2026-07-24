@@ -1,0 +1,72 @@
+Read records:       4     
+Total alignments: 6
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:58 2026
+Current memory: 390032 bytes.
+
+Reading command file: seqm1a.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Y1        3   4   0.0  c1
+  2 Y2        3   4   0.0  c2
+  3 Y3        3   4   0.0  c3
+  4 Y4        3   4   0.0  c4
+  5 Y5        3   4   0.0  c5
+  6 Y6        3   4   0.0  c6
+  7 Y7        3   4   0.0  c7
+  8 Y8        3   4   0.0  c8
+  9 Y9        3   4   0.0  c9
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): seqm.d1a
+Free format. Separation character(s): default.
+
+Reading data file: seqm.d1a
+Read records: 4 
+
+Created a new data matrix.
+Number of cases: 4
+Number of variables: 1
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 426194 bytes.
+----------------------------------------------------------------------------
+seqdef=Y1,,Y9
+Creating a new sequence data structure. Current memory: 426194 bytes.
+Sequence structure number: 1
+Sequence type: 1
+Currently defined sequences:
+
+Sequence          State       Time axis       Number
+Structure Type  Variables  Minimum  Maximum  of States  States
+--------------------------------------------------------------
+     1      1         9          0        8         2    0 1
+
+Range of common time axis: 0 to 8.
+----------------------------------------------------------------------------
+seqm(...)=d1
+Sequence proximity measures. Current memory: 426220 bytes.
+Optimal matching.
+Using sequence data structure 1.
+Number of states: 2. Max sequence length: 9
+
+Default indel cost: 1.
+Default substitution cost: 2.
+
+Starting alignment procedure.
+Number of sequences (cases): 4
+Sequences with zero length or internal gaps: 0
+Sequences used for alignment: 4
+
+Number of alignments: 6
+6 record(s) written to output file: d1
+Maximum distance between sequences 4 and 1: 4
+TDA description written to: t1
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 446286 bytes.
+End of program. Tue Jul 21 05:46:58 2026

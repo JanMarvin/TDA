@@ -1,0 +1,16 @@
+# sdrops2.cf -- t_sdr.c coverage: sdlpol (lines in polygons) and
+# sdipol (hierarchical inclusion of polygons) -- both commands'
+# source header comments are stale copy-pastes of sdppol's own
+# (still describing "point i", not lines or polygon nesting), so the
+# real behaviour was confirmed by running rather than trusted from
+# the comment. Two nested squares (outer 0-10, inner 2-8) plus two
+# line segments: one (3,3)-(6,6) entirely inside both squares, one
+# (1,1)-(-5,-5) starting inside the outer square and leaving it.
+# sdipol correctly reports the inner square (id 2) nested inside the
+# outer (id 1).
+
+silent = -1;
+
+sdnvar(dfile=combined.sd, SDID=c1, SDTyp=c2, SDN=c3, SDPtr<5>=rd);
+sdlpol(opt=1) = sdlpolout.txt;
+sdipol(opt=1) = sdipolout.txt;

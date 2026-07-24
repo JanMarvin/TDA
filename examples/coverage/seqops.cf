@@ -1,0 +1,39 @@
+# seqops.cf -- t_seq.c coverage: the sequence-data command family
+# (seqpd/seqsn/seqtp/seqgm/seqld/seqgsp), reusing the same sequence
+# data structure already established in examples/exam/seq2.cf
+# (seq.d2: 5 cases, each up to 3 state episodes as Y/T pairs,
+# Y=-1 marking no further episode). Sweeps seqpd's every documented
+# output mode (m=1/2/3/9). seqld defaults to s=0 (a state that never
+# occurs in this data, per its own source header comment -- tda.hlp
+# has no entry for it at all), giving zero matching records
+# regardless of which real state is requested; kept as s=2 since the
+# goal here is exercising the search/no-match code path itself
+# (confirmed: 80.95% of this small function covered even with no
+# output rows), not producing non-empty output.
+
+silent = -1;
+
+nvar(
+    dfile = seqops_seq.d2,
+    ID = c1,
+    Y1 = c2,
+    T1 = c3,
+    Y2 = c4,
+    T2 = c5,
+    Y3 = c6,
+    T3 = c7,
+);
+seqdef(
+    m = 2,
+) = Y1,T1,Y2,T2,Y3,T3;
+
+seqpd(m=1) = pd1.txt;
+seqpd(m=2) = pd2.txt;
+seqpd(m=3) = pd3.txt;
+seqpd(m=9) = pd9.txt;
+seqsn() = sn.txt;
+seqtp() = tp.txt;
+seqgm() = gm.txt;
+seqld(s=2) = ld.txt;
+seqgsp() = gsp.txt;
+seqdel = 1;

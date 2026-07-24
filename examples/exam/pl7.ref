@@ -1,0 +1,98 @@
+Read records:      90     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   2.8339519755817e-01  4.8713668583e-03          --       1 (1,1)
+    2   2.8274416839644e-01  5.7109558042e-05  1.0000e+00       2 (2,2)
+    3   2.8274407967884e-01  9.1365091159e-11  1.1656e-02       3 (3,3)
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:54 2026
+Current memory: 390032 bytes.
+
+Reading command file: pl7.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 TF        3   4   0.0  c1
+  2 DES       3   4   0.0  c2
+  3 G1        3   4   0.0  c3[1]
+  4 G2        3   4   0.0  c3[2]
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): rrdat.5
+Free format. Separation character(s): default.
+
+Reading data file: rrdat.5
+Read records: 90 
+
+Created a new data matrix.
+Number of cases: 90
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 406159 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=0, des=DES, ts=0, tf=TF
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0        16        16.00     1133.94        0.00     1519.00    -
+ 1    0   1        74        74.00      400.65        0.00     1366.00    -
+Sum                90        90.00
+
+Number of episodes: 90
+Successfully created new episode data.
+----------------------------------------------------------------------------
+rate(...)=1
+Transition rate models. Current memory: 406311 bytes.
+
+Model: Cox (partial likelihood)
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 1
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Log-likelihood of exponential null model: -552.819
+Changed scaling factor for log-likelihood: -0.001
+Using default starting values.
+Sorting episodes according to ending times.
+
+Convergence reached in 3 iterations.
+Number of function evaluations: 4 (4,4)
+
+Maximum of log likelihood: -282.744
+Norm of final gradient vector: 9.13651e-08
+Last absolute change of function value: 3.13773e-07
+Last relative change in parameters: 0.0116559
+
+Idx SN Org Des MT Variable      Coeff      Error    C/Error  Signif
+-------------------------------------------------------------------
+  1  1   0   1  A G1          -0.2666     0.2332    -1.1428  0.7469
+
+Log likelihood (starting values):  -283.3952 
+Log likelihood (final estimates):  -282.7441 
+
+
+Global Goodness-of-fit.
+
+SN  Org  Des        TStat    DF   Signif
+----------------------------------------
+ 1    0    1      10.2351     3   0.9833
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426197 bytes.
+End of program. Tue Jul 21 05:46:54 2026

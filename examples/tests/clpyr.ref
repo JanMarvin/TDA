@@ -1,0 +1,944 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep 12 08:06:26 2026
+Current memory: 390032 bytes.
+
+Reading command file: clpyr.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 D         3   4   0.0  c1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): g.dat
+Free format. Separation character(s): default.
+
+Reading data file: g.dat
+Read records: 15 
+
+Created a new data matrix.
+Number of cases: 15
+Number of variables: 1
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 394049 bytes.
+----------------------------------------------------------------------------
+gdd(opt=4)=D
+New graph data. Current memory: 394049 bytes.
+Option 4: upper triangle.
+
+Minimal level for valid edges: 0
+Number of nodes: 6. Largest node number: 6
+Graph type 2 (undirected, valued, bidirectional edges: minimum).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1       15       0       16.000000             0
+
+Successfully created new graph data structure. Current memory: 394075 bytes.
+----------------------------------------------------------------------------
+clpyr()=out.txt
+Pyramidal clustering. Current memory: 394073 bytes.
+Using graph number 1 (undirected, valued, bidirectional edges: minimum).
+n=6 nmax=22 nn=233
+4 
+7 4 
+10 7 4 
+13 10 7 4 
+16 13 10 7 4 
+clpyr_con: i=2 j=1 il=2 ir=2 jl=1 jr=1  return 1
+vorlaeufig ok: i=2 j=1 d=4
+nc=7 : 1 1 0 0 0 0 
+nc= 7 i= 2 j= 1 dm=4 acn[nc]= 2 k[nc]= 2 s[nc]= 1 l(i)= 0 r(i)= 1 l(j)= 2 r(j)= 0 r=1 y=4
+clpyr_con: i=3 j=1 il=3 ir=3 jl=1 jr=1  return 1
+vorlaeufig ok: i=3 j=1 d=7
+clpyr_con: i=3 j=2 il=3 ir=3 jl=2 jr=2  return 1
+vorlaeufig ok: i=3 j=2 d=4
+nc=8 : 0 1 1 0 0 0 
+nc= 8 i= 3 j= 2 dm=4 acn[nc]= 2 k[nc]= 3 s[nc]= 2 l(i)= 0 r(i)= 2 l(j)= 3 r(j)= 1 r=1 y=4
+clpyr_con: i=4 j=1 il=4 ir=4 jl=1 jr=1  return 1
+vorlaeufig ok: i=4 j=1 d=10
+clpyr_con: i=4 j=3 il=4 ir=4 jl=3 jr=3  return 1
+vorlaeufig ok: i=4 j=3 d=4
+nc=9 : 0 0 1 1 0 0 
+nc= 9 i= 4 j= 3 dm=4 acn[nc]= 2 k[nc]= 4 s[nc]= 3 l(i)= 0 r(i)= 3 l(j)= 4 r(j)= 2 r=1 y=4
+clpyr_con: i=5 j=1 il=5 ir=5 jl=1 jr=1  return 1
+vorlaeufig ok: i=5 j=1 d=13
+clpyr_con: i=5 j=4 il=5 ir=5 jl=4 jr=4  return 1
+vorlaeufig ok: i=5 j=4 d=4
+nc=10 : 0 0 0 1 1 0 
+nc=10 i= 5 j= 4 dm=4 acn[nc]= 2 k[nc]= 5 s[nc]= 4 l(i)= 0 r(i)= 4 l(j)= 5 r(j)= 3 r=1 y=4
+clpyr_con: i=6 j=1 il=6 ir=6 jl=1 jr=1  return 1
+vorlaeufig ok: i=6 j=1 d=16
+clpyr_con: i=6 j=5 il=6 ir=6 jl=5 jr=5  return 1
+vorlaeufig ok: i=6 j=5 d=4
+nc=11 : 0 0 0 0 1 1 
+nc=11 i= 6 j= 5 dm=4 acn[nc]= 2 k[nc]= 6 s[nc]= 5 l(i)= 0 r(i)= 5 l(j)= 6 r(j)= 4 r=1 y=4
+clpyr_con: i=7 j=6 il=2 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+clpyr_con: i=8 j=7 il=3 ir=2 jl=2 jr=1  return 1
+clpyr_cont k=9 i=8 r=0
+clpyr_cont k=9 j=7 r=0
+clpyr_cont k=10 i=8 r=0
+clpyr_cont k=10 j=7 r=0
+clpyr_cont k=11 i=8 r=0
+clpyr_cont k=11 j=7 r=0
+vorlaeufig ok: i=8 j=7 d=7
+nc=12 : 1 1 1 0 0 0 
+nc=12 i= 8 j= 7 dm=7 acn[nc]= 3 k[nc]= 3 s[nc]= 1 l(i)= 0 r(i)= 0 l(j)= 0 r(j)= 0 r=0 y=7
+clpyr_con: i=7 j=6 il=2 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+sflag = 0. continue
+clpyr_con: i=9 j=7 il=4 ir=3 jl=2 jr=1 ir left from jl
+idx_right(ir) = 2
+ return 1
+clpyr_cont k=8 i=9 r=0
+clpyr_cont k=8 j=7 r=0
+NOT OK i=9 j=7
+clpyr_con: i=9 j=8 il=4 ir=3 jl=3 jr=2  return 1
+clpyr_cont k=7 i=9 r=0
+clpyr_cont k=7 j=8 r=0
+clpyr_cont k=10 i=9 r=0
+clpyr_cont k=10 j=8 r=0
+clpyr_cont k=11 i=9 r=0
+clpyr_cont k=11 j=8 r=0
+clpyr_cont k=12 i=9 r=0
+clpyr_cont k=12 j=8 r=0
+vorlaeufig ok: i=9 j=8 d=7
+nc=13 : 0 1 1 1 0 0 
+nc=13 i= 9 j= 8 dm=7 acn[nc]= 3 k[nc]= 4 s[nc]= 2 l(i)= 0 r(i)= 0 l(j)= 0 r(j)= 0 r=0 y=7
+clpyr_con: i=7 j=6 il=2 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+clpyr_con: i=9 j=7 il=4 ir=3 jl=2 jr=1 ir left from jl
+idx_right(ir) = 2
+ return 1
+clpyr_cont k=8 i=9 r=0
+clpyr_cont k=8 j=7 r=0
+NOT OK i=9 j=7
+clpyr_con: i=10 j=7 il=5 ir=4 jl=2 jr=1 ir left from jl
+idx_right(ir) = 3
+ return 0
+clpyr_con: i=10 j=9 il=5 ir=4 jl=4 jr=3  return 1
+clpyr_cont k=7 i=10 r=0
+clpyr_cont k=7 j=9 r=0
+clpyr_cont k=8 i=10 r=0
+clpyr_cont k=8 j=9 r=0
+clpyr_cont k=11 i=10 r=0
+clpyr_cont k=11 j=9 r=0
+clpyr_cont k=12 i=10 r=0
+clpyr_cont k=12 j=9 r=0
+clpyr_cont k=13 i=10 r=0
+clpyr_cont k=13 j=9 r=0
+vorlaeufig ok: i=10 j=9 d=7
+nc=14 : 0 0 1 1 1 0 
+nc=14 i=10 j= 9 dm=7 acn[nc]= 3 k[nc]= 5 s[nc]= 3 l(i)= 0 r(i)= 0 l(j)= 0 r(j)= 0 r=0 y=7
+clpyr_con: i=7 j=6 il=2 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+clpyr_con: i=10 j=7 il=5 ir=4 jl=2 jr=1 ir left from jl
+idx_right(ir) = 3
+ return 0
+clpyr_con: i=11 j=1 il=6 ir=5 jl=1 jr=1 ir left from jl
+idx_right(ir) = 4
+ return 0
+clpyr_con: i=11 j=7 il=6 ir=5 jl=2 jr=1 ir left from jl
+idx_right(ir) = 4
+ return 0
+clpyr_con: i=11 j=10 il=6 ir=5 jl=5 jr=4  return 1
+clpyr_cont k=7 i=11 r=0
+clpyr_cont k=7 j=10 r=0
+clpyr_cont k=8 i=11 r=0
+clpyr_cont k=8 j=10 r=0
+clpyr_cont k=9 i=11 r=0
+clpyr_cont k=9 j=10 r=0
+clpyr_cont k=12 i=11 r=0
+clpyr_cont k=12 j=10 r=0
+clpyr_cont k=13 i=11 r=0
+clpyr_cont k=13 j=10 r=0
+clpyr_cont k=14 i=11 r=0
+clpyr_cont k=14 j=10 r=0
+vorlaeufig ok: i=11 j=10 d=7
+nc=15 : 0 0 0 1 1 1 
+nc=15 i=11 j=10 dm=7 acn[nc]= 3 k[nc]= 6 s[nc]= 4 l(i)= 0 r(i)= 0 l(j)= 0 r(j)= 0 r=0 y=7
+clpyr_con: i=7 j=6 il=2 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+clpyr_con: i=11 j=1 il=6 ir=5 jl=1 jr=1 ir left from jl
+idx_right(ir) = 4
+ return 0
+clpyr_con: i=11 j=7 il=6 ir=5 jl=2 jr=1 ir left from jl
+idx_right(ir) = 4
+ return 0
+clpyr_con: i=12 j=6 il=3 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+sflag = 0. continue
+clpyr_con: i=12 j=11 il=3 ir=1 jl=6 jr=5 jr left from il
+idx_right(jr) = 4
+ return 0
+clpyr_con: i=13 j=7 il=4 ir=2 jl=2 jr=1  return 1
+clpyr_cont k=8 i=13 r=1
+clpyr_cont k=9 i=13 r=1
+clpyr_cont k=10 i=13 r=0
+clpyr_cont k=10 j=7 r=0
+clpyr_cont k=11 i=13 r=0
+clpyr_cont k=11 j=7 r=0
+clpyr_cont k=12 i=13 r=0
+clpyr_cont k=12 j=7 r=0
+NOT OK i=13 j=7
+clpyr_con: i=13 j=11 il=4 ir=2 jl=6 jr=5 jr left from il
+idx_right(jr) = 4
+ return 1
+clpyr_cont k=7 i=13 r=0
+clpyr_cont k=7 j=11 r=0
+clpyr_cont k=8 i=13 r=1
+clpyr_cont k=9 i=13 r=1
+clpyr_cont k=10 i=13 r=0
+clpyr_cont k=10 j=11 r=0
+NOT OK i=13 j=11
+clpyr_con: i=13 j=12 il=4 ir=2 jl=3 jr=1  return 1
+clpyr_cont k=7 i=13 r=0
+clpyr_cont k=7 j=12 r=1
+clpyr_cont k=8 i=13 r=1
+clpyr_cont k=9 i=13 r=1
+clpyr_cont k=10 i=13 r=0
+clpyr_cont k=10 j=12 r=0
+clpyr_cont k=11 i=13 r=0
+clpyr_cont k=11 j=12 r=0
+clpyr_cont k=14 i=13 r=0
+clpyr_cont k=14 j=12 r=0
+clpyr_cont k=15 i=13 r=0
+clpyr_cont k=15 j=12 r=0
+vorlaeufig ok: i=13 j=12 d=10
+sflag = 0. continue
+nc=16 : 1 1 1 1 0 0 
+nc=16 i=13 j=12 dm=10 acn[nc]= 4 k[nc]= 4 s[nc]= 1 l(i)= 0 r(i)= 0 l(j)= 0 r(j)= 0 r=3 y=10
+clpyr_con: i=7 j=6 il=2 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+clpyr_con: i=11 j=1 il=6 ir=5 jl=1 jr=1 ir left from jl
+idx_right(ir) = 4
+ return 0
+clpyr_con: i=11 j=7 il=6 ir=5 jl=2 jr=1 ir left from jl
+idx_right(ir) = 4
+ return 0
+clpyr_con: i=12 j=6 il=3 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+sflag = 0. continue
+clpyr_con: i=12 j=11 il=3 ir=1 jl=6 jr=5 jr left from il
+idx_right(jr) = 4
+ return 0
+sflag = 0. continue
+clpyr_con: i=13 j=11 il=4 ir=2 jl=6 jr=5 jr left from il
+idx_right(jr) = 4
+ return 1
+clpyr_cont k=7 i=13 r=0
+clpyr_cont k=7 j=11 r=0
+clpyr_cont k=8 i=13 r=1
+clpyr_cont k=9 i=13 r=1
+clpyr_cont k=10 i=13 r=0
+clpyr_cont k=10 j=11 r=0
+NOT OK i=13 j=11
+sflag = 0. continue
+clpyr_con: i=14 j=7 il=5 ir=3 jl=2 jr=1 ir left from jl
+idx_right(ir) = 2
+ return 1
+clpyr_cont k=8 i=14 r=0
+clpyr_cont k=8 j=7 r=0
+NOT OK i=14 j=7
+clpyr_con: i=14 j=11 il=5 ir=3 jl=6 jr=5  return 1
+clpyr_cont k=7 i=14 r=0
+clpyr_cont k=7 j=11 r=0
+clpyr_cont k=8 i=14 r=0
+clpyr_cont k=8 j=11 r=0
+clpyr_cont k=9 i=14 r=1
+clpyr_cont k=10 i=14 r=1
+clpyr_cont k=12 i=14 r=0
+clpyr_cont k=12 j=11 r=0
+clpyr_cont k=13 i=14 r=0
+clpyr_cont k=13 j=11 r=0
+clpyr_cont k=15 i=14 r=0
+clpyr_cont k=15 j=11 r=0
+NOT OK i=14 j=11
+clpyr_con: i=14 j=12 il=5 ir=3 jl=3 jr=1  return 1
+clpyr_cont k=7 i=14 r=0
+clpyr_cont k=7 j=12 r=1
+clpyr_cont k=8 i=14 r=0
+clpyr_cont k=8 j=12 r=1
+clpyr_cont k=9 i=14 r=1
+clpyr_cont k=10 i=14 r=1
+clpyr_cont k=11 i=14 r=0
+clpyr_cont k=11 j=12 r=0
+clpyr_cont k=13 i=14 r=0
+clpyr_cont k=13 j=12 r=0
+NOT OK i=14 j=12
+clpyr_con: i=14 j=13 il=5 ir=3 jl=4 jr=2  return 1
+clpyr_cont k=7 i=14 r=0
+clpyr_cont k=7 j=13 r=0
+clpyr_cont k=8 i=14 r=0
+clpyr_cont k=8 j=13 r=1
+clpyr_cont k=9 i=14 r=1
+clpyr_cont k=10 i=14 r=1
+clpyr_cont k=11 i=14 r=0
+clpyr_cont k=11 j=13 r=0
+clpyr_cont k=12 i=14 r=0
+clpyr_cont k=12 j=13 r=0
+clpyr_cont k=15 i=14 r=0
+clpyr_cont k=15 j=13 r=0
+clpyr_cont k=16 i=14 r=0
+clpyr_cont k=16 j=13 r=0
+vorlaeufig ok: i=14 j=13 d=10
+sflag = 0. continue
+nc=17 : 0 1 1 1 1 0 
+nc=17 i=14 j=13 dm=10 acn[nc]= 4 k[nc]= 5 s[nc]= 2 l(i)= 0 r(i)= 0 l(j)= 0 r(j)= 0 r=3 y=10
+clpyr_con: i=7 j=6 il=2 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+clpyr_con: i=11 j=1 il=6 ir=5 jl=1 jr=1 ir left from jl
+idx_right(ir) = 4
+ return 0
+clpyr_con: i=11 j=7 il=6 ir=5 jl=2 jr=1 ir left from jl
+idx_right(ir) = 4
+ return 0
+clpyr_con: i=12 j=6 il=3 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+sflag = 0. continue
+clpyr_con: i=12 j=11 il=3 ir=1 jl=6 jr=5 jr left from il
+idx_right(jr) = 4
+ return 0
+clpyr_con: i=14 j=7 il=5 ir=3 jl=2 jr=1 ir left from jl
+idx_right(ir) = 2
+ return 1
+clpyr_cont k=8 i=14 r=0
+clpyr_cont k=8 j=7 r=0
+NOT OK i=14 j=7
+clpyr_con: i=14 j=11 il=5 ir=3 jl=6 jr=5  return 1
+clpyr_cont k=7 i=14 r=0
+clpyr_cont k=7 j=11 r=0
+clpyr_cont k=8 i=14 r=0
+clpyr_cont k=8 j=11 r=0
+clpyr_cont k=9 i=14 r=1
+clpyr_cont k=10 i=14 r=1
+clpyr_cont k=12 i=14 r=0
+clpyr_cont k=12 j=11 r=0
+clpyr_cont k=13 i=14 r=0
+clpyr_cont k=13 j=11 r=0
+clpyr_cont k=15 i=14 r=0
+clpyr_cont k=15 j=11 r=0
+NOT OK i=14 j=11
+clpyr_con: i=14 j=12 il=5 ir=3 jl=3 jr=1  return 1
+clpyr_cont k=7 i=14 r=0
+clpyr_cont k=7 j=12 r=1
+clpyr_cont k=8 i=14 r=0
+clpyr_cont k=8 j=12 r=1
+clpyr_cont k=9 i=14 r=1
+clpyr_cont k=10 i=14 r=1
+clpyr_cont k=11 i=14 r=0
+clpyr_cont k=11 j=12 r=0
+clpyr_cont k=13 i=14 r=0
+clpyr_cont k=13 j=12 r=0
+NOT OK i=14 j=12
+clpyr_con: i=15 j=1 il=6 ir=4 jl=1 jr=1 ir left from jl
+idx_right(ir) = 3
+ return 0
+clpyr_con: i=15 j=7 il=6 ir=4 jl=2 jr=1 ir left from jl
+idx_right(ir) = 3
+ return 0
+sflag = 0. continue
+clpyr_con: i=15 j=12 il=6 ir=4 jl=3 jr=1 ir left from jl
+idx_right(ir) = 3
+ return 1
+clpyr_cont k=7 i=15 r=0
+clpyr_cont k=7 j=12 r=1
+clpyr_cont k=8 i=15 r=0
+clpyr_cont k=8 j=12 r=1
+clpyr_cont k=9 i=15 r=0
+clpyr_cont k=9 j=12 r=0
+NOT OK i=15 j=12
+clpyr_con: i=15 j=14 il=6 ir=4 jl=5 jr=3  return 1
+clpyr_cont k=7 i=15 r=0
+clpyr_cont k=7 j=14 r=0
+clpyr_cont k=8 i=15 r=0
+clpyr_cont k=8 j=14 r=0
+clpyr_cont k=9 i=15 r=0
+clpyr_cont k=9 j=14 r=1
+clpyr_cont k=10 i=15 r=1
+clpyr_cont k=11 i=15 r=1
+clpyr_cont k=12 i=15 r=0
+clpyr_cont k=12 j=14 r=0
+clpyr_cont k=13 i=15 r=0
+clpyr_cont k=13 j=14 r=0
+clpyr_cont k=16 i=15 r=0
+clpyr_cont k=16 j=14 r=0
+clpyr_cont k=17 i=15 r=0
+clpyr_cont k=17 j=14 r=0
+vorlaeufig ok: i=15 j=14 d=10
+nc=18 : 0 0 1 1 1 1 
+nc=18 i=15 j=14 dm=10 acn[nc]= 4 k[nc]= 6 s[nc]= 3 l(i)= 0 r(i)= 0 l(j)= 0 r(j)= 0 r=0 y=10
+clpyr_con: i=7 j=6 il=2 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+clpyr_con: i=11 j=1 il=6 ir=5 jl=1 jr=1 ir left from jl
+idx_right(ir) = 4
+ return 0
+clpyr_con: i=11 j=7 il=6 ir=5 jl=2 jr=1 ir left from jl
+idx_right(ir) = 4
+ return 0
+clpyr_con: i=12 j=6 il=3 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+sflag = 0. continue
+clpyr_con: i=12 j=11 il=3 ir=1 jl=6 jr=5 jr left from il
+idx_right(jr) = 4
+ return 0
+clpyr_con: i=15 j=1 il=6 ir=4 jl=1 jr=1 ir left from jl
+idx_right(ir) = 3
+ return 0
+clpyr_con: i=15 j=7 il=6 ir=4 jl=2 jr=1 ir left from jl
+idx_right(ir) = 3
+ return 0
+sflag = 0. continue
+clpyr_con: i=15 j=12 il=6 ir=4 jl=3 jr=1 ir left from jl
+idx_right(ir) = 3
+ return 1
+clpyr_cont k=7 i=15 r=0
+clpyr_cont k=7 j=12 r=1
+clpyr_cont k=8 i=15 r=0
+clpyr_cont k=8 j=12 r=1
+clpyr_cont k=9 i=15 r=0
+clpyr_cont k=9 j=12 r=0
+NOT OK i=15 j=12
+clpyr_con: i=16 j=6 il=4 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+sflag = 0. continue
+clpyr_con: i=16 j=11 il=4 ir=1 jl=6 jr=5 jr left from il
+idx_right(jr) = 4
+ return 1
+clpyr_cont k=7 i=16 r=1
+clpyr_cont k=8 i=16 r=1
+clpyr_cont k=9 i=16 r=1
+clpyr_cont k=10 i=16 r=0
+clpyr_cont k=10 j=11 r=0
+NOT OK i=16 j=11
+sflag = 0. continue
+clpyr_con: i=16 j=15 il=4 ir=1 jl=6 jr=4  return 1
+clpyr_cont k=7 i=16 r=1
+clpyr_cont k=8 i=16 r=1
+clpyr_cont k=9 i=16 r=1
+clpyr_cont k=10 i=16 r=0
+clpyr_cont k=10 j=15 r=1
+clpyr_cont k=11 i=16 r=0
+clpyr_cont k=11 j=15 r=1
+clpyr_cont k=12 i=16 r=1
+clpyr_cont k=13 i=16 r=1
+clpyr_cont k=14 i=16 r=0
+clpyr_cont k=14 j=15 r=0
+NOT OK i=16 j=15
+clpyr_con: i=17 j=7 il=5 ir=2 jl=2 jr=1  return 1
+clpyr_cont k=8 i=17 r=1
+clpyr_cont k=9 i=17 r=1
+clpyr_cont k=10 i=17 r=1
+clpyr_cont k=11 i=17 r=0
+clpyr_cont k=11 j=7 r=0
+clpyr_cont k=12 i=17 r=0
+clpyr_cont k=12 j=7 r=0
+NOT OK i=17 j=7
+clpyr_con: i=17 j=11 il=5 ir=2 jl=6 jr=5  return 1
+clpyr_cont k=7 i=17 r=0
+clpyr_cont k=7 j=11 r=0
+clpyr_cont k=8 i=17 r=1
+clpyr_cont k=9 i=17 r=1
+clpyr_cont k=10 i=17 r=1
+clpyr_cont k=12 i=17 r=0
+clpyr_cont k=12 j=11 r=0
+clpyr_cont k=13 i=17 r=1
+clpyr_cont k=14 i=17 r=1
+clpyr_cont k=15 i=17 r=0
+clpyr_cont k=15 j=11 r=0
+NOT OK i=17 j=11
+clpyr_con: i=17 j=12 il=5 ir=2 jl=3 jr=1  return 1
+clpyr_cont k=7 i=17 r=0
+clpyr_cont k=7 j=12 r=1
+clpyr_cont k=8 i=17 r=1
+clpyr_cont k=9 i=17 r=1
+clpyr_cont k=10 i=17 r=1
+clpyr_cont k=11 i=17 r=0
+clpyr_cont k=11 j=12 r=0
+clpyr_cont k=13 i=17 r=1
+clpyr_cont k=14 i=17 r=1
+clpyr_cont k=15 i=17 r=0
+clpyr_cont k=15 j=12 r=0
+clpyr_cont k=16 i=17 r=0
+clpyr_cont k=16 j=12 r=0
+NOT OK i=17 j=12
+clpyr_con: i=17 j=15 il=5 ir=2 jl=6 jr=4  return 1
+clpyr_cont k=7 i=17 r=0
+clpyr_cont k=7 j=15 r=0
+clpyr_cont k=8 i=17 r=1
+clpyr_cont k=9 i=17 r=1
+clpyr_cont k=10 i=17 r=1
+clpyr_cont k=11 i=17 r=0
+clpyr_cont k=11 j=15 r=1
+clpyr_cont k=12 i=17 r=0
+clpyr_cont k=12 j=15 r=0
+clpyr_cont k=13 i=17 r=1
+clpyr_cont k=14 i=17 r=1
+clpyr_cont k=16 i=17 r=0
+clpyr_cont k=16 j=15 r=0
+clpyr_cont k=18 i=17 r=0
+clpyr_cont k=18 j=15 r=0
+NOT OK i=17 j=15
+clpyr_con: i=17 j=16 il=5 ir=2 jl=4 jr=1  return 1
+clpyr_cont k=7 i=17 r=0
+clpyr_cont k=7 j=16 r=1
+clpyr_cont k=8 i=17 r=1
+clpyr_cont k=9 i=17 r=1
+clpyr_cont k=10 i=17 r=1
+clpyr_cont k=11 i=17 r=0
+clpyr_cont k=11 j=16 r=0
+clpyr_cont k=12 i=17 r=0
+clpyr_cont k=12 j=16 r=1
+clpyr_cont k=13 i=17 r=1
+clpyr_cont k=14 i=17 r=1
+clpyr_cont k=15 i=17 r=0
+clpyr_cont k=15 j=16 r=0
+clpyr_cont k=18 i=17 r=0
+clpyr_cont k=18 j=16 r=0
+vorlaeufig ok: i=17 j=16 d=13
+sflag = 0. continue
+sflag = 0. continue
+nc=19 : 1 1 1 1 1 0 
+nc=19 i=17 j=16 dm=13 acn[nc]= 5 k[nc]= 5 s[nc]= 1 l(i)= 0 r(i)= 0 l(j)= 0 r(j)= 0 r=4 y=13
+clpyr_con: i=7 j=6 il=2 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+clpyr_con: i=11 j=1 il=6 ir=5 jl=1 jr=1 ir left from jl
+idx_right(ir) = 4
+ return 0
+clpyr_con: i=11 j=7 il=6 ir=5 jl=2 jr=1 ir left from jl
+idx_right(ir) = 4
+ return 0
+clpyr_con: i=12 j=6 il=3 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+sflag = 0. continue
+clpyr_con: i=12 j=11 il=3 ir=1 jl=6 jr=5 jr left from il
+idx_right(jr) = 4
+ return 0
+clpyr_con: i=15 j=1 il=6 ir=4 jl=1 jr=1 ir left from jl
+idx_right(ir) = 3
+ return 0
+clpyr_con: i=15 j=7 il=6 ir=4 jl=2 jr=1 ir left from jl
+idx_right(ir) = 3
+ return 0
+sflag = 0. continue
+clpyr_con: i=15 j=12 il=6 ir=4 jl=3 jr=1 ir left from jl
+idx_right(ir) = 3
+ return 1
+clpyr_cont k=7 i=15 r=0
+clpyr_cont k=7 j=12 r=1
+clpyr_cont k=8 i=15 r=0
+clpyr_cont k=8 j=12 r=1
+clpyr_cont k=9 i=15 r=0
+clpyr_cont k=9 j=12 r=0
+NOT OK i=15 j=12
+clpyr_con: i=16 j=6 il=4 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+sflag = 0. continue
+clpyr_con: i=16 j=11 il=4 ir=1 jl=6 jr=5 jr left from il
+idx_right(jr) = 4
+ return 1
+clpyr_cont k=7 i=16 r=1
+clpyr_cont k=8 i=16 r=1
+clpyr_cont k=9 i=16 r=1
+clpyr_cont k=10 i=16 r=0
+clpyr_cont k=10 j=11 r=0
+NOT OK i=16 j=11
+sflag = 0. continue
+clpyr_con: i=16 j=15 il=4 ir=1 jl=6 jr=4  return 1
+clpyr_cont k=7 i=16 r=1
+clpyr_cont k=8 i=16 r=1
+clpyr_cont k=9 i=16 r=1
+clpyr_cont k=10 i=16 r=0
+clpyr_cont k=10 j=15 r=1
+clpyr_cont k=11 i=16 r=0
+clpyr_cont k=11 j=15 r=1
+clpyr_cont k=12 i=16 r=1
+clpyr_cont k=13 i=16 r=1
+clpyr_cont k=14 i=16 r=0
+clpyr_cont k=14 j=15 r=0
+NOT OK i=16 j=15
+sflag = 0. continue
+clpyr_con: i=17 j=11 il=5 ir=2 jl=6 jr=5  return 1
+clpyr_cont k=7 i=17 r=0
+clpyr_cont k=7 j=11 r=0
+clpyr_cont k=8 i=17 r=1
+clpyr_cont k=9 i=17 r=1
+clpyr_cont k=10 i=17 r=1
+clpyr_cont k=12 i=17 r=0
+clpyr_cont k=12 j=11 r=0
+clpyr_cont k=13 i=17 r=1
+clpyr_cont k=14 i=17 r=1
+clpyr_cont k=15 i=17 r=0
+clpyr_cont k=15 j=11 r=0
+NOT OK i=17 j=11
+sflag = 0. continue
+clpyr_con: i=17 j=15 il=5 ir=2 jl=6 jr=4  return 1
+clpyr_cont k=7 i=17 r=0
+clpyr_cont k=7 j=15 r=0
+clpyr_cont k=8 i=17 r=1
+clpyr_cont k=9 i=17 r=1
+clpyr_cont k=10 i=17 r=1
+clpyr_cont k=11 i=17 r=0
+clpyr_cont k=11 j=15 r=1
+clpyr_cont k=12 i=17 r=0
+clpyr_cont k=12 j=15 r=0
+clpyr_cont k=13 i=17 r=1
+clpyr_cont k=14 i=17 r=1
+clpyr_cont k=16 i=17 r=0
+clpyr_cont k=16 j=15 r=0
+clpyr_cont k=18 i=17 r=0
+clpyr_cont k=18 j=15 r=0
+NOT OK i=17 j=15
+sflag = 0. continue
+clpyr_con: i=18 j=1 il=6 ir=3 jl=1 jr=1 ir left from jl
+idx_right(ir) = 2
+ return 0
+clpyr_con: i=18 j=7 il=6 ir=3 jl=2 jr=1 ir left from jl
+idx_right(ir) = 2
+ return 1
+clpyr_cont k=8 i=18 r=0
+clpyr_cont k=8 j=7 r=0
+NOT OK i=18 j=7
+sflag = 0. continue
+clpyr_con: i=18 j=12 il=6 ir=3 jl=3 jr=1  return 1
+clpyr_cont k=7 i=18 r=0
+clpyr_cont k=7 j=12 r=1
+clpyr_cont k=8 i=18 r=0
+clpyr_cont k=8 j=12 r=1
+clpyr_cont k=9 i=18 r=1
+clpyr_cont k=10 i=18 r=1
+clpyr_cont k=11 i=18 r=1
+clpyr_cont k=13 i=18 r=0
+clpyr_cont k=13 j=12 r=0
+NOT OK i=18 j=12
+sflag = 0. continue
+clpyr_con: i=18 j=16 il=6 ir=3 jl=4 jr=1  return 1
+clpyr_cont k=7 i=18 r=0
+clpyr_cont k=7 j=16 r=1
+clpyr_cont k=8 i=18 r=0
+clpyr_cont k=8 j=16 r=1
+clpyr_cont k=9 i=18 r=1
+clpyr_cont k=10 i=18 r=1
+clpyr_cont k=11 i=18 r=1
+clpyr_cont k=12 i=18 r=0
+clpyr_cont k=12 j=16 r=1
+clpyr_cont k=13 i=18 r=0
+clpyr_cont k=13 j=16 r=1
+clpyr_cont k=14 i=18 r=1
+clpyr_cont k=15 i=18 r=1
+clpyr_cont k=17 i=18 r=0
+clpyr_cont k=17 j=16 r=0
+NOT OK i=18 j=16
+clpyr_con: i=18 j=17 il=6 ir=3 jl=5 jr=2  return 1
+clpyr_cont k=7 i=18 r=0
+clpyr_cont k=7 j=17 r=0
+clpyr_cont k=8 i=18 r=0
+clpyr_cont k=8 j=17 r=1
+clpyr_cont k=9 i=18 r=1
+clpyr_cont k=10 i=18 r=1
+clpyr_cont k=11 i=18 r=1
+clpyr_cont k=12 i=18 r=0
+clpyr_cont k=12 j=17 r=0
+clpyr_cont k=13 i=18 r=0
+clpyr_cont k=13 j=17 r=1
+clpyr_cont k=14 i=18 r=1
+clpyr_cont k=15 i=18 r=1
+clpyr_cont k=16 i=18 r=0
+clpyr_cont k=16 j=17 r=0
+clpyr_cont k=19 i=18 r=0
+clpyr_cont k=19 j=17 r=0
+vorlaeufig ok: i=18 j=17 d=13
+nc=20 : 0 1 1 1 1 1 
+nc=20 i=18 j=17 dm=13 acn[nc]= 5 k[nc]= 6 s[nc]= 2 l(i)= 0 r(i)= 0 l(j)= 0 r(j)= 0 r=0 y=13
+clpyr_con: i=7 j=6 il=2 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+clpyr_con: i=11 j=1 il=6 ir=5 jl=1 jr=1 ir left from jl
+idx_right(ir) = 4
+ return 0
+clpyr_con: i=11 j=7 il=6 ir=5 jl=2 jr=1 ir left from jl
+idx_right(ir) = 4
+ return 0
+clpyr_con: i=12 j=6 il=3 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+sflag = 0. continue
+clpyr_con: i=12 j=11 il=3 ir=1 jl=6 jr=5 jr left from il
+idx_right(jr) = 4
+ return 0
+clpyr_con: i=15 j=1 il=6 ir=4 jl=1 jr=1 ir left from jl
+idx_right(ir) = 3
+ return 0
+clpyr_con: i=15 j=7 il=6 ir=4 jl=2 jr=1 ir left from jl
+idx_right(ir) = 3
+ return 0
+sflag = 0. continue
+clpyr_con: i=15 j=12 il=6 ir=4 jl=3 jr=1 ir left from jl
+idx_right(ir) = 3
+ return 1
+clpyr_cont k=7 i=15 r=0
+clpyr_cont k=7 j=12 r=1
+clpyr_cont k=8 i=15 r=0
+clpyr_cont k=8 j=12 r=1
+clpyr_cont k=9 i=15 r=0
+clpyr_cont k=9 j=12 r=0
+NOT OK i=15 j=12
+clpyr_con: i=16 j=6 il=4 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 0
+sflag = 0. continue
+clpyr_con: i=16 j=11 il=4 ir=1 jl=6 jr=5 jr left from il
+idx_right(jr) = 4
+ return 1
+clpyr_cont k=7 i=16 r=1
+clpyr_cont k=8 i=16 r=1
+clpyr_cont k=9 i=16 r=1
+clpyr_cont k=10 i=16 r=0
+clpyr_cont k=10 j=11 r=0
+NOT OK i=16 j=11
+sflag = 0. continue
+clpyr_con: i=16 j=15 il=4 ir=1 jl=6 jr=4  return 1
+clpyr_cont k=7 i=16 r=1
+clpyr_cont k=8 i=16 r=1
+clpyr_cont k=9 i=16 r=1
+clpyr_cont k=10 i=16 r=0
+clpyr_cont k=10 j=15 r=1
+clpyr_cont k=11 i=16 r=0
+clpyr_cont k=11 j=15 r=1
+clpyr_cont k=12 i=16 r=1
+clpyr_cont k=13 i=16 r=1
+clpyr_cont k=14 i=16 r=0
+clpyr_cont k=14 j=15 r=0
+NOT OK i=16 j=15
+clpyr_con: i=18 j=1 il=6 ir=3 jl=1 jr=1 ir left from jl
+idx_right(ir) = 2
+ return 0
+clpyr_con: i=18 j=7 il=6 ir=3 jl=2 jr=1 ir left from jl
+idx_right(ir) = 2
+ return 1
+clpyr_cont k=8 i=18 r=0
+clpyr_cont k=8 j=7 r=0
+NOT OK i=18 j=7
+sflag = 0. continue
+clpyr_con: i=18 j=12 il=6 ir=3 jl=3 jr=1  return 1
+clpyr_cont k=7 i=18 r=0
+clpyr_cont k=7 j=12 r=1
+clpyr_cont k=8 i=18 r=0
+clpyr_cont k=8 j=12 r=1
+clpyr_cont k=9 i=18 r=1
+clpyr_cont k=10 i=18 r=1
+clpyr_cont k=11 i=18 r=1
+clpyr_cont k=13 i=18 r=0
+clpyr_cont k=13 j=12 r=0
+NOT OK i=18 j=12
+sflag = 0. continue
+clpyr_con: i=18 j=16 il=6 ir=3 jl=4 jr=1  return 1
+clpyr_cont k=7 i=18 r=0
+clpyr_cont k=7 j=16 r=1
+clpyr_cont k=8 i=18 r=0
+clpyr_cont k=8 j=16 r=1
+clpyr_cont k=9 i=18 r=1
+clpyr_cont k=10 i=18 r=1
+clpyr_cont k=11 i=18 r=1
+clpyr_cont k=12 i=18 r=0
+clpyr_cont k=12 j=16 r=1
+clpyr_cont k=13 i=18 r=0
+clpyr_cont k=13 j=16 r=1
+clpyr_cont k=14 i=18 r=1
+clpyr_cont k=15 i=18 r=1
+clpyr_cont k=17 i=18 r=0
+clpyr_cont k=17 j=16 r=0
+NOT OK i=18 j=16
+clpyr_con: i=19 j=6 il=5 ir=1 jl=6 jr=6 jr left from il
+idx_right(jr) = 5
+ return 1
+clpyr_cont k=7 i=19 r=1
+clpyr_cont k=8 i=19 r=1
+clpyr_cont k=9 i=19 r=1
+clpyr_cont k=10 i=19 r=1
+clpyr_cont k=11 i=19 r=0
+clpyr_cont k=11 j=6 r=0
+NOT OK i=19 j=6
+sflag = 0. continue
+clpyr_con: i=19 j=11 il=5 ir=1 jl=6 jr=5  return 1
+clpyr_cont k=7 i=19 r=1
+clpyr_cont k=8 i=19 r=1
+clpyr_cont k=9 i=19 r=1
+clpyr_cont k=10 i=19 r=1
+clpyr_cont k=12 i=19 r=1
+clpyr_cont k=13 i=19 r=1
+clpyr_cont k=14 i=19 r=1
+clpyr_cont k=15 i=19 r=0
+clpyr_cont k=15 j=11 r=0
+NOT OK i=19 j=11
+sflag = 0. continue
+clpyr_con: i=19 j=15 il=5 ir=1 jl=6 jr=4  return 1
+clpyr_cont k=7 i=19 r=1
+clpyr_cont k=8 i=19 r=1
+clpyr_cont k=9 i=19 r=1
+clpyr_cont k=10 i=19 r=1
+clpyr_cont k=11 i=19 r=0
+clpyr_cont k=11 j=15 r=1
+clpyr_cont k=12 i=19 r=1
+clpyr_cont k=13 i=19 r=1
+clpyr_cont k=14 i=19 r=1
+clpyr_cont k=16 i=19 r=1
+clpyr_cont k=17 i=19 r=1
+clpyr_cont k=18 i=19 r=0
+clpyr_cont k=18 j=15 r=0
+NOT OK i=19 j=15
+sflag = 0. continue
+clpyr_con: i=19 j=18 il=5 ir=1 jl=6 jr=3  return 1
+clpyr_cont k=7 i=19 r=1
+clpyr_cont k=8 i=19 r=1
+clpyr_cont k=9 i=19 r=1
+clpyr_cont k=10 i=19 r=1
+clpyr_cont k=11 i=19 r=0
+clpyr_cont k=11 j=18 r=1
+clpyr_cont k=12 i=19 r=1
+clpyr_cont k=13 i=19 r=1
+clpyr_cont k=14 i=19 r=1
+clpyr_cont k=15 i=19 r=0
+clpyr_cont k=15 j=18 r=1
+clpyr_cont k=16 i=19 r=1
+clpyr_cont k=17 i=19 r=1
+clpyr_cont k=20 i=19 r=0
+clpyr_cont k=20 j=18 r=0
+NOT OK i=19 j=18
+clpyr_con: i=20 j=1 il=6 ir=2 jl=1 jr=1 ir left from jl
+idx_right(ir) = 1
+ return 1
+clpyr_cont k=7 i=20 r=0
+clpyr_cont k=7 j=1 r=0
+NOT OK i=20 j=1
+clpyr_con: i=20 j=7 il=6 ir=2 jl=2 jr=1  return 1
+clpyr_cont k=8 i=20 r=1
+clpyr_cont k=9 i=20 r=1
+clpyr_cont k=10 i=20 r=1
+clpyr_cont k=11 i=20 r=1
+clpyr_cont k=12 i=20 r=0
+clpyr_cont k=12 j=7 r=0
+NOT OK i=20 j=7
+sflag = 0. continue
+clpyr_con: i=20 j=12 il=6 ir=2 jl=3 jr=1  return 1
+clpyr_cont k=7 i=20 r=0
+clpyr_cont k=7 j=12 r=1
+clpyr_cont k=8 i=20 r=1
+clpyr_cont k=9 i=20 r=1
+clpyr_cont k=10 i=20 r=1
+clpyr_cont k=11 i=20 r=1
+clpyr_cont k=13 i=20 r=1
+clpyr_cont k=14 i=20 r=1
+clpyr_cont k=15 i=20 r=1
+clpyr_cont k=16 i=20 r=0
+clpyr_cont k=16 j=12 r=0
+NOT OK i=20 j=12
+sflag = 0. continue
+clpyr_con: i=20 j=16 il=6 ir=2 jl=4 jr=1  return 1
+clpyr_cont k=7 i=20 r=0
+clpyr_cont k=7 j=16 r=1
+clpyr_cont k=8 i=20 r=1
+clpyr_cont k=9 i=20 r=1
+clpyr_cont k=10 i=20 r=1
+clpyr_cont k=11 i=20 r=1
+clpyr_cont k=12 i=20 r=0
+clpyr_cont k=12 j=16 r=1
+clpyr_cont k=13 i=20 r=1
+clpyr_cont k=14 i=20 r=1
+clpyr_cont k=15 i=20 r=1
+clpyr_cont k=17 i=20 r=1
+clpyr_cont k=18 i=20 r=1
+clpyr_cont k=19 i=20 r=0
+clpyr_cont k=19 j=16 r=0
+NOT OK i=20 j=16
+sflag = 0. continue
+clpyr_con: i=20 j=19 il=6 ir=2 jl=5 jr=1  return 1
+clpyr_cont k=7 i=20 r=0
+clpyr_cont k=7 j=19 r=1
+clpyr_cont k=8 i=20 r=1
+clpyr_cont k=9 i=20 r=1
+clpyr_cont k=10 i=20 r=1
+clpyr_cont k=11 i=20 r=1
+clpyr_cont k=12 i=20 r=0
+clpyr_cont k=12 j=19 r=1
+clpyr_cont k=13 i=20 r=1
+clpyr_cont k=14 i=20 r=1
+clpyr_cont k=15 i=20 r=1
+clpyr_cont k=16 i=20 r=0
+clpyr_cont k=16 j=19 r=1
+clpyr_cont k=17 i=20 r=1
+clpyr_cont k=18 i=20 r=1
+vorlaeufig ok: i=20 j=19 d=16
+nc=21 : 1 1 1 1 1 1 
+nc=21 i=20 j=19 dm=16 acn[nc]= 6 k[nc]= 6 s[nc]= 1 l(i)= 0 r(i)= 0 l(j)= 0 r(j)= 0 r=1 y=16
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+sflag = 0. continue
+31 records written to: out.txt
+Order: 6 5 4 3 2 1 
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 414069 bytes.
+End of program. Sat Sep 12 08:06:26 2026

@@ -1,0 +1,121 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep 12 08:06:26 2026
+Current memory: 390032 bytes.
+
+Reading command file: sdrops.cf
+============================================================================
+sdnvar(...)
+Reading a spatial data file. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 SDID      3   4   0.0  c1
+  2 SDTyp     3   4   0.0  c2
+  3 SDN       3   4   0.0  c3
+  4 SDPtr     3   5  11.0  rd
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ppol.sd
+Free format. Separation character(s): default.
+Reading data file: ppol.sd
+Read records: 6 
+
+Created a new data matrix.
+Number of cases: 6
+Number of variables: 4
+Missing values in data file(s): none.
+
+Number of points: 4
+Number of lines: 0
+Number of polygons: 2
+Number of unknown objects: 0
+
+Maximal number of points in spatial objects: 4
+Total number of points in spatial objects: 12
+Note: ppol.sd remains opened for further access.
+
+X values. Minimum:         0.0000  Maximum:        15.0000
+Y values. Minimum:         0.0000  Maximum:        15.0000
+
+End of creating new variables. Current memory: 406497 bytes.
+----------------------------------------------------------------------------
+Find points in polygons. Current memory: 406497 bytes.
+
+Number of points: 4
+Number of polygons: 2
+4 records written to: ppolout.txt
+----------------------------------------------------------------------------
+clear
+Deleted whole data matrix. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+sdnvar(...)
+Reading a spatial data file. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 SDID      3   4   0.0  c1
+  2 SDTyp     3   4   0.0  c2
+  3 SDN       3   4   0.0  c3
+  4 SDPtr     3   5  11.0  rd
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): lines.sd
+Free format. Separation character(s): default.
+Reading data file: lines.sd
+Read records: 2 
+
+Created a new data matrix.
+Number of cases: 2
+Number of variables: 4
+Missing values in data file(s): none.
+
+Number of points: 0
+Number of lines: 2
+Number of polygons: 0
+Number of unknown objects: 0
+
+Maximal number of points in spatial objects: 2
+Total number of points in spatial objects: 4
+Note: lines.sd remains opened for further access.
+
+X values. Minimum:         0.0000  Maximum:        10.0000
+Y values. Minimum:         0.0000  Maximum:        10.0000
+
+End of creating new variables. Current memory: 406465 bytes.
+----------------------------------------------------------------------------
+Creating a network from lines. Current memory: 406465 bytes.
+
+Number of lines: 2
+Number of segments: 2
+Tolerance: 0.0001
+Maximal number of segments: 20
+i=  0 0.000000 5.000000 10.000000 5.000000
+i=  1 5.000000 0.000000 5.000000 10.000000
+
+After splitting nne=4 nnd=4 nfree=0: 
+i=  0 0.000000 5.000000 5.000000 5.000000 idx=0
+i=  1 5.000000 0.000000 5.000000 5.000000 idx=0
+i=  2 5.000000 5.000000 10.000000 5.000000 idx=0
+i=  3 5.000000 5.000000 5.000000 10.000000 idx=0
+
+nnd=5
+LIST of node coordinates nnd=5
+i=  1 x=0.000000 y=5.000000
+i=  2 x=5.000000 y=0.000000
+i=  3 x=5.000000 y=5.000000
+i=  4 x=5.000000 y=10.000000
+i=  5 x=10.000000 y=5.000000
+i=  0 0.000000 5.000000 5.000000 5.000000
+i=  1 5.000000 0.000000 5.000000 5.000000
+i=  2 5.000000 5.000000 10.000000 5.000000
+i=  3 5.000000 5.000000 5.000000 10.000000
+
+Number of nodes: 5
+Number of edges: 4
+4 records written to: sdnlout.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426151 bytes.
+End of program. Sat Sep 12 08:06:26 2026

@@ -1,0 +1,84 @@
+Read records:       4     
+Read records:       4     
+Writing: d4
+Records written:       4     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:50 2026
+Current memory: 390032 bytes.
+
+Reading command file: d4.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X1        3   4   4.1  c1
+  2 X2        3   4   4.1  c2
+  3 X3        3   4   4.1  c3
+  4 X4        3   4   4.1  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): d1.dat
+Free format. Separation character(s): default.
+
+Reading data file: d1.dat
+Read records: 4 
+
+Created a new data matrix.
+Number of cases: 4
+Number of variables: 4
+
+Missing values  numerical code
+------------------------------
+Blank        0      -1
+Star         1      -1
+Point        1      -1
+
+End of creating new variables. Current memory: 406104 bytes.
+----------------------------------------------------------------------------
+nvar(...)
+Creating new variables. Current memory: 406104 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Y1        3   4   5.2  c1
+  2 Y2        3   4   5.2  c2
+  3 Y3        3   4   5.2  c3
+  4 Y4        3   4   5.2  c4
+
+Using data file(s): d1.dat
+Free format. Separation character(s): default.
+
+New variables will be added to existing data matrix.
+
+Matching:
+New variable    Existing variable
+---------------------------------
+Y3              X1
+
+Sort with variable(s): X1
+Current memory: 406221 bytes.
+Data already sorted.
+
+Reading data file: d1.dat
+Read records: 4 
+
+Added 4 variable(s) to existing data matrix.
+Number of cases with no match: 1
+Substituted missing value code: -3
+
+Missing values  numerical code
+------------------------------
+Blank        0      -1
+Star         1      -1
+Point        1      -1
+
+End of creating new variables. Current memory: 422176 bytes.
+----------------------------------------------------------------------------
+pdata=d4
+4 records with 8 variables written to: d4
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 442267 bytes.
+End of program. Tue Jul 21 05:46:50 2026

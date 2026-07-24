@@ -1,0 +1,47 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:54 2026
+Current memory: 390032 bytes.
+
+Reading command file: plot11.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 RD        3   4   0.0  rd(-2,2)
+  2 RDS       4   4   0.0  sort(RD)
+  3 ND        4   4   0.0  nd(RDS)
+
+Creating a new data matrix.
+Maximum number of cases: 20
+
+Created a new data matrix.
+Number of cases: 20
+Number of variables: 3
+
+End of creating new variables. Current memory: 390392 bytes.
+----------------------------------------------------------------------------
+psfile=plot11.ps
+Opened new PostScript file: plot11.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 90 x 50
+PostScript coordinates. X-axis: 150,405  Y-axis: 460,602
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:          -2.0000,           2.0000 
+User coordinates Y axis:           0.0000,           1.0000 
+----------------------------------------------------------------------------
+plxa(sc=0.5,fmt=4.1)
+----------------------------------------------------------------------------
+plya(sc=1,ic=10)
+----------------------------------------------------------------------------
+plframe
+----------------------------------------------------------------------------
+plot(dir=1,gs=0.9)=RDS,ND
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 392064 bytes.
+End of program. Tue Jul 21 05:46:54 2026

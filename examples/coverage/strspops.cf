@@ -1,0 +1,9 @@
+# strsp(S): sort pointer for a string variable (es_comp, t_eval2) --
+# ranks the sorted distinct strings; ties share a rank.
+nvar(dfile=strsp.dat,
+  S = str(1,6),
+  R [4.0] = strsp(S),
+  L [4.0] = strlen(S),
+);
+pdata = strsp.out;
+dstat;

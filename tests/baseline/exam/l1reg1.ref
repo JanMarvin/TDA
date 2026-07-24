@@ -1,0 +1,62 @@
+Read records:      10     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: l1reg1.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X1        3   4   0.0  c1
+  2 X2        3   4   0.0  c2
+  3 X3        3   4   0.0  c3
+  4 Y         3   4   0.0  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): l1reg1.dat
+Free format. Separation character(s): default.
+
+Reading data file: l1reg1.dat
+Read records: 10 
+
+Created a new data matrix.
+Number of cases: 10
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 406103 bytes.
+----------------------------------------------------------------------------
+l1reg(...)=Y,X1,X2,X3
+L1-norm regression. Current memory: 406103 bytes.
+
+Variables (cross-section)
+-------------------------
+Y   : Y   
+X1  : X1  
+X2  : X2  
+X3  : X3  
+
+Model without intercept.
+
+Solution is unique
+Rank of data matrix: 3
+Sum of absolute deviations: 35.1887
+Number of non-zero residuals: 7
+
+Tau:     8.7016  [calculated from residuals: -7.85099,5.30464]
+Pseudorank of data matrix: 3
+Norm of least squares residuals:    13.5186 
+Degrees of freedom: 7
+
+Idx  Wave  Variable       Coeff      Error    Coeff/E  Signif
+-------------------------------------------------------------
+  1     1  X1           -2.8311     0.2864    -9.8844  1.0000
+  2     1  X2            4.0298     0.3714    10.8509  1.0000
+  3     1  X3           -0.8311     0.2673    -3.1095  0.9829
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426150 bytes.
+End of program. Tue Jul 21 05:46:53 2026

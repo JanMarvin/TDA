@@ -1,0 +1,22 @@
+# sdrops.cf -- t_sdr.c coverage: sdppol (points in polygons) and
+# sdnl (network from lines), both undocumented in tda.hlp but fully
+# documented in their own source header comments. Two nested squares
+# (outer 0-10, inner 2-8) plus four test points, hand-verified
+# exactly: (5,5) inside both squares; (1,1) inside the outer only;
+# (15,15) inside neither; (0,0) counted as contained via the
+# boundary (per the source doc, boundaries count). Separately, two
+# crossing line segments correctly produce 5 nodes and 4 edges (the
+# crossing point becomes a shared node splitting both lines) --
+# note the automatic max= budget (2x segment count) is too tight for
+# a genuine crossing and must be raised explicitly, confirmed by
+# hitting "exceeded the maximum number of segments" with the
+# default first.
+
+silent = -1;
+
+sdnvar(dfile=ppol.sd, SDID=c1, SDTyp=c2, SDN=c3, SDPtr<5>=rd);
+sdppol(opt=1, n=2) = ppolout.txt;
+clear;
+
+sdnvar(dfile=lines.sd, SDID=c1, SDTyp=c2, SDN=c3, SDPtr<5>=rd);
+sdnl(opt=2, max=20) = sdnlout.txt;

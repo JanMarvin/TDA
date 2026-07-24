@@ -1,0 +1,198 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep 12 08:06:26 2026
+Current memory: 390032 bytes.
+
+Reading command file: boolcyc.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Y         3   4   2.0  c1
+  2 X1        3   4   2.0  c2
+  3 X2        3   4   2.0  c3
+  4 X3        3   4   2.0  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): bcyc.dat
+Free format. Separation character(s): default.
+
+Reading data file: bcyc.dat
+Read records: 8 
+
+Created a new data matrix.
+Number of cases: 8
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 406103 bytes.
+----------------------------------------------------------------------------
+bfa(...)=...
+Boolean function analysis. Current memory: 406103 bytes.
+
+Number of arguments: 3
+Rows of truth table: 8
+- with y = 0 : 2
+- with y = 1 : 6
+- both       : 0
+- undefined  : 0
+
+
+Found 6 prime implicants.
+    0 : 0-1    X1'.X3
+    1 : 01-    X1'.X2
+    2 : -01    X2'.X3
+    3 : 10-    X1.X2'
+    4 : -10    X2.X3'
+    5 : 1-0    X1.X3'
+
+Allocating prime implicant chart (6 x 6 = 36 bytes).
+Found 0 essential prime implicants.
+Find minimal covers with Lawler's method.
+nej=6
+JMIN=2
+Using j=0 nej=6 ni=6 nj=6    
+ncnt=16
+nej=4
+JMIN=2
+Using j=0 nej=4 ni=6 nj=6    
+ncnt=4
+nej=1
+JMIN=2
+Using j=0 nej=1 ni=6 nj=6    
+LEVEL nlev=3
+AcI: 2 0 2 
+AcI: 2 1 4 
+AcI: 2 3 5 
+Number of covers for non-essential implicants: 2
+
+Final selection of prime implicants.
+  1  0-1 + 10- + -10
+  2  01- + -01 + 1-0
+
+  1  X1'.X3 + X1.X2' + X2.X3'
+  2  X1'.X2 + X2'.X3 + X1.X3'
+
+Final check: 0 errors.
+----------------------------------------------------------------------------
+bfa(...)=...
+Boolean function analysis. Current memory: 406103 bytes.
+
+Number of arguments: 3
+Rows of truth table: 8
+- with y = 0 : 2
+- with y = 1 : 6
+- both       : 0
+- undefined  : 0
+
+
+Found 6 prime implicants.
+    0 : 0-1    X1'.X3
+    1 : 01-    X1'.X2
+    2 : -01    X2'.X3
+    3 : 10-    X1.X2'
+    4 : -10    X2.X3'
+    5 : 1-0    X1.X3'
+
+Allocating prime implicant chart (6 x 6 = 36 bytes).
+Found 0 essential prime implicants.
+Find minimal covers with Petrick's method.
+Number of covers for non-essential implicants: 2
+
+Final selection of prime implicants.
+  1  0-1 + 10- + -10
+  2  01- + -01 + 1-0
+
+  1  X1'.X3 + X1.X2' + X2.X3'
+  2  X1'.X2 + X2'.X3 + X1.X3'
+
+Final check: 0 errors.
+----------------------------------------------------------------------------
+bfa(...)=...
+Boolean function analysis. Current memory: 406103 bytes.
+
+Number of arguments: 3
+Rows of truth table: 8
+- with y = 0 : 2
+- with y = 1 : 6
+- both       : 0
+- undefined  : 0
+
+
+Found 6 prime implicants.
+    0 : 0-1    X1'.X3
+    1 : 01-    X1'.X2
+    2 : -01    X2'.X3
+    3 : 10-    X1.X2'
+    4 : -10    X2.X3'
+    5 : 1-0    X1.X3'
+
+Allocating prime implicant chart (6 x 6 = 36 bytes).
+Found 0 essential prime implicants.
+Find minimal covers with Lawler's method II.
+nej=6 ni=6 
+AcF  1 0 1 0 0 0 
+AcF  0 1 1 0 0 0 
+AcF  1 0 0 0 1 0 
+AcF  0 0 0 1 1 0 
+AcF  0 1 0 0 0 1 
+AcF  0 0 0 1 0 1 
+Using j=0 nej=6 ni=6 nj=6 ii=2    
+nec=3
+AcK: 1 3 5 
+NEW AcNS
+AcS=  1 :   4 
+AcS=  1 :   2 
+nm==========1 ik=2 
+actual ne=3
+Actual nm=1
+NEUES ne=4
+nej=4 ni=6 
+AcF  0 0 0 1 
+AcF  1 0 0 1 
+AcF  0 0 0 1 
+AcF  0 1 0 1 
+AcF  1 0 1 0 
+AcF  0 1 1 0 
+Using j=0 nej=4 ni=6 nj=6 ii=2    
+nec=1
+AcK: 1 
+NEW AcNS
+AcS=  1 :   2 
+AcS=  1 :   3 
+nm==========1 ik=2 
+actual ne=1
+Actual nm=1
+NEUES ne=1
+nej=1 ni=6 
+AcF  0 
+AcF  0 
+AcF  0 
+AcF  1 
+AcF  0 
+AcF  1 
+Using j=0 nej=1 ni=6 nj=6 ii=2    
+LEVEL nlev=3
+AcI: 2 0 2 
+AcI: 2 1 4 
+AcI: 2 3 5 
+LEVEL nlev=3
+AcI: 2 0 2 
+AcI: 2 1 4 
+AcI: 2 3 5 
+final nf=2
+Number of covers for non-essential implicants: 2
+
+Final selection of prime implicants.
+  1  0-1 + 10- + -10
+  2  01- + -01 + 1-0
+
+  1  X1'.X3 + X1.X2' + X2.X3'
+  2  X1'.X2 + X2'.X3 + X1.X3'
+
+Final check: 0 errors.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 3257093 bytes.
+End of program. Sat Sep 12 08:06:26 2026

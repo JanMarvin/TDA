@@ -1,0 +1,31 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: sdpgrat.cf
+============================================================================
+psfile=g.ps
+Opened new PostScript file: g.ps
+----------------------------------------------------------------------------
+psetupg(...)
+Set up geographical coordinate system. Current memory: 390032 bytes.
+Cylindrical projection (equidistant).
+View: 0,0. Region: 30,30
+
+Selected region longitude:  -30.0000 (   0.0000)   30.0000
+Selected region latitude:   -30.0000 (   0.0000)   30.0000
+
+Creating a new 2d coordinate system.
+Size (width x height in mm): 120 x 120
+PostScript coordinates. X-axis: 100,440  Y-axis: 100,440
+Origin (PostScript x and y coordinates): 100,100
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:         -30.0000,          30.0000 
+User coordinates Y axis:         -30.0000,          30.0000 
+----------------------------------------------------------------------------
+sdpgrat(...)
+Graticule for geographical coordinate system. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390032 bytes.
+End of program. Wed Sep  2 16:02:32 2026

@@ -1,0 +1,38 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: gd21.cf
+============================================================================
+psfile=gd21.ps
+Opened new PostScript file: gd21.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 60 x 30
+PostScript coordinates. X-axis: 150,320  Y-axis: 460,545
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,           6.0000 
+User coordinates Y axis:           0.0000,           5.0000 
+----------------------------------------------------------------------------
+plg(...)
+Plot graph. Current memory: 390032 bytes.
+Max number of nodes: 100
+> node(n=5,gs=0.8)=1,3
+> node(n=7,gs=0.8)=3,3
+> node(n=4,gs=0.8)=5,3
+> node(n=1,gs=0.8)=2,1
+> node(n=2,gs=0.8)=4,1
+> edge(ic=1,a=1.5,1.0)=5,7
+> edge(ic=5,a=1.5,1.0)=4,7
+> edge(ic=3,a=1.5,1.0)=5,1
+> edge(ic=2,a=1.5,1.0)=7,1
+> edge(ic=4,a=1.5,1.0)=7,2
+> edge(ic=7,a=1.5,1.0)=4,2
+> edge(ic=8,a=1.5,1.0)=1,2
+> edge(rd=3,ic=6,a=1.5,1.0)=4,5
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 396634 bytes.
+End of program. Tue Jul 21 05:46:53 2026

@@ -1,0 +1,32 @@
+# mlpops.cf -- t_matc.c / t_lp.c coverage: mlp/mlp1 (linear programming,
+# Salazar & Sen MINIT, CACM 333). The tableau convention and both
+# primal/dual problems are stated directly in lpf1()'s own header
+# (t_lp.c): row 1 of T is [c, 0], rows 2..m+1 are [A(i,:), b(i)];
+# max c'x s.t. x>=0, Ax<=b; dual min b'y s.t. y>=0, A'y>=c. The last
+# p rows of the m constraints are equalities for mlp1(T,p,X,Y); their
+# dual entries are fixed at 0 (also stated in the header).
+#
+# Case 1 (mlp, no equalities): max 3x1+2x2 s.t. x1+x2<=4, x1+3x2<=6.
+# By hand: (4,0) beats (0,2) and the (3,1) vertex -- optimum (4,0),
+# value 12. Dual: x1+x2<=4 binds (y1>0), x1+3x2<=6 slack (y2=0);
+# a'y>=c gives y1=3, matching b'y=4*3=12. TDA matches exactly.
+#
+# Case 2 (mlp1, one equality): max 2x1+3x2 s.t. x1<=4, x2<=5,
+# x1+x2=6 (equality, last row). Substituting x2=6-x1 turns the
+# objective into 18-x1 over x1 in [1,4], maximized at x1=1: (1,5),
+# value 17. Dual: x1<=4 slack (y1=0), x2<=5 binds (y2=1), the
+# equality's own dual forced to 0 by TDA's convention. TDA matches
+# exactly.
+
+silent = -1;
+mfmt = 24.16;
+
+mdef(T1,3,3) = 3,2,0, 1,1,4, 1,3,6;
+mlp(T1,X1,Y1);
+mpr(X1);
+mpr(Y1);
+
+mdef(T2,4,3) = 2,3,0, 1,0,4, 0,1,5, 1,1,6;
+mlp1(T2,1,X2,Y2);
+mpr(X2);
+mpr(Y2);

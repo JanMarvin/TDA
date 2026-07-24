@@ -1,0 +1,80 @@
+# matc2.cf -- t_matc.c coverage batch 2: mdrow/mdcol, mnum, mdefc, minvd,
+# mple, msort/mrank/msort1, mexp, msetv, mbrr, mtrim, mwvec/mwvec1, mpz,
+# mcel. Values checked against a hand/python replica of each command's own
+# algorithm (see doc/coverage-handover.md). mbrr and mpz are checked for
+# structural validity only (shape, zero-free diagonal, valid permutation)
+# since their algorithms (a Hadamard-based BRR generator, an ACM 575
+# bipartite-matching permutation) admit no single hand-predictable answer.
+# mexpr1's block-mode expression evaluation was not attempted -- see
+# doc/r-export-plan.md.
+
+mdef(A,3,3) =   4.0, 1.0, 0.5,
+                1.0, 3.0, 0.2,
+                0.5, 0.2, 2.0;
+
+mdrow(A,DR);
+mpr(DR);
+
+mdcol(A,DC);
+mpr(DC);
+
+mnum(2,1.5,4,SEQ);
+mpr(SEQ);
+
+mdefc(2,3,7,CM);
+mpr(CM);
+
+minvd(A,IDV);
+mpr(IDV);
+
+mdef(TT,4,1) = 3, 1, 4, 2;
+mdef(CC,4,1) = 0, 0, 0, 0;
+mple(TT,CC,PF,PD);
+mpr(PF);
+mpr(PD);
+
+mdef(SX,4,1) = 3, 1, 4, 1;
+mdef(SD,1,1) = 1;
+msort(SX,SD,SR);
+mpr(SR);
+
+mrank(SX,SD,RR);
+mpr(RR);
+
+msort1(SX,SD,S1R);
+mpr(S1R);
+
+mexp(2*3+1,EX);
+mpr(EX);
+
+mdef(SV,2,2) = 0, 0, 0, 0;
+msetv(9,SV(2,1));
+mpr(SV);
+
+mbrr(5,3,BR);
+mpr(BR);
+
+mtrim(A,1,0,0,0,TR);
+mpr(TR);
+
+mdef(WV,3,1) = 4, 1, 0.5;
+mdef(WW,3,1) = 2, 1, 1;
+mwvec(WV,WW,WVR);
+mpr(WVR);
+
+mdef(WT,3,1) = 0, 1, 0;
+mwvec1(WV,WW,WT,WVR1);
+mpr(WVR1);
+
+mdef(ZM,3,3) =  0, 2, 0,
+                3, 0, 0,
+                0, 0, 5;
+mpz(ZM,ZB,ZP);
+mpr(ZB);
+mpr(ZP);
+
+mdef(EM,3,3) =  0, 3, 5,
+                0, 0, 2,
+                0, 0, 0;
+mcel(EM,1,EL);
+mpr(EL);

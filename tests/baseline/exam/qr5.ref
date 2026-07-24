@@ -1,0 +1,159 @@
+Read records:      21     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   8.7831755021385e+01  5.9333801496e+01          --       1 (1,1)
+    2   5.4982199637568e+01  2.5322442046e+00  1.0000e+00       2 (2,2)
+    3   5.4937021760066e+01  1.7826892584e-02  5.6820e-02       3 (3,3)
+    4   5.4937020324766e+01  7.2050409786e-07  2.9963e-04       4 (4,4)
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   5.4437467278446e+01  7.8231942703e+00         --        1 (1,0)
+    2   5.3844645667331e+01  3.0678568621e+00         --        3 (3,0)
+    3   5.3785181407782e+01  2.1530445914e+00         --        4 (4,0)
+    4   5.3758106661988e+01  4.6943915468e-01         --        5 (5,0)
+    5   5.3756958865094e+01  3.1009425886e-01         --        7 (7,0)
+    6   5.3756341412050e+01  1.6127250487e-01         --        8 (8,0)
+    7   5.3756216030112e+01  2.0963478220e-02         --        9 (9,0)
+    8   5.3756208740488e+01  1.5726051153e-02         --       10 (10,0)
+    9   5.3756196997155e+01  1.6775373804e-02         --       11 (11,0)
+   10   5.3756191451968e+01  1.5201288565e-02         --       12 (12,0)
+   11   5.3756185706708e+01  8.4552592241e-03         --       13 (13,0)
+   12   5.3756184381453e+01  2.9653019772e-03         --       14 (14,0)
+   13   5.3756184224607e+01  4.9518899102e-04         --       15 (15,0)
+   14   5.3756184220662e+01  6.4143234201e-05         --       16 (16,0)
+   15   5.3756184220620e+01  5.8860617319e-06         --       17 (17,0)
+   16   5.3756184220620e+01  6.1871289738e-07         --       18 (18,0)
+
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:54 2026
+Current memory: 390032 bytes.
+
+Reading command file: qr5.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Y         3   4   0.0  c1
+  2 N         3   4   0.0  c2
+  3 S         3   4   0.0  c3
+  4 X         3   4   0.0  c4
+  5 SX        3   4   0.0  S*X
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): qr5.dat
+Free format. Separation character(s): default.
+
+Reading data file: qr5.dat
+Read records: 21 
+
+Created a new data matrix.
+Number of cases: 21
+Number of variables: 5
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 410143 bytes.
+----------------------------------------------------------------------------
+fml=...
+ML estimation of user-defined model. Current memory: 410143 bytes.
+
+Function definition:
+xb      = beta0+S*beta1+X*beta2+SX*beta3
+ee      = bc(N,Y)*(exp(xb)^Y)/((1+exp(xb))^N)
+fn      = log(ee)
+
+Function evaluation: sum over 21 data matrix cases.
+
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 4
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Idx  Parameter   Starting value
+  1  beta0        0.00000000e+00 
+  2  beta1        0.00000000e+00 
+  3  beta2        0.00000000e+00 
+  4  beta3        0.00000000e+00 
+
+
+Convergence reached in 4 iterations.
+Number of function evaluations: 5 (5,5)
+
+Maximum of log likelihood: -54.937
+Norm of final gradient vector: 7.20504e-07
+Last absolute change of function value: 2.61263e-08
+Last relative change in parameters: 0.000299634
+
+Idx  Parameter       Value      Error    Value/E  Signif
+--------------------------------------------------------
+  1  beta0         -0.5582     0.1260    -4.4292  1.0000
+  2  beta1          0.1459     0.2232     0.6539  0.4868
+  3  beta2          1.3182     0.1775     7.4277  1.0000
+  4  beta3         -0.7781     0.3064    -2.5392  0.9889
+
+Log likelihood (starting values):   -87.8318 
+Log likelihood (final estimates):   -54.9370 
+
+----------------------------------------------------------------------------
+fml(...)=...
+ML estimation of user-defined model. Current memory: 410143 bytes.
+
+Function definition:
+xb      = beta0+S*beta1+X*beta2+SX*beta3
+ee      = intn(7,bc(N,Y)*(exp(xb+t*gam)^Y)/((1+exp(xb+t*gam))^N))
+fn      = log(ee)
+
+Function evaluation: sum over 21 data matrix cases.
+
+
+Maximum likelihood estimation.
+Algorithm 4: BFGS
+
+Number of model parameters: 5
+Type of covariance matrix: 2
+Maximum number of iterations: 100
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+5 starting value(s) from xp parameter.
+
+Idx  Parameter   Starting value
+  1  beta0       -5.58200000e-01 
+  2  beta1        1.45900000e-01 
+  3  beta2        1.31820000e+00 
+  4  beta3       -7.78100000e-01 
+  5  gam          1.00000000e-01 
+
+
+Convergence reached in 16 iterations.
+Number of function evaluations: 19 (19,1)
+
+Maximum of log likelihood: -53.7562
+Norm of final gradient vector: 6.18713e-07
+
+Idx  Parameter       Value      Error    Value/E  Signif
+--------------------------------------------------------
+  1  beta0         -0.5481     0.1668    -3.2861  0.9990
+  2  beta1          0.0965     0.2785     0.3464  0.2710
+  3  beta2          1.3369     0.2369     5.6442  1.0000
+  4  beta3         -0.8104     0.3853    -2.1034  0.9646
+  5  gam            0.2368     0.1110     2.1335  0.9671
+
+Log likelihood (starting values):   -54.4375 
+Log likelihood (final estimates):   -53.7562 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 430190 bytes.
+End of program. Tue Jul 21 05:46:54 2026

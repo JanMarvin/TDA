@@ -1,0 +1,19 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: int1.cf
+============================================================================
+int(...)=...
+Numerical integration. Current memory: 390032 bytes.
+
+Function definition:
+fn      = sqrt(x)
+Function argument: x
+Integration interval: 0 -- 1
+Method 1 (QNG).
+Relative error:  1.00000e-04
+Approximation: 0.666667 
+Number of function calls: 43
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390070 bytes.
+End of program. Tue Jul 21 05:46:53 2026

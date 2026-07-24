@@ -1,0 +1,21 @@
+# rodops2.cf -- t_rod.c coverage: rod's remaining opt values beyond
+# the existing rodops.cf (opt=1/2/3/8 there). opt=4/5/6 build graphs
+# from rank-order "betweenness" relations (with df= for the edge
+# list, pcf= for a neato plot file); opt=7 finds rank orders that
+# sit between at least two input rank orders; alg=2 (for opt=3) is
+# the faster no-ties-assumed median-order algorithm, as opposed to
+# rodops.cf's alg=1 (complete enumeration). Reuses the same rank.dat
+# fixture as rodops.cf.
+
+silent = -1;
+
+nvar(
+    dfile = rank.dat,
+    A [2.0] = c1, B [2.0] = c2, C [2.0] = c3, D [2.0] = c4,
+);
+rod(opt=4, df=r4g.dat) = A,B,C,D;
+rod(opt=5, df=r5g.dat) = A,B,C,D;
+rod(opt=6, df=r6g.dat) = A,B,C,D;
+rod(opt=7, max=100, df=r7.dat) = A,B,C,D;
+rod(opt=3, s=0, alg=2, df=r3b.dat) = A,B,C,D;
+rod(opt=4, pcf=r4plot.cf) = A,B,C,D;

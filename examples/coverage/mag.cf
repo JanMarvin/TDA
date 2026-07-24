@@ -1,0 +1,25 @@
+# mag.cf -- regression for the mag() bug fixed this session: C and R
+# (the row/column group vectors) were read from the persistent
+# named-matrix table instead of the scratch buffers mag() had just
+# parsed them into, so an unrelated matrix command run beforehand
+# silently corrupted the result. mcent() runs first here specifically
+# to catch a regression of that bug (it defines an extra matrix before
+# mag's own C and R, which used to make mag() return zeros).
+#
+# Expected checked by hand: A grouped 2x2 by row-group C=(1,1,2) and
+# col-group R=(1,2,2) sums to
+#   row1: rows 1,2 x col1: col1        -> a(1,1)+a(2,1) = 4.0+1.0 = 5.0
+#   row1: rows 1,2 x col2: cols 2,3    -> a(1,2)+a(1,3)+a(2,2)+a(2,3) = 1.0+0.5+3.0+0.2 = 4.7
+#   row2: row 3    x col1: col1        -> a(3,1) = 0.5
+#   row2: row 3    x col2: cols 2,3    -> a(3,2)+a(3,3) = 0.2+2.0 = 2.2
+
+mdef(A,3,3) =   4.0, 1.0, 0.5,
+                1.0, 3.0, 0.2,
+                0.5, 0.2, 2.0;
+
+mcent(A,RC);
+
+mdef(GC,3,1) = 1, 1, 2;
+mdef(GR,1,3) = 1, 2, 2;
+mag(A,GC,GR,AGB);
+mpr(AGB);

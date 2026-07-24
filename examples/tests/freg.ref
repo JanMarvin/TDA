@@ -1,0 +1,44 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: freg.cf
+============================================================================
+freg(...)=...
+Nonlinear regression. Current memory: 390032 bytes.
+
+Function definition:
+fn      = x*x
+
+
+Nonlinear regression.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 1
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: 1
+
+Idx  Parameter   Starting value
+  1  x            0.00000000e+00 
+
+
+Convergence reached in 1 iterations.
+Number of function evaluations: 1 (1,1)
+
+Minimum of function: 0
+Last absolute change of function value: 0
+Last relative change in parameters: 0
+
+Idx  Parameter       Value      Error    Value/E  Signif
+--------------------------------------------------------
+  1  x              0.0000 
+
+Function (starting values):     0.0000 
+Function (final estimates):     0.0000 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390914 bytes.
+End of program. Wed Sep  2 16:02:32 2026

@@ -1,0 +1,10 @@
+# mdsn.cf -- nonmetric MDS with Kruskal's step adaptation, both optional
+# files written: df= the fitted distance matrix, pcf= the Shepard diagram
+# fixture: graph
+
+nvar(
+    dfile = g.dat,
+    D = c1,
+);
+gdd(opt=4) = D;
+mdsn(ndim=2, mxit=300, df=mdsn_d.txt, pcf=mdsn_s.txt) = out.txt;

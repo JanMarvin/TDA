@@ -1,0 +1,59 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: gloc.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 FROM      3   8   0.0  c1
+  2 TO        3   8   0.0  c2
+  3 WVV       3   8   0.0  c3
+  4 WVF       3   8   0.0  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): gloc.dat
+Free format. Separation character(s): default.
+
+Reading data file: gloc.dat
+Read records: 9 
+
+Created a new data matrix.
+Number of cases: 9
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 422108 bytes.
+----------------------------------------------------------------------------
+gdd(opt=1)=FROM,TO,WVV,WVF
+New graph data. Current memory: 422108 bytes.
+Option 1: edge list.
+
+Minimal level for valid edges: 0
+Number of nodes: 6. Largest node number: 6
+Graph type 4 (directed, valued).
+
+Graph   edges   loops  max edge value  isolated nodes
+   1        9       0        5.000000             0
+   2        9       0        8.000000             0
+
+Successfully created new graph data structure. Current memory: 422572 bytes.
+----------------------------------------------------------------------------
+gloc(...)
+Location problem. Current memory: 422564 bytes.
+Using graphs 1 and 2 (directed, valued).
+Variable points: 2 (nodes 1..2).
+Fixed points: 4 (nodes 3..6, in increasing order of their
+positions on the line).
+Substituted 1 missing values.
+
+Optimal locations:
+Variable point 1 -> fixed point 2 (node 4)
+Variable point 2 -> fixed point 3 (node 5)
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 442155 bytes.
+End of program. Wed Sep  2 16:02:32 2026

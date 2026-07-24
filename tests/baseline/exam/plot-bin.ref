@@ -1,0 +1,40 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:54 2026
+Current memory: 390032 bytes.
+
+Reading command file: plot-bin.cf
+============================================================================
+psfile=plot-bin.ps
+Opened new PostScript file: plot-bin.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 90 x 50
+PostScript coordinates. X-axis: 150,405  Y-axis: 460,602
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:          -4.0000,           4.0000 
+User coordinates Y axis:           0.0000,           1.0000 
+----------------------------------------------------------------------------
+plxa(sc=1,ic=5)
+----------------------------------------------------------------------------
+plya(sc=1,ic=10)
+----------------------------------------------------------------------------
+plotf(rx=-4(0.05)4,lt=1)=exp(x)/(1+exp(x))
+
+Function definition:
+fn      = exp(x)/(1+exp(x))
+----------------------------------------------------------------------------
+plotf(rx=-4(0.05)4,lt=6)=nd(x)
+
+Function definition:
+fn      = nd(x)
+----------------------------------------------------------------------------
+plotf(rx=-4(0.05)4,lt=2)=nd(x*sqrt(3)/pi)
+
+Function definition:
+fn      = nd(x*sqrt(3)/pi)
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390130 bytes.
+End of program. Tue Jul 21 05:46:54 2026

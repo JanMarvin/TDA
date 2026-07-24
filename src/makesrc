@@ -1,3 +1,0 @@
-rm tdasrc.zip
-zip  tdasrc t*.c t*.h make* t*.lnk history.txt tda.hlp
-touch tdasrc.zip

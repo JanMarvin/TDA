@@ -1,0 +1,85 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:52 2026
+Current memory: 390032 bytes.
+
+Reading command file: seqmops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   0.0  c1
+  2 Y1        3   4   0.0  c2
+  3 T1        3   4   0.0  c3
+  4 Y2        3   4   0.0  c4
+  5 T2        3   4   0.0  c5
+  6 Y3        3   4   0.0  c6
+  7 T3        3   4   0.0  c7
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): seqops_seq.d2
+Free format. Separation character(s): default.
+
+Reading data file: seqops_seq.d2
+Read records: 5 
+
+Created a new data matrix.
+Number of cases: 5
+Number of variables: 7
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 418158 bytes.
+----------------------------------------------------------------------------
+seqdef(sn=1,m=2)=Y1,T1,Y2,T2,Y3,T3
+Creating a new sequence data structure. Current memory: 418158 bytes.
+Sequence structure number: 1
+Sequence type: 2
+Currently defined sequences:
+
+Sequence          State       Time axis       Number
+Structure Type  Variables  Minimum  Maximum  of States  States
+--------------------------------------------------------------
+     1      2         3          0        8         3    1 2 3
+
+Range of common time axis: 0 to 8.
+----------------------------------------------------------------------------
+seqdef(sn=2,m=2)=Y1,T1,Y2,T2,Y3,T3
+Creating a new sequence data structure. Current memory: 418184 bytes.
+Sequence structure number: 2
+Sequence type: 2
+Currently defined sequences:
+
+Sequence          State       Time axis       Number
+Structure Type  Variables  Minimum  Maximum  of States  States
+--------------------------------------------------------------
+     1      2         3          0        8         3    1 2 3
+     2      2         3          0        8         3    1 2 3
+
+Range of common time axis: 0 to 8.
+----------------------------------------------------------------------------
+seqm(...)=seqmpar.txt
+Sequence proximity measures. Current memory: 418210 bytes.
+Comparing parallel sequences.
+Using sequence data structures: 1 and 2.
+Number of states: 3. Max sequence length: 9
+
+Default indel cost: 1.
+Default substitution cost: 2.
+
+Starting alignment procedure.
+Number of sequences (cases): 5
+Sequences with zero length or internal gaps: 0
+Sequences used for alignment: 5
+
+Number of alignments: 5
+5 record(s) written to output file: seqmpar.txt
+Maximum distance in case 0: 0
+----------------------------------------------------------------------------
+clear=Y1
+Deallocated 2 sequence data structure(s).
+Current memory: 414142 bytes.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 438232 bytes.
+End of program. Fri Sep  4 15:06:52 2026

@@ -1,0 +1,21 @@
+# gisetops.cf -- t_gg.c coverage: giset (GRASP independent-set
+# search). Two undocumented keywords needed (neither appears in
+# tda.hlp's ##giset entry, both found by tracing t_parm.c): df= (a
+# secondary output file -- triggers gis_sprn) and dim= (tuple-vector
+# dimension for a more advanced tuple-based search mode -- triggers
+# gis_mktup/gis_tupfdm). On the triangle+pendant graph (1-2,2-3,1-3
+# triangle, 3-4 pendant), the plain (dim=0) search correctly finds
+# the maximal independent set {1,4} (the only two mutually
+# non-adjacent nodes with no third candidate -- 2 and 3 are each
+# adjacent to something in {1,4} or to each other), confirmed by
+# hand. The dim=2 case exercises the tuple-search machinery; its
+# output format changes accordingly (not independently re-verified
+# node-by-node -- the goal here is coverage of the tuple-mode
+# machinery itself, which the plain case never reaches).
+
+silent = -1;
+
+nvar(dfile=edges.dat, I=c1, J=c2, V=c3);
+gdd(gt=1) = I,J,V;
+giset(min=2, df=gset.txt) = out_gis.txt;
+giset(min=2, dim=2, df=gset2.txt) = out_gis2.txt;

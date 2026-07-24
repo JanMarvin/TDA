@@ -1,0 +1,120 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:51 2026
+Current memory: 390032 bytes.
+
+Reading command file: ivreg2.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 XL        3   4   4.1  c1
+  2 XH        3   4   4.1  c2
+  3 YL        3   4   4.1  c3
+  4 YH        3   4   4.1  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ivdat.dat
+Free format. Separation character(s): default.
+
+Reading data file: ivdat.dat
+Read records: 4 
+
+Created a new data matrix.
+Number of cases: 4
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 406104 bytes.
+----------------------------------------------------------------------------
+ivreg2(...)=...
+Regression with interval data. Current memory: 406104 bytes.
+
+Number of data intervals: 4
+
+OLS regression with center values.
+Rank of least squares matrix: 2
+Norm of least squares residuals:    0.24669953 
+Parameter:    2.21695011     0.51109996 
+
+Domain    Beta center    Beta radius   Alpha center   Alpha radius   Function value
+   1 *     0.51109996     0.00000000     2.21695011     0.24445002      -1.30611584 
+   2       0.51109996     0.00000000                                    -1.30611584 
+   3       0.51109996     0.00000000                                    -1.30611584 
+   4 *     0.51109996    -0.00000000     2.21695011     0.24445002      -1.30611584 
+   5       0.51109996     0.00000000                                    -1.30611584 
+
+
+----------------------------------------------------------------------------
+ivreg2(...)=...
+Regression with interval data. Current memory: 406104 bytes.
+
+Number of data intervals: 4
+
+OLS regression with center values.
+Rank of least squares matrix: 2
+Norm of least squares residuals:    0.24669953 
+Parameter:    2.21695011     0.51109996 
+
+Domain    Beta center    Beta radius   Alpha center   Alpha radius   Function value
+   1 *     0.51109996     0.00000000     2.21695011     0.24445002      -1.30611584 
+   2       0.51109996     0.00000000                                    -1.30611584 
+   3       0.51109996     0.00000000                                    -1.30611584 
+   4 *     0.51109996    -0.00000000     2.21695011     0.24445002      -1.30611584 
+   5       0.51109996     0.00000000                                    -1.30611584 
+
+Direct search minimization.
+Step length: 1
+Reduction factor: 0.5
+Minimum of step length: 1e-08
+
+Starting values:    0.51109996     0.00000000 
+Function value:    -1.30611584 
+
+Best function value:     -1.30611584 
+Alpha (center-radius):    2.21695011     0.24445002 
+Beta  (center-radius):    0.51109996     0.00000000 
+
+----------------------------------------------------------------------------
+ivreg2(...)=...
+Regression with interval data. Current memory: 406104 bytes.
+
+Number of data intervals: 4
+
+OLS regression with center values.
+Rank of least squares matrix: 2
+Norm of least squares residuals:    0.24669953 
+Parameter:    2.21695011     0.51109996 
+
+Domain    Beta center    Beta radius   Alpha center   Alpha radius   Function value
+   1 *     0.51109996     0.00000000     2.21695011     0.24445002      -1.30611584 
+   2       0.51109996     0.00000000                                    -1.30611584 
+   3       0.51109996     0.00000000                                    -1.30611584 
+   4 *     0.51109996    -0.00000000     2.21695011     0.24445002      -1.30611584 
+   5       0.51109996     0.00000000                                    -1.30611584 
+
+Function minimization.
+Algorithm 2: Simplex
+
+Number of model parameters: 2
+Maximum number of iterations: 100
+Starting value of step length: 1
+Convergence criterion: 4
+Tolerance for variance of function values: 1e-10
+Scaling factor: 1
+
+f=-1.30612
+
+Convergence reached in 4 iterations.
+Number of function evaluations: 47 (0,0)
+
+Minimum of function: -1.30612
+Variance of final function values: 1.39813e-11
+
+FMIN=-1.30612
+par=      0.511099958420       0.000000000000
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426151 bytes.
+End of program. Fri Sep  4 15:06:51 2026

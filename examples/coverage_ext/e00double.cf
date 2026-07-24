@@ -1,0 +1,16 @@
+# e00double.cf -- t_e00.c coverage: sde00 on a real ArcInfo E00 file
+# using the double-precision ARC encoding (ARC level 3: one coordinate
+# per line, full double-precision literals, rather than level 2's
+# four-per-line packed format) -- a genuinely different parse path
+# inside e00_arc from every other fixture here. Same source page as
+# e00poly.cf's fixture ("DOUBLE.E00").
+
+sde00(df=double.sd, attr=2, fmt=14.6) = double.e00;
+sdnvar(
+    dfile = double.sd,
+    SDID     = c1,
+    SDTyp    = c2,
+    SDN      = c3,
+    SDPtr<5> = rd,
+);
+sdinf();

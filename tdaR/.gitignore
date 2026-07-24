@@ -1,0 +1,5 @@
+*.o
+*.so
+Rplots.pdf
+.Rhistory
+docs

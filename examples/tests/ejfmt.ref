@@ -1,0 +1,72 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep 11 05:01:33 2026
+Current memory: 390032 bytes.
+
+Reading command file: ejfmt.cf
+============================================================================
+ejoin(...)=ejfmt.d
+Join two event data files. Current memory: 390032 bytes.
+
+Outputfile : ejfmt.d
+Max block size: 1000
+Max number of levels: 3
+Max record length: 1000
+Inputfile 1: ejfmt1.dat  (8 variables)
+Inputfile 2: ejfmt2.dat  (7 variables)
+
+Read 6 records (2 blocks) from: ejfmt1.dat
+Read 2 records (1 blocks) from: ejfmt2.dat
+Number of common blocks: 1
+16 records written to ejfmt.d
+----------------------------------------------------------------------------
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 A1        3   4   0.0  c1
+  2 A2        3   4   0.0  c2
+  3 A3        3   4   0.0  c3
+  4 A4        3   4   0.0  c4
+  5 A5        3   4   0.0  c5
+  6 A6        3   4   0.0  c6
+  7 A7        3   4   0.0  c7
+  8 A8        3   4   0.0  c8
+  9 A9        3   4   0.0  c9
+ 10 A10       3   4   0.0  c10
+ 11 A11       3   4   0.0  c11
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ejfmt.d
+Free format. Separation character(s): default.
+
+Reading data file: ejfmt.d
+Read records: 16 
+
+Created a new data matrix.
+Number of cases: 16
+Number of variables: 11
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 434234 bytes.
+----------------------------------------------------------------------------
+dstat
+Descriptive statistics. Current memory: 434234 bytes.
+
+Variable    Minimum    Maximum       Mean   Std.Dev.    Sum of values
+---------------------------------------------------------------------
+A1           1.0000     2.0000     1.5000     0.5164          24.0000
+A2           8.0000     8.0000     8.0000     0.0000         128.0000
+A3           1.0000     6.0000     3.3125     1.6215          53.0000
+A4           0.0000     1.0000     0.2500     0.4472           4.0000
+A5           0.0000     9.0000     3.9375     2.4350          63.0000
+A6           1.0000    10.0000     5.0000     2.5033          80.0000
+A7          -3.0000     6.0000     1.8750     2.8018          30.0000
+A8          -3.0000     4.0000    -0.5625     3.2653          -9.0000
+A9          -3.0000     6.6000     2.1188     2.9782          33.9000
+A10         -3.0000    66.6000    26.4938    21.4603         423.9000
+A11         -3.0000     6.6000     0.3937     4.5384           6.3000
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 520188 bytes.
+End of program. Fri Sep 11 05:01:33 2026

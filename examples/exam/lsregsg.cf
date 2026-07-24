@@ -1,0 +1,19 @@
+# lsregsg.cf -- negative control for the EPSI1 patch in prn1_coeff()
+# (t_pgen.c): Y = 2*X2 exactly here, so the fit is perfect (zero
+# residual). This must still print "---" after the patch -- not via the
+# rank check (the design matrix [1,X1,X2] is full rank: X1 and X2 are
+# NOT collinear with each other, only Y is perfectly predicted), but via
+# the separate, earlier check in lsreg() for near-zero total residuals
+# (fabs(rnorme + rnorml) < ctx->EPSI1 forces cov = 0), independent of
+# the se[j] threshold this patch changed. See lsregrd.cf/.ref for the
+# rank-deficient negative control, and lsregsc.cf/.ref for the positive
+# case this patch actually fixes.
+
+nvar(
+    dfile = singular.dat,
+    X1 = c1,
+    X2 = c2,
+    Y  = c3,
+);
+lsreg (
+) = Y,X1,X2;

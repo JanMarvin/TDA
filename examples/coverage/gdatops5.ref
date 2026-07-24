@@ -1,0 +1,47 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:40 2026
+Current memory: 390032 bytes.
+
+Reading command file: gdatops5.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Grp       3   4   0.0  c1
+  2 X         3   4   0.0  c2
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): blockdat.dat
+Free format. Separation character(s): default.
+
+Block mode defined by variable: Grp
+Block select: gt(X,15)
+
+Reading data file: blockdat.dat
+Read records: 5 
+Selected for data matrix: 4 records.
+
+Created a new data matrix.
+Number of cases: 4
+Number of variables: 2
+
+Number of blocks: 2
+Min number of cases per block: 1
+Max number of cases per block: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 398068 bytes.
+----------------------------------------------------------------------------
+dstat
+Descriptive statistics. Current memory: 398068 bytes.
+
+Variable    Minimum    Maximum       Mean   Std.Dev.    Sum of values
+---------------------------------------------------------------------
+Grp          1.0000     2.0000     1.7500     0.5000           7.0000
+X           20.0000    50.0000    35.0000    12.9099         140.0000
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 418133 bytes.
+End of program. Fri Sep  4 15:06:40 2026

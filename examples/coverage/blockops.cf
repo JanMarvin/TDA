@@ -1,0 +1,11 @@
+# Block operators (tda.hlp 5.2.7) through nvar's block mode, on values
+# checkable by hand: ID blocks (1,1|2,2,2|3), X = 5,3,8,1,9,4 -> bmin
+# 3,3,1,1,1,4; bnrec 2,2,3,3,3,1; brec 1,2,1,2,3,1; bnum 1,1,2,2,2,3.
+# Established along the way (fuzzer stage 5): dblock inside nvar is
+# what feeds the lazy type-4 evaluation; the standalone dblock command
+# does not apply retroactively to block variables.
+nvar(dfile=blk.dat, ID[4.0]=c1, X[10.3]=c2, dblock=ID,
+  B1[10.3]=bmin(X), B2[10.3]=bmax(X), B3[6.0]=bnrec,
+  B4[6.0]=brec, B5[4.0]=bfirst, B6[4.0]=blast, B7[6.0]=bnum,
+);
+pdata(keep=B1,B2,B3,B4,B5,B6,B7) = blk.out;

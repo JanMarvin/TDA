@@ -1,0 +1,13 @@
+# matc7c.cf -- t_matc.c coverage batch 7c: interval-valued matrix
+# expressions. A [lo,hi] literal inside a matrix expression carries a
+# second value plane (ctx->MX1[], allocated by mx1_alloc -- the last
+# zero-coverage shared helper in t_matc.c); mpr then prints every
+# cell as its lo,hi pair. Checked with hand interval arithmetic:
+# [1,2]*A gives cell (i,j) = [a(i,j), 2*a(i,j)]; A+[0,1] gives
+# cell (i,j) = [a(i,j), a(i,j)+1]. Both confirmed exactly.
+
+silent = -1;
+
+mdef(A,2,2) = 1,2, 3,4;
+mpr([1,2] * A);
+mpr(A + [0,1]);

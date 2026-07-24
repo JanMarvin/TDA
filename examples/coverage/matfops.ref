@@ -1,0 +1,112 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep  5 15:08:55 2026
+Current memory: 390032 bytes.
+
+Reading command file: matfops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X         3   4  10.4  c1
+  2 Y         3   4  10.4  c2
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): nl.dat
+Free format. Separation character(s): default.
+
+Reading data file: nl.dat
+Read records: 40 
+
+Created a new data matrix.
+Number of cases: 40
+Number of variables: 2
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 398066 bytes.
+----------------------------------------------------------------------------
+atab(x=0,1,2,3,4,5,mppar=AT)=X
+Aggregated table. Current memory: 398066 bytes.
+
+X: X         Minimum:       0.2000  Maximum:       5.0000
+
+     Lower      Upper  Frequency   Weighted    Mean(X)
+------------------------------------------------------
+    0.0000     1.0000          7     7.0000     0.5692 
+    1.0000     2.0000          8     8.0000     1.4923 
+    2.0000     3.0000          8     8.0000     2.4769 
+    3.0000     4.0000          8     8.0000     3.4615 
+    4.0000     5.0000          8     8.0000     4.4462 
+    5.0000                     1     1.0000     5.0000 
+
+Created matrix (mppar ): AT [6,5]
+
+----------------------------------------------------------------------------
+      0.000000       1.000000       7.000000       7.000000       0.569243 
+      1.000000       2.000000       8.000000       8.000000       1.492300 
+      2.000000       3.000000       8.000000       8.000000       2.476925 
+      3.000000       4.000000       8.000000       8.000000       3.461538 
+      4.000000       5.000000       8.000000       8.000000       4.446150 
+      5.000000       0.000000       1.000000       1.000000       5.000000 
+corr(mpcov=CR)=X,Y
+Correlation matrix. Current memory: 398314 bytes.
+
+             X       Y 
+----------------------
+X       1.0000 
+Y       0.9420  1.0000 
+
+Created matrix (mpcov ): CR [2,2]
+
+----------------------------------------------------------------------------
+      1.000000       0.942003 
+      0.942003       1.000000 
+fmin(...)=...
+Function minimization. Current memory: 398354 bytes.
+
+Function definition:
+fn      = (x-2)^2+(y+1)^2
+
+
+Function minimization.
+Algorithm 4: BFGS
+
+Number of model parameters: 2
+Maximum number of iterations: 100
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Minimum of step size value: 1e-10
+Scaling factor: 1
+
+2 starting value(s) from xp parameter.
+
+Idx  Parameter   Starting value
+  1  x            2.00000000e-01 
+  2  y            2.00000000e-01 
+
+
+Convergence reached in 3 iterations.
+Number of function evaluations: 3 (3,0)
+
+Minimum of function: 0
+
+Idx  Parameter       Value      Error    Value/E  Signif
+--------------------------------------------------------
+  1  x              2.0000 
+  2  y             -1.0000 
+
+Function (starting values):     4.6800 
+Function (final estimates):     0.0000 
+
+Created matrix (mplog ): FL [1,1]
+Created matrix (mppar ): FP [2,1]
+Created matrix (mpcov ): CR [2,2]
+
+----------------------------------------------------------------------------
+      2.000000 
+     -1.000000 
+      0.000000 
+Current memory: 390032 bytes. Max memory used: 418095 bytes.
+End of program. Sat Sep  5 15:08:55 2026

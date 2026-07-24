@@ -1,0 +1,204 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep  5 13:46:50 2026
+Current memory: 390032 bytes.
+
+Reading command file: blkmixops.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   4.0  c1
+  2 X         3   4  10.3  c2
+  3 M01       4   4  12.4  bmin(X)+bmax(X)
+  4 M02       4   4  12.4  bmax(X)-bmin(X)
+  5 M03       4   4  12.4  bmin(X)*2
+  6 M04       4   4  12.4  bmax(X)/bnrec
+  7 M05       4   4  12.4  bmin(X)^2
+  8 M06       4   4  12.4  bnrec%2
+  9 M07       4   4  12.4  and(gt(bnrec,1),lt(brec,3))
+ 10 M08       4   4  12.4  or(eq(brec,1),eq(brec,bnrec))
+ 11 M09       4   4  12.4  exp(bmin(X)/10)
+ 12 M10       4   4  12.4  log(abs(bmin(X))+1)
+ 13 M11       4   4  12.4  rnd(bmax(X)/3)
+ 14 M12       4   4  12.4  abs(bmin(X)-5)
+ 15 M13       4   4  12.4  sign(bmin(X)-4)
+ 16 M14       4   4  12.4  floor(bmax(X)/2)
+ 17 M15       4   4  12.4  ceil(bmax(X)/2)
+ 18 M16       4   4  12.4  tr(bmin(X),2,6)
+ 19 M17       4   4  12.4  sqrt(abs(bmax(X)))
+ 20 M18       4   4  12.4  sin(bmin(X))
+ 21 M19       4   4  12.4  cos(bmax(X))
+ 22 M20       4   4  12.4  lgam(bnrec+1)
+ 23 M21       4   4  12.4  digam(bnrec+1)
+ 24 M22       4   4  12.4  trigam(bnrec+1)
+ 25 M23       4   4  12.4  icg(bnrec,2)
+ 26 M24       4   4  12.4  icb(0.5,bnrec,2)
+ 27 M25       4   4  12.4  bc(bnrec+3,2)
+ 28 M26       4   4  12.4  eexp(bmin(X))
+ 29 M27       4   4  12.4  eq(bnrec,3)
+ 30 M28       4   4  12.4  ne(bnrec,3)
+ 31 M29       4   4  12.4  lt(brec,2)
+ 32 M30       4   4  12.4  le(brec,2)
+ 33 M31       4   4  12.4  gt(brec,1)
+ 34 M32       4   4  12.4  ge(brec,1)
+ 35 M33       4   4  12.4  not(eq(brec,1))
+ 36 M34       4   4  12.4  if(gt(bnrec,2),bmin(X),bmax(X))
+ 37 M35       4   4  12.4  nd(bmin(X)/5)
+ 38 M36       4   4  12.4  ndf(bmin(X)/5)
+ 39 M37       4   4  12.4  ndi(0.2+brec/10)
+ 40 M38       4   4  12.4  td(bmin(X)/5,4)
+ 41 M39       4   4  12.4  chd(bnrec,3)
+ 42 M40       4   4  12.4  fd(bnrec,2,4)
+ 43 M41       4   4  12.4  mr(abs(bmin(X))/3)
+ 44 M42       4   4  12.4  poisson(bnrec,2)
+ 45 M43       4   4  12.4  max(bmin(X),4,brec)
+ 46 M44       4   4  12.4  min(bmax(X),6,bnrec+3)
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): blk.dat
+Free format. Separation character(s): default.
+
+Block mode defined by variable: ID
+
+Reading data file: blk.dat
+Read records: 6 
+
+Created a new data matrix.
+Number of cases: 6
+Number of variables: 46
+
+Number of blocks: 3
+Min number of cases per block: 1
+Max number of cases per block: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 577338 bytes.
+----------------------------------------------------------------------------
+dstat
+Descriptive statistics. Current memory: 577338 bytes.
+
+Variable    Minimum    Maximum       Mean   Std.Dev.    Sum of values
+---------------------------------------------------------------------
+ID           1.0000     3.0000     1.8333     0.7528          11.0000
+X            1.0000     9.0000     5.0000     3.0332          30.0000
+M01          8.0000    10.0000     9.0000     1.0954          54.0000
+M02          0.0000     8.0000     4.6667     3.7238          28.0000
+M03          2.0000     8.0000     4.3333     2.6583          26.0000
+M04          2.5000     4.0000     3.0000     0.5477          18.0000
+M05          1.0000    16.0000     6.1667     6.2102          37.0000
+M06          0.0000     1.0000     0.6667     0.5164           4.0000
+M07          0.0000     1.0000     0.6667     0.5164           4.0000
+M08          0.0000     1.0000     0.8333     0.4082           5.0000
+M09          1.1052     1.4918     1.2512     0.1681           7.5071
+M10          0.6931     1.6094     1.0769     0.4282           6.4615
+M11          1.0000     3.0000     2.3333     0.8165          14.0000
+M12          1.0000     4.0000     2.8333     1.3292          17.0000
+M13         -1.0000     0.0000    -0.8333     0.4082          -5.0000
+M14          2.0000     4.0000     3.0000     1.0954          18.0000
+M15          2.0000     5.0000     3.8333     1.3292          23.0000
+M16          2.0000     4.0000     2.6667     0.8165          16.0000
+M17          2.0000     3.0000     2.5787     0.4695          15.4721
+M18         -0.7568     0.8415     0.3416     0.6382           2.0499
+M19         -0.9111     0.2837    -0.4700     0.5922          -2.8197
+M20         -0.0000     1.7918     1.1269     0.7710           6.7616
+M21          0.4228     1.2561     1.0061     0.3291           6.0367
+M22          0.2838     0.6449     0.3810     0.1403           2.2863
+M23          0.2642     0.8009     0.6425     0.2112           3.8548
+M24          0.3125     0.7500     0.4479     0.1742           2.6875
+M25          6.0000    15.0000    11.8333     3.7639          71.0000
+M26          0.7311     0.9820     0.8467     0.1272           5.0803
+M27          0.0000     1.0000     0.5000     0.5477           3.0000
+M28          0.0000     1.0000     0.5000     0.5477           3.0000
+M29          0.0000     1.0000     0.5000     0.5477           3.0000
+M30          0.0000     1.0000     0.8333     0.4082           5.0000
+M31          0.0000     1.0000     0.5000     0.5477           3.0000
+M32          1.0000     1.0000     1.0000     0.0000           6.0000
+M33          0.0000     1.0000     0.5000     0.5477           3.0000
+M34          1.0000     5.0000     2.8333     2.0412          17.0000
+M35          0.5793     0.7881     0.6629     0.0944           3.9774
+M36          0.2897     0.3910     0.3549     0.0427           2.1293
+M37         -0.5244     0.0000    -0.3466     0.2156          -2.0799
+M38          0.5744     0.7657     0.6513     0.0868           3.9080
+M39          0.1987     0.6084     0.4798     0.1637           2.8791
+M40          0.5556     0.8400     0.7626     0.1106           4.5756
+M41          1.0215     1.7981     1.3188     0.3406           7.9129
+M42         -1.6931    -1.3069    -1.4658     0.1449          -8.7946
+M43          4.0000     4.0000     4.0000     0.0000          24.0000
+M44          4.0000     6.0000     5.3333     0.8165          32.0000
+----------------------------------------------------------------------------
+clear
+Deleted whole data matrix. Current memory: 390032 bytes.
+----------------------------------------------------------------------------
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   4.0  c1
+  2 X         3   4  10.3  c2
+  3 N01       4   4  12.4  gt(brec,1)&le(brec,2)
+  4 N02       4   4  12.4  eq(brec,1)|eq(brec,3)
+  5 N03       4   4  12.4  bivn(bmin(X)/5,0.5,0.3)
+  6 N04       4   4  12.4  negbin(2,3,bnrec)
+  7 N05       4   4  12.4  gclen(10,50,10+bmin(X),51)
+  8 N06       4   4  12.4  jul(2000,3,tr(bnrec,1,28))
+  9 N07       4   4  12.4  july(jul(2000,3,10)+bnrec)
+ 10 N08       4   4  12.4  pi*bnrec
+ 11 N09       4   4  12.4  noc+bnrec
+ 12 N10       4   4  12.4  nocdm-bnrec
+ 13 N11       4   4  12.4  nvar+bnrec
+ 14 N12       4   4  12.4  bnoc+brec
+ 15 N13       4   4  12.4  case+bnrec
+ 16 N14       4   4  12.4  X[2]+bmin(X)
+ 17 N15       4   4  12.4  eq(bnrec,2)[1]+bmin(X)
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): blk.dat
+Free format. Separation character(s): default.
+
+Block mode defined by variable: ID
+
+Reading data file: blk.dat
+Read records: 6 
+
+Created a new data matrix.
+Number of cases: 6
+Number of variables: 17
+
+Number of blocks: 3
+Min number of cases per block: 1
+Max number of cases per block: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 459341 bytes.
+----------------------------------------------------------------------------
+dstat
+Descriptive statistics. Current memory: 459341 bytes.
+
+Variable    Minimum    Maximum       Mean   Std.Dev.    Sum of values
+---------------------------------------------------------------------
+ID           1.0000     3.0000     1.8333     0.7528          11.0000
+X            1.0000     9.0000     5.0000     3.0332          30.0000
+N01          0.0000     1.0000     0.3333     0.5164           2.0000
+N02          0.0000     1.0000     0.6667     0.5164           4.0000
+N03          0.4430     0.5776     0.4974     0.0613           2.9844
+N04         -1.9788    -1.6503    -1.8496     0.1466         -11.0978
+N05          1.1851     2.7333     1.7662     0.6707          10.5970
+N06      2451605.0000 2451607.0000 2451606.3333     0.8165    14709638.0000
+N07       2000.0000  2000.0000  2000.0000     0.0000       12000.0000
+N08          3.1416     9.4248     7.3304     2.5651          43.9823
+N09          1.0000     3.0000     2.3333     0.8165          14.0000
+N10         -3.0000    -1.0000    -2.3333     0.8165         -14.0000
+N11         18.0000    20.0000    19.3333     0.8165         116.0000
+N12          1.0000     3.0000     1.6667     0.8165          10.0000
+N13          3.0000     8.0000     5.8333     1.9408          35.0000
+N14          1.0000     4.0000     2.1667     1.3292          13.0000
+N15          1.0000     4.0000     2.5000     1.6432          15.0000
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 597655 bytes.
+End of program. Sat Sep  5 13:46:50 2026

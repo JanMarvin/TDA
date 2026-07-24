@@ -1,0 +1,18 @@
+# wstata round trips: TDA writes; foreign::read.dta and upstream
+# readstata13::read.dta13 both read every result back with exact
+# values (verified in session 38; the R suite pins the foreign trip).
+rstata() = rs114.dta;
+wstata(ptyp=10) = tdawr.out;
+clear;
+rstata() = rs114.dta;
+wstata(ptyp=6) = w6.out;
+clear;
+rstata() = rs114.dta;
+wstata(ptyp=7) = w7.out;
+clear;
+rstata() = rs114.dta;
+wstata(ptyp=4) = w4.out;
+# string variables through the writer
+clear;
+rstata() = old105.dta;
+wstata(ptyp=7) = wstr.out;

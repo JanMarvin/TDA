@@ -1,0 +1,69 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep 12 08:11:59 2026
+Current memory: 390032 bytes.
+
+Reading command file: sdclipops.cf
+============================================================================
+sddcwp(...)=triclip.pnt
+Conversion of DCW polygon point data file. Current memory: 390032 bytes.
+Input file: triclip.pnt
+First record: triangle
+
+Number of records: 6
+Number of data blocks: 1
+Number of empty blocks: 0
+Number of data points: 4
+Maximal number of points per object: 4
+6 records written to: triclip.sd
+Number of type 1 objects: 1
+Number of type 3 objects: 1
+----------------------------------------------------------------------------
+sdnvar(...)
+Reading a spatial data file. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 SDID      3   4   0.0  c1
+  2 SDTyp     3   4   0.0  c2
+  3 SDN       3   4   0.0  c3
+  4 SDPtr     3   5  11.0  rd
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): triclip.sd
+Free format. Separation character(s): default.
+Reading data file: triclip.sd
+Read records: 2 
+
+Created a new data matrix.
+Number of cases: 2
+Number of variables: 4
+Missing values in data file(s): none.
+
+Number of points: 1
+Number of lines: 0
+Number of polygons: 1
+Number of unknown objects: 0
+
+Maximal number of points in spatial objects: 3
+Total number of points in spatial objects: 4
+Note: triclip.sd remains opened for further access.
+
+X values. Minimum:         0.0000  Maximum:        10.0000
+Y values. Minimum:         0.0000  Maximum:         8.0000
+
+End of creating new variables. Current memory: 406481 bytes.
+----------------------------------------------------------------------------
+Clipping spatial objects. Current memory: 406481 bytes.
+Region defined by rectangle: 2, -1, 8, 5
+ni=0 n=3
+
+np=6 nb=6    bflag: 0 0 0 0 
+
+Number of type 1 objects: 1. Written: 0
+Number of type 2 objects: 0. Written: 0
+Number of type 3 objects: 1. Written: 1
+7 records written to: triclipped.sd
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426151 bytes.
+End of program. Sat Sep 12 08:11:59 2026

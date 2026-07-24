@@ -1,0 +1,18 @@
+# sdrel: containment relations between spatial objects.  First: two
+# nested squares built with sdcpol(opt=3) from raw segments, written to
+# a spatial data file, read back with sdnvar (the standard SDID / SDTyp
+# / SDN / SDPtr variables sdrel needs).  Both options report the inner
+# square inside the outer.
+nvar(dfile=sq2.dat, X1<8>=c1, Y1<8>=c2, X2<8>=c3, Y2<8>=c4);
+sdcpol(opt=3, df=sq2.sd) = X1,Y1,X2,Y2;
+clear;
+sdnvar(dfile=sq2.sd, SDID=c1, SDTyp=c2, SDN=c3, SDPtr<5>=rd);
+sdrel(opt=1) = rel1.out;
+sdrel(opt=2) = rel2.out;
+# Second: a square with one edge on the outer square's boundary
+# (hand-written spatial file).  Contained when boundaries count
+# (opt=1), not when strictly inside is required (opt=2).
+clear;
+sdnvar(dfile=sqt.sd, SDID=c1, SDTyp=c2, SDN=c3, SDPtr<5>=rd);
+sdrel(opt=1) = relt1.out;
+sdrel(opt=2) = relt2.out;

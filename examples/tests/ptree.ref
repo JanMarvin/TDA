@@ -1,0 +1,11 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: ptree.cf
+============================================================================
+ptree()=out.txt
+Print tree data structure. Current memory: 390032 bytes.
+Error: no graph data defined.
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390032 bytes.
+End of program. Wed Sep  2 16:02:32 2026

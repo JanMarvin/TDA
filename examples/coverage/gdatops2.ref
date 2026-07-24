@@ -1,0 +1,41 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:40 2026
+Current memory: 390032 bytes.
+
+Reading command file: gdatops2.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 A         3   4   0.0  c1
+  2 B         3   4   0.0  c2
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+Break expression: gt(A,3)
+
+Using data file(s): vseldat.dat
+Free format. Separation character(s): default.
+
+Reading data file: vseldat.dat
+Read records: 4 
+Selected for data matrix: 3 records.
+
+Created a new data matrix.
+Number of cases: 3
+Number of variables: 2
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 398066 bytes.
+----------------------------------------------------------------------------
+dstat
+Descriptive statistics. Current memory: 398066 bytes.
+
+Variable    Minimum    Maximum       Mean   Std.Dev.    Sum of values
+---------------------------------------------------------------------
+A            1.0000     3.0000     2.0000     1.0000           6.0000
+B           10.0000    30.0000    20.0000    10.0000          60.0000
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 418131 bytes.
+End of program. Fri Sep  4 15:06:40 2026

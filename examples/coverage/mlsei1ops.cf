@@ -1,0 +1,26 @@
+# mlsei1ops.cf -- t_matc.c coverage: mlsei1 (undocumented in tda.hlp;
+# an alternate active-set QP algorithm for the same E/A/H problem as
+# mlsei, confirmed empirically to agree with mlsei on both instances
+# below, not merely assumed from the similar name).
+#
+# Case 1: 1 equality (x1+x2=3), 2 least-squares rows (x1~2, x2~3),
+# 1 inequality (x1-x2>=0) -- the same instance pinned for mlsei in
+# mlsops.cf (constrained optimum (1.5,1.5), the unconstrained
+# least-squares optimum (1,2) being infeasible against the
+# equality-plus-inequality combination). mlsei1 must match.
+#
+# Case 2: 1 equality (x1+x2=4), 1 least-squares row (x1~3), 1
+# inequality (x2>=-1, not binding). Unconstrained optimum along the
+# equality line is x1=3, x2=1, satisfying the inequality already --
+# residual 0. mlsei1 must match mlsei's (3,1) exactly.
+
+silent = -1;
+mfmt = 24.16;
+
+mdef(S1,4,3) = 1,1,3, 1,0,2, 0,1,3, 1,-1,0;
+mlsei1(S1,1,1,X1);
+mpr(X1);
+
+mdef(S2,3,3) = 1,1,4, 1,0,3, 0,1,-1;
+mlsei1(S2,1,1,X2);
+mpr(X2);

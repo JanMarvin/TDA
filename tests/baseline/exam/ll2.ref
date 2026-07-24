@@ -1,0 +1,73 @@
+Read records:       6     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: ll2.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X1        3   4   0.0  c1
+  2 X2        3   4   0.0  c2
+  3 F         3   4   0.0  c3
+  4 S         3   4   0.0  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ll2.dat
+Free format. Separation character(s): default.
+
+Reading data file: ll2.dat
+Read records: 6 
+
+Created a new data matrix.
+Number of cases: 6
+Number of variables: 4
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 406102 bytes.
+----------------------------------------------------------------------------
+loglin(...)=...
+Loglinear models. Current memory: 406102 bytes.
+
+Definition and structure of contingency table.
+Frequencies defined by: F
+
+Dimension  Variable   Categories
+  1  A     X1           3 :  1  2  3 
+  2  B     X2           2 :  1  2 
+
+Table has 6 cells, 17 counts.
+Table is incomplete: 5 (83.33%) of 6 cells.
+
+Check of model requests.
+Begin of model estimation.
+
+Model: A+B
+
+Number of model parameters: 4
+Maximum number of iterations: 20
+Tolerance for convergence: 1e-08
+
+Convergence reached in 7 iterations.
+
+Likelihood Ratio Statistic         1.9287  Prob: 0.3812
+Pearson's Chi Square               1.2833  Prob: 0.5264
+F-Statistic                        0.9644
+Degrees of Freedom 2
+
+Idx  Parameter      Coeff      Error     T-Stat  Signif
+-------------------------------------------------------
+  0  Constant      0.8344        ---        ---     ---
+  1  A[1]          0.3731     0.3646     1.0232  0.6938
+  2  A[2]         -0.8797     0.5020    -1.7524  0.9203
+  3  B[1]         -0.3031     0.2538    -1.1943  0.7676
+
+Residuals written to: res
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426346 bytes.
+End of program. Tue Jul 21 05:46:53 2026

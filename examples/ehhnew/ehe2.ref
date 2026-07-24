@@ -1,0 +1,137 @@
+Read records:     600     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   2.5140201213269e+00  1.0047169302e+01          --       1 (1,1)
+    2   2.4330274195291e+00  8.8988835285e+00  1.0000e+00       2 (2,2)
+    3   2.4175675532233e+00  1.1531673892e+00  2.6959e-01       3 (3,3)
+    4   2.4171761127194e+00  3.6746895917e-02  7.6908e-02       4 (4,4)
+    5   2.4171754787049e+00  5.8549722078e-05  3.3010e-03       5 (5,5)
+    6   2.4171754786983e+00  4.7346175162e-10  8.0599e-06       6 (6,6)
+TDA. Analysis of Transition Data (6.4p). Sat Jul 25 02:03:17 2026
+Current memory: 390032 bytes.
+
+Reading command file: ehe2.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   3.0  c1
+  2 NOJ       3   4   2.0  c2
+  3 TStart    3   4   3.0  c3
+  4 TFin      3   4   3.0  c4
+  5 SEX       3   4   2.0  c5
+  6 TI        3   4   3.0  c6
+  7 TB        3   4   3.0  c7
+  8 TE        3   4   3.0  c8
+  9 TMAR      3   4   3.0  c9
+ 10 PRES      3   4   3.0  c10
+ 11 PRESN     3   4   3.0  c11
+ 12 EDU       3   4   2.0  c12
+ 13 DES       3   4   1.0  if(eq(TFin,TI),0,1)
+ 14 TFP       3   4   3.0  TFin-TStart+1
+ 15 COHO2     3   4   0.0  ge(TB,468)&le(TB,504)
+ 16 COHO3     3   4   0.0  ge(TB,588)&le(TB,624)
+ 17 LFX       3   4   0.0  TStart-TE
+ 18 PNOJ      3   4   0.0  NOJ-1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): rrdat.1
+Free format. Separation character(s): default.
+
+Reading data file: rrdat.1
+Read records: 600 
+
+Created a new data matrix.
+Number of cases: 600
+Number of variables: 18
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 462798 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=0, des=DES, ts=0, tf=TFP
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       142       142.00      128.18        0.00      428.00    -
+ 1    0   1       458       458.00       49.30        0.00      350.00    -
+Sum               600       600.00
+
+Number of episodes: 600
+Successfully created new episode data.
+----------------------------------------------------------------------------
+rate(...)=3
+Transition rate models. Current memory: 462950 bytes.
+
+Model: Exponential with time-periods
+
+    Time period        Starting times  Ending times    Events
+  -----------------------------------------------------------
+   0.0000 -   12.0000             600            76        63
+  12.0000 -   24.0000               0           104        96
+  24.0000 -   36.0000               0           108        95
+  36.0000 -   48.0000               0            55        44
+  48.0000 -   60.0000               0            44        38
+  60.0000 -   72.0000               0            38        29
+  72.0000 -   84.0000               0            22        17
+  84.0000 -   96.0000               0             9         6
+  96.0000 -                         0           144        70
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 15
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Log-likelihood of exponential null model: -2514.02
+Changed scaling factor for log-likelihood: -0.001
+Using default starting values.
+
+Convergence reached in 6 iterations.
+Number of function evaluations: 7 (7,7)
+
+Maximum of log likelihood: -2417.18
+Norm of final gradient vector: 4.73462e-07
+Last absolute change of function value: 2.72405e-12
+Last relative change in parameters: 8.05994e-06
+
+Idx SN Org Des MT Variable      Coeff      Error    C/Error  Signif
+-------------------------------------------------------------------
+  1  1   0   1  A Period-1    -4.6053     0.3019   -15.2522  1.0000
+  2  1   0   1  A Period-2    -3.9236     0.2922   -13.4281  1.0000
+  3  1   0   1  A Period-3    -3.6302     0.2904   -12.5000  1.0000
+  4  1   0   1  A Period-4    -4.1514     0.3101   -13.3852  1.0000
+  5  1   0   1  A Period-5    -4.1106     0.3157   -13.0201  1.0000
+  6  1   0   1  A Period-6    -4.1584     0.3292   -12.6327  1.0000
+  7  1   0   1  A Period-7    -4.5272     0.3609   -12.5459  1.0000
+  8  1   0   1  A Period-8    -5.4741     0.4876   -11.2257  1.0000
+  9  1   0   1  A Period-9    -4.9094     0.2887   -17.0067  1.0000
+ 10  1   0   1  A EDU          0.0683     0.0249     2.7409  0.9939
+ 11  1   0   1  A COHO2        0.4841     0.1155     4.1931  1.0000
+ 12  1   0   1  A COHO3        0.3823     0.1228     3.1146  0.9982
+ 13  1   0   1  A LFX         -0.0037     0.0009    -3.9943  0.9999
+ 14  1   0   1  A PNOJ         0.0618     0.0442     1.3987  0.8381
+ 15  1   0   1  A PRES        -0.0266     0.0055    -4.8228  1.0000
+
+Log likelihood (starting values): -2514.0201 
+Log likelihood (final estimates): -2417.1755 
+
+Calculating generalized residuals; will be written to: ehe2.res
+
+Calculating estimated rates.
+[ 1] prate(tab=0(2)300)=ehe2.prs
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 482917 bytes.
+End of program. Sat Jul 25 02:03:17 2026

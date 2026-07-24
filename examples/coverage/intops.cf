@@ -1,0 +1,19 @@
+# t_int: all five numerical integration methods on integrals with
+# known closed forms.  int(ab=0,1) = x*x is 1/3 = 0.333...;
+# int(ab=0,pi) = sin(x) is 2.  Each method must print the same value
+# (methods: 1 QNG, 2 QSUB, 3 SNIFF, 4 QTRAP, 5 QROMB).
+niset() = 1;
+int(ab=0,1, fmt=12.8) = x*x;
+int(ab=0,3.14159265358979, fmt=12.8) = sin(x);
+niset() = 2;
+int(ab=0,1, fmt=12.8) = x*x;
+int(ab=0,3.14159265358979, fmt=12.8) = sin(x);
+niset() = 3;
+int(ab=0,1, fmt=12.8) = x*x;
+int(ab=0,3.14159265358979, fmt=12.8) = sin(x);
+niset(rerr=1.e-8, aerr=1.e-8) = 4;
+int(ab=0,1, fmt=12.8) = x*x;
+int(ab=0,3.14159265358979, fmt=12.8) = sin(x);
+niset() = 5;
+int(ab=0,1, fmt=12.8) = x*x;
+int(ab=0,3.14159265358979, fmt=12.8) = sin(x);

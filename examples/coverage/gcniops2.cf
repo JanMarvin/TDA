@@ -1,0 +1,15 @@
+# gcniops2.cf -- t_gg.c coverage: gcni opt=3/4 (isomorphic-subgraph
+# comparison of neighborhoods -- "starting points fixed" vs "not
+# fixed", g_cni_ci/g_cni_ci1). Graph: two disjoint triangles
+# (1-2-3 and 4-5-6, no edges between the two groups). Every node's
+# closed neighborhood is a triangle (size 3, 3 internal edges),
+# structurally identical across all six nodes -- so both opt=3 and
+# opt=4 correctly place every node in a single isomorphism class
+# ("Number of classes: 1"), confirmed against the graph by hand.
+
+silent = -1;
+
+nvar(dfile=edges2.dat, I=c1, J=c2, V=c3);
+gdd(gt=1) = I,J,V;
+gcni(opt=3, prn=2, n=1) = out3.txt;
+gcni(opt=4, prn=2, n=1) = out4.txt;

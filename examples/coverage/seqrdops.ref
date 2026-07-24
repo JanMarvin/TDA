@@ -1,0 +1,12 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:52 2026
+Current memory: 390032 bytes.
+
+Reading command file: seqrdops.cf
+============================================================================
+seqrd(ns=2,len=5,noc=10)=randseq.txt
+Creating random sequences.
+Sequence length: 5, number of states: 2
+10 sequences written to output file: randseq.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390032 bytes.
+End of program. Fri Sep  4 15:06:52 2026

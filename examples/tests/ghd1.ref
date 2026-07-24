@@ -1,0 +1,92 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: ghd1.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   3.0  c1
+  2 X         3   4   6.2  c2
+  3 Y         3   4   6.2  c3
+  4 G         3   4   1.0  c4
+  5 T         3   4   3.0  c5
+  6 D         3   4   1.0  c6
+  7 YL        3   4   6.2  c7
+  8 YU        3   4   6.2  c8
+  9 XL        3   4   6.2  c9
+ 10 XU        3   4   6.2  c10
+ 11 P1        3   4   6.3  c11
+ 12 P2        3   4   6.3  c12
+ 13 P3        3   4   6.3  c13
+ 14 TS        2   8   1.0  0
+ 15 ORG       2   8   1.0  0
+ 16 TL        3   4   3.0  T
+ 17 TU        3   4   3.0  T+5
+ 18 G1        3   4   0.0  G[1]
+ 19 G2        3   4   0.0  G[2]
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): d.dat
+Free format. Separation character(s): default.
+
+Reading data file: d.dat
+Read records: 20 
+
+Created a new data matrix.
+Number of cases: 20
+Number of variables: 19
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 458464 bytes.
+----------------------------------------------------------------------------
+ghd1(...)=...
+Find maximal hierarchy. Current memory: 458464 bytes.
+Hasse diagram: 20 nodes, 19 edges.
+GHD1Max=1 ni+1=2
+0 1 
+GHD1Max=2 ni+1=3
+0 1 2 
+GHD1Max=3 ni+1=4
+0 1 2 3 
+GHD1Max=4 ni+1=5
+0 1 2 3 4 
+GHD1Max=5 ni+1=6
+0 1 2 3 4 5 
+GHD1Max=6 ni+1=7
+0 1 2 3 4 5 6 
+GHD1Max=7 ni+1=8
+0 1 2 3 4 5 6 7 
+GHD1Max=8 ni+1=9
+0 1 2 3 4 5 6 7 8 
+GHD1Max=9 ni+1=10
+0 1 2 3 4 5 6 7 8 9 
+GHD1Max=10 ni+1=11
+0 1 2 3 4 5 6 7 8 9 10 
+GHD1Max=11 ni+1=12
+0 1 2 3 4 5 6 7 8 9 10 11 
+GHD1Max=12 ni+1=13
+0 1 2 3 4 5 6 7 8 9 10 11 12 
+GHD1Max=13 ni+1=14
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 
+GHD1Max=14 ni+1=15
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 
+GHD1Max=15 ni+1=16
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+GHD1Max=16 ni+1=17
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 
+GHD1Max=17 ni+1=18
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 
+GHD1Max=18 ni+1=19
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 
+GHD1Max=19 ni+1=20
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 
+
+GHD1Max=20 : 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 478592 bytes.
+End of program. Wed Sep  2 16:02:32 2026

@@ -1,0 +1,214 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep 12 08:11:59 2026
+Current memory: 390032 bytes.
+
+Reading command file: mapops.cf
+============================================================================
+sdnvar(...)
+Reading a spatial data file. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 SDID      3   4   0.0  c1
+  2 SDTyp     3   4   0.0  c2
+  3 SDN       3   4   0.0  c3
+  4 SDPtr     3   5  11.0  rd
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): mapops.sd
+Free format. Separation character(s): default.
+Reading data file: mapops.sd
+Read records: 3 
+
+Created a new data matrix.
+Number of cases: 3
+Number of variables: 4
+Missing values in data file(s): none.
+
+Number of points: 1
+Number of lines: 1
+Number of polygons: 1
+Number of unknown objects: 0
+
+Maximal number of points in spatial objects: 5
+Total number of points in spatial objects: 9
+Note: mapops.sd remains opened for further access.
+
+X values. Minimum:         8.0000  Maximum:        22.0000
+Y values. Minimum:        48.0000  Maximum:        60.0000
+
+End of creating new variables. Current memory: 406513 bytes.
+----------------------------------------------------------------------------
+psfile=mapops1.ps
+Opened new PostScript file: mapops1.ps
+----------------------------------------------------------------------------
+psetupg(...)
+Set up geographical coordinate system. Current memory: 406513 bytes.
+Cylindrical projection (equidistant).
+View: 15,54. Region: 10,8
+
+Selected region longitude:    5.0000 (  15.0000)   25.0000
+Selected region latitude:    46.0000 (  54.0000)   62.0000
+
+Creating a new 2d coordinate system.
+Size (width x height in mm): 100 x 80
+PostScript coordinates. X-axis: 100,384  Y-axis: 100,327
+Origin (PostScript x and y coordinates): 100,100
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           5.0000,          25.0000 
+User coordinates Y axis:          46.0000,          62.0000 
+----------------------------------------------------------------------------
+sdpgrat(...)
+Graticule for geographical coordinate system. Current memory: 406513 bytes.
+Drawing bounds of selected region.
+----------------------------------------------------------------------------
+sdpmap(...)
+Plot in geographical coordinate system. Current memory: 406513 bytes.
+ni=4 n=4
+
+Number of type 1 objects: 1. Plotted: 1
+Number of type 2 objects: 1. Plotted: 2 (parts)
+Number of type 3 objects: 1. Plotted: 1 (parts)
+PostScript output written to: mapops1.ps
+----------------------------------------------------------------------------
+sdpgeo(...)=...
+Plot in geographical coordinate system. Current memory: 406513 bytes.
+PostScript output written to: mapops1.ps
+----------------------------------------------------------------------------
+psfile=mapops2.ps
+Current PostScript file will be closed.
+Opened new PostScript file: mapops2.ps
+----------------------------------------------------------------------------
+psetupg(...)
+Set up geographical coordinate system. Current memory: 406513 bytes.
+Cylindrical projection (equal-area).
+View: 15,54. Region: 10,8
+
+Selected region longitude:    5.0000 (  15.0000)   25.0000
+Selected region latitude:    46.0000 (  54.0000)   62.0000
+
+Creating a new 2d coordinate system.
+Size (width x height in mm): 100 x 73.6235
+PostScript coordinates. X-axis: 100,384  Y-axis: 100,309
+Origin (PostScript x and y coordinates): 100,100
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           5.0000,          25.0000 
+User coordinates Y axis:          64.7406,          79.4653 
+----------------------------------------------------------------------------
+sdpmap(...)
+Plot in geographical coordinate system. Current memory: 406513 bytes.
+ni=4 n=4
+
+Number of type 1 objects: 1
+Number of type 2 objects: 1. Plotted: 2 (parts)
+Number of type 3 objects: 1. Plotted: 1 (parts)
+PostScript output written to: mapops2.ps
+----------------------------------------------------------------------------
+psfile=mapops3.ps
+Current PostScript file will be closed.
+Opened new PostScript file: mapops3.ps
+----------------------------------------------------------------------------
+psetupg(...)
+Set up geographical coordinate system. Current memory: 406513 bytes.
+Cylindrical projection (Mercator).
+View: 15,54. Region: 10,8
+
+Selected region longitude:    5.0000 (  15.0000)   25.0000
+Selected region latitude:    46.0000 (  54.0000)   62.0000
+
+Creating a new 2d coordinate system.
+Size (width x height in mm): 100 x 100
+PostScript coordinates. X-axis: 100,384  Y-axis: 100,384
+Origin (PostScript x and y coordinates): 100,100
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           5.0000,          25.0000 
+User coordinates Y axis:           0.9063,           1.3890 
+----------------------------------------------------------------------------
+sdpmap(...)
+Plot in geographical coordinate system. Current memory: 406513 bytes.
+ni=4 n=4
+
+Number of type 1 objects: 1
+Number of type 2 objects: 1. Plotted: 2 (parts)
+Number of type 3 objects: 1. Plotted: 1 (parts)
+PostScript output written to: mapops3.ps
+----------------------------------------------------------------------------
+psfile=mapops4.ps
+Current PostScript file will be closed.
+Opened new PostScript file: mapops4.ps
+----------------------------------------------------------------------------
+psetupg(...)
+Set up geographical coordinate system. Current memory: 406513 bytes.
+Azimuthal projection (orthographic).
+View: 15,54. Rectangular region (30,30).
+
+Selected region (lon,lat)
+( -60.8083,  72.3534) (  15.0000,  84.0000) (  90.8083,  72.3534)
+( -15.0000,  54.0000) (  15.0000,  54.0000) (  45.0000,  54.0000)
+(  -3.4026,  21.4174) (  15.0000,  24.0000) (  33.4026,  21.4174)
+GDlatmin=21.4174 84
+GDlonmin=-60.8083 90.8083
+
+Creating a new 2d coordinate system.
+Size (width x height in mm): 100 x 170.13
+PostScript coordinates. X-axis: 100,384  Y-axis: 100,582
+Origin (PostScript x and y coordinates): 100,100
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:          -0.2939,           0.2939 
+User coordinates Y axis:          -0.5000,           0.5000 
+----------------------------------------------------------------------------
+sdpgrat(...)
+Graticule for geographical coordinate system. Current memory: 406513 bytes.
+Drawing bounds of selected region.
+----------------------------------------------------------------------------
+sdpmap(...)
+Plot in geographical coordinate system. Current memory: 406513 bytes.
+Projection not supported.
+map_line_azi gflag=0  
+
+Number of type 1 objects: 1
+Number of type 2 objects: 1. Plotted: 2 (parts)
+Number of type 3 objects: 1
+PostScript output written to: mapops4.ps
+----------------------------------------------------------------------------
+psfile=mapops5.ps
+Current PostScript file will be closed.
+Opened new PostScript file: mapops5.ps
+----------------------------------------------------------------------------
+psetupg(...)
+Set up geographical coordinate system. Current memory: 406513 bytes.
+Parallel projection (rectangular region).
+View: 15,54. Region: 30,30
+
+
+Creating a new 2d coordinate system.
+Size (width x height in mm): 100 x 170.13
+PostScript coordinates. X-axis: 100,384  Y-axis: 100,582
+Origin (PostScript x and y coordinates): 100,100
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:          -0.2939,           0.2939 
+User coordinates Y axis:          -0.5000,           0.5000 
+----------------------------------------------------------------------------
+sdpmap(...)
+Plot in geographical coordinate system. Current memory: 406513 bytes.
+Projection not supported.
+projection not supported.
+
+Number of type 1 objects: 1
+Number of type 2 objects: 1
+Number of type 3 objects: 1
+PostScript output written to: mapops5.ps
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426151 bytes.
+End of program. Sat Sep 12 08:11:59 2026

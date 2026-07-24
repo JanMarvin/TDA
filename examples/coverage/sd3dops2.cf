@@ -1,0 +1,9 @@
+# 3-d spatial plots (sdplot31/32/33) over the point/line/polygon file
+# mapops.sd, on a psetup3 coordinate system; behaviour pins plus
+# coverage for the prism/3d machinery in t_sd.
+sdnvar(dfile=mapops.sd, SDID=c1, SDTyp=c2, SDN=c3, SDPtr<5>=rd);
+psfile = sd3d2.ps;
+psetup3(view=35,25, pxa=5,25, pya=45,62, pza=0,10, pxlen=90);
+sdplot31(zval=2, s=4, fs=1.5);
+sdplot32(lw=0.2);
+sdplot33(lw=0.2, zval=3);

@@ -1,0 +1,11 @@
+# arcd_long.cf -- an archive written by the reference zoo (2.1, type-2
+# directory entries): one member with a name longer than 8.3 inside a
+# directory, one with a long name at the top level. get_zoo() must find
+# both by the full stored name.
+# fixture: archive
+
+arcd = long.zad;
+arcc;
+arcv();
+nvar(V1<5>[8.0] = A:V1, V2<5>[8.0] = A:V2, V3<5>[8.0] = A:V3);
+dstat;

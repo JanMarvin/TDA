@@ -1,0 +1,25 @@
+# glmsc.cf -- regression test for the se[j] > ctx->EPSI patch in
+# prn1_coeff() (t_pgen.c), glm() side: glm builds se[] the same way lsreg
+# does (AcY[i] = AcW[(i-1)*nw+i], a direct copy of lsei's own rescaled
+# covariance diagonal), so it is exposed to the same bug and fixed by
+# the same one-line patch automatically -- confirmed directly by
+# running this exact model through a genuinely unpatched binary built
+# from the pre-session source, not assumed from the lsreg case alone.
+# X2 = X^2 has a natural scale far larger than X, so its coefficient's
+# variance is legitimately tiny in absolute terms despite being
+# reliably estimated; before the patch this printed "---" for X2
+# instead of a real standard error. See lsregsc.cf/.ref for the lsreg
+# counterpart of this same case.
+
+nvar(
+    dfile = glm_test.dat,
+    X  = c1,
+    X2 = c2,
+    Y  = c3,
+);
+glm (
+    d = 2,
+    link = 3,
+    v = Y,X,X2,
+    tfmt = -18.10,
+);

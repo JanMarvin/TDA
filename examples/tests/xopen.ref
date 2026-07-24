@@ -1,0 +1,11 @@
+TDA. Analysis of Transition Data (6.4q). Wed Sep  2 16:02:32 2026
+Current memory: 390032 bytes.
+
+Reading command file: xopen.cf
+============================================================================
+xopen()=out.txt
+Open new PostScript file. Current memory: 390032 bytes.
+Can't read parameters from: out.txt
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 410032 bytes.
+End of program. Wed Sep  2 16:02:32 2026

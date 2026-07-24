@@ -1,0 +1,11 @@
+# loglinops.cf -- contingency tables and loglinear models
+nvar(
+    dfile = tab.dat,
+    A [2.0] = c1, B [2.0] = c2, C [2.0] = c3,
+);
+loglin(ptab=t1.dat) = A,B;
+loglin(mod = A+B, ptab=t2.dat) = A,B;
+loglin(mod = A+B+C, ptab=t3.dat) = A,B,C;
+loglin(mod = AB+C, mxit=30) = A,B,C;
+loglin(screen,) = A,B,C;
+loglin(screen, mxit=30,) = A,B;

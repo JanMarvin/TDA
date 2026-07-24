@@ -1,0 +1,27 @@
+nvar(dfile=nl.dat, X[10.4]=c1, Y[10.4]=c2);
+# linear predictor, OLS: equals lm(y ~ x)
+nlreg(v=Y,X);
+# without intercept: equals lm(y ~ x - 1)
+nlreg(v=Y,X, ni=1);
+# user function with starting values, covariance and residual prints
+nlreg(v=Y,X, xp=1,0.5, ppar=1, pcov=1, mfmt=12.5, pres=1, fmt=10.3, tfmt=12.6) = a * exp(b * X);
+# orthogonal distance regression on the linear predictor: the line
+# minimizing orthogonal distances (total least squares)
+nlreg(v=Y,X, opt=2);
+# Every mode above is verified against independent R computation in
+# tdaR's test-r-comparisons.R: OLS equals lm(y ~ x) (-6.3316, 8.8851);
+# ni=1 equals lm(y ~ x - 1) (7.0098); the user function equals
+# nls(y ~ a*exp(b*x)) (2.5989, 0.5914) -- free names in the function
+# are the parameters, varlist names the data, first varlist entry the
+# response; opt=2 (ODR) equals the closed-form total-least-squares
+# line from the principal axis (-9.2311, 10.0003).
+clear;
+# Censored path (yw=; a 0 in the indicator marks a censored case; the
+# cycle machinery then adjusts them).  Estimand ESTABLISHED by source
+# trace: Buckley-James (1979) -- Kaplan-Meier (redistribute-to-the-
+# right) weights over sorted residuals, censored responses replaced by
+# fit + KM-weighted mean of larger uncensored residuals, iterated.  A
+# line-faithful R replication reproduces (3.1134, 0.5578) to ~4
+# decimals; pinned in tdaR's test-r-comparisons.R.
+nvar(dfile=nlc.dat, X[10.4]=c1, Y[10.4]=c2, CW[2.0]=c3);
+nlreg(v=Y,X, yw=CW, prot=nlprot.out) = a * exp(b * X);

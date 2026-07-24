@@ -1,0 +1,3473 @@
+---
+title: "Following the TDA User's Manual"
+lang: en
+output:
+  rmarkdown::html_vignette:
+    css: tda-manual.css
+    highlight: null
+    toc: true
+    toc_depth: 2
+    includes:
+      in_header: theme-toggle.html
+pkgdown:
+  as_is: true
+vignette: >
+  %\VignetteIndexEntry{Following the TDA User's Manual}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+source("tda-hooks.R")
+library(tdaR)
+ex <- function(f) system.file("extdata", "exam", f, package = "tdaR")
+```
+
+<p class="dedication">In memoriam Götz Rohwer</p>
+<p class="dedication-quote">„So, wir fangen jetzt an.“</p>
+
+## TDA, and this package
+
+TDA -- *Transition Data Analysis* -- is Götz Rohwer's program for the
+statistical analysis of event histories: transition rate models,
+parametric and semi-parametric, with episode splitting, competing risks,
+multi-episode data and time-dependent covariates, and around them the
+rest of a working statistician's toolkit -- descriptive statistics, life
+tables and product-limit estimation, regression of every ordinary kind,
+sequence analysis, loglinear models, graphs, spatial data, and its own
+PostScript plotting. It is a command-file program: a text file of
+commands, a data file, and a listing of what it computed.
+
+Its history, as the manual's preface and TDA's `history.txt` give
+it: begun in 1989 with early support from the Hamburger Institut für
+Sozialforschung; grown inside Hans-Peter Blossfeld's project *Household
+Dynamics and Social Inequality* at the European University Institute in
+Florence, with European Commission support, and then at the University
+of Bremen. Version 5.7 (June 1994) was the first the authors called
+mature, and it is the program behind Blossfeld and Rohwer's *Techniques
+of Event History Modeling* (1995; 2nd ed. 2002). The 6.x line was a
+redesign, and from version 6.2 the program and the manual have two
+authors, Rohwer and Ulrich Pötter. The 6.x releases, 6.1 in 1997 to
+6.4p in March 2009, fall in Rohwer's years as professor at
+Ruhr-Universität Bochum (1997–2013), where TDA's homepage still is.
+TDA has always been a non-commercial project under the GNU
+General Public License; its source is C, and the *User's Manual* of some
+800 pages is its documentation.
+
+tdaR is that program, compiled into an R package. The C is TDA's,
+made re-entrant so that it can run inside R and be called more than
+once; nothing in it has been rewritten, and where it has been changed
+the change is a repair of a demonstrated fault, listed in the package's
+`doc/changes-from-tda.md`. Each R function writes the command file TDA would have
+been given, runs it, and returns what TDA produced -- the printed
+listing, the numbers behind it, and the tables -- as an R object with
+the usual methods. The results are TDA's, at TDA's precision; the
+vignette *Beyond the Manual* shows how that is checked.
+
+This vignette follows the *TDA User's Manual* of Götz Rohwer and Ulrich
+Pötter and shows the same examples written against this package. The
+section numbers are the manual's own, so that a page of the manual and
+the corresponding part of this document can be read side by side, and the
+data are the manual's files, shipped with the package under
+`extdata/exam`. Boxes hold code and output, as they do there.
+
+Chapter 3 is the data structures, episode, sequence and graph data;
+chapter 4 TDA's PostScript plotting; chapter 5 the matrix language and
+its expression, smoothing and minimisation commands; chapter 6,
+statistical procedures, is the bulk of the document; chapter 7 is
+relational data, graphs and clustering, and chapter 8, set-valued data,
+closes it.
+
+## 3 Data Structures
+
+### 3.3.3 An Example Data Set
+
+The manual's main example data set is taken from the German Life History
+Study (GLHS), collected at the Max-Planck-Institut für Bildungsforschung
+in Berlin in 1981--1983 (Mayer and Brückner 1989); the manual thanks
+Karl Ulrich Mayer and Hans-Peter Blossfeld for providing it, and it is
+the data set used in Blossfeld and Rohwer, *Techniques of Event History
+Modeling*. It holds 600 job episodes from 201 respondents. Each
+record is one employment episode, and the consecutive jobs of a
+respondent's career follow each other in the file.
+
+`tda_rrdat()` reads `rrdat.1`, names its twelve columns, and derives the
+variables the manual's `nvar` block derives.
+
+```{r data, box = "The data file rrdat.1, read and named"}
+d <- tda_rrdat()
+head(d[, 1:12], 9)
+```
+
+All dates are century months: 1 is January 1900, 13 is January 1901, and
+so on. `TStart` and `TFin` are the first and last month in the job, `TI`
+the interview date, `TB` the date of birth, `TE` the date of entry into
+the labour market, and `TMAR` the date of marriage, zero for the still
+unmarried. `PRES` is the prestige score of the current job and `PRESN`
+that of the next one, `-1` when there is no next job.
+
+Three derived variables carry the episode: `TFP` is the duration,
+`TFin - TStart + 1`; `DES` is the destination state, 1 for a job change
+and 0 for an episode still running at the interview; `LFX` and `PNOJ` are
+labour force experience and the number of previous jobs.
+
+**Example 1** Where TDA needs an `edef` command to turn columns into
+episode data, the episode is named in R by the left hand side of a
+formula: `Surv(TFP, DES)` is `ts = 0, tf = TFP, org = 0, des = DES`.
+Every command that takes episode data reports what it was given.
+
+```{r edef, box = "Episode data, single destination state"}
+tda_rate(Surv(TFP, DES) ~ 1, d, model = 2)$episodes
+```
+
+458 episodes end in an event, a transition from 0 to 1, with a mean
+duration of 49 months; 142 are right censored, and their mean of 128
+months is no estimate of anything but still says something about the data.
+
+**Example 2** The manual's `ed2.cf` changes nothing but the destination
+state, splitting the job changes by the prestige of the next job.
+`tda_rrdat(states = 4)` is that data set.
+
+```{r edef4, box = "Episode data, alternative destination states"}
+d4 <- tda_rrdat(states = 4)
+tda_rate(Surv(TFP, DES) ~ 1, d4, model = 2)$episodes
+```
+
+84 episodes end in an upward move, 155 in a downward move, and 219 do not
+change the prestige level. The number of censored episodes has not
+changed.
+
+`ed3.cf` defines the same data as multi-episode instead: one episode per
+job rather than one per person, told apart by the spell number. TDA
+prints a table per spell, each closed by its own total (the manual's
+Box 8).
+
+```{r ed3, box = "ed3.cf: multi-episode data"}
+eb <- suppressWarnings(
+    tda_rate(Surv(TFP, DES) ~ 1, d, id = "ID", spell = "NOJ"))
+eb$episodes
+attr(eb$episodes, "sums")   # the totals under each spell; sn = NA is all spells
+```
+
+### 3.6.2 Graph Data
+
+A graph is given to TDA as an edge list, `gdd = I, J, V`: two columns
+of node numbers and one value per edge, a negative value standing for
+no edge at all, which is how an isolated node is declared. The manual's
+Example 1 has five nodes and four edges, node 9 the isolated one, and
+its Figure 1 is `gd2.cf`'s drawing of it as a directed, valued graph.
+
+```{r gd2, box = "gd2.cf", fig.width = 2.36, fig.height = 1.48, out.width = "227px", class.source = "folded"}
+p <- tda_ps(xlim = c(0, 6), ylim = c(0, 4), width = 60, height = 30)
+nodes <- data.frame(id = c(1, 7, 3, 4, 9), x = c(1, 3, 5, 2, 4),
+                    y = c(3, 3, 3, 1, 1), grey = 0.8)
+edges <- data.frame(from = c(1, 3, 1, 4), to = c(7, 7, 4, 7),
+                    label = c(10, 0, 5, 13), arrow = "1.5,1.0")
+p <- tda_pl_graph(p, nodes, edges)
+
+plot(p)
+```
+
+### 3.6.5 Drawing Graphs
+
+TDA draws a graph with `plg`, nodes placed by hand and edges with
+optional curvature, arrowheads and values; `tda_pl_graph()` takes the
+nodes and the edges as data frames. This is the manual's Figure
+3.6.2-2, the graph of `gd1.dat` drawn by `gd3.cf`: dashed edges carry
+the second value variable.
+
+```{r plg1, box = "plg: the graph of gd1.dat (gd3.cf)", fig.width = 3.15, fig.height = 1.87, out.width = "302px", class.source = "folded"}
+p <- tda_ps(xlim = c(0, 9), ylim = c(0, 4), width = 80, height = 40)
+nodes <- data.frame(id = c(1, 7, 8, 5, 11, 12, 9),
+                    x = c(3, 6, 8, 1, 3, 6, 8),
+                    y = c(3, 3, 3, 1, 1, 1, 1), grey = 0.8)
+edges <- data.frame(from  = c(1, 1, 7, 8, 11, 5, 7, 8, 12),
+                    to    = c(5, 7, 1, 8, 12, 1, 1, 7, 11),
+                    curve = c(3, 0, 3, 0, 0, 0, -3, 0, 3),
+                    label = c(3, 5, 6, 2, 13, 4, 15, 0, 14),
+                    lty   = c(1, 1, 1, 1, 1, 5, 5, 5, 5),
+                    arrow = "1.5,1.0")
+plot(tda_pl_graph(p, nodes, edges))
+```
+
+### 3.6.6 Trees
+
+The same tree as `gd15.cf`, laid out radially: `pl = 1` rather than
+`gd15`'s `pl = 3`.
+```{r gd15a, box = "gd15a.cf", class.source = "folded"}
+edges <- data.frame(
+    from = c(6, 6, 7, 7, 8, 8, 9, 9, 1, 1, 1, 7),
+    to   = c(2, 4, 3, 5, 1, 6, 7, 8, 10, 11, 12, 13),
+    v    = c(1.0, 1.5, 2.0, 2.5, 1.5, 1.0, 3.0, 1.2, 1.6, 2.0, 3.0, 4.0))
+g <- tda_graph(edges, directed = FALSE)
+
+plot(g, width = 50, height = 70, layout = "tree", rt = 9, pl = 1, nc = 100)
+```
+
+The same tree again, hierarchically: `pl = 2`.
+```{r gd15b, box = "gd15b.cf", class.source = "folded"}
+edges <- data.frame(
+    from = c(6, 6, 7, 7, 8, 8, 9, 9, 1, 1, 1, 7),
+    to   = c(2, 4, 3, 5, 1, 6, 7, 8, 10, 11, 12, 13),
+    v    = c(1.0, 1.5, 2.0, 2.5, 1.5, 1.0, 3.0, 1.2, 1.6, 2.0, 3.0, 4.0))
+g <- tda_graph(edges, directed = FALSE)
+
+plot(g, width = 90, height = 50, layout = "tree", rt = 9, pl = 2, nc = 100)
+```
+
+`pltree` lays a tree out by itself from a root; `plot(g, layout =
+"tree")` is that command, and `gd15.cf`'s tree of `gd1.dat` is the
+manual's figure.
+
+```{r pltree, box = "pltree (gd15.cf)", fig.height = 3.6, class.source = "folded"}
+tree <- data.frame(from = c(6, 6, 7, 7, 8, 8, 9, 9, 1, 1, 1, 7),
+                   to   = c(2, 4, 3, 5, 1, 6, 7, 8, 10, 11, 12, 13),
+                   v    = c(1.0, 1.5, 2.0, 2.5, 1.5, 1.0, 3.0, 1.2, 1.6, 2.0, 3.0, 4.0))
+plot(tda_graph(tree, directed = FALSE), width = 90, height = 50,
+     layout = "tree", rt = 9, pl = 3, nc = 100)
+```
+
+### 3.4.2 Sequence Data Types
+
+TDA reads sequence data two ways. Type 1 is one column per time point.
+Type 2 reads the columns as state/time pairs, one pair per spell, and
+builds the time axis from the times rather than from the column count --
+so the same six columns become three variables over 0 to 8 instead of
+six over 0 to 5. `type = 2` is TDA's `seqdef(m = 2)`.
+
+```{r seqtype, box = "seq.d2 read both ways (seq3.cf)"}
+seqd2 <- read.table(ex("seq.d2"),
+                    col.names = c("ID", "Y1", "T1", "Y2", "T2", "Y3", "T3"))
+tda_seq_info(seqd2[, -1])
+
+# seq3.cf declares both structures at once, the second as type 2; the
+# manual's box shows them in one table, with their own time axes
+seqd3i <- read.table(ex("seq.d3"),
+                     col.names = c("ID", paste0("Y", 0:7),
+                                   "S1", "T1", "S2", "T2", "S3", "T3"))
+tda_seq_info(list(paste0("Y", 0:7), c("S1", "T1", "S2", "T2", "S3", "T3")),
+             data = seqd3i, type = c(1, 2))
+
+tda_seqpd(seqd2, type = 2, id = "ID")
+```
+
+### 3.4.3 Printing Sequence Data
+
+`seqpd` writes the sequence data back out in one of four layouts, TDA's
+own `m=`: every structure side by side on one row per case, one row per
+case and structure, one row per case and position, or one row per spell
+with its origin and destination state and the times it spans. The
+manual's example defines two sequence structures and so prints two sets
+of columns; this one has a single structure.
+
+```{r seqpd, box = "seqpd (seq5.cf)"}
+# seq5.cf declares two structures over seq.d3: Y0..Y7 one column per
+# time point, and three state/time pairs read as a type 2 sequence. The
+# tables then carry a column per structure, and the time axis runs to 8
+# rather than to 7.
+seqd3 <- read.table(ex("seq.d3"),
+                    col.names = c("ID", paste0("Y", 0:7),
+                                  "S1", "T1", "S2", "T2", "S3", "T3"))
+pairs <- c("S1", "T1", "S2", "T2", "S3", "T3")
+tda_seqpd(seqd3, id = "ID", variables = paste0("Y", 0:7), second = pairs)
+tda_seqpd(seqd3, layout = 3, id = "ID", variables = paste0("Y", 0:7),
+          second = pairs)
+tda_seqpd(seqd3, layout = 4, id = "ID", variables = paste0("Y", 0:7),
+          second = pairs)
+```
+
+### 3.4.5 State Indicators
+
+`seqsi` turns a sequence into an indicator matrix: for each case and
+each time point asked for, one column per state, 1 where the case is in
+that state. `m = 2` counts how often each state has been visited up to
+that point instead.
+
+```{r seqsi, box = "seqsi (seq6.cf)"}
+seqd1i <- read.table(ex("seq.d1"))
+names(seqd1i) <- c("ID", paste0("Y", seq_len(ncol(seqd1i) - 1L)))
+tda_seqsi(seqd1i, tp = 1:5, id = "ID")
+tda_seqsi(seqd1i, tp = 1:5, id = "ID", options = list(m = 2))
+```
+
+### 3.3.5 Joining Episode Data
+
+`ejoin` merges two episode files onto one time axis: every point where
+either file changes state starts a new sub-episode, and each side's
+state is carried into it (`-3` where that side has none). The manual's
+own example is two files, six episodes and two, joined into sixteen.
+
+```{r ejoin, box = "ejoin (ej1.cf)"}
+ej1 <- read.table(ex("ej1.dat"),
+                  col.names = c("ID", "NS", "SN", "TS", "TF", "S", "X1", "X2"))
+ej2 <- read.table(ex("ej2.dat"),
+                  col.names = c("ID", "NS", "SN", "TS", "TF", "S", "Y1"))
+# every column past the structural six is carried through, filled -3
+# where that side has no spell
+tda_ejoin(ej1[, c("ID", "TS", "TF", "S", "X1", "X2")],
+          id = "ID", start = "TS", end = "TF", state = "S",
+          with = ej2[, c("ID", "TS", "TF", "S", "Y1")],
+          with_id = "ID", with_start = "TS", with_end = "TF",
+          with_state = "S",
+          options = list(nw = 3, fmt0 = 4, fmt1 = "8.4"))
+```
+
+## 4 PostScript Plots
+
+TDA draws its PostScript. The command files of the manual's chapter 4
+are reproduced here through the `tda_pl_*` family; each box names the
+command file it follows, and the package's `inst/examples/gallery/` carries the same code as a
+standalone script beside a PNG of TDA's output for comparison.
+
+### 4.1 Preparing the Plot Environment
+
+The manual's first plot: axes, a frame, the sine function and, by
+`plotf1`, its first derivative -- `deriv = 1` in `tda_pl_function()`
+draws the derivative of the expression it is given, so the second call
+repeats `sin(x1)` as the command file does.
+
+```{r plot1, box = "plot1.cf"}
+p <- tda_ps(xlim = c(0, 6), ylim = c(-1, 1), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = c(1, 1), ic = c(10, 0))
+p <- tda_pl_frame(p)
+p <- tda_pl_function(p, "sin(x1)", range = c(0, 6), step = 0.1)
+p <- tda_pl_function(p, "sin(x1)", range = c(0, 6), step = 0.1, deriv = 1)
+p <- tda_pl_text(p, "sine", at = c(2.7, 0.6))
+p <- tda_pl_text(p, "cosine", at = c(4.6, 0.6))
+
+plot(p)
+```
+
+```{r plot2, box = "plot2.cf", fig.width = 3.94, fig.height = 6.21, out.width = "378px"}
+p <- tda_ps(xlim = c(0, 595), ylim = c(0, 842), width = 100, height = 150)
+p <- tda_pl_axes(p, sc = 72)
+p <- tda_pl_frame(p, gray = 0.95)
+p <- tda_pl_grid(p, at_x = seq(72, 576, 72), at_y = seq(72, 792, 72))
+
+plot(p)
+```
+
+### 4.2 Plotting Coordinate Systems
+
+```{r plot3, box = "plot3.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px"}
+p <- tda_ps(xlim = c(-2, 2), ylim = c(0, 1), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = c(1, 0.5), ic = c(2, 0))
+p <- tda_pl_frame(p)
+p <- tda_pl_grid(p, at_x = c(-1, 0, 1), at_y = 0.5)
+p <- tda_pl_labels(p, "Linear Coordinate System", which = "title")
+p <- tda_pl_labels(p, "X axis", which = "x")
+p <- tda_pl_labels(p, "Y axis", which = "y", sc = 3)
+
+plot(p)
+```
+
+```{r plot4, box = "plot4.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px"}
+p <- tda_ps(xlim = c(1, 1000), ylim = c(2, 500), width = 90, height = 50,
+           log = "xy")
+p <- tda_pl_axes(p, sc = c(10, 5), ic = c(10, 0))
+p <- tda_pl_frame(p)
+p <- tda_pl_grid(p, at_x = c(10, 100, 1000), at_y = c(10, 50, 250))
+p <- tda_pl_labels(p, "Logarithmic Coordinate System", which = "title")
+p <- tda_pl_labels(p, "X axis", which = "x")
+p <- tda_pl_labels(p, "Y axis", which = "y", sc = 3)
+
+plot(p)
+```
+
+A second pair of axes, drawn at a position given in user coordinates
+rather than on the boundary of the plot: `at =` and `dir =` in
+`tda_pl_axis()` are `plx`'s and `ply`'s parameters.
+
+```{r plot5, box = "plot5.cf"}
+p <- tda_ps(xlim = c(-2, 2), ylim = c(0, 1), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = c(1, 0.5), ic = c(2, 0))
+p <- tda_pl_axis(p, "x", sc = 1, ic = 5, dir = 1, at = c(-1, 1, 1, 1))
+p <- tda_pl_axis(p, "y", sc = 0.5, ic = 5, dir = 1, at = c(2, 0, 2, 1))
+
+plot(p)
+```
+
+A second panel on the same page, placed with `tda_pl_panel()`.
+
+```{r plot6, box = "plot6.cf"}
+# plot6.cf places the first plot with psorg = 100,600, in PostScript
+# points; origin = is in mm like width = and height =
+p <- tda_ps(xlim = c(0, 6), ylim = c(-1, 1), width = 50, height = 40,
+            origin = c(100, 600) * 25.4 / 72)
+p <- tda_pl_axes(p, sc = 1)
+p <- tda_pl_function(p, "sin(x1)", range = c(0, 6), step = 0.1)
+p <- tda_pl_text(p, "Plot 1", at = c(4, 0.2))
+
+# the second plot has psorg = 270,600: 170 points to the right of the
+# first, and a panel's origin is relative to the previous one's
+p <- tda_pl_panel(p, origin = c(170, 0) * 25.4 / 72, width = 50, height = 30)
+p <- tda_pl_axes(p, sc = 1)
+p <- tda_pl_function(p, "sin(x1)", range = c(0, 6), step = 0.1)
+p <- tda_pl_text(p, "Plot 2", at = c(4, 0.2))
+
+plot(p)
+```
+
+### 4.3 Combining Plot Files
+
+`dplot` puts PostScript files that already exist into a grid. The two
+coordinate systems of 4.2 are drawn again as files, and
+`tda_combine_ps()` places each of them twice on one page.
+
+```{r plot7, box = "plot7.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px"}
+p3 <- tda_ps(xlim = c(-2, 2), ylim = c(0, 1), width = 90, height = 50)
+p3 <- tda_pl_axes(p3, sc = c(1, 0.5), ic = c(2, 0))
+p3 <- tda_pl_frame(p3)
+p3 <- tda_pl_grid(p3, at_x = c(-1, 0, 1), at_y = 0.5)
+p3 <- tda_pl_labels(p3, "Linear Coordinate System", which = "title")
+p3 <- tda_pl_labels(p3, "X axis", which = "x")
+p3 <- tda_pl_labels(p3, "Y axis", which = "y", sc = 3)
+f3 <- tda_ps_file(p3)
+
+p4 <- tda_ps(xlim = c(1, 1000), ylim = c(2, 500), width = 90, height = 50,
+             log = "xy")
+p4 <- tda_pl_axes(p4, sc = c(10, 5), ic = c(10, 0))
+p4 <- tda_pl_frame(p4)
+p4 <- tda_pl_grid(p4, at_x = c(10, 100, 1000), at_y = c(10, 50, 250))
+p4 <- tda_pl_labels(p4, "Logarithmic Coordinate System", which = "title")
+p4 <- tda_pl_labels(p4, "X axis", which = "x")
+p4 <- tda_pl_labels(p4, "Y axis", which = "y", sc = 3)
+f4 <- tda_ps_file(p4)
+
+r <- tda_combine_ps(list(c(f3, f3), c(f4, f4)), width = 100, height = 60,
+                    file = "plot7.ps")
+
+tda_plot_ps(file.path(r$dir, "plot7.ps"))
+```
+
+### 4.4.1 Polygons and Scatterplots
+
+`plot8.cf` draws twenty points with `rd(-2, 2)`, sorts them, and takes
+`nd()` of each -- TDA's standard normal distribution function. Both
+are used here, so the points are the manual's.
+
+```{r plot8, box = "plot8.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px"}
+pdat <- tda_derive(data.frame(RDS = sort(tda_rd(20, -2, 2))),
+                   ND = "nd(RDS)")
+
+p <- tda_ps(pdat, xlim = c(-2, 2), ylim = c(0, 1), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = c(0.5, 1), ic = c(0, 10), fmt = c("4.1", NA))
+p <- tda_pl_frame(p)
+p <- tda_pl_points(p, "RDS", "ND", symbol = 4, size = 1.5, lty = 1)
+
+plot(p)
+```
+
+The nine line types, `lty = 1` to `9`.
+
+```{r plot9, box = "plot9.cf", fig.width = 3.94, fig.height = 2.66, out.width = "378px"}
+p <- tda_ps(xlim = c(-2, 2), ylim = c(0, 1), width = 100, height = 60)
+p <- tda_pl_frame(p)
+for (lt in 1:9)
+    p <- tda_pl_lines(p, x = c(-1.5, 0.5), y = c(lt, lt) / 10, lty = lt)
+for (lt in 1:9)
+    p <- tda_pl_text(p, sprintf("line type %d", lt), at = c(0.75, lt / 10))
+
+plot(p)
+```
+
+The seventeen marker symbols: `symbol =` in `tda_pl_text()` is
+`pltext`'s `s=`, and puts the marker at the text position.
+
+```{r plot10, box = "plot10.cf", fig.width = 3.94, fig.height = 2.66, out.width = "378px"}
+p <- tda_ps(xlim = c(-2, 2), ylim = c(0, 1), width = 100, height = 60)
+p <- tda_pl_frame(p)
+
+for (s in 9:1)
+    p <- tda_pl_text(p, sprintf("marker %d", s), at = c(-1.5, (10 - s) / 10),
+                     symbol = s)
+for (s in 17:10)
+    p <- tda_pl_text(p, sprintf("marker %d", s), at = c(0, (19 - s) / 10),
+                     symbol = s)
+
+plot(p)
+```
+
+### 4.4.3 Plotting Text
+
+TDA writes special characters as `@nnn` (the Symbol font) or `\\nnn`
+(Times-Roman, through its own re-encoding table); both round-trip, a
+literal UTF-8 character does not. `plots.cf` shows each escape and,
+beside it, the escape written out literally: `\\100` is the `@` sign
+and `\\\\` a backslash, so `\\100141` prints as `@141`, and `\\324`
+is the quotation mark around each. The R strings below carry one more
+level of backslashes than the command file, R's own.
+
+```{r plots, box = "plots.cf", fig.width = 4.72, fig.height = 2.66, out.width = "453px"}
+p <- tda_ps(xlim = c(0, 10), ylim = c(0, 5), width = 120, height = 60)
+p <- tda_pl_axes(p, sc = 1, ic = c(0, 2))
+p <- tda_pl_frame(p)
+p <- tda_pl_text(p, "@141 = 2.5 \\245 @142", at = c(1, 4))
+p <- tda_pl_text(p, "pltext (xy=1,4) = \\324\\100141 = 2.5 \\\\245 \\100142\\324",
+                 at = c(4, 4))
+p <- tda_pl_text(p, "@123 = @173 @161 @174 @161 @316 @121 @175", at = c(1, 2))
+p <- tda_pl_text(p, paste("pltext (xy=1,2) = \\324\\100123 = \\100173 \\100161",
+                          "\\100174 \\100161 \\100316 \\100121 \\100175\\324"),
+                 at = c(2.2, 0.9))
+p <- tda_pl_text(p, "Sm\\277rebr\\277d", at = c(1, 3))
+p <- tda_pl_text(p, "pltext (xy=1,3) = \\324Sm\\\\277rebr\\\\277d\\324", at = c(4, 3))
+
+p <- tda_pl_lines(p, x = c(3.5, 2.7), y = c(4.05, 4.05), a = "1,1")
+p <- tda_pl_lines(p, x = c(3.5, 2.7), y = c(3.05, 3.05), a = "1,1")
+p <- tda_pl_arc(p, x = c(1.5, 3.2, 3.2), y = c(1.5, 1.5, 2.1), curvature = -90)
+p <- tda_pl_lines(p, x = c(3.2, 2.9), y = c(2.1, 2.1), a = "1,1")
+p <- tda_pl_arc(p, x = c(1.5, 1.5), y = c(1.5, 0.95), curvature = -90)
+p <- tda_pl_lines(p, x = c(1.5, 2), y = c(0.95, 0.95))
+
+plot(p)
+```
+
+### 4.4.5 Step Functions
+
+`plot11.cf` is `plot8.cf` with `dir=1` on the `plot` command: the pen
+moves along the x axis first and then along y, and the twenty points on
+the normal distribution function become a step function. `dir` keeps
+its name in `tda_pl_lines()`.
+
+```{r plot11, box = "plot11.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px"}
+pdat <- tda_derive(data.frame(RDS = sort(tda_rd(20, -2, 2))),
+                   ND = "nd(RDS)")
+
+p <- tda_ps(pdat, xlim = c(-2, 2), ylim = c(0, 1), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = c(0.5, 1), ic = c(0, 10), fmt = c("4.1", NA))
+p <- tda_pl_frame(p)
+p <- tda_pl_lines(p, "RDS", "ND", dir = 1, gray = 0.9)
+
+plot(p)
+```
+
+### 4.4.6 General Functions
+
+Two normal densities, one of them filled, and a line at each mean. The
+expression string goes to TDA's parser, not R's, so it is written with
+TDA's functions -- here `ndf()`, the standard normal density.
+
+```{r plot12, box = "plot12.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px"}
+p <- tda_ps(xlim = c(-3, 3), ylim = c(0, 1), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = c(0.5, 1), ic = c(0, 10), fmt = c("4.1", NA))
+p <- tda_pl_frame(p)
+p <- tda_pl_function(p, "ndf((x1 - 1.5) / 0.5) / 0.5", range = c(0, 3),
+                     step = 0.05)
+p <- tda_pl_lines(p, x = c(1.5, 1.5), y = c(0, 0.798))
+p <- tda_pl_function(p, "ndf(x1)", range = c(-3, 3), step = 0.1, gray = 0.8)
+p <- tda_pl_lines(p, x = c(0, 0), y = c(0, 0.399))
+
+plot(p)
+```
+
+### 4.4.7 Arrows
+
+A polygon can end in an arrow: `a = xs, ys` gives the length and width
+of the head in millimetres. `plot13.cf` draws eight of them from one
+point, in two line types and with heads of growing size; `a` keeps its
+name in `tda_pl_lines()`.
+
+```{r plot13, box = "plot13.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px"}
+p <- tda_ps(xlim = c(0, 10), ylim = c(0, 6), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = 1)
+p <- tda_pl_frame(p)
+
+p <- tda_pl_lines(p, x = c(5, 8),   y = c(3, 3),   a = "1,1")
+p <- tda_pl_lines(p, x = c(5, 7),   y = c(3, 5),   a = "1.5,1.5")
+p <- tda_pl_lines(p, x = c(5, 5),   y = c(3, 5.5), a = "2,2")
+p <- tda_pl_lines(p, x = c(5, 3),   y = c(3, 5),   a = "2.5,2.5")
+p <- tda_pl_lines(p, x = c(5, 2),   y = c(3, 3),   a = "1,1",   lty = 5)
+p <- tda_pl_lines(p, x = c(5, 3),   y = c(3, 1),   a = "1.5,1.5", lty = 5)
+p <- tda_pl_lines(p, x = c(5, 5),   y = c(3, 0.5), a = "2,2",   lty = 5)
+p <- tda_pl_lines(p, x = c(5, 7),   y = c(3, 1),   a = "2.5,2.5", lty = 5)
+
+p <- tda_pl_text(p, "[1,1]", at = c(8.3, 3))
+p <- tda_pl_text(p, "[1.5,1.5]", at = c(7.3, 5))
+p <- tda_pl_text(p, "[2,2]", at = c(5.3, 5.6))
+p <- tda_pl_text(p, "[2.5,2.5]", at = c(1.6, 5))
+
+plot(p)
+```
+
+### 4.4.8 Circles, Arcs, Ellipses
+
+`ploto`, which is `tda_pl_circle()`, draws a circle or, with `angles =`,
+an arc of one; `plotk`, which is `tda_pl_arc()`, connects points by
+circular arcs that can carry an arrowhead. The manual's Figure 3 labels
+one of them with the Symbol font's alpha, which TDA writes as `@141`;
+the same escape is used here (see 4.4.3).
+
+```{r plot14, box = "plot14.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px"}
+p <- tda_ps(xlim = c(0, 10), ylim = c(0, 6), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = 1)
+p <- tda_pl_frame(p)
+
+p <- tda_pl_lines(p, x = c(1, 4), y = c(2, 5), lty = 5)
+p <- tda_pl_arc(p, x = c(1, 4), y = c(2, 5), curvature = 45, arrow = c(1, 1))
+p <- tda_pl_lines(p, x = c(1, 1), y = c(2, 4), lty = 5)
+p <- tda_pl_circle(p, at = c(1, 2), r = 10, angles = c(45, 90))
+p <- tda_pl_text(p, "plotk(a=1,1,sc=45) = a,b,c,d;", at = c(0.5, 1))
+p <- tda_pl_text(p, "(a,b)", at = c(0.7, 1.6))
+p <- tda_pl_text(p, "(c,d)", at = c(4.2, 5.1))
+p <- tda_pl_circle(p, at = c(1, 2), r = 0.8, angles = c(45, 90), lty = 2)
+p <- tda_pl_text(p, "@141", at = c(1.15, 2.4))
+
+p <- tda_pl_arc(p, x = c(6, 6, 7), y = c(2, 4, 5), curvature = 45)
+p <- tda_pl_arc(p, x = c(9, 9, 8), y = c(2, 4, 5), curvature = -45)
+p <- tda_pl_text(p, "plotk(sc=45) = 6,2,6,4,7,5;", at = c(5.5, 1.3))
+p <- tda_pl_text(p, "plotk(sc=-45) = 9,2,9,4,8,5;", at = c(5.5, 0.8))
+p <- tda_pl_lines(p, x = c(5.3, 5.3, 5.7), y = c(1.4, 2.2, 2.5), a = "1,1")
+p <- tda_pl_lines(p, x = c(9.6, 9.6, 9.2), y = c(1.2, 2.2, 2.5), a = "1,1")
+
+plot(p)
+```
+
+A shaded circle and ellipse, dimension lines, and labelled arrows.
+
+```{r plot15, box = "plot15.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px"}
+p <- tda_ps(xlim = c(0, 10), ylim = c(0, 2), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = 1)
+p <- tda_pl_frame(p)
+
+p <- tda_pl_circle(p, at = c(2, 1), r = 1, gray = 0.9)
+p <- tda_pl_ellipse(p, at = c(7, 1), axes = c(2, 0.5), gray = 0.9)
+p <- tda_pl_lines(p, x = c(0, 7), y = c(0.5, 0.5), lty = 5)
+p <- tda_pl_lines(p, x = c(0, 7), y = c(1.5, 1.5), lty = 5)
+p <- tda_pl_lines(p, x = c(1, 1), y = c(0, 1), lty = 5)
+p <- tda_pl_lines(p, x = c(3, 3), y = c(0, 1), lty = 5)
+p <- tda_pl_lines(p, x = c(5, 5), y = c(0, 1), lty = 5)
+p <- tda_pl_lines(p, x = c(9, 9), y = c(0, 1), lty = 5)
+p <- tda_pl_text(p, "ploto (xy=2,1,gs=0.9) = 1;", at = c(1.1, 1.7))
+p <- tda_pl_text(p, "plote (xy=7,1,gs=0.9) = 2,0.5;", at = c(5.1, 1.7))
+p <- tda_pl_lines(p, x = c(2, 3), y = c(1, 1), a = "1,1")
+p <- tda_pl_lines(p, x = c(7, 9), y = c(1, 1), a = "1,1")
+p <- tda_pl_lines(p, x = c(7, 7), y = c(1, 1.5), a = "1,1")
+p <- tda_pl_text(p, "1", at = c(2.3, 0.85))
+p <- tda_pl_text(p, "2", at = c(7.8, 0.85))
+p <- tda_pl_text(p, "0.5", at = c(7.2, 1.2))
+
+plot(p)
+```
+
+Three ellipses at one centre, two of them rotated: `rotate =` in
+`tda_pl_ellipse()` is the third value on `plote`'s right-hand side, the
+angle in degrees.
+
+```{r plot16, box = "plot16.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px"}
+p <- tda_ps(xlim = c(0, 10), ylim = c(0, 2), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = 1)
+
+p <- tda_pl_ellipse(p, at = c(4, 1), axes = c(3, 0.3), gray = 0.9)
+p <- tda_pl_ellipse(p, at = c(4, 1), axes = c(3, 0.3), rotate = 45)
+p <- tda_pl_ellipse(p, at = c(4, 1), axes = c(3, 0.3), rotate = -45)
+
+p <- tda_pl_text(p, "plote(xy=4,1,gs=0.9) = 3,0.3;", at = c(7.3, 1.0))
+p <- tda_pl_text(p, "plote(xy=4,1) = 3,0.3,-45;", at = c(7.3, 0.5))
+p <- tda_pl_text(p, "plote(xy=4,1) = 3,0.3,45;", at = c(7.3, 1.5))
+p <- tda_pl_rect(p, x = c(11.5, 11.5), y = c(0, 0))
+
+plot(p)
+```
+
+### 4.4.9 Convex Hull
+
+`plot17.cf` draws one hundred points from `X = rd, Y = rd` and puts a
+convex hull around them. The draws come from TDA's generator at its
+default seed, so these are the manual's points: the PostScript this
+writes carries the same drawing operations, in the same order, as TDA's
+own run of the command file.
+
+```{r plot17, box = "plot17.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+gen <- tda_rng()
+pdat <- data.frame(X = numeric(100), Y = numeric(100))
+for (i in 1:100) {
+    pdat$X[i] <- gen$rd()
+    pdat$Y[i] <- gen$rd()
+}
+p <- tda_ps(pdat, xlim = c(-0.5, 1.5), ylim = c(-0.5, 1.5),
+            width = 90, height = 50)
+p <- tda_pl_axes(p, sc = 0.5)
+p <- tda_pl_frame(p)
+plot(tda_pl_hull(p, "X", "Y", gray = 0.95, symbol = 5, size = 0.7))
+```
+
+`plot18.cf` smooths the same hull. `smooth` is `plotch`'s `ns=`, the
+number of intervals for its Akima smoothing, and `expand` is `ic=`, a
+margin in millimetres: each point of the smoothed outline is pushed away
+from the hull's centroid in proportion to its distance from it, so the
+outline grows without changing shape.
+
+```{r plot18, box = "plot18.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+plot(tda_pl_hull(p, "X", "Y", gray = 0.95, symbol = 5, size = 0.7,
+                 smooth = 10, expand = 2))
+```
+
+### 4.4.10 Smoothing Polygons
+
+`plots` draws an Akima spline through the points of two variables, and
+`plotsp` the same through literal coordinates; in the C both reach the
+same function, as `plot` and `plotp` do. `tda_pl_smooth()` is `plots`,
+and the points are given as a data frame.
+
+```{r plot19, box = "plot19.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px"}
+pdat <- data.frame(x = c(1, 2, 3, 4, 5, 6), y = c(1, 2.5, 2, 2.5, 2, 1))
+
+p <- tda_ps(pdat, xlim = c(0, 7), ylim = c(0, 3), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = 1)
+p <- tda_pl_frame(p)
+p <- tda_pl_smooth(p, "x", "y", ns = 10, gray = 0.9)
+p <- tda_pl_points(p, "x", "y", symbol = 5)
+
+plot(p)
+```
+
+`plot20.cf` closes the same curve: `sc = 1`, which keeps its name.
+
+```{r plot20, box = "plot20.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px"}
+pdat <- data.frame(x = c(1, 2, 3, 4, 5, 6), y = c(1, 2.5, 2, 2.5, 2, 1))
+
+p <- tda_ps(pdat, xlim = c(0, 7), ylim = c(0, 3), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = 1)
+p <- tda_pl_frame(p)
+p <- tda_pl_smooth(p, "x", "y", ns = 10, gray = 0.9, sc = 1)
+p <- tda_pl_points(p, "x", "y", symbol = 5)
+
+plot(p)
+```
+
+### 4.4.11 Contour Plots
+
+`plotc` draws contour lines of a function of two variables, `x1` and
+`x2` in TDA's expression syntax, over a grid of the given resolution;
+`plot21.cf`'s function is the sum of two normal densities.
+
+```{r plot21, box = "plot21.cf", fig.width = 2.76, fig.height = 3.06, out.width = "265px"}
+p <- tda_ps(xlim = c(-2, 2), ylim = c(-2, 2), width = 70, height = 70)
+p <- tda_pl_axes(p, sc = 1)
+p <- tda_pl_frame(p)
+p <- tda_pl_contour(p,
+    "exp(-((x1+1)^2+(x2+1)^2)/2)/(2*pi)+exp(-((x1-1)^2+(x2-1)^2)/2)/(2*pi)",
+    levels = c(0.01, 0.05, 0.1, 0.125, 0.15), resolution = c(50, 50),
+    gray = 0.9)
+
+plot(p)
+```
+
+## 5 Mathematical Procedures
+
+### 5.1.2 Matrices
+
+TDA has its matrix language, and a fair part of it exists because
+TDA has no other way to get a matrix into a session. R does, so those
+commands have no wrapper and need none:
+
+| TDA | R |
+|---|---|
+| `mdef` (a literal matrix) | `matrix()` |
+| `mdefc` (constant) | `matrix(d, m, n)` |
+| `mdefi` (rectangular identity) | `diag(1, m, n)` |
+| `mdeff` (from a file) | `as.matrix(read.table(...))` |
+| `mpr` (print an expression) | printing the return value |
+| `mplog`, `mppar`, `mpcov`, `mpgrad` | `logLik()`, `$estimates`, `vcov()` |
+
+Two do compute something and do have wrappers: `mdefg`, a graph's
+adjacency matrix, is `tda_mdefg()`, and `mbrr` is `tda_brr()`.
+`mdefb` extracts a block of the data matrix and is reached through the
+`commands=` argument of `tda_dblock()`. Everything else in 5.1.4 takes
+and returns a plain R matrix.
+
+The manual's matrix chapter prints with `mfmt = 13.10`; these boxes
+print with ten digits too, so a number can be read off against it.
+
+### 5.1.4.1 Elementary Matrix Commands
+
+```{r m1, box = "Shape, product, transpose, trace"}
+op <- options(digits = 10)
+A <- matrix(1:6, 3, 2)
+c(tda_mnrow(A), tda_mncol(A))
+tda_mmul(A, tda_mtransp(A))
+tda_mtrace(tda_mcross(A))
+```
+
+`mcross` is `t(A) %*% A`, and `mdiag`, `mdrow`, `mdcol` and `mdiagd`
+make or take diagonals.
+
+```{r m2, box = "Diagonals"}
+tda_mdiag(1:4)
+tda_mdrow(A)
+tda_mdcol(A)
+tda_mdiagd(A)
+```
+
+`msqrtd` and `msqrti` are the elementwise square root and its inverse.
+
+```{r m3, box = "Elementwise square roots"}
+tda_msqrtd(matrix(1:4, 2, 2))
+tda_msqrti(matrix(1:4, 2, 2))
+```
+
+Concatenation, row and column sums, selection and trimming.
+
+```{r m4, box = "Concatenating, summing, selecting, trimming"}
+tda_mcath(A, A)
+tda_mcatv(A, A)
+tda_mrsum(A)
+tda_mcsum(A)
+tda_msrow(A, 1:2)
+tda_mscol(A, 1)
+tda_mtrim(A, 1)
+tda_mtrim(A, leading_rows = 1)
+```
+
+Vectorisation, the Kronecker product, and the permutation commands.
+`mpinv` inverts a permutation rather than a matrix.
+
+```{r m5, box = "Vectorising, Kronecker product, permutations"}
+tda_mcvec(A)
+tda_mrvec(A)
+tda_mkp(A, A)
+tda_mprow(A, c(2, 1, 3))
+tda_mpcol(A, c(2, 1))
+tda_mpsym(matrix(1:4, 2, 2), c(2, 1))
+tda_mpinv(c(4, 2, 1, 3))
+```
+
+`mag` solves a system by Gaussian elimination, and reports what it found
+when there is no solution or more than one.
+
+```{r m6, box = "Gaussian elimination"}
+G <- matrix(c(1, 2, 3, 5, 6, 7, 1, 2, 1), 3, 3, byrow = TRUE)
+tda_mag(G, c(1, 0, 1), c(1, 2, 3))
+tda_mag(G, c(1, 0, 1), c(5, 4, 4))
+```
+
+### 5.1.4.2 Sorting and Ranking
+
+`msort` sorts the rows of a matrix by a column, `msort1` a single
+column, and `mrank` ranks.
+
+```{r m7, box = "msort, msort1, mrank"}
+tda_msort(matrix(rev(A), 3, 2), 1)
+tda_msort1(matrix(c(1, 2, 1, 2, 1, 3, 1, 4), ncol = 2), 2)
+tda_mrank(matrix(c(1, 2, 1, 2, 1, 3, 1, 4), 2), 1)
+```
+
+### 5.1.4.3 Standardization and Scaling
+
+```{r m8, box = "mcent, mstand, mscal1"}
+tda_mcent(A)
+tda_mstand(A)
+tda_mscal1(A)
+```
+
+### 5.1.4.4 Matrix Norms
+
+```{r m9, box = "The three norms"}
+c(tda_mnorm(A), tda_mnorm1(A), tda_mnorm2(A))
+```
+
+### 5.1.4.5 Inverse Matrices
+
+`minvd` and `minvs` invert a general and a symmetric matrix. `mginv` is
+the generalized inverse, and what makes it one is that `A B A` is `A`
+again -- which is the manual's check.
+
+```{r m10, box = "minvd, minvs"}
+A
+tda_minvd(A)
+diag(1:2)
+tda_minvs(diag(1:2))
+```
+
+```{r m11, box = "A generalized inverse, and the identity that defines it"}
+B0 <- matrix(c(1, 5, 0, 2, 6, 0, 3, 7, 0, 4, 8, 0), 4, 3, byrow = TRUE)
+Bg <- tda_mginv(B0)
+Bg
+tda_mmul(tda_mmul(B0, Bg), B0)
+```
+
+### 5.1.4.6 Cholesky Decomposition
+
+```{r m12, box = "mchol"}
+tda_mchol(diag(1:4))
+```
+
+### 5.1.4.7 Least Squares Regression
+
+`mls` takes the design and the response in one matrix, the response
+last.
+
+```{r m13, box = "mls"}
+mlsA <- matrix(c(1, 2, 3, 4, 7, 11, -1, 1, 0, 5, 6, 11), 4, 3, byrow = TRUE)
+mlsA   # the design and the response in one matrix, as the manual shows
+tda_mls(mlsA)
+```
+
+### 5.1.4.8 Linear Equations
+
+```{r m14, box = "mlse"}
+mlseA <- matrix(c(-0.4744, -0.4993, -0.7250, -0.8615, 0.5840, -0.7947,
+                  0.1652, 0.0, -0.6587, -0.3450, 0.6687, 0.0), 3, 4,
+                byrow = TRUE)
+mlseA   # the manual's box prints the input too
+tda_mlse(mlseA)
+```
+
+### 5.1.4.9 Linear Inequalities
+
+```{r m15, box = "mlsi"}
+mlsiA <- matrix(c(1, 2, 3, 5, 6, 11, -1, -2, -3, 0, 1, 1), 4, 3, byrow = TRUE)
+mlsiA   # the manual's box prints the input too
+tda_mlsi(mlsiA)
+```
+
+### 5.1.4.11 Eigenvalues and Eigenvectors
+
+`mev` is the general case, which may have complex eigenvalues, and
+`mevs` the symmetric one. The manual's `mev` example is a defective
+problem -- 5.236 and 0.764 are each a double eigenvalue -- so the digits
+beyond the seventh, and which two vectors span each repeated
+eigenvalue's space, depend on the machine's arithmetic; the manual's
+box was computed on a different one and differs there, not in the
+eigenvalues themselves.
+
+```{r m16, box = "mev and mevs"}
+tda_mev(matrix(c(6, -3, 4, 1, 4, 2, 4, 0, 4, -2, 3, 1, 4, 2, 3, 1),
+               4, 4, byrow = TRUE))
+tda_mevs(matrix(c(1, 1, 1, 1, 2, 0, 1, 0, 10), 3, 3, byrow = TRUE))
+```
+
+### 5.1.4.12 Singular Value Decomposition
+
+On a cross-product matrix the singular values are the eigenvalues, which
+is the manual's way of showing the two agree. `msvd1` prints as in the
+manual's box; `mevs` returns its eigenvalues in descending order where
+the manual's box (2002) shows them ascending -- TDA 6.4p's `evectf()`
+sorts descending, so that is the program's answer, not the manual's.
+
+```{r m17, box = "msvd1 against mevs"}
+A <- matrix(c(1, 0, 0, 5, 7, 0, 1, 0, 1), 3, 3, byrow = TRUE)
+S <- tda_mcross(A)
+S            # the cross-product matrix the manual's box prints
+tda_msvd1(S)
+tda_mevs(S)
+```
+
+### 5.1.4.13 Linear Programming
+
+The manual's example is `mlp(T,X,Y,1)`: maximise x1 subject to x1 <= 1
+and one equality, x2 = 1, which is the last row of T. That is
+`tda_mlp1()`, with the equality given as its row.
+
+```{r m18, box = "mlp with one equality row"}
+# the manual writes the whole problem as one matrix T: the objective in
+# the first row, then the inequality, then the equality
+Tlp <- matrix(c(1, 0, 0,
+                1, 0, 1,
+                0, 1, 1), 3, 3, byrow = TRUE)
+Tlp
+tda_mlp1(objective = c(1, 0), constraints = matrix(c(1, 0), 1), bounds = 1,
+         equalities = matrix(c(0, 1), 1), equalities_bounds = 1)
+```
+
+### 5.1.4.14 Some Further Commands
+
+`mproc` is a Procrustes rotation: the rotation, scaling and translation
+that brings one configuration onto another. The two squares below differ
+by a factor of two, and that is what it recovers.
+
+```{r m19, box = "mproc, mnum"}
+X <- matrix(c(0, 0, 1, 0, 1, 1, 0, 1), 4, 2, byrow = TRUE)
+Y <- matrix(c(0, 0, 2, 0, 2, 2, 0, 2), 4, 2, byrow = TRUE)
+tda_mproc(X, Y)
+tda_mnum(3.14159, 6, 3)
+```
+
+```{r m20, include = FALSE}
+options(op)
+```
+
+### 5.2.2 Evaluating Expressions
+
+`tda_evalf()` evaluates an expression in TDA's language, with the
+variables given as options.
+
+```{r e1, box = "evalf"}
+tda_evalf("sin(x) + cos(x)", options = list(x = 1))$value
+sin(1) + cos(1)
+```
+
+### 5.2.4 Random Numbers
+
+`tda_rng()` is TDA's generator -- multiplicative congruential, with a
+fixed seed -- so a sequence drawn from it is the sequence TDA drew.
+`rd()` is uniform, `rdn()` normal. `tda_runif()` is the same generator
+as a plain vector.
+
+```{r e2, box = "TDA's random numbers"}
+g <- tda_rng()
+c(g$rd(), g$rd(a = 0, b = 10), g$rdn())
+tda_runif(5)
+```
+
+### 5.2.6.6 Counting Changes
+
+The operators of the expression language that have no R counterpart
+are reached with `tda_derive()`: it runs `nvar` on a data frame with new
+variables given as TDA expressions and returns the frame with them
+added. The manual's example for `change` and `cntch` is a small
+sequence of states per person, in record mode and then in block mode
+(`block = "ID"`, TDA's `dblock=`), where the counts are per person.
+
+```{r change, box = "change and cntch, record mode and block mode"}
+seqs <- data.frame(ID = c(1, 1, 1, 2, 2, 3, 3, 3, 3, 3, 3),
+                   S  = c(1, 3, 2, 2, 3, 3, 1, 2, 2, 2, 1),
+                   T  = c(10, 15, 20, 12, 18, 8, 12, 15, 17, 18, 19))
+# the manual's five: whether the state changed, how many changes in
+# all, the running count, how far back the last change was, and the time
+# at that change
+tda_derive(seqs, CH = "change(S)", CNT = "cntch(S)", CCNT = "ccntch(S)",
+           LAGCH = "lagch(S)", LAGT = "lag(T,-lagch(S))")
+tda_derive(seqs, CH = "change(S)", CNT = "cntch(S)", CCNT = "ccntch(S)",
+           LAGCH = "lagch(S)", LAGT = "lag(T,-lagch(S))", block = "ID")
+```
+
+### 5.2.6.7 Aggregates
+
+The `g` operators aggregate within blocks: `gcnt` counts the block,
+`grec` numbers the record within it, `gmean` and `gstd` average a
+variable over it.
+
+```{r aggregates, box = "gcnt, grec, gmean, gstd"}
+agg <- data.frame(V = c(1, 4, 5, 3, 6, 2), A = c(1, 1, 1, 2, 7, 7))
+# the manual's five: the block's size, the record's number in it,
+# the block's number, and whether the record is its first or last
+tda_derive(agg, GCNT = "gcnt(A)", GREC = "grec(A)", GSN = "gsn(A)",
+           GFIRST = "gfirst(A)", GLAST = "glast(A)")
+
+# gmean and gstd average a variable over the block
+tda_derive(agg, GM = "gmean(V,A)", GS = "gstd(V,A)", block = "A")
+```
+
+### 5.3.3 Evaluating Functions
+
+`tda_evalf()` evaluates a function; `derivatives = 2` is `evalf2`, the
+value with the gradient and the Hessian, which TDA computes
+analytically -- the manual's `deriv1.cf`.
+
+```{r deriv, box = "evalf2: a function, its gradient and Hessian (deriv1.cf)"}
+tda_evalf("x * y^2", options = list(x = 2, y = 5), derivatives = 2)
+```
+
+### 5.4.1 Commands for Numerical Integration
+
+`int1.cf` integrates sqrt(x) over 0..1 with the QNG method, which
+should give 2/3; the manual's box shows the approximation and the
+number of function calls.
+
+```{r e3, box = "integrate: int1.cf"}
+int1 <- tda_integrate("sqrt(x)", from = 0, to = 1)
+int1$value
+# the rest of what TDA reports: the rule, the relative error it worked
+# to, and how many times it called the function
+c(method = int1$method, rel_error = int1$rel_error, calls = int1$calls)
+```
+
+### 5.4.2 Operators for Numerical Integration
+
+`int(a, b, f)` is the integral as an operator inside an expression, so
+its limits may be expressions themselves; `int2.cf` and `int3.cf`.
+
+```{r intop, box = "int() inside an expression (int2.cf, int3.cf)"}
+tda_evalf("int(0, 1, sqrt(t))")$value
+tda_evalf("int(x, y * z, 2 * z^2)", options = list(x = 0, y = 2, z = 1.5))$value
+```
+
+### 5.5.1 Moving Averages
+
+The manual's `ds3.cf` smooths Y = 1, 3, 7, 6, 6 three times with the
+weights `gss = 0.5, 0.25`: with the copy-on end-value rule, with
+`opt = 2` (the end values repeated), and with `opt = 2` applied twice
+(the repeat factor `r=2`). The three output files are the manual's Box 3.
+
+```{r s1, box = "sma: the three smoothings of ds3.cf"}
+y <- c(1, 3, 7, 6, 6)
+tda_sma(y, weights = c(0.5, 0.25))$table
+tda_sma(y, weights = c(0.5, 0.25), options = list(opt = 2))$table
+tda_sma(y, weights = c(0.5, 0.25), options = list(opt = 2, r = 2))$table
+```
+
+### 5.5.2 Running Median Smoothers
+
+A running median is resistant to the single wild value a moving average
+would spread over its whole window.
+
+The manual's `ds4.cf` draws 20 uniform numbers with TDA's generator and
+smooths them three ways with the `smd` operator inside `nvar` --
+`3R`, `4253Ht` and `3RSSHt` -- then plots the three; `tda_derive()`
+is the operator form, `tda_smd()` the command.
+
+```{r s2, box = "smd: the three smoothers of ds4.cf"}
+gen <- tda_rng()
+ds4 <- data.frame(C = 1:20, A = sapply(1:20, function(i) gen$rd()))
+ds4 <- tda_derive(ds4, M1 = "smd[sm=[3R]](A)", M2 = "smd[sm=[4253Ht]](A)",
+                  M3 = "smd[sm=[3RSSHt]](A)")
+head(ds4)
+```
+
+```{r s2plot, box = "smd: ds4.cf, drawn", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+p <- tda_ps(ds4, width = 90, height = 50, xlim = c(0, 21), ylim = c(0, 1))
+p <- tda_pl(p, "plxa", sc = 1)
+p <- tda_pl(p, "plya", sc = 1, ic = 10)
+p <- tda_pl_points(p, "C", "M1", symbol = 5, size = 1)  # ds4.cf marks M1
+p <- tda_pl_lines(p, "C", "M1")
+p <- tda_pl_lines(p, "C", "M2", lty = 5)
+plot(tda_pl_lines(p, "C", "M3", lty = 8))
+```
+
+### 5.5.3 Smoothing Splines
+
+`sig=` is the smoothing parameter and `deg=` the degree; the derivatives
+come back alongside the fit.
+
+The manual's `ds5.cf` is a sine curve with uniform noise, 100 points,
+smoothed with `sig = 1`, and plotted against the curve.
+
+```{r s3, box = "spl: ds5.cf"}
+gen <- tda_rng()
+ds5 <- data.frame(X = (1:100) / 10)
+ds5$Z <- sin(ds5$X)
+ds5$Y <- ds5$Z + sapply(1:100, function(i) gen$rd(a = -0.2, b = 0.2))
+sp5 <- tda_spl(ds5$X, ds5$Y, sig = 1)
+head(sp5$table)
+```
+
+`ds5.cf` then draws the data, the true sine and the smoother's fitted
+values.
+
+```{r s3plot, box = "spl: ds5.cf, drawn", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+p <- tda_ps(ds5, width = 90, height = 50, xlim = c(0, 10), ylim = c(-1.5, 1.5))
+p <- tda_pl(p, "plxa", sc = 1)
+p <- tda_pl(p, "plya", sc = 0.5, ic = 5)
+p <- tda_pl_points(p, "X", "Y", symbol = 5, size = 0.5)
+p <- tda_pl_lines(p, "X", "Z", lty = 5)          # the sine the noise hides
+plot(tda_pl_lines(p, x = sp5$table$x, y = sp5$table$fitted))
+```
+
+### 5.6.1 The fmin Command
+
+The manual's `fmin1.cf` minimises (x - 5)^2 + (y + 6)^2 from the
+starting values 0, 0; its box shows convergence in two iterations to
+x = 5, y = -6.
+
+```{r s4, box = "fmin: fmin1.cf"}
+tda_minimize("(x - 5)^2 + (y + 6)^2")
+```
+
+`fmin2.cf` minimises a function of the data, the sum of (x - A)^2 over
+A = 1, ..., 101 -- `fmin` with `v = A`. With data, `fmin` is
+`tda_freg()`'s nonlinear least squares; the minimum is at x = 51.
+
+```{r s5, box = "fmin with data: fmin2.cf"}
+tda_freg({ fn = (x - A)^2 }, data = data.frame(A = 1:101))
+```
+
+## 6 Statistical Procedures
+
+### 6.2.1 Mean and Range of Variables
+
+`tda_dstat()` is the `dstat` command: mean, standard deviation and range
+for every variable it is given. The data files of chapter 6 are read
+straight from the package.
+
+```{r dstat, box = "dstat on ds1.dat"}
+ds1 <- read.table(ex("ds1.dat"), col.names = c("X1", "X2", "X3", "X4"))
+tda_dstat(ds1)
+```
+
+### 6.2.2 Empirical Distribution Functions
+
+`tda_gdf()` estimates the distribution function, and `what=` asks for the
+survivor function or the expected values instead. The manual's
+`gdf1.dat` holds three small examples told apart by its first column
+(`SEL`, TDA's `tsel`): exact observations (Box 3), right-censored ones
+with `cen=` (Boxes 4 and 5), and a two-dimensional one with `grp=`.
+
+```{r gdf, box = "gdf: exact data (the manual's Box 3)"}
+gdf1 <- read.table(ex("gdf1.dat"))
+names(gdf1) <- c("SEL", "ID", "L1", "YL", "DELTA")
+ex0 <- gdf1[gdf1$SEL == 0, ]
+tda_gdf(~YL, data = ex0)$table
+tda_gdf(~YL, data = ex0, what = "survivor")$table
+tda_gdf(~YL, data = ex0, what = "expected_values")$table
+```
+
+TDA's `cen=` variable, `DELTA` in the manual, is 1 for an exact
+observation; `censor=` here is the other way round, 1 (or `TRUE`) for a
+censored one, so the manual's indicator is passed negated.
+
+```{r gdf2, box = "gdf: right censored data (Boxes 4 and 5)"}
+ex1 <- gdf1[gdf1$SEL == 1, ]
+tda_gdf(~YL, data = ex1, censor = ex1$DELTA == 0)$table
+tda_gdf(~YL, data = ex1, censor = ex1$DELTA == 0, what = "expected_values")$table
+```
+
+The third block of `gdf1.dat` is the two-dimensional case: four units,
+each observed in two dimensions. `id=` and `dimension=` are TDA's
+`grp=`, and `method=` its `opt=` -- `"joint1"` for the joint
+distribution over the observed points.
+
+```{r gdf3, box = "gdf: the joint distribution (Box 6)"}
+ex2 <- gdf1[gdf1$SEL == 2, ]
+tda_gdf(~YL, data = ex2, id = ex2$ID, dimension = ex2$L1,
+        method = "joint1")$table
+tda_gdf(~YL, data = ex2, id = ex2$ID, dimension = ex2$L1,
+        method = "joint1", what = "survivor")$table
+```
+
+With censoring the same estimator needs a grid: `n_boxes=` is TDA's
+`n=`, the number of boxes per dimension, and `sc=` the scaling. The
+data are Pruitt's, the manual's Box 8.
+
+```{r gdf4, box = "gdf: joint distribution, censored (Boxes 9 and 10)"}
+pruitt <- read.table(ex("gdf2.dat"))
+names(pruitt) <- c("ID", "L1", "Y", "CEN")
+tda_gdf(~Y, data = pruitt, censor = pruitt$CEN == 0, id = pruitt$ID,
+        dimension = pruitt$L1, method = "joint1",
+        n_boxes = 64, options = list(sc = 0.5))$table
+tda_gdf(~Y, data = pruitt, censor = pruitt$CEN == 0, id = pruitt$ID,
+        dimension = pruitt$L1, method = "joint1", n_boxes = 64,
+        options = list(sc = 0.5), what = "expected_values")$table
+```
+
+The manual's Box 12 sets the two joint methods against each other on a
+hundred generated units. `tda_rng()` is TDA's generator, so the data
+come out the same here as in `gdf3.cf`.
+
+Both methods reproduce the box: 37.3177, 38.0035 and 46.2348 for method
+2, and 37.6603, 37.6603 and 46.2104 for method 1.
+
+A few of the later rows differ in the last digit or two -- 103.47752
+here against the manual's 103.4777. `gdf3.cf` writes its generated data
+to a file and `gdf4.cf` reads it back at `[10.6]`, so its input is
+rounded to six decimals; this passes R's doubles straight to TDA. The
+deviance in 6.15.2.1 differs for the same reason.
+
+```{r gdf5, box = "gdf: the two joint methods (Box 12)"}
+gen <- tda_rng()
+X <- 1:100
+Y <- X + sapply(X, function(i) gen$rd(a = -10, b = 10))
+RD1 <- sapply(X, function(i) gen$rd())
+RD2 <- sapply(X, function(i) gen$rd(a = 10, b = 90))
+IS <- RD1 <= 0.2 & Y > RD2
+two <- rbind(data.frame(ID = X, L1 = 1L, Y1 = as.numeric(X), CEN = 1L),
+             data.frame(ID = X, L1 = 2L, Y1 = ifelse(IS, RD2, Y),
+                        CEN = as.integer(!IS)))
+ev <- function(m)
+    tda_gdf(~Y1, data = two, censor = two$CEN == 0, id = two$ID,
+            dimension = two$L1, method = m, what = "expected_values")$table
+j1 <- ev("joint1")
+j2 <- ev("joint2")
+
+# the box lists every censored unit, the thirteen whose second
+# dimension had to be estimated
+i <- which(j1$exact2 == 0)
+data.frame(j1[i, c("observed1", "observed2", "exact1", "exact2")],
+           joint1 = j1$expected2[i], joint2 = j2$expected2[i],
+           row.names = NULL)
+```
+
+`gdf3.cf` does not run to completion through the real TDA binary, so it has no box here.
+
+### 6.2.3 Quantiles
+
+```{r quant, box = "quant"}
+tda_quant(cars)
+```
+
+### 6.2.4 Frequency Tables
+
+`tda_freq()` is the one-way table, `tda_freq2()` the two-way one.
+
+```{r freq, box = "freq and freq2"}
+tda_freq(ds1[c("X1", "X2", "X3")])
+tda_freq2(ds1$X2, ds1$X1)
+```
+
+### 6.2.5 Aggregated Tables
+
+`tda_atab()` groups a variable into classes and aggregates a second one
+over them.
+
+```{r atab, box = "atab"}
+tda_atab(ds1[c("X3", "X4")], breaks = seq(-10, 10, 0.5))
+```
+
+### 6.2.6 Covariance and Correlation
+
+```{r corr, box = "corr"}
+tda_corr(ds1)
+```
+
+### 6.2.7 Contingency Measures
+
+The same two-way table as in 6.2.4, with `contingency = TRUE` adding the
+measures of association.
+
+```{r cont, box = "freq2 with contingency measures"}
+tda_freq2(ds1$X2, ds1$X1, contingency = TRUE)
+```
+
+### 6.2.8 Scatterplots
+
+The points come from TDA's random number generator, `tda_rng()`, so
+that the picture is the manual's and not one of R's.
+
+```{r scatterdata, box = "Points from TDA's generator"}
+gen <- tda_rng()
+n <- 200
+X <- Y <- numeric(n)
+for (i in seq_len(n)) {
+    X[i] <- gen$rd(a = 0, b = 3)
+    Y[i] <- sin(X[i]) + gen$rd()
+}
+df <- data.frame(x = X, y = Y)
+```
+
+```{r scatter, box = "A scatterplot", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+p <- tda_ps(data = df, width = 90, height = 50, xlim = c(0, 3), ylim = c(-1, 2.5))
+p <- tda_pl_scatter(p, "x", "y", symbol = 5, size = 1)
+p <- tda_pl_axes(p, sc = c(1), ic = c(10, 0))
+plot(p)
+```
+
+**Example 1** A sunflower plot bins the same points and draws a petal per
+point in the bin, which is what to reach for when the points overlap.
+
+```{r sunflower, box = "A sunflower plot", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+p <- tda_ps(data = df, width = 90, height = 50, xlim = c(0, 3), ylim = c(-1, 2.5))
+p <- tda_pl_scatter(p, "x", "y", type = "sunflower", grid = c(15, 10), size = 3)
+p <- tda_pl_axes(p, sc = c(1), ic = c(10, 1))
+plot(p)
+```
+
+**Example 2** `type = "lowess"` adds the smooth.
+
+```{r lowess, box = "A scatterplot with a lowess smooth", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+p <- tda_ps(data = df, width = 90, height = 50, xlim = c(0, 3), ylim = c(-1, 2.5))
+p <- tda_pl_scatter(p, "x", "y", symbol = 5, size = 1, type = "lowess")
+p <- tda_pl(p, "plxa", sc = 1, ic = 10)
+p <- tda_pl(p, "plya", sc = 1, ic = 0)
+plot(p)
+```
+### 6.2.9 Histogram Plots
+
+```{r hist, box = "A histogram (dh1.cf)", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+dh1 <- read.table(ex("dh1.dat"))
+p <- tda_ps(data = dh1, width = 90, height = 50, xlim = c(0, 8), ylim = c(0, 0.4))
+p <- tda_pl(p, "plxa", sc = 1)
+p <- tda_pl(p, "plya", sc = 0.1)
+p <- tda_pl_histogram(p, x = "V1", breaks = c(0, 2, 4, 6, 8))
+plot(p)
+```
+
+### 6.2.10 Density Plots
+
+The same data smoothed with a triangular kernel.
+
+```{r dens, box = "A kernel density estimate (dh2.cf)", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+p <- tda_ps(data = dh1, width = 90, height = 50, xlim = c(0, 8), ylim = c(0, 0.6))
+p <- tda_pl(p, "plxa", sc = 1)
+p <- tda_pl(p, "plya", sc = 0.1)
+p <- tda_pl_density(p, x = "V1", kernel = "triangle", at = seq(0, 8, 0.1))
+plot(p)
+```
+
+### 6.4.2 Inequality Measures
+
+```{r ineq, box = "ineq"}
+tda_ineq(ds1)
+```
+
+### 6.4.3 Segregation Indices
+
+```{r segr, box = "segr"}
+ds2 <- read.table(ex("ds2.dat"))
+names(ds2) <- c("G", paste0("X", 1:4))
+tda_segr(ds2, group = "G")
+```
+
+### 6.5.1 Life Tables
+
+`tda_ltb()` is the `ltb` command, and `tp=` gives the interval
+boundaries.
+
+```{r ltb, box = "A life table, 30-month intervals"}
+lt <- tda_ltb(Surv(TFP, DES) ~ 1, data = d, tp = seq(0, 500, 30))
+lt$summary
+lt$table
+
+# ltb.1 holds a second block: the estimates themselves, with their
+# standard errors
+lt$survivor
+```
+
+`tda_survivor()` reads the estimate back as a data frame carrying the
+survivor function, the density and the rate, which is what the plotting
+commands take.
+
+```{r ltbsurv, box = "The estimate as a data frame (ple1.cf)"}
+tda_survivor(lt)
+```
+
+### 6.5.2 Kaplan-Meier Procedure
+
+`tda_ple()` is the product-limit estimator, `tda_km()` an alias for it.
+Case weights are TDA's `cwt` command, and here a column name.
+
+```{r ple, box = "Product-limit estimation with case weights"}
+rrdat2 <- read.table(ex("rrdat.2"))
+names(rrdat2) <- c("DUR", "CEN", "WT", "GRP")
+fit <- tda_ple(Surv(DUR, CEN) ~ as.factor(GRP), data = rrdat2, weights = "WT")
+fit$blocks
+```
+
+`ple2.cf` is the estimate on the job data with the single destination
+state; the manual's Box 5 shows the first rows of its output file.
+
+```{r ple2, box = "ple2.cf: the job data, one destination"}
+ple2 <- tda_ple(Surv(TFP, DES) ~ 1, data = d)
+
+# the manual prints part of ple.2: its first rows, a slice from the
+# middle, and its last
+b <- ple2$blocks[[1L]]
+b[c(1:8, 41:46, 128:132), ]
+
+# the table ends with the last observation, where only censoring
+# happened: TDA writes no estimate there, so those columns are NA
+tail(ple2$blocks[[1]], 2)
+```
+
+`ple3.cf` has the four destination states (Example 3): the estimate is
+per transition, one sub-survivor function for each of the upward,
+lateral and downward job changes, and `$summary` holds one row for each.
+`ple3p.cf` plots the three: `tda_survivor()` gives the estimated
+functions as a data frame, and each transition is selected by its
+origin and destination.
+
+```{r ple4, box = "Sub-survivor functions, four destination states"}
+ple <- tda_ple(Surv(TFP, DES) ~ 1, data = d4)
+ple$summary
+```
+
+```{r ple4plot, box = "One survivor function per destination state", fig.width = 3.15, fig.height = 1.87, out.width = "302px", class.source = "folded"}
+srv <- tda_survivor(ple)
+p <- tda_ps(srv, width = 80, height = 40, xlim = c(0, 300), ylim = c(0, 1))
+p <- tda_pl(p, "plxa", sc = 60, ic = 5)
+p <- tda_pl(p, "plya", sc = 1, ic = 10)
+p <- tda_pl_lines(p, "time", "survivor", by = "group", select = "0,1", lty = 1)
+p <- tda_pl_lines(p, "time", "survivor", by = "group", select = "0,2", lty = 5)
+p <- tda_pl_lines(p, "time", "survivor", by = "group", select = "0,3", lty = 8)
+plot(p)
+```
+
+### 6.5.3 Survivor Function Quantiles
+
+`at_survival=` is TDA's `qo=`: survival probabilities, in decreasing
+order, and the time each is reached at, one row per transition and
+probability. A transition whose survivor function never drops to a
+probability has no row for it, which is why the three blocks are of
+different length. (`quantiles=` is the other direction, `qt=`: time
+points, and the survivor function reached at each.)
+
+```{r quantiles, box = "Quantiles of the survivor function"}
+tda_ple(Surv(TFP, DES) ~ 1, data = d4,
+        at_survival = seq(0.9, 0.1, by = -0.1))$quantiles
+```
+
+### 6.5.4 Comparing Survivor Functions
+
+`compare = TRUE` runs TDA's four tests of whether the group survivor
+functions differ. The manual's example, `ple6.cf`, is Kalbfleisch and
+Prentice's two-group data (`rrdat.3`): 40 cases, survival time, status
+and group.
+
+```{r compare, box = "ple6.cf: comparing two survivor functions"}
+rrdat3 <- read.table(ex("rrdat.3"), col.names = c("TF", "Status", "Group"))
+tda_ple(Surv(TF, Status) ~ as.factor(Group), data = rrdat3,
+        compare = TRUE)$comparison
+```
+
+The same four tests on the job data by sex, whose survivor functions the
+next box draws:
+
+```{r compare2, box = "Men and women"}
+pl2 <- tda_ple(Surv(TFP, DES) ~ as.factor(SEX), data = d, compare = TRUE)
+pl2$comparison
+```
+
+The bands are Greenwood's, and `band=` shades them. They widen where few
+are still at risk, so the manual cuts the plot at 290 months.
+
+```{r bands, box = "Survivor functions with confidence bands", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+sb <- tda_survivor(pl2)
+sb <- sb[sb$time < 290, ]
+p <- tda_ps(sb, width = 90, height = 50, xlim = c(0, 300), ylim = c(0, 1))
+p <- tda_pl_lines(p, "time", "survivor", by = "group", select = "1",
+                  band = c("upper", "lower"), lty = 1)
+p <- tda_pl_lines(p, "time", "survivor", by = "group", select = "2",
+                  band = c("upper", "lower"), lty = 5)
+p <- tda_pl(p, "plxa", sc = 60, ic = 1)
+p <- tda_pl(p, "plya", sc = 1, ic = 10)
+p <- tda_pl_frame(p)
+plot(p)
+```
+
+
+
+### 6.5.5 State Distributions
+
+`tda_state_dist()` is `epsdat`: at each time point, how many episodes
+are in each state. The manual's `ed5.cf` runs it on the small multi-state
+file `ed1.dat`; with the origin state on the left-hand side
+(`Surv(ts, tf, org, des)`) the counts are those of its Box 2, with the
+file's `Total` and `Missing` columns.
+
+```{r epsdat, box = "epsdat: state distributions (ed5.cf)"}
+ed1 <- read.table(ex("ed1.dat"),
+                  col.names = c("ID", "SN", "ORG", "DES", "TS", "TF", "S1", "S2"))
+tda_state_dist(Surv(TS, TF, ORG, DES) ~ 1, ed1, times = seq(0, 30, 5))
+
+# Box 2's second table: the same file read as multi-episode. Naming the
+# id (and the spell number) puts a case's later spells with it instead
+# of counting them as missing.
+tda_state_dist(Surv(TS, TF, ORG, DES) ~ 1, ed1, times = seq(0, 30, 5),
+               id = "ID", spell = "SN")
+```
+
+### 6.6.1 Sequence Length and Gaps
+
+Sequence data are one row per case, one column per position.
+
+```{r seqlg, box = "seqlg: length and gaps"}
+seqd1 <- read.table(ex("seq.d1"))
+names(seqd1) <- c("ID", paste0("Y", seq_len(ncol(seqd1) - 1L)))
+tda_seqlg(seqd1, id = "ID")
+```
+
+### 6.6.2 General Characteristics
+
+```{r seqgc, box = "seqgc"}
+tda_seqgc(seqd1, id = "ID")
+```
+
+### 6.6.3 State Distributions
+
+```{r seqsd, box = "seqsd and seqen"}
+tda_seqsd(seqd1[, -1])
+tda_seqen(seqd1[, -1])
+```
+
+### 6.6.4 Pattern Matching
+
+Patterns are given as a list: `"-"` is a gap, a vector is a run of
+states, and `"*"` matches anything.
+
+```{r seqpm, box = "seqpm"}
+tda_seqpm(seqd1[, -1L], patterns = list("-", c(3, 3), c(3, "*", 3)))
+```
+
+### 6.7.2.2 The seqm Command
+
+`tda_seqm()` is `seqm`: the optimal matching distance between every pair
+of sequences.
+
+```{r seqm, box = "seqm (seqm1.cf)"}
+seqmd1 <- read.table(ex("seqm.d1"))
+tda_seqm(seqmd1)
+```
+
+`print=` asks for the alignment itself rather than the distance, either
+as the sequence of operations or as the longest common subsequence.
+
+```{r seqmprint, box = "The alignment behind the distance"}
+s <- tda_seqm(seqmd1, print = "sequential")
+attr(s, "pairs")
+attr(s, "dist_by_time")[, , "t4"]
+s <- tda_seqm(seqmd1, print = "lcs")
+attr(s, "lcs")
+```
+
+### 6.7.2.3 Examples
+
+With `subcost=` the substitution cost is a matrix rather than a constant,
+and `dp_matrix = TRUE` keeps the dynamic programming table behind each
+distance.
+
+```{r seqmcost, box = "A substitution cost matrix"}
+seqmd3 <- read.table(ex("seqm.d3"))
+scost <- matrix(0, 10, 10)
+for (i in 1:10) for (j in 1:10) scost[i, j] <- 0.1 * abs(i - j)
+
+r <- tda_seqm(seqmd3, indel = 1, subcost = scost, dp_matrix = TRUE)
+dp <- attr(r, "dp_matrix")[["2_1"]]
+dp$seqA        # the two sequences the matrix aligns
+dp$seqB
+dp$D
+```
+
+`s=` asks seqm to print, for every pair, more than the one distance.
+`print = "sequential"` gives the distance after each time point
+(`seqm1b.cf`); `print = "lcs"` gives the length of the longest common
+subsequence and the positions it occupies (`seqm1c.cf`).
+
+```{r seqms, box = "seqm's s= option (seqm1b.cf, seqm1c.cf)"}
+seqmd1 <- read.table(ex("seqm.d1"), col.names = paste0("Y", 1:5))
+attr(tda_seqm(seqmd1, print = "sequential"), "pairs")
+lcs <- attr(tda_seqm(seqmd1, print = "lcs"), "pairs")
+lcs
+```
+
+### 6.7.2.4 Consecutive Indel Operations
+
+A second `indel` cost charges consecutive insertions or deletions
+differently from the first.
+
+```{r indel, box = "indel costs (seqm4.cf)"}
+seqmd4 <- read.table(ex("seqm.d4"))
+tda_seqm(seqmd4)
+tda_seqm(seqmd4, indel = c(1, 0.5))
+tda_seqm(seqmd4, indel = c(1, 0))
+```
+
+### 6.7.2.5 Data-based Substitution Costs
+
+`subcost = 2` is TDA's `scost = 2`: substitution costs derived from the
+data, 2 - p(a,b) - p(b,a) with p the observed transition probabilities
+between the two states, the manual's `seqm5.cf`. The distances are those
+of its output file `seqm5.d`.
+
+```{r subcost, box = "seqm5.cf: substitution costs based on the data"}
+tda_seqm(seqmd4, subcost = 2)
+```
+
+### 6.9.1 The lsreg Command
+
+`tda_lsreg()` is least squares regression, and `summary()` prints it the
+way R prints a regression.
+
+```{r lsreg, box = "lsreg"}
+lsreg1 <- read.table(ex("lsreg1.dat"))
+names(lsreg1) <- c("Height", "Weight")
+summary(tda_lsreg(Weight ~ Height, data = lsreg1))
+```
+
+### 6.9.1.2 Parameter Constraints
+
+Constraints are written the way TDA writes them, as strings over the
+coefficient names `b1`, `b2` and so on.
+
+```{r lsregcon, box = "Equality and inequality constraints"}
+lsreg2 <- read.table(ex("lsreg2.dat"))
+names(lsreg2) <- c("X1", "X2", "Y")
+tda_lsreg(Y ~ 0 + X1 + X2, data = lsreg2,
+          equality   = "b1 + b2 = 6",
+          inequality = c("b1 = 2", "b2 = 2"))
+```
+
+### 6.9.1.3 Dummy Variables
+
+`dgroup=` is TDA's group-of-dummies parameter: one regression per group,
+reported in one table.
+
+```{r lsregd, box = "A regression per region"}
+lsreg3 <- read.table(ex("lsreg3.dat"))
+names(lsreg3) <- c("X1", "G", "Y", "NE", "NC", "SO", "WE")
+lsreg3$Y2 <- lsreg3$Y * lsreg3$Y
+reg <- tda_lsreg(G ~ Y + Y2, data = lsreg3,
+                 dgroup = c("NE", "NC", "SO", "WE"))
+summary(reg)
+
+# the per-group table TDA prints for dgrp=: the cases in each and its
+# weight
+reg$groups
+
+# and the fit statistics the manual's box reports alongside them
+unlist(reg$stats)
+```
+
+### 6.10.1 L1-Norm Regression
+
+```{r l1reg, box = "l1reg"}
+l1reg4 <- read.table(ex("l1reg4.dat"))
+names(l1reg4) <- c("Y", "X1", "X2")
+tda_l1reg(Y ~ X1 + X2, data = l1reg4)
+```
+
+### 6.10.2 Nonparametric Regression
+
+`tda_npreg()` smooths with a kernel, against the curve the data were
+generated from.
+
+```{r npregdata, box = "A curve that is hard to recover, plus noise"}
+gen <- tda_rng()
+n <- 256
+X <- E <- numeric(n)
+for (i in seq_len(n)) {
+    X[i] <- gen$rd()
+    E[i] <- 0.32 * gen$rdn()
+}
+Z <- sin(2 * pi * X * X * X)
+npreg <- data.frame(X = X, Y = Z * Z * Z + E)
+```
+
+```{r npregfit, box = "npreg: the kernel estimate"}
+np <- tda_npreg(Y ~ X, data = npreg, method = "mean", kernel = "quartic",
+                bandwidth = 0.1, x = seq(0, 1, 0.01))
+head(np$table)
+```
+
+```{r npreg, box = "npreg, against the curve it is estimating", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+p <- tda_ps(npreg, width = 90, height = 50, xlim = c(0, 1), ylim = c(-1.2, 1.8))
+p <- tda_pl_axes(p, sc = c(0.1, 0.5), ic = 0)
+p <- tda_pl_points(p, "X", "Y", symbol = 5, size = 0.5, lty = 0)
+p <- tda_pl_function(p, "sin(2*pi*x*x*x)*sin(2*pi*x*x*x)*sin(2*pi*x*x*x)",
+                     range = c(0, 1), step = 0.01, lty = "dashed")
+p <- tda_pl_lines(p, x = np$table$X, y = np$table$YM, lty = "solid", lw = 1)
+plot(p)
+```
+
+### 6.11.2 The fml Command
+
+`tda_fml()` maximises a likelihood the user writes. The block in braces
+is TDA's function definition, with `fn` the value summed over the data
+matrix; the names that are neither variables nor already defined are the
+parameters.
+
+The likelihood below is the exponential transition rate model of 6.17.2.1
+written out by hand, and it reaches the estimates `tda_rate(model = 2)`
+reaches.
+
+```{r fml, box = "An exponential model written as a likelihood (frml1.cf)"}
+d$DUR <- d$TFin - d$TStart + 1L
+d$W <- as.integer(d$SEX == 2)
+
+tda_fml({
+    rate = exp(a0 + COHO2 * a1 + COHO3 * a2 + W * a3)
+    l1 = ifelse(DES, log(rate), 0)
+    fn = l1 - rate * DUR
+}, data = d, start = c(-4, 0, 0, 0))
+```
+
+### 6.12.2 Binary Logit and Probit
+
+`tda_qreg()` is the `qreg` command, model 1 the logit and model 2 the
+probit. `predictions=` and `standardized=` ask for the two further
+tables.
+
+```{r qreg, box = "Binary logit (qr1.cf)"}
+qr1 <- read.table(ex("qr1.dat"))
+names(qr1) <- c("Dose", "Weight", "Response")
+qr1$Log10Dose <- log(qr1$Dose) / log(10)
+
+logit <- tda_qreg(Response ~ Log10Dose, data = qr1, weights = "Weight",
+                  predictions = TRUE, standardized = TRUE)
+logit
+logit$categories
+attr(logit$categories, "observations")
+
+# qr1.cf fits the probit beside the logit, on the same data
+tda_qreg(Response ~ Log10Dose, data = qr1, weights = "Weight",
+         model = "probit")
+logit$standardized
+logit$predictions
+```
+
+```{r probit, box = "The same data, probit"}
+tda_qreg(Response ~ Log10Dose, data = qr1, weights = "Weight", model = 2)
+```
+
+The two link functions side by side, the logistic and, through TDA's
+`nd()`, the standard normal distribution function.
+
+```{r plot_bin, box = "plot-bin.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+p <- tda_ps(xlim = c(-4, 4), ylim = c(0, 1), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = c(1, 1), ic = c(5, 10))
+p <- tda_pl_function(p, "exp(x1)/(1+exp(x1))", range = c(-4, 4), step = 0.05)
+p <- tda_pl_function(p, "nd(x1)", range = c(-4, 4), step = 0.05, lty = 6)
+p <- tda_pl_function(p, "nd(x1*sqrt(3)/pi)", range = c(-4, 4), step = 0.05,
+                     lty = 2)
+
+plot(p)
+```
+
+### 6.12.2.1 Grouped Data
+
+With grouped data the likelihood is binomial, and a random effect can be
+integrated out with `intn`, TDA's numerical integration operator. The
+starting values come from the fit without the random effect.
+
+```{r qreggrouped, box = "A grouped logit, with and without a random effect (qr5.cf)"}
+qr5 <- read.table(ex("qr5.dat"))
+names(qr5) <- c("Y", "N", "S", "X")
+qr5$SX <- qr5$S * qr5$X
+
+fml <- tda_fml({
+    xb = beta0 + S * beta1 + X * beta2 + SX * beta3
+    ee = bc(N, Y) * (exp(xb)^Y) / ((1 + exp(xb))^N)
+    fn = log(ee)
+}, data = qr5)
+fml
+
+tda_fml({
+    xb = beta0 + S * beta1 + X * beta2 + SX * beta3
+    ee = intn(7, bc(N, Y) * (exp(xb + t * gam)^Y) / ((1 + exp(xb + t * gam))^N))
+    fn = log(ee)
+}, data = qr5, start = c(coef(fml), gam = 0.1), options = list(mina = 4))
+```
+
+### 6.12.3 Ordinal Logit and Probit
+
+Models 3 and 4.
+
+```{r ordinal, box = "Ordinal logit and probit (qr2.cf)"}
+qr2 <- read.table(ex("qr2.dat"), col.names = c("Y", "X1", "X2"))
+
+qr_ol <- tda_qreg(Y ~ X1 + X2, data = qr2, model = 3, predictions = TRUE)
+qr_ol
+qr_ol$categories
+
+# the manual's Box 5 is this table in full: the observed values, the
+# fitted probability of the observed category, and the cumulative
+# probabilities per category
+qr_ol$predictions
+tda_qreg(Y ~ X1 + X2, data = qr2, model = 4)
+```
+
+The same ordinal logit written as a likelihood, which is how the manual
+shows what the model is. `eexp` is TDA's logistic function.
+
+```{r ordinalfml, box = "The ordinal logit as a likelihood"}
+tda_fml({
+    xb = X1 * beta1 + X2 * beta2
+    theta0 = 1
+    theta1 = eexp(alpha1 + xb)
+    theta2 = eexp(alpha2 + xb)
+    theta3 = eexp(alpha3 + xb)
+    ll = ifelse(Y == 0, theta0 - theta1,
+         ifelse(Y == 1, theta1 - theta2,
+         ifelse(Y == 2, theta2 - theta3, theta3)))
+    fn = log(ll)
+}, data = qr2, start = c(-2, -3, -4, 0, 0))
+```
+
+### 6.12.4 Multinomial Logit
+
+Model 5, with `nq=` the number of response categories.
+
+```{r multinom, box = "Multinomial logit (qr3.cf)"}
+qr3 <- read.table(ex("qr3.dat"), col.names = c("X", "Weight", "Y"))
+ml <- tda_qreg(Y ~ X, data = qr3, weights = "Weight", model = 5, nq = 5)
+ml
+
+# the distribution over the response's categories, which qreg prints
+# before it estimates
+ml$categories
+attr(ml$categories, "observations")   # the weighted total TDA prints
+```
+
+`lvl()` is TDA's level operator, which takes a set of columns as the
+levels of one response.
+
+```{r multinomlvl, box = "A multinomial logit over lvl() columns (qr4.cf)"}
+qr4 <- read.table(ex("qr4.dat"), col.names = c("Z1", "Z2", "Z3", "Y"))
+cml <- tda_qreg(Y ~ 0 + lvl(Z1, Z2, Z3), data = qr4, model = 5, nq = 3,
+                predictions = TRUE)
+cml
+cml$categories
+attr(cml$categories, "observations")
+
+# the manual's Box 5 is this table in full
+cml$predictions
+```
+
+### 6.12.5 Multivariate Probit
+
+Model 6. The constraints zero the terms that are not wanted.
+
+```{r mvprobit, box = "Multivariate probit (qr6.cf)"}
+mvp <- tda_qreg(Y ~ X, data = qr3, model = 6, nq = 5, weights = "Weight",
+         constraints = c("b9 = 0", "b10 = 0", "b11 = 0", "b12 = 0", "b13 = 0",
+                         "b14 = 0", "b15 = 0", "b16 = 0", "b17 = 0",
+                         "b18 = 0"))
+mvp
+unlist(mvp$stats)
+```
+
+```{r mvprobit2, box = "Multivariate probit over lvl() columns (qr7.cf)"}
+mv <- tda_qreg(Y ~ 0 + lvl(Z1, Z2, Z3), data = qr4, model = 6, nq = 3,
+               start = c(-0.1716, 0, 0, 0), constraints = c("b3 = 0", "b4 = 0"))
+mv
+
+# the correlation among the latent equations, which TDA writes into its
+# ppar= file with the rows commented
+mv$correlation
+```
+
+### 6.14.1 Poisson Regression
+
+`poisson(mu, y)` is TDA's log Poisson density, so a count model is a
+likelihood like any other. `LOGS` becomes an offset once its coefficient
+is constrained to one.
+
+```{r poisson, box = "Poisson regression, free and with an offset (cd1.cf)"}
+cd1 <- read.table(ex("cd1.dat"),
+                  col.names = c("NDI", "Service", "B", "C", "D", "E",
+                                "C60", "C65", "C70", "P75"))
+cd1$LOGS <- log(cd1$Service)
+cd1 <- cd1[cd1$NDI >= 0, ]
+
+pois <- function(...) tda_fml({
+    xb = b0 + B * bb + C * bc + D * bd + E * be +
+         C60 * bc60 + C65 * bc65 + C70 * bc70 + P75 * bp75 + LOGS * blogs
+    exb = exp(xb)
+    fn = poisson(exb, NDI)
+}, data = cd1, ...)
+
+free <- pois()
+free
+# what the manual's box reports around the estimates
+unlist(free$convergence)
+
+pois(constraints = "b9 = 1")
+```
+
+### 6.14.2 Compound Poisson Models
+
+`cd2.cf` is the same count model with a gamma-distributed rate -- the
+negative binomial, `negbin(alpha, gamma, y)` in TDA's expression
+language -- and `mina = 8` for a more robust algorithm. The
+overdispersion parameter `sig` is not identified on these data: its
+error is two orders of magnitude larger than its value, and its last
+digits depend on where the algorithm stops (the manual's box reads
+-14.77, this run -15.06); the regression coefficients are the manual's.
+
+```{r negbin, box = "cd2.cf: a negative binomial count model"}
+tda_fml({
+    xb = b0 + B * bb + C * bc + D * bd + E * be +
+         C60 * bc60 + C65 * bc65 + C70 * bc70 + P75 * bp75 + LOGS * blogs
+    gamma = exp(xb)
+    sigma = exp(sig)
+    alpha = 1 / sigma
+    fn = negbin(alpha, gamma, NDI)
+}, data = cd1, options = list(mina = 8))
+```
+
+### 6.15.2.1 Generalized Linear Models
+
+`tda_glm()` is TDA's `glm`. Without a family it is the Gaussian model
+with the identity link, which is least squares; `link = 2` is the log
+link, which needs starting values here.
+
+```{r glm, box = "glm, Gaussian, identity and log links"}
+plain <- tda_glm(Weight ~ Height, data = lsreg1)
+plain
+
+# the manual prints the deviance as 2142.4880. Reading its data file TDA
+# stores each variable as a 4-byte float; the wrapper hands R's doubles
+# over directly, and stats::glm on the same data agrees with it exactly.
+unlist(plain$stats)
+
+gen <- tda_rng()
+n <- 100
+X <- Y <- numeric(n)
+for (i in seq_len(n)) {
+    X[i] <- gen$rd(a = -3, b = 3)
+    Y[i] <- exp(3 + X[i]) + gen$rd()
+}
+bad <- tda_glm(Y ~ X, data = data.frame(X, Y), start = c(5, 5), link = 2)
+bad
+
+# what the manual's Box 4 reports around the estimates: the degrees of
+# freedom, the deviance and Pearson statistics, the scale estimates and
+# the rank, and how far the last step moved
+unlist(bad$stats)
+unlist(bad$convergence)[c("converged", "iterations", "final_change")]
+```
+
+### 6.15.2.2 Binomial Models
+
+The number of trials is given separately, and a link can be written out
+rather than selected: `custom_link=` takes a TDA expression in `mue`.
+
+```{r glmbin, box = "Binomial models, selected and hand-written links"}
+glmbin1 <- tda_glm(Response ~ Log10Dose, data = qr1, weights = "Weight", family = 2)
+glmbin1
+unlist(glmbin1$stats)
+
+glm3 <- read.table(ex("glm3.dat"), col.names = c("D", "N", "Y"))
+glm3$D <- log(glm3$D)
+
+glmbin2 <- tda_glm(Y ~ D, data = glm3, family = 2, link = 3, trials = glm3$N)
+glmbin2
+unlist(glmbin2$stats)
+glmbin1 <- tda_glm(Y ~ D, data = glm3, family = 2, trials = glm3$N,
+        custom_link = "log(mue / (1 - mue))")
+glmbin1
+unlist(glmbin1$stats)
+```
+
+### 6.15.2.3 Poisson Models
+
+The offset is the same constrained coefficient as in 6.14.1, given here
+as an equality constraint on the GLM.
+
+```{r glmpois, box = "The Poisson family"}
+glm5 <- read.table(ex("glm5.dat"), col.names = c("X", "Y"))
+glmpois1 <- tda_glm(Y ~ X, data = glm5, family = "poisson")
+glmpois1
+unlist(glmpois1$stats)
+
+glmpois1 <- tda_glm(NDI ~ B + C + D + E + C60 + C65 + C70 + P75 + LOGS, data = cd1,
+        family = "poisson", equality = c("b9 = 1"),
+        control = tda_control(maxit = 100))
+glmpois1
+unlist(glmpois1$stats)
+```
+
+### 6.15.2.4 Gamma Models
+
+```{r glmgamma, box = "The Gamma family, log and inverse links"}
+gen <- tda_rng()
+n <- 1000
+X <- Y <- numeric(n)
+for (i in seq_len(n)) {
+    X[i] <- gen$rd()
+    Y[i] <- -exp(1 + X[i]) * (log(gen$rd()) + log(gen$rd())) / 2
+}
+glmgamma1 <- tda_glm(Y ~ X, data = data.frame(X, Y), family = "Gamma", link = 2,
+        start = c(1, 1), control = tda_control(maxit = 50))
+glmgamma1
+unlist(glmgamma1$stats)
+
+# glm7.cf's second model: the same generator continued, with expectation
+# 1/(1+X), and the gamma family's canonical (reciprocal) link
+X2 <- Y2 <- numeric(n)
+for (i in seq_len(n)) {
+    X2[i] <- gen$rd()
+    Y2[i] <- -(log(gen$rd()) + log(gen$rd())) / ((1 + X2[i]) * 2)
+}
+glmgamma2 <- tda_glm(Y2 ~ X2, data = data.frame(X2, Y2), family = "Gamma",
+        start = c(1, 1), control = tda_control(maxit = 50))
+glmgamma2
+unlist(glmgamma2$stats)
+
+glm8a <- read.table(ex("glm8a.dat"), col.names = c("U", "Y", "L"))
+glm8a$X <- log(glm8a$U)
+glmgamma3 <- tda_glm(Y ~ X, data = glm8a[glm8a$L == 0, ], family = "Gamma",
+        start = c(-0.02, 0.02))
+glmgamma3
+unlist(glmgamma3$stats)
+glmgamma4 <- tda_glm(Y ~ X, data = glm8a[glm8a$L == 1, ], family = "Gamma",
+        start = c(-0.02, 0.02))
+glmgamma4
+unlist(glmgamma4$stats)
+```
+
+### 6.15.2.5 Inverse Gaussian Models
+
+`glm9.cf` draws from an inverse Gaussian with mean 1 + X through TDA's
+own generator, and fits it with the identity link from the starting
+values 0.5, 0.5.
+
+```{r glmig, box = "The inverse Gaussian family (glm9.cf)"}
+gen <- tda_rng()
+n <- 1000
+X <- Mu <- Z <- X1 <- Y <- numeric(n)
+for (i in seq_len(n)) {
+    X[i] <- gen$rd()
+    Mu[i] <- 1 + X[i]
+    Z[i] <- gen$rdn()^2
+    X1[i] <- Mu[i] + Mu[i]^2 * Z[i] -
+        Mu[i] * sqrt(2 * Mu[i] * Z[i] + Mu[i]^2 * Z[i]^2)
+    Y[i] <- ifelse(gen$rd() <= Mu[i] / (Mu[i] + X1[i]), X1[i], Mu[i]^2 / X1[i])
+}
+ig <- tda_glm(Y ~ X, data = data.frame(X, Y), family = "inverse.gaussian",
+              link = 1, start = c(0.5, 0.5))
+ig
+unlist(ig$stats)
+unlist(ig$convergence)[c("converged", "iterations", "final_change")]
+```
+
+### 6.16.1 The freg Command
+
+`tda_freg()` is nonlinear least squares: the function block gives the
+model and `fn` the squared residual, summed over the data. The manual's
+example is Gallant's (1987, p. 4) data, 30 observations, which the
+manual's `freg1.dat` holds; they are typed in here.
+
+```{r freg, box = "freg: Gallant's example (freg1.cf)"}
+freg1dat <- read.csv(ex("gallant.dat"))
+tda_freg({
+    ax = a1 * X1 + a2 * X2 + a4 * exp(a3 * X3)
+    fn = (Y - ax)^2
+}, data = freg1dat, start = c(-0.1, 1, -1, -1),
+   control = tda_control(algorithm = 5))
+```
+
+### 6.17.2.1 The Basic Exponential Model
+
+The simplest transition rate model lets the rate vary with the covariates
+but not with the duration of the episode. The duration is exponentially
+distributed, with density `f(t) = a exp(-a t)`, survivor function
+`G(t) = exp(-a t)` and rate `r(t) = a`, and the covariates enter through
+an exponential link,
+
+> `r(jk) = exp(A(jk) alpha(jk))`,
+
+where `A` holds a constant one in its first component for the intercept.
+This is TDA's model number 2. The `xa(0,1) = ...` parameter of the `rate`
+command, which links covariates to the transition from 0 to 1, is the
+right hand side of the formula.
+
+**Example 1** The manual's `rt1.cf` links three covariates to the only
+transition in the data.
+
+```{r rate2, box = "The command file rt1.cf, in R"}
+fit <- tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 2,
+                residuals = TRUE,
+                # rt1.cf's constellation: COHO3 = 1 and W = 1
+                prate = list(tp = seq(0, 100, 5), COHO3 = 1, W = 1))
+fit
+```
+
+`rt1.cf` asks for two things besides the estimates: the generalized
+residuals for every episode, and the fitted rate over a time axis at a
+chosen covariate constellation.
+
+```{r rate2res, box = "rt1.cf: generalized residuals and the rate table"}
+# the manual prints part of res.d: its first rows and its last
+head(fit$residuals, 6)
+tail(fit$residuals, 6)
+
+# the rate table, and the constellation it was computed at -- which
+# covariate values, and the coefficients they multiply
+attr(fit$rates, "constellation")
+fit$rates
+```
+
+Convergence is reached in 5 iterations with TDA's default algorithm, and
+the coefficients are the ones printed in the manual. They are not read
+back from that printout: `coef()` holds the doubles TDA computed.
+
+```{r rate2coef, box = "The estimates, at full precision"}
+coef(fit)
+logLik(fit)
+fit$logLik_null   # the exponential null model TDA starts from
+```
+
+**Example 2** `rt1m.cf` estimates the same three covariates over the
+three destination states. Its `DES` differs from `ed2.cf`'s in one
+comparison -- `ge(PRESN/PRES - 1, 0.2)` against `gt` -- and one
+episode lies on 0.2 to within TDA's comparison tolerance, so the manual's
+episode table here reads 85/218 where 3.3.3's read 84/219;
+`tda_rrdat(upward = "ge")` is that coding. `relative_risk=` adds the
+manual's table of rate ratios.
+
+```{r rate2rr, box = "rt1m.cf: three transitions, and the relative risks (frml1m.cf)"}
+d4m <- tda_rrdat(states = 4, upward = "ge")
+d4m$W <- as.integer(d4m$SEX == 2)
+fitm <- tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d4m, model = 2,
+                 relative_risk = TRUE)
+fitm$episodes
+fitm$estimates
+fitm
+fitm$relative_risk
+```
+
+### 6.17.2.2 Models with Time Periods
+
+Model 3 is the piecewise constant exponential: a separate rate in each
+period given by `tp=`, the covariate effects held common.
+
+```{r rate3, box = "A piecewise constant exponential (rt2.cf)"}
+rt2 <- tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 3,
+                tp = seq(0, 96, 12))
+rt2$periods
+rt2
+```
+
+`rt2c.cf` constrains all nine period coefficients to be equal, which
+gives the exponential model of `rt1.cf` back -- the manual's way of
+showing what a constraint does.
+
+```{r rate3con, box = "rt2c.cf: all periods constrained equal"}
+tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 3,
+         tp = seq(0, 96, 12),
+         constraints = sprintf("b%d - b%d = 0", 1:8, 2:9))
+```
+
+### 6.17.2.3 Period-specific Effects
+
+Model 16 gives each period its covariate effects as well as its own
+baseline.
+
+```{r rate16, box = "Period-specific effects (rt3.cf)"}
+tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 16,
+         tp = seq(0, 96, 12))
+```
+
+### 6.17.3 Parametric Duration Dependence
+
+The parametric family is a matter of the model number, and `TDA_MODELS`
+names them, so `model = "weibull"` and `model = 7` are the same request.
+Each family has its section in the manual, with the same three
+covariates as `rt1.cf`; the boxes below are those sections' models, one
+each.
+
+```{r models, box = "The model numbers"}
+TDA_MODELS
+```
+
+### 6.17.3.1 Polynomial Rates
+
+Models 4 and 5, with `degree=`: the rate, or its logarithm, a polynomial
+in time.
+
+```{r poly, box = "Polynomial rates"}
+poly1 <- tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d,
+                  model = 4, degree = 2)
+poly1
+unlist(poly1$convergence)   # what the manual prints above the estimates
+
+poly2 <- tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d,
+                  model = 5, degree = 2)
+poly2
+unlist(poly2$convergence)
+```
+
+### 6.17.3.2 Gompertz-Makeham Models
+
+Model 6. `on=` says which terms of the model the covariates are linked
+to; the manual's example puts them on the manual's `xb` and `xc`.
+
+```{r gompertz, box = "Gompertz-Makeham (rt6.cf)"}
+tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 6,
+         on = c("xb", "xc"))
+```
+
+Gompertz transition rates at three shape parameters.
+```{r plot_gm, box = "plot-gm.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+p <- tda_ps(xlim = c(0, 5), ylim = c(0, 3), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = c(1, 1))
+p <- tda_pl_frame(p)
+p <- tda_pl_function(p, "1+0*x1", range = c(0, 5), step = 1)
+p <- tda_pl_function(p, "exp(0.2*x1)", range = c(0, 5), step = 0.1, lty = 5)
+p <- tda_pl_function(p, "exp(-0.5*x1)", range = c(0, 5), step = 0.1, lty = 6)
+
+p <- tda_pl_text(p, "c = 0.0", at = c(4.3, 1.1))
+p <- tda_pl_text(p, "c = 0.2", at = c(4.3, 2.1))
+p <- tda_pl_text(p, "c = -0.5", at = c(4.3, 0.2))
+
+plot(p)
+```
+
+### 6.17.3.3 Weibull Models
+
+```{r weibull, box = "Weibull (rt7.cf)"}
+tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 7)
+```
+
+Weibull transition rates at five shape parameters.
+```{r plot_wei, box = "plot-wei.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+wei <- function(b) sprintf("%s*1^%s*x1^(%s-1)", b, b, b)
+
+p <- tda_ps(xlim = c(0, 3), ylim = c(0, 3), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = c(1, 1))
+p <- tda_pl_frame(p)
+p <- tda_pl_function(p, "1+0*x1", range = c(0.01, 3), step = 1)
+p <- tda_pl_function(p, wei(1.2), range = c(0.01, 3), step = 0.01, lty = 5)
+p <- tda_pl_function(p, wei(1.5), range = c(0.01, 3), step = 0.01, lty = 6)
+p <- tda_pl_function(p, wei(0.7), range = c(0.01, 3), step = 0.01, lty = 5)
+p <- tda_pl_function(p, wei(0.5), range = c(0.01, 3), step = 0.01, lty = 6)
+
+p <- tda_pl_text(p, "b = 0.0", at = c(2.6, 1.1))
+p <- tda_pl_text(p, "b = 1.2", at = c(2.6, 1.6))
+p <- tda_pl_text(p, "b = 1.5", at = c(2.6, 2.2))
+p <- tda_pl_text(p, "b = 0.7", at = c(2.6, 0.6))
+p <- tda_pl_text(p, "b = 0.5", at = c(2.6, 0.1))
+
+plot(p)
+```
+
+### 6.17.3.4 Sickle Models
+
+```{r sickle, box = "Sickle (rt8.cf)"}
+tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 8)
+```
+
+Sickle transition rates at three scale parameters.
+```{r plot_sic, box = "plot-sic.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+sic <- function(b) sprintf("1*x1*exp(-x1/%s)", b)
+
+p <- tda_ps(xlim = c(0, 12), ylim = c(0, 0.8), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = c(1, 0.4), ic = c(2, 4))
+p <- tda_pl_frame(p)
+p <- tda_pl_function(p, sic(1.0), range = c(0, 12), step = 0.1)
+p <- tda_pl_function(p, sic(0.5), range = c(0, 12), step = 0.1, lty = 5)
+p <- tda_pl_function(p, sic(2.0), range = c(0, 12), step = 0.1, lty = 6)
+
+p <- tda_pl_text(p, "b = 1.0", at = c(4, 0.11))
+p <- tda_pl_text(p, "b = 0.5", at = c(2, 0.06))
+p <- tda_pl_text(p, "b = 2.0", at = c(10, 0.14))
+
+plot(p)
+```
+
+### 6.17.3.5 Log-logistic Models
+
+```{r loglogistic, box = "Log-logistic (rt9.cf)"}
+tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 9)
+```
+
+Log-logistic transition rates at five shape parameters.
+```{r plot_ll, box = "plot-ll.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+ll <- function(b) sprintf("%s*x1^(%s-1)/(1+x1^%s)", b, b, b)
+
+p <- tda_ps(xlim = c(0, 3), ylim = c(0, 2), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = c(1, 1))
+p <- tda_pl_frame(p)
+p <- tda_pl_function(p, ll(1.0), range = c(0.01, 3), step = 0.02)
+p <- tda_pl_function(p, ll(1.5), range = c(0.01, 3), step = 0.02, lty = 5)
+p <- tda_pl_function(p, ll(2.0), range = c(0.01, 3), step = 0.02, lty = 6)
+p <- tda_pl_function(p, ll(0.7), range = c(0.01, 3), step = 0.02, lty = 5)
+p <- tda_pl_function(p, ll(0.4), range = c(0.01, 3), step = 0.02, lty = 6)
+
+p <- tda_pl_text(p, "0.4", at = c(2.8, 0.016), fs = 1.5)
+p <- tda_pl_text(p, "0.7", at = c(2.8, 0.1), fs = 1.5)
+p <- tda_pl_text(p, "1.0", at = c(2.8, 0.18), fs = 1.5)
+p <- tda_pl_text(p, "1.5", at = c(2.8, 0.33), fs = 1.5)
+p <- tda_pl_text(p, "2.0", at = c(2.8, 0.52), fs = 1.5)
+
+plot(p)
+```
+
+### 6.17.3.6 Log-normal Models
+
+```{r lognormal, box = "Log-normal (rt12.cf)"}
+tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 12)
+```
+
+Log-normal transition rates at three scale parameters.
+```{r plot_ln, box = "plot-ln.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+ln <- function(b) sprintf("ndf(log(x1)/%s)/(%s*x1*(1-nd(log(x1)/%s)))",
+                          b, b, b)
+
+p <- tda_ps(xlim = c(0, 7), ylim = c(0, 1.5), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = c(1, 0.5))
+p <- tda_pl_frame(p)
+p <- tda_pl_function(p, ln(1.0), range = c(0.02, 7), step = 0.02)
+p <- tda_pl_function(p, ln(0.7), range = c(0.02, 7), step = 0.02, lty = 5)
+p <- tda_pl_function(p, ln(1.3), range = c(0.02, 7), step = 0.02, lty = 6)
+
+p <- tda_pl_text(p, "b = 1.3", at = c(6, 0.125))
+p <- tda_pl_text(p, "b = 1.0", at = c(6, 0.4))
+p <- tda_pl_text(p, "b = 0.7", at = c(6, 0.725))
+
+plot(p)
+```
+
+### 6.17.3.7 Generalized Gamma Models
+
+```{r gengamma, box = "Generalized gamma (rt13.cf)"}
+tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 13)
+```
+
+The generalised gamma rate at three values of the shape parameter,
+written out with TDA's `lgam()` and `icg()`, the log gamma and the
+incomplete gamma function.
+
+```{r plot_g1, box = "plot-g1.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+gg <- function(k) sprintf(
+    "%s^(%s-0.5)*exp(sqrt(%s)*log(x1)-%s*exp(log(x1)/sqrt(%s)))/(x1*exp(lgam(%s))*(1-icg(%s*exp(log(x1)/sqrt(%s)),%s)))",
+    k, k, k, k, k, k, k, k, k)
+
+p <- tda_ps(xlim = c(0, 5), ylim = c(0, 2), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = c(1, 1))
+p <- tda_pl_frame(p)
+p <- tda_pl_function(p, gg(1), range = c(0.01, 5), step = 0.02)
+p <- tda_pl_function(p, gg(0.5), range = c(0.01, 5), step = 0.02, lty = 5)
+p <- tda_pl_function(p, gg(10), range = c(0.01, 5), step = 0.02, lty = 6)
+
+p <- tda_pl_text(p, "a = 0.0", at = c(0.5, 1.73))
+p <- tda_pl_text(p, "b = 1.0", at = c(0.5, 1.57))
+p <- tda_pl_text(p, "k = 10.0", at = c(4, 0.63))
+p <- tda_pl_text(p, "k = 1.0", at = c(4, 1.07))
+p <- tda_pl_text(p, "k = 0.5", at = c(4, 1.5))
+
+plot(p)
+```
+
+Generalised gamma transition rates at three scale parameters.
+```{r plot_g2, box = "plot-g2.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+gg2 <- function(b) sprintf(
+    "1^(1-0.5)*exp(sqrt(1)*log(x1)/%s-1*exp((log(x1)/%s)/sqrt(1)))/(x1*exp(lgam(1))*(1-icg(1*exp((log(x1)/%s)/sqrt(1)),1)))",
+    b, b, b)
+
+p <- tda_ps(xlim = c(0, 5), ylim = c(0, 3), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = c(1, 1))
+p <- tda_pl_frame(p)
+p <- tda_pl_function(p, gg2(1), range = c(0.01, 5), step = 0.02)
+p <- tda_pl_function(p, gg2(0.7), range = c(0.01, 5), step = 0.02, lty = 5)
+p <- tda_pl_function(p, gg2(2), range = c(0.01, 5), step = 0.02, lty = 6)
+
+p <- tda_pl_text(p, "a = 0.0", at = c(0.5, 2.6))
+p <- tda_pl_text(p, "k = 1.0", at = c(0.5, 2.35))
+p <- tda_pl_text(p, "b = 2.0", at = c(4, 0.6))
+p <- tda_pl_text(p, "b = 1.0", at = c(4, 1.1))
+p <- tda_pl_text(p, "b = 0.7", at = c(4, 2))
+
+plot(p)
+```
+
+### 6.17.3.8 Inverse Gaussian Models
+
+```{r invgauss, box = "Inverse Gaussian (rt14.cf)"}
+tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 14)
+```
+
+The inverse Gaussian rate, written out with TDA's `ndf()` and `nd()`.
+
+```{r plot_ig, box = "plot-ig.cf", fig.width = 3.54, fig.height = 2.27, out.width = "340px", class.source = "folded"}
+ig <- function(a) sprintf(
+    "(ndf((%s*x1-1)/sqrt(x1))/x1^(3/2))/(nd((1-%s*x1)/sqrt(x1))-exp(2*%s)*nd((-1-%s*x1)/sqrt(x1)))",
+    a, a, a, a)
+
+p <- tda_ps(xlim = c(0, 6), ylim = c(0, 2.5), width = 90, height = 50)
+p <- tda_pl_axes(p, sc = c(1, 0.5))
+p <- tda_pl_frame(p)
+p <- tda_pl_function(p, ig(1), range = c(0.02, 6), step = 0.02)
+p <- tda_pl_function(p, ig(0.1), range = c(0.02, 6), step = 0.02, lty = 5)
+p <- tda_pl_function(p, ig(1.5), range = c(0.02, 6), step = 0.02, lty = 6)
+
+p <- tda_pl_text(p, "a = 0.1", at = c(5, 0.21))
+p <- tda_pl_text(p, "a = 1.0", at = c(5, 0.83))
+p <- tda_pl_text(p, "a = 1.5", at = c(5, 1.46))
+p <- tda_pl_text(p, "b = 1.0", at = c(5, 2.08))
+
+plot(p)
+```
+
+### 6.17.5.1 The frml Command
+
+`tda_frml()` is the rate-model counterpart of `tda_fml()`: the episode is
+named by the formula, and the likelihood is written out. `tf`, `ts` and
+`des` are available inside the block, which is what makes a model with
+its duration dependence writable.
+
+**Example 1** The exponential model again, now by hand.
+
+```{r frml, box = "An exponential model as frml (fml1.cf)"}
+tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
+    rate = exp(a0 + COHO2 * a1 + COHO3 * a2 + W * a3)
+    l1 = ifelse(DES, log(rate), 0)
+    fn = l1 - rate * TFP
+}, data = d, start = c(-4, 0, 0, 0))
+```
+
+**Example 2** `frml1m.cf`: three competing destinations, each with its
+own rate, the episode contributing the log of whichever rate it
+realised and the sum of all three to the survivor term. Its `DES` is
+`rt1m.cf`'s (the `ge` coding).
+
+```{r frml3, box = "Three competing rates (frml1m.cf)"}
+tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
+    rate1 = exp(a10 + COHO2 * a11 + COHO3 * a12 + W * a13)
+    rate2 = exp(a20 + COHO2 * a21 + COHO3 * a22 + W * a23)
+    rate3 = exp(a30 + COHO2 * a31 + COHO3 * a32 + W * a33)
+    rate = rate1 + rate2 + rate3
+    l1 = ifelse(DES == 1, log(rate1),
+         ifelse(DES == 2, log(rate2),
+         ifelse(DES == 3, log(rate3), 0)))
+    fn = l1 - rate * TFP
+}, data = d4m, start = rep(c(-4, 0, 0, 0), 3),
+   control = tda_control(maxit = 100))
+```
+
+**Example 2a** `frml2.cf` writes the piecewise constant model of
+`rt2.cf` out by hand: one indicator per period, and the log rate as the
+sum of the period constants and the covariate effects; `frml2c.cf` adds
+the constraints that equate the periods. Both reach `rt2` and `rt2c`.
+
+```{r frml2, box = "frml2.cf, frml2c.cf: the piecewise constant model, by hand"}
+pw <- function(...) tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
+    bb = COHO2 * b1 + COHO3 * b2 + W * b3
+    p1 = ge(tf, 0) & lt(tf, 12);  p2 = ge(tf, 12) & lt(tf, 24)
+    p3 = ge(tf, 24) & lt(tf, 36); p4 = ge(tf, 36) & lt(tf, 48)
+    p5 = ge(tf, 48) & lt(tf, 60); p6 = ge(tf, 60) & lt(tf, 72)
+    p7 = ge(tf, 72) & lt(tf, 84); p8 = ge(tf, 84) & lt(tf, 96)
+    p9 = ge(tf, 96)
+    rr = ifelse(p1, a1, ifelse(p2, a2, ifelse(p3, a3, ifelse(p4, a4,
+         ifelse(p5, a5, ifelse(p6, a6, ifelse(p7, a7, ifelse(p8, a8,
+         ifelse(p9, a9, 0)))))))))
+    s1 = 12 * exp(a1 + bb); s2 = s1 + 12 * exp(a2 + bb)
+    s3 = s2 + 12 * exp(a3 + bb); s4 = s3 + 12 * exp(a4 + bb)
+    s5 = s4 + 12 * exp(a5 + bb); s6 = s5 + 12 * exp(a6 + bb)
+    s7 = s6 + 12 * exp(a7 + bb); s8 = s7 + 12 * exp(a8 + bb)
+    lsurv = ifelse(p1, tf * exp(a1 + bb),
+            ifelse(p2, s1 + (tf - 12) * exp(a2 + bb),
+            ifelse(p3, s2 + (tf - 24) * exp(a3 + bb),
+            ifelse(p4, s3 + (tf - 36) * exp(a4 + bb),
+            ifelse(p5, s4 + (tf - 48) * exp(a5 + bb),
+            ifelse(p6, s5 + (tf - 60) * exp(a6 + bb),
+            ifelse(p7, s6 + (tf - 72) * exp(a7 + bb),
+            ifelse(p8, s7 + (tf - 84) * exp(a8 + bb),
+            ifelse(p9, s8 + (tf - 96) * exp(a9 + bb), 0)))))))))
+    l1 = ifelse(DES, rr + bb, 0)
+    fn = l1 - lsurv
+}, data = d, start = c(rep(-4, 9), 0, 0, 0), ...)
+pw()                                              # frml2.cf
+pw(constraints = sprintf("b%d - b%d = 0", 2:9, 1:8))   # frml2c.cf
+```
+
+**Example 3** A Weibull and a log-normal, written out. The second uses
+`nd` and `ndf`, TDA's normal distribution and density operators.
+
+```{r frmlwei, box = "Weibull and log-normal, written out"}
+tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
+    aa = exp(a0 + COHO2 * a1 + COHO3 * a2 + W * a3)
+    bb = exp(b0)
+    l1 = ifelse(DES, log(bb * aa^bb * tf^(bb - 1)), 0)
+    fn = l1 - (aa * tf)^bb
+}, data = d, start = c(-4, 0, 0, 0, 0), control = tda_control(maxit = 100))
+
+tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
+    aa = a0 + COHO2 * a1 + COHO3 * a2 + W * a3
+    bb = exp(b0)
+    zz = (log(tf) - aa) / bb
+    qz = 1 - nd(zz)
+    vz = ndf(zz) / qz
+    l1 = ifelse(DES, log(vz / (bb * tf)), 0)
+    fn = l1 + log(qz)
+}, data = d, start = c(4, 0, 0, 0, 0), control = tda_control(maxit = 100))
+```
+
+**Example 4** `frml5.cf` is the generalized gamma model written out,
+with `icg`, the incomplete gamma integral, and `lgam`; with the shape
+`kk = 1` it is the Weibull of Example 3, which is what the box shows.
+
+```{r frml5, box = "frml5.cf: the generalized gamma, written out"}
+tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
+    kk = 1
+    aa = a0 + COHO2 * a1 + COHO3 * a2 + W * a3
+    bb = exp(b0)
+    zz = (log(tf) - aa) / bb
+    qt = kk * exp(zz / sqrt(kk))
+    rr = (kk - 0.5) * log(kk) + (sqrt(kk) * zz - qt) - (b0 + log(tf) + lgam(kk))
+    icc = icg(qt, kk)
+    fn = ifelse(DES, rr, log(1 - icc))
+}, data = d, start = c(5, 0, 0, 0, 0), control = tda_control(algorithm = 4))
+```
+
+### 6.17.5.2 The Hernes Model
+
+```{r hernes, box = "The Hernes model (frml8.cf)"}
+tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
+    sigma = exp(s)
+    lambda = exp(l) / (1 + exp(l))
+    beta = exp(b)
+    ff = sigma * exp(beta * lambda^tf)
+    ff1 = ff + 1
+    dens = -(ff * beta * lambda^tf * log(lambda)) / (ff1 * ff1)
+    surv = 1 - 1 / ff1
+    fn = ifelse(des, log(dens), log(surv))
+}, data = d, control = tda_control(maxit = 100, algorithm = 4))
+```
+
+### 6.17.5.3 The Coale-McNeil Model
+
+The manual's `frml9.cf` gives two starting values for three parameters
+and lets TDA pad the third with zero, which TDA warns about; the same
+values, spelled out, reach the same estimates without the warning.
+
+```{r coale, box = "The Coale-McNeil model (frml9.cf)"}
+tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
+    bg = 0.604
+    sigma = exp(s) / (1 + exp(s))
+    lambda = exp(l)
+    mue = exp(m)
+    beta = bg * lambda
+    tl = exp(-lambda * (tf - mue))
+    ldens = log(sigma) + l - beta * (tf - mue) - tl - lgam(bg)
+    surv = 1 - sigma * (1 - icg(tl, bg))
+    fn = ifelse(DES, ldens, log(surv))
+}, data = d, start = c(l = -3, m = 2, s = 0),
+   control = tda_control(maxit = 100, algorithm = 4))
+```
+
+### 6.17.6.2 Logistic Regression Models
+
+Model 20: the discrete-time logistic model, the rate at each time point a
+logit in the covariates.
+
+```{r discrete, box = "Discrete time logistic"}
+tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 20)
+```
+
+### 6.17.6.3 Complementary Log-Log Models
+
+Model 21.
+
+```{r cloglog, box = "Complementary log-log"}
+tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 21)
+```
+
+### 6.17.7.1 Partial Likelihood Estimation
+
+Model 1 is the Cox model, estimated by partial likelihood, here with one
+transition and then with three.
+
+```{r cox, box = "pl1.cf and pl1m.cf: Cox models with one and three transitions"}
+tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 1)
+tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d4m, model = 1)
+```
+
+### 6.17.7.2 Time-dependent Covariates
+
+`define=` writes a covariate as a TDA expression in `time`, evaluated at
+every risk set rather than once per episode, and `helpers=` names the
+columns that expression needs. `MDATE` does not depend on `time` and so is
+computed in R; `MARR` does, and so is defined for TDA.
+
+```{r coxtv, box = "A time-dependent covariate"}
+d$MDATE <- ifelse(d$TMAR <= 0, 10000, d$TMAR - d$TStart)
+tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W + MARR, data = d, model = 1,
+         define = list(MARR = "gt(time,MDATE)"), helpers = "MDATE")
+```
+
+### 6.17.7.3 Episode Splitting
+
+`pl4.cf` splits every episode at the date of marriage (`split = MDATE`
+in `edef`) and writes the pieces out; `pl5.cf` reads them back and fits
+the Cox model twice, without and with `MARR`, the piece's marriage
+status. `tda_split(at=)` is the split, and the pieces are left
+truncated, so the model is told `Surv(ts, tf, des)`.
+
+```{r pl45, box = "pl4.cf, pl5.cf: episode splitting"}
+d$MDATE <- ifelse(d$TMAR <= 0, 10000, d$TMAR - d$TStart)
+sp <- tda_split(Surv(TFP, DES) ~ COHO2 + COHO3 + W, d, at = "MDATE")
+sp$MARR <- as.integer(sp$MDATE <= sp$ts)
+nrow(sp)
+tda_rate(Surv(ts, tf, des) ~ COHO2 + COHO3 + W, sp, model = 1)
+tda_rate(Surv(ts, tf, des) ~ COHO2 + COHO3 + W + MARR, sp, model = 1)
+```
+
+### 6.17.7.4 The Proportionality Assumption
+
+The usual test is an interaction with log time: if the effect is
+proportional, its coefficient is zero.
+
+```{r coxprop, box = "A test of proportionality (pl6.cf)"}
+tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W + WTEST, data = d, model = 1,
+         define = list(WTEST = "W * (log(time) - 4.22)"))
+```
+
+The same question asked by splitting the time axis: `tp=` estimates
+within periods.
+
+```{r coxtp, box = "The effect within periods (pl7.cf)"}
+rrdat5 <- read.table(ex("rrdat.5"), col.names = c("TF", "DES", "G"))
+rrdat5$G1 <- as.integer(rrdat5$G == 1)
+pl7 <- tda_rate(Surv(TF, DES) ~ G1, data = rrdat5, model = 1,
+                tp = c(0, 170.1, 354.1, 535.1))
+pl7
+pl7$gof
+```
+
+`$gof` holds the global goodness-of-fit statistic that comes with a
+period split -- the manual's Box 5, from `pl8.cf` for the single
+transition and `pl8m.cf` for the three.
+
+```{r coxgof, box = "pl8.cf, pl8m.cf: goodness of fit over periods"}
+tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 1,
+         tp = seq(0, 96, 12))$gof
+tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d4m, model = 1,
+         tp = seq(0, 96, 12))$gof
+```
+
+### 6.17.7.5 Stratification
+
+`strata()` on the right hand side is survival's spelling and TDA's `grp=`:
+a separate baseline rate per stratum, one set of coefficients.
+
+```{r coxstrata, box = "A stratified Cox model (pl9.cf)"}
+tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + strata(SEX), data = d, model = 1)
+```
+
+### 6.17.7.6 The Baseline Rate
+
+`prate=` evaluates the baseline rate at a covariate vector.
+
+```{r coxbase, box = "The baseline rate at given covariate values (pl1r.cf)"}
+fit <- tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 1,
+                prate = list(COHO3 = 1, W = 1))
+head(fit$rates)
+```
+
+### 6.18.2 Investigating Events
+
+Event sequence data are given as a list of column groups, one per
+sequence data structure -- the manual's `seq8.cf` defines two from
+`seq.d4`, `Y0..Y5` and `S0..S5`. `tda_seqev()` counts the events (Box
+3), and `tda_seqevd()` their distribution over time for the first
+structure (Box 4).
+
+```{r seqev, box = "seq_info, seqev and seqevd"}
+seqd4 <- read.table(ex("seq.d4"))
+names(seqd4) <- c("ID", paste0("Y", 0:5), paste0("S", 0:5), "V1", "V2")
+multi <- list(paste0("Y", 0:5), paste0("S", 0:5))
+
+tda_seq_info(multi, data = seqd4)
+tda_seqev(multi, data = seqd4)
+tda_seqevd(multi, data = seqd4)
+```
+
+### 6.18.3 Data Generation
+
+`tda_seqmd()` turns sequences into episode data around chosen events,
+which is how a sequence becomes something a rate model can take.
+
+```{r seqmd, box = "Episodes derived from sequences"}
+tda_seqmd(paste0("Y", 0:5), event = c(1, 2), data = seqd4, summary = TRUE)
+tda_seqmd(paste0("Y", 0:5), event = c(1, 2), data = seqd4)
+tda_seqmd(paste0("Y", 0:5), event = c(1, 2), data = seqd4,
+           covariates = c("V1", "V2"))
+```
+
+`xe=` adds time-varying covariates derived from a date: `xe=[V1],[V2]`
+(the manual's `seq8c.cf`, Box 4) gives, for each episode, the process
+time since the date each variable holds -- `event_covariates=`, named
+after the columns TDA writes.
+
+```{r seqmd2, box = "seqmd with xe= (seq8c.cf)"}
+tda_seqmd(paste0("Y", 0:5), event = c(1, 2), data = seqd4,
+           covariates = c("V1", "V2"),
+           event_covariates = list(V1_D = "V1", V2_D = "V2"))
+```
+
+A third form of `xe=` counts the events of a given type in another
+sequence structure before the present time and the time since the
+last one, with effect-shape dummies (`seq8d.cf`, the manual's Box 5):
+`[1,2,1,4]` is the event 1 -> 2 in structure 1, with 4 dummies.
+
+```{r seqmd3, box = "seqmd with event counting (seq8d.cf)"}
+tda_seqmd(paste0("Y", 0:5), event = c(1, 2), data = seqd4,
+           covariates = c("V1", "V2"),
+           event_covariates = list(V1_D = "V1", V2_D = "V2"),
+           options = list(xe = "[V1],[V2],[1,2,1,4]"))
+```
+
+### 6.19.1 Contingency Tables
+
+```{r loglin, box = "loglin on a contingency table"}
+ll1 <- read.table(ex("ll1.dat"), col.names = c("X1", "X2", "H"))
+tda_loglin(~ X1 + X2, data = ll1, weights = "H")$table
+```
+
+### 6.19.2 Loglinear Models
+
+`ll2.dat` carries a fourth column, `S`, the scale factors of 6.19.1's
+structural zeros; `ll2.cf` defines it and does not use it, and the
+residual table's `Scale` column is all ones accordingly. `scale=` would
+pass it.
+
+```{r loglin2, box = "A loglinear model with residuals"}
+ll2 <- read.table(ex("ll2.dat"), col.names = c("X1", "X2", "F", "S"))
+fit <- tda_loglin(~ X1 + X2, data = ll2, weights = "F", residuals = TRUE)
+fit
+coef(fit)
+head(residuals(fit))
+```
+
+## 7 Relational Data
+
+The manual's example graph is `gd1.dat`: an edge list `I, J` with two
+value variables, `V1` and `V2`, so every node count comes once per value
+variable. `tda_graph()` is the `gdd` command.
+
+### 7.2.1.1 Degree of Nodes
+
+`gni` reports each node of the current graph: its number, its label, and
+per value variable the in-degree, out-degree and number of loops;
+`tda_g_degrees()` is `gni`, and `gd4.cf` runs it on `gd1.dat`. A loop
+(node 8 to itself) is counted in its own column and not in the degrees:
+the manual's Box 1 prints node 8's first-graph degrees as 1 and 1,
+while `gd4.cf` run through TDA gives 0 and 0, as does a build of
+Rohwer's unmodified sources, so the box is out of date.
+
+```{r g1, box = "gni: in-degree, out-degree and loops per value variable (gd4.cf)"}
+gd1 <- read.table(ex("gd1.dat"), col.names = c("I", "J", "V1", "V2"))
+g1 <- tda_graph(gd1, directed = TRUE)
+tda_g_degrees(g1)
+```
+
+### 7.2.1.2 Direct Links
+
+`tda_g_links()` is `gdln`: for each node the nodes it links to, one
+ragged record per node with any forward links.
+
+```{r g2, box = "gdln: forward links"}
+tda_g_links(g1)$table                     # forward links
+tda_g_links(g1, backward = TRUE)$table    # and backward
+```
+
+### 7.2.2.1 Topological Sorting
+
+`tda_g_toposort()` is `gsort`, on the manual's `gd6.dat`: a directed
+acyclic graph, its nodes in an order that respects every edge.
+
+```{r g3, box = "gsort (gd22.cf)"}
+gd6 <- read.table(ex("gd6.dat"), col.names = c("I", "J", "V"))
+gsrt <- tda_graph(gd6, directed = TRUE)
+tda_g_toposort(gsrt)$table
+
+# option 2 relabels the graph's edges, keeping their values
+tda_g_toposort(gsrt, relabel_graph = TRUE)$table
+```
+
+### 7.2.3.1 Connected Components
+
+`tda_g_components()` is `gcon`. `gd7.cf` declares `gd1.dat` undirected
+and valued (`gt = 2`) and asks for the components of its second graph,
+the one `V2` defines (`gn = 2`): node 8 joins component 1 through the
+edge 8-7 that `V2` carries and `V1` does not.
+
+```{r g4, box = "gcon: components of graph 2 (gd7.cf)"}
+gcomp <- tda_graph(gd1, directed = FALSE)
+tda_g_components(gcomp, gn = 2)$table
+
+# option 2 lists each component's edges instead, with their values
+tda_g_components(gcomp, gn = 2, edges = TRUE)$table
+```
+
+### 7.2.3.2 Reachable Nodes in Directed Graphs
+
+`gdcon` (`tda_g(g, "gdcon")`) is the directed counterpart of `gcon`:
+strongly connected components (`opt = 1`) or, with `opt = 2`, the
+nodes each node reaches. `gd8.cf` runs it on graph 2 of `gd1.dat`.
+
+```{r g9, box = "gdcon: reachable nodes (gd8.cf)"}
+g1d <- tda_graph(gd1, directed = TRUE)
+tda_g(g1d, "gdcon", list(gn = 2, opt = 2))$table
+```
+
+### 7.2.3.3 Cut Nodes and Blocks
+
+`tda_g_cutpoints()` is `gcut`, on `gd8.dat`: the nodes whose removal
+disconnects the graph, and with `opt = 2` the blocks.
+
+```{r g10, box = "gcut (gd26.cf)"}
+gd8 <- read.table(ex("gd8.dat"), col.names = c("I", "J", "V"))
+g8 <- tda_graph(gd8, directed = FALSE)
+tda_g_cutpoints(g8)$table
+tda_g_cutpoints(g8, opt = 2)$table
+```
+
+### 7.2.4.1 Enumeration of Paths
+
+`tda_g_paths()` is `gep`, on `gd5.dat`, a small directed graph;
+`gd20.cf` runs its six output options: the paths between all pairs of
+nodes, their number per pair, the shortest and longest path per pair,
+and the two full listings with each path's length and value.
+
+```{r g11, box = "gep (gd20.cf)"}
+gd5 <- read.table(ex("gd5.dat"), col.names = c("I", "J", "V"))
+g5 <- tda_graph(gd5, directed = TRUE)
+for (o in 1:6)
+    print(tda_g_paths(g5, opt = o)$table)
+```
+
+The graph itself, as the manual draws it (`gd18.cf`): five nodes,
+curved arrows for the edges that run both ways, the edge values as
+labels.
+
+```{r plg18, box = "The directed graph of gd5.dat, drawn (gd18.cf)", fig.width = 3.15, fig.height = 1.87, out.width = "302px", class.source = "folded"}
+p <- tda_ps(xlim = c(0, 8), ylim = c(-1, 5), width = 80, height = 40)
+nodes <- data.frame(id = 1:5, x = c(3, 5, 1, 7, 7), y = c(3, 1, 1, 4, 1),
+                    grey = 0.8)
+edges <- data.frame(from  = c(1, 2, 3, 3, 2, 4, 5, 2, 3),
+                    to    = c(2, 3, 2, 1, 4, 5, 3, 5, 4),
+                    curve = c(-3, 0, -3, -3, 0, 0, -3, 0, -3),
+                    label = c(1, 2, 0.5, 6, 3, 4, 5, 0.5, 7),
+                    arrow = "1.5,1.0")
+plot(tda_pl_graph(p, nodes, edges))
+```
+
+### 7.2.4.2 All Shortest Paths
+
+`tda_g_shortest()` is `gsp`, the same graph, `gd27.cf`.
+
+```{r g12, box = "gsp (gd27.cf)"}
+tda_g_shortest(g5, opt = 1, fmt = "4.1")$table
+```
+
+### 7.2.4.3 Transitive Closure
+
+`tda_g_transitive()` is `gtcl`; `gd16.cf` runs it on `gd5.dat` read
+as an undirected, an undirected valued and a directed graph, `opt = 2`
+for the closure as a matrix.
+
+```{r g13, box = "gtcl (gd16.cf)"}
+# gdd's gt= is the graph type: 1 undirected unvalued, 2 undirected
+# valued, 3 directed unvalued, 4 directed valued. The manual's box runs
+# gtcl over all four.
+for (gt in 1:4)
+    print(tda_g_transitive(tda_graph(gd5, options = list(gt = gt)),
+                           opt = 2, fmt = "4.1")$table)
+```
+
+### 7.2.5.1 Depth-first Spanning Trees
+
+`tda_g_spanning()` is `gst`, on `gd7.dat`: one spanning tree per
+component, the edges listed with their values.
+
+```{r g5, box = "gst (gd24.cf)"}
+gd7 <- read.table(ex("gd7.dat"), col.names = c("I", "J", "V"))
+tda_g_spanning(tda_graph(gd7, directed = FALSE))$table
+```
+
+The manual's Figure 7.2.5.1-1 is `gd7.dat`'s first component drawn
+by `gd21.cf`, with its spanning tree's edges.
+
+```{r plg21, box = "gd7.dat drawn (gd21.cf)", fig.width = 2.36, fig.height = 1.48, out.width = "227px", class.source = "folded"}
+p <- tda_ps(xlim = c(0, 6), ylim = c(0, 5), width = 60, height = 30)
+nodes <- data.frame(id = c(5, 7, 4, 1, 2), x = c(1, 3, 5, 2, 4),
+                    y = c(3, 3, 3, 1, 1), grey = 0.8)
+edges <- data.frame(from  = c(5, 4, 5, 7, 7, 4, 1, 4),
+                    to    = c(7, 7, 1, 1, 2, 2, 2, 5),
+                    curve = c(0, 0, 0, 0, 0, 0, 0, 3),
+                    label = c(1, 5, 3, 2, 4, 7, 8, 6),
+                    arrow = "1.5,1.0")
+plot(tda_pl_graph(p, nodes, edges))
+```
+
+```{r gd23, box = "gd23.cf", fig.width = 2.36, fig.height = 1.48, out.width = "227px", class.source = "folded"}
+p <- tda_ps(xlim = c(0, 7), ylim = c(0, 3.7), width = 60, height = 30)
+nodes <- data.frame(id = 1:8, x = c(0.5, 2, 2, 3.5, 4.5, 5, 6, 6),
+                    y = c(1.5, 2.5, 0.5, 1.5, 0.5, 1.5, 0.5, 2.5), grey = 0.8)
+edges <- data.frame(
+    from  = c(1, 2, 4, 5, 3, 1, 2, 6, 6, 8),
+    to    = c(2, 4, 5, 3, 4, 3, 3, 8, 7, 7),
+    label = 1:10,
+    arrow = "1.5,1.0")
+p <- tda_pl_graph(p, nodes, edges)
+
+plot(p)
+```
+
+### 7.2.5.2 Minimum Spanning Trees
+
+`tda_g_mst()` is `gmst`, `gd25.cf`, on the same `gd7.dat`.
+
+```{r g14, box = "gmst (gd25.cf)"}
+tda_g_mst(tda_graph(gd7, directed = FALSE))$table
+```
+
+### 7.2.5.3 Enumeration of Spanning Trees
+
+`tda_g_spantrees()` is `gnst`, on `gd10.dat` (`gd32.cf`): the number
+of spanning trees, and with `opt = 2` the trees themselves.
+
+```{r g15, box = "gnst (gd32.cf)"}
+gd10 <- read.table(ex("gd10.dat"), col.names = c("I", "J", "V"))
+g10 <- tda_graph(gd10, directed = FALSE)
+tda_g_spantrees(g10, opt = 1)$table
+tda_g_spantrees(g10, opt = 2)$table
+```
+
+```{r gd31, box = "gd31.cf", fig.width = 3.15, fig.height = 1.87, out.width = "302px", class.source = "folded"}
+p <- tda_ps(xlim = c(0, 8), ylim = c(-1, 5), width = 80, height = 40)
+nodes <- data.frame(id = 1:4, x = c(3, 5, 3, 5), y = c(3, 3, 1, 1), grey = 0.8)
+edges <- data.frame(from = c(1, 1, 1, 2, 3), to = c(2, 3, 4, 3, 4))
+p <- tda_pl_graph(p, nodes, edges)
+
+plot(p)
+```
+
+### 7.2.6.1 Fundamental Set of Cycles
+
+`tda_g_cycles()` is `gcyc`; `gd30.cf` runs it on `gd9.dat`, an
+undirected graph with 6 nodes and 11 edges. `opt = 1` lists a
+fundamental set of cycles, one ragged record each: index, cycle number,
+length, and the nodes.
+
+`gcyc`'s four options are four views of the same cycle space. Option 1
+lists the nodes of each fundamental cycle, so its rows are ragged;
+option 2 gives the edge and one indicator per fundamental cycle; option 3
+the same over every cycle found; option 4 writes the edges first and
+then one indicator row per cycle, two row shapes in the one file, which
+is why it arrives ragged as well.
+
+```{r g6, box = "gcyc, options 1 to 4"}
+gd9 <- read.table(ex("gd9.dat"), col.names = c("I", "J", "V"))
+g9 <- tda_graph(gd9, directed = FALSE)
+tda_g_cycles(g9, "fundamental_nodes")$table
+tda_g_cycles(g9, "fundamental_edges")$table
+tda_g_cycles(g9, "all_v1")$table
+
+# option 4's records are of two shapes -- a cycle's row and its edge
+# list -- so they stay a ragged list; the manual prints all of them
+print(tda_g_cycles(g9, "all_v2")$table, n = Inf)
+```
+
+```{r gd29, box = "gd29.cf", fig.width = 3.15, fig.height = 1.87, out.width = "302px", class.source = "folded"}
+p <- tda_ps(xlim = c(0, 8), ylim = c(-1, 5), width = 80, height = 40)
+nodes <- data.frame(id = c(1, 3, 4, 6, 2, 5), x = c(3, 3, 5, 1, 5, 7),
+                    y = c(3, 1, 1, 1, 3, 1), grey = 0.8)
+edges <- data.frame(
+    from  = c(1, 3, 1, 1, 3, 3, 2, 2, 4, 6, 6),
+    to    = c(6, 6, 3, 2, 4, 2, 4, 5, 5, 4, 5),
+    curve = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 5))
+p <- tda_pl_graph(p, nodes, edges)
+
+plot(p)
+```
+
+### 7.2.6.2 Enumeration of Cycles in Directed Graphs
+
+`tda_g_dcycles()` is `gdcyc`, on `gd5.dat` (`gd33.cf`).
+
+```{r g16, box = "gdcyc (gd33.cf)"}
+tda_g_dcycles(g5, opt = 1)$table
+tda_g_dcycles(g5, opt = 2)$table
+```
+
+### 7.2.8.1 Maximal Flows
+
+`tda_g_flow()` is `gflow`, on `gd11.dat`: for every ordered pair of
+nodes the maximal flow, one record per pair -- index, the two nodes'
+indices, the two nodes, the flow.
+
+```{r g7, box = "gflow (gd35.cf)"}
+gd11 <- read.table(ex("gd11.dat"), col.names = c("I", "J", "V"))
+g11 <- tda_graph(gd11, directed = TRUE)
+tda_g_flow(g11)$table
+
+# option 2 gives the same flows as a matrix
+tda_g_flow(g11, matrix = TRUE)$table
+```
+
+```{r gd34, box = "gd34.cf", fig.width = 3.15, fig.height = 1.87, out.width = "302px", class.source = "folded"}
+p <- tda_ps(xlim = c(0, 11), ylim = c(-1, 7), width = 80, height = 40)
+nodes <- data.frame(id = c(4, 1, 8, 6, 3, 7, 2, 5),
+                    x = c(3, 3, 1, 8, 8, 10, 6, 4.5),
+                    y = c(1, 5, 3, 1, 5, 3, 5, 3), grey = 0.8)
+edges <- data.frame(
+    from  = c(8, 8, 1, 6, 2, 6, 3, 2, 4, 5),
+    to    = c(1, 4, 2, 4, 3, 7, 7, 6, 5, 3),
+    label = c(40, 20, 30, 17, 10, 32, 22, 37, 54, 50),
+    arrow = "1.5,1.0")
+p <- tda_pl_graph(p, nodes, edges)
+
+plot(p)
+```
+
+### 7.2.9.1 Cliques
+
+`tda_g_cliques()` is `gcliq`, on `gd16.dat`; the manual's Box 1 runs
+both of its algorithms, `alg = 1` (Bron-Kerbosch) and `alg = 2`
+(Harary-Ross), whose listings differ in order, not in content.
+
+```{r g8, box = "gcliq (gd42.cf)"}
+gd16 <- read.table(ex("gd16.dat"), col.names = c("I", "J", "V"))
+g16 <- tda_graph(gd16, directed = FALSE)
+tda_g_cliques(g16, algorithm = "bron_kerbosch")$table
+tda_g_cliques(g16, algorithm = "harary_ross")$table
+```
+
+```{r gd43, box = "gd43.cf", fig.width = 3.15, fig.height = 1.87, out.width = "302px", class.source = "folded"}
+p <- tda_ps(xlim = c(0, 8), ylim = c(-1.5, 7), width = 80, height = 40)
+nodes <- data.frame(id = 1:6, x = c(1, 3, 5, 3, 7, 7), y = c(3, 6, 3, 0, 6, 0),
+                    grey = 0.8)
+edges <- data.frame(
+    from = c(1, 1, 1, 2, 2, 2, 4, 4, 3, 3, 5),
+    to   = c(3, 2, 4, 4, 3, 5, 3, 6, 5, 6, 6))
+p <- tda_pl_graph(p, nodes, edges)
+
+plot(p)
+```
+
+### 7.2.9.2 Compact Sets
+
+`tda_g_independent()` is `giset`, independent sets on `gd12.dat`
+(`gd37.cf`), and `tda_g_compact()` is `gcset`, compact sets on
+`gd13.dat` (`gd39.cf`).
+
+```{r g17, box = "giset and gcset"}
+gd12 <- read.table(ex("gd12.dat"), col.names = c("I", "J", "V"))
+tda_g_independent(tda_graph(gd12, directed = FALSE))$table
+gd13 <- read.table(ex("gd13.dat"), col.names = c("I", "J", "V"))
+g13 <- tda_graph(gd13, directed = FALSE)
+print(tda_g_compact(g13, opt = 1)$table, n = Inf)   # the sets themselves
+tda_g_compact(g13, opt = 2)$table                   # one row per node
+```
+
+```{r gd38, box = "gd38.cf", fig.width = 3.15, fig.height = 1.87, out.width = "302px", class.source = "folded"}
+p <- tda_ps(xlim = c(0, 8), ylim = c(-1.5, 7), width = 80, height = 40)
+nodes <- data.frame(id = 1:6, x = c(1, 3, 5, 3, 7, 7), y = c(3, 6, 3, 0, 6, 0),
+                    grey = 0.8)
+edges <- data.frame(
+    from  = c(1, 1, 1, 2, 2, 4, 4, 3, 3, 5),
+    to    = c(3, 2, 4, 3, 5, 3, 6, 5, 6, 6),
+    label = c(1, 3, 12, 7, 5, 11, 2, 4, 15, 8))
+p <- tda_pl_graph(p, nodes, edges)
+
+plot(p)
+```
+
+### 7.2.9.3 Regular Equivalence
+
+```{r gd36, box = "gd36.cf", fig.width = 3.15, fig.height = 1.87, out.width = "302px", class.source = "folded"}
+p <- tda_ps(xlim = c(0, 8), ylim = c(-1.5, 7), width = 80, height = 40)
+nodes <- data.frame(id = 1:6, x = c(1, 2.5, 4, 4, 5.5, 7),
+                    y = c(1, 3, 1, 5, 3, 1), grey = 0.8)
+edges <- data.frame(
+    from  = c(1, 1, 2, 2, 2, 3, 3, 4, 5, 1),
+    to    = c(2, 3, 3, 4, 5, 4, 5, 5, 6, 6),
+    curve = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 3))
+p <- tda_pl_graph(p, nodes, edges)
+
+plot(p)
+```
+
+### 7.3.1.1 The Linear Assignment Problem
+
+`tda_gap()` is `gap`: given a cost matrix, the assignment of rows to
+columns with minimal total cost. The manual's `co1.dat` is a 6 x 6
+cost matrix, row by row; the result is the permutation of its Box 2
+and the matrix with its rows permuted accordingly.
+
+```{r gap, box = "gap (co1.cf)"}
+cost <- matrix(scan(ex("co1.dat"), quiet = TRUE), 6, 6, byrow = TRUE)
+ap <- tda_gap(cost)
+ap$assignment
+ap$permuted
+```
+
+### 7.3.1.2 The Quadratic Assignment Problem
+
+`tda_gqap()` is `gqap`, on two symmetric matrices, a flow and a
+distance matrix. `co2.dat` gives their lower triangles in one file, one
+pair per line in the order (2,1), (3,1), (3,2); the manual's Box 2 is
+the permutation 2, 1, 3.
+
+```{r gqap, box = "gqap (co2.cf)"}
+co2 <- read.table(ex("co2.dat"), col.names = c("F", "D"))
+lower <- function(v) { m <- matrix(0, 3, 3); m[lower.tri(m)] <- v; m + t(m) }
+qap <- tda_gqap(lower(co2$F), lower(co2$D))
+qap$assignment
+qap$cost
+
+# gqap's second output file: the multigraph under that permutation, with
+# the flow and distance between each pair
+qap$permuted
+```
+
+### 7.5.1.1 SAHN Algorithms
+
+`tda_cluster()` covers TDA's clustering commands. The manual's example
+dissimilarity matrix is `cl1.dat`, the upper triangle of an 11 x 11
+matrix, row by row; `cl1.cf` runs `hcls` with `opt = 2`, complete
+linkage. The output is the manual's Box 3: at each level the two
+clusters merged, named by their representative nodes.
+
+```{r cl1, box = "hcls: complete-link clustering (cl1.cf)"}
+D <- scan(ex("cl1.dat"), quiet = TRUE)
+dm <- matrix(0, 11, 11)
+dm[lower.tri(dm)] <- D
+dm <- dm + t(dm)
+tda_cluster(dm, method = "hierarchical_single", options = list(opt = 2))$table
+```
+
+`cl1a.cf` reads the dendrogram back and cuts it into four levels with
+`hclsp`; `tda_cutree()` is both steps.
+
+```{r cl1a, box = "hclsp: the dendrogram cut at four levels (cl1a.cf)"}
+tda_cutree(dm, nlev = 4)$table
+```
+
+### 7.5.1.2 Nearest-Neighbor Clustering
+
+`cl2.cf` runs `nncl` twice: with a threshold (`sc = 10`) and with a
+fixed number of neighbours (`ns = 2`).
+
+```{r cl2, box = "nncl (cl2.cf)"}
+tda_cluster(dm, method = "nearest_neighbour", options = list(alg = 1, sc = 10))$table
+tda_cluster(dm, method = "nearest_neighbour", options = list(alg = 2, ns = 2))$table
+```
+
+### 7.5.2.1 Maximally Different Cluster Centers
+
+`cl3.cf` is `hcld` with its first algorithm: divisive clustering around
+maximally different centres. The manual's Box 2 lists each cluster's
+nodes.
+
+```{r cl3, box = "hcld (cl3.cf)"}
+hc <- tda_cluster(dm, method = "hierarchical", algorithm = "centers")
+hc$clusters
+hc$merges     # one row per split: the two clusters, their sizes, their diameters
+```
+
+### 7.5.2.2 Maximally Homogeneous Clusters
+
+The second algorithm splits on the diameter instead -- at each step the
+cluster with the largest diameter is divided.
+
+```{r cl4, box = "hcld, second algorithm"}
+# the default stops after two splits; the manual's run goes on until
+# the size bound is reached
+hd <- tda_cluster(dm, method = "hierarchical", algorithm = "diameter",
+                  max_splits = 5)
+hd$clusters
+hd$merges
+```
+
+`cl3p.cf` draws the merge table as a dendrogram: columns 1 and 2 of
+`cl3.df` are the pair joined, column 5 the distance.
+
+```{r cl3p, box = "cl3p.cf", class.source = "folded"}
+edges <- data.frame(
+    from = c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11),
+    to   = c(1, 1, 2, 2, 3, 3, 5, 5, 6, 6),
+    v    = c(27.5, 27.5, 17.0, 17.0, 16.5, 16.5, 12.0, 12.0, 4.0, 4.0))
+g <- tda_graph(edges, directed = FALSE)
+
+plot(g, width = 90, height = 50, layout = "tree", rt = 1, pl = 2, nc = 11)
+```
+
+### 7.5.3.1 The Bond Energy Algorithm
+
+`becl` is the bond energy algorithm on a graph; `cl5.cf` runs it on
+`gd15.dat`, five nodes, with the four output options. Option 1 is the
+node permutation, option 2 the edge list permuted (Box 3).
+
+```{r cl5, box = "becl (cl5.cf)"}
+gd15 <- read.table(ex("gd15.dat"), col.names = c("I", "J", "V"))
+g15 <- tda_graph(gd15, directed = FALSE)
+tda_g(g15, "becl", list(opt = 1, fmt = "3.0"))$table
+tda_g(g15, "becl", list(opt = 2, fmt = "3.0"))$table
+
+# options 3 and 4 take sc=, the value to fill a non-edge with; the
+# default is -1 and cl5.cf asks for 0
+tda_g(g15, "becl", list(opt = 3, fmt = "3.0", sc = 0))$table
+tda_g(g15, "becl", list(opt = 4, fmt = "3.0", sc = 0))$table
+```
+
+### 7.6.1.1 Direct and Indirect Control
+
+`tda_gfcf()` is `gfcf`, control in a directed valued graph -- `gd3.dat`
+is a small ownership network. With `sc = 49` (control at more than 49
+per cent) node 1 controls nodes 2 to 9, node 9 controls 1 to 8, node
+3 controls 5; the pair table of the manual's Box 2 is the result's
+`"pairs"` attribute.
+
+```{r gfcf, box = "gfcf (gd13.cf)"}
+gd3 <- read.table(ex("gd3.dat"), col.names = c("I", "J", "V"))
+ctl <- tda_gfcf(gd3, threshold = 49)
+ctl
+head(attr(ctl, "pairs"), 8)
+```
+
+`gbcf` is the same question backwards -- who controls a given node --
+on `gd3a.dat`. It writes two files: the pair table, and a summary with
+one row per node (the manual's Box 4 shows both).
+
+```{r gbcf, box = "gbcf (gd14.cf)"}
+gd3a <- read.table(ex("gd3a.dat"), col.names = c("I", "J", "V"))
+bwd <- tda_g_backward(tda_graph(gd3a, directed = TRUE), sc = 49)
+bwd$table
+bwd$summary
+
+# gd14a.cf asks for the second layout, opt = 2
+tda_g_backward(tda_graph(gd3a, directed = TRUE), sc = 49,
+               opt = 2, fmt = "3.0")$table
+```
+
+In `gd12.cf` node 1 is drawn as a square, `shape =` for `plg`'s
+`gt=2`, and several edges are curved or run back to an earlier node.
+
+```{r gd12, box = "gd12.cf", fig.width = 3.94, fig.height = 2.27, out.width = "378px", class.source = "folded"}
+p <- tda_ps(xlim = c(0, 11), ylim = c(2.0, 7.5), width = 100, height = 50)
+
+nodes <- data.frame(
+    id = c(9, 1, 3, 2, 4, 10, 7, 6, 5, 8, 11),
+    x  = c(3, 3, 5, 5, 7, 9, 3, 5, 7, 9, 7),
+    y  = c(7, 5, 5, 6, 5, 5, 3, 3, 4, 3, 3),
+    grey = 0.8,
+    shape = c(1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1))
+
+edges <- data.frame(
+    from  = c(9, 1, 1, 1, 2, 10, 3, 1, 3, 3, 11, 7, 5, 8, 7, 3, 4),
+    to    = c(1, 9, 2, 3, 4, 4, 5, 7, 7, 6, 6, 8, 8, 4, 6, 4, 9),
+    label = c(50, 10, 50, 50, 30, 15, 50, 20, 40, 30, 22, 30, 30, 20, 30, 10, 40),
+    curve = c(5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 10),
+    arrow = "1.2,1.0")
+
+p <- tda_pl_graph(p, nodes, edges)
+
+plot(p)
+```
+
+### 7.6.1.2 Control
+
+`gio` computes ownership shares in a directed valued graph: for each
+pair, the direct share `A(i,j)` and the share including holdings held
+through other nodes, `Y(i,j)`. `gd11.cf` runs it on `gd2b.dat`.
+
+```{r gio, box = "gio (gd11.cf)"}
+gd2b <- read.table(ex("gd2b.dat"), col.names = c("I", "J", "V"))
+tda_g_ownership(tda_graph(gd2b, directed = TRUE))$table
+```
+
+Two graphs on one page; in the second a reciprocal pair of edges is
+drawn as two curves, and all edges carry arrowheads.
+
+```{r gd9, box = "gd9.cf", fig.width = 3.15, fig.height = 1.87, out.width = "302px", class.source = "folded"}
+p <- tda_ps(xlim = c(0, 11.5), ylim = c(0, 4), width = 80, height = 40)
+
+nodesA <- data.frame(id = 1:4, x = c(0.5, 3, 5, 5), y = c(2, 2, 1, 3),
+                     grey = 0.8)
+edgesA <- data.frame(from = c(1, 2, 2, 4), to = c(2, 4, 3, 3),
+                     label = c(0.5, 0.3, 0.1, 0.2), arrow = "1.5,1.0")
+p <- tda_pl_graph(p, nodesA, edgesA)
+
+nodesB <- data.frame(id = 1:4, x = c(6.5, 9, 11, 11), y = c(2, 2, 1, 3),
+                     grey = 0.8)
+edgesB <- data.frame(from = c(1, 2, 2, 4, 3), to = c(2, 4, 3, 3, 2),
+                     label = c(0.5, 0.3, 0.1, 0.2, 0.1),
+                     curve = c(0, 0, 0, 0, -3), arrow = "1.5,1.0")
+p <- tda_pl_graph(p, nodesB, edgesB)
+
+p <- tda_pl_text(p, "Graph A", at = c(0.5, 3))
+p <- tda_pl_text(p, "Graph B", at = c(6.5, 3))
+
+plot(p)
+```
+
+### 7.6.1.3 Measures of Flow Centrality
+
+`gfc` (`tda_g(g, "gfc")`) is flow centrality on `gd14.dat`
+(`gd41.cf`), one record per pair of nodes.
+
+```{r gfc, box = "gfc (gd41.cf)"}
+gd14 <- read.table(ex("gd14.dat"), col.names = c("I", "J", "V"))
+tda_g(tda_graph(gd14, directed = TRUE), "gfc", list(fmt = "4.0"))$table
+```
+
+The section's Figure 1 is the directed graph the examples use, drawn by
+`gd40.cf`.
+
+```{r gd40, box = "gd40.cf", fig.width = 3.15, fig.height = 1.87, out.width = "302px", class.source = "folded"}
+p <- tda_ps(xlim = c(0, 8), ylim = c(-1.5, 7), width = 80, height = 40)
+nodes <- data.frame(id = 1:5, x = c(1, 3, 5, 3, 7), y = c(3, 6, 3, 0, 3),
+                    grey = 0.8)
+edges <- data.frame(
+    from  = c(1, 1, 1, 2, 4, 3),
+    to    = c(2, 3, 4, 3, 3, 5),
+    label = c(3, 1, 2, 3, 2, 2),
+    arrow = "1.5,1.0")
+p <- tda_pl_graph(p, nodes, edges)
+
+plot(p)
+```
+
+## 8 Set-valued Data
+
+### 8.3.2 Evaluation of Inclusion Functions
+
+Chapter 8 is about set-valued data: a case is not a number but an
+interval, and the answer is an interval too. `tda_evalfi()` evaluates a
+function over interval arguments.
+
+The manual's box is `evalfi1`: the function's inclusion over the
+interval and its derivative's, `derivative = TRUE`.
+
+```{r evalfi, box = "An inclusion function and its derivative (evalfi1)"}
+tda_evalfi("sin(x)", x = c(0, 1))
+tda_evalfi("sin(x)", x = c(0, 1), derivative = TRUE)
+```
+
+### 8.4.1 The gmin Command
+
+`tda_gmin()` finds the global minimum by subdivision. `start=` gives the
+search interval, as `c(step, lower, upper)`; `tol_fe=` is the tolerance
+on the function value within which a box is finally accepted. TDA 6.4p's
+default is 1e-10, and with it the box containing the minimum of sin(x)
+on [0, 10] is only temporarily accepted (its lower bound is -1 to
+sixteen digits, but not to ten); 1e-6 accepts it, giving one box with
+x in [4.71237, 4.71245].
+
+The manual's box reports 39 iterations, 41 function evaluations and
+77 inclusion evaluations. The program does not: running the manual's
+command file unchanged through TDA gives 19, 20 and 35, and so does the
+call here. The manual is out of date on this box.
+
+```{r gmin, box = "gmin"}
+g <- tda_gmin("sin(x)", start = list(c(1, 0, 10)), use_derivatives = TRUE,
+              tol_fe = 1e-6)
+g$value
+g$boxes
+g$estimates
+
+# the counters TDA prints above the boxes
+g$counts
+```
+
+### 8.4.2 The range Command
+
+```{r range, box = "range"}
+tda_range("sin(x)", start = list(c(1, 0, 10)), use_derivatives = TRUE)
+```
+
+### 8.5.1 Set-valued Discrete Variables
+
+`self_consistent = TRUE` asks for the self-consistent estimate rather
+than the bounds alone.
+
+```{r sddf, box = "Distribution of a set-valued discrete variable"}
+# the manual's box shows both data files as well as the results
+id1 <- read.table(ex("id1.dat"))
+id1
+tda_sddf(id1, self_consistent = TRUE)
+
+id1a <- read.table(ex("id1a.dat"))
+id1a
+tda_iddf(~iv(V1, V2), data = id1a, self_consistent = TRUE)
+```
+
+### 8.5.2 Interval-valued Variables
+
+`iv(lower, upper)` is the interval-valued variable, the counterpart of
+`Surv()` for this chapter.
+
+```{r idf, box = "Distribution of an interval-valued variable"}
+id2 <- read.table(ex("id2.dat"))
+id2$XL <- id2$V1 - 30L
+id2$XH <- id2$V1 + 30L
+tda_idf(~iv(XL, XH), data = id2)
+```
+
+### 8.6.1 Mean Values
+
+The mean of an interval-valued variable is itself an interval: every
+value in it is the mean of some admissible data set.
+
+```{r imean, box = "imean"}
+tda_imean(~iv(XL, XH), data = id2)
+```
+
+### 8.6.2 Variances
+
+```{r ivariance, box = "ivariance"}
+tda_ivariance(~iv(V1, V2), data = id1a)
+```

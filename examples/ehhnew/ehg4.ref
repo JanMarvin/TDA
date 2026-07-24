@@ -1,0 +1,141 @@
+Read records:     600     
+
+  Iter    Function Value     Norm of Gradient  Par Change   FCall
+    1   2.5386854246848e+00  4.3524228764e+02          --       1 (1,1)
+    2   2.4838586984703e+00  2.8103328505e+02  1.0000e+00       3 (3,3)
+    3   2.4409774707796e+00  5.0077829219e+01  1.7429e+01       4 (4,4)
+    4   2.4375678563198e+00  1.0084552673e+02  1.7857e+01       5 (5,5)
+    5   2.4324472978037e+00  3.3788378530e+01  4.3930e+00       6 (6,6)
+    6   2.4306696565848e+00  2.9772986299e+01  7.4568e+00       7 (7,7)
+    7   2.4288401745369e+00  5.4935561266e+01  4.6638e+01       8 (8,8)
+    8   2.4263493475805e+00  4.1867272122e+01  1.0133e+00       9 (9,9)
+    9   2.4246351708983e+00  2.5524522361e+01  5.0984e-01      10 (10,10)
+   10   2.4240184730892e+00  6.2573452308e+00  2.9456e-01      11 (11,11)
+   11   2.4238827602612e+00  1.6787886438e+00  1.9598e-01      12 (12,12)
+   12   2.4238568805248e+00  2.6934450355e-01  1.5548e-01      13 (13,13)
+   13   2.4238504751112e+00  6.6237486254e-02  1.3101e-01      14 (14,14)
+   14   2.4238488041100e+00  2.6633270441e-02  9.8403e-02      15 (15,15)
+   15   2.4238484646966e+00  9.1178328418e-03  6.2996e-02      16 (16,16)
+   16   2.4238484288586e+00  1.5528819969e-03  2.7706e-02      17 (17,17)
+   17   2.4238484280178e+00  4.8155267031e-05  5.0499e-03      18 (18,18)
+   18   2.4238484280171e+00  4.2302266902e-08  1.5228e-04      19 (19,19)
+TDA. Analysis of Transition Data (6.4p). Sat Jul 25 02:03:17 2026
+Current memory: 390032 bytes.
+
+Reading command file: ehg4.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 ID        3   4   3.0  c1
+  2 NOJ       3   4   2.0  c2
+  3 TStart    3   4   3.0  c3
+  4 TFin      3   4   3.0  c4
+  5 SEX       3   4   2.0  c5
+  6 TI        3   4   3.0  c6
+  7 TB        3   4   3.0  c7
+  8 TE        3   4   3.0  c8
+  9 TMAR      3   4   3.0  c9
+ 10 PRES      3   4   3.0  c10
+ 11 PRESN     3   4   3.0  c11
+ 12 EDU       3   4   2.0  c12
+ 13 DES       3   4   1.0  if(eq(TFin,TI),0,1)
+ 14 TFP       3   4   3.0  TFin-TStart+1
+ 15 COHO2     3   4   0.0  ge(TB,468)&le(TB,504)
+ 16 COHO3     3   4   0.0  ge(TB,588)&le(TB,624)
+ 17 LFX       3   4   0.0  TStart-TE
+ 18 PNOJ      3   4   0.0  NOJ-1
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): rrdat.1
+Free format. Separation character(s): default.
+
+Reading data file: rrdat.1
+Read records: 600 
+
+Created a new data matrix.
+Number of cases: 600
+Number of variables: 18
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 462798 bytes.
+----------------------------------------------------------------------------
+edef(...)
+Creating new single episode data. Max number of transitions: 100.
+Definition: org=0, des=DES, ts=0, tf=TFP
+
+                                         Mean
+SN  Org Des   Episodes    Weighted     Duration     TS Min      TF Max  Excl
+----------------------------------------------------------------------------
+ 1    0   0       142       142.00      128.18        0.00      428.00    -
+ 1    0   1       458       458.00       49.30        0.00      350.00    -
+Sum               600       600.00
+
+Number of episodes: 600
+Successfully created new episode data.
+----------------------------------------------------------------------------
+rate(...)=6
+Transition rate models. Current memory: 462950 bytes.
+
+Model: Gompertz-Makeham
+
+Maximum likelihood estimation.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 21
+Type of covariance matrix: 2
+Maximum number of iterations: 20
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: -1
+
+Log-likelihood of exponential null model: -2514.02
+Changed scaling factor for log-likelihood: -0.001
+Using default starting values.
+
+Convergence reached in 18 iterations.
+Number of function evaluations: 20 (20,20)
+
+Maximum of log likelihood: -2423.85
+Norm of final gradient vector: 4.23023e-05
+Last absolute change of function value: 2.94063e-13
+Last relative change in parameters: 0.000152279
+
+Idx SN Org Des MT Variable      Coeff      Error    C/Error  Signif
+-------------------------------------------------------------------
+  1  1   0   1  A Constant   -14.9029     3.6611    -4.0706  1.0000
+  2  1   0   1  A EDU         -0.1348     0.2272    -0.5932  0.4470
+  3  1   0   1  A COHO2        2.2350     1.7415     1.2834  0.8006
+  4  1   0   1  A COHO3       -3.4706    14.2396    -0.2437  0.1926
+  5  1   0   1  A LFX          0.0162     0.0082     1.9770  0.9520
+  6  1   0   1  A PNOJ        -2.9917     0.8958    -3.3397  0.9992
+  7  1   0   1  A PRES         0.2087     0.0601     3.4714  0.9995
+  8  1   0   1  B Constant    -3.8740     0.3855   -10.0491  1.0000
+  9  1   0   1  B EDU          0.0988     0.0334     2.9581  0.9969
+ 10  1   0   1  B COHO2        0.4783     0.1673     2.8581  0.9957
+ 11  1   0   1  B COHO3        0.2640     0.1741     1.5164  0.8706
+ 12  1   0   1  B LFX         -0.0057     0.0014    -3.9031  0.9999
+ 13  1   0   1  B PNOJ         0.1898     0.0624     3.0432  0.9977
+ 14  1   0   1  B PRES        -0.0407     0.0080    -5.1086  1.0000
+ 15  1   0   1  C Constant    -0.0045     0.0064    -0.7146  0.5251
+ 16  1   0   1  C EDU         -0.0005     0.0005    -1.0523  0.7073
+ 17  1   0   1  C COHO2       -0.0024     0.0024    -0.9801  0.6729
+ 18  1   0   1  C COHO3        0.0031     0.0029     1.0850  0.7221
+ 19  1   0   1  C LFX          0.0000     0.0000     1.4054  0.8401
+ 20  1   0   1  C PNOJ        -0.0018     0.0010    -1.8275  0.9324
+ 21  1   0   1  C PRES         0.0002     0.0001     1.2268  0.7801
+
+Log likelihood (starting values): -2538.6854 
+Log likelihood (final estimates): -2423.8484 
+
+Calculating generalized residuals; will be written to: ehg4.res
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 482917 bytes.
+End of program. Sat Jul 25 02:03:18 2026

@@ -1,0 +1,98 @@
+Read records:       5     
+
+  Iter    Function Value
+    0   1.0000000000000e+00
+    1   3.5970677304672e-02
+    2   3.7312845634655e-02
+    3   3.8759056321067e-02
+    4   4.0321894919955e-02
+    5   4.2016062171466e-02
+    6   4.3858837851193e-02
+    7   4.5870672291325e-02
+    8   4.8075948548892e-02
+    9   5.0503975584884e-02
+   10   5.3190298568822e-02
+   11   5.6178451312308e-02
+   12   5.9522335902222e-02
+   13   6.3289509899631e-02
+   14   6.7565817736708e-02
+   15   7.2462070380089e-02
+   16   7.8123962241748e-02
+   17   8.4747361319822e-02
+   18   9.2603072033179e-02
+   19   1.0207935256863e-01
+   20   1.1376011746584e-01
+   21   1.9718067666533e-01
+   22   3.6539814207794e-01
+   23   5.5218028536950e-01
+   24   7.1466284260674e-01
+   25   4.3850572527656e-01
+   26   1.8095038146864e-01
+   27   3.8798642288472e-02
+   28   1.8631318513008e-03
+   29   4.5165736906883e-06
+   30   2.7298358018513e-11
+   31   2.5941171351263e-16
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: glm12.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Time      3   4   0.0  c1
+  2 Bac       3   4   0.0  c2
+  3 TT        3   4   0.0  Time*Time
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): glm12.dat
+Free format. Separation character(s): default.
+
+Reading data file: glm12.dat
+Read records: 5 
+
+Created a new data matrix.
+Number of cases: 5
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402120 bytes.
+----------------------------------------------------------------------------
+glm(...)
+Generalized linear models. Current memory: 402120 bytes.
+
+Distribution: Poisson.
+Link function: log.
+
+Variables (cross-section)
+-------------------------
+Y   : Bac   
+X1  : Time  
+X2  : TT    
+
+Estimation with iteratively re-weighted least squares.
+Number of model parameters: 3
+Maximum number of iterations: 100
+Tolerance for scaled parameter change: 1e-06
+
+Convergence reached in 31 iterations.
+Final scaled parameter change: 2.59412e-16
+
+Rank of data matrix: 3
+Degrees of freedom: 2
+Deviance                            0.2793 
+
+Idx  Wave  Variable       Coeff      Error    Coeff/E  Signif
+-------------------------------------------------------------
+  1     -  Intercept     3.4238     0.1490    22.9745  0.9981
+  2     1  Time         -0.2214     0.0956    -2.3152  0.8534
+  3     1  TT            0.0155     0.0077     2.0083  0.8176
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422149 bytes.
+End of program. Tue Jul 21 05:46:53 2026

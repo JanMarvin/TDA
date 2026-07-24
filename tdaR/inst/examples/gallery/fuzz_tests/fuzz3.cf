@@ -1,0 +1,15 @@
+# Fuzz test 3: text rotation, extreme aspect ratio, dense overlap
+psfile = fuzz3.ps;
+psetup(
+    pxa = 0,1,
+    pya = 0,100,
+    pxlen = 150,
+    pylen = 15,
+);
+plframe;
+pltext(xy=0.5,50,r=45) = "diagonal";
+pltext(xy=0.5,50,r=90) = "vertical";
+pltext(xy=0.5,50,r=-45) = "negdiag";
+pltext(xy=0.5,50,r=180) = "upsidedown";
+plotp(lt=3) = 0,10,1,90;
+plotp(lt=7) = 1,10,0,90;

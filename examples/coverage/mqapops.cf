@@ -1,0 +1,34 @@
+# mqapops.cf -- t_matc.c / t_ass.c coverage: mqap (quadratic assignment,
+# CACM 608, approximate). Objective is stated in qap_w()'s own header:
+#   minimize sum_i ( C[i,p(i)] + sum_j F[i,j] D[p(i),p(j)] )
+# Verified by brute force over all permutations (n=4 exhaustive is 24
+# cases, well within reach):
+#   case 1 (C all zero): true optimum 270 at p=(2,1,4,3) -- TDA matches
+#   exactly, both value and permutation.
+#   case 2 (nonzero C):  true optimum 70 at p=(1,3,2,4) -- TDA matches
+#   exactly.
+#   case 3 (F has nonzero diagonal, silently zeroed with a warning):
+#   after zeroing, true optimum 56 at p=(3,2,1) -- TDA matches exactly.
+# All three happen to land on the true optimum at this size; that is
+# not guaranteed in general (qap_w is a heuristic), only pinned here.
+
+silent = -1;
+mfmt = 24.16;
+
+mdef(F1,4,4) = 0,5,2,4, 5,0,3,0, 2,3,0,0, 4,0,0,0;
+mdef(D1,4,4) = 0,8,15,13, 8,0,9,10, 15,9,0,17, 13,10,17,0;
+mdef(C1,4,4) = 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0;
+mqap(F1,D1,C1,P1);
+mpr(P1);
+
+mdef(F2,4,4) = 0,2,0,4, 2,0,1,0, 0,1,0,3, 4,0,3,0;
+mdef(D2,4,4) = 0,10,5,2, 10,0,4,3, 5,4,0,6, 2,3,6,0;
+mdef(C2,4,4) = 1,2,3,4, 4,1,2,3, 3,4,1,2, 2,3,4,1;
+mqap(F2,D2,C2,P2);
+mpr(P2);
+
+mdef(F3,3,3) = 9,1,2, 1,9,3, 2,3,9;
+mdef(D3,3,3) = 0,4,5, 4,0,6, 5,6,0;
+mdef(C3,3,3) = 0,0,0, 0,0,0, 0,0,0;
+mqap(F3,D3,C3,P3);
+mpr(P3);

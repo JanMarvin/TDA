@@ -1,0 +1,948 @@
+---
+title: "Techniques of Event History Modeling, in R"
+lang: en
+output:
+  rmarkdown::html_vignette:
+    css: tda-manual.css
+    highlight: null
+    toc: true
+    toc_depth: 2
+    includes:
+      in_header: theme-toggle.html
+pkgdown:
+  as_is: true
+vignette: >
+  %\VignetteIndexEntry{Techniques of Event History Modeling, in R}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+source("tda-hooks.R")
+library(tdaR)
+```
+
+The command files distributed with Blossfeld and Rohwer, *Techniques of
+Event History Modeling*, are the second body of TDA examples, and the one
+most people met the program through. They live in `examples/ehhnew`,
+about ninety of them, in eight families:
+
+| prefix | book chapter | what it covers |
+|---|---|---|
+| `ehb` | 2 | episode data |
+| `ehc` | 3 | life tables and product-limit estimation |
+| `ehd` | 4 | exponential models |
+| `ehe` | 5 | piecewise constant models |
+| `ehf` | 6 | episode splitting and time-varying covariates |
+| `ehg` | 7 | parametric models |
+| `ehh` | 8 | graphical tests of distributional assumptions |
+| `ehi` | 9 | Cox models |
+
+The suffixes are worth knowing, since they are not what they look like:
+a file ending in `a` plots the fitted rate, while `s` and `p` are the
+second and third steps of the pseudoresidual check of the book's section
+8.2 -- `s` estimates a product-limit survivor function for a model's
+residuals, `p` plots `log S` against them. They are separate command
+files in TDA only because each step writes its result to disk for the
+next to read; here they follow the fit directly.
+
+This vignette walks the families in order, naming the command file each
+box corresponds to and, in brackets, the page and box number in the book
+where the same output is printed, so the two can be read side by side.
+`tests/vignette-qa/vignette-qa-book.csv` in the sources is the other direction: one row
+per box and figure in the book, with the vignette box that reproduces it. The data are the ones of the manual's section 3.3.3,
+and the covariate set is the book's own.
+
+```{r data, box = "The data, and the book's covariates"}
+d  <- tda_rrdat()            # rrdat.1, with the derived variables
+d4 <- tda_rrdat(states = 4)  # job changes split by prestige
+
+XVARS <- c("EDU", "COHO2", "COHO3", "LFX", "PNOJ", "PRES")
+with_x <- function(lhs) stats::reformulate(XVARS, response = lhs)
+```
+
+Most plots below share one coordinate system, taken from the command
+files' own `psetup` rather than from the range of the data, so that a
+picture can be laid beside the book.
+
+## 2. Event History Data Structures
+
+*Book chapter 2, pp. 41-55. Command files `ehb1` to `ehb3`.*
+
+**ehb1** is the data before any episode definition, and **ehb2** the
+episode data itself: one transition, from 0 to 1.
+
+```{r ehb, box = "ehb1, ehb2: the data and the episodes [book pp. 43-52, Boxes 2.2.1-2.2.5]"}
+# the twelve variables of rrdat.1; DES and TFP are derived by ehb1.cf
+str(d[, 1:12])
+head(d[, 1:12], 9)
+head(d[, c("ID", "NOJ", "TStart", "TFin", "SEX", "TFP", "DES")], 4)
+tda_rate(Surv(TFP, DES) ~ 1, d)$episodes
+```
+
+**ehb3** is the multi-episode form of the same data (Box 2.2.6): the
+spells of a person are chained, the origin state of spell k is
+`1 + 2(k - 1)`, the destination the next number up if the job ended,
+and time runs from the person's first job. `id=` and `spell=` are
+`edef(id=, sn=)`; the episode table is the book's Box 2.2.8.
+
+```{r ehb3, box = "ehb3: multi-episode data [book pp. 53-55, Boxes 2.2.6-2.2.8]"}
+dm <- d
+dm$ORG <- 1 + 2 * (dm$NOJ - 1)
+dm$DESM <- ifelse(dm$TFin < dm$TI, dm$ORG + 1, dm$ORG)
+dm$TFC <- ave(dm$TStart, dm$ID, FUN = function(x) x[1])
+dm$TSP <- dm$TStart - dm$TFC
+dm$TFPM <- dm$TFin - dm$TFC + 1
+# the episodes of the first three individuals, as edef() will see them
+head(dm[dm$ID <= 3, c("ID", "NOJ", "TStart", "TFin", "SEX", "ORG", "DESM",
+                      "TSP", "TFPM")], 9)
+eb3 <- suppressWarnings(
+    tda_rate(Surv(TSP, TFPM, ORG, DESM) ~ 1, dm, id = "ID", spell = "NOJ"))
+eb3$episodes
+attr(eb3$episodes, "sums")   # the totals under each spell; sn = NA is all spells
+```
+
+The ninth spell holds a single, censored episode -- no transition to
+estimate -- and TDA marks it with `*` in the `Excl` column, which is
+`excluded = TRUE` here; the warning that says so is the one suppressed
+above.
+
+## 3. Descriptive Methods
+
+*Book chapter 3, pp. 57-85. Life tables and the product-limit estimator; command files `ehc1` to `ehc10`.*
+
+**ehc1** is the life table over 30-month intervals, **ehc3** the same by
+sex.
+
+```{r ehc1, box = "ehc1, ehc3: life tables [book pp. 60-66, Boxes 3.1.1-3.1.4]"}
+lt <- tda_ltb(Surv(TFP, DES) ~ 1, d, tp = seq(0, 500, by = 30))
+summary(lt, n = nrow(lt$tables[[1]]))
+
+lt2 <- tda_ltb(Surv(TFP, DES) ~ as.factor(SEX), d, tp = seq(0, 500, by = 30))
+lt2$episodes   # the episodes behind both groups
+lt2$summary
+```
+
+**ehc2** plots the survivor function the table implies, and **ehc2a** and
+**ehc2b** the density and the rate, each on its own scale.
+
+```{r ehc2, box = "ehc2: the life table survivor function [book p. 65, Fig. 3.1.1]", class.source = "folded"}
+sv <- tda_survivor(lt)
+p <- tda_ps(sv, width = 80, height = 40, xlim = c(0, 300), ylim = c(0, 1))
+p <- tda_pl(p, "plxa", sc = 60, ic = 5)
+p <- tda_pl(p, "plya", sc = 1, ic = 10)
+p <- tda_pl_lines(tda_pl(p, "plframe"), "time", "survivor")
+plot(tda_pl_text(p, "Life Table Survivor Function", at = c(80, 0.8)))
+```
+
+```{r ehc2a, box = "ehc2a, ehc2b: the density and the rate [book p. 65, Fig. 3.1.1]", class.source = "folded"}
+p <- tda_ps(sv, width = 80, height = 40, xlim = c(0, 300), ylim = c(0, 0.02))
+p <- tda_pl(p, "plxa", sc = 60, ic = 5)
+p <- tda_pl(p, "plya", sc = 0.01, ic = 10)
+p <- tda_pl_lines(tda_pl(p, "plframe"), "time", "density")
+plot(tda_pl_text(p, "Life Table Density Function", at = c(80, 0.017)))
+
+p <- tda_ps(sv, width = 80, height = 40, xlim = c(0, 300), ylim = c(0, 0.02))
+p <- tda_pl(p, "plxa", sc = 60, ic = 5)
+p <- tda_pl(p, "plya", sc = 0.01, ic = 10)
+p <- tda_pl_lines(tda_pl(p, "plframe"), "time", "rate")
+plot(tda_pl_text(p, "Life Table Transition Rate", at = c(80, 0.017)))
+```
+
+**ehc4** draws one curve per sex.
+
+```{r ehc4, box = "ehc4: survivor functions by sex [book p. 67, Fig. 3.1.2]", class.source = "folded"}
+sv2 <- tda_survivor(lt2)
+p <- tda_ps(sv2, width = 80, height = 40, xlim = c(0, 300), ylim = c(0, 1))
+p <- tda_pl(p, "plxa", sc = 60, ic = 5)
+p <- tda_pl(p, "plya", sc = 1, ic = 10)
+p <- tda_pl_lines(p, "time", "survivor", by = "group")
+p <- tda_pl_text(p, "Men",   at = c(240, 0.25))
+p <- tda_pl_text(p, "Women", at = c(240, 0.09))
+plot(tda_pl_text(p, "Life Table Survivor Function", at = c(80, 0.8)))
+```
+
+**ehc5** is the product-limit estimate, **ehc7** the comparison of the two
+curves, and **ehc9** the four destination states.
+
+```{r ehc5, box = "ehc5, ehc7, ehc9: product-limit estimation [book pp. 74-83, Boxes 3.2.1-3.2.2, 3.3.1-3.3.4a, 3.3.4b]"}
+pl <- tda_ple(Surv(TFP, DES) ~ 1, d)
+pl$episodes          # the episode table TDA prints above the estimate
+print(pl, n = 10)
+
+pl2 <- tda_ple(Surv(TFP, DES) ~ as.factor(SEX), d, compare = TRUE)
+pl2$comparison
+
+# one product-limit table per destination: upward, then lateral moves
+pl4 <- tda_ple(Surv(TFP, DES) ~ 1, d4)
+pl4$episodes
+pl4$summary
+for (b in pl4$blocks[1:2]) print(utils::head(b, 10), row.names = FALSE)
+```
+
+**ehc6** plots the estimate, **ehc10** one curve per destination state,
+and **ehc8** adds the confidence bands, cut at 290 months where they
+widen past usefulness.
+
+```{r ehc6, box = "ehc6, ehc10: the estimated survivor functions [book pp. 76-85, Box 3.2.3; Fig. 3.2.1, Fig. 3.2.3]", class.source = "folded"}
+p <- tda_ps(tda_survivor(pl), width = 80, height = 40, xlim = c(0, 300), ylim = c(0, 1))
+p <- tda_pl(p, "plxa", sc = 60, ic = 5)
+p <- tda_pl(p, "plya", sc = 1, ic = 10)
+p <- tda_pl_lines(p, "time", "survivor")
+plot(tda_pl_text(p, "Product-Limit Survivor Function", at = c(60, 0.8)))
+
+s4 <- tda_survivor(pl4)
+p <- tda_ps(s4, width = 80, height = 40, xlim = c(0, 300), ylim = c(0, 1))
+p <- tda_pl(p, "plxa", sc = 60, ic = 5)
+p <- tda_pl(p, "plya", sc = 1, ic = 10)
+for (i in seq_along(g4 <- c("0,1", "0,2", "0,3")))
+    p <- tda_pl_lines(p, "time", "survivor", by = "group",
+                      select = g4[i], lty = c(1, 5, 8)[i])
+p <- tda_pl_text(p, "upward moves",   at = c(200, 0.75))
+p <- tda_pl_text(p, "lateral moves",  at = c(200, 0.3))
+plot(tda_pl_text(p, "downward moves", at = c(200, 0.55)))
+```
+
+A band is two fills, the upper curve to the axis in grey and the lower
+curve to the axis in white on top of it; `ehc8.cf` draws the axes
+first, so the white fill lies over half the width of the x axis line
+and the axis looks thinner under the bands than beyond them. The axes
+go last here.
+
+```{r ehc8, box = "ehc8: with confidence bands [book p. 78, Fig. 3.3.1]", class.source = "folded"}
+sb <- tda_survivor(pl2)
+sb <- sb[sb$time < 290, ]
+p <- tda_ps(sb, width = 80, height = 40, xlim = c(0, 300), ylim = c(0, 1))
+p <- tda_pl_lines(p, "time", "survivor", by = "group", select = "1",
+                  band = c("upper", "lower"), lty = 1)
+p <- tda_pl_lines(p, "time", "survivor", by = "group", select = "2",
+                  band = c("upper", "lower"), lty = 5)
+p <- tda_pl(p, "plxa", sc = 60, ic = 5)
+p <- tda_pl(p, "plya", sc = 1, ic = 10)
+p <- tda_pl_text(p, "Men", at = c(240, 0.30))
+p <- tda_pl_text(p, "Women", at = c(50, 0.10))
+plot(tda_pl_text(p, "Survivor Functions for Men and Women", at = c(60, 0.8)))
+```
+
+## 4. Exponential Transition Rate Models
+
+*Book chapter 4, pp. 87-118. Command files `ehd1` to `ehd7`.*
+
+**ehd1** is the null model and **ehd2** the same with the book's
+covariates.
+
+```{r ehd12, box = "ehd1, ehd2: exponential models [book pp. 91-98, Boxes 4.1.1-4.1.5]"}
+ehd1 <- tda_rate(Surv(TFP, DES) ~ 1, d, prate = "0(10)300")
+ehd1
+ehd1$episodes   # the episodes TDA built, before the estimates
+tda_rates(ehd1)
+
+summary(tda_rate(with_x("Surv(TFP, DES)"), d))
+```
+
+The rate this model implies is a constant, `exp(-4.4891)` = 0.0112, and
+the book prints it as the table `ehd1.prs` above rather than drawing it.
+Everything that follows is an attempt to let that constant vary.
+
+**ehd3** estimates the same specification over three destination states.
+
+```{r ehd3, box = "ehd3: three destinations [book pp. 102-104, Boxes 4.2.1-4.2.2]"}
+ehd3 <- tda_rate(with_x("Surv(TFP, DES)"), d4)
+ehd3$episodes
+ehd3
+```
+
+**ehd4** and **ehd5** take random subsamples so that the destinations are
+comparably sized. `tda_runif()` is TDA's generator, a multiplicative
+congruential one with a fixed seed, so the episodes drawn here are the
+episodes TDA drew; `runif()` would give a different subsample and so
+different estimates.
+
+```{r ehd45, box = "ehd4, ehd5: subsamples, one transition at a time [book pp. 106-110, Boxes 4.2.3-4.2.6]"}
+sub <- d4[tda_runif(nrow(d4)) <= 84 / 219, ]
+sub$DES <- ifelse(sub$DES == 2, 2L, 0L)
+cat(sprintf("%d of %d episodes selected\n", nrow(sub), nrow(d4)))
+ehd4 <- tda_rate(with_x("Surv(TFP, DES)"), sub)
+ehd4$episodes
+ehd4
+
+d5 <- d4[tda_runif(nrow(d4)) <= 84 / 155, ]
+d5$DES <- ifelse(d5$DES == 3, 3L, 0L)
+cat(sprintf("%d of %d episodes selected\n", nrow(d5), nrow(d4)))
+ehd5 <- tda_rate(with_x("Surv(TFP, DES)"), d5)
+ehd5$episodes
+ehd5
+```
+
+Box 4.2.7 of the book lays the two sets of estimates side by side, which
+is the point of the exercise: with the events standardized, `COHO3` and
+`LFX` lose their significance for lateral moves and `COHO3` for downward
+ones, so the same data can support different substantive conclusions
+depending on how many events each transition happens to have. Upward
+moves are the baseline and appear in both columns unchanged.
+
+```{r ehd427, box = "Box 4.2.7: standardized against unstandardized estimates [book p. 111, Box 4.2.7]"}
+unstd <- function(des) {
+    e <- ehd3$estimates
+    e[e$Des == des, c("Variable", "Coeff", "C/Error")]
+}
+std <- list(`1` = unstd(1),
+            `2` = ehd4$estimates[, c("Variable", "Coeff", "C/Error")],
+            `3` = ehd5$estimates[, c("Variable", "Coeff", "C/Error")])
+
+for (des in 1:3) {
+    a <- unstd(des)
+    b <- std[[as.character(des)]]
+    cmp <- data.frame(Variable = a$Variable,
+                      Coeff    = a$Coeff,   `C/Error`   = a$`C/Error`,
+                      Coeff.s  = b$Coeff,   `C/Error.s` = b$`C/Error`,
+                      check.names = FALSE)
+    cat(sprintf("\n%s moves. Events: %d (unstandardized) %d (standardized)\n",
+                c("Upward", "Lateral", "Downward")[des],
+                ehd3$episodes$episodes[ehd3$episodes$des == des],
+                if (des == 1) ehd3$episodes$episodes[ehd3$episodes$des == 1]
+                else list(NULL, ehd4, ehd5)[[des]]$episodes$episodes[2]))
+    print(format(cmp, digits = 4), row.names = FALSE)
+}
+```
+
+**ehd6** holds the cohort effects equal across the three transitions,
+which is what a constraint is for.
+
+```{r ehd6, box = "ehd6: cohort effects constrained equal [book pp. 112-113, Boxes 4.2.8-4.2.9]"}
+ehd6 <- tda_rate(with_x("Surv(TFP, DES)"), d4,
+                 constraints = c("b3 - b10 = 0", "b3 - b17 = 0",
+                                 "b4 - b11 = 0", "b4 - b18 = 0"))
+ehd6
+ehd6$episodes   # the episodes TDA built, as it reports them
+```
+
+**ehd7** keeps the first four spells and gives each its coefficients:
+the effect of education on leaving a first job need not be its effect on
+leaving a fourth. `id=` and `spell=` are TDA's `edef(id=, sn=)`, and
+`spell_terms=` gives one spell a covariate set of its own -- the first
+job has no labour force experience to speak of, so `LFX` is left out
+of it, as `ehd7.cf` does.
+
+```{r ehd7, box = "ehd7: a multi-episode model [book pp. 115-118, Boxes 4.3.1-4.3.2a, 4.3.2b]"}
+d7 <- d[d$NOJ <= 4, ]
+d7 <- d7[order(d7$ID, d7$NOJ), ]
+
+# ehd7.cf measures time from the start of the FIRST job, not from the
+# start of each spell: TFC is the first spell's starting time
+# carried forward, and the episode runs from TStart - TFC to
+# TFin - TFC + 1. Using each spell's duration instead would start
+# every spell at 0 and give a different episode structure.
+d7$TFC <- ave(ifelse(d7$NOJ == 1, d7$TStart, NA), d7$ID,
+              FUN = function(v) v[!is.na(v)][1])
+d7$TSP <- d7$TStart - d7$TFC
+d7$TFPC <- d7$TFin - d7$TFC + 1
+
+ehd7 <- tda_rate(Surv(TSP, TFPC, DES) ~ EDU + COHO2 + COHO3 + LFX + PRES, d7,
+                 id = "ID", spell = "NOJ",
+                 spell_terms = list("1" = c("EDU", "COHO2", "COHO3", "PRES")))
+ehd7$episodes
+ehd7
+```
+
+## 5. Piecewise Constant Exponential Models
+
+*Book chapter 5, pp. 119-130. Command files `ehe1` to `ehe3`.*
+
+The rate is constant within periods and free between them, which buys
+duration dependence without committing to a shape.
+
+```{r pc, box = "The piecewise constant helper"}
+pc <- function(f, data, model = "exponential_periods", tp = "0 (12) 96", ...)
+    tda_rate(f, data, model = model, options = list(tp = tp), ...)
+```
+
+**ehe1** is the null model, **ehe2** the same with covariates.
+
+```{r ehe12, box = "ehe1, ehe2: piecewise constant exponential [book pp. 122-127, Boxes 5.2.1-5.2.2, 5.3.1-5.3.2]"}
+ehe1 <- pc(Surv(TFP, DES) ~ 1, d, prate = "0(1)300")
+ehe1
+ehe1$episodes      # the episodes TDA built
+ehe1$periods       # the period boundaries and the events in each
+ehe2 <- pc(with_x("Surv(TFP, DES)"), d)
+ehe2
+ehe2$periods
+```
+
+**ehe1a** plots the rate. The steps are the periods. (`ehe2p` is not a
+second rate plot but the pseudoresidual check of `ehe2`, which comes
+below with the rest of section 8.2.)
+
+```{r ehe1a, box = "ehe1a: the estimated rate [book pp. 122-124, Boxes 5.2.1-5.2.2; Fig. 5.2.1]", class.source = "folded"}
+er <- tda_rates(ehe1)
+p <- tda_ps(er, width = 80, height = 40, xlim = c(0, 300), ylim = c(0, 0.03))
+p <- tda_pl(p, "plxa", sc = 60, ic = 5)
+p <- tda_pl(p, "plya", sc = 0.01, ic = 2)
+p <- tda_pl_lines(p, "time", "rate")
+plot(tda_pl_text(p, "Piecewise Constant Exponential Rate", at = c(60, 0.025)))
+```
+
+**ehe3** uses three periods chosen by hand rather than a regular grid,
+which is model 16 rather than model 3.
+
+```{r ehe3, box = "ehe3: three periods [book pp. 129-130, Boxes 5.4.1-5.4.2]"}
+ehe3 <- pc(with_x("Surv(TFP, DES)"), d,
+           model = "exponential_periods2", tp = "0,24,60")
+ehe3
+
+# the two tables TDA prints before the estimates: the episodes it built,
+# and how they fall across the periods
+ehe3$episodes
+ehe3$periods
+```
+
+## 6. Exponential Models with Time-dependent Covariates
+
+*Book chapter 6, pp. 131-157. Episode splitting; command files `ehf1` to `ehf6`.*
+
+**ehf1** splits every episode at the date of marriage and writes the
+pieces out (`rrdat.s1`, Box 6.4.2); **ehf5** splits on a fixed grid of
+60 months (`rrdat.d60`, Box 6.5.2). `tda_split()` is both, `at=` for a
+per-episode split time and `grid=` for the fixed one.
+
+```{r ehf15, box = "ehf1, ehf5: the split episode data [book pp. 143-154, Boxes 6.4.1-6.4.2, 6.5.1-6.5.2]"}
+ds <- d
+ds$MarrDate <- ifelse(ds$TMAR <= 0, 10000, ds$TMAR - ds$TStart)
+sp <- tda_split(stats::reformulate(c(XVARS, "SEX"),
+                                   response = "Surv(TFP, DES)"),
+                ds, at = "MarrDate")
+cat(sprintf("%d episodes split into %d\n", nrow(ds), nrow(sp)))
+attr(sp, "episodes")   # the episodes epdat reports before writing them
+head(sp, 6)
+sp6 <- tda_split(with_x("Surv(TFP, DES)"), d, grid = seq(60, 420, by = 60))
+cat(sprintf("%d episodes split into %d on the 60-month grid\n",
+            nrow(d), nrow(sp6)))
+attr(sp6, "episodes")
+head(sp6, 6)
+```
+
+A covariate that changes during an episode is handled by cutting the
+episode where it changes. Marriage is the example: `MarrDate` is the
+month it happens, or past the end of the episode if it never does.
+**ehf2**, **ehf3**, **ehf4** and **ehf6** are the models on the pieces.
+
+```{r ehfsplit, box = "ehf2, ehf3: episode splitting at marriage [book pp. 145-149, Boxes 6.4.3-6.4.6]"}
+sp$MARR <- as.integer(sp$MarrDate <= sp$ts)
+cat(sprintf("%d episodes split into %d pieces\n", nrow(ds), nrow(sp)))
+
+# Surv(ts, tf, des), not Surv(tf - ts, des): a piece that begins at ts is
+# left truncated, and a model that is told otherwise puts it into risk
+# sets it was never in. An exponential rate only ever sees the difference
+# and so is unharmed, but the Cox models of ehi3 to ehi5 below are not.
+ehf2 <- tda_rate(Surv(ts, tf, des) ~ MARR, sp)
+ehf2$episodes
+ehf2
+ehf3 <- tda_rate(stats::reformulate(c("MARR", XVARS),
+                                 response = "Surv(ts, tf, des)"), sp)
+ehf3$episodes
+ehf3
+```
+
+**ehf4** distinguishes married men from married women.
+
+```{r ehf4, box = "ehf4: marriage, by sex [book pp. 150-151, Boxes 6.4.7-6.4.8]"}
+sp$MarrMen <- as.integer(sp$SEX == 1 & sp$MarrDate <= sp$ts)
+ehf4 <- tda_rate(stats::reformulate(c(XVARS, "MARR", "MarrMen"),
+                                    response = "Surv(ts, tf, des)"), sp)
+ehf4
+ehf4$episodes
+```
+
+**ehf6** is the model on the episodes **ehf5** split on a fixed grid -- at
+60, 120, ... 420 months -- so that a covariate measured in calendar time
+can change within a job.
+`grid=` takes those times; `at=` is for a split time that differs per
+episode, as marriage does. `LFX60` is the sub-episode's starting
+time, which is labour force experience accumulated within the job.
+
+```{r ehf6, box = "ehf6: splitting on a fixed grid [book pp. 155-156, Boxes 6.5.3-6.5.4]"}
+sp6$LFX60 <- sp6$ts
+cat(sprintf("%d episodes split into %d pieces\n", nrow(d), nrow(sp6)))
+ehf6 <- tda_rate(stats::reformulate(c(XVARS, "LFX60"),
+                                    response = "Surv(ts, tf, des)"), sp6)
+ehf6
+ehf6$episodes   # the split episodes, as TDA reports them
+```
+
+Box 6.5.5 of the book does the same with finer grids -- 24 and 12
+months -- and shows how little the estimates move with the grid.
+
+```{r ehf6b, box = "Box 6.5.5: the grid at 60, 24 and 12 months [book p. 157, Box 6.5.5]"}
+grid_fit <- function(step) {
+    spg <- tda_split(with_x("Surv(TFP, DES)"), d, grid = seq(step, 420, by = step))
+    spg$LFXG <- spg$ts
+    fit <- tda_rate(stats::reformulate(c(XVARS, "LFXG"),
+                                       response = "Surv(ts, tf, des)"), spg)
+    e <- fit$estimates
+    stats::setNames(data.frame(e$Coeff, e$`C/Error`), c("Coeff", "T-Stat"))
+}
+# the three grids side by side, coefficient and t statistic for each
+g <- lapply(c(60, 24, 12), grid_fit)
+out <- do.call(cbind, g)
+names(out) <- paste(rep(c("60", "24", "12"), each = 2), names(out))
+rownames(out) <- c("Const", XVARS, "LFXG")
+print(format(out, digits = 5))
+```
+
+## 7. Parametric Models of Time-dependence
+
+*Book chapter 7, pp. 159-212. Gompertz, Weibull, log-logistic, log-normal and sickle; command files `ehg1` to `ehg13`.*
+
+Five families, each fitted without covariates and then with them. `on=`
+selects which parameter of the distribution the covariates attach to —
+`xa`, `xb` or `xc` — which is the difference between the `ehg2`/`ehg3`/
+`ehg4` group of files.
+
+```{r ehgfit, box = "The two fits each family gets"}
+fit1 <- function(model, ...)
+    tda_rate(Surv(TFP, DES) ~ 1, d, model = model, prate = "0(1)300", ...)
+fitx <- function(model, on = "xa", ...)
+    tda_rate(with_x("Surv(TFP, DES)"), d, model = model, on = on, ...)
+```
+
+**ehg1**, **ehg5**, **ehg8**, **ehg10** and **ehg12** are the null
+models: Gompertz, Weibull, log-logistic, log-normal and sickle.
+
+```{r ehgnull, box = "ehg1, ehg5, ehg8, ehg10, ehg12: five families [book pp. 183-210, Boxes 7.2.1-7.2.2, 7.3.1-7.3.2, 7.4.1-7.4.2, 7.5.1-7.5.2, 7.6.1-7.6.2]"}
+models <- c("gompertz", "weibull", "loglogistic", "lognormal", "sickle")
+fits <- lapply(models, fit1)
+names(fits) <- models
+for (m in models) print(fits[[m]])
+
+# all five are fitted to the same episodes, which TDA reports before
+# each set of estimates
+fits$gompertz$episodes
+```
+
+**ehg1a**, **ehg5a** and the rest plot each fitted rate, which is where
+the families differ from each other and from the exponential. All five
+command files set the same axes -- 0 to 300 months against a rate of 0
+to 0.02 -- so the shapes can be compared directly. The book prints them
+one to a section, beside the model they belong to: Figures 7.2.2, 7.3.2,
+7.4.2, 7.5.2 and 7.6.2, in that order. The exponential's constant
+`r sprintf("%.4f", exp(coef(ehd1)[[1L]]))` would be a horizontal line
+across the middle of each.
+
+```{r ehgplots, box = "ehg1a, ehg5a, ehg8a, ehg10a, ehg12a: the five fitted rates [book pp. 185-211, Fig. 7.2.2, Fig. 7.3.2, Fig. 7.4.2, Fig. 7.5.2, Fig. 7.6.2]", class.source = "folded"}
+p <- tda_ps(tda_rates(fits$gompertz), file = "ehg1a.ps", width = 80, height = 40,
+            xlim = c(0, 300), ylim = c(0, 0.02))
+p <- tda_pl(p, "plxa", sc = 60, ic = 5)
+p <- tda_pl(p, "plya", sc = 0.01, ic = 5)
+plot(tda_pl_lines(p, "time", "rate"))
+
+p <- tda_ps(tda_rates(fits$weibull), file = "ehg5a.ps", width = 80, height = 40,
+            xlim = c(0, 300), ylim = c(0, 0.02))
+p <- tda_pl(p, "plxa", sc = 60, ic = 5)
+p <- tda_pl(p, "plya", sc = 0.01, ic = 5)
+plot(tda_pl_lines(p, "time", "rate"))
+
+p <- tda_ps(tda_rates(fits$loglogistic), file = "ehg8a.ps", width = 80, height = 40,
+            xlim = c(0, 300), ylim = c(0, 0.02))
+p <- tda_pl(p, "plxa", sc = 60, ic = 5)
+p <- tda_pl(p, "plya", sc = 0.01, ic = 5)
+plot(tda_pl_lines(p, "time", "rate"))
+
+p <- tda_ps(tda_rates(fits$lognormal), file = "ehg10a.ps", width = 80, height = 40,
+            xlim = c(0, 300), ylim = c(0, 0.02))
+p <- tda_pl(p, "plxa", sc = 60, ic = 5)
+p <- tda_pl(p, "plya", sc = 0.01, ic = 5)
+plot(tda_pl_lines(p, "time", "rate"))
+
+p <- tda_ps(tda_rates(fits$sickle), file = "ehg12a.ps", width = 80, height = 40,
+            xlim = c(0, 300), ylim = c(0, 0.02))
+p <- tda_pl(p, "plxa", sc = 60, ic = 5)
+p <- tda_pl(p, "plya", sc = 0.01, ic = 5)
+plot(tda_pl_lines(p, "time", "rate"))
+```
+
+**ehg2**, **ehg6**, **ehg9**, **ehg11** and **ehg13** add the covariates.
+In the Gompertz-Makeham model of `ehg2` they go on `xb`, the term the
+rate's growth depends on, not on the Makeham constant `xa`; the other
+four families put them on `xa`.
+
+```{r ehgcov, box = "ehg2, ehg6, ehg9, ehg11, ehg13: with covariates [book pp. 186-212, Boxes 7.2.3-7.2.4, 7.3.3-7.3.4, 7.4.3-7.4.4, 7.5.3-7.5.4, 7.6.3-7.6.4]"}
+sickle13 <- fitx("sickle")
+sickle13$episodes   # the same episodes for all five, as TDA reports
+
+fitx("gompertz", on = "xb", prate = "0(10)300")
+fitx("weibull", prate = "0(10)300")
+fitx("loglogistic")
+fitx("lognormal")
+fitx("sickle")
+```
+
+**ehg3** and **ehg4** put the same covariates on the other parameters as
+well: `xb` and `xc`, then all three. **ehg7** does the same for the
+Weibull, on `xa` and `xb`.
+
+```{r ehgon, box = "ehg3, ehg4, ehg7: covariates on more than one term [book pp. 188-197, Boxes 7.2.5-7.2.8, 7.3.5-7.3.6]"}
+ehg4 <- fitx("gompertz", on = c("xa", "xb", "xc"))
+ehg4$episodes   # the same episodes for every model in this group
+
+fitx("gompertz", on = c("xb", "xc"))
+fitx("gompertz", on = c("xa", "xb", "xc"))
+fitx("weibull", on = c("xa", "xb"))
+```
+
+## 8. Methods to Check Parametric Assumptions
+
+*Book chapter 8, pp. 213-228. The transformed survivor function and the pseudoresiduals; command files `ehh1` to `ehh4` and the `*s`/`*p` pairs.*
+
+Each of these transforms the survivor function so that one distribution
+appears as a straight line, and regresses it on time. The closer to a
+line, the better that distribution fits.
+
+The regression runs on the survivor function at five decimals, the
+precision `ehc5.ple` carries: the command files read that file rather than
+the estimate in memory, and the transformations are sensitive enough for
+it to show in the t statistics.
+
+The axes are each command file's own.
+
+```{r ehhsetup, box = "ehh1 to ehh4: the four transformations [book pp. 215-218, Boxes 8.1.1-8.1.3]"}
+s <- tda_survivor(pl, conf.int = NULL)
+s <- s[s$survivor > 0 & s$survivor < 1 & s$time > 0, ]
+s$survivor <- round(s$survivor, 5)   # the precision ehc5.ple carries
+
+checks <- list(
+    Exponential    = list(y = log(s$survivor),                    x = s$time,
+                          xlim = c(0, 300), ylim = c(-3, 0), xsc = 60, ysc = 1),
+    Weibull        = list(y = log(-log(s$survivor)),              x = log(s$time),
+                          xlim = c(0, 6),   ylim = c(-6, 2), xsc = 1,  ysc = 1),
+    `Log-Logistic` = list(y = log(1 / s$survivor - 1), x = log(s$time),
+                          xlim = c(0, 6),   ylim = c(-6, 2), xsc = 1,  ysc = 1),
+    `Log-Normal`   = list(y = stats::qnorm(1 - s$survivor),       x = log(s$time),
+                          xlim = c(0, 6),   ylim = c(-3, 2), xsc = 1,  ysc = 1))
+
+ehh <- lapply(checks, function(z) {
+    keep <- is.finite(z$y) & is.finite(z$x)
+    tda_lsreg(y ~ x, data.frame(x = z$x[keep], y = z$y[keep]))
+})
+# each regression in full: standard errors and t statistics with the
+# two coefficients
+for (nm in names(ehh)) {
+    cat("\n", nm, "\n", sep = "")
+    print(ehh[[nm]])
+}
+```
+
+The slope of the exponential line is the rate the transformation implies,
+`r sprintf("%.4f", -coef(ehh$Exponential)[[2L]])`, against the maximum
+likelihood estimate of `ehd1`. Each command file ends by drawing its own
+fitted line over the curve, the endpoints written into `plotp` by hand
+(`plotp = 0, -0.3527, 300, -2.6027` in `ehh1.cf`); here the line comes
+from the fit above, and the four panels are laid out as the book's
+Figure 8.1.1.
+
+```{r ehhplots, box = "ehh1, ehh2, ehh3, ehh4: the transformed survivor functions [book pp. 215-217, Boxes 8.1.1-8.1.2; Fig. 8.1.1]", fig.height = 3.6, class.source = "folded"}
+z <- checks$`Exponential`
+b <- coef(ehh$`Exponential`)
+p <- tda_ps(data.frame(x = z$x, y = z$y), file = "ehh1.ps",
+            width = 80, height = 40, xlim = c(0, 300), ylim = c(-3, 0))
+p <- tda_pl(p, "plxa", sc = 60, ic = 5)
+p <- tda_pl(p, "plya", sc = 1, ic = 10)
+p <- tda_pl(p, "plframe")
+p <- tda_pl_lines(p, "x", "y")
+p <- tda_pl_polyline(p, c(0, 300), b[[1L]] + b[[2L]] * c(0, 300))
+ehh1 <- tda_pl_text(p, "Graphical Test (Exponential)", at = c(150.0, -0.30000000000000004))
+
+z <- checks$`Weibull`
+b <- coef(ehh$`Weibull`)
+p <- tda_ps(data.frame(x = z$x, y = z$y), file = "ehh2.ps",
+            width = 80, height = 40, xlim = c(0, 6), ylim = c(-6, 2))
+p <- tda_pl(p, "plxa", sc = 1, ic = 5)
+p <- tda_pl(p, "plya", sc = 1, ic = 2)
+p <- tda_pl(p, "plframe")
+p <- tda_pl_lines(p, "x", "y")
+p <- tda_pl_polyline(p, c(0, 6), b[[1L]] + b[[2L]] * c(0, 6))
+ehh2 <- tda_pl_text(p, "Graphical Test (Weibull)", at = c(3.0, 1.2))
+
+z <- checks$`Log-Logistic`
+b <- coef(ehh$`Log-Logistic`)
+p <- tda_ps(data.frame(x = z$x, y = z$y), file = "ehh3.ps",
+            width = 80, height = 40, xlim = c(0, 6), ylim = c(-6, 2))
+p <- tda_pl(p, "plxa", sc = 1, ic = 5)
+p <- tda_pl(p, "plya", sc = 1, ic = 2)
+p <- tda_pl(p, "plframe")
+p <- tda_pl_lines(p, "x", "y")
+p <- tda_pl_polyline(p, c(0, 6), b[[1L]] + b[[2L]] * c(0, 6))
+ehh3 <- tda_pl_text(p, "Graphical Test (Log-Logistic)", at = c(3.0, 1.2))
+
+z <- checks$`Log-Normal`
+b <- coef(ehh$`Log-Normal`)
+p <- tda_ps(data.frame(x = z$x, y = z$y), file = "ehh4.ps",
+            width = 80, height = 40, xlim = c(0, 6), ylim = c(-3, 2))
+p <- tda_pl(p, "plxa", sc = 1, ic = 5)
+p <- tda_pl(p, "plya", sc = 1, ic = 2)
+p <- tda_pl(p, "plframe")
+p <- tda_pl_lines(p, "x", "y")
+p <- tda_pl_polyline(p, c(0, 6), b[[1L]] + b[[2L]] * c(0, 6))
+ehh4 <- tda_pl_text(p, "Graphical Test (Log-Normal)", at = c(3.0, 1.5))
+
+r <- tda_combine_ps(list(list(ehh1, ehh2), list(ehh3, ehh4)), width = 170, height = 90)
+tda_plot_ps(tda_read_ps(file.path(r$dir, "combined.ps")))
+```
+
+The book's section 8.2 checks a model through its pseudoresiduals, in
+three steps: `residuals = TRUE` writes them (`ehd2.res`, Box 8.2.3); a
+product-limit estimate treats them as durations (`ehd2s.cf`, Box 8.2.5);
+and `ehd2p.cf` plots `log S` against the residual. If the model is right
+the residuals are standard exponential, so that curve should lie on a
+straight line of slope -1 through the origin. `ehd2p.cf` draws that line
+beside it, `plotp = 0,0,3,-3`; the plot is read as the distance between
+the two.
+
+```{r ehd2res, box = "ehd2.res, ehd2s: the pseudoresiduals and their survivor function [book pp. 97-225, Boxes 4.1.4-4.1.5, 8.2.1, 8.2.3-8.2.5]"}
+ehd2r <- tda_rate(with_x("Surv(TFP, DES)"), d, residuals = TRUE)
+head(ehd2r$residuals, 10)
+tail(ehd2r$residuals, 6)
+rp <- tda_ple(Surv(Residual, Des) ~ 1, ehd2r$residuals)
+rp$episodes   # the residuals treated as durations
+print(rp, n = 10)
+```
+
+```{r ehd2pplot, box = "ehd2p: log S against the residual, with its reference line [book p. 226, Box 8.2.6]", class.source = "folded"}
+resid_panel <- function(fit, label, file) {
+    rp <- tda_ple(Surv(Residual, Des) ~ 1, fit$residuals)
+    rs <- tda_survivor(rp)
+    rs <- rs[rs$time > 0 & rs$survivor > 0 & rs$survivor < 1, ]
+    rs$LogSurv <- log(rs$survivor)
+    p <- tda_ps(rs, file = file, width = 80, height = 40,
+                xlim = c(0, 4), ylim = c(-3, 0))
+    p <- tda_pl(p, "plxa", sc = 1, ic = 0)
+    p <- tda_pl(p, "plya", sc = 1, ic = 0)
+    p <- tda_pl_lines(tda_pl(p, "plframe"), "time", "LogSurv")
+    p <- tda_pl_polyline(p, c(0, 3), c(0, -3))   # the standard exponential
+    tda_pl_text(p, label, at = c(1.5, -0.7))
+}
+plot(resid_panel(ehd2r, "Exponential Model", "ehd2p.ps"))
+```
+
+The exponential curve sits above the reference at the start, crosses it
+around 1.7 and falls away below it after that -- the same departure the
+transformed survivor function showed in `ehh1`.
+
+Box 8.2.6's footnote lists the command files for the other models, and
+the book's Figure 8.2.1 puts eight of them side by side. Each is the
+same three steps on a different fit.
+
+```{r f821, box = "ehd2p to ehg13p: the pseudoresidual check [book pp. 226-227, Box 8.2.6; Fig. 8.2.1]", fig.height = 7.2, class.source = "folded"}
+resid_fits <- list(
+    "Exponential Model" = function()
+        tda_rate(with_x("Surv(TFP, DES)"), d, residuals = TRUE),
+    "Piecewise Constant Exponential (I)" = function()
+        pc(with_x("Surv(TFP, DES)"), d, residuals = TRUE),
+    "Piecewise Constant Exponential (II)" = function()
+        pc(with_x("Surv(TFP, DES)"), d, model = "exponential_periods2",
+           tp = "0,24,60", residuals = TRUE),
+    "Gompertz Model" = function()
+        fitx("gompertz", on = "xb", residuals = TRUE),
+    "Weibull Model"      = function() fitx("weibull", residuals = TRUE),
+    "Log-logistic Model" = function() fitx("loglogistic", residuals = TRUE),
+    "Log-normal Model"   = function() fitx("lognormal", residuals = TRUE),
+    "Sickle Model"       = function() fitx("sickle", residuals = TRUE))
+
+# the arrangement of Figure 8.2.1: exponential, Gompertz, Weibull and
+# sickle down the left column, the two piecewise constant models,
+# log-logistic and log-normal down the right
+i <- 0L
+panels <- lapply(names(resid_fits), function(nm) {
+    i <<- i + 1L
+    resid_panel(resid_fits[[nm]](), nm, sprintf("res%02d.ps", i))
+})
+r <- tda_combine_ps(split(panels[c(1, 2, 4, 3, 5, 6, 8, 7)], rep(1:4, each = 2)), width = 170, height = 180)
+tda_plot_ps(tda_read_ps(file.path(r$dir, "combined.ps")))
+```
+
+The book reads these as the exponential and the Weibull departing most
+from the reference, the Gompertz, log-logistic and log-normal tracking
+it closely, and the two piecewise constant models closest of all. They
+are hints for model selection rather than a goodness-of-fit test: the
+log-logistic, log-normal and piecewise constant models resemble each
+other so closely here that the choice between them has to rest on
+something other than these plots.
+
+## 9. Semi-parametric Transition Rate Models
+
+*Book chapter 9, pp. 229-251. Cox models; command files `ehi1` to `ehi13`.*
+
+**ehi1** is the Cox model with the book's covariates. `tda_coxph()` is
+`tda_rate(model = 1)` under a name that says what it is.
+
+```{r ehi1, box = "ehi1: a Cox model [book pp. 232-243, Boxes 9.1.2, 9.3.3]"}
+ehi1 <- tda_coxph(with_x("Surv(TFP, DES)"), d)
+summary(ehi1)
+ehi1$episodes   # the episode table TDA reports first
+```
+
+**ehi2** adds marriage as a time-varying covariate. `time` is TDA's
+position within the episode, so the definition has to be evaluated inside
+TDA rather than computed here; `helpers=` writes `MDate` for it to refer
+to, without `MDate` entering the model.
+
+```{r ehi2, box = "ehi2: marriage as a time-varying covariate [book pp. 233-235, Boxes 9.1.3, 9.2.1-9.2.2]"}
+dm <- d
+dm$MDate <- ifelse(dm$TMAR <= 0, 10000, dm$TMAR - dm$TStart)
+ehi2 <- tda_coxph(stats::reformulate(c(XVARS, "MARR"),
+                                     response = "Surv(TFP, DES)"), dm,
+                  helpers = "MDate",
+                  define = list(MARR = "gt(time,MDate)"))
+ehi2
+ehi2$episodes   # the episode table TDA reports first
+```
+
+**ehi3**, **ehi4** and **ehi5** are Cox models on the split episodes of
+`ehf` -- covariates alone, then with marriage, then distinguishing
+married men.
+
+```{r ehi345, box = "ehi3, ehi4, ehi5: Cox models on the split episodes [book pp. 237-239, Boxes 9.2.3-9.2.6]"}
+ehi3 <- tda_coxph(stats::reformulate(XVARS,
+                                     response = "Surv(ts, tf, des)"), sp)
+ehi3
+ehi3$episodes   # all three are fitted to these same split episodes
+
+tda_coxph(stats::reformulate(c(XVARS, "MARR"),
+                                  response = "Surv(ts, tf, des)"), sp)
+
+tda_coxph(stats::reformulate(c(XVARS, "MARR", "MarrMen"),
+                                  response = "Surv(ts, tf, des)"), sp)
+```
+
+**ehi7** and **ehi8** ask the proportionality question twice: once as an
+interaction with log time, once by letting the effect vary between
+periods. Either way, a proportional effect is one that does not move.
+
+```{r ehi78, box = "ehi7, ehi8: proportional hazards [book pp. 243-245, Boxes 9.3.2, 9.3.4-9.3.5]"}
+dw <- d
+dw$Women <- as.integer(dw$SEX == 2)
+ehi7 <- tda_coxph(stats::reformulate(c(XVARS, "Women", "WTest"),
+                                     response = "Surv(TFP, DES)"), dw,
+                  define = list(WTest = "Women * (log(time) - 4.73)"))
+ehi7
+ehi7$episodes
+
+ehi8 <- tda_coxph(stats::reformulate(c(XVARS, "Women"),
+                                    response = "Surv(TFP, DES)"), dw,
+                  options = list(tp = "0 (12) 96"))
+summary(ehi8)   # the global goodness-of-fit test comes with the summary
+```
+
+**ehi6** asks it graphically instead: `log(-log(S))` per sex, parallel if
+the hazards are proportional. The axes, tick spacing and the two labels
+are `ehi6.cf`'s own.
+
+```{r ehi6, box = "ehi6: the graphical check [book pp. 241-242, Box 9.3.1; Fig. 9.3.1]", class.source = "folded"}
+lls <- tda_survivor(pl2, conf.int = NULL)
+lls <- lls[lls$survivor > 0 & lls$survivor < 1, ]
+lls$LLS <- log(-log(lls$survivor))
+p <- tda_ps(lls, width = 80, height = 40, xlim = c(0, 240), ylim = c(-5, 1))
+p <- tda_pl(p, "plxa", sc = 24, ic = 0)
+p <- tda_pl(p, "plya", sc = 1, ic = 0)
+p <- tda_pl_lines(p, "time", "LLS", by = "group", lty = 1)  # ehi6.cf sets no lt=
+p <- tda_pl_text(p, "Women", at = c(192, 0.6))
+plot(tda_pl_text(p, "Men", at = c(216, 0.1)))
+```
+
+**ehi9** gives each sex its baseline rate instead of assuming one.
+
+```{r ehi9, box = "ehi9: a stratified Cox model [book pp. 246-247, Boxes 9.3.6-9.3.7]"}
+ehi9 <- tda_coxph(stats::reformulate(c(XVARS, "strata(SEX)"),
+                                     response = "Surv(TFP, DES)"), d)
+ehi9
+ehi9$episodes   # one block per stratum, as TDA reports them
+```
+
+**ehi10** evaluates the baseline rate and its cumulation, **ehi11** draws
+it, **ehi12** smooths it with a spline and **ehi13** draws the smoothed
+rate.
+
+```{r ehi1011, box = "ehi10: the baseline rate, two cohorts [book pp. 249-250, Boxes 9.4.1-9.4.2]"}
+# ehi10.cf asks for two constellations, cohort 1 and cohort 3, both
+# written to ehi10.bl; they come back as sub-tables of $rates, told
+# apart by ID
+ehi10 <- tda_coxph(with_x("Surv(TFP, DES)"), d,
+                   prate = list(
+                       list(EDU = 13, COHO2 = 0, COHO3 = 0,
+                            LFX = 5, PNOJ = 1, PRES = 30),
+                       list(EDU = 13, COHO2 = 0, COHO3 = 1,
+                            LFX = 5, PNOJ = 1, PRES = 30)))
+ehi10
+ehi10$episodes   # the episodes behind the baseline
+
+bl <- ehi10$rates
+cols <- c("ID", "Time", "RiskSet", "CumRate", "BaselineRate")
+head(bl[, cols], 10)
+tail(bl[bl$ID == 0, cols], 8)
+```
+
+`ehi11.cf` draws the two cumulated rates against time (the book's
+Figure 9.4.1).
+
+```{r ehi11plot, box = "ehi11: the two cohorts' cumulated rates [book p. 250, Fig. 9.4.1]", class.source = "folded"}
+p <- tda_ps(bl, width = 80, height = 40, xlim = c(0, 300), ylim = c(0, 5))
+p <- tda_pl(p, "plxa", sc = 60, ic = 5)
+p <- tda_pl(p, "plya", sc = 1, ic = 0)
+p <- tda_pl_lines(p, "Time", "CumRate", by = "ID", select = "0", lty = 1)
+p <- tda_pl_lines(p, "Time", "CumRate", by = "ID", select = "1", lty = 5)
+p <- tda_pl_text(p, "COHO1", at = c(240, 2.3))
+plot(tda_pl_text(p, "COHO3", at = c(240, 4.2)))
+```
+
+The rate itself jumps at every event time, so the book does not smooth it
+directly. `ehi12` smooths the *cumulative* rate -- column 7 of `ehi10.bl`,
+the one for cohort 1 -- with a cubic spline over a half-month grid, and
+`ehi13` plots that spline's first derivative, which is the rate.
+
+```{r ehi12, box = "ehi12: the cumulated rate smoothed [book p. 251]"}
+# ehi12.cf selects the first sub-table, cohort 1
+b1 <- bl[bl$ID == 0, ]
+sm <- tda_spl(b1$Time, b1$CumRate, sig = 0.2, deg = 3,
+              rx = seq(0, 300, by = 0.5))$table
+head(sm[, c("x", "fitted", "d1")], 4)
+```
+
+`ehi13.cf` draws the smoother's first derivative, which is the rate
+itself (the book's Figure 9.4.2).
+
+```{r ehi13, box = "ehi13: the smoothed baseline rate [book p. 251, Fig. 9.4.2]", class.source = "folded"}
+p <- tda_ps(sm, width = 80, height = 40, xlim = c(0, 240), ylim = c(0, 0.03))
+p <- tda_pl(p, "plxa", sc = 60, ic = 5)
+p <- tda_pl(p, "plya", sc = 0.01, ic = 0)
+plot(tda_pl_lines(p, "x", "d1"))
+```
+
+## 10. Models with a Mixture Distribution
+
+*Book chapter 10, pp. 261-271. A gamma-distributed error term on the
+exponential and the Weibull; no command file ships for either, so these
+two fits are checked against the book's boxes rather than against
+TDA's reference output.*
+
+The book's chapter 10 adds unobserved heterogeneity: `mix = 1` is a
+gamma mixture on the exponential model (Box 10.2.1) and on the Weibull
+(Box 10.2.2); `D Constant` is the log of the mixture variance.
+
+```{r mix, box = "Boxes 10.2.1, 10.2.2: gamma mixtures [book pp. 268-271, Boxes 10.2.1-10.2.2]"}
+tda_rate(with_x("Surv(TFP, DES)"), d, options = list(mix = 1))
+tda_rate(with_x("Surv(TFP, DES)"), d, model = "weibull",
+         options = list(mix = 1))
+```
+
+
+Finally, the product-limit survivor function on its own, the picture the
+whole exercise starts from. This one answers to no command file: the
+book has no such figure, and `ple5p.cf` -- which the name would suggest
+-- draws something else, the two groups with their confidence bands, as
+`ehc8` already does above.
+
+```{r closing, box = "The product-limit survivor function (no book box)", class.source = "folded"}
+p <- tda_ps(tda_survivor(pl), width = 80, height = 40, xlim = c(0, 300), ylim = c(0, 1))
+p <- tda_pl(p, "plxa", sc = 60, ic = 5)
+p <- tda_pl(p, "plya", sc = 1, ic = 10)
+plot(tda_pl_lines(p, "time", "survivor"))
+```

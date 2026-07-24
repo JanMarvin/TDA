@@ -1,0 +1,10 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: gd10.cf
+============================================================================
+Error in command: mdef(A,4,4)=gd2a.mat
+Error: can't open data file: gd2a.mat
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390189 bytes.
+End of program. Tue Jul 21 05:46:53 2026

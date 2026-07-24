@@ -1,0 +1,37 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:54 2026
+Current memory: 390032 bytes.
+
+Reading command file: plot4.cf
+============================================================================
+psfile=plot4.ps
+Opened new PostScript file: plot4.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 90 x 50
+PostScript coordinates. X-axis: 150,405  Y-axis: 460,602
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           1.0000,        1000.0000 (logarithmic)
+User coordinates Y axis:           2.0000,         500.0000 (logarithmic)
+----------------------------------------------------------------------------
+plxa(sc=10,ic=10)
+----------------------------------------------------------------------------
+plya(sc=5,ic=0)
+----------------------------------------------------------------------------
+plframe
+----------------------------------------------------------------------------
+plxgrid=10,50,250
+----------------------------------------------------------------------------
+plygrid=10,100,1000
+----------------------------------------------------------------------------
+plabel=Logarithmic Coordinate System
+----------------------------------------------------------------------------
+pxlabel=X axis
+----------------------------------------------------------------------------
+pylabel(sc=3)=Y axis
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390062 bytes.
+End of program. Tue Jul 21 05:46:54 2026

@@ -1,0 +1,10 @@
+# dmasym.cf -- dma on a symmetric data matrix (corr./cov. based algorithms)
+nvar(
+    dfile = sym.mat,
+    S1 [9.4] = c1, S2 [9.4] = c2, S3 [9.4] = c3,
+    S4 [9.4] = c4, S5 [9.4] = c5,
+);
+dma(alg=2);
+dma(alg=4);
+dma(alg=5);
+dma(alg=6);

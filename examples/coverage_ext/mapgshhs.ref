@@ -1,0 +1,121 @@
+TDA. Analysis of Transition Data (6.4q). Sun Sep  6 15:31:20 2026
+Current memory: 390032 bytes.
+
+Reading command file: mapgshhs.cf
+============================================================================
+sdgshhs(...)=gshhs_l.b
+Conversion of GSHHS files. Current memory: 390032 bytes.
+Input file: gshhs_l.b
+Level selection: 1
+
+GSHHS data format version: 15
+Number of polygons: 10717 (max number of points: 6851)
+Number of polygons with selected level: 5701
+62047 records written to: coast.sd
+----------------------------------------------------------------------------
+sdnvar(...)
+Reading a spatial data file. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 SDID      3   4   0.0  c1
+  2 SDTyp     3   4   0.0  c2
+  3 SDN       3   4   0.0  c3
+  4 SDPtr     3   5  11.0  rd
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): coast.sd
+Free format. Separation character(s): default.
+Reading data file: coast.sd
+Read records: 1000 
+
+Created a new data matrix.
+Number of cases: 1000
+Number of variables: 4
+Missing values in data file(s): none.
+
+Number of points: 2
+Number of lines: 10
+Number of polygons: 988
+Number of unknown objects: 0
+
+Maximal number of points in spatial objects: 6732
+Total number of points in spatial objects: 35817
+Note: coast.sd remains opened for further access.
+
+X values. Minimum:      -179.9984  Maximum:       180.0000
+Y values. Minimum:       -55.7917  Maximum:        83.6268
+
+End of creating new variables. Current memory: 514145 bytes.
+----------------------------------------------------------------------------
+psfile=gshhsmap.ps
+Opened new PostScript file: gshhsmap.ps
+----------------------------------------------------------------------------
+psetupg(...)
+Set up geographical coordinate system. Current memory: 514145 bytes.
+Cylindrical projection (equidistant).
+View: -3,51. Region: 6,4
+
+Selected region longitude:   -9.0000 (  -3.0000)    3.0000
+Selected region latitude:    47.0000 (  51.0000)   55.0000
+
+Creating a new 2d coordinate system.
+Size (width x height in mm): 150 x 100
+PostScript coordinates. X-axis: 100,525  Y-axis: 100,384
+Origin (PostScript x and y coordinates): 100,100
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:          -9.0000,           3.0000 
+User coordinates Y axis:          47.0000,          55.0000 
+----------------------------------------------------------------------------
+sdpgrat(...)
+Graticule for geographical coordinate system. Current memory: 514145 bytes.
+Drawing grid lines (meridians).
+Drawing grid lines (parallels).
+mapgrid_lat: GDPROJ=10 GDPROJA=0
+----------------------------------------------------------------------------
+sdpmap(...)
+Plot in geographical coordinate system. Current memory: 514145 bytes.
+imin=155 imax=30
+xmin=-6.22917 xmax=1.76581
+ymin=49.9571 ymax=58.6729
+xmin=-9,47 xmax=3,55
+ni=204 n=357
+
+np=208 nb=5    bflag: 0 0 0 0 
+imin=152 imax=39
+xmin=-10.4567 xmax=-5.43089
+ymin=51.4446 ymax=55.3812
+xmin=-9,47 xmax=3,55
+ni=83 n=186
+
+np=95 nb=12    bflag: 0 0 0 0 
+imin=0 imax=2
+xmin=-4.59089 xmax=-4.04086
+ymin=53.1375 ymax=53.4304
+xmin=-9,47 xmax=3,55
+ni=8 n=8
+INSIDE
+imin=5 imax=3
+xmin=-4.79758 xmax=-4.36344
+ymin=54.052 ymax=54.4162
+xmin=-9,47 xmax=3,55
+ni=6 n=6
+INSIDE
+imin=0 imax=2
+xmin=-1.58756 xmax=-1.0725
+ymin=50.5729 ymax=50.7671
+xmin=-9,47 xmax=3,55
+ni=5 n=5
+INSIDE
+
+Number of type 1 objects: 2
+Number of type 2 objects: 10. Plotted: 103 (parts)
+Number of type 3 objects: 988. Plotted: 6 (parts)
+PostScript output written to: gshhsmap.ps
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 11870720 bytes.
+End of program. Sun Sep  6 15:31:20 2026

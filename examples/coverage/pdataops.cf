@@ -1,0 +1,18 @@
+# pdataops.cf -- t_parm.c coverage: parm() is TDA's shared
+# keyword=value option parser, used by nearly every command in the
+# codebase; its remaining uncovered lines are individual rarely-used
+# keywords tied to specific commands. This batch covers pdata's own
+# keep=/drop=/sort=/transp/noc=/nn= (writing variables from the
+# current data matrix to an external file), all documented under
+# ##pdata in tda.hlp. Every output file's content checked exactly.
+
+silent = -1;
+
+mdef(A,4,3) = 1,2,3, 4,5,6, 7,8,9, 10,11,12;
+mnvar(A);
+
+pdata(keep=A1,A3) = kept.dat;
+pdata(drop=A2) = dropped.dat;
+pdata(transp) = transp.dat;
+pdata(noc=2) = firsttwo.dat;
+pdata(nn=2,3) = middle.dat;

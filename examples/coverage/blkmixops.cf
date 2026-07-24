@@ -1,0 +1,76 @@
+# Scalar operators INSIDE block-mode expressions: an expression is
+# type 4 (routed through v_eval2's own operator switch in t_eval2)
+# only when it contains a block operator, so each scalar case below
+# wraps block operands.  Pure-scalar expressions evaluate in t_eval
+# instead -- established while writing this case: the two engines
+# duplicate the operator table and are reached by different types.
+nvar(dfile=blk.dat, ID[4.0]=c1, X[10.3]=c2, dblock=ID,
+  M01[12.4] = bmin(X) + bmax(X),
+  M02[12.4] = bmax(X) - bmin(X),
+  M03[12.4] = bmin(X) * 2,
+  M04[12.4] = bmax(X) / bnrec,
+  M05[12.4] = bmin(X) ^ 2,
+  M06[12.4] = bnrec % 2,
+  M07[12.4] = and(gt(bnrec,1), lt(brec,3)),
+  M08[12.4] = or(eq(brec,1), eq(brec,bnrec)),
+  M09[12.4] = exp(bmin(X) / 10),
+  M10[12.4] = log(abs(bmin(X)) + 1),
+  M11[12.4] = rnd(bmax(X) / 3),
+  M12[12.4] = abs(bmin(X) - 5),
+  M13[12.4] = sign(bmin(X) - 4),
+  M14[12.4] = floor(bmax(X) / 2),
+  M15[12.4] = ceil(bmax(X) / 2),
+  M16[12.4] = tr(bmin(X), 2, 6),
+  M17[12.4] = sqrt(abs(bmax(X))),
+  M18[12.4] = sin(bmin(X)),
+  M19[12.4] = cos(bmax(X)),
+  M20[12.4] = lgam(bnrec + 1),
+  M21[12.4] = digam(bnrec + 1),
+  M22[12.4] = trigam(bnrec + 1),
+  M23[12.4] = icg(bnrec, 2),
+  M24[12.4] = icb(0.5, bnrec, 2),
+  M25[12.4] = bc(bnrec + 3, 2),
+  M26[12.4] = eexp(bmin(X)),
+  M27[12.4] = eq(bnrec, 3),
+  M28[12.4] = ne(bnrec, 3),
+  M29[12.4] = lt(brec, 2),
+  M30[12.4] = le(brec, 2),
+  M31[12.4] = gt(brec, 1),
+  M32[12.4] = ge(brec, 1),
+  M33[12.4] = not(eq(brec, 1)),
+  M34[12.4] = if(gt(bnrec,2), bmin(X), bmax(X)),
+  M35[12.4] = nd(bmin(X) / 5),
+  M36[12.4] = ndf(bmin(X) / 5),
+  M37[12.4] = ndi(0.2 + brec / 10),
+  M38[12.4] = td(bmin(X) / 5, 4),
+  M39[12.4] = chd(bnrec, 3),
+  M40[12.4] = fd(bnrec, 2, 4),
+  M41[12.4] = mr(abs(bmin(X)) / 3),
+  M42[12.4] = poisson(bnrec, 2),
+  M43[12.4] = max(bmin(X), 4, brec),
+  M44[12.4] = min(bmax(X), 6, bnrec + 3),
+);
+dstat;
+# second wave: the operator cases the first block left unexecuted
+# (from the annotated coverage listing); each still wraps a block
+# operand so it routes through v_eval2.  rd/rdn (random) and rdp1 are
+# excluded -- their output would make the reference nondeterministic.
+clear;
+nvar(dfile=blk.dat, ID[4.0]=c1, X[10.3]=c2, dblock=ID,
+  N01[12.4] = gt(brec,1) & le(brec,2),
+  N02[12.4] = eq(brec,1) | eq(brec,3),
+  N03[12.4] = bivn(bmin(X)/5, 0.5, 0.3),
+  N04[12.4] = negbin(2, 3, bnrec),
+  N05[12.4] = gclen(10, 50, 10 + bmin(X), 51),
+  N06[12.4] = jul(2000, 3, tr(bnrec,1,28)),
+  N07[12.4] = july(jul(2000, 3, 10) + bnrec),
+  N08[12.4] = pi * bnrec,
+  N09[12.4] = noc + bnrec,
+  N10[12.4] = nocdm - bnrec,
+  N11[12.4] = nvar + bnrec,
+  N12[12.4] = bnoc + brec,
+  N13[12.4] = case + bnrec,
+  N14[12.4] = X[2] + bmin(X),
+  N15[12.4] = eq(bnrec,2)[1] + bmin(X),
+);
+dstat;

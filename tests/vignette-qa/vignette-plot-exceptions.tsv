@@ -1,0 +1,19 @@
+# Labels the vignette draws that the command file does not, with the reason.
+# tools/check_vignette_plots.py reads this; anything not listed here is
+# reported as a disagreement.  One row per command file and label.
+#
+# cf	label	why
+ehh1	Graphical Test (Exponential)	Figure 8.1.1 titles its four panels; the command files do not, because the book set the titles when it assembled the figure. The four panels share one grid here and need telling apart.
+ehh2	Graphical Test (Weibull)	as ehh1
+ehh3	Graphical Test (Log-Logistic)	as ehh1
+ehh4	Graphical Test (Log-Normal)	as ehh1
+ehc2	FRAME	Figure 3.1.1 prints all three panels framed, and ehc2a/ehc2b call plframe; ehc2.cf comments its own out, so the shipped command file and the printed figure disagree. The vignette follows the figure.
+#
+# Plots compared picture-for-picture against TDA's own PostScript in
+# examples/exam (not against the manual's scan):
+#   ds4   fixed -- the markers belong to M1, the first smoother, not to
+#         the raw series; ds4.cf draws plot(lt=0,s=5)=C,M1 then plot=C,M1
+#   dh1   match     gd3   match     gd15  match
+#   gd18  match     gd21  match (arrowheads confirmed at 400 dpi)
+# The other eight plots in tdaR.Rmd ship no .ps and have no reference.
+gdf3	(whole plot)	gdf3.cf does not run to completion through the real TDA binary -- the gdf() computation succeeds, the final plot(s=17,...) errors on degenerate bounding-box data. The script and box demonstrate the same tda_gdf() capability on comparably-structured data, so the axes deliberately differ from the .cf's.

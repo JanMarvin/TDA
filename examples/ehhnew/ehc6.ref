@@ -1,0 +1,54 @@
+Read records:     131     
+TDA. Analysis of Transition Data (6.4p). Fri Jul 24 21:39:00 2026
+Current memory: 390032 bytes.
+
+Reading command file: ehc6.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Time      3   4   0.0  c3
+  2 Surv      3   4   0.0  c7
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): ehc5.ple
+Free format. Separation character(s): default.
+
+Reading data file: ehc5.ple
+Read records: 131 
+
+Created a new data matrix.
+Number of cases: 131
+Number of variables: 2
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 398072 bytes.
+----------------------------------------------------------------------------
+psfile=ehc6.ps
+Opened new PostScript file: ehc6.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 80 x 40
+PostScript coordinates. X-axis: 150,377  Y-axis: 460,573
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,         300.0000 
+User coordinates Y axis:           0.0000,           1.0000 
+----------------------------------------------------------------------------
+plxa(sc=60,ic=5)
+----------------------------------------------------------------------------
+plya(sc=1,ic=10)
+----------------------------------------------------------------------------
+plot=Time,Surv
+----------------------------------------------------------------------------
+pltext(xy=60,0.8)=Product-Limit Survivor Function
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 418146 bytes.
+End of program. Fri Jul 24 21:39:00 2026

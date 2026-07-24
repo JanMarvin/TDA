@@ -1,0 +1,22 @@
+# lsregsc.cf -- regression test for the se[j] > ctx->EPSI patch in
+# prn1_coeff() (t_pgen.c). X2 = X^2 has a natural scale ~900x larger
+# than X, so its coefficient's own variance is legitimately tiny in
+# absolute terms despite being reliably estimated -- before the patch
+# this printed "---" instead of a real standard error (rejected by a
+# fixed absolute floor, EPSI1 =~ 1.49e-8, rather than a scale-aware
+# one); confirmed against a real R lm() fit of the identical model.
+# See lsregsg.cf/.ref for the negative control -- a genuinely singular
+# fit must still print "---". (An earlier version of this patch,
+# se[j] > 0.0, was reverted after it let a constrained parameter's own
+# floating-point noise print as a fabricated standard error instead of
+# TDA's own correct "---" -- see t_pgen.c's own patch comment.)
+
+nvar(
+    dfile = scale.dat,
+    X  = c1,
+    Y  = c2,
+    X2 = X * X,
+);
+lsreg (
+    tfmt = -18.10,
+) = Y,X,X2;

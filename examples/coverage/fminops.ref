@@ -1,0 +1,174 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep  5 12:56:48 2026
+Current memory: 390032 bytes.
+
+Reading command file: fminops.cf
+============================================================================
+fmin(...)=...
+Function minimization. Current memory: 390032 bytes.
+
+Function definition:
+fn      = (x-2)^2+(y+1)^2
+
+
+Function minimization.
+Algorithm 4: BFGS
+
+Number of model parameters: 2
+Maximum number of iterations: 500
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Minimum of step size value: 1e-10
+Scaling factor: 1
+
+2 starting value(s) from xp parameter.
+
+Idx  Parameter   Starting value
+  1  x            2.00000000e-01 
+  2  y            2.00000000e-01 
+
+
+Convergence reached in 3 iterations.
+Number of function evaluations: 3 (3,0)
+
+Minimum of function: 0
+
+Idx  Parameter       Value      Error    Value/E  Signif
+--------------------------------------------------------
+  1  x              2.0000 
+  2  y             -1.0000 
+
+Function (starting values):     4.6800 
+Function (final estimates):     0.0000 
+
+----------------------------------------------------------------------------
+fmin(...)=...
+Function minimization. Current memory: 390032 bytes.
+
+Function definition:
+fn      = (1-x)^2+5*(y-x^2)^2
+
+
+Function minimization.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 2
+Maximum number of iterations: 500
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: 1
+
+2 starting value(s) from xp parameter.
+
+Idx  Parameter   Starting value
+  1  x            2.00000000e-01 
+  2  y            2.00000000e-01 
+
+
+Convergence reached in 8 iterations.
+Number of function evaluations: 11 (11,11)
+
+Minimum of function: 3.69289e-21
+Norm of final gradient vector: 5.73017e-10
+Last absolute change of function value: 1
+Last relative change in parameters: 1.05563e-05
+
+Numerical problems.
+  4 : Hessian not positive definite.
+
+Idx  Parameter       Value      Error    Value/E  Signif
+--------------------------------------------------------
+  1  x              1.0000 
+  2  y              1.0000 
+
+Function (starting values):     0.7680 
+Function (final estimates):     0.0000 
+
+----------------------------------------------------------------------------
+fmin(...)=...
+Function minimization. Current memory: 390032 bytes.
+
+Function definition:
+fn      = (1-x)^2+5*(y-x^2)^2
+
+
+Function minimization.
+Algorithm 5: Newton (I)
+
+Number of model parameters: 2
+Maximum number of iterations: 500
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Mue of Armijo condition: 0.2
+Minimum of step size value: 1e-10
+Scaling factor: 1
+
+2 starting value(s) from xp parameter.
+
+Idx  Parameter   Starting value
+  1  x            2.00000000e-01 
+  2  y            2.00000000e-01 
+
+
+Convergence reached in 8 iterations.
+Number of function evaluations: 11 (11,11)
+
+Minimum of function: 3.69289e-21
+Norm of final gradient vector: 5.73017e-10
+Last absolute change of function value: 1
+Last relative change in parameters: 1.05563e-05
+
+Numerical problems.
+  4 : Hessian not positive definite.
+
+Idx  Parameter       Value      Error    Value/E  Signif
+--------------------------------------------------------
+  1  x              1.0000 
+  2  y              1.0000 
+
+Function (starting values):     0.7680 
+Function (final estimates):     0.0000 
+
+----------------------------------------------------------------------------
+fmin(...)=...
+Function minimization. Current memory: 390032 bytes.
+
+Function definition:
+fn      = exp(x-1)-x+(y-0.5)^2
+
+
+Function minimization.
+Algorithm 3: conjugate gradients
+
+Number of model parameters: 2
+Maximum number of iterations: 800
+Convergence criterion: 1
+Tolerance for norm of final gradient: 1e-06
+Minimum of step size value: 1e-10
+Scaling factor: 1
+
+2 starting value(s) from xp parameter.
+
+Idx  Parameter   Starting value
+  1  x            5.00000000e-01 
+  2  y            5.00000000e-01 
+
+
+Convergence reached in 3 iterations.
+Number of function evaluations: 5 (5,0)
+
+Minimum of function: 0
+Norm of final gradient vector: 2.34546e-12
+
+Idx  Parameter       Value      Error    Value/E  Signif
+--------------------------------------------------------
+  1  x              1.0000 
+  2  y              0.5000 
+
+Function (starting values):     0.1065 
+Function (final estimates):     0.0000 
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 391716 bytes.
+End of program. Sat Sep  5 12:56:48 2026

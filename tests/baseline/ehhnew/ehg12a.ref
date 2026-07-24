@@ -1,0 +1,54 @@
+Read records:     301     
+TDA. Analysis of Transition Data (6.4p). Fri Jul 24 21:39:00 2026
+Current memory: 390032 bytes.
+
+Reading command file: ehg12a.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 Time      3   4   0.0  c2
+  2 Rate      3   4   0.0  c5
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+Input select (isel): gt(c2,0)
+
+Using data file(s): ehg12.prs
+Free format. Separation character(s): default.
+
+Reading data file: ehg12.prs
+Read records: 301 
+Selected for data matrix: 300 records.
+
+Created a new data matrix.
+Number of cases: 300
+Number of variables: 2
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 398072 bytes.
+----------------------------------------------------------------------------
+psfile=ehg12a.ps
+Opened new PostScript file: ehg12a.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 80 x 40
+PostScript coordinates. X-axis: 150,377  Y-axis: 460,573
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:           0.0000,         300.0000 
+User coordinates Y axis:           0.0000,           0.0200 
+----------------------------------------------------------------------------
+plxa(sc=60,ic=5)
+----------------------------------------------------------------------------
+plya(sc=0.01,ic=5)
+----------------------------------------------------------------------------
+plot=Time,Rate
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 418164 bytes.
+End of program. Fri Jul 24 21:39:00 2026

@@ -1,0 +1,561 @@
+%!PS-Adobe-2.0 EPSF-1.2
+%%Title: mdsxpcf.cf.ps
+%%Creator: TDA 6.4
+%%CreationDate: Sun Sep  6 11:02:46 2026
+%%BoundingBox:   101   433   444   754
+%%BeginProlog
+/TDAdict 200 dict def % define local dictionary
+TDAdict begin         % push dictionary onto the dictionary stack
+/reencsmalldict 12 dict def % obtain dict for reencoding
+/ReEncodeSmall
+{
+    reencsmalldict begin
+    /newcodesandnames exch def
+    /newfontname exch def
+    /basefontname exch def
+    /basefontdict basefontname findfont def
+    /newfont basefontdict maxlength dict def
+    basefontdict
+    { exch dup /FID ne
+    { dup /Encoding eq
+    { exch dup length array copy newfont 3 1 roll put }
+    { exch newfont 3 1 roll put }
+    ifelse }
+    {pop pop }
+    ifelse }
+    forall
+    newfont /FontName newfontname put
+    newcodesandnames aload pop
+    newcodesandnames length 2 idiv
+    { newfont /Encoding get 3 1 roll put}
+    repeat newfontname newfont definefont pop
+    end 
+} def
+/spanvec [
+8#0 /NUL
+8#1 /Eth
+8#2 /eth
+8#3 /Lslash
+8#4 /lslash
+8#5 /Scaron
+8#6 /scaron
+8#7 /Yacute
+8#10 /yacute
+8#11 /HT
+8#12 /LF
+8#13 /Thorn
+8#14 /thorn
+8#15 /CR
+8#16 /Zcaron
+8#17 /zcaron
+8#20 /DLE
+8#21 /DC1
+8#22 /DC2
+8#23 /DC3
+8#24 /DC4
+8#25 /onehalf
+8#26 /onequarter
+8#27 /onesuperior
+8#30 /threequarters
+8#31 /threesuperior
+8#32 /twosuperior
+8#33 /brokenbar
+8#34 /minus
+8#35 /multiply
+8#36 /RS
+8#37 /US
+8#200 /Adieresis
+8#201 /Aring
+8#202 /Ccedilla
+8#203 /Eacute
+8#204 /Ntilde
+8#205 /Odieresis
+8#206 /Udieresis
+8#207 /aacute
+8#210 /agrave
+8#211 /acircumflex
+8#212 /adieresis
+8#213 /atilde
+8#214 /aring
+8#215 /ccedilla
+8#216 /eacute
+8#217 /egrave
+8#220 /ecircumflex
+8#221 /edieresis
+8#222 /iacute
+8#223 /igrave
+8#224 /icircumflex
+8#225 /idieresis
+8#226 /ntilde
+8#227 /oacute
+8#230 /ograve
+8#231 /ocircumflex
+8#232 /odieresis
+8#233 /otilde
+8#234 /uacute
+8#235 /ugrave
+8#236 /ucircumflex
+8#237 /udieresis
+8#240 /dagger
+8#241 /degree
+8#242 /cent
+8#243 /sterling
+8#244 /section
+8#245 /bullet
+8#246 /paragraph
+8#247 /germandbls
+8#250 /registered
+8#251 /copyright
+8#252 /trademark
+8#253 /acute
+8#254 /dieresis
+8#255 /notequal
+8#256 /AE
+8#257 /Oslash
+8#260 /infinity
+8#261 /plusminus
+8#262 /lessequal
+8#263 /greaterequal
+8#264 /yen
+8#265 /mu
+8#266 /Gamma
+8#267 /summation
+8#270 /product
+8#271 /pi
+8#272 /integral
+8#273 /ordfeminine
+8#274 /ordmasculine
+8#275 /Omega
+8#276 /ae
+8#277 /oslash
+8#300 /questiondown
+8#301 /exclamdown
+8#302 /logicalnot
+8#303 /radical
+8#304 /florin
+8#305 /approxequal
+8#306 /Delta
+8#307 /guillemotleft
+8#310 /guillemotright
+8#311 /ellipsis
+8#312 /nbspace
+8#313 /Agrave
+8#314 /Atilde
+8#315 /Otilde
+8#316 /OE
+8#317 /oe
+8#320 /endash
+8#321 /emdash
+8#322 /quotedblleft
+8#323 /quotedblright
+8#324 /quoteleft
+8#325 /quoteright
+8#326 /divide
+8#327 /lozenge
+8#330 /ydieresis
+8#331 /Ydieresis
+8#332 /fraction
+8#333 /currency
+8#334 /guilsinglleft
+8#335 /guilsinglright
+8#336 /fi
+8#337 /fl
+8#340 /daggerdbl
+8#341 /periodcentered
+8#342 /quotesinglbase
+8#343 /quotedblbase
+8#344 /perthousand
+8#345 /Acircumflex
+8#346 /Ecircumflex
+8#347 /Aacute
+8#350 /Edieresis
+8#351 /Egrave
+8#352 /Iacute
+8#353 /Icircumflex
+8#354 /Idieresis
+8#355 /Igrave
+8#356 /Oacute
+8#357 /Ocircumflex
+8#360 /apple
+8#361 /Ograve
+8#362 /Uacute
+8#363 /Ucircumflex
+8#364 /Ugrave
+8#365 /dotlessi
+8#366 /circumflex
+8#367 /tilde
+8#370 /macron
+8#371 /breve
+8#372 /dotaccent
+8#373 /ring
+8#374 /cedilla
+8#375 /hungarumlaut
+8#376 /ogonek
+8#377 /caron
+] def
+/m  {moveto} bind def
+/rm {rmoveto} bind def
+/l  {lineto} bind def
+/rl {rlineto} bind def
+
+/fsiz 0 def % font size
+/FT {/TFont findfont fsiz scalefont setfont} bind def
+/FS {/Symbol findfont fsiz scalefont setfont} bind def
+
+/ssiz 1 def % half size of symbol
+/lpt  0 def % size of numerical labels
+/str 20 string def
+/xmin 0 def
+
+/sclear { % clear area for string
+gsave currentpoint pop -2 add fsiz 4 div m
+dup stringwidth exch 4 add exch rl
+0 setlinecap fsiz 2 add setlinewidth
+1 setgray stroke grestore
+} def
+/center { % center a string
+    dup stringwidth pop
+    2 div neg 0 rm
+} def
+/aright { % right justified
+    dup stringwidth pop
+    neg 0 rm
+} def
+/adjust { % adjust for y axis labels
+    dup stringwidth pop
+    neg lpt 3 div neg rm
+    currentpoint pop xmin lt {currentpoint pop /xmin exch def} if
+} def
+/invers {
+    1 setgray fill 0 setgray
+} def
+/circle {
+    newpath ssiz 0 360 arc
+} def
+/cross {
+    gsave
+    ssiz neg 0 rm ssiz 2 mul 0 rl
+    ssiz neg ssiz rm 0 ssiz 2 mul neg rl
+    stroke
+    grestore
+} def
+/xsym {
+    gsave
+    45 rotate    ssiz neg 0 rm ssiz 2 mul 0 rl
+    ssiz neg ssiz rm 0 ssiz 2 mul neg rl
+    stroke
+    grestore
+} def
+/square {
+    gsave
+    ssiz neg ssiz neg rm ssiz 2 mul 0 rl
+    0 ssiz 2 mul rl ssiz 2 mul neg 0 rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+/trian1 {
+    gsave
+    ssiz neg ssiz neg rm ssiz 2 mul 0 rl
+    ssiz neg ssiz 2 mul rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+/trian2 {
+    gsave
+    ssiz neg ssiz rm ssiz ssiz 2 mul neg rl
+    ssiz ssiz 2 mul rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+/rhomb {
+    gsave
+    ssiz neg 0 rm ssiz ssiz neg rl
+    ssiz ssiz rl ssiz neg ssiz rl closepath
+    gsave 1 setgray fill 0 setgray grestore
+} def
+end         % pop TDAdict off the dictionary stack
+%%EndProlog
+TDAdict begin
+/Times-Roman /TFont spanvec ReEncodeSmall
+
+% define current coordinate system
+% xorg=150 yorg=460 pxlen=100.00 pylen=100.00
+/xorg 150 def
+/yorg 460 def
+xorg yorg translate
+/rf  0.00 def rf rotate
+/sfx  1.00 def
+/sfy  1.00 def
+sfx sfy scale
+
+%#Parameter: 150 460 100 100 0 0.7 6 4.3 0 0 1 1 0
+1 setlinecap
+1 setlinejoin
+
+
+%#1: plxa(sc=1,ic=0)
+%#x-axis
+/fsiz  8.50 def FT
+[] 0 setdash
+0.5670 setlinewidth
+ 0.00  0.00 m
+283.50  0.00 l
+stroke
+ 0.00  0.00 m
+0 -5.10 rl
+%#stroke
+%#text:  0.00 -13.61  8.50 1 0 0
+gsave
+0 -8.50 rm
+(0) center
+show
+grestore
+stroke
+47.25  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 47.25 -13.61  8.50 1 0 1
+gsave
+0 -8.50 rm
+(1) center
+show
+grestore
+stroke
+94.50  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 94.50 -13.61  8.50 1 0 2
+gsave
+0 -8.50 rm
+(2) center
+show
+grestore
+stroke
+141.75  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 141.75 -13.61  8.50 1 0 3
+gsave
+0 -8.50 rm
+(3) center
+show
+grestore
+stroke
+189.00  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 189.00 -13.61  8.50 1 0 4
+gsave
+0 -8.50 rm
+(4) center
+show
+grestore
+stroke
+236.25  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 236.25 -13.61  8.50 1 0 5
+gsave
+0 -8.50 rm
+(5) center
+show
+grestore
+stroke
+283.50  0.00 m
+0 -5.10 rl
+%#stroke
+%#text: 283.50 -13.61  8.50 1 0 6
+gsave
+0 -8.50 rm
+(6) center
+show
+grestore
+stroke
+
+%#2: plya(sc=1,ic=10)
+%#y-axis
+/fsiz  8.50 def FT
+/lpt  8.50 def
+/xmin 0 def
+[] 0 setdash
+0.5670 setlinewidth
+ 0.00  0.00 m
+ 0.00 283.50 l
+stroke
+ 0.00  0.00 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 -1.70  8.50 2 0 0.7
+gsave
+-2.83 0 rm
+(0.7) adjust
+show
+grestore
+stroke
+ 0.00  7.87 m
+-3.57 0 rl
+stroke
+ 0.00 15.75 m
+-3.57 0 rl
+stroke
+ 0.00 23.63 m
+-3.57 0 rl
+stroke
+ 0.00 31.50 m
+-3.57 0 rl
+stroke
+ 0.00 39.38 m
+-3.57 0 rl
+stroke
+ 0.00 47.25 m
+-3.57 0 rl
+stroke
+ 0.00 55.12 m
+-3.57 0 rl
+stroke
+ 0.00 63.00 m
+-3.57 0 rl
+stroke
+ 0.00 70.88 m
+-3.57 0 rl
+stroke
+ 0.00 78.75 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 77.05  8.50 2 0 1.7
+gsave
+-2.83 0 rm
+(1.7) adjust
+show
+grestore
+stroke
+ 0.00 86.63 m
+-3.57 0 rl
+stroke
+ 0.00 94.50 m
+-3.57 0 rl
+stroke
+ 0.00 102.38 m
+-3.57 0 rl
+stroke
+ 0.00 110.25 m
+-3.57 0 rl
+stroke
+ 0.00 118.13 m
+-3.57 0 rl
+stroke
+ 0.00 126.00 m
+-3.57 0 rl
+stroke
+ 0.00 133.88 m
+-3.57 0 rl
+stroke
+ 0.00 141.75 m
+-3.57 0 rl
+stroke
+ 0.00 149.63 m
+-3.57 0 rl
+stroke
+ 0.00 157.50 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 155.80  8.50 2 0 2.7
+gsave
+-2.83 0 rm
+(2.7) adjust
+show
+grestore
+stroke
+ 0.00 165.38 m
+-3.57 0 rl
+stroke
+ 0.00 173.25 m
+-3.57 0 rl
+stroke
+ 0.00 181.13 m
+-3.57 0 rl
+stroke
+ 0.00 189.00 m
+-3.57 0 rl
+stroke
+ 0.00 196.88 m
+-3.57 0 rl
+stroke
+ 0.00 204.75 m
+-3.57 0 rl
+stroke
+ 0.00 212.63 m
+-3.57 0 rl
+stroke
+ 0.00 220.50 m
+-3.57 0 rl
+stroke
+ 0.00 228.38 m
+-3.57 0 rl
+stroke
+ 0.00 236.25 m
+-5.10 0 rl
+%#stroke
+%#text: -7.94 234.55  8.50 2 0 3.7
+gsave
+-2.83 0 rm
+(3.7) adjust
+show
+grestore
+stroke
+ 0.00 244.13 m
+-3.57 0 rl
+stroke
+ 0.00 252.00 m
+-3.57 0 rl
+stroke
+ 0.00 259.88 m
+-3.57 0 rl
+stroke
+ 0.00 267.75 m
+-3.57 0 rl
+stroke
+ 0.00 275.62 m
+-3.57 0 rl
+stroke
+ 0.00 283.50 m
+-3.57 0 rl
+stroke
+
+%#3: ploto(xy=1,1,lt=1,nc=1)=0.198878
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+47.25 23.63 m
+stroke
+47.25 23.63  9.40  0.00 360.00 arc
+stroke
+grestore
+
+%#4: ploto(xy=1.10843,3.98968,lt=1,nc=1)=0.198893
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+52.37 259.06 m
+stroke
+52.37 259.06  9.40  0.00 360.00 arc
+stroke
+grestore
+
+%#5: ploto(xy=4.66662,3.42823,lt=1,nc=1)=0.198893
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+220.50 214.85 m
+stroke
+220.50 214.85  9.40  0.00 360.00 arc
+stroke
+grestore
+
+%#6: ploto(xy=5.60241,1,lt=1,nc=1)=0.198805
+gsave
+[] 0 setdash
+0.5670 setlinewidth
+264.71 23.63 m
+stroke
+264.71 23.63  9.39  0.00 360.00 arc
+stroke
+grestore
+showpage

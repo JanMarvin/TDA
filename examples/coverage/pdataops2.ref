@@ -1,0 +1,17 @@
+TDA. Analysis of Transition Data (6.4q). Fri Sep  4 15:06:51 2026
+Current memory: 390032 bytes.
+
+Reading command file: pdataops2.cf
+============================================================================
+mdef(A,4,3)=7,8,9,1,2,3,10,11,12,4,5,6
+----------------------------------------------------------------------------
+mnvar(A)
+Created data matrix with 3 variables and 4 cases.
+----------------------------------------------------------------------------
+pdata(...)=sorted.dat
+Sort with variable(s): A1
+Current memory: 390300 bytes.
+4 records with 3 variables written to: sorted.dat
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390405 bytes.
+End of program. Fri Sep  4 15:06:51 2026

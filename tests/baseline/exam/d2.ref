@@ -1,0 +1,51 @@
+Read records:       4     
+Writing: d2
+Records written:       4     
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:50 2026
+Current memory: 390032 bytes.
+
+Reading command file: d2.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 X1        3   4   0.0  c1
+  2 X2        3   4   0.0  c2
+  3 X3        3   4   0.0  c3
+  4 X4        3   4   0.0  c4
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): d1.dat
+
+Using fixed format data
+-----------------------
+c1    column   1
+c2    column   3 -   5
+c3    column   7
+c4    column   9
+
+
+Reading data file: d1.dat
+Read records: 4 
+
+Created a new data matrix.
+Number of cases: 4
+Number of variables: 4
+
+Missing values  numerical code
+------------------------------
+Blank        0      -1
+Star         1      -1
+Point        1      -1
+
+End of creating new variables. Current memory: 406104 bytes.
+----------------------------------------------------------------------------
+pdata=d2
+4 records with 4 variables written to: d2
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426191 bytes.
+End of program. Tue Jul 21 05:46:50 2026

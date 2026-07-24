@@ -1,0 +1,13 @@
+# sdops.cf -- spatial data: info, enclosing boundary, rectangle selection
+sdnvar(
+    dfile = shape.sd,
+    SDID     = c1,
+    SDTyp    = c2,
+    SDN      = c3,
+    SDPtr<5> = rd,
+);
+sdinf(opt=1);
+sdinf(opt=2);
+sdencl(opt=1) = e1.txt;
+sdsel(rec=0,0,5,5) = s1.txt;
+sdsel(rec=2,1,9,7) = s2.txt;

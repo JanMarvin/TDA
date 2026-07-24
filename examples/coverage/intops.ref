@@ -1,0 +1,144 @@
+TDA. Analysis of Transition Data (6.4q). Sat Sep  5 10:52:08 2026
+Current memory: 390032 bytes.
+
+Reading command file: intops.cf
+============================================================================
+niset()=1
+Numerical integration with method 1. Relative error: 0.0001 (0.0001).
+----------------------------------------------------------------------------
+int(...)=...
+Numerical integration. Current memory: 390032 bytes.
+
+Function definition:
+fn      = x*x
+Function argument: x
+Integration interval: 0 -- 1
+Method 1 (QNG).
+Relative error:  1.00000e-04
+Approximation:   0.33333333 
+Number of function calls: 21
+----------------------------------------------------------------------------
+int(...)=...
+Numerical integration. Current memory: 390032 bytes.
+
+Function definition:
+fn      = sin(x)
+Function argument: x
+Integration interval: 0 -- 3.14159
+Method 1 (QNG).
+Relative error:  1.00000e-04
+Approximation:   2.00000000 
+Number of function calls: 21
+----------------------------------------------------------------------------
+niset()=2
+Numerical integration with method 2. Relative error: 0.0001 (0.0001).
+----------------------------------------------------------------------------
+int(...)=...
+Numerical integration. Current memory: 390032 bytes.
+
+Function definition:
+fn      = x*x
+Function argument: x
+Integration interval: 0 -- 1
+Method 2 (QSUB).
+Relative error:  1.00000e-04
+Approximation:   0.33333333 
+Number of function calls: 7
+----------------------------------------------------------------------------
+int(...)=...
+Numerical integration. Current memory: 390032 bytes.
+
+Function definition:
+fn      = sin(x)
+Function argument: x
+Integration interval: 0 -- 3.14159
+Method 2 (QSUB).
+Relative error:  1.00000e-04
+Approximation:   2.00000000 
+Number of function calls: 15
+----------------------------------------------------------------------------
+niset()=3
+Numerical integration with method 3. Relative error: 0.0001 (0.0001).
+----------------------------------------------------------------------------
+int(...)=...
+Numerical integration. Current memory: 390032 bytes.
+
+Function definition:
+fn      = x*x
+Function argument: x
+Integration interval: 0 -- 1
+Method 3 (SNIFF).
+Relative error:  1.00000e-04
+Approximation:   0.33333333 
+Number of function calls: 18
+----------------------------------------------------------------------------
+int(...)=...
+Numerical integration. Current memory: 390032 bytes.
+
+Function definition:
+fn      = sin(x)
+Function argument: x
+Integration interval: 0 -- 3.14159
+Method 3 (SNIFF).
+Relative error:  1.00000e-04
+Approximation:   2.00000000 
+Number of function calls: 18
+----------------------------------------------------------------------------
+niset(rerr=1.e-8,aerr=1.e-8)=4
+Numerical integration with method 4. Relative error: 1e-08 (1e-08).
+----------------------------------------------------------------------------
+int(...)=...
+Numerical integration. Current memory: 390032 bytes.
+
+Function definition:
+fn      = x*x
+Function argument: x
+Integration interval: 0 -- 1
+Method 4 (QTRAP).
+Relative error:  1.00000e-08
+Absolute error:  1.00000e-08
+Approximation:   0.33333333 
+Number of function calls: 16385
+----------------------------------------------------------------------------
+int(...)=...
+Numerical integration. Current memory: 390032 bytes.
+
+Function definition:
+fn      = sin(x)
+Function argument: x
+Integration interval: 0 -- 3.14159
+Method 4 (QTRAP).
+Relative error:  1.00000e-08
+Absolute error:  1.00000e-08
+Approximation:   1.99999999 
+Number of function calls: 16385
+----------------------------------------------------------------------------
+niset()=5
+Numerical integration with method 5. Relative error: 0.0001 (0.0001).
+----------------------------------------------------------------------------
+int(...)=...
+Numerical integration. Current memory: 390032 bytes.
+
+Function definition:
+fn      = x*x
+Function argument: x
+Integration interval: 0 -- 1
+Method 5 (QSIMP).
+Relative error:  1.00000e-04
+Approximation:   0.33333333 
+Number of function calls: 5
+----------------------------------------------------------------------------
+int(...)=...
+Numerical integration. Current memory: 390032 bytes.
+
+Function definition:
+fn      = sin(x)
+Function argument: x
+Integration interval: 0 -- 3.14159
+Method 5 (QSIMP).
+Relative error:  1.00000e-04
+Approximation:   2.00000103 
+Number of function calls: 33
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390082 bytes.
+End of program. Sat Sep  5 10:52:08 2026

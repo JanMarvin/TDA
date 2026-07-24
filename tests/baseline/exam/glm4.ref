@@ -1,0 +1,123 @@
+Read records:       6     
+
+  Iter    Function Value
+    0   4.4650019978814e-01
+    1   5.5780803152546e-01
+    2   5.6922365238779e-01
+    3   4.5806452719006e-01
+    4   1.0797915059150e-01
+    5   7.8105247159106e-03
+    6   4.1397144341962e-05
+    7   1.1841049819109e-09
+    8   2.8618184057118e-16
+
+  Iter    Function Value
+    0   4.4650019978814e-01
+    1   5.5780803152505e-01
+    2   5.6922365239084e-01
+    3   4.5806452720507e-01
+    4   1.0797915057314e-01
+    5   7.8105246976607e-03
+    6   4.1397145364377e-05
+    7   1.1838199448030e-09
+    8   1.4991635718366e-12
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:53 2026
+Current memory: 390032 bytes.
+
+Reading command file: glm4.cf
+============================================================================
+nvar(...)
+Creating new variables. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 D         3   4   0.0  log(c1)
+  2 N         3   4   0.0  c2
+  3 Y         3   4   0.0  c3
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): glm3.dat
+Free format. Separation character(s): default.
+
+Reading data file: glm3.dat
+Read records: 6 
+
+Created a new data matrix.
+Number of cases: 6
+Number of variables: 3
+Missing values in data file(s): none.
+
+End of creating new variables. Current memory: 402100 bytes.
+----------------------------------------------------------------------------
+glm(...)
+Generalized linear models. Current memory: 402100 bytes.
+
+Distribution: binomial.
+Link function: logit.
+
+Variables (cross-section)
+-------------------------
+Y   : Y  
+X1  : D  
+
+Variable used to define proportions: N
+
+Estimation with iteratively re-weighted least squares.
+Number of model parameters: 2
+Maximum number of iterations: 20
+Tolerance for scaled parameter change: 1e-06
+
+Convergence reached in 8 iterations.
+Final scaled parameter change: 2.86182e-16
+
+Rank of data matrix: 2
+Degrees of freedom: 4
+Deviance                            1.4241 
+Fixed scaling factor                1.0000 
+
+Idx  Wave  Variable       Coeff      Error    Coeff/E  Signif
+-------------------------------------------------------------
+  1     -  Intercept    -4.8869     0.6429    -7.6010  0.9984
+  2     1  D             3.1035     0.3877     8.0047  0.9987
+
+----------------------------------------------------------------------------
+glm(...)=...
+Generalized linear models. Current memory: 402100 bytes.
+
+Function definition:
+fn      = log(mue/(1-mue))
+
+Distribution: binomial.
+Link function: user-defined.
+Domain of link function: (0,1)
+
+Variables (cross-section)
+-------------------------
+Y   : Y  
+X1  : D  
+
+Variable used to define proportions: N
+
+Estimation with iteratively re-weighted least squares.
+Number of model parameters: 2
+Maximum number of iterations: 20
+Tolerance for scaled parameter change: 1e-06
+
+Convergence reached in 8 iterations.
+Final scaled parameter change: 1.49916e-12
+
+Rank of data matrix: 2
+Degrees of freedom: 4
+Deviance                            1.4241 
+Fixed scaling factor                1.0000 
+
+Idx  Wave  Variable       Coeff      Error    Coeff/E  Signif
+-------------------------------------------------------------
+  1     -  Intercept    -4.8869     0.6429    -7.6010  0.9984
+  2     1  D             3.1035     0.3877     8.0047  0.9987
+
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 422138 bytes.
+End of program. Tue Jul 21 05:46:53 2026

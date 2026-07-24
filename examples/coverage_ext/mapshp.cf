@@ -1,0 +1,21 @@
+# mapshp.cf -- t_map.c coverage: sdshp (reads a real ESRI shapefile),
+# psetupg + sdpgrat + sdpmap + sdpgeo (draws it with a graticule and a
+# marked point). Uses nc-shp from the sf R package (North Carolina
+# counties, 108 polygons across 100 shapes), the same fixture and the
+# same view/region/graticule already proven in tdaR's own tda_map()
+# example (R/spatial.R) -- not an invented shapefile.
+
+sdshp(fmt=24.16, df=shape.sd) = shape;
+sdnvar(
+    dfile = shape.sd,
+    SDID     = c1,
+    SDTyp    = c2,
+    SDN      = c3,
+    SDPtr<5> = rd,
+);
+
+psfile = map.ps;
+psetupg(proj=10, view=-80,35, region=6,3, pxlen=150);
+sdpgrat(lon=-84(2)-76, lat=34(1)37, fsx=2, fsy=2, lw=0.1);
+sdpmap();
+sdpgeo(s=4) = -79.0,35.8;

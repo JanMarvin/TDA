@@ -1,0 +1,9 @@
+nvar(
+  dfile = d,
+  noc = 3,
+  SID  <5>[4.0] = c1  , # sequence case number
+  SLEN <5>[4.0] = c2  , # sequence length
+  SM1  <5>[4.0] = c3  , # number of matches, pattern 1
+  SM2  <5>[4.0] = c4  , # number of matches, pattern 2
+  SM3  <5>[4.0] = c5  , # number of matches, pattern 3
+);

@@ -1,0 +1,25 @@
+# t_map across its modes on a shippable synthetic spatial file
+# (mapops.sd: one polygon, one polyline, one point near 15E 54N).
+# Distinct names throughout -- suite cases run in the shared dir.
+sdnvar(dfile=mapops.sd, SDID=c1, SDTyp=c2, SDN=c3, SDPtr<5>=rd);
+psfile = mapops1.ps;
+psetupg(proj=10, view=15,54, region=10,8, pxlen=100);
+sdpgrat(cont=1, lt=2, lw=0.1);
+sdpmap(lt=1, lw=0.2, s=1, fs=1.5);
+sdpgeo(s=4, fs=2) = 14,53, 16,55;
+psfile = mapops2.ps;
+psetupg(proj=11, view=15,54, region=10,8, pxlen=100);
+sdpmap(lt=1, lw=0.2);
+psfile = mapops3.ps;
+psetupg(proj=12, view=15,54, region=10,8, pxlen=100);
+sdpmap(lt=1, lw=0.2);
+psfile = mapops4.ps;
+psetupg(proj=20, view=15,54, region=30,30, pxlen=100);
+sdpgrat(cont=1, lw=0.1);
+sdpmap(lt=1, lw=0.2);
+# the legacy parallel/cylindrical projections (1-4) set up but the
+# renderer supports only 10/11/12/20; one is kept to pin the
+# non-halting refusal
+psfile = mapops5.ps;
+psetupg(proj=1, view=15,54, region=10,8, pxlen=100);
+sdpmap(lt=1, lw=0.2);

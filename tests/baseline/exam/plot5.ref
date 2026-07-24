@@ -1,0 +1,29 @@
+TDA. Analysis of Transition Data (6.4p). Tue Jul 21 05:46:54 2026
+Current memory: 390032 bytes.
+
+Reading command file: plot5.cf
+============================================================================
+psfile=plot5.ps
+Opened new PostScript file: plot5.ps
+----------------------------------------------------------------------------
+psetup(...)
+Creating a new 2d coordinate system.
+Size (width x height in mm): 90 x 50
+PostScript coordinates. X-axis: 150,405  Y-axis: 460,602
+Origin (PostScript x and y coordinates): 150,460
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:          -2.0000,           2.0000 
+User coordinates Y axis:           0.0000,           1.0000 
+----------------------------------------------------------------------------
+plxa(sc=1,ic=2)
+----------------------------------------------------------------------------
+plya(sc=0.5,ic=0)
+----------------------------------------------------------------------------
+plxa(sc=1,ic=5,dir=1)=-1,1,1,1
+----------------------------------------------------------------------------
+plya(sc=0.5,ic=5,dir=1)=2,0,2,1
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 390064 bytes.
+End of program. Tue Jul 21 05:46:54 2026

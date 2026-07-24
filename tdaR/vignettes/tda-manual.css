@@ -1,0 +1,351 @@
+/* Two settings, the same design: ink on paper, or paper-white ink on a
+   soft dark ground.  The page follows the system preference unless the
+   button has chosen; the choice is kept per browser. */
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --muted: #333333;
+  --border: #000000;
+  --band: #e0e0e0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #23262b;
+    --fg: #ffffff;
+    --muted: #d0d0d0;
+    --border: #ffffff;
+    --band: #4d525a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #23262b;
+  --fg: #ffffff;
+  --muted: #d0d0d0;
+  --border: #ffffff;
+  --band: #4d525a;
+}
+
+html { background: var(--bg); font-size: 15px; }
+@media (min-width: 100em) { html { font-size: 17px; } }
+
+body {
+  font-family: Palatino, "Palatino Linotype", "URW Palladio L", Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.48;
+  text-align: justify;
+  color: var(--fg);
+  background: var(--bg);
+  max-width: 39em;
+  margin: 2em auto;
+  padding: 0 1em;
+  /* Justified text without hyphenation is what gives a page the loose,
+     gappy lines of a word processor.  hyphens: auto only takes effect
+     when the document declares a language, hence lang: en in the
+     vignette headers.  The limits keep it from hyphenating short words
+     or leaving one or two letters on a line, as TeX's own defaults do. */
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  hyphenate-limit-chars: 6 3 3;
+  -webkit-hyphenate-limit-before: 3;
+  -webkit-hyphenate-limit-after: 3;
+  hyphenate-limit-lines: 2;
+  /* proper kerning pairs and the fi/fl ligatures Palatino carries */
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures contextual;
+  text-rendering: optimizeLegibility;
+  /* not text-wrap: pretty -- WebKit's paragraph-level line breaker
+     does not hyphenate, and hyphenation matters more to a justified
+     column than the last line's length */
+  text-wrap: wrap;
+  widows: 2;
+  orphans: 2;
+}
+
+/* A word set in the monospace face cannot be hyphenated and is often
+   long (tda_read_shapefile), which is the other source of wide word
+   spaces in a justified column; let such a name break at its own
+   underscores rather than push a line apart. */
+code { hyphens: none; overflow-wrap: break-word; }
+
+/* headings and captions are set flush left and unhyphenated, and broken
+   so their lines come out even */
+h1, h2, h3, .boxcap, th {
+  hyphens: manual;
+  text-align: left;
+  text-wrap: balance;
+}
+
+a { color: var(--fg); }
+
+h1.title {
+  font-size: 1.5em;
+  font-weight: normal;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.3em;
+  margin-bottom: 1.4em;
+}
+
+h2, h3 {
+  font-weight: bold;
+  text-align: left;
+  margin-top: 2em;
+  margin-bottom: 0.7em;
+}
+
+h2 { font-size: 1.15em; }
+h3 { font-size: 1em; }
+
+/* Consecutive paragraphs are marked by an indent, not by a blank line;
+   the first paragraph of a section, and the one resuming after a box or
+   a figure, are set flush as LaTeX sets them. */
+p { margin: 0 0 0.3em 0; }
+p + p { text-indent: 1.4em; }
+p.boxcap, p.figure, p.boxcap + p, p.figure + p, p.dedication,
+p.dedication-quote { text-indent: 0; }
+
+/* html_vignette's own stylesheet colours code and tables; everything
+   here is ink on paper, so those are taken back */
+code, pre, .sourceCode, .sourceCode span, pre code {
+  /* Columns of numbers are the point of most of these boxes, so the
+     font is chosen for its digits.  DejaVu Sans Mono, which used to be
+     first here, draws "1" as a narrow glyph centred in its cell: the
+     ink then starts about 8px into a 9.6px cell, and a column of
+     values reads as misaligned whenever some begin with 1 and others
+     with 0 -- the cells line up, the ink does not.  The faces below
+     draw digits that fill their cells, and tabular-nums asks for
+     uniform advance explicitly where the face offers it. */
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+               "Liberation Mono", "Courier New", monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.82em;
+  color: var(--fg);
+  background: transparent;
+}
+pre { border: none; padding: 0; }
+
+.box {
+  position: relative;
+  border: 1px solid var(--border);
+  padding: 0.4em 0.8em;
+  margin: 0 0 1.2em 0;
+  background: var(--bg);
+}
+/* Some of TDA's tables are wider than the page -- a sequence with many
+   time points, a correlation matrix with many variables. Wrapping them
+   would destroy the columns, so each block scrolls sideways inside its
+   own box instead, and the box itself never widens the page. */
+.box pre,
+.box .sourceCode {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.box pre code { white-space: pre; }
+
+/* out of sight until the pointer is in the box it belongs to */
+.box .copy-code {
+  position: absolute;
+  top: 0.3em;
+  right: 0.3em;
+  font: inherit;
+  font-size: 0.7em;
+  padding: 0.1em 0.5em;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.12s ease-in-out;
+}
+.box:hover .copy-code { opacity: 0.55; }
+.box .copy-code:hover, .box .copy-code:focus-visible { opacity: 1; }
+
+/* A box stays in the prose column; a line wider than it scrolls. */
+.box pre, .box div.sourceCode, .box .sourceCode {
+  margin: 0.45em 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  white-space: pre;
+  overflow-x: auto;
+  text-align: left;
+}
+
+.boxcap {
+  margin: 1.4em 0 0.35em 0;
+  text-align: left;
+}
+
+.boxcap .lab { font-weight: bold; margin-right: 0.6em; }
+
+table {
+  border-collapse: collapse;
+  margin: 0 0 1.2em 0;
+  font-size: 0.9em;
+  color: var(--fg);
+  background: transparent;
+}
+
+th, td { padding: 0.15em 0.9em 0.15em 0; text-align: left; background: transparent; }
+thead th { border-bottom: 1px solid var(--border); }
+tr:nth-child(even), tr:nth-child(odd) { background: transparent; }
+
+blockquote {
+  border: none;
+  margin: 0 0 0.8em 2em;
+  color: var(--muted);
+}
+
+.dedication { text-align: center; margin: 3em 0 0 0; }
+.dedication-quote { text-align: center; font-style: italic; margin: 0.4em 0 3.5em 0; }
+
+/* A plot is inline SVG at a fixed size, not stretched to its box.  TDA
+   draws black on white with grey fills; those three become the page's
+   ink, paper and band colour, so a plot reads the same in either
+   setting.  Colours are SVG presentation attributes, which CSS wins. */
+/* The figure's width is written in rem by the plot hook, so it follows
+   the root font size, which is what the page's zoom moves.  Only the
+   width is set: the viewBox carries the aspect ratio and the height
+   follows from it.  At the stylesheet's own size a figure is clamped to
+   the column; zoomed in, the clamp grows by the same factor (--zoom,
+   set by theme-toggle.html), so the figure gets bigger with the text
+   and scrolls sideways inside its paragraph, as a wide table does in
+   its box.  Without that the clamp held every figure at the width of
+   the pane, and in a narrow viewer pane zooming did nothing to it. */
+p.figure { text-align: center; margin: 0.6em 0; overflow-x: auto; }
+svg.plot {
+  display: block;
+  margin: 0 auto;
+  max-width: calc(100% * var(--zoom, 1));
+  height: auto;
+  cursor: zoom-in;
+}
+/* click a plot to see it at the full width of the window; click again
+   to put it back */
+svg.plot.zoomed {
+  position: fixed;
+  /* inset instead of left/top so the box is centred whatever its
+     aspect; and !important because the hook writes the figure's own
+     width as an inline style, which otherwise wins over this rule and
+     leaves the plot pinned at its page size in the corner */
+  inset: 2vh 2vw;
+  width: 96vw !important;
+  height: 96vh !important;
+  max-width: none !important;
+  background: var(--bg); z-index: 10; cursor: zoom-out;
+  box-shadow: 0 0 0 1px var(--border);
+}
+/* the table of contents html_vignette writes, folded by default */
+#toc-box {
+  border: 1px solid var(--border);
+  padding: 0.3em 0.8em;
+  margin: 1.4em 0 2em 0;
+  font-size: 0.9em;
+}
+#toc-box summary { cursor: pointer; font-weight: bold; }
+#toc-box[open] summary { margin-bottom: 0.5em; }
+#TOC { margin: 0; }
+/* fixed links beside the column: back to the contents, back to the top.
+   The right edge is set from the measured left edge of the prose column
+   (see theme-toggle.html), so the links stay in the margin at any font
+   size; they are hidden when the margin is too narrow to hold them. */
+.side-nav {
+  position: fixed;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  /* stretch, so Top and Next come out as wide as Contents rather than
+     each shrinking to its own label */
+  align-items: stretch;
+  gap: 0.4em;
+  font-size: 0.8rem;
+  /* kept out of sight until the pointer is in the margin beside the text
+     (theme-toggle.html sets the class), or while a link has focus */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease-in-out;
+}
+.side-nav.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.side-nav a, .side-nav button {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  text-align: center;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.2em 0.6em;
+  text-decoration: none;
+  cursor: pointer;
+}
+#TOC ul { list-style: none; padding-left: 0; margin: 0; }
+#TOC ul ul { padding-left: 1.2em; }
+#TOC a { text-decoration: none; }
+svg.plot [stroke="rgb(0%, 0%, 0%)"] { stroke: var(--fg); }
+svg.plot [fill="rgb(0%, 0%, 0%)"] { fill: var(--fg); }
+svg.plot [fill="rgb(100%, 100%, 100%)"] { fill: var(--bg); }
+svg.plot [fill^="rgb(9"], svg.plot [fill^="rgb(8"], svg.plot [fill^="rgb(7"],
+svg.plot [fill^="rgb(6"], svg.plot [fill^="rgb(5"] { fill: var(--band); }
+
+/* Commands and what came back: the command lines carry a rule down
+   their left edge, the output stands plain. */
+.box pre.r, .box div.sourceCode {
+  border-left: 2px solid var(--border);
+  padding-left: 0.6em;
+}
+.box pre.r + pre, .box div.sourceCode + pre { margin-top: 0.2em; }
+
+/* the fixed cluster at the top right: text size, then light/dark */
+/* likewise: shown when the pointer reaches the top quarter of the window
+   (theme-toggle.html sets the class), or while one of them has focus */
+.page-controls {
+  position: fixed;
+  top: 0.6rem;
+  right: 0.6rem;
+  display: flex;
+  gap: 0.3rem;
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease-in-out;
+}
+.page-controls.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.page-controls button {
+  font-family: inherit;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  padding: 0.2em 0.7em;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  cursor: pointer;
+}
+.page-controls .font-step {
+  padding: 0.2em 0.5em;
+  min-width: 2.2em;
+}
+
+/* No pointer to hover with -- a touch screen, or a viewer that reports
+   none: both sets of buttons stay put, since there is no other way to
+   reach them. */
+@media (hover: none) {
+  .box .copy-code { opacity: 0.55; }
+  .page-controls, .side-nav { opacity: 1; pointer-events: auto; }
+}
+
+/* Sections whose subject is the model, not the drawing, keep the plotting
+   code out of the reader's way: it is still in the page and the box's own
+   copy button still takes it, but it is not shown. */
+.box pre.r.folded { display: none; }

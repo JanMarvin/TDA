@@ -1,0 +1,14 @@
+# icov / icorr: covariance and correlation of interval-valued variables
+# (added commands -- not in Rohwer's TDA; see the header in t_imat.c).
+# Estimand as in ivar: the interval of reachable values (1/n).
+# small3: icov certified [-2/3, 68/9] and icorr [-1/7, 0.893405], both
+# verified against a dense 6-dimensional grid; patients: icov certified
+# [-215.2893, 791.6694], equal to exhaustive search over all 4 million
+# corner combinations (covariance is multilinear per coordinate, so its
+# extrema sit at corners).
+nvar(dfile=small3.dat, XL[6.0]=c1, XU[6.0]=c2, YL[6.0]=c3, YU[6.0]=c4);
+icov(mxit=200000, nbox=100000, fmt=12.6) = XL,XU,YL,YU;
+icorr(mxit=200000, nbox=100000, fmt=12.6) = XL,XU,YL,YU;
+clear;
+nvar(dfile=patients.dat, PL[8.0]=c1, PU[8.0]=c2, SL[8.0]=c3, SU[8.0]=c4, DL[8.0]=c5, DU[8.0]=c6);
+icov(mxit=200000, nbox=100000, fmt=12.4) = PL,PU,SL,SU;

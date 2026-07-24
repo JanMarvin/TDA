@@ -1,0 +1,771 @@
+TDA. Analysis of Transition Data (6.4q). Sun Sep  6 15:31:20 2026
+Current memory: 390032 bytes.
+
+Reading command file: mapshp.cf
+============================================================================
+sdshp(...)=shape
+Reading a shape file. Current memory: 390032 bytes.
+File: shape
+
+Reading the index file.
+Version: 1000
+Shape type: Polygon (5)
+Number of shapes: 100
+
+Bounding box X:         -84.32385254          -75.45697784
+Bounding box Y:          33.88199234           36.58964920
+
+Reading the dbf file.
+Number of records: 100
+Record length: 434
+Number of fields: 14
+
+Idx  Type  Length  D.Count  Name
+--------------------------------
+  1    0      24       15   AREA
+  2    0      24       15   PERIMETER
+  3    0      24       15   CNTY_
+  4    0      24       15   CNTY_ID
+  5    1      80        0   NAME
+  6    1      80        0   FIPS
+  7    0      24       15   FIPSNO
+  8    0       9        0   CRESS_ID
+  9    0      24       15   BIR74
+ 10    0      24       15   SID74
+ 11    0      24       15   NWBIR74
+ 12    0      24       15   BIR79
+ 13    0      24       15   SID79
+ 14    0      24       15   NWBIR79
+
+Creating the output data file: shape.sd
+Object-description records: 108. Data records: 2529
+Total number of records written to output file: 2637
+Note: 6 shapes contain more than one part.
+
+----------------------------------------------------------------------------
+sdnvar(...)
+Reading a spatial data file. Current memory: 390032 bytes.
+
+Idx Variable  T   S  PFmt  Definition
+-------------------------------------
+  1 SDID      3   4   0.0  c1
+  2 SDTyp     3   4   0.0  c2
+  3 SDN       3   4   0.0  c3
+  4 SDPtr     3   5  11.0  rd
+
+Creating a new data matrix.
+Maximum number of cases: 1000
+
+Using data file(s): shape.sd
+Free format. Separation character(s): default.
+Reading data file: shape.sd
+Read records: 108 
+
+Created a new data matrix.
+Number of cases: 108
+Number of variables: 4
+Missing values in data file(s): none.
+
+Number of points: 0
+Number of lines: 0
+Number of polygons: 108
+Number of unknown objects: 0
+
+Maximal number of points in spatial objects: 53
+Total number of points in spatial objects: 2529
+Note: shape.sd remains opened for further access.
+
+X values. Minimum:       -84.3239  Maximum:       -75.4570
+Y values. Minimum:        33.8820  Maximum:        36.5896
+
+End of creating new variables. Current memory: 407281 bytes.
+----------------------------------------------------------------------------
+psfile=map.ps
+Opened new PostScript file: map.ps
+----------------------------------------------------------------------------
+psetupg(...)
+Set up geographical coordinate system. Current memory: 407281 bytes.
+Cylindrical projection (equidistant).
+View: -80,35. Region: 6,3
+
+Selected region longitude:  -86.0000 ( -80.0000)  -74.0000
+Selected region latitude:    32.0000 (  35.0000)   38.0000
+
+Creating a new 2d coordinate system.
+Size (width x height in mm): 150 x 75
+PostScript coordinates. X-axis: 100,525  Y-axis: 100,313
+Origin (PostScript x and y coordinates): 100,100
+Scaling (x and y axis): 1,1
+Rotation (degrees): 0
+
+User coordinates X axis:         -86.0000,         -74.0000 
+User coordinates Y axis:          32.0000,          38.0000 
+----------------------------------------------------------------------------
+sdpgrat(...)
+Graticule for geographical coordinate system. Current memory: 407281 bytes.
+Drawing grid lines (meridians).
+Drawing grid lines (parallels).
+mapgrid_lat: GDPROJ=10 GDPROJA=0
+----------------------------------------------------------------------------
+sdpmap(...)
+Plot in geographical coordinate system. Current memory: 407281 bytes.
+imin=4 imax=15
+xmin=-81.7411 xmax=-81.2399
+ymin=36.2344 ymax=36.5896
+xmin=-86,32 xmax=-74,38
+ni=26 n=26
+INSIDE
+imin=6 imax=8
+xmin=-81.3475 xmax=-80.9034
+ymin=36.3654 ymax=36.5729
+xmin=-86,32 xmax=-74,38
+ni=25 n=25
+INSIDE
+imin=20 imax=25
+xmin=-80.9658 xmax=-80.4353
+ymin=36.2339 ymax=36.5652
+xmin=-86,32 xmax=-74,38
+ni=27 n=27
+INSIDE
+imin=8 imax=20
+xmin=-76.3303 xmax=-75.7989
+ymin=36.0728 ymax=36.5572
+xmin=-86,32 xmax=-74,38
+ni=25 n=25
+INSIDE
+imin=0 imax=2
+xmin=-76.0272 xmax=-75.9119
+ymin=36.474 ymax=36.5567
+xmin=-86,32 xmax=-74,38
+ni=6 n=6
+INSIDE
+imin=0 imax=2
+xmin=-75.902 xmax=-75.7732
+ymin=36.2252 ymax=36.5562
+xmin=-86,32 xmax=-74,38
+ni=4 n=4
+INSIDE
+imin=21 imax=28
+xmin=-77.9012 xmax=-77.0753
+ymin=36.1628 ymax=36.5563
+xmin=-86,32 xmax=-74,38
+ni=33 n=33
+INSIDE
+imin=4 imax=20
+xmin=-77.2177 xmax=-76.7075
+ymin=36.2302 ymax=36.5563
+xmin=-86,32 xmax=-74,38
+ni=21 n=21
+INSIDE
+imin=13 imax=1
+xmin=-76.5636 xmax=-75.9572
+ymin=36.1697 ymax=36.5561
+xmin=-86,32 xmax=-74,38
+ni=23 n=23
+INSIDE
+imin=7 imax=15
+xmin=-76.9537 xmax=-76.4604
+ymin=36.2945 ymax=36.5553
+xmin=-86,32 xmax=-74,38
+ni=16 n=16
+INSIDE
+imin=2 imax=4
+xmin=-78.3213 xmax=-77.8989
+ymin=36.1959 ymax=36.5529
+xmin=-86,32 xmax=-74,38
+ni=13 n=13
+INSIDE
+imin=1 imax=4
+xmin=-80.453 xmax=-80.0241
+ymin=36.2502 ymax=36.551
+xmin=-86,32 xmax=-74,38
+ni=5 n=5
+INSIDE
+imin=0 imax=3
+xmin=-79.5305 xmax=-79.1443
+ymin=36.2337 ymax=36.5498
+xmin=-86,32 xmax=-74,38
+ni=6 n=6
+INSIDE
+imin=2 imax=5
+xmin=-80.0257 xmax=-79.5103
+ymin=36.2362 ymax=36.5479
+xmin=-86,32 xmax=-74,38
+ni=6 n=6
+INSIDE
+imin=3 imax=7
+xmin=-78.8104 xmax=-78.4588
+ymin=36.0141 ymax=36.5461
+xmin=-86,32 xmax=-74,38
+ni=16 n=16
+INSIDE
+imin=2 imax=4
+xmin=-79.1593 xmax=-78.7967
+ymin=36.2316 ymax=36.5461
+xmin=-86,32 xmax=-74,38
+ni=5 n=5
+INSIDE
+imin=2 imax=7
+xmin=-78.5171 xmax=-78.2829
+ymin=36.1622 ymax=36.5455
+xmin=-86,32 xmax=-74,38
+ni=12 n=12
+INSIDE
+imin=24 imax=50
+xmin=-78.0063 xmax=-77.241
+ymin=35.9947 ymax=36.5099
+xmin=-86,32 xmax=-74,38
+ni=52 n=52
+INSIDE
+imin=4 imax=16
+xmin=-76.5025 xmax=-76.1127
+ymin=36.1477 ymax=36.5039
+xmin=-86,32 xmax=-74,38
+ni=19 n=19
+INSIDE
+imin=12 imax=42
+xmin=-81.5461 xmax=-80.8709
+ymin=35.9893 ymax=36.4312
+xmin=-86,32 xmax=-74,38
+ni=46 n=46
+INSIDE
+imin=8 imax=18
+xmin=-81.9112 xmax=-81.4508
+ymin=36.1046 ymax=36.3918
+xmin=-86,32 xmax=-74,38
+ni=22 n=22
+INSIDE
+imin=3 imax=10
+xmin=-76.5945 xmax=-76.2755
+ymin=36.0798 ymax=36.3739
+xmin=-86,32 xmax=-74,38
+ni=11 n=11
+INSIDE
+imin=15 imax=9
+xmin=-76.7265 xmax=-76.4204
+ymin=36.0072 ymax=36.3406
+xmin=-86,32 xmax=-74,38
+ni=16 n=16
+INSIDE
+imin=9 imax=21
+xmin=-82.0778 xmax=-81.7323
+ymin=35.9056 ymax=36.2908
+xmin=-86,32 xmax=-74,38
+ni=27 n=27
+INSIDE
+imin=2 imax=18
+xmin=-80.8774 xmax=-80.4408
+ymin=36.0433 ymax=36.2784
+xmin=-86,32 xmax=-74,38
+ni=23 n=23
+INSIDE
+imin=7 imax=17
+xmin=-78.548 xmax=-78.0063
+ymin=35.8155 ymax=36.26
+xmin=-86,32 xmax=-74,38
+ni=19 n=19
+INSIDE
+imin=13 imax=20
+xmin=-80.5082 xmax=-80.0257
+ymin=35.9679 ymax=36.2571
+xmin=-86,32 xmax=-74,38
+ni=21 n=21
+INSIDE
+imin=1 imax=4
+xmin=-80.0426 xmax=-79.5306
+ymin=35.891 ymax=36.2502
+xmin=-86,32 xmax=-74,38
+ni=5 n=5
+INSIDE
+imin=2 imax=1
+xmin=-79.541 xmax=-79.238
+ymin=35.837 ymax=36.2461
+xmin=-86,32 xmax=-74,38
+ni=9 n=9
+INSIDE
+imin=22 imax=37
+xmin=-77.3322 xmax=-76.6938
+ymin=35.8142 ymax=36.241
+xmin=-86,32 xmax=-74,38
+ni=44 n=44
+INSIDE
+imin=3 imax=7
+xmin=-79.2708 xmax=-78.9511
+ymin=35.8539 ymax=36.2357
+xmin=-86,32 xmax=-74,38
+ni=8 n=8
+INSIDE
+imin=0 imax=10
+xmin=-79.0181 xmax=-78.7042
+ymin=35.8579 ymax=36.2338
+xmin=-86,32 xmax=-74,38
+ni=17 n=17
+INSIDE
+imin=4 imax=18
+xmin=-78.2545 xmax=-77.7005
+ymin=35.7251 ymax=36.1959
+xmin=-86,32 xmax=-74,38
+ni=22 n=22
+INSIDE
+imin=16 imax=29
+xmin=-82.4084 xmax=-81.9833
+ymin=35.8185 ymax=36.147
+xmin=-86,32 xmax=-74,38
+ni=33 n=33
+INSIDE
+imin=5 imax=18
+xmin=-77.8301 xmax=-77.3424
+ymin=35.6703 ymax=36.1466
+xmin=-86,32 xmax=-74,38
+ni=27 n=27
+INSIDE
+imin=12 imax=21
+xmin=-81.8062 xmax=-81.3219
+ymin=35.75 ymax=36.1176
+xmin=-86,32 xmax=-74,38
+ni=26 n=26
+INSIDE
+imin=10 imax=28
+xmin=-82.5069 xmax=-82.1189
+ymin=35.6976 ymax=36.0785
+xmin=-86,32 xmax=-74,38
+ni=32 n=32
+INSIDE
+imin=6 imax=29
+xmin=-77.4053 xmax=-76.7831
+ymin=35.6501 ymax=36.068
+xmin=-86,32 xmax=-74,38
+ni=36 n=36
+INSIDE
+imin=1 imax=23
+xmin=-78.9988 xmax=-78.2545
+ymin=35.5199 ymax=36.0666
+xmin=-86,32 xmax=-74,38
+ni=26 n=26
+INSIDE
+imin=26 imax=17
+xmin=-82.9628 xmax=-82.4058
+ymin=35.6736 ymax=36.0543
+xmin=-86,32 xmax=-74,38
+ni=29 n=29
+INSIDE
+imin=9 imax=15
+xmin=-81.1089 xmax=-80.6896
+ymin=35.5068 ymax=36.0533
+xmin=-86,32 xmax=-74,38
+ni=18 n=18
+INSIDE
+imin=6 imax=16
+xmin=-80.706 xmax=-80.3617
+ymin=35.7458 ymax=36.0502
+xmin=-86,32 xmax=-74,38
+ni=28 n=28
+INSIDE
+imin=6 imax=14
+xmin=-81.3396 xmax=-80.9953
+ymin=35.7719 ymax=36.0349
+xmin=-86,32 xmax=-74,38
+ni=16 n=16
+INSIDE
+imin=11 imax=28
+xmin=-80.4794 xmax=-80.0381
+ymin=35.5051 ymax=36.0216
+xmin=-86,32 xmax=-74,38
+ni=30 n=30
+INSIDE
+imin=2 imax=21
+xmin=-81.9856 xmax=-81.3767
+ymin=35.5533 ymax=35.9947
+xmin=-86,32 xmax=-74,38
+ni=33 n=33
+INSIDE
+imin=2 imax=15
+xmin=-76.8383 xmax=-76.3582
+ymin=35.6991 ymax=35.9775
+xmin=-86,32 xmax=-74,38
+ni=17 n=17
+INSIDE
+imin=6 imax=12
+xmin=-76.4087 xmax=-76.026
+ymin=35.5947 ymax=35.9769
+xmin=-86,32 xmax=-74,38
+ni=15 n=15
+INSIDE
+imin=10 imax=0
+xmin=-82.2907 xmax=-81.8163
+ymin=35.519 ymax=35.955
+xmin=-86,32 xmax=-74,38
+ni=34 n=34
+INSIDE
+imin=1 imax=3
+xmin=-80.0644 xmax=-79.5378
+ymin=35.5057 ymax=35.9168
+xmin=-86,32 xmax=-74,38
+ni=6 n=6
+INSIDE
+imin=0 imax=6
+xmin=-79.5554 xmax=-78.9057
+ymin=35.5102 ymax=35.8682
+xmin=-86,32 xmax=-74,38
+ni=26 n=26
+INSIDE
+imin=4 imax=12
+xmin=-78.1869 xmax=-77.6712
+ymin=35.5743 ymax=35.8545
+xmin=-86,32 xmax=-74,38
+ni=18 n=18
+INSIDE
+imin=2 imax=16
+xmin=-80.7661 xmax=-80.1819
+ymin=35.4949 ymax=35.8517
+xmin=-86,32 xmax=-74,38
+ni=17 n=17
+INSIDE
+imin=8 imax=31
+xmin=-77.6983 xmax=-77.1038
+ymin=35.3236 ymax=35.8284
+xmin=-86,32 xmax=-74,38
+ni=44 n=44
+INSIDE
+imin=1 imax=12
+xmin=-81.5236 xmax=-80.9313
+ymin=35.5436 ymax=35.8233
+xmin=-86,32 xmax=-74,38
+ni=13 n=13
+INSIDE
+imin=23 imax=40
+xmin=-82.8811 xmax=-82.1707
+ymin=35.418 ymax=35.8164
+xmin=-86,32 xmax=-74,38
+ni=44 n=44
+INSIDE
+imin=5 imax=16
+xmin=-78.709 xmax=-78.0653
+ymin=35.2491 ymax=35.8155
+xmin=-86,32 xmax=-74,38
+ni=26 n=26
+INSIDE
+imin=17 imax=0
+xmin=-83.2591 xmax=-82.7439
+ymin=35.2908 ymax=35.7919
+xmin=-86,32 xmax=-74,38
+ni=38 n=38
+INSIDE
+imin=0 imax=2
+xmin=-75.7832 xmax=-75.545
+ymin=35.7884 ymax=36.2293
+xmin=-86,32 xmax=-74,38
+ni=5 n=5
+INSIDE
+imin=2 imax=6
+xmin=-76.0212 xmax=-75.7294
+ymin=35.5787 ymax=35.9235
+xmin=-86,32 xmax=-74,38
+ni=8 n=8
+INSIDE
+imin=4 imax=2
+xmin=-75.7493 xmax=-75.457
+ymin=35.1898 ymax=35.7689
+xmin=-86,32 xmax=-74,38
+ni=8 n=8
+INSIDE
+imin=7 imax=20
+xmin=-77.1955 xmax=-76.4925
+ymin=35.4119 ymax=35.7368
+xmin=-86,32 xmax=-74,38
+ni=24 n=24
+INSIDE
+imin=4 imax=0
+xmin=-77.195 xmax=-76.6145
+ymin=35.2172 ymax=35.5502
+xmin=-86,32 xmax=-74,38
+ni=10 n=10
+INSIDE
+imin=16 imax=35
+xmin=-83.9547 xmax=-83.157
+ymin=35.2722 ymax=35.691
+xmin=-86,32 xmax=-74,38
+ni=43 n=43
+INSIDE
+imin=2 imax=12
+xmin=-77.8306 xmax=-77.4739
+ymin=35.3397 ymax=35.654
+xmin=-86,32 xmax=-74,38
+ni=22 n=22
+INSIDE
+imin=6 imax=22
+xmin=-79.3625 xmax=-78.9745
+ymin=35.3045 ymax=35.6246
+xmin=-86,32 xmax=-74,38
+ni=23 n=23
+INSIDE
+imin=7 imax=26
+xmin=-82.2787 xmax=-81.6843
+ymin=35.1825 ymax=35.6017
+xmin=-86,32 xmax=-74,38
+ni=32 n=32
+INSIDE
+imin=3 imax=16
+xmin=-78.3101 xmax=-77.8041
+ymin=35.1442 ymax=35.5947
+xmin=-86,32 xmax=-74,38
+ni=28 n=28
+INSIDE
+imin=9 imax=19
+xmin=-79.2167 xmax=-78.5387
+ymin=35.19 ymax=35.5789
+xmin=-86,32 xmax=-74,38
+ni=21 n=21
+INSIDE
+imin=2 imax=19
+xmin=-81.7654 xmax=-81.3114
+ymin=35.1629 ymax=35.5654
+xmin=-86,32 xmax=-74,38
+ni=20 n=20
+INSIDE
+imin=4 imax=8
+xmin=-81.5236 xmax=-80.9422
+ymin=35.3975 ymax=35.5613
+xmin=-86,32 xmax=-74,38
+ni=10 n=10
+INSIDE
+imin=14 imax=27
+xmin=-83.3647 xmax=-82.9191
+ymin=35.0003 ymax=35.5135
+xmin=-86,32 xmax=-74,38
+ni=35 n=35
+INSIDE
+imin=3 imax=17
+xmin=-79.765 xmax=-79.0959
+ymin=35.0374 ymax=35.5131
+xmin=-86,32 xmax=-74,38
+ni=28 n=28
+INSIDE
+imin=27 imax=20
+xmin=-81.0656 xmax=-80.5396
+ymin=35.002 ymax=35.5091
+xmin=-86,32 xmax=-74,38
+ni=30 n=30
+INSIDE
+imin=8 imax=10
+xmin=-80.7762 xmax=-80.2982
+ymin=35.1869 ymax=35.5076
+xmin=-86,32 xmax=-74,38
+ni=13 n=13
+INSIDE
+imin=9 imax=14
+xmin=-80.1819 xmax=-79.6075
+ymin=35.1366 ymax=35.5059
+xmin=-86,32 xmax=-74,38
+ni=23 n=23
+INSIDE
+imin=18 imax=26
+xmin=-80.5029 xmax=-80.0508
+ymin=35.1497 ymax=35.5051
+xmin=-86,32 xmax=-74,38
+ni=31 n=31
+INSIDE
+imin=5 imax=19
+xmin=-82.7439 xmax=-82.2581
+ymin=35.1495 ymax=35.4952
+xmin=-86,32 xmax=-74,38
+ni=34 n=34
+INSIDE
+imin=8 imax=20
+xmin=-84.0309 xmax=-83.5804
+ymin=35.2154 ymax=35.462
+xmin=-86,32 xmax=-74,38
+ni=26 n=26
+INSIDE
+imin=0 imax=15
+xmin=-77.8366 xmax=-77.3862
+ymin=35.0008 ymax=35.4215
+xmin=-86,32 xmax=-74,38
+ni=30 n=30
+INSIDE
+imin=3 imax=15
+xmin=-83.0521 xmax=-82.57
+ymin=35.0242 ymax=35.418
+xmin=-86,32 xmax=-74,38
+ni=21 n=21
+INSIDE
+imin=7 imax=11
+xmin=-81.4451 xmax=-80.9263
+ymin=35.149 ymax=35.4134
+xmin=-86,32 xmax=-74,38
+ni=18 n=18
+INSIDE
+imin=4 imax=13
+xmin=-82.358 xmax=-81.9645
+ymin=35.1842 ymax=35.3971
+xmin=-86,32 xmax=-74,38
+ni=15 n=15
+INSIDE
+imin=8 imax=0
+xmin=-83.7395 xmax=-83.1063
+ymin=34.992 ymax=35.3193
+xmin=-86,32 xmax=-74,38
+ni=28 n=28
+INSIDE
+imin=17 imax=1
+xmin=-78.6664 xmax=-78.1137
+ymin=34.5538 ymax=35.3151
+xmin=-86,32 xmax=-74,38
+ni=39 n=39
+INSIDE
+imin=2 imax=12
+xmin=-76.9899 xmax=-76.5071
+ymin=34.9822 ymax=35.3121
+xmin=-86,32 xmax=-74,38
+ni=19 n=19
+INSIDE
+imin=25 imax=13
+xmin=-84.3239 xmax=-83.6956
+ymin=34.9882 ymax=35.2925
+xmin=-86,32 xmax=-74,38
+ni=26 n=26
+INSIDE
+imin=9 imax=0
+xmin=-79.1068 xmax=-78.4993
+ymin=34.8274 ymax=35.26
+xmin=-86,32 xmax=-74,38
+ni=28 n=28
+INSIDE
+imin=16 imax=0
+xmin=-77.7319 xmax=-77.049
+ymin=34.7745 ymax=35.2397
+xmin=-86,32 xmax=-74,38
+ni=30 n=30
+INSIDE
+imin=0 imax=12
+xmin=-80.8402 xmax=-80.2751
+ymin=34.8148 ymax=35.2058
+xmin=-86,32 xmax=-74,38
+ni=17 n=17
+INSIDE
+imin=1 imax=24
+xmin=-80.3253 xmax=-79.8537
+ymin=34.8079 ymax=35.2045
+xmin=-86,32 xmax=-74,38
+ni=26 n=26
+INSIDE
+imin=3 imax=11
+xmin=-79.4554 xmax=-79.0336
+ymin=34.8319 ymax=35.2032
+xmin=-86,32 xmax=-74,38
+ni=13 n=13
+INSIDE
+imin=5 imax=15
+xmin=-76.6338 xmax=-75.8915
+ymin=35.3415 ymax=35.703
+xmin=-86,32 xmax=-74,38
+ni=22 n=22
+INSIDE
+imin=0 imax=3
+xmin=-76.017 xmax=-75.7637
+ymin=35.0694 ymax=35.1923
+xmin=-86,32 xmax=-74,38
+ni=7 n=7
+INSIDE
+imin=8 imax=28
+xmin=-78.1954 xmax=-77.6553
+ymin=34.711 ymax=35.1865
+xmin=-86,32 xmax=-74,38
+ni=29 n=29
+INSIDE
+imin=14 imax=27
+xmin=-80.0652 xmax=-79.4554
+ymin=34.8053 ymax=35.1738
+xmin=-86,32 xmax=-74,38
+ni=35 n=35
+INSIDE
+imin=1 imax=14
+xmin=-83.9885 xmax=-83.513
+ymin=34.9891 ymax=35.1481
+xmin=-86,32 xmax=-74,38
+ni=16 n=16
+INSIDE
+imin=15 imax=0
+xmin=-77.4741 xmax=-76.8976
+ymin=35.0534 ymax=35.423
+xmin=-86,32 xmax=-74,38
+ni=28 n=28
+INSIDE
+imin=6 imax=1
+xmin=-77.1106 xmax=-76.6256
+ymin=34.8304 ymax=35.066
+xmin=-86,32 xmax=-74,38
+ni=9 n=9
+INSIDE
+imin=2 imax=15
+xmin=-79.686 xmax=-79.328
+ymin=34.6341 ymax=35.0374
+xmin=-86,32 xmax=-74,38
+ni=16 n=16
+INSIDE
+imin=2 imax=16
+xmin=-77.6898 xmax=-77.1294
+ymin=34.457 ymax=34.984
+xmin=-86,32 xmax=-74,38
+ni=18 n=18
+INSIDE
+imin=10 imax=21
+xmin=-79.456 xmax=-78.8033
+ymin=34.3046 ymax=34.9538
+xmin=-86,32 xmax=-74,38
+ni=24 n=24
+INSIDE
+imin=1 imax=16
+xmin=-77.1643 xmax=-76.3147
+ymin=34.6989 ymax=35.0167
+xmin=-86,32 xmax=-74,38
+ni=20 n=20
+INSIDE
+imin=1 imax=6
+xmin=-76.5551 xmax=-76.2877
+ymin=34.5878 ymax=34.877
+xmin=-86,32 xmax=-74,38
+ni=8 n=8
+INSIDE
+imin=13 imax=29
+xmin=-78.8963 xmax=-78.1697
+ymin=34.3644 ymax=34.8551
+xmin=-86,32 xmax=-74,38
+ni=30 n=30
+INSIDE
+imin=8 imax=19
+xmin=-78.2624 xmax=-77.5386
+ymin=34.305 ymax=34.7289
+xmin=-86,32 xmax=-74,38
+ni=33 n=33
+INSIDE
+imin=1 imax=20
+xmin=-79.0745 xmax=-78.1548
+ymin=33.9487 ymax=34.4772
+xmin=-86,32 xmax=-74,38
+ni=32 n=32
+INSIDE
+imin=8 imax=18
+xmin=-78.0259 xmax=-77.7505
+ymin=34.062 ymax=34.388
+xmin=-86,32 xmax=-74,38
+ni=22 n=22
+INSIDE
+imin=0 imax=23
+xmin=-78.6557 xmax=-77.9585
+ymin=33.882 ymax=34.3641
+xmin=-86,32 xmax=-74,38
+ni=26 n=26
+INSIDE
+
+Number of type 1 objects: 0
+Number of type 2 objects: 0
+Number of type 3 objects: 108. Plotted: 108 (parts)
+PostScript output written to: map.ps
+----------------------------------------------------------------------------
+sdpgeo(...)=...
+Plot in geographical coordinate system. Current memory: 407281 bytes.
+PostScript output written to: map.ps
+----------------------------------------------------------------------------
+Current memory: 390032 bytes. Max memory used: 426151 bytes.
+End of program. Sun Sep  6 15:31:20 2026
