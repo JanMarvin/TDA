@@ -74,14 +74,14 @@ Other graph analysis:
 e <- data.frame(from = c(1, 1, 2), to = c(2, 3, 4), value = 1)
 g <- tda_graph(e, directed = FALSE)  # 4 nodes, 3 edges: already a tree
 pdf(NULL); plot(g); dev.off()
-#> agg_record_1fc35fd8cb97 
-#>                       2 
+#> agg_record_1f94510a06e 
+#>                      2 
 
 # a graph with a cycle is not a tree, and this one is directed besides --
 # both are fine with the default circular layout
 e2 <- data.frame(from = c(1, 1, 2, 2, 3, 4), to = c(2, 3, 3, 4, 4, 5))
 g2 <- tda_graph(e2, directed = TRUE)
 pdf(NULL); plot(g2); dev.off()
-#> agg_record_1fc35fd8cb97 
-#>                       2 
+#> agg_record_1f94510a06e 
+#>                      2 
 ```

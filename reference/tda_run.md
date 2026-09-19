@@ -89,26 +89,26 @@ Other TDA infrastructure:
 
 ``` r
 tda_run("mem;")
-#> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 19:12:39 2026
+#> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 19:30:59 2026
 #> Current memory: 390032 bytes.
 #> 
 #> Reading command file: commands
 #> ============================================================================
 #> Currently requested memory: 390032 (390032) bytes.
 #> Current memory: 390032 bytes. Max memory used: 390032 bytes.
-#> End of program. Sat Sep 19 19:12:39 2026
+#> End of program. Sat Sep 19 19:30:59 2026
 
 # tda_run_cf: the same thing, but the command file already exists on disk
 f <- tempfile()
 writeLines("mem;", f)
 r <- tda_run_cf(f)
 cat(r$output, sep = "\n")
-#> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 19:12:39 2026
+#> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 19:30:59 2026
 #> Current memory: 390032 bytes.
 #> 
-#> Reading command file: file1fc32d2482ac
+#> Reading command file: file1f942e90d94f
 #> ============================================================================
 #> Currently requested memory: 390032 (390032) bytes.
 #> Current memory: 390032 bytes. Max memory used: 390032 bytes.
-#> End of program. Sat Sep 19 19:12:39 2026
+#> End of program. Sat Sep 19 19:30:59 2026
 ```

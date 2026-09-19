@@ -169,6 +169,8 @@ Useful links:
 
 - <https://github.com/JanMarvin/TDA>
 
+- <https://janmarvin.github.io/TDA)>
+
 - <https://www.stat.rub.de/tda.html>
 
 - Report bugs at <https://github.com/JanMarvin/TDA/issues>

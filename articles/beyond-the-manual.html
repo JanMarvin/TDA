@@ -53,10 +53,59 @@
 </nav><div class="container template-article">
 <link rel="stylesheet" href="tda-manual.css">
 <style>
+  /* pkgdown's frame around the vignette: the navbar keeps Bootstrap's
+     font, and pkgdown's code styling (syntax colours, boxed pre blocks,
+     linked function names) is taken back so the boxes look as they do
+     in the package. */
   .navbar, .navbar *, footer, footer * { font-family: var(--bs-body-font-family); }
   .template-article .container { max-width: none; padding: 0; }
+  .template-article main pre,
+  .template-article main pre code,
+  .template-article main code,
+  .template-article main code span,
+  .template-article main pre a {
+    color: var(--fg) !important;
+    background: transparent !important;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+                 "Liberation Mono", "Courier New", monospace !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    text-decoration: none !important;
+  }
+  .template-article main pre,
+  .template-article main div.sourceCode {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0.45em 0 !important;
+    font-size: 0.82em !important;
+  }
+  .template-article main pre code { font-size: inherit !important; padding: 0 !important; }
+  .template-article main .box pre.r,
+  .template-article main .box div.sourceCode {
+    border-left: 2px solid var(--border) !important;
+    padding-left: 0.6em !important;
+  }
+  .template-article main .box pre.r + pre,
+  .template-article main .box div.sourceCode + pre { margin-top: 0.2em !important; }
+  .template-article main .btn-copy-ex { display: none; }
 </style>
-<script src="beyond-the-manual_files/header-attrs-2.32/header-attrs.js"></script><script>
+<script>
+  // pkgdown's light switch sets data-bs-theme on <html>; the vignette's
+  // stylesheet reads data-theme.  Mirror the one into the other so the
+  // navbar switch changes the page, and the page's own buttons still work.
+  (function () {
+    var root = document.documentElement;
+    function mirror() {
+      var t = root.getAttribute("data-bs-theme");
+      if (t === "dark" || t === "light") root.setAttribute("data-theme", t);
+      else root.removeAttribute("data-theme");
+    }
+    if (root.hasAttribute("data-bs-theme")) mirror();
+    new MutationObserver(mirror).observe(root, { attributes: true, attributeFilter: ["data-bs-theme"] });
+  })();
+</script><script src="beyond-the-manual_files/header-attrs-2.32/header-attrs.js"></script><script>
 (function () {
   var tkey = "tdaR-theme", fkey = "tdaR-fontsize";
   var FMIN = 11, FMAX = 26, FSTEP = 1;
