@@ -45,7 +45,7 @@ tda_estimates(f)
 #> 1   1   1    I Intercept 0.4058624 0.2195944 1.848236 0.9354318
 #> 2   2   1    X         x 0.9012704 0.2672257 3.372694 0.9992556
 tda_output(f)  # everything TDA printed, not just the coefficient table
-#> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 20:00:25 2026
+#> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 20:15:14 2026
 #> Current memory: 390032 bytes.
 #> 
 #> Reading command file: commands
@@ -112,7 +112,7 @@ tda_output(f)  # everything TDA printed, not just the coefficient table
 #> 
 #> ----------------------------------------------------------------------------
 #> Current memory: 390032 bytes. Max memory used: 394519 bytes.
-#> End of program. Sat Sep 19 20:00:25 2026
+#> End of program. Sat Sep 19 20:15:14 2026
 #> 
 #> --- stderr ---
 #> 
