@@ -46,7 +46,8 @@ tda_read_xls(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -75,8 +76,9 @@ directly.
 
 ## See also
 
-Other data: [`tda_read_spss()`](tda_read_spss.md),
-[`tda_strings()`](tda_strings.md)
+Other data:
+[`tda_read_spss()`](https://janmarvin.github.io/TDA/reference/tda_read_spss.md),
+[`tda_strings()`](https://janmarvin.github.io/TDA/reference/tda_strings.md)
 
 ## Examples
 

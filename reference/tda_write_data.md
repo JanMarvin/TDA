@@ -153,7 +153,9 @@ declares it with `= str(n,m)` (TDA's only way of making one) and
 positions are known. Strings are written last in the file whatever order
 your columns are in, because TDA cannot reach a `= cK` field lying after
 a string one; the declaration keeps your order, so nothing changes on
-the R side. [`tda_strings`](tda_strings.md) returns them as character.
+the R side.
+[`tda_strings`](https://janmarvin.github.io/TDA/reference/tda_strings.md)
+returns them as character.
 
 Four operators work on a string variable, and `extra=` accepts a
 [`{ }`](https://rdrr.io/r/base/Paren.html) block of plain R, so they
@@ -173,9 +175,12 @@ text is not all digits, rather than failing.
 
 ## See also
 
-Other TDA infrastructure: [`tda_ccnt()`](tda_ccnt.md),
-[`tda_help()`](tda_help.md), [`tda_output()`](tda_estimates.md),
-[`tda_read_table()`](tda_read_table.md), [`tda_run()`](tda_run.md)
+Other TDA infrastructure:
+[`tda_ccnt()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md),
+[`tda_help()`](https://janmarvin.github.io/TDA/reference/tda_help.md),
+[`tda_output()`](https://janmarvin.github.io/TDA/reference/tda_estimates.md),
+[`tda_read_table()`](https://janmarvin.github.io/TDA/reference/tda_read_table.md),
+[`tda_run()`](https://janmarvin.github.io/TDA/reference/tda_run.md)
 
 ## Examples
 
@@ -199,7 +204,7 @@ cat(cmds, sep = "\n")
 #> ) = Vx,Vy;
 res <- tda_run(cmds, data = d)
 cat(res$output, sep = "\n")
-#> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 09:18:10 2026
+#> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 09:51:02 2026
 #> Current memory: 390032 bytes.
 #> 
 #> Reading command file: commands
@@ -222,5 +227,5 @@ cat(res$output, sep = "\n")
 #> Vy           2.0000     9.0000     5.0000     2.9439          20.0000
 #> ----------------------------------------------------------------------------
 #> Current memory: 390032 bytes. Max memory used: 390176 bytes.
-#> End of program. Sat Sep 19 09:18:10 2026
+#> End of program. Sat Sep 19 09:51:02 2026
 ```

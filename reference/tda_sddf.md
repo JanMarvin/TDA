@@ -1,9 +1,11 @@
 # Distribution function of a set-valued discrete variable
 
-The set-valued counterpart of [`tda_iddf`](tda_idf.md): each case's
-observation is a *set* of possible categories (not necessarily a single
-value, and not necessarily an interval), and the distribution function
-is only identified up to bounds consistent with every case's own set.
+The set-valued counterpart of
+[`tda_iddf`](https://janmarvin.github.io/TDA/reference/tda_idf.md): each
+case's observation is a *set* of possible categories (not necessarily a
+single value, and not necessarily an interval), and the distribution
+function is only identified up to bounds consistent with every case's
+own set.
 
 ## Usage
 
@@ -47,8 +49,8 @@ tda_sddf(
 - control:
 
   convergence settings (`mxit=`/`tolf` via
-  [`tda_control`](tda_control.md)), only meaningful with
-  `self_consistent = TRUE`.
+  [`tda_control`](https://janmarvin.github.io/TDA/reference/tda_control.md)),
+  only meaningful with `self_consistent = TRUE`.
 
 - options:
 
@@ -60,7 +62,8 @@ tda_sddf(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -69,11 +72,15 @@ function's bounds and mean at each.
 
 ## See also
 
-Other interval-valued data: [`tda_bounds()`](tda_bounds.md),
-[`tda_idf()`](tda_idf.md), [`tda_ilsreg()`](tda_ilsreg.md),
-[`tda_imean()`](tda_imean.md), [`tda_imreg()`](tda_imreg.md),
-[`tda_inpreg()`](tda_inpreg.md), [`tda_ivar1()`](tda_ivar1.md),
-[`tda_ivreg()`](tda_ivreg.md)
+Other interval-valued data:
+[`tda_bounds()`](https://janmarvin.github.io/TDA/reference/tda_bounds.md),
+[`tda_idf()`](https://janmarvin.github.io/TDA/reference/tda_idf.md),
+[`tda_ilsreg()`](https://janmarvin.github.io/TDA/reference/tda_ilsreg.md),
+[`tda_imean()`](https://janmarvin.github.io/TDA/reference/tda_imean.md),
+[`tda_imreg()`](https://janmarvin.github.io/TDA/reference/tda_imreg.md),
+[`tda_inpreg()`](https://janmarvin.github.io/TDA/reference/tda_inpreg.md),
+[`tda_ivar1()`](https://janmarvin.github.io/TDA/reference/tda_ivar1.md),
+[`tda_ivreg()`](https://janmarvin.github.io/TDA/reference/tda_ivreg.md)
 
 ## Examples
 

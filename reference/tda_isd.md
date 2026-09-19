@@ -1,8 +1,10 @@
 # Standard deviation of an interval-valued variable
 
-The square root of [`tda_ivariance`](tda_imean.md)'s bounds – valid
-because the square root is monotone. Its own function because a variance
-function printing standard deviations surprised people, reasonably.
+The square root of
+[`tda_ivariance`](https://janmarvin.github.io/TDA/reference/tda_imean.md)'s
+bounds – valid because the square root is monotone. Its own function
+because a variance function printing standard deviations surprised
+people, reasonably.
 
 ## Usage
 
@@ -14,7 +16,8 @@ tda_isd(formula, data, ...)
 
 - formula, data, ...:
 
-  as in [`tda_ivariance`](tda_imean.md).
+  as in
+  [`tda_ivariance`](https://janmarvin.github.io/TDA/reference/tda_imean.md).
 
 ## Value
 

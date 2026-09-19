@@ -27,10 +27,12 @@ tda_arcv(out, data_file = NULL, archive = NULL, ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
-  Requires an open archive (see [`tda_arcd`](tda_arcd.md)) containing a
-  type-2 (variable description) member.
+  Requires an open archive (see
+  [`tda_arcd`](https://janmarvin.github.io/TDA/reference/tda_arcd.md))
+  containing a type-2 (variable description) member.
 
 ## Examples
 

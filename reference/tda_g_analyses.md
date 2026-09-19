@@ -2,7 +2,8 @@
 
 One function per graph command, each a thin wrapper: the command name,
 the options it takes and the table TDA writes. Everything TDA offers
-that has no named wrapper is still reachable with [`tda_g`](tda_g.md).
+that has no named wrapper is still reachable with
+[`tda_g`](https://janmarvin.github.io/TDA/reference/tda_g.md).
 
 ## Usage
 
@@ -99,7 +100,8 @@ tda_g_eigen(g, n = NULL, tol = NULL, control = NULL, ...)
 
 - g:
 
-  a [`tda_graph`](tda_graph.md).
+  a
+  [`tda_graph`](https://janmarvin.github.io/TDA/reference/tda_graph.md).
 
 - edges:
 
@@ -192,17 +194,17 @@ tda_g_eigen(g, n = NULL, tol = NULL, control = NULL, ...)
 - control:
 
   for `tda_g_eigen`, convergence settings from
-  [`tda_control`](tda_control.md) (only its `maxit` field applies, as
-  `gev`'s `mxit=`).
+  [`tda_control`](https://janmarvin.github.io/TDA/reference/tda_control.md)
+  (only its `maxit` field applies, as `gev`'s `mxit=`).
 
 ## Value
 
 An object carrying `table` – the records the command writes, in that
 command's layout (edges for the tree and path commands, node rows for
 the centrality and component ones; see the command's
-[`tda_help()`](tda_help.md) entry) – or, for the few commands whose
-output is ragged or non-tabular, `table` as a ragged record list or
-`text` as plain lines.
+[`tda_help()`](https://janmarvin.github.io/TDA/reference/tda_help.md)
+entry) – or, for the few commands whose output is ragged or non-tabular,
+`table` as a ragged record list or `text` as plain lines.
 
 `tda_g_backward` also carries `summary`, one row per node, from the
 second file `gbcf` writes; TDA does not produce it unless a file is
@@ -373,10 +375,13 @@ unvalued one.
 
 ## See also
 
-Other graph analysis: [`plot.tda_graph()`](plot.tda_graph.md),
-[`tda_dmet()`](tda_dmet.md), [`tda_g()`](tda_g.md),
-[`tda_graph()`](tda_graph.md),
-[`tda_locate_line()`](tda_locate_line.md), [`tda_ptree()`](tda_ptree.md)
+Other graph analysis:
+[`plot.tda_graph()`](https://janmarvin.github.io/TDA/reference/plot.tda_graph.md),
+[`tda_dmet()`](https://janmarvin.github.io/TDA/reference/tda_dmet.md),
+[`tda_g()`](https://janmarvin.github.io/TDA/reference/tda_g.md),
+[`tda_graph()`](https://janmarvin.github.io/TDA/reference/tda_graph.md),
+[`tda_locate_line()`](https://janmarvin.github.io/TDA/reference/tda_locate_line.md),
+[`tda_ptree()`](https://janmarvin.github.io/TDA/reference/tda_ptree.md)
 
 ## Examples
 

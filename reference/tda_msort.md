@@ -7,11 +7,11 @@ same and then drops consecutive duplicate rows (comparing every column,
 not just `by`) – TDA's `msort1`, matching `unique(sorted_X)`.
 `tda_mrank` – despite the name – is *not* a linear-algebra matrix rank
 (no TDA command returns one as a matrix value;
-[`tda_mginv`](tda_minvs.md) prints a pseudorank as a side effect, but
-never returns it). It returns the sort *permutation* itself: an integer
-vector `p` such that `X[p, ]` is sorted by `by` – TDA's `mrank`,
-confirmed against a hand-checked instance to equal base R's
-`order(X[, by[1]], X[, by[2]], ...)`, not
+[`tda_mginv`](https://janmarvin.github.io/TDA/reference/tda_minvs.md)
+prints a pseudorank as a side effect, but never returns it). It returns
+the sort *permutation* itself: an integer vector `p` such that `X[p, ]`
+is sorted by `by` – TDA's `mrank`, confirmed against a hand-checked
+instance to equal base R's `order(X[, by[1]], X[, by[2]], ...)`, not
 [`rank()`](https://rdrr.io/r/base/rank.html).
 
 ## Usage
@@ -45,10 +45,13 @@ vector, the same length as `nrow(X)`.
 
 ## See also
 
-Other matrix reshaping: [`tda_mag()`](tda_mag.md),
-[`tda_mcath()`](tda_mcath.md), [`tda_mcvec()`](tda_mcvec.md),
-[`tda_mrsum()`](tda_mrsum.md), [`tda_msrow()`](tda_msrow.md),
-[`tda_mtrim()`](tda_mtrim.md)
+Other matrix reshaping:
+[`tda_mag()`](https://janmarvin.github.io/TDA/reference/tda_mag.md),
+[`tda_mcath()`](https://janmarvin.github.io/TDA/reference/tda_mcath.md),
+[`tda_mcvec()`](https://janmarvin.github.io/TDA/reference/tda_mcvec.md),
+[`tda_mrsum()`](https://janmarvin.github.io/TDA/reference/tda_mrsum.md),
+[`tda_msrow()`](https://janmarvin.github.io/TDA/reference/tda_msrow.md),
+[`tda_mtrim()`](https://janmarvin.github.io/TDA/reference/tda_mtrim.md)
 
 ## Examples
 

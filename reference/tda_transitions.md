@@ -22,10 +22,14 @@ A data frame with `Org` and `Des`, or `NULL`.
 
 ## See also
 
-Other rate models: [`tda_constrain()`](tda_constrain.md),
-[`tda_control()`](tda_control.md), [`tda_dple()`](tda_ltb.md),
-[`tda_rates()`](tda_rates.md), [`tda_split()`](tda_split.md),
-[`tda_survivor()`](tda_survivor.md), [`vcov.tda_fit()`](tda_rate.md)
+Other rate models:
+[`tda_constrain()`](https://janmarvin.github.io/TDA/reference/tda_constrain.md),
+[`tda_control()`](https://janmarvin.github.io/TDA/reference/tda_control.md),
+[`tda_dple()`](https://janmarvin.github.io/TDA/reference/tda_ltb.md),
+[`tda_rates()`](https://janmarvin.github.io/TDA/reference/tda_rates.md),
+[`tda_split()`](https://janmarvin.github.io/TDA/reference/tda_split.md),
+[`tda_survivor()`](https://janmarvin.github.io/TDA/reference/tda_survivor.md),
+[`vcov.tda_fit()`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
 
 ## Examples
 

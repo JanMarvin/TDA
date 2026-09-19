@@ -4,9 +4,10 @@
 matrix, the way [`dist`](https://rdrr.io/r/stats/dist.html) does –
 Euclidean or city-block distance, the count of variables on which two
 cases differ, or a dissimilarity index. The result feeds directly into
-[`tda_cluster`](tda_cluster.md) or [`tda_mds`](tda_mds.md). Verified
-against [`dist`](https://rdrr.io/r/stats/dist.html) for Euclidean and
-city-block (Manhattan) distance: exact match.
+[`tda_cluster`](https://janmarvin.github.io/TDA/reference/tda_cluster.md)
+or [`tda_mds`](https://janmarvin.github.io/TDA/reference/tda_mds.md).
+Verified against [`dist`](https://rdrr.io/r/stats/dist.html) for
+Euclidean and city-block (Manhattan) distance: exact match.
 
 ## Usage
 
@@ -55,8 +56,9 @@ tda_pdatd(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md). `opt=` (the command's variant
-  switch) passes through as well.
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
+  `opt=` (the command's variant switch) passes through as well.
 
 ## Value
 
@@ -64,9 +66,10 @@ A [`dist`](https://rdrr.io/r/stats/dist.html) object.
 
 ## Details
 
-As with [`tda_dma`](tda_dma.md), TDA's `v=` needs variable names that
-start uppercase to be referenced correctly; `variables` handles this
-automatically.
+As with
+[`tda_dma`](https://janmarvin.github.io/TDA/reference/tda_dma.md), TDA's
+`v=` needs variable names that start uppercase to be referenced
+correctly; `variables` handles this automatically.
 
 Per-variable weights work through `weights`, with one genuine TDA quirk
 absorbed for you: `wt=` is parsed by TDA's *time-points* parser, which
@@ -83,9 +86,12 @@ is identical.
 
 ## See also
 
-Other clustering: [`TDA_CLUSTER`](tda_cluster.md),
-[`TDA_MDS`](tda_mds.md), [`tda_conjoint()`](tda_conjoint.md),
-[`tda_cutree()`](tda_cutree.md), [`tda_dma()`](tda_dma.md)
+Other clustering:
+[`TDA_CLUSTER`](https://janmarvin.github.io/TDA/reference/tda_cluster.md),
+[`TDA_MDS`](https://janmarvin.github.io/TDA/reference/tda_mds.md),
+[`tda_conjoint()`](https://janmarvin.github.io/TDA/reference/tda_conjoint.md),
+[`tda_cutree()`](https://janmarvin.github.io/TDA/reference/tda_cutree.md),
+[`tda_dma()`](https://janmarvin.github.io/TDA/reference/tda_dma.md)
 
 ## Examples
 

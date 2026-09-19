@@ -17,8 +17,9 @@ tda_output_audit(x)
 
 - x:
 
-  a `tda_result` (from [`tda_run`](tda_run.md)) or any fitted object
-  carrying one as `$run`.
+  a `tda_result` (from
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md)) or
+  any fitted object carrying one as `$run`.
 
 ## Value
 

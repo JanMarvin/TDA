@@ -13,7 +13,8 @@ tda_strings(res, trim = TRUE)
 
 - res:
 
-  a run, as returned by [`tda_run`](tda_run.md).
+  a run, as returned by
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 - trim:
 
@@ -34,14 +35,16 @@ on the numeric channel, and parsing it back out of fixed-width text is
 exactly what the exports exist to avoid.
 
 A character or factor column in a data frame becomes a TDA string
-variable (see [`tda_write_data`](tda_write_data.md)), and `rspss` and
-`rstata` create them from the file's string columns. Those are the only
-ways TDA makes one.
+variable (see
+[`tda_write_data`](https://janmarvin.github.io/TDA/reference/tda_write_data.md)),
+and `rspss` and `rstata` create them from the file's string columns.
+Those are the only ways TDA makes one.
 
 ## See also
 
-Other data: [`tda_read_spss()`](tda_read_spss.md),
-[`tda_read_xls()`](tda_read_xls.md)
+Other data:
+[`tda_read_spss()`](https://janmarvin.github.io/TDA/reference/tda_read_spss.md),
+[`tda_read_xls()`](https://janmarvin.github.io/TDA/reference/tda_read_xls.md)
 
 ## Examples
 

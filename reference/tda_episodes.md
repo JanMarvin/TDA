@@ -53,7 +53,8 @@ tda_state_dist(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 - times:
 
@@ -76,7 +77,8 @@ summary of multi-state data.
 
 ## See also
 
-Other episodes: [`tda_esort()`](tda_esort.md)
+Other episodes:
+[`tda_esort()`](https://janmarvin.github.io/TDA/reference/tda_esort.md)
 
 ## Examples
 

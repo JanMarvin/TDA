@@ -14,7 +14,8 @@ tda_sd(s, cmd, options = list(), rhs = NULL, setup = character(), ...)
 
 - s:
 
-  a [`tda_spatial`](tda_spatial.md).
+  a
+  [`tda_spatial`](https://janmarvin.github.io/TDA/reference/tda_spatial.md).
 
 - cmd:
 
@@ -34,7 +35,8 @@ tda_sd(s, cmd, options = list(), rhs = NULL, setup = character(), ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -42,13 +44,16 @@ An object carrying the run and, where the command writes one, a `table`.
 
 ## See also
 
-Other spatial analysis: [`plot.tda_spatial()`](plot.tda_spatial.md),
-[`tda_map()`](tda_map.md), [`tda_polygons()`](tda_polygons.md),
-[`tda_read_dbf()`](tda_read_dbf.md),
-[`tda_read_shapefile()`](tda_read_shapefile.md),
-[`tda_read_spatial`](tda_read_spatial.md),
-[`tda_sd_analyses`](tda_sd_analyses.md),
-[`tda_sd_ps3()`](tda_sd_ps3.md), [`tda_spatial()`](tda_spatial.md)
+Other spatial analysis:
+[`plot.tda_spatial()`](https://janmarvin.github.io/TDA/reference/plot.tda_spatial.md),
+[`tda_map()`](https://janmarvin.github.io/TDA/reference/tda_map.md),
+[`tda_polygons()`](https://janmarvin.github.io/TDA/reference/tda_polygons.md),
+[`tda_read_dbf()`](https://janmarvin.github.io/TDA/reference/tda_read_dbf.md),
+[`tda_read_shapefile()`](https://janmarvin.github.io/TDA/reference/tda_read_shapefile.md),
+[`tda_read_spatial`](https://janmarvin.github.io/TDA/reference/tda_read_spatial.md),
+[`tda_sd_analyses`](https://janmarvin.github.io/TDA/reference/tda_sd_analyses.md),
+[`tda_sd_ps3()`](https://janmarvin.github.io/TDA/reference/tda_sd_ps3.md),
+[`tda_spatial()`](https://janmarvin.github.io/TDA/reference/tda_spatial.md)
 
 ## Examples
 
@@ -57,7 +62,7 @@ d <- data.frame(id = 1:4, x = c(0, 1, 1, 0), y = c(0, 0, 1, 1))
 s <- tda_spatial(d)
 r <- tda_sd(s, "sdinf")
 cat(r$run$output, sep = "\n")
-#> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 09:18:02 2026
+#> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 09:50:54 2026
 #> Current memory: 390032 bytes.
 #> 
 #> Reading command file: commands
@@ -110,5 +115,5 @@ cat(r$run$output, sep = "\n")
 #> Number of polygons: 0
 #> ----------------------------------------------------------------------------
 #> Current memory: 390032 bytes. Max memory used: 426151 bytes.
-#> End of program. Sat Sep 19 09:18:02 2026
+#> End of program. Sat Sep 19 09:50:54 2026
 ```

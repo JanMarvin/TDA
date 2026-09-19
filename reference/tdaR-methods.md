@@ -1,7 +1,8 @@
 # Methods for fitted TDA models
 
 Standard methods for the objects the model functions return. See
-[`tda_rate`](tda_rate.md) for what those objects are.
+[`tda_rate`](https://janmarvin.github.io/TDA/reference/tda_rate.md) for
+what those objects are.
 
 ## Usage
 

@@ -2,10 +2,12 @@
 
 One function per spatial command, each a thin wrapper: the command name,
 the options it takes and the table TDA writes. They all work on a
-[`tda_spatial`](tda_spatial.md) structure, however it was built – from a
-data frame with `tda_spatial`, from a shapefile with
-[`tda_read_shapefile`](tda_read_shapefile.md), or from line segments
-with [`tda_polygons`](tda_polygons.md).
+[`tda_spatial`](https://janmarvin.github.io/TDA/reference/tda_spatial.md)
+structure, however it was built – from a data frame with `tda_spatial`,
+from a shapefile with
+[`tda_read_shapefile`](https://janmarvin.github.io/TDA/reference/tda_read_shapefile.md),
+or from line segments with
+[`tda_polygons`](https://janmarvin.github.io/TDA/reference/tda_polygons.md).
 
 ## Usage
 
@@ -37,7 +39,8 @@ tda_sd_clip(s, rec, ...)
 
 - s:
 
-  a [`tda_spatial`](tda_spatial.md).
+  a
+  [`tda_spatial`](https://janmarvin.github.io/TDA/reference/tda_spatial.md).
 
 - ...:
 
@@ -71,12 +74,16 @@ and `tda_sd_clip` – each write a record file that comes back as a table.
 
 ## See also
 
-Other spatial analysis: [`plot.tda_spatial()`](plot.tda_spatial.md),
-[`tda_map()`](tda_map.md), [`tda_polygons()`](tda_polygons.md),
-[`tda_read_dbf()`](tda_read_dbf.md),
-[`tda_read_shapefile()`](tda_read_shapefile.md),
-[`tda_read_spatial`](tda_read_spatial.md), [`tda_sd()`](tda_sd.md),
-[`tda_sd_ps3()`](tda_sd_ps3.md), [`tda_spatial()`](tda_spatial.md)
+Other spatial analysis:
+[`plot.tda_spatial()`](https://janmarvin.github.io/TDA/reference/plot.tda_spatial.md),
+[`tda_map()`](https://janmarvin.github.io/TDA/reference/tda_map.md),
+[`tda_polygons()`](https://janmarvin.github.io/TDA/reference/tda_polygons.md),
+[`tda_read_dbf()`](https://janmarvin.github.io/TDA/reference/tda_read_dbf.md),
+[`tda_read_shapefile()`](https://janmarvin.github.io/TDA/reference/tda_read_shapefile.md),
+[`tda_read_spatial`](https://janmarvin.github.io/TDA/reference/tda_read_spatial.md),
+[`tda_sd()`](https://janmarvin.github.io/TDA/reference/tda_sd.md),
+[`tda_sd_ps3()`](https://janmarvin.github.io/TDA/reference/tda_sd_ps3.md),
+[`tda_spatial()`](https://janmarvin.github.io/TDA/reference/tda_spatial.md)
 
 ## Examples
 

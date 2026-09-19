@@ -21,7 +21,8 @@ tda_dmet1(d, tolerance = 1e-04, max_iterations = 20, ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 

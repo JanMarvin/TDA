@@ -27,11 +27,16 @@ produces a wage-level slope around 1.6 over this range; any interval
 method's answer should be judged against the data's coarseness, not
 against that number.
 
-Works across the family: [`tda_imean`](tda_imean.md),
-[`tda_ivariance`](tda_imean.md) (with `$sd`), [`tda_icov`](tda_icov.md),
-[`tda_icorr`](tda_icov.md) (which honestly warns that it cannot certify
-at this size), [`tda_ivreg`](tda_ivreg.md) and
-[`tda_ilsreg`](tda_ilsreg.md).
+Works across the family:
+[`tda_imean`](https://janmarvin.github.io/TDA/reference/tda_imean.md),
+[`tda_ivariance`](https://janmarvin.github.io/TDA/reference/tda_imean.md)
+(with `$sd`),
+[`tda_icov`](https://janmarvin.github.io/TDA/reference/tda_icov.md),
+[`tda_icorr`](https://janmarvin.github.io/TDA/reference/tda_icov.md)
+(which honestly warns that it cannot certify at this size),
+[`tda_ivreg`](https://janmarvin.github.io/TDA/reference/tda_ivreg.md)
+and
+[`tda_ilsreg`](https://janmarvin.github.io/TDA/reference/tda_ilsreg.md).
 
 ## Examples
 

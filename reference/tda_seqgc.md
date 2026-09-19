@@ -72,9 +72,11 @@ tda_seqen(
 - sequences:
 
   a data frame or matrix of one column per time point, in order, the
-  same shape [`tda_seqm`](tda_seqm.md) takes – optionally with further,
-  non-sequence columns (an id, say) alongside them; use `variables`/`id`
-  to say which is which rather than pre-subsetting `sequences` yourself.
+  same shape
+  [`tda_seqm`](https://janmarvin.github.io/TDA/reference/tda_seqm.md)
+  takes – optionally with further, non-sequence columns (an id, say)
+  alongside them; use `variables`/`id` to say which is which rather than
+  pre-subsetting `sequences` yourself.
 
 - select:
 
@@ -119,7 +121,8 @@ tda_seqen(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 - tp:
 
@@ -135,11 +138,15 @@ point (`tda_seqsd`, `tda_seqen`), or per case-time combination
 
 ## See also
 
-Other sequence analysis: [`tda_evalfi()`](tda_evalfi.md),
-[`tda_fml()`](tda_fml.md), [`tda_frml()`](tda_frml.md),
-[`tda_seq_info()`](tda_seq_info.md), [`tda_seqm()`](tda_seqm.md),
-[`tda_seqmd()`](tda_seqmd.md), [`tda_seqpe()`](tda_seqpe.md),
-[`tda_seqpm()`](tda_seqpm.md)
+Other sequence analysis:
+[`tda_evalfi()`](https://janmarvin.github.io/TDA/reference/tda_evalfi.md),
+[`tda_fml()`](https://janmarvin.github.io/TDA/reference/tda_fml.md),
+[`tda_frml()`](https://janmarvin.github.io/TDA/reference/tda_frml.md),
+[`tda_seq_info()`](https://janmarvin.github.io/TDA/reference/tda_seq_info.md),
+[`tda_seqm()`](https://janmarvin.github.io/TDA/reference/tda_seqm.md),
+[`tda_seqmd()`](https://janmarvin.github.io/TDA/reference/tda_seqmd.md),
+[`tda_seqpe()`](https://janmarvin.github.io/TDA/reference/tda_seqpe.md),
+[`tda_seqpm()`](https://janmarvin.github.io/TDA/reference/tda_seqpm.md)
 
 ## Examples
 

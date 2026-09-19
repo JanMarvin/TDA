@@ -9,8 +9,9 @@ reaches the rest.
 ## Which options a command accepts
 
 TDA's manual is installed with the package and is the authoritative
-list. [`tda_help`](tda_help.md) prints the section for any command,
-including its full option table:
+list.
+[`tda_help`](https://janmarvin.github.io/TDA/reference/tda_help.md)
+prints the section for any command, including its full option table:
 
 
       tda_help("rate")      # every option the rate command takes
@@ -23,17 +24,19 @@ command.
 ## options= and ... are not the same thing
 
 Where a wrapper has both, `options=` goes to the *TDA command* and `...`
-goes to [`tda_run`](tda_run.md) (working directory, echo, and so on).
-Passing a TDA option in `...` is therefore an error rather than a silent
-no-op:
+goes to
+[`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md)
+(working directory, echo, and so on). Passing a TDA option in `...` is
+therefore an error rather than a silent no-op:
 
 
       tda_rate(..., grp = "SEX")                   # unused argument
       tda_rate(..., options = list(grp = "SEX"))   # reaches the command
 
-A few readers – [`tda_read_gshhs`](tda_read_spatial.md) and the other
-spatial readers among them – have no separate `options=` and forward
-`...` into the command directly, so for those
+A few readers –
+[`tda_read_gshhs`](https://janmarvin.github.io/TDA/reference/tda_read_spatial.md)
+and the other spatial readers among them – have no separate `options=`
+and forward `...` into the command directly, so for those
 `tda_read_gshhs(f, opt = 2)` is right.
 
 ## Caveat

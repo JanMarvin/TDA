@@ -3,11 +3,12 @@
 `seqpe`: builds a sequence – a state at every time point – from episode
 data (a start time, an end time, and origin/destination states for each
 spell). The result can be read back with a fresh call to
-[`tda_seqm`](tda_seqm.md) or any of the other sequence functions once
-written out and re-read; this function only performs the conversion,
-since TDA's output is a plain data file rather than something kept in
-memory across calls the way [`tda_seqm`](tda_seqm.md) manages
-internally.
+[`tda_seqm`](https://janmarvin.github.io/TDA/reference/tda_seqm.md) or
+any of the other sequence functions once written out and re-read; this
+function only performs the conversion, since TDA's output is a plain
+data file rather than something kept in memory across calls the way
+[`tda_seqm`](https://janmarvin.github.io/TDA/reference/tda_seqm.md)
+manages internally.
 
 ## Usage
 
@@ -72,7 +73,8 @@ tda_seqpe(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -81,11 +83,15 @@ holding the state the case was in at that time.
 
 ## See also
 
-Other sequence analysis: [`tda_evalfi()`](tda_evalfi.md),
-[`tda_fml()`](tda_fml.md), [`tda_frml()`](tda_frml.md),
-[`tda_seq_info()`](tda_seq_info.md), [`tda_seqgc()`](tda_seqgc.md),
-[`tda_seqm()`](tda_seqm.md), [`tda_seqmd()`](tda_seqmd.md),
-[`tda_seqpm()`](tda_seqpm.md)
+Other sequence analysis:
+[`tda_evalfi()`](https://janmarvin.github.io/TDA/reference/tda_evalfi.md),
+[`tda_fml()`](https://janmarvin.github.io/TDA/reference/tda_fml.md),
+[`tda_frml()`](https://janmarvin.github.io/TDA/reference/tda_frml.md),
+[`tda_seq_info()`](https://janmarvin.github.io/TDA/reference/tda_seq_info.md),
+[`tda_seqgc()`](https://janmarvin.github.io/TDA/reference/tda_seqgc.md),
+[`tda_seqm()`](https://janmarvin.github.io/TDA/reference/tda_seqm.md),
+[`tda_seqmd()`](https://janmarvin.github.io/TDA/reference/tda_seqmd.md),
+[`tda_seqpm()`](https://janmarvin.github.io/TDA/reference/tda_seqpm.md)
 
 ## Examples
 

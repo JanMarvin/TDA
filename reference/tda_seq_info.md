@@ -23,11 +23,12 @@ tda_seq_info(
 - sequences:
 
   a data frame or matrix, one row per case, one column per time point,
-  in order – the same shape [`tda_seqm`](tda_seqm.md) takes – or, given
-  `data` too, a character vector naming those columns within it
-  directly, rather than requiring a separately pre-subsetted data frame:
-  real sequence data typically carries an ID column and covariates
-  alongside the states in the same data frame (TDA's
+  in order – the same shape
+  [`tda_seqm`](https://janmarvin.github.io/TDA/reference/tda_seqm.md)
+  takes – or, given `data` too, a character vector naming those columns
+  within it directly, rather than requiring a separately pre-subsetted
+  data frame: real sequence data typically carries an ID column and
+  covariates alongside the states in the same data frame (TDA's
   `examples/exam/seq.d4`, e.g.), not only the states on their own. For
   `tda_seqev`/`tda_seqevd`, also a *list* of several such specs, to
   define several independent sequence data structures at once – TDA's
@@ -58,7 +59,8 @@ tda_seq_info(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -69,11 +71,15 @@ varies by structure).
 
 ## See also
 
-Other sequence analysis: [`tda_evalfi()`](tda_evalfi.md),
-[`tda_fml()`](tda_fml.md), [`tda_frml()`](tda_frml.md),
-[`tda_seqgc()`](tda_seqgc.md), [`tda_seqm()`](tda_seqm.md),
-[`tda_seqmd()`](tda_seqmd.md), [`tda_seqpe()`](tda_seqpe.md),
-[`tda_seqpm()`](tda_seqpm.md)
+Other sequence analysis:
+[`tda_evalfi()`](https://janmarvin.github.io/TDA/reference/tda_evalfi.md),
+[`tda_fml()`](https://janmarvin.github.io/TDA/reference/tda_fml.md),
+[`tda_frml()`](https://janmarvin.github.io/TDA/reference/tda_frml.md),
+[`tda_seqgc()`](https://janmarvin.github.io/TDA/reference/tda_seqgc.md),
+[`tda_seqm()`](https://janmarvin.github.io/TDA/reference/tda_seqm.md),
+[`tda_seqmd()`](https://janmarvin.github.io/TDA/reference/tda_seqmd.md),
+[`tda_seqpe()`](https://janmarvin.github.io/TDA/reference/tda_seqpe.md),
+[`tda_seqpm()`](https://janmarvin.github.io/TDA/reference/tda_seqpm.md)
 
 ## Examples
 

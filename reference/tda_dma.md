@@ -64,9 +64,10 @@ tda_dma(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md). Further `dma` options can be given
-  the same way, notably `opt=` (algorithm variant) and `pcf=` (print
-  classification frequencies).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
+  Further `dma` options can be given the same way, notably `opt=`
+  (algorithm variant) and `pcf=` (print classification frequencies).
 
 ## Value
 
@@ -90,9 +91,12 @@ columns yourself first.
 
 ## See also
 
-Other clustering: [`TDA_CLUSTER`](tda_cluster.md),
-[`TDA_MDS`](tda_mds.md), [`tda_conjoint()`](tda_conjoint.md),
-[`tda_cutree()`](tda_cutree.md), [`tda_pdatd()`](tda_pdatd.md)
+Other clustering:
+[`TDA_CLUSTER`](https://janmarvin.github.io/TDA/reference/tda_cluster.md),
+[`TDA_MDS`](https://janmarvin.github.io/TDA/reference/tda_mds.md),
+[`tda_conjoint()`](https://janmarvin.github.io/TDA/reference/tda_conjoint.md),
+[`tda_cutree()`](https://janmarvin.github.io/TDA/reference/tda_cutree.md),
+[`tda_pdatd()`](https://janmarvin.github.io/TDA/reference/tda_pdatd.md)
 
 ## Examples
 

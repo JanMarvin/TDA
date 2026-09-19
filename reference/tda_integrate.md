@@ -77,8 +77,9 @@ tda_gmin(
 
   for `tda_range` and `tda_gmin`, the box search's limits and tolerances
   (`nbox=`/`mxit=`/`tolbw=`/`tolfd=`/`tolfe=`). Not the same search as
-  `tda_minimize`'s [`tda_control`](tda_control.md)-style minimiser, so
-  `tda_control` does not apply to either of these.
+  `tda_minimize`'s
+  [`tda_control`](https://janmarvin.github.io/TDA/reference/tda_control.md)-style
+  minimiser, so `tda_control` does not apply to either of these.
 
 - derivatives:
 
@@ -104,9 +105,12 @@ plot.
 
 ## See also
 
-Other smoothing: [`tda_interp()`](tda_interp.md),
-[`tda_isotonic()`](tda_isotonic.md), [`tda_mat()`](tda_mat.md),
-[`tda_smd()`](tda_smd.md), [`tda_spl()`](tda_spl.md)
+Other smoothing:
+[`tda_interp()`](https://janmarvin.github.io/TDA/reference/tda_interp.md),
+[`tda_isotonic()`](https://janmarvin.github.io/TDA/reference/tda_isotonic.md),
+[`tda_mat()`](https://janmarvin.github.io/TDA/reference/tda_mat.md),
+[`tda_smd()`](https://janmarvin.github.io/TDA/reference/tda_smd.md),
+[`tda_spl()`](https://janmarvin.github.io/TDA/reference/tda_spl.md)
 
 ## Examples
 

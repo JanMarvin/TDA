@@ -5,18 +5,25 @@ three-dimensional coordinate system rather than the flat one
 [`plot()`](https://rdrr.io/r/graphics/plot.default.html) uses. That
 system comes from `psetup3`, so the ranges of all three axes and the
 direction the plot is viewed from are set up once with `tda_sd_ps3()`,
-the 3-D counterpart of [`tda_ps`](tda_ps.md) – `tda_sd_pl3_points()`,
-`tda_sd_pl3_lines()` and `tda_sd_pl3_polygons()` then add drawing
-commands to it the way [`tda_pl_lines`](tda_pl.md) and its siblings add
-to a `tda_ps` session, and
+the 3-D counterpart of
+[`tda_ps`](https://janmarvin.github.io/TDA/reference/tda_ps.md) –
+`tda_sd_pl3_points()`, `tda_sd_pl3_lines()` and `tda_sd_pl3_polygons()`
+then add drawing commands to it the way
+[`tda_pl_lines`](https://janmarvin.github.io/TDA/reference/tda_pl.md)
+and its siblings add to a `tda_ps` session, and
 [`plot()`](https://rdrr.io/r/graphics/plot.default.html) draws the
-result. [`tda_pl_text3`](tda_ps3.md) and [`tda_pl_points3`](tda_ps3.md)
+result.
+[`tda_pl_text3`](https://janmarvin.github.io/TDA/reference/tda_ps3.md)
+and
+[`tda_pl_points3`](https://janmarvin.github.io/TDA/reference/tda_ps3.md)
 (TDA's 3-D-aware commands, not tied to a spatial file) work on a
 `tda_sd_ps3` session too, which is how a title or an extra marker gets
-added – TDA's ordinary `plabel()` ([`tda_pl_labels`](tda_pl_hist.md)) is
-2-D only and refuses outright with “current coordinate system is
-3-dimensional” if tried here. [`tda_pl_lines3`](tda_ps3.md), by
-contrast, does **not** work on a `tda_sd_ps3` session: it folds its
+added – TDA's ordinary `plabel()`
+([`tda_pl_labels`](https://janmarvin.github.io/TDA/reference/tda_pl_hist.md))
+is 2-D only and refuses outright with “current coordinate system is
+3-dimensional” if tried here.
+[`tda_pl_lines3`](https://janmarvin.github.io/TDA/reference/tda_ps3.md),
+by contrast, does **not** work on a `tda_sd_ps3` session: it folds its
 coordinates into a regular `nvar` variable, which needs an ordinary
 `nvar` declaration that a spatial session, declared with `sdnvar`
 instead, does not have – “Syntax error or undefined variables”. Use
@@ -101,7 +108,9 @@ tda_sd_plot3_polygons(
 
 - s:
 
-  a [`tda_spatial`](tda_spatial.md) structure.
+  a
+  [`tda_spatial`](https://janmarvin.github.io/TDA/reference/tda_spatial.md)
+  structure.
 
 - xlim, ylim:
 
@@ -180,7 +189,8 @@ silently drawing nothing at all for any other kind: `tda_sd_pl3_points`
 draws points, `tda_sd_pl3_lines` draws lines, `tda_sd_pl3_polygons`
 draws polygons. A shapefile of counties, say, is polygons – points on it
 draws nothing, not because anything is wrong, but because it is looking
-for points that are not there. Check [`tda_sd_info`](tda_sd_analyses.md)
+for points that are not there. Check
+[`tda_sd_info`](https://janmarvin.github.io/TDA/reference/tda_sd_analyses.md)
 first if it is not obvious which kind a structure holds.
 
 `tda_sd_plot3`, `tda_sd_plot3_lines` and `tda_sd_plot3_polygons` are
@@ -190,13 +200,16 @@ same plot.
 
 ## See also
 
-Other spatial analysis: [`plot.tda_spatial()`](plot.tda_spatial.md),
-[`tda_map()`](tda_map.md), [`tda_polygons()`](tda_polygons.md),
-[`tda_read_dbf()`](tda_read_dbf.md),
-[`tda_read_shapefile()`](tda_read_shapefile.md),
-[`tda_read_spatial`](tda_read_spatial.md), [`tda_sd()`](tda_sd.md),
-[`tda_sd_analyses`](tda_sd_analyses.md),
-[`tda_spatial()`](tda_spatial.md)
+Other spatial analysis:
+[`plot.tda_spatial()`](https://janmarvin.github.io/TDA/reference/plot.tda_spatial.md),
+[`tda_map()`](https://janmarvin.github.io/TDA/reference/tda_map.md),
+[`tda_polygons()`](https://janmarvin.github.io/TDA/reference/tda_polygons.md),
+[`tda_read_dbf()`](https://janmarvin.github.io/TDA/reference/tda_read_dbf.md),
+[`tda_read_shapefile()`](https://janmarvin.github.io/TDA/reference/tda_read_shapefile.md),
+[`tda_read_spatial`](https://janmarvin.github.io/TDA/reference/tda_read_spatial.md),
+[`tda_sd()`](https://janmarvin.github.io/TDA/reference/tda_sd.md),
+[`tda_sd_analyses`](https://janmarvin.github.io/TDA/reference/tda_sd_analyses.md),
+[`tda_spatial()`](https://janmarvin.github.io/TDA/reference/tda_spatial.md)
 
 ## Examples
 
@@ -255,6 +268,6 @@ if (requireNamespace("sf", quietly = TRUE)) {
   plot(pnc)
 }
 dev.off()
-#> agg_record_21053d39a848 
+#> agg_record_1f5923622fd9 
 #>                       2 
 ```

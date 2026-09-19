@@ -23,30 +23,44 @@ computed with it decades ago, stay reachable from a current environment.
 
 **Where to start**, by task:
 
-- Event histories: [`tda_rate`](tda_rate.md) fits the transition rate
-  models (exponential through Gompertz, Weibull, log-logistic, Cox and
-  the rest of `TDA_MODELS`), with `Surv()`-style formulas;
-  [`tda_ple`](tda_ltb.md), [`tda_ltb`](tda_ltb.md) and
-  [`tda_km`](tda_ltb.md) estimate survivor functions and life tables.
+- Event histories:
+  [`tda_rate`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
+  fits the transition rate models (exponential through Gompertz,
+  Weibull, log-logistic, Cox and the rest of `TDA_MODELS`), with
+  `Surv()`-style formulas;
+  [`tda_ple`](https://janmarvin.github.io/TDA/reference/tda_ltb.md),
+  [`tda_ltb`](https://janmarvin.github.io/TDA/reference/tda_ltb.md) and
+  [`tda_km`](https://janmarvin.github.io/TDA/reference/tda_ltb.md)
+  estimate survivor functions and life tables.
 
-- Regression: [`tda_lsreg`](tda_lsreg.md) (least squares, also censored
-  and grouped variants), [`tda_glm`](tda_glm.md),
-  [`tda_qreg`](tda_qreg.md) (logit/probit and their ordered and
-  multinomial relatives), [`tda_loglin`](tda_loglin.md).
+- Regression:
+  [`tda_lsreg`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md)
+  (least squares, also censored and grouped variants),
+  [`tda_glm`](https://janmarvin.github.io/TDA/reference/tda_glm.md),
+  [`tda_qreg`](https://janmarvin.github.io/TDA/reference/tda_qreg.md)
+  (logit/probit and their ordered and multinomial relatives),
+  [`tda_loglin`](https://janmarvin.github.io/TDA/reference/tda_loglin.md).
 
-- Sequences: [`tda_seqm`](tda_seqm.md) computes optimal matching
-  distances (the result is a `dist`, ready for
+- Sequences:
+  [`tda_seqm`](https://janmarvin.github.io/TDA/reference/tda_seqm.md)
+  computes optimal matching distances (the result is a `dist`, ready for
   [`hclust()`](https://rdrr.io/r/stats/hclust.html) or
-  [`tda_cluster`](tda_cluster.md)); [`tda_seqmd`](tda_seqmd.md) turns
-  sequences into episode data.
+  [`tda_cluster`](https://janmarvin.github.io/TDA/reference/tda_cluster.md));
+  [`tda_seqmd`](https://janmarvin.github.io/TDA/reference/tda_seqmd.md)
+  turns sequences into episode data.
 
-- Description: [`tda_dstat`](tda_dstat.md), [`tda_freq`](tda_freq1.md),
-  [`tda_corr`](tda_dstat.md) and relatives.
+- Description:
+  [`tda_dstat`](https://janmarvin.github.io/TDA/reference/tda_dstat.md),
+  [`tda_freq`](https://janmarvin.github.io/TDA/reference/tda_freq1.md),
+  [`tda_corr`](https://janmarvin.github.io/TDA/reference/tda_dstat.md)
+  and relatives.
 
-- Anything else: [`tda_run`](tda_run.md) runs any TDA command file
-  against an R data frame, and [`tda_help`](tda_help.md) shows TDA's
-  manual entry for any command, by its TDA name – `tda_help("lsreg")`,
-  not `"tda_lsreg"`.
+- Anything else:
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md) runs
+  any TDA command file against an R data frame, and
+  [`tda_help`](https://janmarvin.github.io/TDA/reference/tda_help.md)
+  shows TDA's manual entry for any command, by its TDA name –
+  `tda_help("lsreg")`, not `"tda_lsreg"`.
 
 Fitted models answer to the usual verbs –
 [`coef()`](https://rdrr.io/r/stats/coef.html),
@@ -55,8 +69,9 @@ Fitted models answer to the usual verbs –
 [`logLik()`](https://rdrr.io/r/stats/logLik.html),
 [`confint()`](https://rdrr.io/r/stats/confint.html),
 [`predict()`](https://rdrr.io/r/stats/predict.html) where TDA computes
-predictions – and [`tda_estimates()`](tda_estimates.md) returns TDA's
-coefficient table as printed.
+predictions – and
+[`tda_estimates()`](https://janmarvin.github.io/TDA/reference/tda_estimates.md)
+returns TDA's coefficient table as printed.
 
 ## The shape of the interface
 
@@ -83,18 +98,23 @@ function is tells you how to call it before reading its page:
 - Builder sessions:
 
   a session object built up by a family of verbs and run at the end, the
-  `ggplot()` idea: [`tda_ps()`](tda_ps.md) then `tda_pl_*()` for plots,
-  [`tda_graph()`](tda_graph.md) then `tda_g_*()` for graphs,
-  [`tda_spatial()`](tda_spatial.md) then `tda_sd_*()` for spatial data.
-  Each verb takes the session as its first argument and returns it, so
-  the steps chain with `|>`.
+  `ggplot()` idea:
+  [`tda_ps()`](https://janmarvin.github.io/TDA/reference/tda_ps.md) then
+  `tda_pl_*()` for plots,
+  [`tda_graph()`](https://janmarvin.github.io/TDA/reference/tda_graph.md)
+  then `tda_g_*()` for graphs,
+  [`tda_spatial()`](https://janmarvin.github.io/TDA/reference/tda_spatial.md)
+  then `tda_sd_*()` for spatial data. Each verb takes the session as its
+  first argument and returns it, so the steps chain with `|>`.
 
 - Runners:
 
-  [`tda_run()`](tda_run.md) executes any TDA command file against an R
-  data frame, with [`tda_nvar()`](tda_write_data.md) and
-  [`tda_block()`](tda_write_data.md) to build the text; everything above
-  is ultimately this.
+  [`tda_run()`](https://janmarvin.github.io/TDA/reference/tda_run.md)
+  executes any TDA command file against an R data frame, with
+  [`tda_nvar()`](https://janmarvin.github.io/TDA/reference/tda_write_data.md)
+  and
+  [`tda_block()`](https://janmarvin.github.io/TDA/reference/tda_write_data.md)
+  to build the text; everything above is ultimately this.
 
 - Readers:
 
@@ -104,18 +124,19 @@ function is tells you how to call it before reading its page:
 Common argument grammar across all of them: `formula` and `data` come
 first where they exist; `weights`, `censor` and `select` always mean the
 same thing wherever they appear; `control` takes
-[`tda_control()`](tda_control.md) for iteration settings;
-`options = list(...)` is the escape hatch that reaches *any* TDA option
-under TDA's name, so nothing the program can do is out of reach even
-where no named argument exists; and `dir` pins the working directory
-when you want to keep the run's files.
+[`tda_control()`](https://janmarvin.github.io/TDA/reference/tda_control.md)
+for iteration settings; `options = list(...)` is the escape hatch that
+reaches *any* TDA option under TDA's name, so nothing the program can do
+is out of reach even where no named argument exists; and `dir` pins the
+working directory when you want to keep the run's files.
 
 Two namespaces coexist deliberately. Argument names are R's (`weights`,
 not `cwt`; `max_iter`, not `mxit`), but each function keeps its TDA
 *command* name as the suffix: `tda_ple`, not `tda_kaplan_meier`. That is
 what keeps thirty years of TDA literature usable – any command file in
-Blossfeld and Rohwer, and any entry [`tda_help()`](tda_help.md) shows,
-maps 1:1 onto the function that wraps it.
+Blossfeld and Rohwer, and any entry
+[`tda_help()`](https://janmarvin.github.io/TDA/reference/tda_help.md)
+shows, maps 1:1 onto the function that wraps it.
 
 **Missing values.** TDA itself has no NA: it stores a numeric missing
 value (`msys`, -5 by default) and computes with it like any other

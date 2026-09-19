@@ -6,14 +6,16 @@ part of this source tree, so the three fits it offered are reproduced
 here and drawn through the ordinary PostScript session: a lowess curve,
 a least-squares line, or an L1-norm (least-absolute-deviations) line,
 one per group. The lowess curve is TDA's, drawn by `scplot` – the same
-one [`tda_pl_scatter`](tda_pl_scatter.md) draws, and the one `xreg`
-drew. (`npreg(opt = 4)` runs the same C routine but cannot give the same
-curve: it resets its band width to 1 when it is below epsilon, before
-the lowess branch, so the delta shortcut is never 0, while `scplot`
-passes 0.) The least-squares line is ordinary regression of y on x; the
-L1 line is TDA's `l1reg` via [`tda_l1reg`](tda_l1reg.md). Like `xreg`,
-the straight-line fits are drawn from the group's smallest x to its
-largest.
+one
+[`tda_pl_scatter`](https://janmarvin.github.io/TDA/reference/tda_pl_scatter.md)
+draws, and the one `xreg` drew. (`npreg(opt = 4)` runs the same C
+routine but cannot give the same curve: it resets its band width to 1
+when it is below epsilon, before the lowess branch, so the delta
+shortcut is never 0, while `scplot` passes 0.) The least-squares line is
+ordinary regression of y on x; the L1 line is TDA's `l1reg` via
+[`tda_l1reg`](https://janmarvin.github.io/TDA/reference/tda_l1reg.md).
+Like `xreg`, the straight-line fits are drawn from the group's smallest
+x to its largest.
 
 ## Usage
 
@@ -51,7 +53,8 @@ tda_pl_hull(
 
 - p:
 
-  A plot session started with [`tda_ps`](tda_ps.md).
+  A plot session started with
+  [`tda_ps`](https://janmarvin.github.io/TDA/reference/tda_ps.md).
 
 - x, y:
 
@@ -109,19 +112,27 @@ and group.
 as a closed outline.
 
 The third screen command, `xplotf`, plotted values straight from a file;
-[`tda_pl_scatter`](tda_pl_scatter.md) and [`tda_pl_lines`](tda_pl.md)
+[`tda_pl_scatter`](https://janmarvin.github.io/TDA/reference/tda_pl_scatter.md)
+and
+[`tda_pl_lines`](https://janmarvin.github.io/TDA/reference/tda_pl.md)
 with raw vectors already do that.
 
 ## See also
 
-Other plotting: [`plot.tda_ple()`](plot.tda_ple.md),
-[`tda_check_ps()`](tda_check_ps.md), [`tda_pl()`](tda_pl.md),
-[`tda_pl_arc()`](tda_pl_arc.md), [`tda_pl_axis()`](tda_pl_axis.md),
-[`tda_pl_graph()`](tda_pl_graph.md), [`tda_pl_hist`](tda_pl_hist.md),
-[`tda_pl_panel()`](tda_pl_panel.md),
-[`tda_pl_scatter()`](tda_pl_scatter.md),
-[`tda_plot_ps()`](tda_plot_ps.md), [`tda_ps()`](tda_ps.md),
-[`tda_ps3()`](tda_ps3.md), [`tda_read_ps()`](tda_read_ps.md)
+Other plotting:
+[`plot.tda_ple()`](https://janmarvin.github.io/TDA/reference/plot.tda_ple.md),
+[`tda_check_ps()`](https://janmarvin.github.io/TDA/reference/tda_check_ps.md),
+[`tda_pl()`](https://janmarvin.github.io/TDA/reference/tda_pl.md),
+[`tda_pl_arc()`](https://janmarvin.github.io/TDA/reference/tda_pl_arc.md),
+[`tda_pl_axis()`](https://janmarvin.github.io/TDA/reference/tda_pl_axis.md),
+[`tda_pl_graph()`](https://janmarvin.github.io/TDA/reference/tda_pl_graph.md),
+[`tda_pl_hist`](https://janmarvin.github.io/TDA/reference/tda_pl_hist.md),
+[`tda_pl_panel()`](https://janmarvin.github.io/TDA/reference/tda_pl_panel.md),
+[`tda_pl_scatter()`](https://janmarvin.github.io/TDA/reference/tda_pl_scatter.md),
+[`tda_plot_ps()`](https://janmarvin.github.io/TDA/reference/tda_plot_ps.md),
+[`tda_ps()`](https://janmarvin.github.io/TDA/reference/tda_ps.md),
+[`tda_ps3()`](https://janmarvin.github.io/TDA/reference/tda_ps3.md),
+[`tda_read_ps()`](https://janmarvin.github.io/TDA/reference/tda_read_ps.md)
 
 ## Examples
 

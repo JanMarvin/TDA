@@ -37,10 +37,13 @@ A numeric matrix.
 
 ## See also
 
-Other matrix reshaping: [`tda_mcath()`](tda_mcath.md),
-[`tda_mcvec()`](tda_mcvec.md), [`tda_mrsum()`](tda_mrsum.md),
-[`tda_msort()`](tda_msort.md), [`tda_msrow()`](tda_msrow.md),
-[`tda_mtrim()`](tda_mtrim.md)
+Other matrix reshaping:
+[`tda_mcath()`](https://janmarvin.github.io/TDA/reference/tda_mcath.md),
+[`tda_mcvec()`](https://janmarvin.github.io/TDA/reference/tda_mcvec.md),
+[`tda_mrsum()`](https://janmarvin.github.io/TDA/reference/tda_mrsum.md),
+[`tda_msort()`](https://janmarvin.github.io/TDA/reference/tda_msort.md),
+[`tda_msrow()`](https://janmarvin.github.io/TDA/reference/tda_msrow.md),
+[`tda_mtrim()`](https://janmarvin.github.io/TDA/reference/tda_mtrim.md)
 
 ## Examples
 

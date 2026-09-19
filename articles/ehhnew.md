@@ -634,9 +634,10 @@ ehd3
       21  1   0   3  A     PRES -0.0157 0.0097  -1.6208 0.8949
 
 **ehd4** and **ehd5** take random subsamples so that the destinations
-are comparably sized. [`tda_runif()`](../reference/tda_rng.md) is TDA’s
-generator, a multiplicative congruential one with a fixed seed, so the
-episodes drawn here are the episodes TDA drew;
+are comparably sized.
+[`tda_runif()`](https://janmarvin.github.io/TDA/reference/tda_rng.md) is
+TDA’s generator, a multiplicative congruential one with a fixed seed, so
+the episodes drawn here are the episodes TDA drew;
 [`runif()`](https://rdrr.io/r/stats/Uniform.html) would give a different
 subsample and so different estimates.
 
@@ -1150,8 +1151,9 @@ ehe3$periods
 **ehf1** splits every episode at the date of marriage and writes the
 pieces out (`rrdat.s1`, Box 6.4.2); **ehf5** splits on a fixed grid of
 60 months (`rrdat.d60`, Box 6.5.2).
-[`tda_split()`](../reference/tda_split.md) is both, `at=` for a
-per-episode split time and `grid=` for the fixed one.
+[`tda_split()`](https://janmarvin.github.io/TDA/reference/tda_split.md)
+is both, `at=` for a per-episode split time and `grid=` for the fixed
+one.
 
 Box 21ehf1, ehf5: the split episode data \[book pp. 143-154, Boxes
 6.4.1-6.4.2, 6.5.1-6.5.2\]
@@ -2161,8 +2163,8 @@ something other than these plots.
 `ehi13`.*
 
 **ehi1** is the Cox model with the book’s covariates.
-[`tda_coxph()`](../reference/tda_rate.md) is `tda_rate(model = 1)` under
-a name that says what it is.
+[`tda_coxph()`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
+is `tda_rate(model = 1)` under a name that says what it is.
 
 Box 36ehi1: a Cox model \[book pp. 232-243, Boxes 9.1.2, 9.3.3\]
 

@@ -64,7 +64,8 @@ tda_qreg(
 
 - control:
 
-  convergence settings from [`tda_control`](tda_control.md).
+  convergence settings from
+  [`tda_control`](https://janmarvin.github.io/TDA/reference/tda_control.md).
 
 - nintegral, tol_integral:
 
@@ -106,28 +107,30 @@ tda_qreg(
   for model 6 (`multivariate_probit`) or 8 (`simultaneous_probit`),
   linear constraints on the model's parameters, in TDA's `bN` numbering
   – `qreg`'s `con=`, the same linear-constraint machinery
-  [`tda_lsreg`](tda_lsreg.md)'s `equality`/`inequality` use, just
-  addressed by number rather than by name. `bN` is the same numbering
-  [`tda_estimates()`](tda_estimates.md)'s `Idx` column already shows, so
-  a first run without `constraints` tells you which number is which
-  parameter. These two models introduce a correlation parameter for
-  every pair of outcome categories (\\\binom{nq}{2}\\ of them) on top of
-  the regular regression coefficients, and are usually only identified
-  with most of them fixed – `examples/exam/qr6.cf`'s worked example
-  fixes all ten (`nq = 5`) to zero,
-  `constraints = paste0("b", 9:18, " = 0")` here, reproduced exactly.
-  `model`'s formula and variable list stay exactly the shape every other
-  model already uses: a single response, one row per case.
+  [`tda_lsreg`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md)'s
+  `equality`/`inequality` use, just addressed by number rather than by
+  name. `bN` is the same numbering
+  [`tda_estimates()`](https://janmarvin.github.io/TDA/reference/tda_estimates.md)'s
+  `Idx` column already shows, so a first run without `constraints` tells
+  you which number is which parameter. These two models introduce a
+  correlation parameter for every pair of outcome categories
+  (\\\binom{nq}{2}\\ of them) on top of the regular regression
+  coefficients, and are usually only identified with most of them fixed
+  – `examples/exam/qr6.cf`'s worked example fixes all ten (`nq = 5`) to
+  zero, `constraints = paste0("b", 9:18, " = 0")` here, reproduced
+  exactly. `model`'s formula and variable list stay exactly the shape
+  every other model already uses: a single response, one row per case.
 
 - start:
 
   optional starting values, in TDA's parameter order (the same order
   `bN` in `constraints` refers to, and
-  [`tda_estimates()`](tda_estimates.md)'s `Idx`) – `qreg`'s `xp=`. Often
-  needed in practice for models 6/8: TDA's automatic starting-value
-  generator is not always good enough for these two models' extra
-  correlation parameters, and a fit that converges cleanly with good
-  starting values can fail outright without them.
+  [`tda_estimates()`](https://janmarvin.github.io/TDA/reference/tda_estimates.md)'s
+  `Idx`) – `qreg`'s `xp=`. Often needed in practice for models 6/8:
+  TDA's automatic starting-value generator is not always good enough for
+  these two models' extra correlation parameters, and a fit that
+  converges cleanly with good starting values can fail outright without
+  them.
 
 - weights:
 
@@ -145,7 +148,8 @@ tda_qreg(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -155,7 +159,8 @@ correlation matrix among the latent equations, which TDA computes only
 when asked for a parameter file. Additionally carrying `categories`, the
 (weighted) count and percentage of each response category as `qreg`
 itself tabulates them before estimating. Cases with missing values are
-dropped before the fit, with a message (see [`?tdaR`](tdaR-package.md)).
+dropped before the fit, with a message (see
+[`?tdaR`](https://janmarvin.github.io/TDA/reference/tdaR-package.md)).
 
 ## Models
 
@@ -209,12 +214,17 @@ request TDA would misinterpret or reject confusingly.
 
 ## See also
 
-Other regression: [`TDA_FAMILIES`](tda_glm.md),
-[`tda_freg()`](tda_freg.md), [`tda_gdf()`](tda_gdf.md),
-[`tda_l1reg()`](tda_l1reg.md), [`tda_lsreg()`](tda_lsreg.md),
-[`tda_mlrc_design()`](tda_mlrc_design.md), [`tda_mreg()`](tda_mreg.md),
-[`tda_nlreg()`](tda_nlreg.md), [`tda_npreg()`](tda_npreg.md),
-[`tda_zreg()`](tda_zreg.md)
+Other regression:
+[`TDA_FAMILIES`](https://janmarvin.github.io/TDA/reference/tda_glm.md),
+[`tda_freg()`](https://janmarvin.github.io/TDA/reference/tda_freg.md),
+[`tda_gdf()`](https://janmarvin.github.io/TDA/reference/tda_gdf.md),
+[`tda_l1reg()`](https://janmarvin.github.io/TDA/reference/tda_l1reg.md),
+[`tda_lsreg()`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md),
+[`tda_mlrc_design()`](https://janmarvin.github.io/TDA/reference/tda_mlrc_design.md),
+[`tda_mreg()`](https://janmarvin.github.io/TDA/reference/tda_mreg.md),
+[`tda_nlreg()`](https://janmarvin.github.io/TDA/reference/tda_nlreg.md),
+[`tda_npreg()`](https://janmarvin.github.io/TDA/reference/tda_npreg.md),
+[`tda_zreg()`](https://janmarvin.github.io/TDA/reference/tda_zreg.md)
 
 ## Examples
 

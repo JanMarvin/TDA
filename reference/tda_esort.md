@@ -9,7 +9,8 @@ file-out, on raw text records addressed by character position, and they
 are that here too: name the input and the output file and the output
 path comes back, invisibly, with the run as its `"run"` attribute.
 Nothing is read back; for a data frame, use
-[`tda_read_table`](tda_read_table.md) on the file you asked for.
+[`tda_read_table`](https://janmarvin.github.io/TDA/reference/tda_read_table.md)
+on the file you asked for.
 
 ## Usage
 
@@ -123,7 +124,8 @@ takes data frames, and returns one through the export channel.
 
 ## See also
 
-Other episodes: [`tda_episodes()`](tda_episodes.md)
+Other episodes:
+[`tda_episodes()`](https://janmarvin.github.io/TDA/reference/tda_episodes.md)
 
 ## Examples
 

@@ -1,14 +1,17 @@
 # Combine several PostScript plots into one file
 
 `tda_combine_ps` reaches TDA's `dplot` command, which lays out a grid of
-previously-created PostScript files (each its [`tda_ps()`](tda_ps.md)
+previously-created PostScript files (each its
+[`tda_ps()`](https://janmarvin.github.io/TDA/reference/tda_ps.md)
 session, already run) into a single output file – one row per element of
 `rows`, side by side within a row. Unlike every other `tda_pl_*`
 function here, this is not a command added to an in-progress session:
 `dplot` combines files that already exist on disk into a new one of its
 own, so this takes file paths (or `tda_ps` objects that have already
-been run, via [`tda_ps_file`](tda_pl.md)) and runs standalone, the way
-[`tda_run`](tda_run.md) does.
+been run, via
+[`tda_ps_file`](https://janmarvin.github.io/TDA/reference/tda_pl.md))
+and runs standalone, the way
+[`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md) does.
 
 ## Usage
 
@@ -46,12 +49,14 @@ tda_combine_ps(
 
 - ...:
 
-  Further options passed to [`tda_run`](tda_run.md).
+  Further options passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
-The result of [`tda_run`](tda_run.md), whose own run directory holds
-`file`.
+The result of
+[`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md), whose
+own run directory holds `file`.
 
 ## Examples
 

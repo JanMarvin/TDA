@@ -25,7 +25,8 @@ tda_mdsn(
   tie handling. Only `"ignore"` is implemented in `mdsn1` (its primary
   and secondary projections are commented out in the C, and the option
   would silently do nothing); the other two values error and point to
-  [`tda_mds`](tda_mds.md), whose `mdsn` has them.
+  [`tda_mds`](https://janmarvin.github.io/TDA/reference/tda_mds.md),
+  whose `mdsn` has them.
 
 - max_iterations:
 
@@ -40,7 +41,8 @@ tda_mdsn(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 

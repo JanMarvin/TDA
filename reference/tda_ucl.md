@@ -25,7 +25,9 @@ tda_ucl(
 
 - g:
 
-  a [`tda_graph`](tda_graph.md), undirected and valued.
+  a
+  [`tda_graph`](https://janmarvin.github.io/TDA/reference/tda_graph.md),
+  undirected and valued.
 
 - clusters:
 
@@ -52,7 +54,8 @@ tda_ucl(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 

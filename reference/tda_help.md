@@ -32,10 +32,12 @@ The text TDA printed, invisibly; it is also printed.
 
 ## See also
 
-Other TDA infrastructure: [`tda_ccnt()`](tda_ccnt.md),
-[`tda_output()`](tda_estimates.md),
-[`tda_read_table()`](tda_read_table.md), [`tda_run()`](tda_run.md),
-[`tda_write_data()`](tda_write_data.md)
+Other TDA infrastructure:
+[`tda_ccnt()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md),
+[`tda_output()`](https://janmarvin.github.io/TDA/reference/tda_estimates.md),
+[`tda_read_table()`](https://janmarvin.github.io/TDA/reference/tda_read_table.md),
+[`tda_run()`](https://janmarvin.github.io/TDA/reference/tda_run.md),
+[`tda_write_data()`](https://janmarvin.github.io/TDA/reference/tda_write_data.md)
 
 ## Examples
 
@@ -74,7 +76,7 @@ tda_help("rate")
 #> 
 #> See also: frml, mpcov, mpgrad, mplog, mppar
 tda_time()
-#> Current time: Sat Sep 19 09:17:35 2026
+#> Current time: Sat Sep 19 09:50:27 2026
 tda_memory()
 #> Current memory: 390032 bytes.
 #> Currently requested memory: 390032 (390032) bytes.

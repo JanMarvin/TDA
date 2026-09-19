@@ -43,9 +43,12 @@ A data frame, or a list of them.
 
 ## See also
 
-Other TDA infrastructure: [`tda_ccnt()`](tda_ccnt.md),
-[`tda_help()`](tda_help.md), [`tda_output()`](tda_estimates.md),
-[`tda_run()`](tda_run.md), [`tda_write_data()`](tda_write_data.md)
+Other TDA infrastructure:
+[`tda_ccnt()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md),
+[`tda_help()`](https://janmarvin.github.io/TDA/reference/tda_help.md),
+[`tda_output()`](https://janmarvin.github.io/TDA/reference/tda_estimates.md),
+[`tda_run()`](https://janmarvin.github.io/TDA/reference/tda_run.md),
+[`tda_write_data()`](https://janmarvin.github.io/TDA/reference/tda_write_data.md)
 
 ## Examples
 

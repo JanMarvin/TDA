@@ -50,7 +50,8 @@ tda_mlpi(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -59,9 +60,12 @@ vector per row.
 
 ## See also
 
-Other optimization: [`tda_boolean_min()`](tda_boolean_min.md),
-[`tda_mlp()`](tda_mlp.md), [`tda_mls()`](tda_mls.md),
-[`tda_mqap()`](tda_mqap.md), [`tda_mqp()`](tda_mqp.md)
+Other optimization:
+[`tda_boolean_min()`](https://janmarvin.github.io/TDA/reference/tda_boolean_min.md),
+[`tda_mlp()`](https://janmarvin.github.io/TDA/reference/tda_mlp.md),
+[`tda_mls()`](https://janmarvin.github.io/TDA/reference/tda_mls.md),
+[`tda_mqap()`](https://janmarvin.github.io/TDA/reference/tda_mqap.md),
+[`tda_mqp()`](https://janmarvin.github.io/TDA/reference/tda_mqp.md)
 
 ## Examples
 

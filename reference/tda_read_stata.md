@@ -2,8 +2,8 @@
 
 Reads a Stata `.dta` file through TDA's `rstata`, which supports
 releases 4, 6, 7 and 10 – the same set
-[`tda_write_stata`](tda_write_foreign.md) writes, so a file written here
-reads back here.
+[`tda_write_stata`](https://janmarvin.github.io/TDA/reference/tda_write_foreign.md)
+writes, so a file written here reads back here.
 
 ## Usage
 
@@ -50,7 +50,8 @@ tda_read_stata(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -58,8 +59,8 @@ A data frame. `attr(x, "run")` carries the run.
 
 ## See also
 
-[`tda_write_stata`](tda_write_foreign.md),
-[`tda_read_spss`](tda_read_spss.md)
+[`tda_write_stata`](https://janmarvin.github.io/TDA/reference/tda_write_foreign.md),
+[`tda_read_spss`](https://janmarvin.github.io/TDA/reference/tda_read_spss.md)
 
 ## Examples
 

@@ -73,7 +73,8 @@ nobs(object, ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 - formula:
 
@@ -109,7 +110,8 @@ nobs(object, ...)
 
 - control:
 
-  convergence settings from [`tda_control`](tda_control.md).
+  convergence settings from
+  [`tda_control`](https://janmarvin.github.io/TDA/reference/tda_control.md).
 
 - residuals:
 
@@ -188,7 +190,9 @@ likelihood ratio test against it for the exponential model), and
 change of the function value and of the parameters, and the number of
 likelihood evaluations. Episodes with a missing value in any variable
 the model uses are dropped before TDA sees the data, with a message (see
-the package page, [`?tdaR`](tdaR-package.md), on missing values).
+the package page,
+[`?tdaR`](https://janmarvin.github.io/TDA/reference/tdaR-package.md), on
+missing values).
 
 ## Models
 
@@ -235,21 +239,27 @@ defaults to Efron, so the two disagree whenever there are ties;
 Any raw TDA expression evaluated for this data – `define`'s formulas, in
 particular, since they can use `ge`/`lt`/`eq` and the rest directly –
 inherits an undocumented property of TDA's comparison functions: none of
-them are exact. See [`tda_fml`](tda_fml.md)'s “Writing the likelihood in
-R syntax” section for the full explanation and an example where it
-changes a result; it applies here identically, since `define` writes
-straight into the same expression language.
+them are exact. See
+[`tda_fml`](https://janmarvin.github.io/TDA/reference/tda_fml.md)'s
+“Writing the likelihood in R syntax” section for the full explanation
+and an example where it changes a result; it applies here identically,
+since `define` writes straight into the same expression language.
 
 ## See also
 
-[`tda_km`](tda_ltb.md) for non-parametric estimates,
-[`tda_control`](tda_control.md) for convergence.
+[`tda_km`](https://janmarvin.github.io/TDA/reference/tda_ltb.md) for
+non-parametric estimates,
+[`tda_control`](https://janmarvin.github.io/TDA/reference/tda_control.md)
+for convergence.
 
-Other rate models: [`tda_constrain()`](tda_constrain.md),
-[`tda_control()`](tda_control.md), [`tda_dple()`](tda_ltb.md),
-[`tda_rates()`](tda_rates.md), [`tda_split()`](tda_split.md),
-[`tda_survivor()`](tda_survivor.md),
-[`tda_transitions()`](tda_transitions.md)
+Other rate models:
+[`tda_constrain()`](https://janmarvin.github.io/TDA/reference/tda_constrain.md),
+[`tda_control()`](https://janmarvin.github.io/TDA/reference/tda_control.md),
+[`tda_dple()`](https://janmarvin.github.io/TDA/reference/tda_ltb.md),
+[`tda_rates()`](https://janmarvin.github.io/TDA/reference/tda_rates.md),
+[`tda_split()`](https://janmarvin.github.io/TDA/reference/tda_split.md),
+[`tda_survivor()`](https://janmarvin.github.io/TDA/reference/tda_survivor.md),
+[`tda_transitions()`](https://janmarvin.github.io/TDA/reference/tda_transitions.md)
 
 ## Examples
 

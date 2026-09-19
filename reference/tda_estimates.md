@@ -26,9 +26,12 @@ A data frame, a list of data frames, or `NULL`.
 
 ## See also
 
-Other TDA infrastructure: [`tda_ccnt()`](tda_ccnt.md),
-[`tda_help()`](tda_help.md), [`tda_read_table()`](tda_read_table.md),
-[`tda_run()`](tda_run.md), [`tda_write_data()`](tda_write_data.md)
+Other TDA infrastructure:
+[`tda_ccnt()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md),
+[`tda_help()`](https://janmarvin.github.io/TDA/reference/tda_help.md),
+[`tda_read_table()`](https://janmarvin.github.io/TDA/reference/tda_read_table.md),
+[`tda_run()`](https://janmarvin.github.io/TDA/reference/tda_run.md),
+[`tda_write_data()`](https://janmarvin.github.io/TDA/reference/tda_write_data.md)
 
 ## Examples
 
@@ -42,7 +45,7 @@ tda_estimates(f)
 #> 1   1   1    I Intercept 0.4058624 0.2195944 1.848236 0.9354318
 #> 2   2   1    X         x 0.9012704 0.2672257 3.372694 0.9992556
 tda_output(f)  # everything TDA printed, not just the coefficient table
-#> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 09:17:29 2026
+#> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 09:50:22 2026
 #> Current memory: 390032 bytes.
 #> 
 #> Reading command file: commands
@@ -109,7 +112,7 @@ tda_output(f)  # everything TDA printed, not just the coefficient table
 #> 
 #> ----------------------------------------------------------------------------
 #> Current memory: 390032 bytes. Max memory used: 394519 bytes.
-#> End of program. Sat Sep 19 09:17:29 2026
+#> End of program. Sat Sep 19 09:50:22 2026
 #> 
 #> --- stderr ---
 #> 

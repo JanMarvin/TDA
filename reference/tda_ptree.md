@@ -1,8 +1,9 @@
 # Print a tree's data structure
 
-`ptree`: the same tree [`plot.tda_graph`](plot.tda_graph.md) draws (via
-`pltree`), but as data rather than a picture – one row per node, its
-parent, its first child, and its next sibling, the linked-list
+`ptree`: the same tree
+[`plot.tda_graph`](https://janmarvin.github.io/TDA/reference/plot.tda_graph.md)
+draws (via `pltree`), but as data rather than a picture – one row per
+node, its parent, its first child, and its next sibling, the linked-list
 representation TDA itself builds internally to draw one.
 
 ## Usage
@@ -15,7 +16,9 @@ tda_ptree(g, root = NULL, options = list(), dir = tempfile("tda"), ...)
 
 - g:
 
-  a [`tda_graph`](tda_graph.md), undirected and shaped like a tree.
+  a
+  [`tda_graph`](https://janmarvin.github.io/TDA/reference/tda_graph.md),
+  undirected and shaped like a tree.
 
 - root:
 
@@ -32,7 +35,8 @@ tda_ptree(g, root = NULL, options = list(), dir = tempfile("tda"), ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -50,10 +54,13 @@ explicitly to work around it.
 
 ## See also
 
-Other graph analysis: [`plot.tda_graph()`](plot.tda_graph.md),
-[`tda_dmet()`](tda_dmet.md), [`tda_g()`](tda_g.md),
-[`tda_g_analyses`](tda_g_analyses.md), [`tda_graph()`](tda_graph.md),
-[`tda_locate_line()`](tda_locate_line.md)
+Other graph analysis:
+[`plot.tda_graph()`](https://janmarvin.github.io/TDA/reference/plot.tda_graph.md),
+[`tda_dmet()`](https://janmarvin.github.io/TDA/reference/tda_dmet.md),
+[`tda_g()`](https://janmarvin.github.io/TDA/reference/tda_g.md),
+[`tda_g_analyses`](https://janmarvin.github.io/TDA/reference/tda_g_analyses.md),
+[`tda_graph()`](https://janmarvin.github.io/TDA/reference/tda_graph.md),
+[`tda_locate_line()`](https://janmarvin.github.io/TDA/reference/tda_locate_line.md)
 
 ## Examples
 

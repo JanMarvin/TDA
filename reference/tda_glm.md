@@ -48,7 +48,8 @@ tda_glm(
 - link:
 
   the link function – a name (from Families and links below) or TDA's
-  `link=` number (1-8) directly, matching [`tda_qreg`](tda_qreg.md)'s
+  `link=` number (1-8) directly, matching
+  [`tda_qreg`](https://janmarvin.github.io/TDA/reference/tda_qreg.md)'s
   `model`/`kernel` convention. Overrides whatever link `family` itself
   specifies (an R family object's `link=`), when both are given; `NULL`
   (the default) defers to `family`'s link, or the first one listed for
@@ -82,15 +83,15 @@ tda_glm(
 
   optional case weights, a column name in `data` or a vector as long as
   the data – TDA's `cwt = W;`, the same mechanism and convention as
-  [`tda_ple`](tda_ltb.md)'s `weights`. Can be used together with
-  `trials`, for a binomial-trials model where some cases should also
-  count for more than others: `trials` shapes the binomial likelihood
-  itself, `weights` separately scales each case's contribution to the
-  total on top of that. TDA's `cwt(wnorm=s)=W` rescales the weights
-  before use without changing the fitted coefficients, only the standard
-  errors – not exposed as a separate argument here, since it is exactly
-  reproduced by rescaling `weights` itself before passing it in
-  (`weights * s / sum(weights)`).
+  [`tda_ple`](https://janmarvin.github.io/TDA/reference/tda_ltb.md)'s
+  `weights`. Can be used together with `trials`, for a binomial-trials
+  model where some cases should also count for more than others:
+  `trials` shapes the binomial likelihood itself, `weights` separately
+  scales each case's contribution to the total on top of that. TDA's
+  `cwt(wnorm=s)=W` rescales the weights before use without changing the
+  fitted coefficients, only the standard errors – not exposed as a
+  separate argument here, since it is exactly reproduced by rescaling
+  `weights` itself before passing it in (`weights * s / sum(weights)`).
 
 - intercept:
 
@@ -106,28 +107,34 @@ tda_glm(
 
   also write out each case's fitted mean, linear predictor, and
   predictor values – `glm`'s `pres=`/ `dtda=`. Different in shape from
-  both [`tda_qreg`](tda_qreg.md)'s own `predictions` (categorical
-  outcome probabilities) and [`tda_fml`](tda_fml.md)'s `residuals` (one
-  value per case): one row per case, with `Mue` the fitted mean on the
-  response scale (R's `fitted(fit, type = "response")`), `Eta` the
-  linear predictor (`predict(fit, type = "link")`), each predictor's
-  value, and the working weight. In `fit$predictions`.
+  both
+  [`tda_qreg`](https://janmarvin.github.io/TDA/reference/tda_qreg.md)'s
+  own `predictions` (categorical outcome probabilities) and
+  [`tda_fml`](https://janmarvin.github.io/TDA/reference/tda_fml.md)'s
+  `residuals` (one value per case): one row per case, with `Mue` the
+  fitted mean on the response scale (R's
+  `fitted(fit, type = "response")`), `Eta` the linear predictor
+  (`predict(fit, type = "link")`), each predictor's value, and the
+  working weight. In `fit$predictions`.
 
 - protocol:
 
   ask TDA to also write its iteration-by-iteration diagnostic log –
-  `glm`'s `prot=`, the same mechanism as [`tda_fml`](tda_fml.md)'s
+  `glm`'s `prot=`, the same mechanism as
+  [`tda_fml`](https://janmarvin.github.io/TDA/reference/tda_fml.md)'s
   `protocol`. In `fit$protocol`.
 
 - equality, inequality:
 
   linear constraints on the coefficients, written in the predictors' own
-  names – the same mechanism and syntax as [`tda_lsreg`](tda_lsreg.md)'s
+  names – the same mechanism and syntax as
+  [`tda_lsreg`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md)'s
   `equality`/ `inequality` (`lsecon=`/`lsicon=`).
 
 - control:
 
-  convergence settings from [`tda_control`](tda_control.md).
+  convergence settings from
+  [`tda_control`](https://janmarvin.github.io/TDA/reference/tda_control.md).
 
 - options:
 
@@ -139,7 +146,8 @@ tda_glm(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -149,7 +157,7 @@ deviance and residual degrees of freedom, the rank of the design matrix,
 and – for the families where TDA prints them – the Pearson statistic and
 the ML- and deviance-based dispersion estimates. Cases with missing
 values are dropped before the fit, with a message (see
-[`?tdaR`](tdaR-package.md)).
+[`?tdaR`](https://janmarvin.github.io/TDA/reference/tdaR-package.md)).
 [`logLik()`](https://rdrr.io/r/stats/logLik.html) is `NA`: TDA's
 [`glm()`](https://rdrr.io/r/stats/glm.html) never prints a
 log-likelihood itself, only Deviance – and it stays that way here rather
@@ -190,12 +198,17 @@ side of the command rather than a number – is reachable through
 
 ## See also
 
-Other regression: [`TDA_QRMODELS`](tda_qreg.md),
-[`tda_freg()`](tda_freg.md), [`tda_gdf()`](tda_gdf.md),
-[`tda_l1reg()`](tda_l1reg.md), [`tda_lsreg()`](tda_lsreg.md),
-[`tda_mlrc_design()`](tda_mlrc_design.md), [`tda_mreg()`](tda_mreg.md),
-[`tda_nlreg()`](tda_nlreg.md), [`tda_npreg()`](tda_npreg.md),
-[`tda_zreg()`](tda_zreg.md)
+Other regression:
+[`TDA_QRMODELS`](https://janmarvin.github.io/TDA/reference/tda_qreg.md),
+[`tda_freg()`](https://janmarvin.github.io/TDA/reference/tda_freg.md),
+[`tda_gdf()`](https://janmarvin.github.io/TDA/reference/tda_gdf.md),
+[`tda_l1reg()`](https://janmarvin.github.io/TDA/reference/tda_l1reg.md),
+[`tda_lsreg()`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md),
+[`tda_mlrc_design()`](https://janmarvin.github.io/TDA/reference/tda_mlrc_design.md),
+[`tda_mreg()`](https://janmarvin.github.io/TDA/reference/tda_mreg.md),
+[`tda_nlreg()`](https://janmarvin.github.io/TDA/reference/tda_nlreg.md),
+[`tda_npreg()`](https://janmarvin.github.io/TDA/reference/tda_npreg.md),
+[`tda_zreg()`](https://janmarvin.github.io/TDA/reference/tda_zreg.md)
 
 ## Examples
 

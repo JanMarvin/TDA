@@ -28,7 +28,8 @@ tda_ps_objects(file, options = list(), dir = tempfile("tda"), ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -45,7 +46,8 @@ all.
 
 ## See also
 
-[`tda_read_ps`](tda_read_ps.md), [`tda_combine_ps`](tda_combine_ps.md)
+[`tda_read_ps`](https://janmarvin.github.io/TDA/reference/tda_read_ps.md),
+[`tda_combine_ps`](https://janmarvin.github.io/TDA/reference/tda_combine_ps.md)
 
 ## Examples
 

@@ -4,7 +4,9 @@ These build TDA's internal data matrix from `data` and then hand it to
 TDA's writers. `tda_write_spss` produces a portable file (`.por`) or,
 with `format = "sav"`, an SPSS system file. `tda_write_stata` produces a
 `.dta` for a chosen Stata release. `tda_write_sys` produces a TDA system
-file, which [`tda_read_sys`](tda_read_sys.md) reads back.
+file, which
+[`tda_read_sys`](https://janmarvin.github.io/TDA/reference/tda_read_sys.md)
+reads back.
 
 ## Usage
 
@@ -70,7 +72,8 @@ tda_write_sys(data, file, options = list(), dir = tempfile("tda"), ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 - release:
 
@@ -97,7 +100,8 @@ as they are in `data`; the capitalisation is applied for you.
 
 ## See also
 
-[`tda_read_spss`](tda_read_spss.md), [`tda_read_sys`](tda_read_sys.md)
+[`tda_read_spss`](https://janmarvin.github.io/TDA/reference/tda_read_spss.md),
+[`tda_read_sys`](https://janmarvin.github.io/TDA/reference/tda_read_sys.md)
 
 ## Examples
 

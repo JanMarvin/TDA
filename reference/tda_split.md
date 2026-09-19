@@ -3,8 +3,9 @@
 A covariate that changes during an episode is handled by cutting the
 episode in two at the moment it changes, so that each piece has one
 value. TDA does this with the `split` option of `edef`, and
-[`tda_episodes`](tda_episodes.md) and [`tda_rate`](tda_rate.md) take a
-`split` argument that reaches it.
+[`tda_episodes`](https://janmarvin.github.io/TDA/reference/tda_episodes.md)
+and [`tda_rate`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
+take a `split` argument that reaches it.
 
 ## Usage
 
@@ -50,7 +51,8 @@ tda_split(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -71,11 +73,14 @@ job episodes becoming 1021 pieces of at most five years.
 
 ## See also
 
-Other rate models: [`tda_constrain()`](tda_constrain.md),
-[`tda_control()`](tda_control.md), [`tda_dple()`](tda_ltb.md),
-[`tda_rates()`](tda_rates.md), [`tda_survivor()`](tda_survivor.md),
-[`tda_transitions()`](tda_transitions.md),
-[`vcov.tda_fit()`](tda_rate.md)
+Other rate models:
+[`tda_constrain()`](https://janmarvin.github.io/TDA/reference/tda_constrain.md),
+[`tda_control()`](https://janmarvin.github.io/TDA/reference/tda_control.md),
+[`tda_dple()`](https://janmarvin.github.io/TDA/reference/tda_ltb.md),
+[`tda_rates()`](https://janmarvin.github.io/TDA/reference/tda_rates.md),
+[`tda_survivor()`](https://janmarvin.github.io/TDA/reference/tda_survivor.md),
+[`tda_transitions()`](https://janmarvin.github.io/TDA/reference/tda_transitions.md),
+[`vcov.tda_fit()`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
 
 ## Examples
 

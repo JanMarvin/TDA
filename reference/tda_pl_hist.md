@@ -1,7 +1,8 @@
 # Further plot commands
 
 Named wrappers for the plot commands that take arguments worth spelling
-out. Everything else is reachable with [`tda_pl`](tda_pl.md).
+out. Everything else is reachable with
+[`tda_pl`](https://janmarvin.github.io/TDA/reference/tda_pl.md).
 
 ## Usage
 
@@ -125,8 +126,9 @@ tda_pl_grid_lines(p, ...)
 - ...:
 
   further options for the underlying TDA command – look them up with
-  [`tda_help()`](tda_help.md), e.g. `tda_help("ploth")` for
-  `tda_pl_histogram`; see [`tda_pl`](tda_pl.md).
+  [`tda_help()`](https://janmarvin.github.io/TDA/reference/tda_help.md),
+  e.g. `tda_help("ploth")` for `tda_pl_histogram`; see
+  [`tda_pl`](https://janmarvin.github.io/TDA/reference/tda_pl.md).
 
 - breaks:
 
@@ -212,15 +214,20 @@ The session, with the command added.
 
 ## See also
 
-Other plotting: [`plot.tda_ple()`](plot.tda_ple.md),
-[`tda_check_ps()`](tda_check_ps.md), [`tda_pl()`](tda_pl.md),
-[`tda_pl_arc()`](tda_pl_arc.md), [`tda_pl_axis()`](tda_pl_axis.md),
-[`tda_pl_graph()`](tda_pl_graph.md),
-[`tda_pl_panel()`](tda_pl_panel.md),
-[`tda_pl_regression()`](tda_pl_regression.md),
-[`tda_pl_scatter()`](tda_pl_scatter.md),
-[`tda_plot_ps()`](tda_plot_ps.md), [`tda_ps()`](tda_ps.md),
-[`tda_ps3()`](tda_ps3.md), [`tda_read_ps()`](tda_read_ps.md)
+Other plotting:
+[`plot.tda_ple()`](https://janmarvin.github.io/TDA/reference/plot.tda_ple.md),
+[`tda_check_ps()`](https://janmarvin.github.io/TDA/reference/tda_check_ps.md),
+[`tda_pl()`](https://janmarvin.github.io/TDA/reference/tda_pl.md),
+[`tda_pl_arc()`](https://janmarvin.github.io/TDA/reference/tda_pl_arc.md),
+[`tda_pl_axis()`](https://janmarvin.github.io/TDA/reference/tda_pl_axis.md),
+[`tda_pl_graph()`](https://janmarvin.github.io/TDA/reference/tda_pl_graph.md),
+[`tda_pl_panel()`](https://janmarvin.github.io/TDA/reference/tda_pl_panel.md),
+[`tda_pl_regression()`](https://janmarvin.github.io/TDA/reference/tda_pl_regression.md),
+[`tda_pl_scatter()`](https://janmarvin.github.io/TDA/reference/tda_pl_scatter.md),
+[`tda_plot_ps()`](https://janmarvin.github.io/TDA/reference/tda_plot_ps.md),
+[`tda_ps()`](https://janmarvin.github.io/TDA/reference/tda_ps.md),
+[`tda_ps3()`](https://janmarvin.github.io/TDA/reference/tda_ps3.md),
+[`tda_read_ps()`](https://janmarvin.github.io/TDA/reference/tda_read_ps.md)
 
 ## Examples
 

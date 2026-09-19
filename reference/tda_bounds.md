@@ -14,7 +14,9 @@ tda_bounds(x, what = c("beta", "alpha", "mean_y", "mean_x", "var_x"))
 
 - x:
 
-  a fit from [`tda_ivreg`](tda_ivreg.md) and friends.
+  a fit from
+  [`tda_ivreg`](https://janmarvin.github.io/TDA/reference/tda_ivreg.md)
+  and friends.
 
 - what:
 
@@ -27,11 +29,15 @@ A named vector with `lower` and `upper`, or `NULL`.
 
 ## See also
 
-Other interval-valued data: [`tda_idf()`](tda_idf.md),
-[`tda_ilsreg()`](tda_ilsreg.md), [`tda_imean()`](tda_imean.md),
-[`tda_imreg()`](tda_imreg.md), [`tda_inpreg()`](tda_inpreg.md),
-[`tda_ivar1()`](tda_ivar1.md), [`tda_ivreg()`](tda_ivreg.md),
-[`tda_sddf()`](tda_sddf.md)
+Other interval-valued data:
+[`tda_idf()`](https://janmarvin.github.io/TDA/reference/tda_idf.md),
+[`tda_ilsreg()`](https://janmarvin.github.io/TDA/reference/tda_ilsreg.md),
+[`tda_imean()`](https://janmarvin.github.io/TDA/reference/tda_imean.md),
+[`tda_imreg()`](https://janmarvin.github.io/TDA/reference/tda_imreg.md),
+[`tda_inpreg()`](https://janmarvin.github.io/TDA/reference/tda_inpreg.md),
+[`tda_ivar1()`](https://janmarvin.github.io/TDA/reference/tda_ivar1.md),
+[`tda_ivreg()`](https://janmarvin.github.io/TDA/reference/tda_ivreg.md),
+[`tda_sddf()`](https://janmarvin.github.io/TDA/reference/tda_sddf.md)
 
 ## Examples
 

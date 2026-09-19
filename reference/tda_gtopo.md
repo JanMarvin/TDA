@@ -38,7 +38,8 @@ tda_gtopo(file, rows, cols, upper_left, pixel_size, lon, lat, ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 

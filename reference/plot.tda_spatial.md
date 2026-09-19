@@ -28,7 +28,8 @@ plot(
 
 - x:
 
-  a [`tda_spatial`](tda_spatial.md).
+  a
+  [`tda_spatial`](https://janmarvin.github.io/TDA/reference/tda_spatial.md).
 
 - xlim, ylim:
 
@@ -66,18 +67,22 @@ The parsed drawing operations, invisibly.
 
 Points need a marker or nothing is drawn: give `symbol` (or another TDA
 symbol number). This is the same trap noted for
-[`tda_sd_plot3`](tda_sd_ps3.md) – without a marker or a `zvar`
-attribute, `sdplot` draws nothing at all rather than erroring.
+[`tda_sd_plot3`](https://janmarvin.github.io/TDA/reference/tda_sd_ps3.md)
+– without a marker or a `zvar` attribute, `sdplot` draws nothing at all
+rather than erroring.
 
 ## See also
 
-Other spatial analysis: [`tda_map()`](tda_map.md),
-[`tda_polygons()`](tda_polygons.md),
-[`tda_read_dbf()`](tda_read_dbf.md),
-[`tda_read_shapefile()`](tda_read_shapefile.md),
-[`tda_read_spatial`](tda_read_spatial.md), [`tda_sd()`](tda_sd.md),
-[`tda_sd_analyses`](tda_sd_analyses.md),
-[`tda_sd_ps3()`](tda_sd_ps3.md), [`tda_spatial()`](tda_spatial.md)
+Other spatial analysis:
+[`tda_map()`](https://janmarvin.github.io/TDA/reference/tda_map.md),
+[`tda_polygons()`](https://janmarvin.github.io/TDA/reference/tda_polygons.md),
+[`tda_read_dbf()`](https://janmarvin.github.io/TDA/reference/tda_read_dbf.md),
+[`tda_read_shapefile()`](https://janmarvin.github.io/TDA/reference/tda_read_shapefile.md),
+[`tda_read_spatial`](https://janmarvin.github.io/TDA/reference/tda_read_spatial.md),
+[`tda_sd()`](https://janmarvin.github.io/TDA/reference/tda_sd.md),
+[`tda_sd_analyses`](https://janmarvin.github.io/TDA/reference/tda_sd_analyses.md),
+[`tda_sd_ps3()`](https://janmarvin.github.io/TDA/reference/tda_sd_ps3.md),
+[`tda_spatial()`](https://janmarvin.github.io/TDA/reference/tda_spatial.md)
 
 ## Examples
 

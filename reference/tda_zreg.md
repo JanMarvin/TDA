@@ -1,4 +1,4 @@
-# `yw=` marks the case that is censored with a nonzero value, the same convention as R's `survival::Surv(..., event = )` with the sense flipped – unlike [`tda_lsreg1`](tda_lsreg.md)'s `cen=`, this is not translated, so `censor` passed here should already be 1 for a censored case.
+# `yw=` marks the case that is censored with a nonzero value, the same convention as R's `survival::Surv(..., event = )` with the sense flipped – unlike [`tda_lsreg1`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md)'s `cen=`, this is not translated, so `censor` passed here should already be 1 for a censored case.
 
 The iteration often hits `mxit` (default 20) without TDA's tolerance
 test passing, even once the estimates have stopped moving – `tda_run`
@@ -50,7 +50,8 @@ tda_zreg1(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 - dates:
 
@@ -69,11 +70,12 @@ An object of class `tda_fit`.
 `TRUE` or `1` marks a case whose response is censored. TDA's own `yw=`
 runs the other way – a case counts as *exact* when its indicator is zero
 – so this is translated for you, the same correction
-[`tda_lsreg1`](tda_lsreg.md) already documents for its own `cen=`.
-Confirmed by fitting the same censored data both ways and comparing
-against the known-correct uncensored OLS fit: sent through unflipped,
-`zreg` recovered essentially nothing of the true relationship (a
-near-zero slope); flipped, it recovers it closely.
+[`tda_lsreg1`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md)
+already documents for its own `cen=`. Confirmed by fitting the same
+censored data both ways and comparing against the known-correct
+uncensored OLS fit: sent through unflipped, `zreg` recovered essentially
+nothing of the true relationship (a near-zero slope); flipped, it
+recovers it closely.
 
 `tda_zreg1` is TDA's `zreg1`, the residual-life variant: instead of one
 fit, it refits the Buckley-James regression of the *remaining* lifetime
@@ -95,12 +97,17 @@ exact.
 
 ## See also
 
-Other regression: [`TDA_FAMILIES`](tda_glm.md),
-[`TDA_QRMODELS`](tda_qreg.md), [`tda_freg()`](tda_freg.md),
-[`tda_gdf()`](tda_gdf.md), [`tda_l1reg()`](tda_l1reg.md),
-[`tda_lsreg()`](tda_lsreg.md),
-[`tda_mlrc_design()`](tda_mlrc_design.md), [`tda_mreg()`](tda_mreg.md),
-[`tda_nlreg()`](tda_nlreg.md), [`tda_npreg()`](tda_npreg.md)
+Other regression:
+[`TDA_FAMILIES`](https://janmarvin.github.io/TDA/reference/tda_glm.md),
+[`TDA_QRMODELS`](https://janmarvin.github.io/TDA/reference/tda_qreg.md),
+[`tda_freg()`](https://janmarvin.github.io/TDA/reference/tda_freg.md),
+[`tda_gdf()`](https://janmarvin.github.io/TDA/reference/tda_gdf.md),
+[`tda_l1reg()`](https://janmarvin.github.io/TDA/reference/tda_l1reg.md),
+[`tda_lsreg()`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md),
+[`tda_mlrc_design()`](https://janmarvin.github.io/TDA/reference/tda_mlrc_design.md),
+[`tda_mreg()`](https://janmarvin.github.io/TDA/reference/tda_mreg.md),
+[`tda_nlreg()`](https://janmarvin.github.io/TDA/reference/tda_nlreg.md),
+[`tda_npreg()`](https://janmarvin.github.io/TDA/reference/tda_npreg.md)
 
 ## Examples
 

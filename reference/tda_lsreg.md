@@ -120,7 +120,8 @@ tda_lsreg1(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 - censor:
 
@@ -158,13 +159,14 @@ tda_lsreg1(
 - control:
 
   for `tda_lsreg1` with `method = "marginal"` or `"joint1"`, convergence
-  settings from [`tda_control`](tda_control.md): its `maxit` field
-  reaches the method's general `mxit=`, and its `tolf` field reaches the
-  method-specific `tolp=` (a different tolerance from `tda_gdf`'s
-  `tolf=`, despite the shared field name in `tda_control` – lsreg1 has
-  both a general `mxit=`/ `tolp=` pair and a method-1-specific
-  `mxitl=`/`tolf=` pair; only the general pair is reachable through
-  `control` here).
+  settings from
+  [`tda_control`](https://janmarvin.github.io/TDA/reference/tda_control.md):
+  its `maxit` field reaches the method's general `mxit=`, and its `tolf`
+  field reaches the method-specific `tolp=` (a different tolerance from
+  `tda_gdf`'s `tolf=`, despite the shared field name in `tda_control` –
+  lsreg1 has both a general `mxit=`/ `tolp=` pair and a
+  method-1-specific `mxitl=`/`tolf=` pair; only the general pair is
+  reachable through `control` here).
 
 ## Value
 
@@ -176,8 +178,9 @@ with the same reference distribution TDA itself uses (a t on the
 residual degrees of freedom here), alongside the residual standard
 error, R-squared, and the F statistic with its p-value. Cases with a
 missing value in the response or any predictor are dropped before TDA
-sees the data, with a message (see [`?tdaR`](tdaR-package.md) on missing
-values).
+sees the data, with a message (see
+[`?tdaR`](https://janmarvin.github.io/TDA/reference/tdaR-package.md) on
+missing values).
 
 ## Details
 
@@ -222,12 +225,17 @@ available for the multi-equation form –
 
 ## See also
 
-Other regression: [`TDA_FAMILIES`](tda_glm.md),
-[`TDA_QRMODELS`](tda_qreg.md), [`tda_freg()`](tda_freg.md),
-[`tda_gdf()`](tda_gdf.md), [`tda_l1reg()`](tda_l1reg.md),
-[`tda_mlrc_design()`](tda_mlrc_design.md), [`tda_mreg()`](tda_mreg.md),
-[`tda_nlreg()`](tda_nlreg.md), [`tda_npreg()`](tda_npreg.md),
-[`tda_zreg()`](tda_zreg.md)
+Other regression:
+[`TDA_FAMILIES`](https://janmarvin.github.io/TDA/reference/tda_glm.md),
+[`TDA_QRMODELS`](https://janmarvin.github.io/TDA/reference/tda_qreg.md),
+[`tda_freg()`](https://janmarvin.github.io/TDA/reference/tda_freg.md),
+[`tda_gdf()`](https://janmarvin.github.io/TDA/reference/tda_gdf.md),
+[`tda_l1reg()`](https://janmarvin.github.io/TDA/reference/tda_l1reg.md),
+[`tda_mlrc_design()`](https://janmarvin.github.io/TDA/reference/tda_mlrc_design.md),
+[`tda_mreg()`](https://janmarvin.github.io/TDA/reference/tda_mreg.md),
+[`tda_nlreg()`](https://janmarvin.github.io/TDA/reference/tda_nlreg.md),
+[`tda_npreg()`](https://janmarvin.github.io/TDA/reference/tda_npreg.md),
+[`tda_zreg()`](https://janmarvin.github.io/TDA/reference/tda_zreg.md)
 
 ## Examples
 

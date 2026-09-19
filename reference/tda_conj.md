@@ -25,7 +25,8 @@ tda_conj(y, x, algorithm = c("monotone", "lp"), ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 

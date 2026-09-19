@@ -24,7 +24,8 @@ tda_bfc(y, x, undefined = c("dontcare", "as_one", "as_zero"), ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 

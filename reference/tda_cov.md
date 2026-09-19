@@ -3,7 +3,8 @@
 The \\n - 1\\-denominator covariance matrix, as
 [`stats::cov()`](https://rdrr.io/r/stats/cor.html) computes it, extended
 to case weights when a `cwt` command is active.
-[`tda_corr`](tda_dstat.md) is its correlation counterpart.
+[`tda_corr`](https://janmarvin.github.io/TDA/reference/tda_dstat.md) is
+its correlation counterpart.
 
 ## Usage
 
@@ -32,12 +33,17 @@ names on both dimensions.
 
 ## See also
 
-Other descriptive statistics: [`tda_brr()`](tda_brr.md),
-[`tda_dstat()`](tda_dstat.md), [`tda_freq()`](tda_freq1.md),
-[`tda_independence()`](tda_independence.md),
-[`tda_ineq()`](tda_ineq.md), [`tda_loglin()`](tda_loglin.md),
-[`tda_quant()`](tda_quant.md), [`tda_rcorr()`](tda_rcorr.md),
-[`tda_segr()`](tda_segr.md), [`tda_subm()`](tda_subm.md)
+Other descriptive statistics:
+[`tda_brr()`](https://janmarvin.github.io/TDA/reference/tda_brr.md),
+[`tda_dstat()`](https://janmarvin.github.io/TDA/reference/tda_dstat.md),
+[`tda_freq()`](https://janmarvin.github.io/TDA/reference/tda_freq1.md),
+[`tda_independence()`](https://janmarvin.github.io/TDA/reference/tda_independence.md),
+[`tda_ineq()`](https://janmarvin.github.io/TDA/reference/tda_ineq.md),
+[`tda_loglin()`](https://janmarvin.github.io/TDA/reference/tda_loglin.md),
+[`tda_quant()`](https://janmarvin.github.io/TDA/reference/tda_quant.md),
+[`tda_rcorr()`](https://janmarvin.github.io/TDA/reference/tda_rcorr.md),
+[`tda_segr()`](https://janmarvin.github.io/TDA/reference/tda_segr.md),
+[`tda_subm()`](https://janmarvin.github.io/TDA/reference/tda_subm.md)
 
 ## Examples
 

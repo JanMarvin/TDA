@@ -37,7 +37,8 @@ A numeric vector of length `n`.
 
 ## Details
 
-These use R's random number generator, not [`tda_runif`](tda_rng.md)'s
+These use R's random number generator, not
+[`tda_runif`](https://janmarvin.github.io/TDA/reference/tda_rng.md)'s
 reproduction of TDA's exact stream – for building a data frame to pass
 to TDA (rather than reproducing an existing TDA example's numbers bit
 for bit), R's generator is what

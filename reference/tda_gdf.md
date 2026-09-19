@@ -3,8 +3,10 @@
 TDA's `gdf`: the marginal (or, with `method`, joint) distribution or
 survivor function for possibly right-censored data, via a
 Kaplan-Meier-style calculation – the same underlying censoring machinery
-as [`tda_lsreg1`](tda_lsreg.md), but estimating the distribution
-function directly rather than a conditional expectation.
+as
+[`tda_lsreg1`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md),
+but estimating the distribution function directly rather than a
+conditional expectation.
 
 ## Usage
 
@@ -34,8 +36,8 @@ tda_gdf(
   a one-sided formula naming the (possibly censored) variable, e.g.
   `~ Y`, or a list of such formulas – one per dimension – for the
   multi-dimensional, `grp=`-based form (see
-  [`tda_lsreg1`](tda_lsreg.md)'s Details for how `id` groups rows into
-  units).
+  [`tda_lsreg1`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md)'s
+  Details for how `id` groups rows into units).
 
 - data:
 
@@ -92,8 +94,9 @@ tda_gdf(
 - control:
 
   for `method = "marginal"` or `"joint1"` only, convergence settings
-  (only [`tda_control`](tda_control.md)'s `maxit`/`tolf` fields apply,
-  as `gdf`'s `mxit=`/`tolf=`).
+  (only
+  [`tda_control`](https://janmarvin.github.io/TDA/reference/tda_control.md)'s
+  `maxit`/`tolf` fields apply, as `gdf`'s `mxit=`/`tolf=`).
 
 - options:
 
@@ -105,7 +108,8 @@ tda_gdf(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -114,12 +118,17 @@ survivor) function at each.
 
 ## See also
 
-Other regression: [`TDA_FAMILIES`](tda_glm.md),
-[`TDA_QRMODELS`](tda_qreg.md), [`tda_freg()`](tda_freg.md),
-[`tda_l1reg()`](tda_l1reg.md), [`tda_lsreg()`](tda_lsreg.md),
-[`tda_mlrc_design()`](tda_mlrc_design.md), [`tda_mreg()`](tda_mreg.md),
-[`tda_nlreg()`](tda_nlreg.md), [`tda_npreg()`](tda_npreg.md),
-[`tda_zreg()`](tda_zreg.md)
+Other regression:
+[`TDA_FAMILIES`](https://janmarvin.github.io/TDA/reference/tda_glm.md),
+[`TDA_QRMODELS`](https://janmarvin.github.io/TDA/reference/tda_qreg.md),
+[`tda_freg()`](https://janmarvin.github.io/TDA/reference/tda_freg.md),
+[`tda_l1reg()`](https://janmarvin.github.io/TDA/reference/tda_l1reg.md),
+[`tda_lsreg()`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md),
+[`tda_mlrc_design()`](https://janmarvin.github.io/TDA/reference/tda_mlrc_design.md),
+[`tda_mreg()`](https://janmarvin.github.io/TDA/reference/tda_mreg.md),
+[`tda_nlreg()`](https://janmarvin.github.io/TDA/reference/tda_nlreg.md),
+[`tda_npreg()`](https://janmarvin.github.io/TDA/reference/tda_npreg.md),
+[`tda_zreg()`](https://janmarvin.github.io/TDA/reference/tda_zreg.md)
 
 ## Examples
 

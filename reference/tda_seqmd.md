@@ -6,11 +6,13 @@ binary indicator of whether the target event (a transition from one
 state to another) occurred there, dummy variables for each time period
 (so period effects can be estimated freely, the way `factor(t)` would in
 a regular model), and any covariates carried along. Fit the result with
-[`tda_qreg`](tda_qreg.md) (`model = "logit"` or `"probit"`) or
-[`tda_glm`](tda_glm.md)`(family = binomial)` on the `event` column
-against the period dummies and covariates – TDA's manual (chapter 6.18)
-calls this approach out explicitly as the discrete-time counterpart to
-[`tda_rate`](tda_rate.md).
+[`tda_qreg`](https://janmarvin.github.io/TDA/reference/tda_qreg.md)
+(`model = "logit"` or `"probit"`) or
+[`tda_glm`](https://janmarvin.github.io/TDA/reference/tda_glm.md)`(family = binomial)`
+on the `event` column against the period dummies and covariates – TDA's
+manual (chapter 6.18) calls this approach out explicitly as the
+discrete-time counterpart to
+[`tda_rate`](https://janmarvin.github.io/TDA/reference/tda_rate.md).
 
 ## Usage
 
@@ -55,11 +57,12 @@ tda_seqevd(
 - sequences:
 
   a data frame or matrix, one row per case, one column per time point,
-  in order – the same shape [`tda_seqm`](tda_seqm.md) takes – or, given
-  `data` too, a character vector naming those columns within it
-  directly, rather than requiring a separately pre-subsetted data frame:
-  real sequence data typically carries an ID column and covariates
-  alongside the states in the same data frame (TDA's
+  in order – the same shape
+  [`tda_seqm`](https://janmarvin.github.io/TDA/reference/tda_seqm.md)
+  takes – or, given `data` too, a character vector naming those columns
+  within it directly, rather than requiring a separately pre-subsetted
+  data frame: real sequence data typically carries an ID column and
+  covariates alongside the states in the same data frame (TDA's
   `examples/exam/seq.d4`, e.g.), not only the states on their own. For
   `tda_seqev`/`tda_seqevd`, also a *list* of several such specs, to
   define several independent sequence data structures at once – TDA's
@@ -133,7 +136,8 @@ tda_seqevd(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 - sn:
 
@@ -178,11 +182,15 @@ and where.
 
 ## See also
 
-Other sequence analysis: [`tda_evalfi()`](tda_evalfi.md),
-[`tda_fml()`](tda_fml.md), [`tda_frml()`](tda_frml.md),
-[`tda_seq_info()`](tda_seq_info.md), [`tda_seqgc()`](tda_seqgc.md),
-[`tda_seqm()`](tda_seqm.md), [`tda_seqpe()`](tda_seqpe.md),
-[`tda_seqpm()`](tda_seqpm.md)
+Other sequence analysis:
+[`tda_evalfi()`](https://janmarvin.github.io/TDA/reference/tda_evalfi.md),
+[`tda_fml()`](https://janmarvin.github.io/TDA/reference/tda_fml.md),
+[`tda_frml()`](https://janmarvin.github.io/TDA/reference/tda_frml.md),
+[`tda_seq_info()`](https://janmarvin.github.io/TDA/reference/tda_seq_info.md),
+[`tda_seqgc()`](https://janmarvin.github.io/TDA/reference/tda_seqgc.md),
+[`tda_seqm()`](https://janmarvin.github.io/TDA/reference/tda_seqm.md),
+[`tda_seqpe()`](https://janmarvin.github.io/TDA/reference/tda_seqpe.md),
+[`tda_seqpm()`](https://janmarvin.github.io/TDA/reference/tda_seqpm.md)
 
 ## Examples
 

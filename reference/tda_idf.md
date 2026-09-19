@@ -55,7 +55,8 @@ tda_iddf(
 - control:
 
   convergence settings (`mxit=`/`tolf` via
-  [`tda_control`](tda_control.md)), defaults 50 and 0.001.
+  [`tda_control`](https://janmarvin.github.io/TDA/reference/tda_control.md)),
+  defaults 50 and 0.001.
 
 - options:
 
@@ -67,7 +68,8 @@ tda_iddf(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -76,11 +78,15 @@ function's bounds and mean at each.
 
 ## See also
 
-Other interval-valued data: [`tda_bounds()`](tda_bounds.md),
-[`tda_ilsreg()`](tda_ilsreg.md), [`tda_imean()`](tda_imean.md),
-[`tda_imreg()`](tda_imreg.md), [`tda_inpreg()`](tda_inpreg.md),
-[`tda_ivar1()`](tda_ivar1.md), [`tda_ivreg()`](tda_ivreg.md),
-[`tda_sddf()`](tda_sddf.md)
+Other interval-valued data:
+[`tda_bounds()`](https://janmarvin.github.io/TDA/reference/tda_bounds.md),
+[`tda_ilsreg()`](https://janmarvin.github.io/TDA/reference/tda_ilsreg.md),
+[`tda_imean()`](https://janmarvin.github.io/TDA/reference/tda_imean.md),
+[`tda_imreg()`](https://janmarvin.github.io/TDA/reference/tda_imreg.md),
+[`tda_inpreg()`](https://janmarvin.github.io/TDA/reference/tda_inpreg.md),
+[`tda_ivar1()`](https://janmarvin.github.io/TDA/reference/tda_ivar1.md),
+[`tda_ivreg()`](https://janmarvin.github.io/TDA/reference/tda_ivreg.md),
+[`tda_sddf()`](https://janmarvin.github.io/TDA/reference/tda_sddf.md)
 
 ## Examples
 

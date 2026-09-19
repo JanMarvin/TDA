@@ -43,9 +43,11 @@ tda_seqpd(
 - sequences:
 
   a data frame or matrix of one column per time point, in order, the
-  same shape [`tda_seqm`](tda_seqm.md) takes – optionally with further,
-  non-sequence columns (an id, say) alongside them; use `variables`/`id`
-  to say which is which rather than pre-subsetting `sequences` yourself.
+  same shape
+  [`tda_seqm`](https://janmarvin.github.io/TDA/reference/tda_seqm.md)
+  takes – optionally with further, non-sequence columns (an id, say)
+  alongside them; use `variables`/`id` to say which is which rather than
+  pre-subsetting `sequences` yourself.
 
 - layout:
 
@@ -105,7 +107,8 @@ tda_seqpd(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 

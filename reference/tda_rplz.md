@@ -1,7 +1,8 @@
 # Read a PLZ-style CSV file
 
 TDA's `rplz`: the postcode-data variant of the semicolon CSV reader;
-like [`tda_rcsv`](tda_rcsv.md) it renders to the protocol.
+like [`tda_rcsv`](https://janmarvin.github.io/TDA/reference/tda_rcsv.md)
+it renders to the protocol.
 
 ## Usage
 
@@ -17,7 +18,8 @@ tda_rplz(file, ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 

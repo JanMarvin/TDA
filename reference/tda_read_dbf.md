@@ -26,7 +26,8 @@ tda_read_dbf(file, options = list(), dir = tempfile("tda"), ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -35,20 +36,25 @@ A data frame; `attr(x, "run")` carries the run.
 ## Details
 
 This is the attribute half of a shapefile.
-[`tda_read_shapefile`](tda_read_shapefile.md) reads the geometry; the
-`.dbf` beside it holds one row per shape with whatever columns the data
-has, which for real data is usually where the names live.
-[`tda_read_shapefile`](tda_read_shapefile.md) attaches it as
-`attr(x, "attributes")`.
+[`tda_read_shapefile`](https://janmarvin.github.io/TDA/reference/tda_read_shapefile.md)
+reads the geometry; the `.dbf` beside it holds one row per shape with
+whatever columns the data has, which for real data is usually where the
+names live.
+[`tda_read_shapefile`](https://janmarvin.github.io/TDA/reference/tda_read_shapefile.md)
+attaches it as `attr(x, "attributes")`.
 
 ## See also
 
-Other spatial analysis: [`plot.tda_spatial()`](plot.tda_spatial.md),
-[`tda_map()`](tda_map.md), [`tda_polygons()`](tda_polygons.md),
-[`tda_read_shapefile()`](tda_read_shapefile.md),
-[`tda_read_spatial`](tda_read_spatial.md), [`tda_sd()`](tda_sd.md),
-[`tda_sd_analyses`](tda_sd_analyses.md),
-[`tda_sd_ps3()`](tda_sd_ps3.md), [`tda_spatial()`](tda_spatial.md)
+Other spatial analysis:
+[`plot.tda_spatial()`](https://janmarvin.github.io/TDA/reference/plot.tda_spatial.md),
+[`tda_map()`](https://janmarvin.github.io/TDA/reference/tda_map.md),
+[`tda_polygons()`](https://janmarvin.github.io/TDA/reference/tda_polygons.md),
+[`tda_read_shapefile()`](https://janmarvin.github.io/TDA/reference/tda_read_shapefile.md),
+[`tda_read_spatial`](https://janmarvin.github.io/TDA/reference/tda_read_spatial.md),
+[`tda_sd()`](https://janmarvin.github.io/TDA/reference/tda_sd.md),
+[`tda_sd_analyses`](https://janmarvin.github.io/TDA/reference/tda_sd_analyses.md),
+[`tda_sd_ps3()`](https://janmarvin.github.io/TDA/reference/tda_sd_ps3.md),
+[`tda_spatial()`](https://janmarvin.github.io/TDA/reference/tda_spatial.md)
 
 ## Examples
 

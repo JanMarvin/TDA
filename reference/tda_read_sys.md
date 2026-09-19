@@ -1,6 +1,7 @@
 # Read a TDA system file
 
-Reads a system file written by [`tda_write_sys`](tda_write_foreign.md).
+Reads a system file written by
+[`tda_write_sys`](https://janmarvin.github.io/TDA/reference/tda_write_foreign.md).
 A system file carries the data matrix and the variable definitions
 together, so the frame comes back with its column names without an
 `nvar` block being repeated.
@@ -30,7 +31,8 @@ tda_read_sys(file, options = list(), dir = tempfile("tda"), ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -38,7 +40,7 @@ A data frame. `attr(x, "run")` carries the run.
 
 ## See also
 
-[`tda_write_sys`](tda_write_foreign.md)
+[`tda_write_sys`](https://janmarvin.github.io/TDA/reference/tda_write_foreign.md)
 
 ## Examples
 

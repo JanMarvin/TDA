@@ -4,10 +4,12 @@
 classes, which is how TDA makes a histogram, and `tda_freq1` gives a
 one-way frequency table. All three describe the distribution of one
 variable at a time and return a `table` in the same shape `...` in, one
-row per variable or class – unlike [`tda_freq2`](tda_freq1.md) (a
+row per variable or class – unlike
+[`tda_freq2`](https://janmarvin.github.io/TDA/reference/tda_freq1.md) (a
 cross-tabulation of two variables, a matrix rather than a table) or
-[`tda_loglin`](tda_loglin.md) (a many-way contingency table for model
-fitting), which need their pages.
+[`tda_loglin`](https://janmarvin.github.io/TDA/reference/tda_loglin.md)
+(a many-way contingency table for model fitting), which need their
+pages.
 
 ## Usage
 
@@ -71,13 +73,17 @@ and the two agree to the last digit;
 
 ## See also
 
-Other descriptive statistics: [`tda_brr()`](tda_brr.md),
-[`tda_cov()`](tda_cov.md), [`tda_dstat()`](tda_dstat.md),
-[`tda_freq()`](tda_freq1.md),
-[`tda_independence()`](tda_independence.md),
-[`tda_ineq()`](tda_ineq.md), [`tda_loglin()`](tda_loglin.md),
-[`tda_rcorr()`](tda_rcorr.md), [`tda_segr()`](tda_segr.md),
-[`tda_subm()`](tda_subm.md)
+Other descriptive statistics:
+[`tda_brr()`](https://janmarvin.github.io/TDA/reference/tda_brr.md),
+[`tda_cov()`](https://janmarvin.github.io/TDA/reference/tda_cov.md),
+[`tda_dstat()`](https://janmarvin.github.io/TDA/reference/tda_dstat.md),
+[`tda_freq()`](https://janmarvin.github.io/TDA/reference/tda_freq1.md),
+[`tda_independence()`](https://janmarvin.github.io/TDA/reference/tda_independence.md),
+[`tda_ineq()`](https://janmarvin.github.io/TDA/reference/tda_ineq.md),
+[`tda_loglin()`](https://janmarvin.github.io/TDA/reference/tda_loglin.md),
+[`tda_rcorr()`](https://janmarvin.github.io/TDA/reference/tda_rcorr.md),
+[`tda_segr()`](https://janmarvin.github.io/TDA/reference/tda_segr.md),
+[`tda_subm()`](https://janmarvin.github.io/TDA/reference/tda_subm.md)
 
 ## Examples
 

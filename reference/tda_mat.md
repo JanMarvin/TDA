@@ -54,9 +54,12 @@ convention is that results come last in the argument list, so
 
 ## See also
 
-Other smoothing: [`tda_integrate()`](tda_integrate.md),
-[`tda_interp()`](tda_interp.md), [`tda_isotonic()`](tda_isotonic.md),
-[`tda_smd()`](tda_smd.md), [`tda_spl()`](tda_spl.md)
+Other smoothing:
+[`tda_integrate()`](https://janmarvin.github.io/TDA/reference/tda_integrate.md),
+[`tda_interp()`](https://janmarvin.github.io/TDA/reference/tda_interp.md),
+[`tda_isotonic()`](https://janmarvin.github.io/TDA/reference/tda_isotonic.md),
+[`tda_smd()`](https://janmarvin.github.io/TDA/reference/tda_smd.md),
+[`tda_spl()`](https://janmarvin.github.io/TDA/reference/tda_spl.md)
 
 ## Examples
 

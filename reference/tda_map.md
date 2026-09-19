@@ -28,7 +28,9 @@ tda_map(
 
 - s:
 
-  a [`tda_spatial`](tda_spatial.md) structure.
+  a
+  [`tda_spatial`](https://janmarvin.github.io/TDA/reference/tda_spatial.md)
+  structure.
 
 - view:
 
@@ -87,13 +89,16 @@ of latitude either side of that point.
 
 ## See also
 
-Other spatial analysis: [`plot.tda_spatial()`](plot.tda_spatial.md),
-[`tda_polygons()`](tda_polygons.md),
-[`tda_read_dbf()`](tda_read_dbf.md),
-[`tda_read_shapefile()`](tda_read_shapefile.md),
-[`tda_read_spatial`](tda_read_spatial.md), [`tda_sd()`](tda_sd.md),
-[`tda_sd_analyses`](tda_sd_analyses.md),
-[`tda_sd_ps3()`](tda_sd_ps3.md), [`tda_spatial()`](tda_spatial.md)
+Other spatial analysis:
+[`plot.tda_spatial()`](https://janmarvin.github.io/TDA/reference/plot.tda_spatial.md),
+[`tda_polygons()`](https://janmarvin.github.io/TDA/reference/tda_polygons.md),
+[`tda_read_dbf()`](https://janmarvin.github.io/TDA/reference/tda_read_dbf.md),
+[`tda_read_shapefile()`](https://janmarvin.github.io/TDA/reference/tda_read_shapefile.md),
+[`tda_read_spatial`](https://janmarvin.github.io/TDA/reference/tda_read_spatial.md),
+[`tda_sd()`](https://janmarvin.github.io/TDA/reference/tda_sd.md),
+[`tda_sd_analyses`](https://janmarvin.github.io/TDA/reference/tda_sd_analyses.md),
+[`tda_sd_ps3()`](https://janmarvin.github.io/TDA/reference/tda_sd_ps3.md),
+[`tda_spatial()`](https://janmarvin.github.io/TDA/reference/tda_spatial.md)
 
 ## Examples
 

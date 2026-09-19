@@ -22,11 +22,13 @@ tda_mdefg(edges, missing = 0, directed = FALSE, valued = TRUE, ...)
 
 - directed, valued:
 
-  graph type flags, as in [`tda_g`](tda_g.md).
+  graph type flags, as in
+  [`tda_g`](https://janmarvin.github.io/TDA/reference/tda_g.md).
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 

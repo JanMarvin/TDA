@@ -65,7 +65,8 @@ tda_mlp1(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 - equalities:
 
@@ -102,9 +103,12 @@ tie-break.
 
 ## See also
 
-Other optimization: [`tda_boolean_min()`](tda_boolean_min.md),
-[`tda_mlpi()`](tda_mlpi.md), [`tda_mls()`](tda_mls.md),
-[`tda_mqap()`](tda_mqap.md), [`tda_mqp()`](tda_mqp.md)
+Other optimization:
+[`tda_boolean_min()`](https://janmarvin.github.io/TDA/reference/tda_boolean_min.md),
+[`tda_mlpi()`](https://janmarvin.github.io/TDA/reference/tda_mlpi.md),
+[`tda_mls()`](https://janmarvin.github.io/TDA/reference/tda_mls.md),
+[`tda_mqap()`](https://janmarvin.github.io/TDA/reference/tda_mqap.md),
+[`tda_mqp()`](https://janmarvin.github.io/TDA/reference/tda_mqp.md)
 
 ## Examples
 

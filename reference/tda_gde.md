@@ -26,7 +26,8 @@ tda_gde(node, id, output = c("edges", "matrix"), loops = TRUE, ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 

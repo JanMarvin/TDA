@@ -40,9 +40,11 @@ tda_locate_line(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md). The graph-setup options `opt=`,
-  `gt=`, `perm=` and `sc=` pass through to the underlying edge load, as
-  in [`tda_g`](tda_g.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md). The
+  graph-setup options `opt=`, `gt=`, `perm=` and `sc=` pass through to
+  the underlying edge load, as in
+  [`tda_g`](https://janmarvin.github.io/TDA/reference/tda_g.md).
 
 ## Value
 
@@ -51,10 +53,13 @@ fixed point it is placed at.
 
 ## See also
 
-Other graph analysis: [`plot.tda_graph()`](plot.tda_graph.md),
-[`tda_dmet()`](tda_dmet.md), [`tda_g()`](tda_g.md),
-[`tda_g_analyses`](tda_g_analyses.md), [`tda_graph()`](tda_graph.md),
-[`tda_ptree()`](tda_ptree.md)
+Other graph analysis:
+[`plot.tda_graph()`](https://janmarvin.github.io/TDA/reference/plot.tda_graph.md),
+[`tda_dmet()`](https://janmarvin.github.io/TDA/reference/tda_dmet.md),
+[`tda_g()`](https://janmarvin.github.io/TDA/reference/tda_g.md),
+[`tda_g_analyses`](https://janmarvin.github.io/TDA/reference/tda_g_analyses.md),
+[`tda_graph()`](https://janmarvin.github.io/TDA/reference/tda_graph.md),
+[`tda_ptree()`](https://janmarvin.github.io/TDA/reference/tda_ptree.md)
 
 ## Examples
 

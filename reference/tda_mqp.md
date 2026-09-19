@@ -4,10 +4,11 @@ Minimize a convex quadratic subject to box bounds and/or linear
 equality/inequality constraints – TDA's `mqp`, `mqpb`, and `mqpc`
 (undocumented in `tda.hlp`; identified from `qld`'s header, the
 Powell/Schittkowski active-set solver `ZQPCVX` shared with
-[`tda_mlsei1`](tda_mls.md)). The problem solved is \$\$\min\\ d'x +
-\tfrac12 x'Cx \quad \mathrm{s.t.}\\ A_e x = b_e,\\ A_i x \ge b_i,\\ l
-\le x \le u\$\$ `tda_mqp` is unconstrained (box bounds fixed at +-huge
-internally by TDA); `tda_mqpb` adds box bounds; `tda_mqpc` adds general
+[`tda_mlsei1`](https://janmarvin.github.io/TDA/reference/tda_mls.md)).
+The problem solved is \$\$\min\\ d'x + \tfrac12 x'Cx \quad
+\mathrm{s.t.}\\ A_e x = b_e,\\ A_i x \ge b_i,\\ l \le x \le u\$\$
+`tda_mqp` is unconstrained (box bounds fixed at +-huge internally by
+TDA); `tda_mqpb` adds box bounds; `tda_mqpc` adds general
 equality/inequality constraints instead of bounds – no single TDA
 command accepts both bounds and general constraints, confirmed by
 reading `m_mqp`'s three branches. Verified against hand-solved instances
@@ -49,7 +50,8 @@ tda_mqpc(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 - lower, upper:
 
@@ -81,9 +83,12 @@ its own.
 
 ## See also
 
-Other optimization: [`tda_boolean_min()`](tda_boolean_min.md),
-[`tda_mlp()`](tda_mlp.md), [`tda_mlpi()`](tda_mlpi.md),
-[`tda_mls()`](tda_mls.md), [`tda_mqap()`](tda_mqap.md)
+Other optimization:
+[`tda_boolean_min()`](https://janmarvin.github.io/TDA/reference/tda_boolean_min.md),
+[`tda_mlp()`](https://janmarvin.github.io/TDA/reference/tda_mlp.md),
+[`tda_mlpi()`](https://janmarvin.github.io/TDA/reference/tda_mlpi.md),
+[`tda_mls()`](https://janmarvin.github.io/TDA/reference/tda_mls.md),
+[`tda_mqap()`](https://janmarvin.github.io/TDA/reference/tda_mqap.md)
 
 ## Examples
 

@@ -20,7 +20,8 @@ tda_plglob3(radius, lon = seq(-150, 150, 30), lat = seq(-60, 60, 30), ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 

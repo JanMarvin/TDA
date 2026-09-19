@@ -1,7 +1,9 @@
 # Column permutations toward graph agreement
 
 TDA's `gap` (CACM algorithm 548) on two integer-valued graphs, given as
-matrices the way [`tda_gqap`](tda_gqap.md) takes them.
+matrices the way
+[`tda_gqap`](https://janmarvin.github.io/TDA/reference/tda_gqap.md)
+takes them.
 
 ## Usage
 
@@ -17,7 +19,8 @@ tda_gap_permute(g1, g2, ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 

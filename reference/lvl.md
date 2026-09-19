@@ -1,9 +1,10 @@
 # A variable's value by category, for tda_qreg
 
-Marks a set of columns, used inside a [`tda_qreg`](tda_qreg.md) formula,
-as the same underlying variable's value at each category of the response
-– price for choice 1, choice 2, choice 3, say, one coefficient shared
-across all of them – rather than the formula's ordinary
+Marks a set of columns, used inside a
+[`tda_qreg`](https://janmarvin.github.io/TDA/reference/tda_qreg.md)
+formula, as the same underlying variable's value at each category of the
+response – price for choice 1, choice 2, choice 3, say, one coefficient
+shared across all of them – rather than the formula's ordinary
 one-column-per-predictor, shared-across-categories shape. TDA's
 `"(Z1,Z2,...)"` grouped variable-list syntax (what its source calls "Z
 variables" or "generic variables"), reached through R's `Surv()`-style

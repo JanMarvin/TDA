@@ -3,10 +3,10 @@
 TDA can lay out more than one plot on a single page by calling `psetup`
 again, at a different physical position (`psorg=`) – this is that,
 reachable with the same `xlim`/`ylim`/ `width`/`height` vocabulary
-[`tda_ps`](tda_ps.md) itself uses to start the first one, rather than a
-raw, hand-built `psetup` block. Every `tda_pl_*` command after this one
-draws into the new panel; the commands already added stay in the first
-(or previous) panel.
+[`tda_ps`](https://janmarvin.github.io/TDA/reference/tda_ps.md) itself
+uses to start the first one, rather than a raw, hand-built `psetup`
+block. Every `tda_pl_*` command after this one draws into the new panel;
+the commands already added stay in the first (or previous) panel.
 
 ## Usage
 
@@ -26,7 +26,8 @@ tda_pl_panel(
 
 - p:
 
-  a [`tda_ps`](tda_ps.md) session.
+  a [`tda_ps`](https://janmarvin.github.io/TDA/reference/tda_ps.md)
+  session.
 
 - origin:
 
@@ -67,14 +68,20 @@ The session, with the new panel started.
 
 ## See also
 
-Other plotting: [`plot.tda_ple()`](plot.tda_ple.md),
-[`tda_check_ps()`](tda_check_ps.md), [`tda_pl()`](tda_pl.md),
-[`tda_pl_arc()`](tda_pl_arc.md), [`tda_pl_axis()`](tda_pl_axis.md),
-[`tda_pl_graph()`](tda_pl_graph.md), [`tda_pl_hist`](tda_pl_hist.md),
-[`tda_pl_regression()`](tda_pl_regression.md),
-[`tda_pl_scatter()`](tda_pl_scatter.md),
-[`tda_plot_ps()`](tda_plot_ps.md), [`tda_ps()`](tda_ps.md),
-[`tda_ps3()`](tda_ps3.md), [`tda_read_ps()`](tda_read_ps.md)
+Other plotting:
+[`plot.tda_ple()`](https://janmarvin.github.io/TDA/reference/plot.tda_ple.md),
+[`tda_check_ps()`](https://janmarvin.github.io/TDA/reference/tda_check_ps.md),
+[`tda_pl()`](https://janmarvin.github.io/TDA/reference/tda_pl.md),
+[`tda_pl_arc()`](https://janmarvin.github.io/TDA/reference/tda_pl_arc.md),
+[`tda_pl_axis()`](https://janmarvin.github.io/TDA/reference/tda_pl_axis.md),
+[`tda_pl_graph()`](https://janmarvin.github.io/TDA/reference/tda_pl_graph.md),
+[`tda_pl_hist`](https://janmarvin.github.io/TDA/reference/tda_pl_hist.md),
+[`tda_pl_regression()`](https://janmarvin.github.io/TDA/reference/tda_pl_regression.md),
+[`tda_pl_scatter()`](https://janmarvin.github.io/TDA/reference/tda_pl_scatter.md),
+[`tda_plot_ps()`](https://janmarvin.github.io/TDA/reference/tda_plot_ps.md),
+[`tda_ps()`](https://janmarvin.github.io/TDA/reference/tda_ps.md),
+[`tda_ps3()`](https://janmarvin.github.io/TDA/reference/tda_ps3.md),
+[`tda_read_ps()`](https://janmarvin.github.io/TDA/reference/tda_read_ps.md)
 
 ## Examples
 

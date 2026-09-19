@@ -2,9 +2,10 @@
 
 `sdcpol` takes a set of line segments, finds where they meet and
 assembles the polygons they enclose. It works on a plain table of
-segments rather than on a [`tda_spatial`](tda_spatial.md) structure, and
-with `option = 3` it writes a spatial data file the rest of the family
-can read.
+segments rather than on a
+[`tda_spatial`](https://janmarvin.github.io/TDA/reference/tda_spatial.md)
+structure, and with `option = 3` it writes a spatial data file the rest
+of the family can read.
 
 ## Usage
 
@@ -40,12 +41,16 @@ table in `$table`.
 
 ## See also
 
-Other spatial analysis: [`plot.tda_spatial()`](plot.tda_spatial.md),
-[`tda_map()`](tda_map.md), [`tda_read_dbf()`](tda_read_dbf.md),
-[`tda_read_shapefile()`](tda_read_shapefile.md),
-[`tda_read_spatial`](tda_read_spatial.md), [`tda_sd()`](tda_sd.md),
-[`tda_sd_analyses`](tda_sd_analyses.md),
-[`tda_sd_ps3()`](tda_sd_ps3.md), [`tda_spatial()`](tda_spatial.md)
+Other spatial analysis:
+[`plot.tda_spatial()`](https://janmarvin.github.io/TDA/reference/plot.tda_spatial.md),
+[`tda_map()`](https://janmarvin.github.io/TDA/reference/tda_map.md),
+[`tda_read_dbf()`](https://janmarvin.github.io/TDA/reference/tda_read_dbf.md),
+[`tda_read_shapefile()`](https://janmarvin.github.io/TDA/reference/tda_read_shapefile.md),
+[`tda_read_spatial`](https://janmarvin.github.io/TDA/reference/tda_read_spatial.md),
+[`tda_sd()`](https://janmarvin.github.io/TDA/reference/tda_sd.md),
+[`tda_sd_analyses`](https://janmarvin.github.io/TDA/reference/tda_sd_analyses.md),
+[`tda_sd_ps3()`](https://janmarvin.github.io/TDA/reference/tda_sd_ps3.md),
+[`tda_spatial()`](https://janmarvin.github.io/TDA/reference/tda_spatial.md)
 
 ## Examples
 

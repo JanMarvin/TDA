@@ -46,23 +46,26 @@ tda_fml(
 
 - control:
 
-  convergence settings from [`tda_control`](tda_control.md).
+  convergence settings from
+  [`tda_control`](https://janmarvin.github.io/TDA/reference/tda_control.md).
 
 - constraints:
 
   optional linear constraints on the parameters – `fml`'s `con=`, the
-  same machinery [`tda_qreg`](tda_qreg.md)'s `constraints` uses.
-  **Refers to parameters by their position, `b1`/`b2`/..., 1-based, in
-  the order they are first introduced across `definitions` – never by
-  whatever name was actually given them.** A parameter named `b0` in
-  `definitions` is still `b1` here if it is the first one introduced;
-  TDA's error for a literal `"b0 = ..."` constraint is “Error in
-  parameter index”, since `b0` is not a valid 1-based position. Run once
-  without `constraints` and check
-  [`tda_estimates()`](tda_estimates.md)'s `Idx` column for which
-  position is which parameter before writing one. Must be strictly fewer
-  constraints than parameters (TDA's rule; its error reads “number of
-  constraints should be less than number of parameters”).
+  same machinery
+  [`tda_qreg`](https://janmarvin.github.io/TDA/reference/tda_qreg.md)'s
+  `constraints` uses. **Refers to parameters by their position,
+  `b1`/`b2`/..., 1-based, in the order they are first introduced across
+  `definitions` – never by whatever name was actually given them.** A
+  parameter named `b0` in `definitions` is still `b1` here if it is the
+  first one introduced; TDA's error for a literal `"b0 = ..."`
+  constraint is “Error in parameter index”, since `b0` is not a valid
+  1-based position. Run once without `constraints` and check
+  [`tda_estimates()`](https://janmarvin.github.io/TDA/reference/tda_estimates.md)'s
+  `Idx` column for which position is which parameter before writing one.
+  Must be strictly fewer constraints than parameters (TDA's rule; its
+  error reads “number of constraints should be less than number of
+  parameters”).
 
 - residuals:
 
@@ -70,9 +73,9 @@ tda_fml(
   log-likelihood at the converged parameters – `fml`'s `pres=`. **Not a
   classical observed-minus-fitted residual** – `fml` has no built-in
   notion of a fitted value to subtract from, unlike
-  [`tda_lsreg`](tda_lsreg.md)'s `residuals`. For
-  `fn = -0.5 * (y - xb)^2`, say, this is that expression's value per
-  case, not `y - xb` itself.
+  [`tda_lsreg`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md)'s
+  `residuals`. For `fn = -0.5 * (y - xb)^2`, say, this is that
+  expression's value per case, not `y - xb` itself.
 
 - residual_vars:
 
@@ -101,7 +104,8 @@ tda_fml(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -134,14 +138,15 @@ land on different sides of `0.2` once represented as IEEE 754 doubles –
 `ge(x, 0.2)` inside TDA still calls it true, R's own `x >= 0.2` on the
 identical computation does not. Applied consistently across all six, at
 least, but nowhere in TDA's documentation: not in the manual, not in
-[`tda_help()`](tda_help.md)'s operator table, which describes `le` as
-plainly as “true if less than, or equal” with no footnote at all. A
-hand-written R replication of a TDA calculation involving a comparison
-near a round number (`==`, or a boundary like `0.2` here) can therefore
-disagree with TDA's output at that boundary, for a reason with nothing
-to do with which language computed it – this is a property of TDA's
-expression evaluator, present whether the comparison was written by hand
-in TDA's syntax or reached it through this translation.
+[`tda_help()`](https://janmarvin.github.io/TDA/reference/tda_help.md)'s
+operator table, which describes `le` as plainly as “true if less than,
+or equal” with no footnote at all. A hand-written R replication of a TDA
+calculation involving a comparison near a round number (`==`, or a
+boundary like `0.2` here) can therefore disagree with TDA's output at
+that boundary, for a reason with nothing to do with which language
+computed it – this is a property of TDA's expression evaluator, present
+whether the comparison was written by hand in TDA's syntax or reached it
+through this translation.
 
 
     tda_fml({
@@ -164,11 +169,15 @@ work.
 
 ## See also
 
-Other sequence analysis: [`tda_evalfi()`](tda_evalfi.md),
-[`tda_frml()`](tda_frml.md), [`tda_seq_info()`](tda_seq_info.md),
-[`tda_seqgc()`](tda_seqgc.md), [`tda_seqm()`](tda_seqm.md),
-[`tda_seqmd()`](tda_seqmd.md), [`tda_seqpe()`](tda_seqpe.md),
-[`tda_seqpm()`](tda_seqpm.md)
+Other sequence analysis:
+[`tda_evalfi()`](https://janmarvin.github.io/TDA/reference/tda_evalfi.md),
+[`tda_frml()`](https://janmarvin.github.io/TDA/reference/tda_frml.md),
+[`tda_seq_info()`](https://janmarvin.github.io/TDA/reference/tda_seq_info.md),
+[`tda_seqgc()`](https://janmarvin.github.io/TDA/reference/tda_seqgc.md),
+[`tda_seqm()`](https://janmarvin.github.io/TDA/reference/tda_seqm.md),
+[`tda_seqmd()`](https://janmarvin.github.io/TDA/reference/tda_seqmd.md),
+[`tda_seqpe()`](https://janmarvin.github.io/TDA/reference/tda_seqpe.md),
+[`tda_seqpm()`](https://janmarvin.github.io/TDA/reference/tda_seqpm.md)
 
 ## Examples
 

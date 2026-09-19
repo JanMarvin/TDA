@@ -2,8 +2,9 @@
 
 TDA's standalone `dblock` on the current-run data: blocks are maximal
 runs of identical values. Mostly useful inside longer
-[`tda_run`](tda_run.md) pipelines; for block-mode variable creation put
-`dblock=` inside `nvar` (see the package tests).
+[`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md)
+pipelines; for block-mode variable creation put `dblock=` inside `nvar`
+(see the package tests).
 
 ## Usage
 
@@ -28,7 +29,8 @@ tda_dblock(data, by, commands = character(), ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 

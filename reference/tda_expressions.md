@@ -42,7 +42,8 @@ tda_mparse(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 - mfmt:
 
@@ -64,7 +65,7 @@ which is otherwise only visible in an error message.
 tda_expand("A*B")
 #> [1] "expm=A*B"
 #> attr(,"run")
-#> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 09:17:30 2026
+#> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 09:50:22 2026
 #> Current memory: 390032 bytes.
 #> 
 #> Reading command file: commands
@@ -75,7 +76,7 @@ tda_expand("A*B")
 #> expm=A*B
 #> ----------------------------------------------------------------------------
 #> Current memory: 390032 bytes. Max memory used: 390036 bytes.
-#> End of program. Sat Sep 19 09:17:30 2026
+#> End of program. Sat Sep 19 09:50:22 2026
 tda_mparse("A+B", setup = c("mdefi(2,2,A);", "mdefi(2,2,B);"))
 #> [1] " Cnt        Typ        Val   Dimension"                   
 #> [2] "--------------------------------------"                   
@@ -86,7 +87,7 @@ tda_mparse("A+B", setup = c("mdefi(2,2,A);", "mdefi(2,2,B);"))
 #> [7] "      2.0000       0.0000 "                               
 #> [8] "      0.0000       2.0000 "                               
 #> attr(,"run")
-#> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 09:17:30 2026
+#> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 09:50:22 2026
 #> Current memory: 390032 bytes.
 #> 
 #> Reading command file: commands
@@ -106,5 +107,5 @@ tda_mparse("A+B", setup = c("mdefi(2,2,A);", "mdefi(2,2,B);"))
 #> 
 #> ----------------------------------------------------------------------------
 #> Current memory: 390032 bytes. Max memory used: 402220 bytes.
-#> End of program. Sat Sep 19 09:17:30 2026
+#> End of program. Sat Sep 19 09:50:22 2026
 ```

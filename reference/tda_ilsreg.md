@@ -1,9 +1,10 @@
 # Least squares with an interval-valued response
 
 The response is interval-valued, the regressor a point value – unlike
-[`tda_ivreg`](tda_ivreg.md), where both sides are intervals. Both the
-slope and the intercept come back as bounds; see
-[`tda_bounds`](tda_bounds.md).
+[`tda_ivreg`](https://janmarvin.github.io/TDA/reference/tda_ivreg.md),
+where both sides are intervals. Both the slope and the intercept come
+back as bounds; see
+[`tda_bounds`](https://janmarvin.github.io/TDA/reference/tda_bounds.md).
 
 ## Usage
 
@@ -45,7 +46,8 @@ tda_ilsreg(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -53,11 +55,15 @@ An object of class `tda_fit`.
 
 ## See also
 
-Other interval-valued data: [`tda_bounds()`](tda_bounds.md),
-[`tda_idf()`](tda_idf.md), [`tda_imean()`](tda_imean.md),
-[`tda_imreg()`](tda_imreg.md), [`tda_inpreg()`](tda_inpreg.md),
-[`tda_ivar1()`](tda_ivar1.md), [`tda_ivreg()`](tda_ivreg.md),
-[`tda_sddf()`](tda_sddf.md)
+Other interval-valued data:
+[`tda_bounds()`](https://janmarvin.github.io/TDA/reference/tda_bounds.md),
+[`tda_idf()`](https://janmarvin.github.io/TDA/reference/tda_idf.md),
+[`tda_imean()`](https://janmarvin.github.io/TDA/reference/tda_imean.md),
+[`tda_imreg()`](https://janmarvin.github.io/TDA/reference/tda_imreg.md),
+[`tda_inpreg()`](https://janmarvin.github.io/TDA/reference/tda_inpreg.md),
+[`tda_ivar1()`](https://janmarvin.github.io/TDA/reference/tda_ivar1.md),
+[`tda_ivreg()`](https://janmarvin.github.io/TDA/reference/tda_ivreg.md),
+[`tda_sddf()`](https://janmarvin.github.io/TDA/reference/tda_sddf.md)
 
 ## Examples
 

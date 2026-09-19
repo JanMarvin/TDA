@@ -1,7 +1,9 @@
 # Clustering from a dissimilarity matrix
 
 TDA's clustering commands, all of which take a dissimilarity and so
-accept a `dist` – including the one [`tda_seqm`](tda_seqm.md) returns.
+accept a `dist` – including the one
+[`tda_seqm`](https://janmarvin.github.io/TDA/reference/tda_seqm.md)
+returns.
 
 ## Usage
 
@@ -56,7 +58,8 @@ tda_cluster(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -77,9 +80,12 @@ never through `df=`; read `$run$output` for those.
 
 ## See also
 
-Other clustering: [`TDA_MDS`](tda_mds.md),
-[`tda_conjoint()`](tda_conjoint.md), [`tda_cutree()`](tda_cutree.md),
-[`tda_dma()`](tda_dma.md), [`tda_pdatd()`](tda_pdatd.md)
+Other clustering:
+[`TDA_MDS`](https://janmarvin.github.io/TDA/reference/tda_mds.md),
+[`tda_conjoint()`](https://janmarvin.github.io/TDA/reference/tda_conjoint.md),
+[`tda_cutree()`](https://janmarvin.github.io/TDA/reference/tda_cutree.md),
+[`tda_dma()`](https://janmarvin.github.io/TDA/reference/tda_dma.md),
+[`tda_pdatd()`](https://janmarvin.github.io/TDA/reference/tda_pdatd.md)
 
 ## Examples
 

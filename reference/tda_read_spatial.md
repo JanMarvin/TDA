@@ -1,10 +1,11 @@
 # Read other spatial formats
 
-The same shape as [`tda_read_shapefile`](tda_read_shapefile.md): TDA
-reads the file and writes its spatial data file, which the rest of the
-family works on. `tda_read_e00` reads an uncompressed ARC/INFO export,
-`tda_read_gshhs` a GSHHS coastline file, and `tda_read_dcw` a Digital
-Chart of the World polygon point file.
+The same shape as
+[`tda_read_shapefile`](https://janmarvin.github.io/TDA/reference/tda_read_shapefile.md):
+TDA reads the file and writes its spatial data file, which the rest of
+the family works on. `tda_read_e00` reads an uncompressed ARC/INFO
+export, `tda_read_gshhs` a GSHHS coastline file, and `tda_read_dcw` a
+Digital Chart of the World polygon point file.
 
 ## Usage
 
@@ -122,12 +123,16 @@ at `"24.16"` so that no coordinate is rounded on the way through.
 
 ## See also
 
-Other spatial analysis: [`plot.tda_spatial()`](plot.tda_spatial.md),
-[`tda_map()`](tda_map.md), [`tda_polygons()`](tda_polygons.md),
-[`tda_read_dbf()`](tda_read_dbf.md),
-[`tda_read_shapefile()`](tda_read_shapefile.md),
-[`tda_sd()`](tda_sd.md), [`tda_sd_analyses`](tda_sd_analyses.md),
-[`tda_sd_ps3()`](tda_sd_ps3.md), [`tda_spatial()`](tda_spatial.md)
+Other spatial analysis:
+[`plot.tda_spatial()`](https://janmarvin.github.io/TDA/reference/plot.tda_spatial.md),
+[`tda_map()`](https://janmarvin.github.io/TDA/reference/tda_map.md),
+[`tda_polygons()`](https://janmarvin.github.io/TDA/reference/tda_polygons.md),
+[`tda_read_dbf()`](https://janmarvin.github.io/TDA/reference/tda_read_dbf.md),
+[`tda_read_shapefile()`](https://janmarvin.github.io/TDA/reference/tda_read_shapefile.md),
+[`tda_sd()`](https://janmarvin.github.io/TDA/reference/tda_sd.md),
+[`tda_sd_analyses`](https://janmarvin.github.io/TDA/reference/tda_sd_analyses.md),
+[`tda_sd_ps3()`](https://janmarvin.github.io/TDA/reference/tda_sd_ps3.md),
+[`tda_spatial()`](https://janmarvin.github.io/TDA/reference/tda_spatial.md)
 
 ## Examples
 

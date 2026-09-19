@@ -43,7 +43,8 @@ tda_mds(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -81,9 +82,12 @@ Check `stress` before trusting any iterative configuration.
 
 ## See also
 
-Other clustering: [`TDA_CLUSTER`](tda_cluster.md),
-[`tda_conjoint()`](tda_conjoint.md), [`tda_cutree()`](tda_cutree.md),
-[`tda_dma()`](tda_dma.md), [`tda_pdatd()`](tda_pdatd.md)
+Other clustering:
+[`TDA_CLUSTER`](https://janmarvin.github.io/TDA/reference/tda_cluster.md),
+[`tda_conjoint()`](https://janmarvin.github.io/TDA/reference/tda_conjoint.md),
+[`tda_cutree()`](https://janmarvin.github.io/TDA/reference/tda_cutree.md),
+[`tda_dma()`](https://janmarvin.github.io/TDA/reference/tda_dma.md),
+[`tda_pdatd()`](https://janmarvin.github.io/TDA/reference/tda_pdatd.md)
 
 ## Examples
 

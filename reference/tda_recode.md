@@ -18,11 +18,14 @@ tda_recode(data, ..., options = list())
 - ...:
 
   named recode expressions in TDA syntax, e.g. `x = "x * 2"`; further
-  arguments to [`tda_run`](tda_run.md) go through `options`.
+  arguments to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md) go
+  through `options`.
 
 - options:
 
-  list passed to [`tda_run`](tda_run.md).
+  list passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 

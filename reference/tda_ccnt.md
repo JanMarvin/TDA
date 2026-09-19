@@ -31,7 +31,8 @@ tda_dsplit(file, len = NULL, dir = tempfile("tda"), ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 - noc:
 
@@ -57,10 +58,12 @@ paths of the parts it wrote.
 
 ## See also
 
-Other TDA infrastructure: [`tda_help()`](tda_help.md),
-[`tda_output()`](tda_estimates.md),
-[`tda_read_table()`](tda_read_table.md), [`tda_run()`](tda_run.md),
-[`tda_write_data()`](tda_write_data.md)
+Other TDA infrastructure:
+[`tda_help()`](https://janmarvin.github.io/TDA/reference/tda_help.md),
+[`tda_output()`](https://janmarvin.github.io/TDA/reference/tda_estimates.md),
+[`tda_read_table()`](https://janmarvin.github.io/TDA/reference/tda_read_table.md),
+[`tda_run()`](https://janmarvin.github.io/TDA/reference/tda_run.md),
+[`tda_write_data()`](https://janmarvin.github.io/TDA/reference/tda_write_data.md)
 
 ## Examples
 
@@ -94,10 +97,10 @@ cat(tda_dump(f), sep = "\n")
 f2 <- tempfile()
 writeLines(rep("0123456789", 10), f2)
 tda_dsplit(f2, len = 20)
-#> [1] "/tmp/Rtmp1P42VB/tda2105306a6ce8/file210554d35ac3.a"
-#> [2] "/tmp/Rtmp1P42VB/tda2105306a6ce8/file210554d35ac3.b"
-#> [3] "/tmp/Rtmp1P42VB/tda2105306a6ce8/file210554d35ac3.c"
-#> [4] "/tmp/Rtmp1P42VB/tda2105306a6ce8/file210554d35ac3.d"
-#> [5] "/tmp/Rtmp1P42VB/tda2105306a6ce8/file210554d35ac3.e"
-#> [6] "/tmp/Rtmp1P42VB/tda2105306a6ce8/file210554d35ac3.f"
+#> [1] "/tmp/Rtmp62wydu/tda1f59687f3279/file1f591d43100.a"
+#> [2] "/tmp/Rtmp62wydu/tda1f59687f3279/file1f591d43100.b"
+#> [3] "/tmp/Rtmp62wydu/tda1f59687f3279/file1f591d43100.c"
+#> [4] "/tmp/Rtmp62wydu/tda1f59687f3279/file1f591d43100.d"
+#> [5] "/tmp/Rtmp62wydu/tda1f59687f3279/file1f591d43100.e"
+#> [6] "/tmp/Rtmp62wydu/tda1f59687f3279/file1f591d43100.f"
 ```

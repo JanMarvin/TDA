@@ -33,9 +33,12 @@ interpolated `z`.
 
 ## See also
 
-Other smoothing: [`tda_integrate()`](tda_integrate.md),
-[`tda_isotonic()`](tda_isotonic.md), [`tda_mat()`](tda_mat.md),
-[`tda_smd()`](tda_smd.md), [`tda_spl()`](tda_spl.md)
+Other smoothing:
+[`tda_integrate()`](https://janmarvin.github.io/TDA/reference/tda_integrate.md),
+[`tda_isotonic()`](https://janmarvin.github.io/TDA/reference/tda_isotonic.md),
+[`tda_mat()`](https://janmarvin.github.io/TDA/reference/tda_mat.md),
+[`tda_smd()`](https://janmarvin.github.io/TDA/reference/tda_smd.md),
+[`tda_spl()`](https://janmarvin.github.io/TDA/reference/tda_spl.md)
 
 ## Examples
 

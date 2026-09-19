@@ -2,9 +2,10 @@
 
 The interval of all covariance (or correlation) values reachable when
 each observation varies in its interval – the same estimand as
-[`tda_ivariance`](tda_imean.md), computed by TDA's `icov` and `icorr`
-(added to this build; not in Rohwer's TDA). The formula names two
-interval pairs: `~ iv(xlo, xhi) + iv(ylo, yhi)`.
+[`tda_ivariance`](https://janmarvin.github.io/TDA/reference/tda_imean.md),
+computed by TDA's `icov` and `icorr` (added to this build; not in
+Rohwer's TDA). The formula names two interval pairs:
+`~ iv(xlo, xhi) + iv(ylo, yhi)`.
 
 ## Usage
 
@@ -48,7 +49,8 @@ tda_icorr(
 
 - max_boxes, max_iter, tol_width, tol_fd, tol_fe:
 
-  search limits and tolerances, as in [`tda_ivariance`](tda_imean.md).
+  search limits and tolerances, as in
+  [`tda_ivariance`](https://janmarvin.github.io/TDA/reference/tda_imean.md).
 
 - options, dir, ...:
 
@@ -65,7 +67,8 @@ two copies vary independently over the intervals, so
 `tda_icov(~ iv(a, b) + iv(a, b), d)` is not the interval variance (its
 lower end can be negative) and the self-correlation is not fixed at 1.
 The functions warn when they see this. For the variance of one interval
-variable use [`tda_ivar`](tda_ivar.md).
+variable use
+[`tda_ivar`](https://janmarvin.github.io/TDA/reference/tda_ivar.md).
 
 Covariance certifies at realistic sizes. Correlation certifies small
 problems; beyond that the search stops at its limits, returns the best

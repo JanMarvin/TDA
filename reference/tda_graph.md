@@ -24,13 +24,15 @@ tda_graph(
 - directed:
 
   whether the graph is directed. `FALSE` emits `gt=2`. Several commands
-  – [`tda_g_components`](tda_g_analyses.md) among them, and
-  [`plot.tda_graph`](plot.tda_graph.md)'s `layout = "tree"` – only work
-  on an undirected graph, and TDA itself refuses a directed one for
-  them; `directed = TRUE` (the default here) is right for ordinary,
-  arrow-drawn graphs, but a tree needs `FALSE`, since a tree's layout
-  comes from which nodes are connected, not which way an edge happens to
-  point.
+  –
+  [`tda_g_components`](https://janmarvin.github.io/TDA/reference/tda_g_analyses.md)
+  among them, and
+  [`plot.tda_graph`](https://janmarvin.github.io/TDA/reference/plot.tda_graph.md)'s
+  `layout = "tree"` – only work on an undirected graph, and TDA itself
+  refuses a directed one for them; `directed = TRUE` (the default here)
+  is right for ordinary, arrow-drawn graphs, but a tree needs `FALSE`,
+  since a tree's layout comes from which nodes are connected, not which
+  way an edge happens to point.
 
 - form:
 
@@ -48,10 +50,13 @@ A `tda_graph`.
 
 ## See also
 
-Other graph analysis: [`plot.tda_graph()`](plot.tda_graph.md),
-[`tda_dmet()`](tda_dmet.md), [`tda_g()`](tda_g.md),
-[`tda_g_analyses`](tda_g_analyses.md),
-[`tda_locate_line()`](tda_locate_line.md), [`tda_ptree()`](tda_ptree.md)
+Other graph analysis:
+[`plot.tda_graph()`](https://janmarvin.github.io/TDA/reference/plot.tda_graph.md),
+[`tda_dmet()`](https://janmarvin.github.io/TDA/reference/tda_dmet.md),
+[`tda_g()`](https://janmarvin.github.io/TDA/reference/tda_g.md),
+[`tda_g_analyses`](https://janmarvin.github.io/TDA/reference/tda_g_analyses.md),
+[`tda_locate_line()`](https://janmarvin.github.io/TDA/reference/tda_locate_line.md),
+[`tda_ptree()`](https://janmarvin.github.io/TDA/reference/tda_ptree.md)
 
 ## Examples
 

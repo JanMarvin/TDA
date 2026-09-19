@@ -117,11 +117,14 @@ back.
 
 ## See also
 
-Other rate models: [`tda_constrain()`](tda_constrain.md),
-[`tda_dple()`](tda_ltb.md), [`tda_rates()`](tda_rates.md),
-[`tda_split()`](tda_split.md), [`tda_survivor()`](tda_survivor.md),
-[`tda_transitions()`](tda_transitions.md),
-[`vcov.tda_fit()`](tda_rate.md)
+Other rate models:
+[`tda_constrain()`](https://janmarvin.github.io/TDA/reference/tda_constrain.md),
+[`tda_dple()`](https://janmarvin.github.io/TDA/reference/tda_ltb.md),
+[`tda_rates()`](https://janmarvin.github.io/TDA/reference/tda_rates.md),
+[`tda_split()`](https://janmarvin.github.io/TDA/reference/tda_split.md),
+[`tda_survivor()`](https://janmarvin.github.io/TDA/reference/tda_survivor.md),
+[`tda_transitions()`](https://janmarvin.github.io/TDA/reference/tda_transitions.md),
+[`vcov.tda_fit()`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
 
 ## Examples
 

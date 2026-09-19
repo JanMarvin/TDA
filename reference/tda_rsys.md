@@ -17,12 +17,14 @@ tda_rsys(file, ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
 the restored data as a data frame, like
-[`tda_read_sys`](tda_read_sys.md), which this calls.
+[`tda_read_sys`](https://janmarvin.github.io/TDA/reference/tda_read_sys.md),
+which this calls.
 
 ## Examples
 

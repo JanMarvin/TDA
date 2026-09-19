@@ -128,7 +128,8 @@ tda_seqm(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -138,15 +139,15 @@ breakdown also in `dist_by_time` (see `print`). Either shape also
 carries `states`, the distinct states `sequences` actually has, in the
 ascending order `subcost` (if given as a matrix) must follow, and, with
 `dp_matrix = TRUE`, the per-pair alignment breakdown in `dp_matrix` (see
-`dp_matrix`). Also carries `run`, the underlying [`tda_run`](tda_run.md)
-result – `run$dir` is where the generated TDA commands (`$run$commands`)
-and, with `dp_matrix = TRUE`, the raw, unparsed debug file TDA itself
-wrote (`dp.tst`) both sit, if what `dp_matrix` parsed out of it needs
-checking directly. With `compare_with` given, there is no full pairwise
-matrix to return – `cn=` writes each sequence's distance to the
-reference set instead – so the return value is instead an object
-carrying that as `table` (`case`, `length`, `distance`), and `states`
-the same way.
+`dp_matrix`). Also carries `run`, the underlying
+[`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md) result
+– `run$dir` is where the generated TDA commands (`$run$commands`) and,
+with `dp_matrix = TRUE`, the raw, unparsed debug file TDA itself wrote
+(`dp.tst`) both sit, if what `dp_matrix` parsed out of it needs checking
+directly. With `compare_with` given, there is no full pairwise matrix to
+return – `cn=` writes each sequence's distance to the reference set
+instead – so the return value is instead an object carrying that as
+`table` (`case`, `length`, `distance`), and `states` the same way.
 
 ## Costs
 
@@ -157,11 +158,15 @@ cheaper move and the result becomes twice the Levenshtein distance.
 
 ## See also
 
-Other sequence analysis: [`tda_evalfi()`](tda_evalfi.md),
-[`tda_fml()`](tda_fml.md), [`tda_frml()`](tda_frml.md),
-[`tda_seq_info()`](tda_seq_info.md), [`tda_seqgc()`](tda_seqgc.md),
-[`tda_seqmd()`](tda_seqmd.md), [`tda_seqpe()`](tda_seqpe.md),
-[`tda_seqpm()`](tda_seqpm.md)
+Other sequence analysis:
+[`tda_evalfi()`](https://janmarvin.github.io/TDA/reference/tda_evalfi.md),
+[`tda_fml()`](https://janmarvin.github.io/TDA/reference/tda_fml.md),
+[`tda_frml()`](https://janmarvin.github.io/TDA/reference/tda_frml.md),
+[`tda_seq_info()`](https://janmarvin.github.io/TDA/reference/tda_seq_info.md),
+[`tda_seqgc()`](https://janmarvin.github.io/TDA/reference/tda_seqgc.md),
+[`tda_seqmd()`](https://janmarvin.github.io/TDA/reference/tda_seqmd.md),
+[`tda_seqpe()`](https://janmarvin.github.io/TDA/reference/tda_seqpe.md),
+[`tda_seqpm()`](https://janmarvin.github.io/TDA/reference/tda_seqpm.md)
 
 ## Examples
 

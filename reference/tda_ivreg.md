@@ -5,7 +5,8 @@ interval regression – both response and regressor are interval-valued –
 and `tda_ivls` solves the same kind of problem as a system of linear
 interval equations. All four return bounds on beta rather than a point
 estimate, so [`coef()`](https://rdrr.io/r/stats/coef.html) would be
-misleading; use [`tda_bounds`](tda_bounds.md).
+misleading; use
+[`tda_bounds`](https://janmarvin.github.io/TDA/reference/tda_bounds.md).
 
 ## Usage
 
@@ -75,10 +76,10 @@ tda_ivls(formula, data, options = list(), dir = tempfile("tda"), ...)
 
   for `tda_ivreg` and `tda_ivreg1`, the box search's iteration limits
   and tolerances (`nbox=`/`mxit=`/`tolbw=`/`tolf=`);
-  [`tda_control`](tda_control.md) does not apply here, these are
-  specific to the interval-regression box search, not TDA's general
-  minimiser. For `tda_ivreg1` the limits default to 4000 each – TDA's
-  100/100 rarely completes a real search.
+  [`tda_control`](https://janmarvin.github.io/TDA/reference/tda_control.md)
+  does not apply here, these are specific to the interval-regression box
+  search, not TDA's general minimiser. For `tda_ivreg1` the limits
+  default to 4000 each – TDA's 100/100 rarely completes a real search.
 
 - options:
 
@@ -90,7 +91,8 @@ tda_ivls(formula, data, options = list(), dir = tempfile("tda"), ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 - search_box:
 
@@ -135,20 +137,25 @@ program is unchanged), always requests the `prot=` protocol file, and
 reads the accepted boxes back: `boxes` holds every box the protocol
 reports, `parameters` the hull of the near-optimal ones over (alpha,
 alpha radius, beta, beta radius), and `beta`/`alpha` – what
-[`tda_bounds`](tda_bounds.md) returns – the centre rows of that hull.
-Certification follows TDA's rule: a box counts when its inclusion lower
-bound is within `tol_min` of the best value found. The shipped default
-of `1e-10` for that tolerance is unreachable (interval arithmetic
-over-estimates a box's range), which is the second reason the command
-always seemed to fail; `tol_min` defaults to `1e-3` here instead.
+[`tda_bounds`](https://janmarvin.github.io/TDA/reference/tda_bounds.md)
+returns – the centre rows of that hull. Certification follows TDA's
+rule: a box counts when its inclusion lower bound is within `tol_min` of
+the best value found. The shipped default of `1e-10` for that tolerance
+is unreachable (interval arithmetic over-estimates a box's range), which
+is the second reason the command always seemed to fail; `tol_min`
+defaults to `1e-3` here instead.
 
 ## See also
 
-Other interval-valued data: [`tda_bounds()`](tda_bounds.md),
-[`tda_idf()`](tda_idf.md), [`tda_ilsreg()`](tda_ilsreg.md),
-[`tda_imean()`](tda_imean.md), [`tda_imreg()`](tda_imreg.md),
-[`tda_inpreg()`](tda_inpreg.md), [`tda_ivar1()`](tda_ivar1.md),
-[`tda_sddf()`](tda_sddf.md)
+Other interval-valued data:
+[`tda_bounds()`](https://janmarvin.github.io/TDA/reference/tda_bounds.md),
+[`tda_idf()`](https://janmarvin.github.io/TDA/reference/tda_idf.md),
+[`tda_ilsreg()`](https://janmarvin.github.io/TDA/reference/tda_ilsreg.md),
+[`tda_imean()`](https://janmarvin.github.io/TDA/reference/tda_imean.md),
+[`tda_imreg()`](https://janmarvin.github.io/TDA/reference/tda_imreg.md),
+[`tda_inpreg()`](https://janmarvin.github.io/TDA/reference/tda_inpreg.md),
+[`tda_ivar1()`](https://janmarvin.github.io/TDA/reference/tda_ivar1.md),
+[`tda_sddf()`](https://janmarvin.github.io/TDA/reference/tda_sddf.md)
 
 ## Examples
 

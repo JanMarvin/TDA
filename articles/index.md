@@ -1,7 +1,10 @@
 # Articles
 
-### All vignettes
+### Vignettes
 
-- [Beyond the Manual](beyond-the-manual.md):
-- [Techniques of Event History Modeling, in R](ehhnew.md):
-- [Following the TDA User's Manual](tdaR.md):
+- [Following the TDA User's
+  Manual](https://janmarvin.github.io/TDA/articles/tdaR.md):
+- [Techniques of Event History Modeling, in
+  R](https://janmarvin.github.io/TDA/articles/ehhnew.md):
+- [Beyond the
+  Manual](https://janmarvin.github.io/TDA/articles/beyond-the-manual.md):

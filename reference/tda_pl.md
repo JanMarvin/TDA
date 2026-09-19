@@ -180,9 +180,10 @@ tda_ps_file(x)
   one series (TDA's `clear;`+`nvar(dfile=...)` trick, restored
   afterward), useful for overlaying a fitted curve at a different
   resolution than the raw data it was fit to – see
-  [`tda_npreg`](tda_npreg.md)'s example. For everything else reachable
-  through `tda_pl`, variables or coordinates, as names in the session's
-  data or as numbers; for `tda_pl_rect`, two opposite corners.
+  [`tda_npreg`](https://janmarvin.github.io/TDA/reference/tda_npreg.md)'s
+  example. For everything else reachable through `tda_pl`, variables or
+  coordinates, as names in the session's data or as numbers; for
+  `tda_pl_rect`, two opposite corners.
 
 - select:
 
@@ -274,14 +275,20 @@ The session, with the command added.
 
 ## See also
 
-Other plotting: [`plot.tda_ple()`](plot.tda_ple.md),
-[`tda_check_ps()`](tda_check_ps.md), [`tda_pl_arc()`](tda_pl_arc.md),
-[`tda_pl_axis()`](tda_pl_axis.md), [`tda_pl_graph()`](tda_pl_graph.md),
-[`tda_pl_hist`](tda_pl_hist.md), [`tda_pl_panel()`](tda_pl_panel.md),
-[`tda_pl_regression()`](tda_pl_regression.md),
-[`tda_pl_scatter()`](tda_pl_scatter.md),
-[`tda_plot_ps()`](tda_plot_ps.md), [`tda_ps()`](tda_ps.md),
-[`tda_ps3()`](tda_ps3.md), [`tda_read_ps()`](tda_read_ps.md)
+Other plotting:
+[`plot.tda_ple()`](https://janmarvin.github.io/TDA/reference/plot.tda_ple.md),
+[`tda_check_ps()`](https://janmarvin.github.io/TDA/reference/tda_check_ps.md),
+[`tda_pl_arc()`](https://janmarvin.github.io/TDA/reference/tda_pl_arc.md),
+[`tda_pl_axis()`](https://janmarvin.github.io/TDA/reference/tda_pl_axis.md),
+[`tda_pl_graph()`](https://janmarvin.github.io/TDA/reference/tda_pl_graph.md),
+[`tda_pl_hist`](https://janmarvin.github.io/TDA/reference/tda_pl_hist.md),
+[`tda_pl_panel()`](https://janmarvin.github.io/TDA/reference/tda_pl_panel.md),
+[`tda_pl_regression()`](https://janmarvin.github.io/TDA/reference/tda_pl_regression.md),
+[`tda_pl_scatter()`](https://janmarvin.github.io/TDA/reference/tda_pl_scatter.md),
+[`tda_plot_ps()`](https://janmarvin.github.io/TDA/reference/tda_plot_ps.md),
+[`tda_ps()`](https://janmarvin.github.io/TDA/reference/tda_ps.md),
+[`tda_ps3()`](https://janmarvin.github.io/TDA/reference/tda_ps3.md),
+[`tda_read_ps()`](https://janmarvin.github.io/TDA/reference/tda_read_ps.md)
 
 ## Examples
 
@@ -326,7 +333,7 @@ p2 <- tda_pl_polyline(p2, c(0.2, 1, 0.2), c(11, 11, 11.8))  # a raw shape
 # its row along the top, so it doesn't cross the data line below
 p2 <- tda_pl_function(p2, "sin(x)+11", range = c(0, 6), step = 0.2)
 tda_ps_file(p2)   # the PostScript path, once the session has been run
-#> [1] "/tmp/Rtmp1P42VB/tda2105130d341b/plot.ps"
+#> [1] "/tmp/Rtmp62wydu/tda1f5924ddedb1/plot.ps"
 p2
 #> TDA plot session (plot.ps), 90 x 70 mm, x: [0,6], y: [0,12]
 #> Data: 5 rows, x, y 

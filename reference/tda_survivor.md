@@ -15,8 +15,10 @@ tda_survivor(x, conf.int = 0.95)
 
 - x:
 
-  a fit from [`tda_ltb`](tda_ltb.md), [`tda_ple`](tda_ltb.md) or
-  [`tda_km`](tda_ltb.md).
+  a fit from
+  [`tda_ltb`](https://janmarvin.github.io/TDA/reference/tda_ltb.md),
+  [`tda_ple`](https://janmarvin.github.io/TDA/reference/tda_ltb.md) or
+  [`tda_km`](https://janmarvin.github.io/TDA/reference/tda_ltb.md).
 
 - conf.int:
 
@@ -32,19 +34,23 @@ available `density`, `rate`, `lower` and `upper`.
 
 ## Details
 
-The same call works for [`tda_ltb`](tda_ltb.md) and
-[`tda_ple`](tda_ltb.md): both name their time column `time` here,
-whatever the underlying command called it, and both carry `survivor` and
-`std.err`. Where the estimator provides them, `density` and `rate` come
-too.
+The same call works for
+[`tda_ltb`](https://janmarvin.github.io/TDA/reference/tda_ltb.md) and
+[`tda_ple`](https://janmarvin.github.io/TDA/reference/tda_ltb.md): both
+name their time column `time` here, whatever the underlying command
+called it, and both carry `survivor` and `std.err`. Where the estimator
+provides them, `density` and `rate` come too.
 
 ## See also
 
-Other rate models: [`tda_constrain()`](tda_constrain.md),
-[`tda_control()`](tda_control.md), [`tda_dple()`](tda_ltb.md),
-[`tda_rates()`](tda_rates.md), [`tda_split()`](tda_split.md),
-[`tda_transitions()`](tda_transitions.md),
-[`vcov.tda_fit()`](tda_rate.md)
+Other rate models:
+[`tda_constrain()`](https://janmarvin.github.io/TDA/reference/tda_constrain.md),
+[`tda_control()`](https://janmarvin.github.io/TDA/reference/tda_control.md),
+[`tda_dple()`](https://janmarvin.github.io/TDA/reference/tda_ltb.md),
+[`tda_rates()`](https://janmarvin.github.io/TDA/reference/tda_rates.md),
+[`tda_split()`](https://janmarvin.github.io/TDA/reference/tda_split.md),
+[`tda_transitions()`](https://janmarvin.github.io/TDA/reference/tda_transitions.md),
+[`vcov.tda_fit()`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
 
 ## Examples
 

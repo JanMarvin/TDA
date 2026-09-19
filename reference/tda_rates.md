@@ -1,8 +1,9 @@
 # The estimated rate as a single table
 
-The companion to [`tda_survivor`](tda_survivor.md): the rate a model
-implies, with the same column names whichever model produced it.
-`prate =` at fit time is what asks TDA to compute it.
+The companion to
+[`tda_survivor`](https://janmarvin.github.io/TDA/reference/tda_survivor.md):
+the rate a model implies, with the same column names whichever model
+produced it. `prate =` at fit time is what asks TDA to compute it.
 
 ## Usage
 
@@ -14,7 +15,9 @@ tda_rates(x)
 
 - x:
 
-  a fit from [`tda_rate`](tda_rate.md) or [`tda_coxph`](tda_rate.md).
+  a fit from
+  [`tda_rate`](https://janmarvin.github.io/TDA/reference/tda_rate.md) or
+  [`tda_coxph`](https://janmarvin.github.io/TDA/reference/tda_rate.md).
 
 ## Value
 
@@ -25,11 +28,14 @@ rate beside it (already cumulative: TDA's CumRate column).
 
 ## See also
 
-Other rate models: [`tda_constrain()`](tda_constrain.md),
-[`tda_control()`](tda_control.md), [`tda_dple()`](tda_ltb.md),
-[`tda_split()`](tda_split.md), [`tda_survivor()`](tda_survivor.md),
-[`tda_transitions()`](tda_transitions.md),
-[`vcov.tda_fit()`](tda_rate.md)
+Other rate models:
+[`tda_constrain()`](https://janmarvin.github.io/TDA/reference/tda_constrain.md),
+[`tda_control()`](https://janmarvin.github.io/TDA/reference/tda_control.md),
+[`tda_dple()`](https://janmarvin.github.io/TDA/reference/tda_ltb.md),
+[`tda_split()`](https://janmarvin.github.io/TDA/reference/tda_split.md),
+[`tda_survivor()`](https://janmarvin.github.io/TDA/reference/tda_survivor.md),
+[`tda_transitions()`](https://janmarvin.github.io/TDA/reference/tda_transitions.md),
+[`vcov.tda_fit()`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
 
 ## Examples
 

@@ -17,7 +17,9 @@ tda_dmet(g, options = list(), dir = tempfile("tda"), ...)
 
 - g:
 
-  a [`tda_graph`](tda_graph.md), undirected and valued.
+  a
+  [`tda_graph`](https://janmarvin.github.io/TDA/reference/tda_graph.md),
+  undirected and valued.
 
 - options:
 
@@ -29,7 +31,8 @@ tda_dmet(g, options = list(), dir = tempfile("tda"), ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -38,10 +41,13 @@ A list: `original` and `modified`, both distance matrices, and
 
 ## See also
 
-Other graph analysis: [`plot.tda_graph()`](plot.tda_graph.md),
-[`tda_g()`](tda_g.md), [`tda_g_analyses`](tda_g_analyses.md),
-[`tda_graph()`](tda_graph.md),
-[`tda_locate_line()`](tda_locate_line.md), [`tda_ptree()`](tda_ptree.md)
+Other graph analysis:
+[`plot.tda_graph()`](https://janmarvin.github.io/TDA/reference/plot.tda_graph.md),
+[`tda_g()`](https://janmarvin.github.io/TDA/reference/tda_g.md),
+[`tda_g_analyses`](https://janmarvin.github.io/TDA/reference/tda_g_analyses.md),
+[`tda_graph()`](https://janmarvin.github.io/TDA/reference/tda_graph.md),
+[`tda_locate_line()`](https://janmarvin.github.io/TDA/reference/tda_locate_line.md),
+[`tda_ptree()`](https://janmarvin.github.io/TDA/reference/tda_ptree.md)
 
 ## Examples
 

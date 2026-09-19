@@ -38,7 +38,8 @@ tda_read_spss(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -54,9 +55,10 @@ and both round-trip their values exactly.
 String columns *do* come through: `rspss`/`rspss1` create real TDA
 string variables (type 1) and `pdata` prints them, so a character column
 arrives as text rather than a code. This is one of the few ways to get a
-string variable into TDA at all – [`tda_run`](tda_run.md) refuses a
-character column in a data frame, because TDA's data-frame path has no
-type for it.
+string variable into TDA at all –
+[`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md)
+refuses a character column in a data frame, because TDA's data-frame
+path has no type for it.
 
 Two consequences worth knowing. TDA renames any variable whose name does
 not start with a capital (see *Variable names must start with a
@@ -73,8 +75,9 @@ on the way in, and this wrapper does not pretend otherwise.
 
 ## See also
 
-Other data: [`tda_read_xls()`](tda_read_xls.md),
-[`tda_strings()`](tda_strings.md)
+Other data:
+[`tda_read_xls()`](https://janmarvin.github.io/TDA/reference/tda_read_xls.md),
+[`tda_strings()`](https://janmarvin.github.io/TDA/reference/tda_strings.md)
 
 ## Examples
 

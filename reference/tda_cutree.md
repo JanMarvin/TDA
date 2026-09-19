@@ -39,7 +39,8 @@ tda_cutree(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -58,9 +59,12 @@ to the leaves under it; this wrapper does not do that walk for you.
 
 ## See also
 
-Other clustering: [`TDA_CLUSTER`](tda_cluster.md),
-[`TDA_MDS`](tda_mds.md), [`tda_conjoint()`](tda_conjoint.md),
-[`tda_dma()`](tda_dma.md), [`tda_pdatd()`](tda_pdatd.md)
+Other clustering:
+[`TDA_CLUSTER`](https://janmarvin.github.io/TDA/reference/tda_cluster.md),
+[`TDA_MDS`](https://janmarvin.github.io/TDA/reference/tda_mds.md),
+[`tda_conjoint()`](https://janmarvin.github.io/TDA/reference/tda_conjoint.md),
+[`tda_dma()`](https://janmarvin.github.io/TDA/reference/tda_dma.md),
+[`tda_pdatd()`](https://janmarvin.github.io/TDA/reference/tda_pdatd.md)
 
 ## Examples
 

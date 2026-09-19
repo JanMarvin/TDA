@@ -56,7 +56,8 @@ predict(object, newdata = NULL, ...)
 
 - control:
 
-  convergence settings from [`tda_control`](tda_control.md).
+  convergence settings from
+  [`tda_control`](https://janmarvin.github.io/TDA/reference/tda_control.md).
 
 - options:
 
@@ -70,7 +71,8 @@ predict(object, newdata = NULL, ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -84,16 +86,23 @@ linear predictor. That right-hand-side expression is reachable through
 `expr`/`start`: fitting \\y = a \\ e^{bx}\\ on data generated with
 \\a=2, b=0.5\\ recovers both closely. `options = list(opt = 2)`
 additionally selects orthogonal distance regression (errors in both
-variables), which [`tda_lsreg`](tda_lsreg.md) has no equivalent for.
+variables), which
+[`tda_lsreg`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md)
+has no equivalent for.
 
 ## See also
 
-Other regression: [`TDA_FAMILIES`](tda_glm.md),
-[`TDA_QRMODELS`](tda_qreg.md), [`tda_freg()`](tda_freg.md),
-[`tda_gdf()`](tda_gdf.md), [`tda_l1reg()`](tda_l1reg.md),
-[`tda_lsreg()`](tda_lsreg.md),
-[`tda_mlrc_design()`](tda_mlrc_design.md), [`tda_mreg()`](tda_mreg.md),
-[`tda_npreg()`](tda_npreg.md), [`tda_zreg()`](tda_zreg.md)
+Other regression:
+[`TDA_FAMILIES`](https://janmarvin.github.io/TDA/reference/tda_glm.md),
+[`TDA_QRMODELS`](https://janmarvin.github.io/TDA/reference/tda_qreg.md),
+[`tda_freg()`](https://janmarvin.github.io/TDA/reference/tda_freg.md),
+[`tda_gdf()`](https://janmarvin.github.io/TDA/reference/tda_gdf.md),
+[`tda_l1reg()`](https://janmarvin.github.io/TDA/reference/tda_l1reg.md),
+[`tda_lsreg()`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md),
+[`tda_mlrc_design()`](https://janmarvin.github.io/TDA/reference/tda_mlrc_design.md),
+[`tda_mreg()`](https://janmarvin.github.io/TDA/reference/tda_mreg.md),
+[`tda_npreg()`](https://janmarvin.github.io/TDA/reference/tda_npreg.md),
+[`tda_zreg()`](https://janmarvin.github.io/TDA/reference/tda_zreg.md)
 
 ## Examples
 

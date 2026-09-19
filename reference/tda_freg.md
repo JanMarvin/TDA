@@ -1,8 +1,8 @@
 # Non-linear regression with a user-defined function
 
 `freg` fits a regression function you write yourself, in the same way
-[`tda_fml`](tda_fml.md) takes a likelihood. The expression is TDA's
-language, not R's.
+[`tda_fml`](https://janmarvin.github.io/TDA/reference/tda_fml.md) takes
+a likelihood. The expression is TDA's language, not R's.
 
 ## Usage
 
@@ -30,8 +30,8 @@ tda_freg(
   quantity to minimise – or an unevaluated
   [`{ }`](https://rdrr.io/r/base/Paren.html) block of plain R
   assignments instead, translated automatically the same way
-  [`tda_fml`](tda_fml.md)'s `definitions` is (see its Details for
-  exactly what gets translated).
+  [`tda_fml`](https://janmarvin.github.io/TDA/reference/tda_fml.md)'s
+  `definitions` is (see its Details for exactly what gets translated).
 
 - data:
 
@@ -44,35 +44,38 @@ tda_freg(
 
 - control:
 
-  convergence settings from [`tda_control`](tda_control.md).
+  convergence settings from
+  [`tda_control`](https://janmarvin.github.io/TDA/reference/tda_control.md).
 
 - constraints:
 
   optional linear constraints on the parameters – `freg`'s `con=`, the
   identical mechanism and `bN`-by-position convention as
-  [`tda_fml`](tda_fml.md)'s `constraints` (see there for the full
-  explanation and a worked example of the naming trap); it works the
-  same way here.
+  [`tda_fml`](https://janmarvin.github.io/TDA/reference/tda_fml.md)'s
+  `constraints` (see there for the full explanation and a worked example
+  of the naming trap); it works the same way here.
 
 - residuals:
 
   ask TDA to also compute, per case, its contribution to `fn` at the
   converged parameters – `freg`'s own `pres=`, the identical mechanism
-  as [`tda_fml`](tda_fml.md)'s own `residuals` (see there for what it
-  actually is: not a classical observed-minus-fitted residual). For
-  `fn = r*r`, say, this is that squared residual's value, not `r`
-  itself.
+  as [`tda_fml`](https://janmarvin.github.io/TDA/reference/tda_fml.md)'s
+  own `residuals` (see there for what it actually is: not a classical
+  observed-minus-fitted residual). For `fn = r*r`, say, this is that
+  squared residual's value, not `r` itself.
 
 - residual_vars:
 
   with `residuals = TRUE`, extra columns to write alongside `fn`'s
   value, one per case – `freg`'s own `v=`, the same mechanism as
-  [`tda_fml`](tda_fml.md)'s `residual_vars`.
+  [`tda_fml`](https://janmarvin.github.io/TDA/reference/tda_fml.md)'s
+  `residual_vars`.
 
 - protocol:
 
   ask TDA to also write its iteration-by-iteration diagnostic log –
-  `freg`'s `prot=`, the same mechanism as [`tda_fml`](tda_fml.md)'s
+  `freg`'s `prot=`, the same mechanism as
+  [`tda_fml`](https://janmarvin.github.io/TDA/reference/tda_fml.md)'s
   `protocol`.
 
 - options:
@@ -85,7 +88,8 @@ tda_freg(
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -94,14 +98,15 @@ An object of class `tda_fit`. With `residuals = TRUE`, also carries
 
 ## Details
 
-[`tda_nlreg`](tda_nlreg.md)'s `expr` argument also fits a user-written
-nonlinear function now, using `nlreg`'s dedicated algorithm (proper
-standard errors, and orthogonal distance regression as an option) rather
-than a general-purpose minimiser – prefer it for an ordinary nonlinear
-least-squares fit. `tda_freg` stays the more flexible tool for the cases
-`nlreg` cannot express at all: any summed objective, not just a sum of
-squared residuals (a robust loss, a weighted or constrained one,
-anything written by hand).
+[`tda_nlreg`](https://janmarvin.github.io/TDA/reference/tda_nlreg.md)'s
+`expr` argument also fits a user-written nonlinear function now, using
+`nlreg`'s dedicated algorithm (proper standard errors, and orthogonal
+distance regression as an option) rather than a general-purpose
+minimiser – prefer it for an ordinary nonlinear least-squares fit.
+`tda_freg` stays the more flexible tool for the cases `nlreg` cannot
+express at all: any summed objective, not just a sum of squared
+residuals (a robust loss, a weighted or constrained one, anything
+written by hand).
 
 ## Writing the function
 
@@ -122,12 +127,17 @@ stable and reaches the same estimates as `nls`. Pass
 
 ## See also
 
-Other regression: [`TDA_FAMILIES`](tda_glm.md),
-[`TDA_QRMODELS`](tda_qreg.md), [`tda_gdf()`](tda_gdf.md),
-[`tda_l1reg()`](tda_l1reg.md), [`tda_lsreg()`](tda_lsreg.md),
-[`tda_mlrc_design()`](tda_mlrc_design.md), [`tda_mreg()`](tda_mreg.md),
-[`tda_nlreg()`](tda_nlreg.md), [`tda_npreg()`](tda_npreg.md),
-[`tda_zreg()`](tda_zreg.md)
+Other regression:
+[`TDA_FAMILIES`](https://janmarvin.github.io/TDA/reference/tda_glm.md),
+[`TDA_QRMODELS`](https://janmarvin.github.io/TDA/reference/tda_qreg.md),
+[`tda_gdf()`](https://janmarvin.github.io/TDA/reference/tda_gdf.md),
+[`tda_l1reg()`](https://janmarvin.github.io/TDA/reference/tda_l1reg.md),
+[`tda_lsreg()`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md),
+[`tda_mlrc_design()`](https://janmarvin.github.io/TDA/reference/tda_mlrc_design.md),
+[`tda_mreg()`](https://janmarvin.github.io/TDA/reference/tda_mreg.md),
+[`tda_nlreg()`](https://janmarvin.github.io/TDA/reference/tda_nlreg.md),
+[`tda_npreg()`](https://janmarvin.github.io/TDA/reference/tda_npreg.md),
+[`tda_zreg()`](https://janmarvin.github.io/TDA/reference/tda_zreg.md)
 
 ## Examples
 

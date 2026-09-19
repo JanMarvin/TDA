@@ -4,9 +4,10 @@
 coordinate setup, and the rest add to it: points, text, a polyline and a
 surface, each taking three coordinates where their two-dimensional
 counterparts take two. Note that the 3-D commands are the only ones that
-emit `rotate` and `scale`, which [`tda_read_ps`](tda_read_ps.md) does
-not yet interpret, so the replayed picture may be positioned wrongly
-even where the PostScript itself is correct.
+emit `rotate` and `scale`, which
+[`tda_read_ps`](https://janmarvin.github.io/TDA/reference/tda_read_ps.md)
+does not yet interpret, so the replayed picture may be positioned
+wrongly even where the PostScript itself is correct.
 
 ## Usage
 
@@ -185,15 +186,20 @@ A `tda_ps` session, with the command added.
 
 ## See also
 
-Other plotting: [`plot.tda_ple()`](plot.tda_ple.md),
-[`tda_check_ps()`](tda_check_ps.md), [`tda_pl()`](tda_pl.md),
-[`tda_pl_arc()`](tda_pl_arc.md), [`tda_pl_axis()`](tda_pl_axis.md),
-[`tda_pl_graph()`](tda_pl_graph.md), [`tda_pl_hist`](tda_pl_hist.md),
-[`tda_pl_panel()`](tda_pl_panel.md),
-[`tda_pl_regression()`](tda_pl_regression.md),
-[`tda_pl_scatter()`](tda_pl_scatter.md),
-[`tda_plot_ps()`](tda_plot_ps.md), [`tda_ps()`](tda_ps.md),
-[`tda_read_ps()`](tda_read_ps.md)
+Other plotting:
+[`plot.tda_ple()`](https://janmarvin.github.io/TDA/reference/plot.tda_ple.md),
+[`tda_check_ps()`](https://janmarvin.github.io/TDA/reference/tda_check_ps.md),
+[`tda_pl()`](https://janmarvin.github.io/TDA/reference/tda_pl.md),
+[`tda_pl_arc()`](https://janmarvin.github.io/TDA/reference/tda_pl_arc.md),
+[`tda_pl_axis()`](https://janmarvin.github.io/TDA/reference/tda_pl_axis.md),
+[`tda_pl_graph()`](https://janmarvin.github.io/TDA/reference/tda_pl_graph.md),
+[`tda_pl_hist`](https://janmarvin.github.io/TDA/reference/tda_pl_hist.md),
+[`tda_pl_panel()`](https://janmarvin.github.io/TDA/reference/tda_pl_panel.md),
+[`tda_pl_regression()`](https://janmarvin.github.io/TDA/reference/tda_pl_regression.md),
+[`tda_pl_scatter()`](https://janmarvin.github.io/TDA/reference/tda_pl_scatter.md),
+[`tda_plot_ps()`](https://janmarvin.github.io/TDA/reference/tda_plot_ps.md),
+[`tda_ps()`](https://janmarvin.github.io/TDA/reference/tda_ps.md),
+[`tda_read_ps()`](https://janmarvin.github.io/TDA/reference/tda_read_ps.md)
 
 ## Examples
 

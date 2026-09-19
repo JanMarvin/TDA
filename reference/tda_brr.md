@@ -36,7 +36,8 @@ tda_brr(strata, secu, dir = tempfile("tda"), ...)
 
 - ...:
 
-  passed to [`tda_run`](tda_run.md).
+  passed to
+  [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
 ## Value
 
@@ -57,12 +58,17 @@ not something this wrapper can lift.
 
 ## See also
 
-Other descriptive statistics: [`tda_cov()`](tda_cov.md),
-[`tda_dstat()`](tda_dstat.md), [`tda_freq()`](tda_freq1.md),
-[`tda_independence()`](tda_independence.md),
-[`tda_ineq()`](tda_ineq.md), [`tda_loglin()`](tda_loglin.md),
-[`tda_quant()`](tda_quant.md), [`tda_rcorr()`](tda_rcorr.md),
-[`tda_segr()`](tda_segr.md), [`tda_subm()`](tda_subm.md)
+Other descriptive statistics:
+[`tda_cov()`](https://janmarvin.github.io/TDA/reference/tda_cov.md),
+[`tda_dstat()`](https://janmarvin.github.io/TDA/reference/tda_dstat.md),
+[`tda_freq()`](https://janmarvin.github.io/TDA/reference/tda_freq1.md),
+[`tda_independence()`](https://janmarvin.github.io/TDA/reference/tda_independence.md),
+[`tda_ineq()`](https://janmarvin.github.io/TDA/reference/tda_ineq.md),
+[`tda_loglin()`](https://janmarvin.github.io/TDA/reference/tda_loglin.md),
+[`tda_quant()`](https://janmarvin.github.io/TDA/reference/tda_quant.md),
+[`tda_rcorr()`](https://janmarvin.github.io/TDA/reference/tda_rcorr.md),
+[`tda_segr()`](https://janmarvin.github.io/TDA/reference/tda_segr.md),
+[`tda_subm()`](https://janmarvin.github.io/TDA/reference/tda_subm.md)
 
 ## Examples
 
