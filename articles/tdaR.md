@@ -1,4 +1,14 @@
-# Following the TDA User's Manual
+# Following the TDA User’s Manual
+
+# Following the TDA User’s Manual
+
+- [TDA, and this package](#tda-and-this-package)
+- [3 Data Structures](#data-structures)
+- [4 PostScript Plots](#postscript-plots)
+- [5 Mathematical Procedures](#mathematical-procedures)
+- [6 Statistical Procedures](#statistical-procedures)
+- [7 Relational Data](#relational-data)
+- [8 Set-valued Data](#set-valued-data)
 
 In memoriam Götz Rohwer
 
@@ -75,7 +85,6 @@ manual’s `nvar` block derives.
 Box 1The data file rrdat.1, read and named
 
 ``` r
-
 d <- tda_rrdat()
 head(d[, 1:12], 9)
 ```
@@ -111,7 +120,6 @@ Every command that takes episode data reports what it was given.
 Box 2Episode data, single destination state
 
 ``` r
-
 tda_rate(Surv(TFP, DES) ~ 1, d, model = 2)$episodes
 ```
 
@@ -131,7 +139,6 @@ state, splitting the job changes by the prestige of the next job.
 Box 3Episode data, alternative destination states
 
 ``` r
-
 d4 <- tda_rrdat(states = 4)
 tda_rate(Surv(TFP, DES) ~ 1, d4, model = 2)$episodes
 ```
@@ -154,7 +161,6 @@ prints a table per spell, each closed by its own total (the manual’s Box
 Box 4ed3.cf: multi-episode data
 
 ``` r
-
 eb <- suppressWarnings(
     tda_rate(Surv(TFP, DES) ~ 1, d, id = "ID", spell = "NOJ"))
 eb$episodes
@@ -180,7 +186,6 @@ eb$episodes
     17  9   0   0        1        1      34.00000      0     34     TRUE
 
 ``` r
-
 attr(eb$episodes, "sums")   # the totals under each spell; sn = NA is all spells
 ```
 
@@ -207,7 +212,6 @@ its Figure 1 is `gd2.cf`’s drawing of it as a directed, valued graph.
 Box 5gd2.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 6), ylim = c(0, 4), width = 60, height = 30)
 nodes <- data.frame(id = c(1, 7, 3, 4, 9), x = c(1, 3, 5, 2, 4),
                     y = c(3, 3, 3, 1, 1), grey = 0.8)
@@ -232,7 +236,6 @@ carry the second value variable.
 Box 6plg: the graph of gd1.dat (gd3.cf)
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 9), ylim = c(0, 4), width = 80, height = 40)
 nodes <- data.frame(id = c(1, 7, 8, 5, 11, 12, 9),
                     x = c(3, 6, 8, 1, 3, 6, 8),
@@ -256,7 +259,6 @@ The same tree as `gd15.cf`, laid out radially: `pl = 1` rather than
 Box 7gd15a.cf
 
 ``` r
-
 edges <- data.frame(
     from = c(6, 6, 7, 7, 8, 8, 9, 9, 1, 1, 1, 7),
     to   = c(2, 4, 3, 5, 1, 6, 7, 8, 10, 11, 12, 13),
@@ -273,7 +275,6 @@ The same tree again, hierarchically: `pl = 2`.
 Box 8gd15b.cf
 
 ``` r
-
 edges <- data.frame(
     from = c(6, 6, 7, 7, 8, 8, 9, 9, 1, 1, 1, 7),
     to   = c(2, 4, 3, 5, 1, 6, 7, 8, 10, 11, 12, 13),
@@ -292,7 +293,6 @@ plot(g, width = 90, height = 50, layout = "tree", rt = 9, pl = 2, nc = 100)
 Box 9pltree (gd15.cf)
 
 ``` r
-
 tree <- data.frame(from = c(6, 6, 7, 7, 8, 8, 9, 9, 1, 1, 1, 7),
                    to   = c(2, 4, 3, 5, 1, 6, 7, 8, 10, 11, 12, 13),
                    v    = c(1.0, 1.5, 2.0, 2.5, 1.5, 1.0, 3.0, 1.2, 1.6, 2.0, 3.0, 4.0))
@@ -313,7 +313,6 @@ six over 0 to 5. `type = 2` is TDA’s `seqdef(m = 2)`.
 Box 10seq.d2 read both ways (seq3.cf)
 
 ``` r
-
 seqd2 <- read.table(ex("seq.d2"),
                     col.names = c("ID", "Y1", "T1", "Y2", "T2", "Y3", "T3"))
 tda_seq_info(seqd2[, -1])
@@ -323,7 +322,6 @@ tda_seq_info(seqd2[, -1])
     1  1    1         6    0    5       9 0, 1, 2,....
 
 ``` r
-
 # seq3.cf declares both structures at once, the second as type 2; the
 # manual's box shows them in one table, with their own time axes
 seqd3i <- read.table(ex("seq.d3"),
@@ -338,7 +336,6 @@ tda_seq_info(list(paste0("Y", 0:7), c("S1", "T1", "S2", "T2", "S3", "T3")),
     2  2    2         3    0    8       3 1, 2, 3
 
 ``` r
-
 tda_seqpd(seqd2, type = 2, id = "ID")
 ```
 
@@ -361,7 +358,6 @@ of columns; this one has a single structure.
 Box 11seqpd (seq5.cf)
 
 ``` r
-
 # seq5.cf declares two structures over seq.d3: Y0..Y7 one column per
 # time point, and three state/time pairs read as a type 2 sequence. The
 # tables then carry a column per structure, and the time axis runs to 8
@@ -381,7 +377,6 @@ tda_seqpd(seqd3, id = "ID", variables = paste0("Y", 0:7), second = pairs)
     5    5    7    3    3    1    3    3    7    7   -1   -1   -1   -1   -1    1    1    2    2    3  5
 
 ``` r
-
 tda_seqpd(seqd3, layout = 3, id = "ID", variables = paste0("Y", 0:7),
           second = pairs)
 ```
@@ -434,7 +429,6 @@ tda_seqpd(seqd3, layout = 3, id = "ID", variables = paste0("Y", 0:7),
     45    5    8 -1  3  5
 
 ``` r
-
 tda_seqpd(seqd3, layout = 4, id = "ID", variables = paste0("Y", 0:7),
           second = pairs)
 ```
@@ -477,7 +471,6 @@ that point instead.
 Box 12seqsi (seq6.cf)
 
 ``` r
-
 seqd1i <- read.table(ex("seq.d1"))
 names(seqd1i) <- c("ID", paste0("Y", seq_len(ncol(seqd1i) - 1L)))
 tda_seqsi(seqd1i, tp = 1:5, id = "ID")
@@ -491,7 +484,6 @@ tda_seqsi(seqd1i, tp = 1:5, id = "ID")
     5    5    0    1    0    0    1    0    1    0    0    0    1    0    0    1    0  5
 
 ``` r
-
 tda_seqsi(seqd1i, tp = 1:5, id = "ID", options = list(m = 2))
 ```
 
@@ -510,7 +502,6 @@ own example is two files, six episodes and two, joined into sixteen.
 Box 13ejoin (ej1.cf)
 
 ``` r
-
 ej1 <- read.table(ex("ej1.dat"),
                   col.names = c("ID", "NS", "SN", "TS", "TF", "S", "X1", "X2"))
 ej2 <- read.table(ex("ej2.dat"),
@@ -562,7 +553,6 @@ repeats `sin(x1)` as the command file does.
 Box 14plot1.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 6), ylim = c(-1, 1), width = 90, height = 50)
 p <- tda_pl_axes(p, sc = c(1, 1), ic = c(10, 0))
 p <- tda_pl_frame(p)
@@ -579,7 +569,6 @@ plot(p)
 Box 15plot2.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 595), ylim = c(0, 842), width = 100, height = 150)
 p <- tda_pl_axes(p, sc = 72)
 p <- tda_pl_frame(p, gray = 0.95)
@@ -595,7 +584,6 @@ plot(p)
 Box 16plot3.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(-2, 2), ylim = c(0, 1), width = 90, height = 50)
 p <- tda_pl_axes(p, sc = c(1, 0.5), ic = c(2, 0))
 p <- tda_pl_frame(p)
@@ -612,7 +600,6 @@ plot(p)
 Box 17plot4.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(1, 1000), ylim = c(2, 500), width = 90, height = 50,
            log = "xy")
 p <- tda_pl_axes(p, sc = c(10, 5), ic = c(10, 0))
@@ -635,7 +622,6 @@ are `plx`’s and `ply`’s parameters.
 Box 18plot5.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(-2, 2), ylim = c(0, 1), width = 90, height = 50)
 p <- tda_pl_axes(p, sc = c(1, 0.5), ic = c(2, 0))
 p <- tda_pl_axis(p, "x", sc = 1, ic = 5, dir = 1, at = c(-1, 1, 1, 1))
@@ -652,7 +638,6 @@ A second panel on the same page, placed with
 Box 19plot6.cf
 
 ``` r
-
 # plot6.cf places the first plot with psorg = 100,600, in PostScript
 # points; origin = is in mm like width = and height =
 p <- tda_ps(xlim = c(0, 6), ylim = c(-1, 1), width = 50, height = 40,
@@ -683,7 +668,6 @@ places each of them twice on one page.
 Box 20plot7.cf
 
 ``` r
-
 p3 <- tda_ps(xlim = c(-2, 2), ylim = c(0, 1), width = 90, height = 50)
 p3 <- tda_pl_axes(p3, sc = c(1, 0.5), ic = c(2, 0))
 p3 <- tda_pl_frame(p3)
@@ -720,7 +704,6 @@ used here, so the points are the manual’s.
 Box 21plot8.cf
 
 ``` r
-
 pdat <- tda_derive(data.frame(RDS = sort(tda_rd(20, -2, 2))),
                    ND = "nd(RDS)")
 
@@ -739,7 +722,6 @@ The nine line types, `lty = 1` to `9`.
 Box 22plot9.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(-2, 2), ylim = c(0, 1), width = 100, height = 60)
 p <- tda_pl_frame(p)
 for (lt in 1:9)
@@ -759,7 +741,6 @@ is `pltext`’s `s=`, and puts the marker at the text position.
 Box 23plot10.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(-2, 2), ylim = c(0, 1), width = 100, height = 60)
 p <- tda_pl_frame(p)
 
@@ -788,7 +769,6 @@ backslashes than the command file, R’s own.
 Box 24plots.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 10), ylim = c(0, 5), width = 120, height = 60)
 p <- tda_pl_axes(p, sc = 1, ic = c(0, 2))
 p <- tda_pl_frame(p)
@@ -825,7 +805,6 @@ name in
 Box 25plot11.cf
 
 ``` r
-
 pdat <- tda_derive(data.frame(RDS = sort(tda_rd(20, -2, 2))),
                    ND = "nd(RDS)")
 
@@ -848,7 +827,6 @@ TDA’s functions – here `ndf()`, the standard normal density.
 Box 26plot12.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(-3, 3), ylim = c(0, 1), width = 90, height = 50)
 p <- tda_pl_axes(p, sc = c(0.5, 1), ic = c(0, 10), fmt = c("4.1", NA))
 p <- tda_pl_frame(p)
@@ -874,7 +852,6 @@ name in
 Box 27plot13.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 10), ylim = c(0, 6), width = 90, height = 50)
 p <- tda_pl_axes(p, sc = 1)
 p <- tda_pl_frame(p)
@@ -911,7 +888,6 @@ TDA writes as `@141`; the same escape is used here (see 4.4.3).
 Box 28plot14.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 10), ylim = c(0, 6), width = 90, height = 50)
 p <- tda_pl_axes(p, sc = 1)
 p <- tda_pl_frame(p)
@@ -943,7 +919,6 @@ A shaded circle and ellipse, dimension lines, and labelled arrows.
 Box 29plot15.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 10), ylim = c(0, 2), width = 90, height = 50)
 p <- tda_pl_axes(p, sc = 1)
 p <- tda_pl_frame(p)
@@ -977,7 +952,6 @@ is the third value on `plote`’s right-hand side, the angle in degrees.
 Box 30plot16.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 10), ylim = c(0, 2), width = 90, height = 50)
 p <- tda_pl_axes(p, sc = 1)
 
@@ -1006,7 +980,6 @@ own run of the command file.
 Box 31plot17.cf
 
 ``` r
-
 gen <- tda_rng()
 pdat <- data.frame(X = numeric(100), Y = numeric(100))
 for (i in 1:100) {
@@ -1031,7 +1004,6 @@ outline grows without changing shape.
 Box 32plot18.cf
 
 ``` r
-
 plot(tda_pl_hull(p, "X", "Y", gray = 0.95, symbol = 5, size = 0.7,
                  smooth = 10, expand = 2))
 ```
@@ -1049,7 +1021,6 @@ is `plots`, and the points are given as a data frame.
 Box 33plot19.cf
 
 ``` r
-
 pdat <- data.frame(x = c(1, 2, 3, 4, 5, 6), y = c(1, 2.5, 2, 2.5, 2, 1))
 
 p <- tda_ps(pdat, xlim = c(0, 7), ylim = c(0, 3), width = 90, height = 50)
@@ -1068,7 +1039,6 @@ plot(p)
 Box 34plot20.cf
 
 ``` r
-
 pdat <- data.frame(x = c(1, 2, 3, 4, 5, 6), y = c(1, 2.5, 2, 2.5, 2, 1))
 
 p <- tda_ps(pdat, xlim = c(0, 7), ylim = c(0, 3), width = 90, height = 50)
@@ -1091,7 +1061,6 @@ plot(p)
 Box 35plot21.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(-2, 2), ylim = c(-2, 2), width = 70, height = 70)
 p <- tda_pl_axes(p, sc = 1)
 p <- tda_pl_frame(p)
@@ -1140,7 +1109,6 @@ print with ten digits too, so a number can be read off against it.
 Box 36Shape, product, transpose, trace
 
 ``` r
-
 op <- options(digits = 10)
 A <- matrix(1:6, 3, 2)
 c(tda_mnrow(A), tda_mncol(A))
@@ -1149,7 +1117,6 @@ c(tda_mnrow(A), tda_mncol(A))
     [1] 3 2
 
 ``` r
-
 tda_mmul(A, tda_mtransp(A))
 ```
 
@@ -1159,7 +1126,6 @@ tda_mmul(A, tda_mtransp(A))
     [3,]   27   36   45
 
 ``` r
-
 tda_mtrace(tda_mcross(A))
 ```
 
@@ -1171,7 +1137,6 @@ make or take diagonals.
 Box 37Diagonals
 
 ``` r
-
 tda_mdiag(1:4)
 ```
 
@@ -1182,7 +1147,6 @@ tda_mdiag(1:4)
     [4,]    0    0    0    4
 
 ``` r
-
 tda_mdrow(A)
 ```
 
@@ -1192,7 +1156,6 @@ tda_mdrow(A)
     [3,]    0    0    9
 
 ``` r
-
 tda_mdcol(A)
 ```
 
@@ -1201,7 +1164,6 @@ tda_mdcol(A)
     [2,]    0   15
 
 ``` r
-
 tda_mdiagd(A)
 ```
 
@@ -1212,7 +1174,6 @@ tda_mdiagd(A)
 Box 38Elementwise square roots
 
 ``` r
-
 tda_msqrtd(matrix(1:4, 2, 2))
 ```
 
@@ -1221,7 +1182,6 @@ tda_msqrtd(matrix(1:4, 2, 2))
     [2,]    0    2
 
 ``` r
-
 tda_msqrti(matrix(1:4, 2, 2))
 ```
 
@@ -1234,7 +1194,6 @@ Concatenation, row and column sums, selection and trimming.
 Box 39Concatenating, summing, selecting, trimming
 
 ``` r
-
 tda_mcath(A, A)
 ```
 
@@ -1244,7 +1203,6 @@ tda_mcath(A, A)
     [3,]    3    6    3    6
 
 ``` r
-
 tda_mcatv(A, A)
 ```
 
@@ -1257,21 +1215,18 @@ tda_mcatv(A, A)
     [6,]    3    6
 
 ``` r
-
 tda_mrsum(A)
 ```
 
     [1] 5 7 9
 
 ``` r
-
 tda_mcsum(A)
 ```
 
     [1]  6 15
 
 ``` r
-
 tda_msrow(A, 1:2)
 ```
 
@@ -1280,7 +1235,6 @@ tda_msrow(A, 1:2)
     [2,]    2    5
 
 ``` r
-
 tda_mscol(A, 1)
 ```
 
@@ -1290,7 +1244,6 @@ tda_mscol(A, 1)
     [3,]    3
 
 ``` r
-
 tda_mtrim(A, 1)
 ```
 
@@ -1300,7 +1253,6 @@ tda_mtrim(A, 1)
     [3,]    6
 
 ``` r
-
 tda_mtrim(A, leading_rows = 1)
 ```
 
@@ -1314,21 +1266,18 @@ Vectorisation, the Kronecker product, and the permutation commands.
 Box 40Vectorising, Kronecker product, permutations
 
 ``` r
-
 tda_mcvec(A)
 ```
 
     [1] 1 2 3 4 5 6
 
 ``` r
-
 tda_mrvec(A)
 ```
 
     [1] 1 4 2 5 3 6
 
 ``` r
-
 tda_mkp(A, A)
 ```
 
@@ -1344,7 +1293,6 @@ tda_mkp(A, A)
      [9,]    9   18   18   36
 
 ``` r
-
 tda_mprow(A, c(2, 1, 3))
 ```
 
@@ -1354,7 +1302,6 @@ tda_mprow(A, c(2, 1, 3))
     [3,]    3    6
 
 ``` r
-
 tda_mpcol(A, c(2, 1))
 ```
 
@@ -1364,7 +1311,6 @@ tda_mpcol(A, c(2, 1))
     [3,]    6    3
 
 ``` r
-
 tda_mpsym(matrix(1:4, 2, 2), c(2, 1))
 ```
 
@@ -1373,7 +1319,6 @@ tda_mpsym(matrix(1:4, 2, 2), c(2, 1))
     [2,]    3    1
 
 ``` r
-
 tda_mpinv(c(4, 2, 1, 3))
 ```
 
@@ -1385,7 +1330,6 @@ when there is no solution or more than one.
 Box 41Gaussian elimination
 
 ``` r
-
 G <- matrix(c(1, 2, 3, 5, 6, 7, 1, 2, 1), 3, 3, byrow = TRUE)
 tda_mag(G, c(1, 0, 1), c(1, 2, 3))
 ```
@@ -1394,7 +1338,6 @@ tda_mag(G, c(1, 0, 1), c(1, 2, 3))
     [1,]    2    4    4
 
 ``` r
-
 tda_mag(G, c(1, 0, 1), c(5, 4, 4))
 ```
 
@@ -1409,7 +1352,6 @@ column, and `mrank` ranks.
 Box 42msort, msort1, mrank
 
 ``` r
-
 tda_msort(matrix(rev(A), 3, 2), 1)
 ```
 
@@ -1419,7 +1361,6 @@ tda_msort(matrix(rev(A), 3, 2), 1)
     [3,]    6    3
 
 ``` r
-
 tda_msort1(matrix(c(1, 2, 1, 2, 1, 3, 1, 4), ncol = 2), 2)
 ```
 
@@ -1429,7 +1370,6 @@ tda_msort1(matrix(c(1, 2, 1, 2, 1, 3, 1, 4), ncol = 2), 2)
     [3,]    2    4
 
 ``` r
-
 tda_mrank(matrix(c(1, 2, 1, 2, 1, 3, 1, 4), 2), 1)
 ```
 
@@ -1440,7 +1380,6 @@ tda_mrank(matrix(c(1, 2, 1, 2, 1, 3, 1, 4), 2), 1)
 Box 43mcent, mstand, mscal1
 
 ``` r
-
 tda_mcent(A)
 ```
 
@@ -1450,7 +1389,6 @@ tda_mcent(A)
     [3,]    1    1
 
 ``` r
-
 tda_mstand(A)
 ```
 
@@ -1460,7 +1398,6 @@ tda_mstand(A)
     [3,]  1.224744871  1.224744871
 
 ``` r
-
 tda_mscal1(A)
 ```
 
@@ -1474,7 +1411,6 @@ tda_mscal1(A)
 Box 44The three norms
 
 ``` r
-
 c(tda_mnorm(A), tda_mnorm1(A), tda_mnorm2(A))
 ```
 
@@ -1489,7 +1425,6 @@ again – which is the manual’s check.
 Box 45minvd, minvs
 
 ``` r
-
 A
 ```
 
@@ -1499,7 +1434,6 @@ A
     [3,]    3    6
 
 ``` r
-
 tda_minvd(A)
 ```
 
@@ -1509,7 +1443,6 @@ tda_minvd(A)
     [3,]    0  0.0
 
 ``` r
-
 diag(1:2)
 ```
 
@@ -1518,7 +1451,6 @@ diag(1:2)
     [2,]    0    2
 
 ``` r
-
 tda_minvs(diag(1:2))
 ```
 
@@ -1529,7 +1461,6 @@ tda_minvs(diag(1:2))
 Box 46A generalized inverse, and the identity that defines it
 
 ``` r
-
 B0 <- matrix(c(1, 5, 0, 2, 6, 0, 3, 7, 0, 4, 8, 0), 4, 3, byrow = TRUE)
 Bg <- tda_mginv(B0)
 Bg
@@ -1541,7 +1472,6 @@ Bg
     [3,]  0.00  0.000 0.000000000e+00  0.000
 
 ``` r
-
 tda_mmul(tda_mmul(B0, Bg), B0)
 ```
 
@@ -1556,7 +1486,6 @@ tda_mmul(tda_mmul(B0, Bg), B0)
 Box 47mchol
 
 ``` r
-
 tda_mchol(diag(1:4))
 ```
 
@@ -1574,7 +1503,6 @@ last.
 Box 48mls
 
 ``` r
-
 mlsA <- matrix(c(1, 2, 3, 4, 7, 11, -1, 1, 0, 5, 6, 11), 4, 3, byrow = TRUE)
 mlsA   # the design and the response in one matrix, as the manual shows
 ```
@@ -1586,7 +1514,6 @@ mlsA   # the design and the response in one matrix, as the manual shows
     [4,]    5    6   11
 
 ``` r
-
 tda_mls(mlsA)
 ```
 
@@ -1604,7 +1531,6 @@ tda_mls(mlsA)
 Box 49mlse
 
 ``` r
-
 mlseA <- matrix(c(-0.4744, -0.4993, -0.7250, -0.8615, 0.5840, -0.7947,
                   0.1652, 0.0, -0.6587, -0.3450, 0.6687, 0.0), 3, 4,
                 byrow = TRUE)
@@ -1617,7 +1543,6 @@ mlseA   # the manual's box prints the input too
     [3,] -0.6587 -0.3450  0.6687  0.0000
 
 ``` r
-
 tda_mlse(mlseA)
 ```
 
@@ -1635,7 +1560,6 @@ tda_mlse(mlseA)
 Box 50mlsi
 
 ``` r
-
 mlsiA <- matrix(c(1, 2, 3, 5, 6, 11, -1, -2, -3, 0, 1, 1), 4, 3, byrow = TRUE)
 mlsiA   # the manual's box prints the input too
 ```
@@ -1647,7 +1571,6 @@ mlsiA   # the manual's box prints the input too
     [4,]    0    1    1
 
 ``` r
-
 tda_mlsi(mlsiA)
 ```
 
@@ -1673,7 +1596,6 @@ eigenvalues themselves.
 Box 51mev and mevs
 
 ``` r
-
 tda_mev(matrix(c(6, -3, 4, 1, 4, 2, 4, 0, 4, -2, 3, 1, 4, 2, 3, 1),
                4, 4, byrow = TRUE))
 ```
@@ -1709,7 +1631,6 @@ tda_mev(matrix(c(6, -3, 4, 1, 4, 2, 4, 0, 4, -2, 3, 1, 4, 2, 3, 1),
     [4,]    0    0    0    0
 
 ``` r
-
 tda_mevs(matrix(c(1, 1, 1, 1, 2, 0, 1, 0, 10), 3, 3, byrow = TRUE))
 ```
 
@@ -1733,7 +1654,6 @@ sorts descending, so that is the program’s answer, not the manual’s.
 Box 52msvd1 against mevs
 
 ``` r
-
 A <- matrix(c(1, 0, 0, 5, 7, 0, 1, 0, 1), 3, 3, byrow = TRUE)
 S <- tda_mcross(A)
 S            # the cross-product matrix the manual's box prints
@@ -1745,7 +1665,6 @@ S            # the cross-product matrix the manual's box prints
     [3,]    1    0    1
 
 ``` r
-
 tda_msvd1(S)
 ```
 
@@ -1765,7 +1684,6 @@ tda_msvd1(S)
     [3,] -0.008029749235  0.6352548449 -0.7722608401
 
 ``` r
-
 tda_mevs(S)
 ```
 
@@ -1788,7 +1706,6 @@ with the equality given as its row.
 Box 53mlp with one equality row
 
 ``` r
-
 # the manual writes the whole problem as one matrix T: the objective in
 # the first row, then the inequality, then the equality
 Tlp <- matrix(c(1, 0, 0,
@@ -1803,7 +1720,6 @@ Tlp
     [3,]    0    1    1
 
 ``` r
-
 tda_mlp1(objective = c(1, 0), constraints = matrix(c(1, 0), 1), bounds = 1,
          equalities = matrix(c(0, 1), 1), equalities_bounds = 1)
 ```
@@ -1826,7 +1742,6 @@ by a factor of two, and that is what it recovers.
 Box 54mproc, mnum
 
 ``` r
-
 X <- matrix(c(0, 0, 1, 0, 1, 1, 0, 1), 4, 2, byrow = TRUE)
 Y <- matrix(c(0, 0, 2, 0, 2, 2, 0, 2), 4, 2, byrow = TRUE)
 tda_mproc(X, Y)
@@ -1839,7 +1754,6 @@ tda_mproc(X, Y)
     [4,]    0    1
 
 ``` r
-
 tda_mnum(3.14159, 6, 3)
 ```
 
@@ -1854,14 +1768,12 @@ options.
 Box 55evalf
 
 ``` r
-
 tda_evalf("sin(x) + cos(x)", options = list(x = 1))$value
 ```
 
     [1] 1.381773
 
 ``` r
-
 sin(1) + cos(1)
 ```
 
@@ -1879,7 +1791,6 @@ the same generator as a plain vector.
 Box 56TDA’s random numbers
 
 ``` r
-
 g <- tda_rng()
 c(g$rd(), g$rd(a = 0, b = 10), g$rdn())
 ```
@@ -1887,7 +1798,6 @@ c(g$rd(), g$rd(a = 0, b = 10), g$rdn())
     [1]  0.02910383  9.49470177 -0.42916868
 
 ``` r
-
 tda_runif(5)
 ```
 
@@ -1907,7 +1817,6 @@ where the counts are per person.
 Box 57change and cntch, record mode and block mode
 
 ``` r
-
 seqs <- data.frame(ID = c(1, 1, 1, 2, 2, 3, 3, 3, 3, 3, 3),
                    S  = c(1, 3, 2, 2, 3, 3, 1, 2, 2, 2, 1),
                    T  = c(10, 15, 20, 12, 18, 8, 12, 15, 17, 18, 19))
@@ -1932,7 +1841,6 @@ tda_derive(seqs, CH = "change(S)", CNT = "cntch(S)", CCNT = "ccntch(S)",
     11  3 1 19  1   7    7     0   19
 
 ``` r
-
 tda_derive(seqs, CH = "change(S)", CNT = "cntch(S)", CCNT = "ccntch(S)",
            LAGCH = "lagch(S)", LAGT = "lag(T,-lagch(S))", block = "ID")
 ```
@@ -1959,7 +1867,6 @@ variable over it.
 Box 58gcnt, grec, gmean, gstd
 
 ``` r
-
 agg <- data.frame(V = c(1, 4, 5, 3, 6, 2), A = c(1, 1, 1, 2, 7, 7))
 # the manual's five: the block's size, the record's number in it,
 # the block's number, and whether the record is its first or last
@@ -1976,7 +1883,6 @@ tda_derive(agg, GCNT = "gcnt(A)", GREC = "grec(A)", GSN = "gsn(A)",
     6 2 7    2    2   3      0     1
 
 ``` r
-
 # gmean and gstd average a variable over the block
 tda_derive(agg, GM = "gmean(V,A)", GS = "gstd(V,A)", block = "A")
 ```
@@ -1999,7 +1905,6 @@ gradient and the Hessian, which TDA computes analytically – the manual’s
 Box 59evalf2: a function, its gradient and Hessian (deriv1.cf)
 
 ``` r
-
 tda_evalf("x * y^2", options = list(x = 2, y = 5), derivatives = 2)
 ```
 
@@ -2018,7 +1923,6 @@ function calls.
 Box 60integrate: int1.cf
 
 ``` r
-
 int1 <- tda_integrate("sqrt(x)", from = 0, to = 1)
 int1$value
 ```
@@ -2026,7 +1930,6 @@ int1$value
     [1] 0.6666669
 
 ``` r
-
 # the rest of what TDA reports: the rule, the relative error it worked
 # to, and how many times it called the function
 c(method = int1$method, rel_error = int1$rel_error, calls = int1$calls)
@@ -2043,14 +1946,12 @@ its limits may be expressions themselves; `int2.cf` and `int3.cf`.
 Box 61int() inside an expression (int2.cf, int3.cf)
 
 ``` r
-
 tda_evalf("int(0, 1, sqrt(t))")$value
 ```
 
     [1] 0.6666669
 
 ``` r
-
 tda_evalf("int(x, y * z, 2 * z^2)", options = list(x = 0, y = 2, z = 1.5))$value
 ```
 
@@ -2067,7 +1968,6 @@ weights `gss = 0.5, 0.25`: with the copy-on end-value rule, with
 Box 62sma: the three smoothings of ds3.cf
 
 ``` r
-
 y <- c(1, 3, 7, 6, 6)
 tda_sma(y, weights = c(0.5, 0.25))$table
 ```
@@ -2080,7 +1980,6 @@ tda_sma(y, weights = c(0.5, 0.25))$table
     5   0     5     6     6.00
 
 ``` r
-
 tda_sma(y, weights = c(0.5, 0.25), options = list(opt = 2))$table
 ```
 
@@ -2092,7 +1991,6 @@ tda_sma(y, weights = c(0.5, 0.25), options = list(opt = 2))$table
     5   0     5     6     6.00
 
 ``` r
-
 tda_sma(y, weights = c(0.5, 0.25), options = list(opt = 2, r = 2))$table
 ```
 
@@ -2119,7 +2017,6 @@ command.
 Box 63smd: the three smoothers of ds4.cf
 
 ``` r
-
 gen <- tda_rng()
 ds4 <- data.frame(C = 1:20, A = sapply(1:20, function(i) gen$rd()))
 ds4 <- tda_derive(ds4, M1 = "smd[sm=[3R]](A)", M2 = "smd[sm=[4253Ht]](A)",
@@ -2138,7 +2035,6 @@ head(ds4)
 Box 64smd: ds4.cf, drawn
 
 ``` r
-
 p <- tda_ps(ds4, width = 90, height = 50, xlim = c(0, 21), ylim = c(0, 1))
 p <- tda_pl(p, "plxa", sc = 1)
 p <- tda_pl(p, "plya", sc = 1, ic = 10)
@@ -2161,7 +2057,6 @@ smoothed with `sig = 1`, and plotted against the curve.
 Box 65spl: ds5.cf
 
 ``` r
-
 gen <- tda_rng()
 ds5 <- data.frame(X = (1:100) / 10)
 ds5$Z <- sin(ds5$X)
@@ -2184,7 +2079,6 @@ values.
 Box 66spl: ds5.cf, drawn
 
 ``` r
-
 p <- tda_ps(ds5, width = 90, height = 50, xlim = c(0, 10), ylim = c(-1.5, 1.5))
 p <- tda_pl(p, "plxa", sc = 1)
 p <- tda_pl(p, "plya", sc = 0.5, ic = 5)
@@ -2204,7 +2098,6 @@ starting values 0, 0; its box shows convergence in two iterations to x =
 Box 67fmin: fmin1.cf
 
 ``` r
-
 tda_minimize("(x - 5)^2 + (y + 6)^2")
 ```
 
@@ -2224,7 +2117,6 @@ nonlinear least squares; the minimum is at x = 51.
 Box 68fmin with data: fmin2.cf
 
 ``` r
-
 tda_freg({ fn = (x - A)^2 }, data = data.frame(A = 1:101))
 ```
 
@@ -2250,7 +2142,6 @@ the package.
 Box 69dstat on ds1.dat
 
 ``` r
-
 ds1 <- read.table(ex("ds1.dat"), col.names = c("X1", "X2", "X3", "X4"))
 tda_dstat(ds1)
 ```
@@ -2277,7 +2168,6 @@ three small examples told apart by its first column (`SEL`, TDA’s
 Box 70gdf: exact data (the manual’s Box 3)
 
 ``` r
-
 gdf1 <- read.table(ex("gdf1.dat"))
 names(gdf1) <- c("SEL", "ID", "L1", "YL", "DELTA")
 ex0 <- gdf1[gdf1$SEL == 0, ]
@@ -2292,7 +2182,6 @@ tda_gdf(~YL, data = ex0)$table
     5         1     9             1.0000000
 
 ``` r
-
 tda_gdf(~YL, data = ex0, what = "survivor")$table
 ```
 
@@ -2304,7 +2193,6 @@ tda_gdf(~YL, data = ex0, what = "survivor")$table
     5         1     9      1.110223e-16
 
 ``` r
-
 tda_gdf(~YL, data = ex0, what = "expected_values")$table
 ```
 
@@ -2323,7 +2211,6 @@ censored one, so the manual’s indicator is passed negated.
 Box 71gdf: right censored data (Boxes 4 and 5)
 
 ``` r
-
 ex1 <- gdf1[gdf1$SEL == 1, ]
 tda_gdf(~YL, data = ex1, censor = ex1$DELTA == 0)$table
 ```
@@ -2335,7 +2222,6 @@ tda_gdf(~YL, data = ex1, censor = ex1$DELTA == 0)$table
     4         1     5             1.0000000
 
 ``` r
-
 tda_gdf(~YL, data = ex1, censor = ex1$DELTA == 0, what = "expected_values")$table
 ```
 
@@ -2355,7 +2241,6 @@ over the observed points.
 Box 72gdf: the joint distribution (Box 6)
 
 ``` r
-
 ex2 <- gdf1[gdf1$SEL == 2, ]
 tda_gdf(~YL, data = ex2, id = ex2$ID, dimension = ex2$L1,
         method = "joint1")$table
@@ -2368,7 +2253,6 @@ tda_gdf(~YL, data = ex2, id = ex2$ID, dimension = ex2$L1,
     4       1       1       2      3    1.5                  0.75
 
 ``` r
-
 tda_gdf(~YL, data = ex2, id = ex2$ID, dimension = ex2$L1,
         method = "joint1", what = "survivor")$table
 ```
@@ -2386,7 +2270,6 @@ are Pruitt’s, the manual’s Box 8.
 Box 73gdf: joint distribution, censored (Boxes 9 and 10)
 
 ``` r
-
 pruitt <- read.table(ex("gdf2.dat"))
 names(pruitt) <- c("ID", "L1", "Y", "CEN")
 tda_gdf(~Y, data = pruitt, censor = pruitt$CEN == 0, id = pruitt$ID,
@@ -2405,7 +2288,6 @@ tda_gdf(~Y, data = pruitt, censor = pruitt$CEN == 0, id = pruitt$ID,
     8       1       1       2      8      8          1.000000e+00
 
 ``` r
-
 tda_gdf(~Y, data = pruitt, censor = pruitt$CEN == 0, id = pruitt$ID,
         dimension = pruitt$L1, method = "joint1", n_boxes = 64,
         options = list(sc = 0.5), what = "expected_values")$table
@@ -2438,7 +2320,6 @@ deviance in 6.15.2.1 differs.
 Box 74gdf: the two joint methods (Box 12)
 
 ``` r
-
 gen <- tda_rng()
 X <- 1:100
 Y <- X + sapply(X, function(i) gen$rd(a = -10, b = 10))
@@ -2485,7 +2366,6 @@ has no box here.
 Box 75quant
 
 ``` r
-
 tda_quant(cars)
 ```
 
@@ -2507,7 +2387,6 @@ the two-way one.
 Box 76freq and freq2
 
 ``` r
-
 tda_freq(ds1[c("X1", "X2", "X3")])
 ```
 
@@ -2522,7 +2401,6 @@ tda_freq(ds1[c("X1", "X2", "X3")])
          4  4  7  2     1      25         4         100
 
 ``` r
-
 tda_freq2(ds1$X2, ds1$X1)
 ```
 
@@ -2554,7 +2432,6 @@ groups a variable into classes and aggregates a second one over them.
 Box 77atab
 
 ``` r
-
 tda_atab(ds1[c("X3", "X4")], breaks = seq(-10, 10, 0.5))
 ```
 
@@ -2576,7 +2453,6 @@ tda_atab(ds1[c("X3", "X4")], breaks = seq(-10, 10, 0.5))
 Box 78corr
 
 ``` r
-
 tda_corr(ds1)
 ```
 
@@ -2598,7 +2474,6 @@ measures of association.
 Box 79freq2 with contingency measures
 
 ``` r
-
 tda_freq2(ds1$X2, ds1$X1, contingency = TRUE)
 ```
 
@@ -2659,7 +2534,6 @@ that the picture is the manual’s and not one of R’s.
 Box 80Points from TDA’s generator
 
 ``` r
-
 gen <- tda_rng()
 n <- 200
 X <- Y <- numeric(n)
@@ -2673,7 +2547,6 @@ df <- data.frame(x = X, y = Y)
 Box 81A scatterplot
 
 ``` r
-
 p <- tda_ps(data = df, width = 90, height = 50, xlim = c(0, 3), ylim = c(-1, 2.5))
 p <- tda_pl_scatter(p, "x", "y", symbol = 5, size = 1)
 p <- tda_pl_axes(p, sc = c(1), ic = c(10, 0))
@@ -2689,7 +2562,6 @@ overlap.
 Box 82A sunflower plot
 
 ``` r
-
 p <- tda_ps(data = df, width = 90, height = 50, xlim = c(0, 3), ylim = c(-1, 2.5))
 p <- tda_pl_scatter(p, "x", "y", type = "sunflower", grid = c(15, 10), size = 3)
 p <- tda_pl_axes(p, sc = c(1), ic = c(10, 1))
@@ -2703,7 +2575,6 @@ plot(p)
 Box 83A scatterplot with a lowess smooth
 
 ``` r
-
 p <- tda_ps(data = df, width = 90, height = 50, xlim = c(0, 3), ylim = c(-1, 2.5))
 p <- tda_pl_scatter(p, "x", "y", symbol = 5, size = 1, type = "lowess")
 p <- tda_pl(p, "plxa", sc = 1, ic = 10)
@@ -2718,7 +2589,6 @@ plot(p)
 Box 84A histogram (dh1.cf)
 
 ``` r
-
 dh1 <- read.table(ex("dh1.dat"))
 p <- tda_ps(data = dh1, width = 90, height = 50, xlim = c(0, 8), ylim = c(0, 0.4))
 p <- tda_pl(p, "plxa", sc = 1)
@@ -2736,7 +2606,6 @@ The same data smoothed with a triangular kernel.
 Box 85A kernel density estimate (dh2.cf)
 
 ``` r
-
 p <- tda_ps(data = dh1, width = 90, height = 50, xlim = c(0, 8), ylim = c(0, 0.6))
 p <- tda_pl(p, "plxa", sc = 1)
 p <- tda_pl(p, "plya", sc = 0.1)
@@ -2751,7 +2620,6 @@ plot(p)
 Box 86ineq
 
 ``` r
-
 tda_ineq(ds1)
 ```
 
@@ -2770,7 +2638,6 @@ tda_ineq(ds1)
 Box 87segr
 
 ``` r
-
 ds2 <- read.table(ex("ds2.dat"))
 names(ds2) <- c("G", paste0("X", 1:4))
 tda_segr(ds2, group = "G")
@@ -2794,7 +2661,6 @@ the `ltb` command, and `tp=` gives the interval boundaries.
 Box 88A life table, 30-month intervals
 
 ``` r
-
 lt <- tda_ltb(Surv(TFP, DES) ~ 1, data = d, tp = seq(0, 500, 30))
 lt$summary
 ```
@@ -2803,7 +2669,6 @@ lt$summary
     1  1      0   600      600 47.27858
 
 ``` r
-
 lt$table
 ```
 
@@ -2825,7 +2690,6 @@ lt$table
     15   420      435        1        1     0.5      0 0.00000000
 
 ``` r
-
 # ltb.1 holds a second block: the estimates themselves, with their
 # standard errors
 lt$survivor
@@ -2855,7 +2719,6 @@ the density and the rate, which is what the plotting commands take.
 Box 89The estimate as a data frame (ple1.cf)
 
 ``` r
-
 tda_survivor(lt)
 ```
 
@@ -2887,7 +2750,6 @@ name.
 Box 90Product-limit estimation with case weights
 
 ``` r
-
 rrdat2 <- read.table(ex("rrdat.2"))
 names(rrdat2) <- c("DUR", "CEN", "WT", "GRP")
 fit <- tda_ple(Surv(DUR, CEN) ~ as.factor(GRP), data = rrdat2, weights = "WT")
@@ -2928,7 +2790,6 @@ state; the manual’s Box 5 shows the first rows of its output file.
 Box 91ple2.cf: the job data, one destination
 
 ``` r
-
 ple2 <- tda_ple(Surv(TFP, DES) ~ 1, data = d)
 
 # the manual prints part of ple.2: its first rows, a slice from the
@@ -2959,7 +2820,6 @@ b[c(1:8, 41:46, 128:132), ]
     132  0   131  428      0        8     NA         NA          NA          NA
 
 ``` r
-
 # the table ends with the last observation, where only censoring
 # happened: TDA writes no estimate there, so those columns are NA
 tail(ple2$blocks[[1]], 2)
@@ -2980,7 +2840,6 @@ selected by its origin and destination.
 Box 92Sub-survivor functions, four destination states
 
 ``` r
-
 ple <- tda_ple(Surv(TFP, DES) ~ 1, data = d4)
 ple$summary
 ```
@@ -2993,7 +2852,6 @@ ple$summary
 Box 93One survivor function per destination state
 
 ``` r
-
 srv <- tda_survivor(ple)
 p <- tda_ps(srv, width = 80, height = 40, xlim = c(0, 300), ylim = c(0, 1))
 p <- tda_pl(p, "plxa", sc = 60, ic = 5)
@@ -3018,7 +2876,6 @@ points, and the survivor function reached at each.)
 Box 94Quantiles of the survivor function
 
 ``` r
-
 tda_ple(Surv(TFP, DES) ~ 1, data = d4,
         at_survival = seq(0.9, 0.1, by = -0.1))$quantiles
 ```
@@ -3050,7 +2907,6 @@ and group.
 Box 95ple6.cf: comparing two survivor functions
 
 ``` r
-
 rrdat3 <- read.table(ex("rrdat.3"), col.names = c("TF", "Status", "Group"))
 tda_ple(Surv(TF, Status) ~ as.factor(Group), data = rrdat3,
         compare = TRUE)$comparison
@@ -3068,7 +2924,6 @@ next box draws:
 Box 96Men and women
 
 ``` r
-
 pl2 <- tda_ple(Surv(TFP, DES) ~ as.factor(SEX), data = d, compare = TRUE)
 pl2$comparison
 ```
@@ -3085,7 +2940,6 @@ are still at risk, so the manual cuts the plot at 290 months.
 Box 97Survivor functions with confidence bands
 
 ``` r
-
 sb <- tda_survivor(pl2)
 sb <- sb[sb$time < 290, ]
 p <- tda_ps(sb, width = 90, height = 50, xlim = c(0, 300), ylim = c(0, 1))
@@ -3113,7 +2967,6 @@ columns.
 Box 98epsdat: state distributions (ed5.cf)
 
 ``` r
-
 ed1 <- read.table(ex("ed1.dat"),
                   col.names = c("ID", "SN", "ORG", "DES", "TS", "TF", "S1", "S2"))
 tda_state_dist(Surv(TS, TF, ORG, DES) ~ 1, ed1, times = seq(0, 30, 5))
@@ -3129,7 +2982,6 @@ tda_state_dist(Surv(TS, TF, ORG, DES) ~ 1, ed1, times = seq(0, 30, 5))
     7   30      1      0      0     1       4
 
 ``` r
-
 # Box 2's second table: the same file read as multi-episode. Naming the
 # id (and the spell number) puts a case's later spells with it instead
 # of counting them as missing.
@@ -3153,7 +3005,6 @@ Sequence data are one row per case, one column per position.
 Box 99seqlg: length and gaps
 
 ``` r
-
 seqd1 <- read.table(ex("seq.d1"))
 names(seqd1) <- c("ID", paste0("Y", seq_len(ncol(seqd1) - 1L)))
 tda_seqlg(seqd1, id = "ID")
@@ -3171,7 +3022,6 @@ tda_seqlg(seqd1, id = "ID")
 Box 100seqgc
 
 ``` r
-
 tda_seqgc(seqd1, id = "ID")
 ```
 
@@ -3187,7 +3037,6 @@ tda_seqgc(seqd1, id = "ID")
 Box 101seqsd and seqen
 
 ``` r
-
 tda_seqsd(seqd1[, -1])
 ```
 
@@ -3202,7 +3051,6 @@ tda_seqsd(seqd1[, -1])
     8    7    1    1    2     4     1     5
 
 ``` r
-
 tda_seqen(seqd1[, -1])
 ```
 
@@ -3224,7 +3072,6 @@ states, and `"*"` matches anything.
 Box 102seqpm
 
 ``` r
-
 tda_seqpm(seqd1[, -1L], patterns = list("-", c(3, 3), c(3, "*", 3)))
 ```
 
@@ -3246,7 +3093,6 @@ tda_seqpm(seqd1[, -1L], patterns = list("-", c(3, 3), c(3, "*", 3)))
 Box 103seqm (seqm1.cf)
 
 ``` r
-
 seqmd1 <- read.table(ex("seqm.d1"))
 tda_seqm(seqmd1)
 ```
@@ -3262,7 +3108,6 @@ as the sequence of operations or as the longest common subsequence.
 Box 104The alignment behind the distance
 
 ``` r
-
 s <- tda_seqm(seqmd1, print = "sequential")
 attr(s, "pairs")
 ```
@@ -3276,7 +3121,6 @@ attr(s, "pairs")
     6 4 3     5     5       0       0       2       2       2        2
 
 ``` r
-
 attr(s, "dist_by_time")[, , "t4"]
 ```
 
@@ -3287,7 +3131,6 @@ attr(s, "dist_by_time")[, , "t4"]
     [4,]    4    2    2    0
 
 ``` r
-
 s <- tda_seqm(seqmd1, print = "lcs")
 attr(s, "lcs")
 ```
@@ -3303,7 +3146,6 @@ behind each distance.
 Box 105A substitution cost matrix
 
 ``` r
-
 seqmd3 <- read.table(ex("seqm.d3"))
 scost <- matrix(0, 10, 10)
 for (i in 1:10) for (j in 1:10) scost[i, j] <- 0.1 * abs(i - j)
@@ -3316,14 +3158,12 @@ dp$seqA        # the two sequences the matrix aligns
     [1] 1 1 2 3 4 5 6
 
 ``` r
-
 dp$seqB
 ```
 
     [1] 4 5 6 7 7 7 7 7
 
 ``` r
-
 dp$D
 ```
 
@@ -3345,7 +3185,6 @@ subsequence and the positions it occupies (`seqm1c.cf`).
 Box 106seqm’s s= option (seqm1b.cf, seqm1c.cf)
 
 ``` r
-
 seqmd1 <- read.table(ex("seqm.d1"), col.names = paste0("Y", 1:5))
 attr(tda_seqm(seqmd1, print = "sequential"), "pairs")
 ```
@@ -3359,7 +3198,6 @@ attr(tda_seqm(seqmd1, print = "sequential"), "pairs")
     6 4 3     5     5       0       0       2       2       2        2
 
 ``` r
-
 lcs <- attr(tda_seqm(seqmd1, print = "lcs"), "pairs")
 lcs
 ```
@@ -3380,7 +3218,6 @@ differently from the first.
 Box 107indel costs (seqm4.cf)
 
 ``` r
-
 seqmd4 <- read.table(ex("seqm.d4"))
 tda_seqm(seqmd4)
 ```
@@ -3392,7 +3229,6 @@ tda_seqm(seqmd4)
     5 8 6 4 2
 
 ``` r
-
 tda_seqm(seqmd4, indel = c(1, 0.5))
 ```
 
@@ -3403,7 +3239,6 @@ tda_seqm(seqmd4, indel = c(1, 0.5))
     5 5 4 3 2
 
 ``` r
-
 tda_seqm(seqmd4, indel = c(1, 0))
 ```
 
@@ -3423,7 +3258,6 @@ of its output file `seqm5.d`.
 Box 108seqm5.cf: substitution costs based on the data
 
 ``` r
-
 tda_seqm(seqmd4, subcost = 2)
 ```
 
@@ -3443,7 +3277,6 @@ prints a regression.
 Box 109lsreg
 
 ``` r
-
 lsreg1 <- read.table(ex("lsreg1.dat"))
 names(lsreg1) <- c("Height", "Weight")
 summary(tda_lsreg(Weight ~ Height, data = lsreg1))
@@ -3472,7 +3305,6 @@ coefficient names `b1`, `b2` and so on.
 Box 110Equality and inequality constraints
 
 ``` r
-
 lsreg2 <- read.table(ex("lsreg2.dat"))
 names(lsreg2) <- c("X1", "X2", "Y")
 tda_lsreg(Y ~ 0 + X1 + X2, data = lsreg2,
@@ -3497,7 +3329,6 @@ reported in one table.
 Box 111A regression per region
 
 ``` r
-
 lsreg3 <- read.table(ex("lsreg3.dat"))
 names(lsreg3) <- c("X1", "G", "Y", "NE", "NC", "SO", "WE")
 lsreg3$Y2 <- lsreg3$Y * lsreg3$Y
@@ -3527,7 +3358,6 @@ summary(reg)
     Multiple R-squared: 0.9739, Adjusted R-squared: 0.9708
 
 ``` r
-
 # the per-group table TDA prints for dgrp=: the cases in each and its
 # weight
 reg$groups
@@ -3540,7 +3370,6 @@ reg$groups
     4   DgrpWE    12   0.25
 
 ``` r
-
 # and the fit statistics the manual's box reports alongside them
 unlist(reg$stats)
 ```
@@ -3553,7 +3382,6 @@ unlist(reg$stats)
 Box 112l1reg
 
 ``` r
-
 l1reg4 <- read.table(ex("l1reg4.dat"))
 names(l1reg4) <- c("Y", "X1", "X2")
 tda_l1reg(Y ~ X1 + X2, data = l1reg4)
@@ -3576,7 +3404,6 @@ smooths with a kernel, against the curve the data were generated from.
 Box 113A curve that is hard to recover, plus noise
 
 ``` r
-
 gen <- tda_rng()
 n <- 256
 X <- E <- numeric(n)
@@ -3591,7 +3418,6 @@ npreg <- data.frame(X = X, Y = Z * Z * Z + E)
 Box 114npreg: the kernel estimate
 
 ``` r
-
 np <- tda_npreg(Y ~ X, data = npreg, method = "mean", kernel = "quartic",
                 bandwidth = 0.1, x = seq(0, 1, 0.01))
 head(np$table)
@@ -3608,7 +3434,6 @@ head(np$table)
 Box 115npreg, against the curve it is estimating
 
 ``` r
-
 p <- tda_ps(npreg, width = 90, height = 50, xlim = c(0, 1), ylim = c(-1.2, 1.8))
 p <- tda_pl_axes(p, sc = c(0.1, 0.5), ic = 0)
 p <- tda_pl_points(p, "X", "Y", symbol = 5, size = 0.5, lty = 0)
@@ -3635,7 +3460,6 @@ The likelihood below is the exponential transition rate model of
 Box 116An exponential model written as a likelihood (frml1.cf)
 
 ``` r
-
 d$DUR <- d$TFin - d$TStart + 1L
 d$W <- as.integer(d$SEX == 2)
 
@@ -3672,7 +3496,6 @@ the `qreg` command, model 1 the logit and model 2 the probit.
 Box 117Binary logit (qr1.cf, qr5.cf)
 
 ``` r
-
 qr1 <- read.table(ex("qr1.dat"))
 names(qr1) <- c("Dose", "Weight", "Response")
 qr1$Log10Dose <- log(qr1$Dose) / log(10)
@@ -3696,7 +3519,6 @@ logit
        2 1.0000    X Log10Dose  5.9702 1.4492  4.1197 1.0000
 
 ``` r
-
 logit$categories
 ```
 
@@ -3705,7 +3527,6 @@ logit$categories
     2        1 38 51.35135
 
 ``` r
-
 attr(logit$categories, "observations")
 ```
 
@@ -3713,7 +3534,6 @@ attr(logit$categories, "observations")
     74 
 
 ``` r
-
 # qr1.cf fits the probit beside the logit, on the same data
 tda_qreg(Response ~ Log10Dose, data = qr1, weights = "Weight",
          model = "probit")
@@ -3733,7 +3553,6 @@ tda_qreg(Response ~ Log10Dose, data = qr1, weights = "Weight",
        2 1.0000    X Log10Dose  3.4181 0.7455  4.5847 1.0000
 
 ``` r
-
 logit$standardized
 ```
 
@@ -3742,7 +3561,6 @@ logit$standardized
     2   2   1    X Log10Dose  5.970180 391.57614388   5.12469 0.2737053
 
 ``` r
-
 logit$predictions
 ```
 
@@ -3764,7 +3582,6 @@ logit$predictions
 Box 118The same data, probit
 
 ``` r
-
 tda_qreg(Response ~ Log10Dose, data = qr1, weights = "Weight", model = 2)
 ```
 
@@ -3787,7 +3604,6 @@ The two link functions side by side, the logistic and, through TDA’s
 Box 119plot-bin.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(-4, 4), ylim = c(0, 1), width = 90, height = 50)
 p <- tda_pl_axes(p, sc = c(1, 1), ic = c(5, 10))
 p <- tda_pl_function(p, "exp(x1)/(1+exp(x1))", range = c(-4, 4), step = 0.05)
@@ -3809,7 +3625,6 @@ starting values come from the fit without the random effect.
 Box 120A grouped logit, with and without a random effect (qr5.cf)
 
 ``` r
-
 qr5 <- read.table(ex("qr5.dat"))
 names(qr5) <- c("Y", "N", "S", "X")
 qr5$SX <- qr5$S * qr5$X
@@ -3840,7 +3655,6 @@ fml
        4     beta3 -0.7781 0.3064 -2.5392 0.9889
 
 ``` r
-
 tda_fml({
     xb = beta0 + S * beta1 + X * beta2 + SX * beta3
     ee = intn(7, bc(N, Y) * (exp(xb + t * gam)^Y) / ((1 + exp(xb + t * gam))^N))
@@ -3874,7 +3688,6 @@ Models 3 and 4.
 Box 121Ordinal logit and probit (qr2.cf)
 
 ``` r
-
 qr2 <- read.table(ex("qr2.dat"), col.names = c("Y", "X1", "X2"))
 
 qr_ol <- tda_qreg(Y ~ X1 + X2, data = qr2, model = 3, predictions = TRUE)
@@ -3897,7 +3710,6 @@ qr_ol
        5    NA    X       X2  1.3100 0.8949  1.4639 0.8568
 
 ``` r
-
 qr_ol$categories
 ```
 
@@ -3908,7 +3720,6 @@ qr_ol$categories
     4        3 6  30
 
 ``` r
-
 # the manual's Box 5 is this table in full: the observed values, the
 # fitted probability of the observed category, and the cumulative
 # probabilities per category
@@ -3938,7 +3749,6 @@ qr_ol$predictions
     20     20    1 1 3.175  0 0.5150621 0.8125750 0.5150621 0.26661731     0
 
 ``` r
-
 tda_qreg(Y ~ X1 + X2, data = qr2, model = 4)
 ```
 
@@ -3963,7 +3773,6 @@ shows what the model is. `eexp` is TDA’s logistic function.
 Box 122The ordinal logit as a likelihood
 
 ``` r
-
 tda_fml({
     xb = X1 * beta1 + X2 * beta2
     theta0 = 1
@@ -4007,7 +3816,6 @@ Model 5, with `nq=` the number of response categories.
 Box 123Multinomial logit (qr3.cf)
 
 ``` r
-
 qr3 <- read.table(ex("qr3.dat"), col.names = c("X", "Weight", "Y"))
 ml <- tda_qreg(Y ~ X, data = qr3, weights = "Weight", model = 5, nq = 5)
 ml
@@ -4032,7 +3840,6 @@ ml
        8 5.0000    X         X -0.9375 0.1202 -7.7979 1.0000
 
 ``` r
-
 # the distribution over the response's categories, which qreg prints
 # before it estimates
 ml$categories
@@ -4046,7 +3853,6 @@ ml$categories
     5        5  55  9.466437
 
 ``` r
-
 attr(ml$categories, "observations")   # the weighted total TDA prints
 ```
 
@@ -4060,7 +3866,6 @@ response.
 Box 124A multinomial logit over lvl() columns (qr4.cf)
 
 ``` r
-
 qr4 <- read.table(ex("qr4.dat"), col.names = c("Z1", "Z2", "Z3", "Y"))
 cml <- tda_qreg(Y ~ 0 + lvl(Z1, Z2, Z3), data = qr4, model = 5, nq = 3,
                 predictions = TRUE)
@@ -4080,7 +3885,6 @@ cml
        1    NA   Z1   Lvl1_1 -0.3568 0.0776 -4.5966 1.0000
 
 ``` r
-
 cml$categories
 ```
 
@@ -4090,7 +3894,6 @@ cml$categories
     3        3  7  14
 
 ``` r
-
 attr(cml$categories, "observations")
 ```
 
@@ -4098,7 +3901,6 @@ attr(cml$categories, "observations")
     50 
 
 ``` r
-
 # the manual's Box 5 is this table in full
 cml$predictions
 ```
@@ -4162,7 +3964,6 @@ Model 6. The constraints zero the terms that are not wanted.
 Box 125Multivariate probit (qr6.cf)
 
 ``` r
-
 mvp <- tda_qreg(Y ~ X, data = qr3, model = 6, nq = 5, weights = "Weight",
          constraints = c("b9 = 0", "b10 = 0", "b11 = 0", "b12 = 0", "b13 = 0",
                          "b14 = 0", "b15 = 0", "b16 = 0", "b17 = 0",
@@ -4201,7 +4002,6 @@ mvp
       18     NA    S Sigma 5, 4  0.0000 0.0000      NA     NA
 
 ``` r
-
 unlist(mvp$stats)
 ```
 
@@ -4211,7 +4011,6 @@ unlist(mvp$stats)
 Box 126Multivariate probit over lvl() columns (qr7.cf)
 
 ``` r
-
 mv <- tda_qreg(Y ~ 0 + lvl(Z1, Z2, Z3), data = qr4, model = 6, nq = 3,
                start = c(-0.1716, 0, 0, 0), constraints = c("b3 = 0", "b4 = 0"))
 mv
@@ -4234,7 +4033,6 @@ mv
        4    NA    S Sigma 3, 2  0.0000 0.0000      NA     NA
 
 ``` r
-
 # the correlation among the latent equations, which TDA writes into its
 # ppar= file with the rows commented
 mv$correlation
@@ -4254,7 +4052,6 @@ is constrained to one.
 Box 127Poisson regression, free and with an offset (cd1.cf)
 
 ``` r
-
 cd1 <- read.table(ex("cd1.dat"),
                   col.names = c("NDI", "Service", "B", "C", "D", "E",
                                 "C60", "C65", "C70", "P75"))
@@ -4297,7 +4094,6 @@ free
       10      bp75  0.3703 0.1181  3.1339 0.9983
 
 ``` r
-
 # what the manual's box reports around the estimates
 unlist(free$convergence)
 ```
@@ -4308,7 +4104,6 @@ unlist(free$convergence)
     "3.04826456175064e-11" "5.57244259068293e-14"  "2.0557657693741e-06"                   "12" 
 
 ``` r
-
 pois(constraints = "b9 = 1")
 ```
 
@@ -4349,7 +4144,6 @@ digits depend on where the algorithm stops (the manual’s box reads
 Box 128cd2.cf: a negative binomial count model
 
 ``` r
-
 tda_fml({
     xb = b0 + B * bb + C * bc + D * bd + E * be +
          C60 * bc60 + C65 * bc65 + C70 * bc70 + P75 * bp75 + LOGS * blogs
@@ -4397,7 +4191,6 @@ starting values here.
 Box 129glm, Gaussian, identity and log links
 
 ``` r
-
 plain <- tda_glm(Weight ~ Height, data = lsreg1)
 plain
 ```
@@ -4414,7 +4207,6 @@ plain
        2 1.0000    Height    3.8990  0.5161  7.5549 1.0000
 
 ``` r
-
 # the manual prints the deviance as 2142.4880. Reading its data file TDA
 # stores each variable as a 4-byte float; the wrapper hands R's doubles
 # over directly, and stats::glm on the same data agrees with it exactly.
@@ -4425,7 +4217,6 @@ unlist(plain$stats)
            17.0000      2142.4877      2142.4877       112.7625       126.0287         2.0000 
 
 ``` r
-
 gen <- tda_rng()
 n <- 100
 X <- Y <- numeric(n)
@@ -4450,7 +4241,6 @@ bad
        2 1.0000         X 0.9958 0.0008 1299.1796 1.0000
 
 ``` r
-
 # what the manual's Box 4 reports around the estimates: the degrees of
 # freedom, the deviance and Pearson statistics, the scale estimates and
 # the rank, and how far the last step moved
@@ -4461,7 +4251,6 @@ unlist(bad$stats)
         98.0000000     19.9937532     19.9937532      0.1999375      0.2040179      2.0000000 
 
 ``` r
-
 unlist(bad$convergence)[c("converged", "iterations", "final_change")]
 ```
 
@@ -4476,7 +4265,6 @@ rather than selected: `custom_link=` takes a TDA expression in `mue`.
 Box 130Binomial models, selected and hand-written links
 
 ``` r
-
 glmbin1 <- tda_glm(Response ~ Log10Dose, data = qr1, weights = "Weight", family = 2)
 glmbin1
 ```
@@ -4494,7 +4282,6 @@ glmbin1
        2 1.0000 Log10Dose  5.9702 1.4492  4.1197 0.9983
 
 ``` r
-
 unlist(glmbin1$stats)
 ```
 
@@ -4502,7 +4289,6 @@ unlist(glmbin1$stats)
     11.00000 74.22131  2.00000 
 
 ``` r
-
 glm3 <- read.table(ex("glm3.dat"), col.names = c("D", "N", "Y"))
 glm3$D <- log(glm3$D)
 
@@ -4522,7 +4308,6 @@ glmbin2
        2 1.0000         D  3.1035 0.3877  8.0047 0.9987
 
 ``` r
-
 unlist(glmbin2$stats)
 ```
 
@@ -4530,7 +4315,6 @@ unlist(glmbin2$stats)
     4.000000 1.424057 2.000000 
 
 ``` r
-
 glmbin1 <- tda_glm(Y ~ D, data = glm3, family = 2, trials = glm3$N,
         custom_link = "log(mue / (1 - mue))")
 glmbin1
@@ -4548,7 +4332,6 @@ glmbin1
        2 1.0000         D  3.1035 0.3877  8.0047 0.9987
 
 ``` r
-
 unlist(glmbin1$stats)
 ```
 
@@ -4563,7 +4346,6 @@ as an equality constraint on the GLM.
 Box 131The Poisson family
 
 ``` r
-
 glm5 <- read.table(ex("glm5.dat"), col.names = c("X", "Y"))
 glmpois1 <- tda_glm(Y ~ X, data = glm5, family = "poisson")
 glmpois1
@@ -4581,7 +4363,6 @@ glmpois1
        2 1.0000         X 1.1754 0.3565  3.2974 0.9891
 
 ``` r
-
 unlist(glmpois1$stats)
 ```
 
@@ -4589,7 +4370,6 @@ unlist(glmpois1$stats)
     8.000000 6.190151 2.000000 
 
 ``` r
-
 glmpois1 <- tda_glm(NDI ~ B + C + D + E + C60 + C65 + C70 + P75 + LOGS, data = cd1,
         family = "poisson", equality = c("b9 = 1"),
         control = tda_control(maxit = 100))
@@ -4618,7 +4398,6 @@ glmpois1
       10 1.0000      LOGS  1.0000     NA       NA     NA
 
 ``` r
-
 unlist(glmpois1$stats)
 ```
 
@@ -4630,7 +4409,6 @@ unlist(glmpois1$stats)
 Box 132The Gamma family, log and inverse links
 
 ``` r
-
 gen <- tda_rng()
 n <- 1000
 X <- Y <- numeric(n)
@@ -4656,7 +4434,6 @@ glmgamma1
        2 1.0000         X 1.0947 0.1070 10.2332 1.0000
 
 ``` r
-
 unlist(glmgamma1$stats)
 ```
 
@@ -4664,7 +4441,6 @@ unlist(glmgamma1$stats)
     998.0000 519.1471   2.0000 
 
 ``` r
-
 # glm7.cf's second model: the same generator continued, with expectation
 # 1/(1+X), and the gamma family's canonical (reciprocal) link
 X2 <- Y2 <- numeric(n)
@@ -4690,7 +4466,6 @@ glmgamma2
        2 1.0000        X2 1.0223 0.1604  6.3736 1.0000
 
 ``` r
-
 unlist(glmgamma2$stats)
 ```
 
@@ -4698,7 +4473,6 @@ unlist(glmgamma2$stats)
     998.0000 550.6416   2.0000 
 
 ``` r
-
 glm8a <- read.table(ex("glm8a.dat"), col.names = c("U", "Y", "L"))
 glm8a$X <- log(glm8a$U)
 glmgamma3 <- tda_glm(Y ~ X, data = glm8a[glm8a$L == 0, ], family = "Gamma",
@@ -4719,7 +4493,6 @@ glmgamma3
        2 1.0000         X  0.0153 0.0084  1.8287 0.8898
 
 ``` r
-
 unlist(glmgamma3$stats)
 ```
 
@@ -4727,7 +4500,6 @@ unlist(glmgamma3$stats)
     7.00000000 0.01672972 2.00000000 
 
 ``` r
-
 glmgamma4 <- tda_glm(Y ~ X, data = glm8a[glm8a$L == 1, ], family = "Gamma",
         start = c(-0.02, 0.02))
 glmgamma4
@@ -4746,7 +4518,6 @@ glmgamma4
        2 1.0000         X  0.0236 0.0135  1.7423 0.8750
 
 ``` r
-
 unlist(glmgamma4$stats)
 ```
 
@@ -4762,7 +4533,6 @@ values 0.5, 0.5.
 Box 133The inverse Gaussian family (glm9.cf)
 
 ``` r
-
 gen <- tda_rng()
 n <- 1000
 X <- Mu <- Z <- X1 <- Y <- numeric(n)
@@ -4792,7 +4562,6 @@ ig
        2 1.0000         X 0.8148 0.1909  4.2690 1.0000
 
 ``` r
-
 unlist(ig$stats)
 ```
 
@@ -4800,7 +4569,6 @@ unlist(ig$stats)
      998.000 1933.998    2.000 
 
 ``` r
-
 unlist(ig$convergence)[c("converged", "iterations", "final_change")]
 ```
 
@@ -4818,7 +4586,6 @@ Gallant’s (1987, p. 4) data, 30 observations, which the manual’s
 Box 134freg: Gallant’s example (freg1.cf)
 
 ``` r
-
 freg1dat <- read.csv(ex("gallant.dat"))
 tda_freg({
     ax = a1 * X1 + a2 * X2 + a4 * exp(a3 * X3)
@@ -4862,7 +4629,6 @@ transition in the data.
 Box 135The command file rt1.cf, in R
 
 ``` r
-
 fit <- tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 2,
                 residuals = TRUE,
                 # rt1.cf's constellation: COHO3 = 1 and W = 1
@@ -4893,7 +4659,6 @@ chosen covariate constellation.
 Box 136rt1.cf: generalized residuals and the rate table
 
 ``` r
-
 # the manual prints part of res.d: its first rows and its last
 head(fit$residuals, 6)
 ```
@@ -4907,7 +4672,6 @@ head(fit$residuals, 6)
     6    6   0   1  0  30 0.018859457 0.56791490 0.5657837      1
 
 ``` r
-
 tail(fit$residuals, 6)
 ```
 
@@ -4920,7 +4684,6 @@ tail(fit$residuals, 6)
     600  600   0   1  0  13 0.018859457 0.7825692 0.2451729      1
 
 ``` r
-
 # the rate table, and the constellation it was computed at -- which
 # covariate values, and the coefficients they multiply
 attr(fit$rates, "constellation")
@@ -4933,7 +4696,6 @@ attr(fit$rates, "constellation")
     4   4  1   0   1  A        W  0.5065294         1
 
 ``` r
-
 fit$rates
 ```
 
@@ -4968,7 +4730,6 @@ holds the doubles TDA computed.
 Box 137The estimates, at full precision
 
 ``` r
-
 coef(fit)
 ```
 
@@ -4976,14 +4737,12 @@ coef(fit)
     -5.0113544  0.5340841  0.6738264  0.5065294 
 
 ``` r
-
 logLik(fit)
 ```
 
     'log Lik.' -2475.438 (df=4)
 
 ``` r
-
 fit$logLik_null   # the exponential null model TDA starts from
 ```
 
@@ -5003,7 +4762,6 @@ manual’s table of rate ratios.
 Box 138rt1m.cf: three transitions, and the relative risks (frml1m.cf)
 
 ``` r
-
 d4m <- tda_rrdat(states = 4, upward = "ge")
 d4m$W <- as.integer(d4m$SEX == 2)
 fitm <- tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d4m, model = 2,
@@ -5018,7 +4776,6 @@ fitm$episodes
     4  1   0   3      155      155      56.40000      0    332    FALSE
 
 ``` r
-
 fitm$estimates
 ```
 
@@ -5037,7 +4794,6 @@ fitm$estimates
     12  12  1   0   3  A        W  1.11561053 0.1658799   6.7254092 1.0000000
 
 ``` r
-
 fitm
 ```
 
@@ -5066,7 +4822,6 @@ fitm
       12  1   0   3  A        W  1.1156 0.1659   6.7254 1.0000
 
 ``` r
-
 fitm$relative_risk
 ```
 
@@ -5092,7 +4847,6 @@ period given by `tp=`, the covariate effects held common.
 Box 139A piecewise constant exponential (rt2.cf)
 
 ``` r
-
 rt2 <- tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 3,
                 tp = seq(0, 96, 12))
 rt2$periods
@@ -5110,7 +4864,6 @@ rt2$periods
     9    96 Inf        0    144     70
 
 ``` r
-
 rt2
 ```
 
@@ -5144,7 +4897,6 @@ showing what a constraint does.
 Box 140rt2c.cf: all periods constrained equal
 
 ``` r
-
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 3,
          tp = seq(0, 96, 12),
          constraints = sprintf("b%d - b%d = 0", 1:8, 2:9))
@@ -5182,7 +4934,6 @@ baseline.
 Box 141Period-specific effects (rt3.cf)
 
 ``` r
-
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 16,
          tp = seq(0, 96, 12))
 ```
@@ -5245,7 +4996,6 @@ each.
 Box 142The model numbers
 
 ``` r
-
 TDA_MODELS
 ```
 
@@ -5268,7 +5018,6 @@ in time.
 Box 143Polynomial rates
 
 ``` r
-
 poly1 <- tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d,
                   model = 4, degree = 2)
 poly1
@@ -5292,7 +5041,6 @@ poly1
        6  1   0   1  B   Beta-2  0.0000 0.0000   3.2809 0.9990
 
 ``` r
-
 unlist(poly1$convergence)   # what the manual prints above the estimates
 ```
 
@@ -5302,7 +5050,6 @@ unlist(poly1$convergence)   # what the manual prints above the estimates
      "0.00705957041140394" "9.30147686918993e-14" "2.72933217258955e-06"                   "10" 
 
 ``` r
-
 poly2 <- tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d,
                   model = 5, degree = 2)
 poly2
@@ -5326,7 +5073,6 @@ poly2
        6  1   0   1  B   Beta-2 -0.0000 0.0000  -0.7764 0.5625
 
 ``` r
-
 unlist(poly2$convergence)
 ```
 
@@ -5343,7 +5089,6 @@ to; the manual’s example puts them on the manual’s `xb` and `xc`.
 Box 144Gompertz-Makeham (rt6.cf)
 
 ``` r
-
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 6,
          on = c("xb", "xc"))
 ```
@@ -5372,7 +5117,6 @@ Gompertz transition rates at three shape parameters.
 Box 145plot-gm.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 5), ylim = c(0, 3), width = 90, height = 50)
 p <- tda_pl_axes(p, sc = c(1, 1))
 p <- tda_pl_frame(p)
@@ -5394,7 +5138,6 @@ plot(p)
 Box 146Weibull (rt7.cf)
 
 ``` r
-
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 7)
 ```
 
@@ -5419,7 +5162,6 @@ Weibull transition rates at five shape parameters.
 Box 147plot-wei.cf
 
 ``` r
-
 wei <- function(b) sprintf("%s*1^%s*x1^(%s-1)", b, b, b)
 
 p <- tda_ps(xlim = c(0, 3), ylim = c(0, 3), width = 90, height = 50)
@@ -5447,7 +5189,6 @@ plot(p)
 Box 148Sickle (rt8.cf)
 
 ``` r
-
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 8)
 ```
 
@@ -5472,7 +5213,6 @@ Sickle transition rates at three scale parameters.
 Box 149plot-sic.cf
 
 ``` r
-
 sic <- function(b) sprintf("1*x1*exp(-x1/%s)", b)
 
 p <- tda_ps(xlim = c(0, 12), ylim = c(0, 0.8), width = 90, height = 50)
@@ -5496,7 +5236,6 @@ plot(p)
 Box 150Log-logistic (rt9.cf)
 
 ``` r
-
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 9)
 ```
 
@@ -5521,7 +5260,6 @@ Log-logistic transition rates at five shape parameters.
 Box 151plot-ll.cf
 
 ``` r
-
 ll <- function(b) sprintf("%s*x1^(%s-1)/(1+x1^%s)", b, b, b)
 
 p <- tda_ps(xlim = c(0, 3), ylim = c(0, 2), width = 90, height = 50)
@@ -5549,7 +5287,6 @@ plot(p)
 Box 152Log-normal (rt12.cf)
 
 ``` r
-
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 12)
 ```
 
@@ -5574,7 +5311,6 @@ Log-normal transition rates at three scale parameters.
 Box 153plot-ln.cf
 
 ``` r
-
 ln <- function(b) sprintf("ndf(log(x1)/%s)/(%s*x1*(1-nd(log(x1)/%s)))",
                           b, b, b)
 
@@ -5599,7 +5335,6 @@ plot(p)
 Box 154Generalized gamma (rt13.cf)
 
 ``` r
-
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 13)
 ```
 
@@ -5626,7 +5361,6 @@ incomplete gamma function.
 Box 155plot-g1.cf
 
 ``` r
-
 gg <- function(k) sprintf(
     "%s^(%s-0.5)*exp(sqrt(%s)*log(x1)-%s*exp(log(x1)/sqrt(%s)))/(x1*exp(lgam(%s))*(1-icg(%s*exp(log(x1)/sqrt(%s)),%s)))",
     k, k, k, k, k, k, k, k, k)
@@ -5654,7 +5388,6 @@ Generalised gamma transition rates at three scale parameters.
 Box 156plot-g2.cf
 
 ``` r
-
 gg2 <- function(b) sprintf(
     "1^(1-0.5)*exp(sqrt(1)*log(x1)/%s-1*exp((log(x1)/%s)/sqrt(1)))/(x1*exp(lgam(1))*(1-icg(1*exp((log(x1)/%s)/sqrt(1)),1)))",
     b, b, b)
@@ -5682,7 +5415,6 @@ plot(p)
 Box 157Inverse Gaussian (rt14.cf)
 
 ``` r
-
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 14)
 ```
 
@@ -5707,7 +5439,6 @@ The inverse Gaussian rate, written out with TDA’s `ndf()` and `nd()`.
 Box 158plot-ig.cf
 
 ``` r
-
 ig <- function(a) sprintf(
     "(ndf((%s*x1-1)/sqrt(x1))/x1^(3/2))/(nd((1-%s*x1)/sqrt(x1))-exp(2*%s)*nd((-1-%s*x1)/sqrt(x1)))",
     a, a, a, a)
@@ -5743,7 +5474,6 @@ a model with its duration dependence writable.
 Box 159An exponential model as frml (fml1.cf)
 
 ``` r
-
 tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
     rate = exp(a0 + COHO2 * a1 + COHO3 * a2 + W * a3)
     l1 = ifelse(DES, log(rate), 0)
@@ -5777,7 +5507,6 @@ and the sum of all three to the survivor term. Its `DES` is `rt1m.cf`’s
 Box 160Three competing rates (frml1m.cf)
 
 ``` r
-
 tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
     rate1 = exp(a10 + COHO2 * a11 + COHO3 * a12 + W * a13)
     rate2 = exp(a20 + COHO2 * a21 + COHO3 * a22 + W * a23)
@@ -5830,7 +5559,6 @@ Box 161frml2.cf, frml2c.cf: the piecewise constant model, by hand
 (frml9.cf)
 
 ``` r
-
 pw <- function(...) tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
     bb = COHO2 * b1 + COHO3 * b2 + W * b3
     p1 = ge(tf, 0) & lt(tf, 12);  p2 = ge(tf, 12) & lt(tf, 24)
@@ -5915,7 +5643,6 @@ pw()                                              # frml2.cf
       12        b3  0.4336 0.0949   4.5687 1.0000
 
 ``` r
-
 pw(constraints = sprintf("b%d - b%d = 0", 2:9, 1:8))   # frml2c.cf
 ```
 
@@ -5979,7 +5706,6 @@ pw(constraints = sprintf("b%d - b%d = 0", 2:9, 1:8))   # frml2c.cf
 Box 162Weibull and log-normal, written out
 
 ``` r
-
 tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
     aa = exp(a0 + COHO2 * a1 + COHO3 * a2 + W * a3)
     bb = exp(b0)
@@ -6009,7 +5735,6 @@ tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
        5        b0 -0.0700 0.0366  -1.9119 0.9441
 
 ``` r
-
 tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
     aa = a0 + COHO2 * a1 + COHO3 * a2 + W * a3
     bb = exp(b0)
@@ -6051,7 +5776,6 @@ with `icg`, the incomplete gamma integral, and `lgam`; with the shape
 Box 163frml5.cf: the generalized gamma, written out
 
 ``` r
-
 tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
     kk = 1
     aa = a0 + COHO2 * a1 + COHO3 * a2 + W * a3
@@ -6094,7 +5818,6 @@ tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
 Box 164The Hernes model (frml8.cf)
 
 ``` r
-
 tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
     sigma = exp(s)
     lambda = exp(l) / (1 + exp(l))
@@ -6139,7 +5862,6 @@ values, spelled out, reach the same estimates without the warning.
 Box 165The Coale-McNeil model (frml9.cf)
 
 ``` r
-
 tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
     bg = 0.604
     sigma = exp(s) / (1 + exp(s))
@@ -6186,7 +5908,6 @@ a logit in the covariates.
 Box 166Discrete time logistic
 
 ``` r
-
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 20)
 ```
 
@@ -6212,7 +5933,6 @@ Model 21.
 Box 167Complementary log-log
 
 ``` r
-
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 21)
 ```
 
@@ -6240,7 +5960,6 @@ Box 168pl1.cf and pl1m.cf: Cox models with one and three transitions
 (pl7.cf)
 
 ``` r
-
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 1)
 ```
 
@@ -6259,7 +5978,6 @@ tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 1)
        3  1   0   1  A        W 0.4078 0.0949  4.2988 1.0000
 
 ``` r
-
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d4m, model = 1)
 ```
 
@@ -6294,7 +6012,6 @@ is computed in R; `MARR` does, and so is defined for TDA.
 Box 169A time-dependent covariate
 
 ``` r
-
 d$MDATE <- ifelse(d$TMAR <= 0, 10000, d$TMAR - d$TStart)
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W + MARR, data = d, model = 1,
          define = list(MARR = "gt(time,MDATE)"), helpers = "MDATE")
@@ -6327,7 +6044,6 @@ truncated, so the model is told `Surv(ts, tf, des)`.
 Box 170pl4.cf, pl5.cf: episode splitting
 
 ``` r
-
 d$MDATE <- ifelse(d$TMAR <= 0, 10000, d$TMAR - d$TStart)
 sp <- tda_split(Surv(TFP, DES) ~ COHO2 + COHO3 + W, d, at = "MDATE")
 sp$MARR <- as.integer(sp$MDATE <= sp$ts)
@@ -6337,7 +6053,6 @@ nrow(sp)
     [1] 761
 
 ``` r
-
 tda_rate(Surv(ts, tf, des) ~ COHO2 + COHO3 + W, sp, model = 1)
 ```
 
@@ -6356,7 +6071,6 @@ tda_rate(Surv(ts, tf, des) ~ COHO2 + COHO3 + W, sp, model = 1)
        3  1   0   1  A        W 0.4078 0.0949  4.2988 1.0000
 
 ``` r
-
 tda_rate(Surv(ts, tf, des) ~ COHO2 + COHO3 + W + MARR, sp, model = 1)
 ```
 
@@ -6383,7 +6097,6 @@ proportional, its coefficient is zero.
 Box 171A test of proportionality (pl10.cf, pl6.cf)
 
 ``` r
-
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W + WTEST, data = d, model = 1,
          define = list(WTEST = "W * (log(time) - 4.22)"))
 ```
@@ -6409,7 +6122,6 @@ within periods.
 Box 172The effect within periods (seq8.cf, pl7.cf)
 
 ``` r
-
 rrdat5 <- read.table(ex("rrdat.5"), col.names = c("TF", "DES", "G"))
 rrdat5$G1 <- as.integer(rrdat5$G == 1)
 pl7 <- tda_rate(Surv(TF, DES) ~ G1, data = rrdat5, model = 1,
@@ -6430,7 +6142,6 @@ pl7
        1  1   0   1  A       G1 -0.2666 0.2332 -1.1428 0.7469
 
 ``` r
-
 pl7$gof
 ```
 
@@ -6444,7 +6155,6 @@ transition and `pl8m.cf` for the three.
 Box 173pl8.cf, pl8m.cf: goodness of fit over periods
 
 ``` r
-
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 1,
          tp = seq(0, 96, 12))$gof
 ```
@@ -6453,7 +6163,6 @@ tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 1,
     1  1   0   1  37.10844 24    0.9573181
 
 ``` r
-
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d4m, model = 1,
          tp = seq(0, 96, 12))$gof
 ```
@@ -6471,7 +6180,6 @@ tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d4m, model = 1,
 Box 174A stratified Cox model (ll1.cf, pl9.cf)
 
 ``` r
-
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + strata(SEX), data = d, model = 1)
 ```
 
@@ -6495,7 +6203,6 @@ tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + strata(SEX), data = d, model = 1)
 Box 175The baseline rate at given covariate values (ll2.cf)
 
 ``` r
-
 fit <- tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 1,
                 prate = list(COHO3 = 1, W = 1))
 head(fit$rates)
@@ -6522,7 +6229,6 @@ their distribution over time for the first structure (Box 4).
 Box 176seq_info, seqev and seqevd
 
 ``` r
-
 seqd4 <- read.table(ex("seq.d4"))
 names(seqd4) <- c("ID", paste0("Y", 0:5), paste0("S", 0:5), "V1", "V2")
 multi <- list(paste0("Y", 0:5), paste0("S", 0:5))
@@ -6535,7 +6241,6 @@ tda_seq_info(multi, data = seqd4)
     2  2    1         6    0    5       2   1, 3
 
 ``` r
-
 tda_seqev(multi, data = seqd4)
 ```
 
@@ -6544,7 +6249,6 @@ tda_seqev(multi, data = seqd4)
     2    2  1     3
 
 ``` r
-
 tda_seqevd(multi, data = seqd4)
 ```
 
@@ -6564,7 +6268,6 @@ sequence becomes something a rate model can take.
 Box 177Episodes derived from sequences
 
 ``` r
-
 tda_seqmd(paste0("Y", 0:5), event = c(1, 2), data = seqd4, summary = TRUE)
 ```
 
@@ -6576,7 +6279,6 @@ tda_seqmd(paste0("Y", 0:5), event = c(1, 2), data = seqd4, summary = TRUE)
     5    5       2      1
 
 ``` r
-
 tda_seqmd(paste0("Y", 0:5), event = c(1, 2), data = seqd4)
 ```
 
@@ -6592,7 +6294,6 @@ tda_seqmd(paste0("Y", 0:5), event = c(1, 2), data = seqd4)
     9  3    4     1       0       0       0       1       0
 
 ``` r
-
 tda_seqmd(paste0("Y", 0:5), event = c(1, 2), data = seqd4,
            covariates = c("V1", "V2"))
 ```
@@ -6616,7 +6317,6 @@ after the columns TDA writes.
 Box 178seqmd with xe= (seq8c.cf)
 
 ``` r
-
 tda_seqmd(paste0("Y", 0:5), event = c(1, 2), data = seqd4,
            covariates = c("V1", "V2"),
            event_covariates = list(V1_D = "V1", V2_D = "V2"))
@@ -6641,7 +6341,6 @@ one, with effect-shape dummies (`seq8d.cf`, the manual’s Box 5):
 Box 179seqmd with event counting (seq8d.cf)
 
 ``` r
-
 tda_seqmd(paste0("Y", 0:5), event = c(1, 2), data = seqd4,
            covariates = c("V1", "V2"),
            event_covariates = list(V1_D = "V1", V2_D = "V2"),
@@ -6674,7 +6373,6 @@ tda_seqmd(paste0("Y", 0:5), event = c(1, 2), data = seqd4,
 Box 180loglin on a contingency table
 
 ``` r
-
 ll1 <- read.table(ex("ll1.dat"), col.names = c("X1", "X2", "H"))
 tda_loglin(~ X1 + X2, data = ll1, weights = "H")$table
 ```
@@ -6700,7 +6398,6 @@ pass it.
 Box 181A loglinear model with residuals
 
 ``` r
-
 ll2 <- read.table(ex("ll2.dat"), col.names = c("X1", "X2", "F", "S"))
 fit <- tda_loglin(~ X1 + X2, data = ll2, weights = "F", residuals = TRUE)
 fit
@@ -6729,7 +6426,6 @@ fit
        3     X2[1] -0.3030679 0.2537596 -1.194311 0.7676437
 
 ``` r
-
 coef(fit)
 ```
 
@@ -6737,7 +6433,6 @@ coef(fit)
      0.8344470  0.3730772 -0.8796858 -0.3030679 
 
 ``` r
-
 head(residuals(fit))
 ```
 
@@ -6760,7 +6455,6 @@ per value variable the in-degree, out-degree and number of loops.
 Box 182gni (gd4.cf)
 
 ``` r
-
 gd1n <- read.table(ex("gd1.dat"), col.names = c("I", "J", "V1", "V2"))
 tda_g_nodes(tda_graph(gd1n, directed = TRUE))$table
 ```
@@ -6791,7 +6485,6 @@ does not.
 Box 183gni: in-degree, out-degree and loops per value variable (gd4.cf)
 
 ``` r
-
 gd1 <- read.table(ex("gd1.dat"), col.names = c("I", "J", "V1", "V2"))
 g1 <- tda_graph(gd1, directed = TRUE)
 tda_g_degrees(g1)
@@ -6815,7 +6508,6 @@ node with any forward links.
 Box 184gdln: forward links
 
 ``` r
-
 tda_g_links(g1)$table                     # forward links
 ```
 
@@ -6826,7 +6518,6 @@ tda_g_links(g1)$table                     # forward links
     4     6   11       1    12
 
 ``` r
-
 tda_g_links(g1, backward = TRUE)$table    # and backward
 ```
 
@@ -6846,7 +6537,6 @@ nodes in an order that respects every edge.
 Box 185gsort (gd22.cf)
 
 ``` r
-
 gd6 <- read.table(ex("gd6.dat"), col.names = c("I", "J", "V"))
 gsrt <- tda_graph(gd6, directed = TRUE)
 tda_g_toposort(gsrt)$table
@@ -6860,7 +6550,6 @@ tda_g_toposort(gsrt)$table
     5 5      7       3
 
 ``` r
-
 # option 2 relabels the graph's edges, keeping their values
 tda_g_toposort(gsrt, relabel_graph = TRUE)$table
 ```
@@ -6886,7 +6575,6 @@ carries and `V1` does not.
 Box 186gcon: components of graph 2 (gd7.cf)
 
 ``` r
-
 gcomp <- tda_graph(gd1, directed = FALSE)
 tda_g_components(gcomp, gn = 2)$table
 ```
@@ -6901,7 +6589,6 @@ tda_g_components(gcomp, gn = 2)$table
     7         3 2 7     12
 
 ``` r
-
 # option 2 lists each component's edges instead, with their values
 tda_g_components(gcomp, gn = 2, edges = TRUE)$table
 ```
@@ -6922,7 +6609,6 @@ each node reaches. `gd8.cf` runs it on graph 2 of `gd1.dat`.
 Box 187gdcon: reachable nodes (gd8.cf) (gd30.cf)
 
 ``` r
-
 g1d <- tda_graph(gd1, directed = TRUE)
 tda_g(g1d, "gdcon", list(gn = 2, opt = 2))$table
 ```
@@ -6942,7 +6628,6 @@ and with `opt = 2` the blocks.
 Box 188gcut (gd26.cf)
 
 ``` r
-
 gd8 <- read.table(ex("gd8.dat"), col.names = c("I", "J", "V"))
 g8 <- tda_graph(gd8, directed = FALSE)
 tda_g_cutpoints(g8)$table
@@ -6953,7 +6638,6 @@ tda_g_cutpoints(g8)$table
     [2]  2 3 0 
 
 ``` r
-
 tda_g_cutpoints(g8, opt = 2)$table
 ```
 
@@ -6978,7 +6662,6 @@ with each path’s length and value.
 Box 189gep (gd20.cf)
 
 ``` r
-
 gd5 <- read.table(ex("gd5.dat"), col.names = c("I", "J", "V"))
 g5 <- tda_graph(gd5, directed = TRUE)
 for (o in 1:6)
@@ -7104,7 +6787,6 @@ arrows for the edges that run both ways, the edge values as labels.
 Box 190The directed graph of gd5.dat, drawn (gd18.cf)
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 8), ylim = c(-1, 5), width = 80, height = 40)
 nodes <- data.frame(id = 1:5, x = c(3, 5, 1, 7, 7), y = c(3, 1, 1, 4, 1),
                     grey = 0.8)
@@ -7126,7 +6808,6 @@ is `gsp`, the same graph, `gd27.cf`.
 Box 191gsp (gd27.cf)
 
 ``` r
-
 tda_g_shortest(g5, opt = 1, fmt = "4.1")$table
 ```
 
@@ -7147,7 +6828,6 @@ matrix.
 Box 192gtcl (gd16.cf)
 
 ``` r
-
 # gdd's gt= is the graph type: 1 undirected unvalued, 2 undirected
 # valued, 3 directed unvalued, 4 directed valued. The manual's box runs
 # gtcl over all four.
@@ -7190,7 +6870,6 @@ listed with their values.
 Box 193gst (gd24.cf)
 
 ``` r
-
 gd7 <- read.table(ex("gd7.dat"), col.names = c("I", "J", "V"))
 tda_g_spanning(tda_graph(gd7, directed = FALSE))$table
 ```
@@ -7209,7 +6888,6 @@ The manual’s Figure 7.2.5.1-1 is `gd7.dat`’s first component drawn by
 Box 194gd7.dat drawn (gd21.cf)
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 6), ylim = c(0, 5), width = 60, height = 30)
 nodes <- data.frame(id = c(5, 7, 4, 1, 2), x = c(1, 3, 5, 2, 4),
                     y = c(3, 3, 3, 1, 1), grey = 0.8)
@@ -7226,7 +6904,6 @@ plot(tda_pl_graph(p, nodes, edges))
 Box 195gd23.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 7), ylim = c(0, 3.7), width = 60, height = 30)
 nodes <- data.frame(id = 1:8, x = c(0.5, 2, 2, 3.5, 4.5, 5, 6, 6),
                     y = c(1.5, 2.5, 0.5, 1.5, 0.5, 1.5, 0.5, 2.5), grey = 0.8)
@@ -7250,7 +6927,6 @@ is `gmst`, `gd25.cf`, on the same `gd7.dat`.
 Box 196gmst (gd25.cf)
 
 ``` r
-
 tda_g_mst(tda_graph(gd7, directed = FALSE))$table
 ```
 
@@ -7271,7 +6947,6 @@ with `opt = 2` the trees themselves.
 Box 197gnst (gd32.cf)
 
 ``` r
-
 gd10 <- read.table(ex("gd10.dat"), col.names = c("I", "J", "V"))
 g10 <- tda_graph(gd10, directed = FALSE)
 tda_g_spantrees(g10, opt = 1)$table
@@ -7288,7 +6963,6 @@ tda_g_spantrees(g10, opt = 1)$table
     8  1  8  0  3  4  1
 
 ``` r
-
 tda_g_spantrees(g10, opt = 2)$table
 ```
 
@@ -7321,7 +6995,6 @@ tda_g_spantrees(g10, opt = 2)$table
 Box 198gd31.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 8), ylim = c(-1, 5), width = 80, height = 40)
 nodes <- data.frame(id = 1:4, x = c(3, 5, 3, 5), y = c(3, 3, 1, 1), grey = 0.8)
 edges <- data.frame(from = c(1, 1, 1, 2, 3), to = c(2, 3, 4, 3, 4))
@@ -7349,7 +7022,6 @@ is why it arrives ragged as well.
 Box 199gcyc, options 1 to 4
 
 ``` r
-
 gd9 <- read.table(ex("gd9.dat"), col.names = c("I", "J", "V"))
 g9 <- tda_graph(gd9, directed = FALSE)
 tda_g_cycles(g9, "fundamental_nodes")$table
@@ -7364,7 +7036,6 @@ tda_g_cycles(g9, "fundamental_nodes")$table
     [6]  1 6 3 1 2 
 
 ``` r
-
 tda_g_cycles(g9, "fundamental_edges")$table
 ```
 
@@ -7382,7 +7053,6 @@ tda_g_cycles(g9, "fundamental_edges")$table
     11     1    11    5  6   0   1   1   0   0   0
 
 ``` r
-
 tda_g_cycles(g9, "all_v1")$table
 ```
 
@@ -7424,7 +7094,6 @@ tda_g_cycles(g9, "all_v1")$table
     11    0    0
 
 ``` r
-
 # option 4's records are of two shapes -- a cycle's row and its edge
 # list -- so they stay a ragged list; the manual prints all of them
 print(tda_g_cycles(g9, "all_v2")$table, n = Inf)
@@ -7484,7 +7153,6 @@ print(tda_g_cycles(g9, "all_v2")$table, n = Inf)
 Box 200gd29.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 8), ylim = c(-1, 5), width = 80, height = 40)
 nodes <- data.frame(id = c(1, 3, 4, 6, 2, 5), x = c(3, 3, 5, 1, 5, 7),
                     y = c(3, 1, 1, 1, 3, 1), grey = 0.8)
@@ -7507,7 +7175,6 @@ is `gdcyc`, on `gd5.dat` (`gd33.cf`).
 Box 201gdcyc (gd33.cf)
 
 ``` r
-
 tda_g_dcycles(g5, opt = 1)$table
 ```
 
@@ -7521,7 +7188,6 @@ tda_g_dcycles(g5, opt = 1)$table
     [7]  7 3 3 4 5 
 
 ``` r
-
 tda_g_dcycles(g5, opt = 2)$table
 ```
 
@@ -7561,7 +7227,6 @@ nodes, the flow.
 Box 202gflow (gd35.cf)
 
 ``` r
-
 gd11 <- read.table(ex("gd11.dat"), col.names = c("I", "J", "V"))
 g11 <- tda_graph(gd11, directed = TRUE)
 tda_g_flow(g11)$table
@@ -7598,7 +7263,6 @@ tda_g_flow(g11)$table
     28    28 8 7      8      7   50
 
 ``` r
-
 # option 2 gives the same flows as a matrix
 tda_g_flow(g11, matrix = TRUE)$table
 ```
@@ -7616,7 +7280,6 @@ tda_g_flow(g11, matrix = TRUE)$table
 Box 203gd34.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 11), ylim = c(-1, 7), width = 80, height = 40)
 nodes <- data.frame(id = c(4, 1, 8, 6, 3, 7, 2, 5),
                     x = c(3, 3, 1, 8, 8, 10, 6, 4.5),
@@ -7643,7 +7306,6 @@ listings differ in order, not in content.
 Box 204gcliq (gd42.cf)
 
 ``` r
-
 gd16 <- read.table(ex("gd16.dat"), col.names = c("I", "J", "V"))
 g16 <- tda_graph(gd16, directed = FALSE)
 tda_g_cliques(g16, algorithm = "bron_kerbosch")$table
@@ -7656,7 +7318,6 @@ tda_g_cliques(g16, algorithm = "bron_kerbosch")$table
     [4]  1 4 3 3 6 5 
 
 ``` r
-
 tda_g_cliques(g16, algorithm = "harary_ross")$table
 ```
 
@@ -7670,7 +7331,6 @@ tda_g_cliques(g16, algorithm = "harary_ross")$table
 Box 205gd43.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 8), ylim = c(-1.5, 7), width = 80, height = 40)
 nodes <- data.frame(id = 1:6, x = c(1, 3, 5, 3, 7, 7), y = c(3, 6, 3, 0, 6, 0),
                     grey = 0.8)
@@ -7694,7 +7354,6 @@ is `gcset`, compact sets on `gd13.dat` (`gd39.cf`).
 Box 206giset and gcset
 
 ``` r
-
 gd12 <- read.table(ex("gd12.dat"), col.names = c("I", "J", "V"))
 tda_g_independent(tda_graph(gd12, directed = FALSE))$table
 ```
@@ -7704,7 +7363,6 @@ tda_g_independent(tda_graph(gd12, directed = FALSE))$table
     2  2  6  6
 
 ``` r
-
 gd13 <- read.table(ex("gd13.dat"), col.names = c("I", "J", "V"))
 g13 <- tda_graph(gd13, directed = FALSE)
 print(tda_g_compact(g13, opt = 1)$table, n = Inf)   # the sets themselves
@@ -7716,7 +7374,6 @@ print(tda_g_compact(g13, opt = 1)$table, n = Inf)   # the sets themselves
     [3]  1 3 4 7 8 1 2 3 5 
 
 ``` r
-
 tda_g_compact(g13, opt = 2)$table                   # one row per node
 ```
 
@@ -7733,7 +7390,6 @@ tda_g_compact(g13, opt = 2)$table                   # one row per node
 Box 207gd38.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 8), ylim = c(-1.5, 7), width = 80, height = 40)
 nodes <- data.frame(id = 1:6, x = c(1, 3, 5, 3, 7, 7), y = c(3, 6, 3, 0, 6, 0),
                     grey = 0.8)
@@ -7753,7 +7409,6 @@ plot(p)
 Box 208gd36.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 8), ylim = c(-1.5, 7), width = 80, height = 40)
 nodes <- data.frame(id = 1:6, x = c(1, 2.5, 4, 4, 5.5, 7),
                     y = c(1, 3, 1, 5, 3, 1), grey = 0.8)
@@ -7779,7 +7434,6 @@ its rows permuted accordingly.
 Box 209gap (co1.cf)
 
 ``` r
-
 cost <- matrix(scan(ex("co1.dat"), quiet = TRUE), 6, 6, byrow = TRUE)
 ap <- tda_gap(cost)
 ap$assignment
@@ -7794,7 +7448,6 @@ ap$assignment
     [6,]    6    2
 
 ``` r
-
 ap$permuted
 ```
 
@@ -7817,7 +7470,6 @@ the order (2,1), (3,1), (3,2); the manual’s Box 2 is the permutation 2,
 Box 210gqap (co2.cf)
 
 ``` r
-
 co2 <- read.table(ex("co2.dat"), col.names = c("F", "D"))
 lower <- function(v) { m <- matrix(0, 3, 3); m[lower.tri(m)] <- v; m + t(m) }
 qap <- tda_gqap(lower(co2$F), lower(co2$D))
@@ -7827,14 +7479,12 @@ qap$assignment
     [1] 2 1 3
 
 ``` r
-
 qap$cost
 ```
 
     [1] 36
 
 ``` r
-
 # gqap's second output file: the multigraph under that permutation, with
 # the flow and distance between each pair
 qap$permuted
@@ -7863,7 +7513,6 @@ their representative nodes.
 Box 211hcls: complete-link clustering (cl1.cf) (id1.cf)
 
 ``` r
-
 D <- scan(ex("cl1.dat"), quiet = TRUE)
 dm <- matrix(0, 11, 11)
 dm[lower.tri(dm)] <- D
@@ -7891,7 +7540,6 @@ is both steps.
 Box 212hclsp: the dendrogram cut at four levels (cl1a.cf) (id2.cf)
 
 ``` r
-
 tda_cutree(dm, nlev = 4)$table
 ```
 
@@ -7918,7 +7566,6 @@ fixed number of neighbours (`ns = 2`).
 Box 213nncl (cl2.cf)
 
 ``` r
-
 tda_cluster(dm, method = "nearest_neighbour", options = list(alg = 1, sc = 10))$table
 ```
 
@@ -7936,7 +7583,6 @@ tda_cluster(dm, method = "nearest_neighbour", options = list(alg = 1, sc = 10))$
     11 11 11  3
 
 ``` r
-
 tda_cluster(dm, method = "nearest_neighbour", options = list(alg = 2, ns = 2))$table
 ```
 
@@ -7957,7 +7603,6 @@ nodes.
 Box 214hcld (cl3.cf)
 
 ``` r
-
 hc <- tda_cluster(dm, method = "hierarchical", algorithm = "centers")
 hc$clusters
 ```
@@ -7996,7 +7641,6 @@ hc$clusters
     [1] 2 9
 
 ``` r
-
 hc$merges     # one row per split: the two clusters, their sizes, their diameters
 ```
 
@@ -8020,7 +7664,6 @@ cluster with the largest diameter is divided.
 Box 215hcld, second algorithm
 
 ``` r
-
 # the default stops after two splits; the manual's run goes on until
 # the size bound is reached
 hd <- tda_cluster(dm, method = "hierarchical", algorithm = "diameter",
@@ -8059,7 +7702,6 @@ hd$clusters
     [1] 0 1 7
 
 ``` r
-
 hd$merges
 ```
 
@@ -8081,7 +7723,6 @@ hd$merges
 Box 216cl3p.cf
 
 ``` r
-
 edges <- data.frame(
     from = c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11),
     to   = c(1, 1, 2, 2, 3, 3, 5, 5, 6, 6),
@@ -8102,7 +7743,6 @@ node permutation, option 2 the edge list permuted (Box 3).
 Box 217becl (cl5.cf)
 
 ``` r
-
 gd15 <- read.table(ex("gd15.dat"), col.names = c("I", "J", "V"))
 g15 <- tda_graph(gd15, directed = FALSE)
 tda_g(g15, "becl", list(opt = 1, fmt = "3.0"))$table
@@ -8116,7 +7756,6 @@ tda_g(g15, "becl", list(opt = 1, fmt = "3.0"))$table
     5     5    1        5       1
 
 ``` r
-
 tda_g(g15, "becl", list(opt = 2, fmt = "3.0"))$table
 ```
 
@@ -8127,7 +7766,6 @@ tda_g(g15, "becl", list(opt = 2, fmt = "3.0"))$table
     4  4  5  4  1  4  1  1
 
 ``` r
-
 # options 3 and 4 take sc=, the value to fill a non-edge with; the
 # default is -1 and cl5.cf asks for 0
 tda_g(g15, "becl", list(opt = 3, fmt = "3.0", sc = 0))$table
@@ -8146,7 +7784,6 @@ tda_g(g15, "becl", list(opt = 3, fmt = "3.0", sc = 0))$table
     10  5  4  1  4  1  4  1
 
 ``` r
-
 tda_g(g15, "becl", list(opt = 4, fmt = "3.0", sc = 0))$table
 ```
 
@@ -8169,7 +7806,6 @@ attribute.
 Box 218gfcf (gd13.cf)
 
 ``` r
-
 gd3 <- read.table(ex("gd3.dat"), col.names = c("I", "J", "V"))
 ctl <- tda_gfcf(gd3, threshold = 49)
 ctl
@@ -8189,7 +7825,6 @@ ctl
     11   11            0                
 
 ``` r
-
 head(attr(ctl, "pairs"), 8)
 ```
 
@@ -8210,7 +7845,6 @@ row per node (the manual’s Box 4 shows both).
 Box 219gbcf (gd14.cf)
 
 ``` r
-
 gd3a <- read.table(ex("gd3a.dat"), col.names = c("I", "J", "V"))
 bwd <- tda_g_backward(tda_graph(gd3a, directed = TRUE), sc = 49)
 bwd$table
@@ -8235,7 +7869,6 @@ bwd$table
     16 9      9   2      4   40   1     -1    0
 
 ``` r
-
 bwd$summary
 ```
 
@@ -8245,7 +7878,6 @@ bwd$summary
     3 11     11 0
 
 ``` r
-
 # gd14a.cf asks for the second layout, opt = 2
 tda_g_backward(tda_graph(gd3a, directed = TRUE), sc = 49,
                opt = 2, fmt = "3.0")$table
@@ -8267,7 +7899,6 @@ and several edges are curved or run back to an earlier node.
 Box 220gd12.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 11), ylim = c(2.0, 7.5), width = 100, height = 50)
 
 nodes <- data.frame(
@@ -8300,7 +7931,6 @@ through other nodes, `Y(i,j)`. `gd11.cf` runs it on `gd2b.dat`.
 Box 221gio (gd11.cf)
 
 ``` r
-
 gd2b <- read.table(ex("gd2b.dat"), col.names = c("I", "J", "V"))
 tda_g_ownership(tda_graph(gd2b, directed = TRUE))$table
 ```
@@ -8326,7 +7956,6 @@ drawn as two curves, and all edges carry arrowheads.
 Box 222gd9.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 11.5), ylim = c(0, 4), width = 80, height = 40)
 
 nodesA <- data.frame(id = 1:4, x = c(0.5, 3, 5, 5), y = c(2, 2, 1, 3),
@@ -8358,7 +7987,6 @@ one record per pair of nodes.
 Box 223gfc (gd41.cf)
 
 ``` r
-
 gd14 <- read.table(ex("gd14.dat"), col.names = c("I", "J", "V"))
 tda_g(tda_graph(gd14, directed = TRUE), "gfc", list(fmt = "4.0"))$table
 ```
@@ -8379,7 +8007,6 @@ tda_g(tda_graph(gd14, directed = TRUE), "gfc", list(fmt = "4.0"))$table
 Box 224gd40.cf
 
 ``` r
-
 p <- tda_ps(xlim = c(0, 8), ylim = c(-1.5, 7), width = 80, height = 40)
 nodes <- data.frame(id = 1:5, x = c(1, 3, 5, 3, 7), y = c(3, 6, 3, 0, 3),
                     grey = 0.8)
@@ -8408,7 +8035,6 @@ interval and its derivative’s, `derivative = TRUE`.
 Box 225An inclusion function and its derivative (evalfi1)
 
 ``` r
-
 tda_evalfi("sin(x)", x = c(0, 1))
 ```
 
@@ -8416,7 +8042,6 @@ tda_evalfi("sin(x)", x = c(0, 1))
     0.000000 0.841471 
 
 ``` r
-
 tda_evalfi("sin(x)", x = c(0, 1), derivative = TRUE)
 ```
 
@@ -8442,7 +8067,6 @@ call here. The manual is out of date on this box.
 Box 226gmin
 
 ``` r
-
 g <- tda_gmin("sin(x)", start = list(c(1, 0, 10)), use_derivatives = TRUE,
               tol_fe = 1e-6)
 g$value
@@ -8451,7 +8075,6 @@ g$value
     [1] -1
 
 ``` r
-
 g$boxes
 ```
 
@@ -8459,7 +8082,6 @@ g$boxes
     1   1        2 7.629395e-05      -1      -1
 
 ``` r
-
 g$estimates
 ```
 
@@ -8467,7 +8089,6 @@ g$estimates
     1   1         x 4.712372 4.712448
 
 ``` r
-
 # the counters TDA prints above the boxes
 g$counts
 ```
@@ -8482,7 +8103,6 @@ g$counts
 Box 227range
 
 ``` r
-
 tda_range("sin(x)", start = list(c(1, 0, 10)), use_derivatives = TRUE)
 ```
 
@@ -8498,7 +8118,6 @@ than the bounds alone.
 Box 228Distribution of a set-valued discrete variable
 
 ``` r
-
 # the manual's box shows both data files as well as the results
 id1 <- read.table(ex("id1.dat"))
 id1
@@ -8512,7 +8131,6 @@ id1
     5  0  1  1
 
 ``` r
-
 tda_sddf(id1, self_consistent = TRUE)
 ```
 
@@ -8526,7 +8144,6 @@ tda_sddf(id1, self_consistent = TRUE)
            V3   0.2   0.4     0.3          0.2765957
 
 ``` r
-
 id1a <- read.table(ex("id1a.dat"))
 id1a
 ```
@@ -8539,7 +8156,6 @@ id1a
     5  2  3
 
 ``` r
-
 tda_iddf(~iv(V1, V2), data = id1a, self_consistent = TRUE)
 ```
 
@@ -8560,7 +8176,6 @@ tda_iddf(~iv(V1, V2), data = id1a, self_consistent = TRUE)
 Box 229Distribution of an interval-valued variable
 
 ``` r
-
 id2 <- read.table(ex("id2.dat"))
 id2$XL <- id2$V1 - 30L
 id2$XH <- id2$V1 + 30L
@@ -8599,7 +8214,6 @@ value in it is the mean of some admissible data set.
 Box 230imean
 
 ``` r
-
 tda_imean(~iv(XL, XH), data = id2)
 ```
 
@@ -8613,7 +8227,6 @@ tda_imean(~iv(XL, XH), data = id2)
 Box 231ivariance
 
 ``` r
-
 tda_ivariance(~iv(V1, V2), data = id1a)
 ```
 

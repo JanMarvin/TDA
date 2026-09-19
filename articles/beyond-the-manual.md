@@ -1,5 +1,16 @@
 # Beyond the Manual
 
+# Beyond the Manual
+
+- [What happens inside](#what-happens-inside)
+- [Spatial data](#spatial-data)
+- [Reading a shapefile](#reading-a-shapefile)
+- [TDA’s help](#tdas-help)
+- [Running TDA directly](#running-tda-directly)
+- [The expression language](#the-expression-language)
+- [Character data](#character-data)
+- [Graphs](#graphs)
+
 The *TDA User’s Manual* stops at chapter 8, and development did not. The
 spatial commands, the file readers for formats that postdate the manual,
 and TDA’s online help are all in the program and in none of its
@@ -15,7 +26,6 @@ back. Every object therefore carries the run it came from.
 Box 1One fit, and the run underneath it
 
 ``` r
-
 d <- tda_rrdat()
 fit <- tda_rate(Surv(TFP, DES) ~ EDU, d)
 cat(fit$run$commands, sep = "\n")
@@ -50,7 +60,6 @@ computed, not a number re-read from a print format.
 Box 2Printed, and computed
 
 ``` r
-
 grep("EDU", fit$run$output, value = TRUE)
 ```
 
@@ -58,14 +67,12 @@ grep("EDU", fit$run$output, value = TRUE)
     [2] "  2  1   0   1  A EDU            0.0150660299026325       0.0211574987658471       0.7120893669601657  0.5236"
 
 ``` r
-
 sprintf("%.17g", coef(fit)[["EDU"]])
 ```
 
     [1] "0.015066029902632524"
 
 ``` r
-
 names(fit$run$exports)
 ```
 
@@ -84,7 +91,6 @@ over the 634 command files of TDA’s own regression suite.
 Box 3Where every line went
 
 ``` r
-
 attr(tda_output_audit(fit), "summary")
 ```
 
@@ -105,7 +111,6 @@ groups consecutive rows sharing an `id` into one polygon each.
 Box 4A spatial structure, and what is in it
 
 ``` r
-
 set.seed(7)
 pts <- data.frame(id = 1:12, x = round(runif(12), 3), y = round(runif(12), 3))
 s <- tda_spatial(pts)
@@ -127,7 +132,6 @@ with the same machinery the input does.
 Box 5The Voronoi diagram of those points
 
 ``` r
-
 v <- tda_sd_voronoi(s, opt = 2)
 plot(v, xlim = c(-0.2, 1.2), ylim = c(-0.2, 1.2))
 ```
@@ -142,7 +146,6 @@ cuts to it. Both want the rectangle given; TDA will not guess one.
 Box 6Selecting and clipping to a region
 
 ``` r
-
 tda_sd_select(s, rec = "0,0,0.5,0.5")$table
 ```
 
@@ -157,7 +160,6 @@ tda_sd_select(s, rec = "0,0,0.5,0.5")$table
     [8]  0.459 0.295 
 
 ``` r
-
 tda_sd_clip(s, c(0, 0, 0.5, 0.5))$table
 ```
 
@@ -179,7 +181,6 @@ most things in R want.
 Box 7Two square polygons
 
 ``` r
-
 poly <- data.frame(id = c(1, 1, 1, 1, 2, 2, 2, 2),
                    x  = c(0, 2, 2, 0, 3, 5, 5, 3),
                    y  = c(0, 0, 2, 2, 0, 0, 2, 2))
@@ -210,7 +211,6 @@ installed.
 Box 8North Carolina counties, read through TDA
 
 ``` r
-
 nc <- tda_read_shapefile(system.file("shape/nc.shp", package = "sf"))
 tda_sd_info(nc)
 ```
@@ -223,7 +223,6 @@ tda_sd_info(nc)
           0     0      108 -84.32385 33.88199 -75.45698 36.58965
 
 ``` r
-
 head(nc$attributes[, c("AREA", "PERIMETER", "NAME", "FIPS")])
 ```
 
@@ -240,7 +239,6 @@ The geometry is TDA’s, so TDA’s plotting draws it.
 Box 9The same counties, drawn by TDA
 
 ``` r
-
 plot(nc)
 ```
 
@@ -255,7 +253,6 @@ the vertices.
 Box 10The bounding box, and the vertices
 
 ``` r
-
 tda_sd_enclosing(nc)$table
 ```
 
@@ -267,7 +264,6 @@ tda_sd_enclosing(nc)$table
     [5]  -84.32385  36.58965 
 
 ``` r
-
 head(tda_sd_data(nc)$table)
 ```
 
@@ -286,7 +282,6 @@ them to find, and saying so is the right answer rather than an error.
 Box 11Nothing to report, correctly
 
 ``` r
-
 tda_sd_neighbours(nc)$text
 ```
 
@@ -310,7 +305,6 @@ them by name.
 Box 12tda_help
 
 ``` r
-
 cat(head(tda_help("ploth"), 20), sep = "\n")
 ```
 
@@ -385,7 +379,6 @@ be written by hand.
 Box 13A command file, from R
 
 ``` r
-
 d <- data.frame(X = c(1, 2, 3, 4), Y = c(2, 4, 6, 9))
 res <- tda_run(c(tda_nvar(d), "dstat;"), data = d)
 cat(grep("^ *(Variable|X|Y)", res$output, value = TRUE), sep = "\n")
@@ -402,7 +395,6 @@ wrong: the question is usually what TDA was asked, not what it computed.
 Box 14What a wrapper actually sent
 
 ``` r
-
 fit <- tda_lsreg(Y ~ X, d)
 cat(fit$run$commands, sep = "\n")
 ```
@@ -422,7 +414,6 @@ test suite, so either side gives the same numbers.
 Box 15The same quantity, twice
 
 ``` r
-
 sprintf("%.17g", c(tda_evalf("nd(x)", options = list(x = 1.96))$value,
                    pnorm(1.96)))
 ```
@@ -430,7 +421,6 @@ sprintf("%.17g", c(tda_evalf("nd(x)", options = list(x = 1.96))$value,
     [1] "0.97500210485082472" "0.97500210485177963"
 
 ``` r
-
 sprintf("%.17g", c(tda_evalf("mr(x)", options = list(x = 0.5))$value,
                    dnorm(0.5) / (1 - pnorm(0.5))))
 ```
@@ -450,7 +440,6 @@ brings it back. The four string operators – `strlen`, `strsp`, `strv`,
 Box 16Strings through TDA
 
 ``` r
-
 d2 <- data.frame(ID = 1:3, Name = c("Ashe", "Alleghany", "Surry"),
                  Area = c(0.114, 0.061, 0.143))
 res <- tda_run(c(tda_nvar(d2), "pdata() = out.txt;"), data = d2)
@@ -470,7 +459,6 @@ They are documented but easy to miss, so one example, on a small graph.
 Box 17A graph, and some of what TDA asks of it
 
 ``` r
-
 e <- data.frame(from = c(1, 1, 2, 3, 4, 5, 5),
                 to   = c(2, 3, 3, 4, 5, 6, 7))
 g <- tda_graph(e, directed = FALSE)
@@ -487,7 +475,6 @@ tda_g_degrees(g)
     7     7    7         1          1     0      1
 
 ``` r
-
 tda_g_components(g)
 ```
 
@@ -505,7 +492,6 @@ tda_g_components(g)
              1 7 7      7
 
 ``` r
-
 tda_g_cutpoints(g)
 ```
 
@@ -519,7 +505,6 @@ tda_g_cutpoints(g)
 Box 18The same graph, drawn by TDA
 
 ``` r
-
 plot(g)
 ```
 

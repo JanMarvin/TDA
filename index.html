@@ -54,8 +54,76 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9">
-An R interface to 'TDA' 6.4, Goetz Rohwer's and Ulrich Poetter's program for transition data analysis, built into the package as a library. Its event history and transition rate models, regression, sequence, cluster, graph and spatial methods and its matrix language are available as R functions that take data frames and return R objects. The package keeps the program and its methods usable and documented, and reproduces results obtained with 'TDA'.
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header"><h1 id="tdar--tda-transition-data-analysis-as-an-r-package">tdaR — TDA, Transition Data Analysis, as an R package<a class="anchor" aria-label="anchor" href="#tdar--tda-transition-data-analysis-as-an-r-package"></a>
+</h1></div>
+<p>TDA is Götz Rohwer’s and Ulrich Pötter’s program for the statistical analysis of event histories: transition rate models, parametric and semi-parametric, with episode splitting, competing risks, multi-episode data and time-dependent covariates, and around them a working statistician’s toolkit — descriptive statistics, life tables and product-limit estimation, regression of the ordinary kinds, sequence analysis, loglinear models, graphs, spatial data, and its own PostScript plotting. It is a command-file program: a text file of commands, a data file, and a listing of what it computed.</p>
+<p>tdaR is that program compiled into an R package. The C is TDA’s own, made re-entrant so it can run inside R and be called more than once; every result is computed by Rohwer’s code. Each R function writes the command file TDA would have been given, runs it in-process, and returns what TDA produced — the printed listing and the numbers behind it — as an R object with the usual methods. This repository is maintained in memory of Götz Rohwer.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/JanMarvin/TDA" class="external-link">tdaR</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">rr</span>  <span class="op">&lt;-</span> <span class="fu"><a href="reference/tda_rrdat.html">tda_rrdat</a></span><span class="op">(</span><span class="op">)</span>                        <span class="co"># the manual's example data (GLHS)</span></span>
+<span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tda_rate.html">tda_rate</a></span><span class="op">(</span><span class="fu">Surv</span><span class="op">(</span><span class="va">TFP</span>, <span class="va">DES</span><span class="op">)</span> <span class="op">~</span> <span class="va">COHO2</span> <span class="op">+</span> <span class="va">COHO3</span>, data <span class="op">=</span> <span class="va">rr</span>, model <span class="op">=</span> <span class="st">"exponential"</span><span class="op">)</span></span>
+<span><span class="va">fit</span><span class="op">$</span><span class="va">estimates</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/stats/logLik.html" class="external-link">logLik</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/tda_ltb.html">tda_ple</a></span><span class="op">(</span><span class="fu">Surv</span><span class="op">(</span><span class="va">TFP</span>, <span class="va">DES</span><span class="op">)</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">SEX</span><span class="op">)</span>, <span class="va">rr</span><span class="op">)</span>   <span class="co"># product-limit estimates</span></span>
+<span><span class="fu"><a href="reference/tda_help.html">tda_help</a></span><span class="op">(</span><span class="st">"rate"</span><span class="op">)</span>                            <span class="co"># TDA's own manual entry</span></span></code></pre></div>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"JanMarvin/TDA"</span>, ref <span class="op">=</span> <span class="st">"tdaR"</span>, subdir <span class="op">=</span> <span class="st">"tdaR"</span><span class="op">)</span></span></code></pre></div>
+<p>The package compiles TDA’s C sources; a C compiler is needed (Rtools on Windows, Xcode’s command-line tools on macOS). Nothing else is required.</p>
+</div>
+<div class="section level2">
+<h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
+</h2>
+<p>Three vignettes:</p>
+<ul>
+<li>
+<strong>Following the TDA User’s Manual</strong> walks the manual chapter by chapter, with the manual’s own examples rewritten against the package, so that a page of the manual and the corresponding box of the vignette can be read side by side.</li>
+<li>
+<strong>Techniques of Event History Modeling, in R</strong> does the same for Blossfeld and Rohwer’s book, one command file at a time.</li>
+<li>
+<strong>Beyond the Manual</strong> covers what TDA grew after the manual stopped: spatial data, the readers for later file formats, and TDA’s online help.</li>
+</ul>
+<p>Every exported function has a manual page with a runnable example; <code><a href="reference/tdaR-package.html">?tdaR</a></code> gives the tour. <code>tda_help("&lt;command&gt;")</code> shows TDA’s help text for any command under its TDA name.</p>
+</div>
+<div class="section level2">
+<h2 id="layout-of-the-repository">Layout of the repository<a class="anchor" aria-label="anchor" href="#layout-of-the-repository"></a>
+</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>src<span class="sc">/</span>        TDA<span class="st">'s C sources and the makefile for the standalone program</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="st">tdaR/       the R package; tdaR/src is a byte-identical copy of src/</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="st">examples/   TDA'</span>s shipped example command files with reference outputs</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>tests<span class="sc">/</span>      the C regression suite, its fixtures, and the vignette QA records</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>tools<span class="sc">/</span>      build and check scripts</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>doc<span class="sc">/</span>        changes<span class="sc">-</span>from<span class="sc">-</span>tda.md and the maintainer<span class="st">'s notes</span></span></code></pre></div>
+<p><a href="https://github.com/JanMarvin/TDA/blob/tdaR/CONTRIBUTING.md" class="external-link"><code>CONTRIBUTING.md</code></a> describes building, the test gates, and how changes to the C are handled.</p>
+</div>
+<div class="section level2">
+<h2 id="what-has-changed-in-the-c">What has changed in the C<a class="anchor" aria-label="anchor" href="#what-has-changed-in-the-c"></a>
+</h2>
+<p>As little as possible. The rule is <em>reproduce, not improve</em>: TDA’s output against its own reference runs is the contract, and every apparent oddity is assumed intentional until a test shows otherwise. Three kinds of change exist:</p>
+<ol style="list-style-type: decimal">
+<li>the mechanical transformation that made the code a re-entrant library (every global became a member of one context struct; behaviour-neutral by construction and by test);</li>
+<li>package-only additions behind <code>TDA_R_PACKAGE</code>: an in-memory data matrix handed over from R, an export channel through which results reach R at full precision rather than through printed text, an interrupt check in the long searches, and error handling that returns to R instead of exiting the process;</li>
+<li>repairs of demonstrated faults, applied to both builds and listed one by one with their evidence in <a href="https://github.com/JanMarvin/TDA/blob/tdaR/doc/changes-from-tda.md" class="external-link"><code>doc/changes-from-tda.md</code></a>. The version banner reads 6.4q so a patched build is distinguishable from Rohwer and Pötter’s last release.</li>
+</ol>
+</div>
+<div class="section level2">
+<h2 id="history">History<a class="anchor" aria-label="anchor" href="#history"></a>
+</h2>
+<p>The account follows TDA’s manual (preface, 1998) and its own <code>history.txt</code>, which ships with the package.</p>
+<p>Rohwer began TDA in 1989, with early support from the Hamburger Institut für Sozialforschung. The program grew inside Hans-Peter Blossfeld’s research project <em>Household Dynamics and Social Inequality</em>, supported by the European University Institute (Florence) and the European Commission, and development then continued at the University of Bremen. Version 5.7 (June 1994) was the first the authors called mature; Blossfeld and Rohwer’s <em>Techniques of Event History Modeling</em> (1995; 2nd ed. 2002) is written around it and shipped it on an accompanying disk. The 6.x line was a redesign — a clean split of commands from parameters — and from version 6.2 the program and manual have two authors, Rohwer and Ulrich Pötter. The last releases (6.4a–6.4p, through March 2009) came from the years at Ruhr-Universität Bochum, where Rohwer held the chair for methods of social research. TDA has always been a non-commercial project, released under the GNU General Public License. Its homepage is <a href="https://www.stat.rub.de/tda.html" class="external-link uri">https://www.stat.rub.de/tda.html</a>.</p>
+</div>
+<div class="section level2">
+<h2 id="licence">Licence<a class="anchor" aria-label="anchor" href="#licence"></a>
+</h2>
+<p>GPL-2, as TDA always was (<a href="https://github.com/JanMarvin/TDA/blob/tdaR/COPYING" class="external-link"><code>COPYING</code></a>). TDA incorporates routines adapted from published algorithms and other programs; <a href="https://github.com/JanMarvin/TDA/blob/tdaR/ATTRIBUTIONS.md" class="external-link"><code>ATTRIBUTIONS.md</code></a> (shipped in the package as <code>inst/COPYRIGHTS</code>) lists them by source file. The example data, <code>rrdat.1</code>, are 600 job episodes from the German Life History Study (Max-Planck-Institut für Bildungsforschung, Berlin; Mayer and Brückner 1989), provided to TDA by Karl Ulrich Mayer and Hans-Peter Blossfeld. The TDA User’s Manual is Rohwer and Pötter’s work and is quoted only in brief, attributed excerpts.</p>
+</div>
+</div>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
