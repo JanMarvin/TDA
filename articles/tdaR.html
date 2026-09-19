@@ -58,7 +58,22 @@
      linked function names) is taken back so the boxes look as they do
      in the package. */
   .navbar, .navbar *, footer, footer * { font-family: var(--bs-body-font-family); }
-  .template-article .container { max-width: none; padding: 0; }
+  /* Bootstrap's border-box sizing and column gutters would take 52px
+     off the vignette's 39em column; give the column back. */
+  body { box-sizing: content-box; }
+  .container.template-article { max-width: none; padding: 0; margin: 0; }
+  .template-article .row { margin: 0; }
+  .template-article main { padding: 0; max-width: none; }
+  /* Bootstrap has a .figure class of its own; the vignette's p.figure
+     and its centred plot must not pick it up. */
+  .template-article main p.figure {
+    display: block !important; text-align: center !important;
+    margin: 0.6em 0 !important; overflow-x: auto !important;
+  }
+  .template-article main svg.plot {
+    display: block !important; margin: 0 auto !important;
+    max-width: calc(100% * var(--zoom, 1)) !important; height: auto !important;
+  }
   .template-article main pre,
   .template-article main pre code,
   .template-article main code,
@@ -81,7 +96,10 @@
     margin: 0.45em 0 !important;
     font-size: 0.82em !important;
   }
-  .template-article main pre code { font-size: inherit !important; padding: 0 !important; }
+  /* tda-manual.css sizes code at 0.82em on every level, so a line in a
+     <pre><code> block is 0.82 x 0.82 of the text, as in the package. */
+  .template-article main code,
+  .template-article main pre code { font-size: 0.82em !important; padding: 0 !important; }
   .template-article main .box pre.r,
   .template-article main .box div.sourceCode {
     border-left: 2px solid var(--border) !important;
@@ -90,6 +108,31 @@
   .template-article main .box pre.r + pre,
   .template-article main .box div.sourceCode + pre { margin-top: 0.2em !important; }
   .template-article main .btn-copy-ex { display: none; }
+  /* Bootstrap's reboot sets what neither the vignette's stylesheet nor
+     html_vignette's sets; revert those to the browser defaults the
+     package rendering has. */
+  .template-article main h1, .template-article main h2,
+  .template-article main h3, .template-article main h4 { line-height: revert; }
+  .template-article main h1 { margin-top: revert; }
+  .template-article main svg.plot { vertical-align: revert; }
+  .template-article main summary { margin: 0; }
+  .template-article main blockquote { padding: 0; }
+  .template-article main code { border-radius: 0 !important; white-space: pre-wrap; }
+  .template-article main .box pre code { white-space: pre; }
+  .template-article main table {
+    display: table; width: auto; max-width: none; overflow-x: visible;
+    vertical-align: revert; border-collapse: collapse; border: 0;
+    margin: 0 0 1.2em 0 !important; font-size: 0.9em; color: var(--fg);
+  }
+  .template-article main thead, .template-article main tbody,
+  .template-article main tr { border: 0; vertical-align: revert; background: transparent; }
+  .template-article main th, .template-article main td {
+    padding: 0.15em 0.9em 0.15em 0 !important; text-align: left;
+    background: transparent !important; color: inherit; border: 0;
+    vertical-align: revert; box-shadow: none;
+  }
+  .template-article main th { font-weight: revert; }
+  .template-article main thead th { border-bottom: 1px solid var(--border); }
 </style>
 <script>
   // pkgdown's light switch sets data-bs-theme on <html>; the vignette's
@@ -1839,7 +1882,7 @@ $rank
 [1] 0.4087254230 0.4301912621 0.6245602237
 
 $residual
-[1] 3.705655206e-16
+[1] 3.720636835e-16
 
 $rank
 [1] 3</code></pre>
