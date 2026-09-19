@@ -94,7 +94,7 @@ tda_km(formula, data, ...)
 - quantiles:
 
   for `tda_ple`, time values to report the survivor function at, e.g.
-  `c(0.25, 0.5, 0.75)`; TDA's `qt=`. The resulting table (one row per
+  `c(5, 10, 20)`; TDA's `qt=`. The resulting table (one row per
   transition per quantile) is parsed into the returned object's
   `quantiles` component, not left as raw console text – `qt=` writes to
   the console, not `out.ple`, unlike every other table `tda_ple`

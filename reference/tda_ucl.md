@@ -97,6 +97,17 @@ Alpert, C. J. and Kahng, A. B. (1997). Splitting an ordering into a
 partition to minimize diameter. *Journal of Classification* **14**,
 51–74.
 
+## See also
+
+Other graph analysis:
+[`plot.tda_graph()`](https://janmarvin.github.io/TDA/reference/plot.tda_graph.md),
+[`tda_dmet()`](https://janmarvin.github.io/TDA/reference/tda_dmet.md),
+[`tda_g()`](https://janmarvin.github.io/TDA/reference/tda_g.md),
+[`tda_g_analyses`](https://janmarvin.github.io/TDA/reference/tda_g_analyses.md),
+[`tda_graph()`](https://janmarvin.github.io/TDA/reference/tda_graph.md),
+[`tda_locate_line()`](https://janmarvin.github.io/TDA/reference/tda_locate_line.md),
+[`tda_ptree()`](https://janmarvin.github.io/TDA/reference/tda_ptree.md)
+
 ## Examples
 
 ``` r

@@ -32,8 +32,7 @@ tda_gfcf(edges, threshold = 0.5, variant = 1, ...)
 one row per node: the node, how many nodes it controls, and the
 controlled nodes as a comma-joined string; the pair table TDA writes
 (node, controlled node, path length L, share S, M, R – the manual's Box
-2 of 7.6.1.1) is the `"pairs"` attribute. and the controlled nodes as a
-comma-joined string.
+2 of 7.6.1.1) is the `"pairs"` attribute.
 
 ## Examples
 

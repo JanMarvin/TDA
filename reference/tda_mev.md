@@ -11,7 +11,7 @@ Column `i` of the result, `EVR[, i] + 1i * EVI[, i]`, is the right
 eigenvector for eigenvalue `ER[i] + 1i * EI[i]`, i.e.
 `A %*% v == lambda * v` – the same convention and ordering as base R's
 `eigen(A)`, confirmed on two matrices, one with real eigenvalues and one
-with a asymmetric complex pair (not simply plus/minus of each other,
+with an asymmetric complex pair (not simply plus/minus of each other,
 which the first, simpler test matrix happened to have and which turned
 out to mask a construction mistake in an earlier verification attempt –
 recorded here because it is exactly the kind of false confirmation a

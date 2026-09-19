@@ -69,7 +69,7 @@ neighbour on each side. Give this or <code>weights</code>, not both.</p></dd>
 
 
 <dt id="arg-weights">weights<a class="anchor" aria-label="anchor" href="#arg-weights"></a></dt>
-<dd><p>TDA's half-kernel directly (see Details), for an
+<dd><p>TDA's half-kernel directly (see above), for an
 unequal-weight window – <code>c(0.5, 0.25)</code> for a 3-point window
 weighted <code>0.25, 0.5, 0.25</code>.</p></dd>
 
@@ -101,6 +101,16 @@ all: a plain equal-weight window over consecutive cases is what
 that sum to 1 give an ordinary average, matching
 <code><a href="https://rdrr.io/pkg/zoo/man/rollmean.html" class="external-link">zoo::rollmean()</a></code> for the equal-weight case aside from TDA's
 own end-value rule where <code>rollmean</code> would give <code>NA</code>.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <div class="dont-index"><p>Other smoothing:
+<code><a href="tda_integrate.html">tda_integrate()</a></code>,
+<code><a href="tda_interp.html">tda_interp()</a></code>,
+<code><a href="tda_isotonic.html">tda_isotonic()</a></code>,
+<code><a href="tda_mat.html">tda_mat()</a></code>,
+<code><a href="tda_smd.html">tda_smd()</a></code>,
+<code><a href="tda_spl.html">tda_spl()</a></code></p></div>
     </div>
 
     <div class="section level2">

@@ -1,6 +1,8 @@
 # Print archive variables
 
-TDA's `arcv` on an open archive.
+TDA's `arcv` on an open archive. It requires an open archive (see
+[`tda_arcd`](https://janmarvin.github.io/TDA/reference/tda_arcd.md))
+containing a type-2 (variable description) member.
 
 ## Usage
 
@@ -30,9 +32,9 @@ tda_arcv(out, data_file = NULL, archive = NULL, ...)
   passed to
   [`tda_run`](https://janmarvin.github.io/TDA/reference/tda_run.md).
 
-  Requires an open archive (see
-  [`tda_arcd`](https://janmarvin.github.io/TDA/reference/tda_arcd.md))
-  containing a type-2 (variable description) member.
+## Value
+
+the printed output, invisibly.
 
 ## Examples
 

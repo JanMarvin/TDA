@@ -76,7 +76,7 @@ tda_help("rate")
 #> 
 #> See also: frml, mpcov, mpgrad, mplog, mppar
 tda_time()
-#> Current time: Sat Sep 19 21:46:12 2026
+#> Current time: Sat Sep 19 22:49:33 2026
 tda_memory()
 #> Current memory: 390032 bytes.
 #> Currently requested memory: 390032 (390032) bytes.

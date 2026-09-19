@@ -45,8 +45,8 @@ tda_lsreg1(
 
 - formula:
 
-  a two-sided formula, or, for multiple equations fit jointly, a
-  (optionally named) list of them – see Details.
+  a two-sided formula, or, for multiple equations fit jointly, an
+  (optionally named) list of them, as described above.
 
 - data:
 
@@ -59,11 +59,9 @@ tda_lsreg1(
 
 - intercept:
 
-  for `tda_lsreg1`, whether to include an intercept. Defaults to
-  whatever the formula itself says (`y ~ 0 + x` or `y ~ x - 1` already
-  mean no intercept, the ordinary R way, and are honoured); set
-  explicitly to override that, e.g. for a formula that does not
-  conveniently spell it either way.
+  whether to include an intercept. Defaults to whatever the formula
+  itself says (`y ~ 0 + x` or `y ~ x - 1` already mean no intercept, the
+  ordinary R way, and are honoured); set explicitly to override that.
 
 - robust:
 

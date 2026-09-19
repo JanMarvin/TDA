@@ -91,9 +91,9 @@ tda_gmin(
 
 An object with the numeric result in `value` (`tda_integrate`,
 `tda_minimize`, `tda_gmin`), the two bounds in `range` (`tda_range`), or
-nothing structured (`tda_evalf` – see Details);
-`tda_minimize`/`tda_gmin` also carry `estimates`, the parameter values
-at the minimum, and the run is always in `run`.
+nothing structured (`tda_evalf`, see above); `tda_minimize`/`tda_gmin`
+also carry `estimates`, the parameter values at the minimum, and the run
+is always in `run`.
 
 ## Details
 
@@ -109,6 +109,7 @@ Other smoothing:
 [`tda_interp()`](https://janmarvin.github.io/TDA/reference/tda_interp.md),
 [`tda_isotonic()`](https://janmarvin.github.io/TDA/reference/tda_isotonic.md),
 [`tda_mat()`](https://janmarvin.github.io/TDA/reference/tda_mat.md),
+[`tda_sma()`](https://janmarvin.github.io/TDA/reference/tda_sma.md),
 [`tda_smd()`](https://janmarvin.github.io/TDA/reference/tda_smd.md),
 [`tda_spl()`](https://janmarvin.github.io/TDA/reference/tda_spl.md)
 

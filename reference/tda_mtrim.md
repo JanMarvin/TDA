@@ -3,8 +3,8 @@
 Deletes or adds whole rows/columns at the edges of `A` – TDA's `mtrim`.
 A positive count deletes that many rows or columns from that edge; a
 negative count adds that many zero rows/columns instead.
-`leading_cols`/`trailing_cols` act on columns 1../ncol(A) end;
-`leading_rows`/ `trailing_rows` likewise for rows.
+`leading_cols`/`trailing_cols` act on the first and last columns,
+`leading_rows`/ `trailing_rows` on the first and last rows.
 
 ## Usage
 

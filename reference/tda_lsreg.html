@@ -93,7 +93,7 @@ recorded value for the cases the censoring variable marks.</p>
 
 <dl><dt id="arg-formula">formula<a class="anchor" aria-label="anchor" href="#arg-formula"></a></dt>
 <dd><p>a two-sided formula, or, for multiple equations fit
-jointly, a (optionally named) list of them – see Details.</p></dd>
+jointly, an (optionally named) list of them, as described above.</p></dd>
 
 
 <dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
@@ -106,11 +106,10 @@ together with multiple equations.</p></dd>
 
 
 <dt id="arg-intercept">intercept<a class="anchor" aria-label="anchor" href="#arg-intercept"></a></dt>
-<dd><p>for <code>tda_lsreg1</code>, whether to include an
+<dd><p>whether to include an
 intercept. Defaults to whatever the formula itself says (<code>y ~
 0 + x</code> or <code>y ~ x - 1</code> already mean no intercept, the ordinary
-R way, and are honoured); set explicitly to override that, e.g. for
-a formula that does not conveniently spell it either way.</p></dd>
+R way, and are honoured); set explicitly to override that.</p></dd>
 
 
 <dt id="arg-robust">robust<a class="anchor" aria-label="anchor" href="#arg-robust"></a></dt>

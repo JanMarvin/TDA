@@ -51,7 +51,7 @@ tda_seqpd(
 
 - layout:
 
-  1 to 4, the shape of the result; see Details.
+  1 to 4, the shape of the result, as listed above.
 
 - select:
 

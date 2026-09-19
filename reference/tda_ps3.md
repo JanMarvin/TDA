@@ -226,7 +226,7 @@ p3 <- tda_pl_surface3(p3, ru = "0,8,30,10", rv = "0,10,30,10",
                       f1 = "u", f2 = "v", f3 = "u*v/8")
 
 # shaded, with internal contour lines -- n kept small (5, not 30) since
-# gray= shades every grid cell individually; see Details for why
+# gray= shades every grid cell individually; see the ru/rv argument
 p3b <- tda_ps3(xlim = c(0, 8), ylim = c(0, 10), zlim = c(0, 8))
 p3b <- tda_pl_surface3(p3b, ru = "0,8,5,5", rv = "0,10,5,5",
                        f1 = "u", f2 = "v", f3 = "u*v/8",

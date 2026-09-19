@@ -135,8 +135,9 @@ gone for years, which is worth knowing going in:</p><ul><li><p><code>tda_read_e0
     pre-2.2 one and GSHHG 2.x, which is what you would download
     today. The layout is detected from the file itself and the
     version reported in the run's output.</p>
-<p><strong>Straight lines across a world map</strong> are the dateline, not a
-    handled for you, and there is nothing to configure. GSHHS stores
+<p><strong>Straight lines across a world map</strong> would come from the
+    dateline; that is handled for you, and there is nothing to
+    configure. GSHHS stores
     the polygons that span the dateline with longitudes running past
     180 (Eurasia reaches 190). Those are cut at the dateline and come
     back as separate objects, so each piece is drawn where it belongs

@@ -1,4 +1,4 @@
-# One-, and two-way frequency tables
+# One- and two-way frequency tables
 
 `tda_freq` counts occurrences of each combination of values across one
 or more variables; `tda_freq1` counts occurrences of each value of one
@@ -7,7 +7,7 @@ three (`freq`, `freq1`, `freq2`) on one shared page, since they mostly
 share the same options (`maxcat=`/`fmt=`/`tfmt=`/`df=`) and differ
 mainly in shape. Their R outputs are shaped differently too –
 `tda_freq`/`tda_freq1` return a `table`, `tda_freq2` a `matrix` of
-counts – but all three describe a frequency distribution, so sit
+counts – but all three describe a frequency distribution, so they sit
 together here as TDA's own manual does.
 
 ## Usage

@@ -102,8 +102,7 @@ tda_seqevd(
   are. **Exactly how TDA derives the value it puts in the output is not
   documented** – it is not simply the value at the event's time point;
   check against your data before relying on a particular reading of this
-  column. say, for a covariate stored one column per time point the same
-  way the states themselves are.
+  column.
 
 - select:
 

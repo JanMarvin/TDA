@@ -29,11 +29,11 @@ tda_fml(
 - definitions:
 
   either an unevaluated [`{ }`](https://rdrr.io/r/base/Paren.html) block
-  of R assignments (see Details) or a character vector of TDA's
-  assignments, the last defining `fn`, the contribution of one case to
-  the log-likelihood. Names that appear on the right but are neither
-  variables in `data` nor defined earlier are the parameters to be
-  estimated.
+  of R assignments (see the section on writing the likelihood) or a
+  character vector of TDA's assignments, the last defining `fn`, the
+  contribution of one case to the log-likelihood. Names that appear on
+  the right but are neither variables in `data` nor defined earlier are
+  the parameters to be estimated.
 
 - data:
 

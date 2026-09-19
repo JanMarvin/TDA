@@ -90,15 +90,16 @@ for years, which is worth knowing going in:
   detected from the file itself and the version reported in the run's
   output.
 
-  **Straight lines across a world map** are the dateline, not a handled
-  for you, and there is nothing to configure. GSHHS stores the polygons
-  that span the dateline with longitudes running past 180 (Eurasia
-  reaches 190). Those are cut at the dateline and come back as separate
-  objects, so each piece is drawn where it belongs and nothing is drawn
-  between them; a polygon that does not span it is untouched. The
-  Antarctic coastline, which runs from one edge of the map to the other,
-  is returned as a line rather than a closed area for the same reason –
-  closing it would draw a straight segment back across the world.
+  **Straight lines across a world map** would come from the dateline;
+  that is handled for you, and there is nothing to configure. GSHHS
+  stores the polygons that span the dateline with longitudes running
+  past 180 (Eurasia reaches 190). Those are cut at the dateline and come
+  back as separate objects, so each piece is drawn where it belongs and
+  nothing is drawn between them; a polygon that does not span it is
+  untouched. The Antarctic coastline, which runs from one edge of the
+  map to the other, is returned as a line rather than a closed area for
+  the same reason – closing it would draw a straight segment back across
+  the world.
 
   This is what the GSHHG maintainers do in their own shapefile
   distribution, where the dateline-straddling polygons – the Antarctic

@@ -66,7 +66,8 @@ Other graph analysis:
 [`tda_g_analyses`](https://janmarvin.github.io/TDA/reference/tda_g_analyses.md),
 [`tda_graph()`](https://janmarvin.github.io/TDA/reference/tda_graph.md),
 [`tda_locate_line()`](https://janmarvin.github.io/TDA/reference/tda_locate_line.md),
-[`tda_ptree()`](https://janmarvin.github.io/TDA/reference/tda_ptree.md)
+[`tda_ptree()`](https://janmarvin.github.io/TDA/reference/tda_ptree.md),
+[`tda_ucl()`](https://janmarvin.github.io/TDA/reference/tda_ucl.md)
 
 ## Examples
 
@@ -74,14 +75,14 @@ Other graph analysis:
 e <- data.frame(from = c(1, 1, 2), to = c(2, 3, 4), value = 1)
 g <- tda_graph(e, directed = FALSE)  # 4 nodes, 3 edges: already a tree
 pdf(NULL); plot(g); dev.off()
-#> agg_record_1ec150bceede 
-#>                       2 
+#> agg_record_1f9767bbd99 
+#>                      2 
 
 # a graph with a cycle is not a tree, and this one is directed besides --
 # both are fine with the default circular layout
 e2 <- data.frame(from = c(1, 1, 2, 2, 3, 4), to = c(2, 3, 3, 4, 4, 5))
 g2 <- tda_graph(e2, directed = TRUE)
 pdf(NULL); plot(g2); dev.off()
-#> agg_record_1ec150bceede 
-#>                       2 
+#> agg_record_1f9767bbd99 
+#>                      2 
 ```

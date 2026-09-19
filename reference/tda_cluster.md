@@ -63,10 +63,9 @@ tda_cluster(
 
 ## Value
 
-For `"hierarchical"` the object also carries `merges`: one row per
-split, the two clusters, their sizes and their diameters. An object
-carrying a `table`, or for `"hierarchical"` `clusters` instead (see
-Details).
+An object carrying a `table`, or for `"hierarchical"` `clusters` instead
+(see Details). For `"hierarchical"` the object also carries `merges`:
+one row per split, the two clusters, their sizes and their diameters.
 
 ## Details
 

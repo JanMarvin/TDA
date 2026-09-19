@@ -59,7 +59,8 @@ Other graph analysis:
 [`tda_g()`](https://janmarvin.github.io/TDA/reference/tda_g.md),
 [`tda_g_analyses`](https://janmarvin.github.io/TDA/reference/tda_g_analyses.md),
 [`tda_graph()`](https://janmarvin.github.io/TDA/reference/tda_graph.md),
-[`tda_ptree()`](https://janmarvin.github.io/TDA/reference/tda_ptree.md)
+[`tda_ptree()`](https://janmarvin.github.io/TDA/reference/tda_ptree.md),
+[`tda_ucl()`](https://janmarvin.github.io/TDA/reference/tda_ucl.md)
 
 ## Examples
 

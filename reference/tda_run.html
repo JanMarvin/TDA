@@ -137,28 +137,28 @@ so that the commands can read it with <code>dfile=</code>.</p></dd>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">tda_run</span><span class="op">(</span><span class="st">"mem;"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 21:46:36 2026</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 22:50:01 2026</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Current memory: 390032 bytes.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Reading command file: commands</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ============================================================================</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Currently requested memory: 390032 (390032) bytes.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Current memory: 390032 bytes. Max memory used: 390032 bytes.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> End of program. Sat Sep 19 21:46:36 2026</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> End of program. Sat Sep 19 22:50:01 2026</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># tda_run_cf: the same thing, but the command file already exists on disk</span></span></span>
 <span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="st">"mem;"</span>, <span class="va">f</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu">tda_run_cf</span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">r</span><span class="op">$</span><span class="va">output</span>, sep <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 21:46:36 2026</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TDA. Analysis of Transition Data (6.4q). Sat Sep 19 22:50:01 2026</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Current memory: 390032 bytes.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Reading command file: file1ec16316c76b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Reading command file: file1f97de5f330</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ============================================================================</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Currently requested memory: 390032 (390032) bytes.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Current memory: 390032 bytes. Max memory used: 390032 bytes.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> End of program. Sat Sep 19 21:46:36 2026</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> End of program. Sat Sep 19 22:50:01 2026</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

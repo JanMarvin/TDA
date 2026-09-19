@@ -95,8 +95,7 @@ contents instead of extracting anything.</p></dd>
 <dd><p>packing method for the members: <code>1</code> (LZD, the
 default) or <code>0</code> (stored, uncompressed). TDA's <code>arcd</code>
 reads all of 0, 1 and 2, but other readers of TDA-written archives
-may not, and LZD is what <code>zoo</code> itself has always produced.
-all of them.</p></dd>
+may not, and LZD is what <code>zoo</code> itself has always produced.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -122,11 +121,9 @@ archive itself stored, and separately, every file
 by the independent, unrelated <code>zoo</code>/<code>unzoo</code> reference tools
 (<a href="https://github.com/troglobit/zoo" class="external-link">https://github.com/troglobit/zoo</a>) – not just read back
 correctly by this same code, which would only prove self-consistency.
-<code>zoo</code> writes stored (uncompressed) entries, each with its correct
-CRC-16 checksum: always valid and readable by any Zoo implementation,
-including TDA's, at the cost of not compressing – compression is a
-possible future addition, not something any current user of this
-package has needed.</p>
+<code>zoo</code> writes LZD-compressed entries by default, or stored
+(uncompressed) ones with <code>method = 0</code>, each with its CRC-16
+checksum, readable by any Zoo implementation including TDA's.</p>
 <p>Only Zoo's short filename field (12 characters) is read or written; the
 format's optional long-filename/directory extension is not implemented.
 Every TDA-era archive uses short, DOS-compatible names, so this covers

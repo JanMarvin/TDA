@@ -7,7 +7,7 @@
 [`tda_ple`](https://janmarvin.github.io/TDA/reference/tda_ltb.md),
 [`tda_ltb`](https://janmarvin.github.io/TDA/reference/tda_ltb.md) and
 [`tda_rate`](https://janmarvin.github.io/TDA/reference/tda_rate.md) –
-none of which expose `wnorm` as its argument, since this is all it does:
+none of which expose `wnorm` as an argument, since this is all it does:
 fitted coefficients come back identical whether the weights are rescaled
 this way first or not, only the standard errors change (rescaling is a
 constant multiplier on the whole weighted log-likelihood, so it moves

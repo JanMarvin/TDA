@@ -355,7 +355,7 @@ Statistical packages, spreadsheets, archives, text.
 - [`tda_freq()`](https://janmarvin.github.io/TDA/reference/tda_freq1.md)
   [`tda_freq1()`](https://janmarvin.github.io/TDA/reference/tda_freq1.md)
   [`tda_freq2()`](https://janmarvin.github.io/TDA/reference/tda_freq1.md)
-  : One-, and two-way frequency tables
+  : One- and two-way frequency tables
 - [`tda_quant()`](https://janmarvin.github.io/TDA/reference/tda_quant.md)
   [`tda_atab()`](https://janmarvin.github.io/TDA/reference/tda_quant.md)
   : Quantiles, histograms and one-way frequency tables
@@ -436,52 +436,34 @@ rate models.
 - [`tda_lsreg()`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md)
   [`tda_lsreg1()`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md)
   : Least squares regression
-
 - [`TDA_FAMILIES`](https://janmarvin.github.io/TDA/reference/tda_glm.md)
   [`tda_glm()`](https://janmarvin.github.io/TDA/reference/tda_glm.md) :
   Generalized linear models
-
 - [`TDA_QRMODELS`](https://janmarvin.github.io/TDA/reference/tda_qreg.md)
   [`tda_qreg()`](https://janmarvin.github.io/TDA/reference/tda_qreg.md)
   : Qualitative response models
-
 - [`tda_l1reg()`](https://janmarvin.github.io/TDA/reference/tda_l1reg.md)
   : Least absolute deviations regression
-
 - [`tda_freg()`](https://janmarvin.github.io/TDA/reference/tda_freg.md)
   : Non-linear regression with a user-defined function
-
 - [`tda_mreg()`](https://janmarvin.github.io/TDA/reference/tda_mreg.md)
   : Monotone regression
-
 - [`tda_nlreg()`](https://janmarvin.github.io/TDA/reference/tda_nlreg.md)
   [`predict(`*`<tda_nlreg>`*`)`](https://janmarvin.github.io/TDA/reference/tda_nlreg.md)
   : Non-linear regression
-
 - [`tda_npreg()`](https://janmarvin.github.io/TDA/reference/tda_npreg.md)
   : Non-parametric regression
-
 - [`tda_zreg()`](https://janmarvin.github.io/TDA/reference/tda_zreg.md)
   [`tda_zreg1()`](https://janmarvin.github.io/TDA/reference/tda_zreg.md)
-  :
-
-  `yw=` marks the case that is censored with a nonzero value, the same
-  convention as R's `survival::Surv(..., event = )` with the sense
-  flipped – unlike `tda_lsreg1`'s `cen=`, this is not translated, so
-  `censor` passed here should already be 1 for a censored case.
-
+  : Regression with a censored response
 - [`tda_gdf()`](https://janmarvin.github.io/TDA/reference/tda_gdf.md) :
   General distribution functions for censored data
-
 - [`tda_pcyc()`](https://janmarvin.github.io/TDA/reference/tda_pcyc.md)
   : Cycle structure of permutations
-
 - [`tda_spmod()`](https://janmarvin.github.io/TDA/reference/tda_spmod.md)
   : Stationary solution of a Leslie matrix
-
 - [`tda_mlrc_design()`](https://janmarvin.github.io/TDA/reference/tda_mlrc_design.md)
   : Design matrix for MLRC models
-
 - [`lvl()`](https://janmarvin.github.io/TDA/reference/lvl.md) : A
   variable's value by category, for tda_qreg
 

@@ -147,8 +147,8 @@ tda_sd_plot3_polygons(
 
 - symbol:
 
-  marker symbol to draw at each point, as TDA's `s=`. It has its
-  argument because `s` is the spatial object.
+  marker symbol to draw at each point, as TDA's `s=`. It is named
+  `symbol` rather than `s` because `s` is the spatial object.
 
 - size:
 
@@ -157,7 +157,7 @@ tda_sd_plot3_polygons(
 - zval:
 
   a single height for every point or polygon, when they do not have
-  their via `zvar`; TDA's default is 0.
+  their own via `zvar`; TDA's default is 0.
 
 - z, zlim:
 
@@ -268,6 +268,6 @@ if (requireNamespace("sf", quietly = TRUE)) {
   plot(pnc)
 }
 dev.off()
-#> agg_record_1ec1dd1ad22 
-#>                      2 
+#> agg_record_1f9779b4e794 
+#>                       2 
 ```

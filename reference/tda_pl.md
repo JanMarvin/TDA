@@ -145,7 +145,8 @@ tda_ps_file(x)
 
 - lw:
 
-  line width in mm, for `tda_pl_grid`.
+  line width in mm, for `tda_pl_grid`, `tda_pl_axes`, `tda_pl_frame`,
+  and `tda_pl_circle`.
 
 - fs:
 
@@ -192,7 +193,7 @@ tda_ps_file(x)
 
 - by:
 
-  a grouping column in the plot's data. Without `group`, one line is
+  a grouping column in the plot's data. Without `select`, one line is
   drawn per level.
 
 - band:
@@ -333,7 +334,7 @@ p2 <- tda_pl_polyline(p2, c(0.2, 1, 0.2), c(11, 11, 11.8))  # a raw shape
 # its row along the top, so it doesn't cross the data line below
 p2 <- tda_pl_function(p2, "sin(x)+11", range = c(0, 6), step = 0.2)
 tda_ps_file(p2)   # the PostScript path, once the session has been run
-#> [1] "/tmp/RtmpaDnCKo/tda1ec128724acc/plot.ps"
+#> [1] "/tmp/RtmpyuRzLd/tda1f9716a96e88/plot.ps"
 p2
 #> TDA plot session (plot.ps), 90 x 70 mm, x: [0,6], y: [0,12]
 #> Data: 5 rows, x, y 

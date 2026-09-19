@@ -121,14 +121,14 @@ tda_g_eigen(g, n = NULL, tol = NULL, control = NULL, ...)
   `"fundamental_nodes"` (default), `"fundamental_edges"`, `"all_v1"`, or
   `"all_v2"` – `gcyc`'s `opt=`. For `tda_g_edges`: `"edges"` (default),
   or the adjacency matrix as `"lower_triangle"`,
-  `"lower_triangle_diag"`, `"full"`, or `"full_square"` – `gdp`'s `opt=`
-  (this list belongs to `tda_g_edges`). For `tda_g_dcycles`:
-  `"per_cycle"` (default), `"per_node"`, or `"progress"` (report
-  progress to the console instead of writing anything) – `gdcyc`'s
-  `opt=`. For `tda_g_reachable`: `"count"` (default, number of reachable
-  nodes), `"list"` (plus the node numbers), `"strong_nodes"`, or
-  `"strong_edges"` (strongly connected components) – `gdcon`'s `opt=`.
-  Five different commands' own `opt=`, each with its own meaning.
+  `"lower_triangle_diag"`, `"full"`, or `"full_square"` – `gdp`'s
+  `opt=`. For `tda_g_dcycles`: `"per_cycle"` (default), `"per_node"`, or
+  `"progress"` (report progress to the console instead of writing
+  anything) – `gdcyc`'s `opt=`. For `tda_g_reachable`: `"count"`
+  (default, number of reachable nodes), `"list"` (plus the node
+  numbers), `"strong_nodes"`, or `"strong_edges"` (strongly connected
+  components) – `gdcon`'s `opt=`. Five different commands' own `opt=`,
+  each with its own meaning.
 
 - algorithm:
 
@@ -367,12 +367,6 @@ answering wrongly, so the error message is worth reading. Most of the
 `gnst`, `gcset` and `gnc` want an undirected one, and `gcni` wants an
 unvalued one.
 
-TDA refuses a command whose graph is of the wrong kind rather than
-answering wrongly, so the error message is worth reading. Most of the
-`gd*` commands want a directed graph, `gcliq`, `gcut`, `gcyc`, `gmst`,
-`gnst`, `gcset` and `gnc` want an undirected one, and `gcni` wants an
-unvalued one.
-
 ## See also
 
 Other graph analysis:
@@ -381,7 +375,8 @@ Other graph analysis:
 [`tda_g()`](https://janmarvin.github.io/TDA/reference/tda_g.md),
 [`tda_graph()`](https://janmarvin.github.io/TDA/reference/tda_graph.md),
 [`tda_locate_line()`](https://janmarvin.github.io/TDA/reference/tda_locate_line.md),
-[`tda_ptree()`](https://janmarvin.github.io/TDA/reference/tda_ptree.md)
+[`tda_ptree()`](https://janmarvin.github.io/TDA/reference/tda_ptree.md),
+[`tda_ucl()`](https://janmarvin.github.io/TDA/reference/tda_ucl.md)
 
 ## Examples
 

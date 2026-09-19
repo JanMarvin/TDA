@@ -28,8 +28,8 @@ tda_sma(
 
 - weights:
 
-  TDA's half-kernel directly (see Details), for an unequal-weight window
-  – `c(0.5, 0.25)` for a 3-point window weighted `0.25, 0.5, 0.25`.
+  TDA's half-kernel directly (see above), for an unequal-weight window –
+  `c(0.5, 0.25)` for a 3-point window weighted `0.25, 0.5, 0.25`.
 
 - options:
 
@@ -57,6 +57,16 @@ time axis. Weights that sum to 1 give an ordinary average, matching
 [`zoo::rollmean()`](https://rdrr.io/pkg/zoo/man/rollmean.html) for the
 equal-weight case aside from TDA's own end-value rule where `rollmean`
 would give `NA`.
+
+## See also
+
+Other smoothing:
+[`tda_integrate()`](https://janmarvin.github.io/TDA/reference/tda_integrate.md),
+[`tda_interp()`](https://janmarvin.github.io/TDA/reference/tda_interp.md),
+[`tda_isotonic()`](https://janmarvin.github.io/TDA/reference/tda_isotonic.md),
+[`tda_mat()`](https://janmarvin.github.io/TDA/reference/tda_mat.md),
+[`tda_smd()`](https://janmarvin.github.io/TDA/reference/tda_smd.md),
+[`tda_spl()`](https://janmarvin.github.io/TDA/reference/tda_spl.md)
 
 ## Examples
 

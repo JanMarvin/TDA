@@ -53,8 +53,8 @@ tda_qreg(
 - waves, min_waves:
 
   the number of waves and, of those, the minimum with valid data
-  required per case (`nw=`/`pmin=`); only meaningful for models 7 and 8,
-  which this wrapper does not otherwise support (see Models above).
+  required per case (`nw=`/`pmin=`); only meaningful for models 7 and 8
+  (see the Panel models section).
 
 - intercept:
 
@@ -156,8 +156,8 @@ tda_qreg(
 An object of class `tda_fit`. For the multivariate and simultaneous
 probits (models 6 and 8) it carries `correlation`, the estimated
 correlation matrix among the latent equations, which TDA computes only
-when asked for a parameter file. Additionally carrying `categories`, the
-(weighted) count and percentage of each response category as `qreg`
+when asked for a parameter file. It additionally carries `categories`,
+the (weighted) count and percentage of each response category as `qreg`
 itself tabulates them before estimating. Cases with missing values are
 dropped before the fit, with a message (see
 [`?tdaR`](https://janmarvin.github.io/TDA/reference/tdaR-package.md)).
@@ -175,8 +175,8 @@ model number:
 | 4 | `ordinal_probit` | needs three or more categories |
 | 5 | `multinomial_logit` | needs `nq` |
 | 6 | `multivariate_probit` | needs `nq` |
-| 7 | `conditional_logit` | panel: needs `waves` (2+) and [`cbind()`](https://rdrr.io/r/base/cbind.html) terms – see Details |
-| 8 | `simultaneous_probit` | panel: needs `waves` (2+) and [`cbind()`](https://rdrr.io/r/base/cbind.html) terms – see Details |
+| 7 | `conditional_logit` | panel: needs `waves` (2+) and [`cbind()`](https://rdrr.io/r/base/cbind.html) terms – see Panel models |
+| 8 | `simultaneous_probit` | panel: needs `waves` (2+) and [`cbind()`](https://rdrr.io/r/base/cbind.html) terms – see Panel models |
 
 ## Panel models (waves)
 
@@ -206,11 +206,6 @@ though models 5 and 6 both require it, and it lists only the first five
 models, though eight are implemented – the table above is the full set.
 The binary models agree with `glm`: a binary logit is a binomial glm
 with a logit link, a binary probit one with a probit link.
-
-Models 7 and 8 need multi-wave (repeated-measures) data – a different
-`varlist` shape than the single formula this wrapper builds, not just an
-extra option – so this function refuses them outright rather than send a
-request TDA would misinterpret or reject confusingly.
 
 ## See also
 

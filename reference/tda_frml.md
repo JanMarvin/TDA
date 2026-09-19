@@ -49,7 +49,7 @@ tda_frml(
   a character vector of assignments, evaluated in order inside TDA, the
   last of which must define `fn` – see
   [`tda_fml`](https://janmarvin.github.io/TDA/reference/tda_fml.md) for
-  the same convention on plain data, and the Details above for the
+  the same convention on plain data, and the description above for the
   episode-specific variables available here. Or an unevaluated
   [`{ }`](https://rdrr.io/r/base/Paren.html) block of plain R
   assignments instead, translated automatically the same way `tda_fml`'s

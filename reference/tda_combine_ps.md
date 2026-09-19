@@ -1,7 +1,7 @@
 # Combine several PostScript plots into one file
 
 `tda_combine_ps` reaches TDA's `dplot` command, which lays out a grid of
-previously-created PostScript files (each its
+previously-created PostScript files (each from its own
 [`tda_ps()`](https://janmarvin.github.io/TDA/reference/tda_ps.md)
 session, already run) into a single output file – one row per element of
 `rows`, side by side within a row. Unlike every other `tda_pl_*`

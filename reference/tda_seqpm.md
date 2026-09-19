@@ -35,7 +35,8 @@ tda_seqpm(
 - patterns:
 
   a list of patterns, each a vector of states (numbers) and wildcards
-  (`"?"`, `"*"`, `"+"`, `"-"`, as strings) – see Details. At most 20.
+  (`"?"`, `"*"`, `"+"`, `"-"`, as strings), as described above. At most
+  20.
 
 - variables:
 

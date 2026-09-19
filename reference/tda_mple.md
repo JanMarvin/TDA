@@ -8,7 +8,7 @@ events fall at exactly the same time, this matches the standard
 product-limit CDF exactly – confirmed against
 [`survival::survfit`](https://rdrr.io/pkg/survival/man/survfit.html)
 across random instances (events may still tie with a censored
-observation; only ties \*among events\* are excluded). When two or more
+observation; only ties *among events* are excluded). When two or more
 events tie, processing them one at a time rather than as a single
 simultaneous risk-set reduction means only the *last* observation
 processed within that tied group reaches the value standard Kaplan-Meier

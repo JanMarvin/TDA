@@ -180,15 +180,12 @@ separate table (<code>Idx</code>/<code>SN</code>/<code>Org</code>/<code>Des</cod
 
 <dt id="arg-degree-kgam-mixture">degree, kgam, mixture<a class="anchor" aria-label="anchor" href="#arg-degree-kgam-mixture"></a></dt>
 <dd><p>model-specific options, each read by a few
-models and ignored by the rest (checked against <code>check_mod()</code>,
-<code>build_pvec()</code> and the model functions in <code>t_fnrtb.c</code>,
-and by fitting with and without each): <code>deg=</code> is the
-polynomial degree of <code>polynomial</code>, <code>polynomial2</code>,
+models and ignored by the rest: <code>deg=</code> is the polynomial
+degree of <code>polynomial</code>, <code>polynomial2</code>,
 <code>discrete_logistic</code> and <code>discrete_cloglog</code> (models 4, 5,
 20, 21) and has no effect on any other model; <code>kgam=</code> is the
-fixed shape of <code>generalized_gamma</code> (model 13) only – not, as
-an earlier version of this text said, of the Gompertz-Makeham
-family, where it changes nothing; <code>mix=1</code> requests the gamma
+fixed shape of <code>generalized_gamma</code> (model 13) only, the
+Gompertz-Makeham family does not read it; <code>mix=1</code> requests the gamma
 mixture form of <code>exponential</code> and <code>weibull</code> (models 2
 and 7), and for any other model TDA stops with “Gamma
 mixture not possible” rather than ignoring it.</p></dd>

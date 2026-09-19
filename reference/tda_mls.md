@@ -112,9 +112,10 @@ prints no residual at all; `rank`, the reported rank of `A` (`NA` for
 
 ## Details
 
-All three also accept the manual's single-matrix form, `mls(S, B)` with
-`S = [X, y]`: when the right-hand side is not given, the last column of
-the first argument is split off as `y`.
+`tda_mls`, `tda_mlse` and `tda_mlsi` also accept the manual's
+single-matrix form, `mls(S, B)` with `S = [X, y]`: when the right-hand
+side is not given, the last column of the first argument is split off as
+`y`.
 
 ## See also
 

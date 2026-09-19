@@ -758,8 +758,8 @@ plot(p)
 
 ### 4.4.3 Plotting Text
 
-TDA writes special characters as `@nnn` (Times-Roman, through its own
-re-encoding table) or `\\nnn` (the Symbol font); both round-trip, a
+TDA writes special characters as `@nnn` (the Symbol font) or `\\nnn`
+(Times-Roman, through its own re-encoding table); both round-trip, a
 literal UTF-8 character does not. `plots.cf` shows each escape and,
 beside it, the escape written out literally: `\\100` is the `@` sign and
 `\\\\` a backslash, so `\\100141` prints as `@141`, and `\\324` is the
@@ -1550,7 +1550,7 @@ tda_mlse(mlseA)
     [1] 0.4087254230 0.4301912621 0.6245602237
 
     $residual
-    [1] 3.720636835e-16
+    [1] 3.705655206e-16
 
     $rank
     [1] 3
@@ -2312,10 +2312,10 @@ Both methods reproduce the box: 37.3177, 38.0035 and 46.2348 for method
 2, and 37.6603, 37.6603 and 46.2104 for method 1.
 
 A few of the later rows differ in the last digit or two – 103.47752 here
-against the manual’s 103.4777. `gdf4.cf` writes its generated data to a
-file at `[10.6]` and reads it back, so its input is rounded to six
-decimals; this passes R’s doubles straight to TDA. The same reason the
-deviance in 6.15.2.1 differs.
+against the manual’s 103.4777. `gdf3.cf` writes its generated data to a
+file and `gdf4.cf` reads it back at `[10.6]`, so its input is rounded to
+six decimals; this passes R’s doubles straight to TDA. The deviance in
+6.15.2.1 differs for the same reason.
 
 Box 74gdf: the two joint methods (Box 12)
 
@@ -3493,7 +3493,7 @@ tda_fml({
 the `qreg` command, model 1 the logit and model 2 the probit.
 `predictions=` and `standardized=` ask for the two further tables.
 
-Box 117Binary logit (qr1.cf, qr5.cf)
+Box 117Binary logit (qr1.cf)
 
 ``` r
 qr1 <- read.table(ex("qr1.dat"))
@@ -4748,9 +4748,6 @@ fit$logLik_null   # the exponential null model TDA starts from
 
     [1] -2514.02
 
-`residuals=` asks for the generalized residuals and `prate=` for the
-fitted rate at chosen time points and covariate values.
-
 **Example 2** `rt1m.cf` estimates the same three covariates over the
 three destination states. Its `DES` differs from `ed2.cf`’s in one
 comparison – `ge(PRESN/PRES - 1, 0.2)` against `gt` – and one episode
@@ -5556,7 +5553,6 @@ sum of the period constants and the covariate effects; `frml2c.cf` adds
 the constraints that equate the periods. Both reach `rt2` and `rt2c`.
 
 Box 161frml2.cf, frml2c.cf: the piecewise constant model, by hand
-(frml9.cf)
 
 ``` r
 pw <- function(...) tda_frml(Surv(TFP, DES) ~ COHO2 + COHO3 + W, {
@@ -5957,7 +5953,6 @@ Model 1 is the Cox model, estimated by partial likelihood, here with one
 transition and then with three.
 
 Box 168pl1.cf and pl1m.cf: Cox models with one and three transitions
-(pl7.cf)
 
 ``` r
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 1)
@@ -6094,7 +6089,7 @@ tda_rate(Surv(ts, tf, des) ~ COHO2 + COHO3 + W + MARR, sp, model = 1)
 The usual test is an interaction with log time: if the effect is
 proportional, its coefficient is zero.
 
-Box 171A test of proportionality (pl10.cf, pl6.cf)
+Box 171A test of proportionality (pl6.cf)
 
 ``` r
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W + WTEST, data = d, model = 1,
@@ -6119,7 +6114,7 @@ tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W + WTEST, data = d, model = 1,
 The same question asked by splitting the time axis: `tp=` estimates
 within periods.
 
-Box 172The effect within periods (seq8.cf, pl7.cf)
+Box 172The effect within periods (pl7.cf)
 
 ``` r
 rrdat5 <- read.table(ex("rrdat.5"), col.names = c("TF", "DES", "G"))
@@ -6177,7 +6172,7 @@ tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d4m, model = 1,
 `strata()` on the right hand side is survival’s spelling and TDA’s
 `grp=`: a separate baseline rate per stratum, one set of coefficients.
 
-Box 174A stratified Cox model (ll1.cf, pl9.cf)
+Box 174A stratified Cox model (pl9.cf)
 
 ``` r
 tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + strata(SEX), data = d, model = 1)
@@ -6200,7 +6195,7 @@ tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + strata(SEX), data = d, model = 1)
 
 `prate=` evaluates the baseline rate at a covariate vector.
 
-Box 175The baseline rate at given covariate values (ll2.cf)
+Box 175The baseline rate at given covariate values (pl1r.cf)
 
 ``` r
 fit <- tda_rate(Surv(TFP, DES) ~ COHO2 + COHO3 + W, data = d, model = 1,
@@ -6446,43 +6441,24 @@ head(residuals(fit))
 
 ## 7 Relational Data
 
+The manual’s example graph is `gd1.dat`: an edge list `I, J` with two
+value variables, `V1` and `V2`, so every node count comes once per value
+variable.
+[`tda_graph()`](https://janmarvin.github.io/TDA/reference/tda_graph.md)
+is the `gdd` command.
+
 ### 7.2.1.1 Degree of Nodes
 
 `gni` reports each node of the current graph: its number, its label, and
-per value variable the in-degree, out-degree and number of loops.
-`gd4.cf` runs it on `gd1.dat`, which defines two graphs.
-
-Box 182gni (gd4.cf)
-
-``` r
-gd1n <- read.table(ex("gd1.dat"), col.names = c("I", "J", "V1", "V2"))
-tda_g_nodes(tda_graph(gd1n, directed = TRUE))$table
-```
-
-      V1 V2 V3 V4 V5 V6 V7 V8
-    1  1  1  1  2  0  2  0  0
-    2  2  5  1  0  0  0  1  0
-    3  3  7  1  1  0  1  1  0
-    4  4  8  0  0  1  0  1  0
-    5  5  9  0  0  0  0  0  0
-    6  6 11  0  1  0  1  0  0
-    7  7 12  1  0  0  0  1  0
-
-Node 8’s first-graph degrees read 0 and 0 here; the manual’s box prints
-1 and 1. Running `gd4.cf` through TDA gives 0 and 0, and so does a build
-of Rohwer’s unmodified sources, so the box is out of date.
-
-Chapter 7 is relational data. The manual’s example graph is `gd1.dat`:
-an edge list `I, J` with two value variables, `V1` and `V2`, so every
-node count comes once per value variable.
-[`tda_graph()`](https://janmarvin.github.io/TDA/reference/tda_graph.md)
-is the `gdd` command and
+per value variable the in-degree, out-degree and number of loops;
 [`tda_g_degrees()`](https://janmarvin.github.io/TDA/reference/tda_g_analyses.md)
-is `gni`. A loop (node 8 to itself) is counted in its own column and not
-in the degrees; the manual’s Box 1 (2002) counted it in both, TDA 6.4p
-does not.
+is `gni`, and `gd4.cf` runs it on `gd1.dat`. A loop (node 8 to itself)
+is counted in its own column and not in the degrees: the manual’s Box 1
+prints node 8’s first-graph degrees as 1 and 1, while `gd4.cf` run
+through TDA gives 0 and 0, as does a build of Rohwer’s unmodified
+sources, so the box is out of date.
 
-Box 183gni: in-degree, out-degree and loops per value variable (gd4.cf)
+Box 182gni: in-degree, out-degree and loops per value variable (gd4.cf)
 
 ``` r
 gd1 <- read.table(ex("gd1.dat"), col.names = c("I", "J", "V1", "V2"))
@@ -6505,7 +6481,7 @@ tda_g_degrees(g1)
 is `gdln`: for each node the nodes it links to, one ragged record per
 node with any forward links.
 
-Box 184gdln: forward links
+Box 183gdln: forward links
 
 ``` r
 tda_g_links(g1)$table                     # forward links
@@ -6534,7 +6510,7 @@ tda_g_links(g1, backward = TRUE)$table    # and backward
 is `gsort`, on the manual’s `gd6.dat`: a directed acyclic graph, its
 nodes in an order that respects every edge.
 
-Box 185gsort (gd22.cf)
+Box 184gsort (gd22.cf)
 
 ``` r
 gd6 <- read.table(ex("gd6.dat"), col.names = c("I", "J", "V"))
@@ -6572,7 +6548,7 @@ and asks for the components of its second graph, the one `V2` defines
 (`gn = 2`): node 8 joins component 1 through the edge 8-7 that `V2`
 carries and `V1` does not.
 
-Box 186gcon: components of graph 2 (gd7.cf)
+Box 185gcon: components of graph 2 (gd7.cf)
 
 ``` r
 gcomp <- tda_graph(gd1, directed = FALSE)
@@ -6606,7 +6582,7 @@ tda_g_components(gcomp, gn = 2, edges = TRUE)$table
 strongly connected components (`opt = 1`) or, with `opt = 2`, the nodes
 each node reaches. `gd8.cf` runs it on graph 2 of `gd1.dat`.
 
-Box 187gdcon: reachable nodes (gd8.cf) (gd30.cf)
+Box 186gdcon: reachable nodes (gd8.cf)
 
 ``` r
 g1d <- tda_graph(gd1, directed = TRUE)
@@ -6625,7 +6601,7 @@ tda_g(g1d, "gdcon", list(gn = 2, opt = 2))$table
 is `gcut`, on `gd8.dat`: the nodes whose removal disconnects the graph,
 and with `opt = 2` the blocks.
 
-Box 188gcut (gd26.cf)
+Box 187gcut (gd26.cf)
 
 ``` r
 gd8 <- read.table(ex("gd8.dat"), col.names = c("I", "J", "V"))
@@ -6659,7 +6635,7 @@ output options: the paths between all pairs of nodes, their number per
 pair, the shortest and longest path per pair, and the two full listings
 with each path’s length and value.
 
-Box 189gep (gd20.cf)
+Box 188gep (gd20.cf)
 
 ``` r
 gd5 <- read.table(ex("gd5.dat"), col.names = c("I", "J", "V"))
@@ -6784,7 +6760,7 @@ for (o in 1:6)
 The graph itself, as the manual draws it (`gd18.cf`): five nodes, curved
 arrows for the edges that run both ways, the edge values as labels.
 
-Box 190The directed graph of gd5.dat, drawn (gd18.cf)
+Box 189The directed graph of gd5.dat, drawn (gd18.cf)
 
 ``` r
 p <- tda_ps(xlim = c(0, 8), ylim = c(-1, 5), width = 80, height = 40)
@@ -6805,7 +6781,7 @@ plot(tda_pl_graph(p, nodes, edges))
 [`tda_g_shortest()`](https://janmarvin.github.io/TDA/reference/tda_g_analyses.md)
 is `gsp`, the same graph, `gd27.cf`.
 
-Box 191gsp (gd27.cf)
+Box 190gsp (gd27.cf)
 
 ``` r
 tda_g_shortest(g5, opt = 1, fmt = "4.1")$table
@@ -6825,7 +6801,7 @@ is `gtcl`; `gd16.cf` runs it on `gd5.dat` read as an undirected, an
 undirected valued and a directed graph, `opt = 2` for the closure as a
 matrix.
 
-Box 192gtcl (gd16.cf)
+Box 191gtcl (gd16.cf)
 
 ``` r
 # gdd's gt= is the graph type: 1 undirected unvalued, 2 undirected
@@ -6867,7 +6843,7 @@ for (gt in 1:4)
 is `gst`, on `gd7.dat`: one spanning tree per component, the edges
 listed with their values.
 
-Box 193gst (gd24.cf)
+Box 192gst (gd24.cf)
 
 ``` r
 gd7 <- read.table(ex("gd7.dat"), col.names = c("I", "J", "V"))
@@ -6885,7 +6861,7 @@ tda_g_spanning(tda_graph(gd7, directed = FALSE))$table
 The manual’s Figure 7.2.5.1-1 is `gd7.dat`’s first component drawn by
 `gd21.cf`, with its spanning tree’s edges.
 
-Box 194gd7.dat drawn (gd21.cf)
+Box 193gd7.dat drawn (gd21.cf)
 
 ``` r
 p <- tda_ps(xlim = c(0, 6), ylim = c(0, 5), width = 60, height = 30)
@@ -6901,7 +6877,7 @@ plot(tda_pl_graph(p, nodes, edges))
 
 ![](data:image/svg+xml;base64,PHN2ZyBjbGFzcz0icGxvdCIgc3R5bGU9IndpZHRoOjE1LjEzcmVtIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNjc5cHQiIGhlaWdodD0iNDI2cHQiIHZpZXdib3g9IjAgMCA2NzkgNDI2Ij48ZGVmcz48Zz48ZyBpZD0iZzQ4LTAtMCI+PHBhdGggZD0iTSA1LjY0MDYyNSAtMTEuMjE4NzUgTCA1LjY0MDYyNSAwIEwgNy41NjI1IDAgTCA3LjU2MjUgLTE1Ljc2NTYyNSBMIDYuMjk2ODc1IC0xNS43NjU2MjUgQyA1LjYyNSAtMTMuMzQzNzUgNS4xODc1IC0xMy4wMTU2MjUgMi4yMTg3NSAtMTIuNjI1IEwgMi4yMTg3NSAtMTEuMjE4NzUgWiBNIDUuNjQwNjI1IC0xMS4yMTg3NSAiIC8+PC9nPjxnIGlkPSJnNDgtMC0xIj48cGF0aCBkPSJNIDEwLjM3NSAtMTUuNDUzMTI1IEwgMi4zOTA2MjUgLTE1LjQ1MzEyNSBMIDEuMjUgLTcuMDQ2ODc1IEwgMy4wMTU2MjUgLTcuMDQ2ODc1IEMgMy45MDYyNSAtOC4xMDkzNzUgNC42NDA2MjUgLTguNDg0Mzc1IDUuODU5Mzc1IC04LjQ4NDM3NSBDIDcuOTM3NSAtOC40ODQzNzUgOS4yMTg3NSAtNy4wNjI1IDkuMjE4NzUgLTQuNzgxMjUgQyA5LjIxODc1IC0yLjU0Njg3NSA3LjkzNzUgLTEuMjAzMTI1IDUuODQzNzUgLTEuMjAzMTI1IEMgNC4xNTYyNSAtMS4yMDMxMjUgMy4xNDA2MjUgLTIuMDQ2ODc1IDIuNjg3NSAtMy43OTY4NzUgTCAwLjc2NTYyNSAtMy43OTY4NzUgQyAxLjAzMTI1IC0yLjUzMTI1IDEuMjUgLTEuOTIxODc1IDEuNzAzMTI1IC0xLjM0Mzc1IEMgMi41NzgxMjUgLTAuMTcxODc1IDQuMTQwNjI1IDAuNSA1Ljg5MDYyNSAwLjUgQyA5IDAuNSAxMS4xODc1IC0xLjc2NTYyNSAxMS4xODc1IC01LjAzMTI1IEMgMTEuMTg3NSAtOC4wOTM3NSA5LjE1NjI1IC0xMC4xNzE4NzUgNi4xODc1IC0xMC4xNzE4NzUgQyA1LjA5Mzc1IC0xMC4xNzE4NzUgNC4yMzQzNzUgLTkuODkwNjI1IDMuMzI4MTI1IC05LjIzNDM3NSBMIDMuOTM3NSAtMTMuNTYyNSBMIDEwLjM3NSAtMTMuNTYyNSBaIE0gMTAuMzc1IC0xNS40NTMxMjUgIiAvPjwvZz48ZyBpZD0iZzQ4LTAtMiI+PHBhdGggZD0iTSA0LjgxMjUgLTcuMjY1NjI1IEwgNS44NTkzNzUgLTcuMjY1NjI1IEMgNy45NTMxMjUgLTcuMjY1NjI1IDkuMDYyNSAtNi4yODEyNSA5LjA2MjUgLTQuMzc1IEMgOS4wNjI1IC0yLjM5MDYyNSA3Ljg3NSAtMS4yMDMxMjUgNS44OTA2MjUgLTEuMjAzMTI1IEMgMy43NjU2MjUgLTEuMjAzMTI1IDIuNzUgLTIuMjY1NjI1IDIuNjA5Mzc1IC00LjU3ODEyNSBMIDAuNzAzMTI1IC00LjU3ODEyNSBDIDAuNzgxMjUgLTMuMzEyNSAxIC0yLjQ4NDM3NSAxLjM3NSAtMS43ODEyNSBDIDIuMTg3NSAtMC4yNjU2MjUgMy42ODc1IDAuNSA1Ljc5Njg3NSAwLjUgQyA4Ljk4NDM3NSAwLjUgMTEuMDMxMjUgLTEuNDIxODc1IDExLjAzMTI1IC00LjQwNjI1IEMgMTEuMDMxMjUgLTYuNDA2MjUgMTAuMjY1NjI1IC03LjUgOC40MDYyNSAtOC4xNTYyNSBDIDkuODU5Mzc1IC04LjczNDM3NSAxMC41NzgxMjUgLTkuODI4MTI1IDEwLjU3ODEyNSAtMTEuNDIxODc1IEMgMTAuNTc4MTI1IC0xNC4xMjUgOC44MTI1IC0xNS43NjU2MjUgNS44NTkzNzUgLTE1Ljc2NTYyNSBDIDIuNzUgLTE1Ljc2NTYyNSAxLjA5Mzc1IC0xNC4wMTU2MjUgMS4wMzEyNSAtMTAuNjg3NSBMIDIuOTM3NSAtMTAuNjg3NSBDIDIuOTY4NzUgLTExLjY0MDYyNSAzLjA0Njg3NSAtMTIuMTg3NSAzLjI5Njg3NSAtMTIuNjU2MjUgQyAzLjczNDM3NSAtMTMuNTYyNSA0LjY4NzUgLTE0LjA3ODEyNSA1Ljg5MDYyNSAtMTQuMDc4MTI1IEMgNy41NzgxMjUgLTE0LjA3ODEyNSA4LjYwOTM3NSAtMTMuMDYyNSA4LjYwOTM3NSAtMTEuMzU5Mzc1IEMgOC42MDkzNzUgLTEwLjI1IDguMjE4NzUgLTkuNTYyNSA3LjM3NSAtOS4yMDMxMjUgQyA2Ljg0Mzc1IC04Ljk4NDM3NSA2LjE0MDYyNSAtOC44OTA2MjUgNC44MTI1IC04Ljg3NSBaIE0gNC44MTI1IC03LjI2NTYyNSAiIC8+PC9nPjxnIGlkPSJnNDgtMC0zIj48cGF0aCBkPSJNIDExLjAzMTI1IC0xLjg5MDYyNSBMIDIuOTA2MjUgLTEuODkwNjI1IEMgMy4wOTM3NSAtMy4yMDMxMjUgMy43OTY4NzUgLTQuMDMxMjUgNS42ODc1IC01LjE4NzUgTCA3Ljg3NSAtNi40MDYyNSBDIDEwLjAzMTI1IC03LjYwOTM3NSAxMS4xNDA2MjUgLTkuMjE4NzUgMTEuMTQwNjI1IC0xMS4xNTYyNSBDIDExLjE0MDYyNSAtMTIuNDY4NzUgMTAuNjA5Mzc1IC0xMy42ODc1IDkuNzAzMTI1IC0xNC41MzEyNSBDIDguNzgxMjUgLTE1LjM1OTM3NSA3LjY1NjI1IC0xNS43NjU2MjUgNi4xODc1IC0xNS43NjU2MjUgQyA0LjIzNDM3NSAtMTUuNzY1NjI1IDIuNzY1NjI1IC0xNS4wNjI1IDEuOTIxODc1IC0xMy43MDMxMjUgQyAxLjM3NSAtMTIuODc1IDEuMTQwNjI1IC0xMS45MDYyNSAxLjA5Mzc1IC0xMC4zMTI1IEwgMy4wMTU2MjUgLTEwLjMxMjUgQyAzLjA3ODEyNSAtMTEuMzc1IDMuMjAzMTI1IC0xMi4wMTU2MjUgMy40Njg3NSAtMTIuNTMxMjUgQyAzLjk2ODc1IC0xMy41IDQuOTY4NzUgLTE0LjA3ODEyNSA2LjEyNSAtMTQuMDc4MTI1IEMgNy44NzUgLTE0LjA3ODEyNSA5LjE3MTg3NSAtMTIuODEyNSA5LjE3MTg3NSAtMTEuMTA5Mzc1IEMgOS4xNzE4NzUgLTkuODU5Mzc1IDguNDUzMTI1IC04Ljc2NTYyNSA3LjA3ODEyNSAtNy45ODQzNzUgTCA1LjA3ODEyNSAtNi43OTY4NzUgQyAxLjg1OTM3NSAtNC45NTMxMjUgMC45MjE4NzUgLTMuNDY4NzUgMC43MzQzNzUgLTAuMDE1NjI1IEwgMTEuMDMxMjUgLTAuMDE1NjI1IFogTSAxMS4wMzEyNSAtMS44OTA2MjUgIiAvPjwvZz48ZyBpZD0iZzQ4LTAtNCI+PHBhdGggZD0iTSA3LjEyNSAtMy44MTI1IEwgNy4xMjUgMCBMIDkuMDQ2ODc1IDAgTCA5LjA0Njg3NSAtMy44MTI1IEwgMTEuMzI4MTI1IC0zLjgxMjUgTCAxMS4zMjgxMjUgLTUuNTMxMjUgTCA5LjA0Njg3NSAtNS41MzEyNSBMIDkuMDQ2ODc1IC0xNS43NjU2MjUgTCA3LjYyNSAtMTUuNzY1NjI1IEwgMC42MDkzNzUgLTUuODQzNzUgTCAwLjYwOTM3NSAtMy44MTI1IFogTSA3LjEyNSAtNS41MzEyNSBMIDIuMjgxMjUgLTUuNTMxMjUgTCA3LjEyNSAtMTIuNDg0Mzc1IFogTSA3LjEyNSAtNS41MzEyNSAiIC8+PC9nPjxnIGlkPSJnNDgtMC01Ij48cGF0aCBkPSJNIDExLjMyODEyNSAtMTUuNDUzMTI1IEwgMSAtMTUuNDUzMTI1IEwgMSAtMTMuNTYyNSBMIDkuMzQzNzUgLTEzLjU2MjUgQyA1LjY3MTg3NSAtOC4yOTY4NzUgNC4xNTYyNSAtNS4wNzgxMjUgMy4wMTU2MjUgMCBMIDUuMDYyNSAwIEMgNS45MDYyNSAtNC45NTMxMjUgNy44NDM3NSAtOS4yMDMxMjUgMTEuMzI4MTI1IC0xMy44NDM3NSBaIE0gMTEuMzI4MTI1IC0xNS40NTMxMjUgIiAvPjwvZz48ZyBpZD0iZzQ4LTAtNiI+PHBhdGggZD0iTSA4LjUxNTYyNSAtOC4yOTY4NzUgQyAxMC4xNDA2MjUgLTkuMjgxMjUgMTAuNjQwNjI1IC0xMC4wNjI1IDEwLjY0MDYyNSAtMTEuNTQ2ODc1IEMgMTAuNjQwNjI1IC0xNC4wMzEyNSA4LjczNDM3NSAtMTUuNzY1NjI1IDYgLTE1Ljc2NTYyNSBDIDMuMjY1NjI1IC0xNS43NjU2MjUgMS4zNDM3NSAtMTQuMDMxMjUgMS4zNDM3NSAtMTEuNTc4MTI1IEMgMS4zNDM3NSAtMTAuMDYyNSAxLjg1OTM3NSAtOS4zMTI1IDMuNDM3NSAtOC4yOTY4NzUgQyAxLjY3MTg3NSAtNy40MDYyNSAwLjgxMjUgLTYuMTI1IDAuODEyNSAtNC4zNzUgQyAwLjgxMjUgLTEuNSAyLjkyMTg3NSAwLjUgNiAwLjUgQyA5LjA0Njg3NSAwLjUgMTEuMTg3NSAtMS41IDExLjE4NzUgLTQuMzc1IEMgMTEuMTg3NSAtNi4xMjUgMTAuMzEyNSAtNy40MDYyNSA4LjUxNTYyNSAtOC4yOTY4NzUgWiBNIDYgLTE0LjA2MjUgQyA3LjYyNSAtMTQuMDYyNSA4LjY3MTg3NSAtMTMuMDc4MTI1IDguNjcxODc1IC0xMS41MTU2MjUgQyA4LjY3MTg3NSAtMTAuMDMxMjUgNy42MDkzNzUgLTkuMDQ2ODc1IDYgLTkuMDQ2ODc1IEMgNC4zNTkzNzUgLTkuMDQ2ODc1IDMuMzEyNSAtMTAuMDMxMjUgMy4zMTI1IC0xMS41NDY4NzUgQyAzLjMxMjUgLTEzLjA3ODEyNSA0LjM1OTM3NSAtMTQuMDYyNSA2IC0xNC4wNjI1IFogTSA2IC03LjQzNzUgQyA3LjkwNjI1IC03LjQzNzUgOS4yMTg3NSAtNi4xNzE4NzUgOS4yMTg3NSAtNC4zNDM3NSBDIDkuMjE4NzUgLTIuNDM3NSA3LjkzNzUgLTEuMjAzMTI1IDUuOTUzMTI1IC0xLjIwMzEyNSBDIDQuMDc4MTI1IC0xLjIwMzEyNSAyLjc2NTYyNSAtMi40ODQzNzUgMi43NjU2MjUgLTQuMzEyNSBDIDIuNzY1NjI1IC02LjE4NzUgNC4wNDY4NzUgLTcuNDM3NSA2IC03LjQzNzUgWiBNIDYgLTcuNDM3NSAiIC8+PC9nPjxnIGlkPSJnNDgtMC03Ij48cGF0aCBkPSJNIDEwLjg1OTM3NSAtMTEuNjU2MjUgQyAxMC40ODQzNzUgLTE0LjIzNDM3NSA4LjgyODEyNSAtMTUuNzY1NjI1IDYuNDY4NzUgLTE1Ljc2NTYyNSBDIDQuNzgxMjUgLTE1Ljc2NTYyNSAzLjI1IC0xNC45Mzc1IDIuMzI4MTI1IC0xMy41MTU2MjUgQyAxLjM0Mzc1IC0xMS45Njg3NSAwLjkzNzUgLTEwLjA0Njg3NSAwLjkzNzUgLTcuMTg3NSBDIDAuOTM3NSAtNC41MzEyNSAxLjMxMjUgLTIuODU5Mzc1IDIuMjUgLTEuNDUzMTI1IEMgMy4wNzgxMjUgLTAuMTcxODc1IDQuNDIxODc1IDAuNSA2LjEyNSAwLjUgQyA5LjA2MjUgMC41IDExLjE4NzUgLTEuNzAzMTI1IDExLjE4NzUgLTQuNzgxMjUgQyAxMS4xODc1IC03LjY3MTg3NSA5LjIxODc1IC05LjcxODc1IDYuNDUzMTI1IC05LjcxODc1IEMgNC45MjE4NzUgLTkuNzE4NzUgMy43MzQzNzUgLTkuMTU2MjUgMi45MDYyNSAtOCBDIDIuOTIxODc1IC0xMS45MDYyNSA0LjE0MDYyNSAtMTQuMDYyNSA2LjM0Mzc1IC0xNC4wNjI1IEMgNy42ODc1IC0xNC4wNjI1IDguNjI1IC0xMy4xODc1IDguOTM3NSAtMTEuNjU2MjUgWiBNIDYuMjE4NzUgLTguMDE1NjI1IEMgOC4wNjI1IC04LjAxNTYyNSA5LjIxODc1IC02LjcxODc1IDkuMjE4NzUgLTQuNjI1IEMgOS4yMTg3NSAtMi42NDA2MjUgNy45MDYyNSAtMS4yMDMxMjUgNi4xNDA2MjUgLTEuMjAzMTI1IEMgNC4zNTkzNzUgLTEuMjAzMTI1IDMuMDE1NjI1IC0yLjcwMzEyNSAzLjAxNTYyNSAtNC43MDMxMjUgQyAzLjAxNTYyNSAtNi42NzE4NzUgNC4zMTI1IC04LjAxNTYyNSA2LjIxODc1IC04LjAxNTYyNSBaIE0gNi4yMTg3NSAtOC4wMTU2MjUgIiAvPjwvZz48L2c+PC9kZWZzPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMS43MDEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlPSJyZ2IoMCUsIDAlLCAwJSkiIHN0cm9rZS1vcGFjaXR5PSIxIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0gMTc1LjY4MzU5NCAxODUuNTg5ODQ0IEwgMzIxLjQ0MTQwNiAxODUuNTg5ODQ0ICIgLz48cGF0aCBmaWxsLXJ1bGU9Im5vbnplcm8iIGZpbGw9InJnYigwJSwgMCUsIDAlKSIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNIDMyMS40NDE0MDYgMTg1LjU4OTg0NCBMIDMwNy43MTg3NSAxODEuMDI3MzQ0IEwgMzA5LjY3OTY4OCAxODUuNTg5ODQ0IEwgMzA3LjcxODc1IDE5MC4xNTIzNDQgWiBNIDMyMS40NDE0MDYgMTg1LjU4OTg0NCAiIC8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDMyMS40NDE0MDYgMTg1LjU4OTg0NCBMIDMwNy43MTg3NSAxODEuMDI3MzQ0IEwgMzA5LjY3OTY4OCAxODUuNTg5ODQ0IEwgMzA3LjcxODc1IDE5MC4xNTIzNDQgTCAzMjEuNDQxNDA2IDE4NS41ODk4NDQgIiAvPjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0icmdiKDEwMCUsIDEwMCUsIDEwMCUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gMjM5LjQ2ODc1IDIwMy44MDg1OTQgTCAyMzkuNDY4NzUgMTY3LjM3MTA5NCBMIDI1Ny42ODc1IDE2Ny4zNzEwOTQgTCAyNTcuNjg3NSAyMDMuODA4NTk0IFogTSAyMzkuNDY4NzUgMjAzLjgwODU5NCAiIC8+PGcgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjEiPjx1c2UgeGxpbms6aHJlZj0iI2c0OC0wLTAiIHg9IjI0Mi41NjI1IiB5PSIxOTMuODYzMjgxIiAvPjwvZz48cGF0aCBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjEuNzAxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDUwMy42NDA2MjUgMTg1LjU4OTg0NCBMIDM1Ny44Nzg5MDYgMTg1LjU4OTg0NCAiIC8+PHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoMCUsIDAlLCAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSAzNTcuODc4OTA2IDE4NS41ODk4NDQgTCAzNzEuNjAxNTYyIDE5MC4xNTIzNDQgTCAzNjkuNjQwNjI1IDE4NS41ODk4NDQgTCAzNzEuNjAxNTYyIDE4MS4wMjczNDQgWiBNIDM1Ny44Nzg5MDYgMTg1LjU4OTg0NCAiIC8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDM1Ny44Nzg5MDYgMTg1LjU4OTg0NCBMIDM3MS42MDE1NjIgMTkwLjE1MjM0NCBMIDM2OS42NDA2MjUgMTg1LjU4OTg0NCBMIDM3MS42MDE1NjIgMTgxLjAyNzM0NCBMIDM1Ny44Nzg5MDYgMTg1LjU4OTg0NCAiIC8+PHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoMTAwJSwgMTAwJSwgMTAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSA0MjEuNjY0MDYyIDIwMy44MDg1OTQgTCA0MjEuNjY0MDYyIDE2Ny4zNzEwOTQgTCA0MzkuODg2NzE5IDE2Ny4zNzEwOTQgTCA0MzkuODg2NzE5IDIwMy44MDg1OTQgWiBNIDQyMS42NjQwNjIgMjAzLjgwODU5NCAiIC8+PGcgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjEiPjx1c2UgeGxpbms6aHJlZj0iI2c0OC0wLTEiIHg9IjQyNC43NjE3MTkiIHk9IjE5My44NjMyODEiIC8+PC9nPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMS43MDEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlPSJyZ2IoMCUsIDAlLCAwJSkiIHN0cm9rZS1vcGFjaXR5PSIxIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0gMTU3LjQ2MDkzOCAxODUuNTg5ODQ0IEwgMjM2Ljg5ODQzOCAyODAuODk4NDM4ICIgLz48cGF0aCBmaWxsLXJ1bGU9Im5vbnplcm8iIGZpbGw9InJnYigwJSwgMCUsIDAlKSIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNIDIzNi44OTg0MzggMjgwLjg5ODQzOCBMIDIzMS42MTcxODggMjY3LjQzNzUgTCAyMjkuMzY3MTg4IDI3MS44NjMyODEgTCAyMjQuNjA1NDY5IDI3My4yODEyNSBaIE0gMjM2Ljg5ODQzOCAyODAuODk4NDM4ICIgLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlPSJyZ2IoMCUsIDAlLCAwJSkiIHN0cm9rZS1vcGFjaXR5PSIxIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0gMjM2Ljg5ODQzOCAyODAuODk4NDM4IEwgMjMxLjYxNzE4OCAyNjcuNDM3NSBMIDIyOS4zNjcxODggMjcxLjg2MzI4MSBMIDIyNC42MDU0NjkgMjczLjI4MTI1IEwgMjM2Ljg5ODQzOCAyODAuODk4NDM4ICIgLz48cGF0aCBmaWxsLXJ1bGU9Im5vbnplcm8iIGZpbGw9InJnYigxMDAlLCAxMDAlLCAxMDAlKSIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNIDE4OC4wODU5MzggMjUxLjQ2NDg0NCBMIDE4OC4wODU5MzggMjE1LjAyMzQzOCBMIDIwNi4zMDQ2ODggMjE1LjAyMzQzOCBMIDIwNi4zMDQ2ODggMjUxLjQ2NDg0NCBaIE0gMTg4LjA4NTkzOCAyNTEuNDY0ODQ0ICIgLz48ZyBmaWxsPSJyZ2IoMCUsIDAlLCAwJSkiIGZpbGwtb3BhY2l0eT0iMSI+PHVzZSB4bGluazpocmVmPSIjZzQ4LTAtMiIgeD0iMTkxLjE3OTY4OCIgeT0iMjQxLjUxNTYyNSIgLz48L2c+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxLjcwMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2U9InJnYigwJSwgMCUsIDAlKSIgc3Ryb2tlLW9wYWNpdHk9IjEiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTSAzMzkuNjYwMTU2IDE4NS41ODk4NDQgTCAyNjAuMjI2NTYyIDI4MC44OTg0MzggIiAvPjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gMjYwLjIyNjU2MiAyODAuODk4NDM4IEwgMjcyLjUxNTYyNSAyNzMuMjgxMjUgTCAyNjcuNzU3ODEyIDI3MS44NjMyODEgTCAyNjUuNTAzOTA2IDI2Ny40Mzc1IFogTSAyNjAuMjI2NTYyIDI4MC44OTg0MzggIiAvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2U9InJnYigwJSwgMCUsIDAlKSIgc3Ryb2tlLW9wYWNpdHk9IjEiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTSAyNjAuMjI2NTYyIDI4MC44OTg0MzggTCAyNzIuNTE1NjI1IDI3My4yODEyNSBMIDI2Ny43NTc4MTIgMjcxLjg2MzI4MSBMIDI2NS41MDM5MDYgMjY3LjQzNzUgTCAyNjAuMjI2NTYyIDI4MC44OTg0MzggIiAvPjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0icmdiKDEwMCUsIDEwMCUsIDEwMCUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gMjkwLjg0NzY1NiAyNTEuNDY0ODQ0IEwgMjkwLjg0NzY1NiAyMTUuMDIzNDM4IEwgMzA5LjA3MDMxMiAyMTUuMDIzNDM4IEwgMzA5LjA3MDMxMiAyNTEuNDY0ODQ0IFogTSAyOTAuODQ3NjU2IDI1MS40NjQ4NDQgIiAvPjxnIGZpbGw9InJnYigwJSwgMCUsIDAlKSIgZmlsbC1vcGFjaXR5PSIxIj48dXNlIHhsaW5rOmhyZWY9IiNnNDgtMC0zIiB4PSIyOTMuOTQ1MzEyIiB5PSIyNDEuNTE1NjI1IiAvPjwvZz48cGF0aCBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjEuNzAxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDMzOS42NjAxNTYgMTg1LjU4OTg0NCBMIDQxOS4wOTM3NSAyODAuODk4NDM4ICIgLz48cGF0aCBmaWxsLXJ1bGU9Im5vbnplcm8iIGZpbGw9InJnYigwJSwgMCUsIDAlKSIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNIDQxOS4wOTM3NSAyODAuODk4NDM4IEwgNDEzLjgxNjQwNiAyNjcuNDM3NSBMIDQxMS41NjY0MDYgMjcxLjg2MzI4MSBMIDQwNi44MDQ2ODggMjczLjI4MTI1IFogTSA0MTkuMDkzNzUgMjgwLjg5ODQzOCAiIC8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDQxOS4wOTM3NSAyODAuODk4NDM4IEwgNDEzLjgxNjQwNiAyNjcuNDM3NSBMIDQxMS41NjY0MDYgMjcxLjg2MzI4MSBMIDQwNi44MDQ2ODggMjczLjI4MTI1IEwgNDE5LjA5Mzc1IDI4MC44OTg0MzggIiAvPjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0icmdiKDEwMCUsIDEwMCUsIDEwMCUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gMzcwLjI4NTE1NiAyNTEuNDY0ODQ0IEwgMzcwLjI4NTE1NiAyMTUuMDIzNDM4IEwgMzg4LjUwMzkwNiAyMTUuMDIzNDM4IEwgMzg4LjUwMzkwNiAyNTEuNDY0ODQ0IFogTSAzNzAuMjg1MTU2IDI1MS40NjQ4NDQgIiAvPjxnIGZpbGw9InJnYigwJSwgMCUsIDAlKSIgZmlsbC1vcGFjaXR5PSIxIj48dXNlIHhsaW5rOmhyZWY9IiNnNDgtMC00IiB4PSIzNzMuMzc4OTA2IiB5PSIyNDEuNTE1NjI1IiAvPjwvZz48cGF0aCBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjEuNzAxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDUyMS44NTkzNzUgMTg1LjU4OTg0NCBMIDQ0Mi40MjU3ODEgMjgwLjg5ODQzOCAiIC8+PHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoMCUsIDAlLCAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSA0NDIuNDI1NzgxIDI4MC44OTg0MzggTCA0NTQuNzE0ODQ0IDI3My4yODEyNSBMIDQ0OS45NTMxMjUgMjcxLjg2MzI4MSBMIDQ0Ny43MDMxMjUgMjY3LjQzNzUgWiBNIDQ0Mi40MjU3ODEgMjgwLjg5ODQzOCAiIC8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDQ0Mi40MjU3ODEgMjgwLjg5ODQzOCBMIDQ1NC43MTQ4NDQgMjczLjI4MTI1IEwgNDQ5Ljk1MzEyNSAyNzEuODYzMjgxIEwgNDQ3LjcwMzEyNSAyNjcuNDM3NSBMIDQ0Mi40MjU3ODEgMjgwLjg5ODQzOCAiIC8+PHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoMTAwJSwgMTAwJSwgMTAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSA0NzMuMDQ2ODc1IDI1MS40NjQ4NDQgTCA0NzMuMDQ2ODc1IDIxNS4wMjM0MzggTCA0OTEuMjY5NTMxIDIxNS4wMjM0MzggTCA0OTEuMjY5NTMxIDI1MS40NjQ4NDQgWiBNIDQ3My4wNDY4NzUgMjUxLjQ2NDg0NCAiIC8+PGcgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjEiPjx1c2UgeGxpbms6aHJlZj0iI2c0OC0wLTUiIHg9IjQ3Ni4xNDA2MjUiIHk9IjI0MS41MTU2MjUiIC8+PC9nPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMS43MDEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlPSJyZ2IoMCUsIDAlLCAwJSkiIHN0cm9rZS1vcGFjaXR5PSIxIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0gMjY2Ljc4MTI1IDI5NC45MTAxNTYgTCA0MTIuNTM5MDYyIDI5NC45MTAxNTYgIiAvPjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gNDEyLjUzOTA2MiAyOTQuOTEwMTU2IEwgMzk4LjgyMDMxMiAyOTAuMzQ3NjU2IEwgNDAwLjc3NzM0NCAyOTQuOTEwMTU2IEwgMzk4LjgyMDMxMiAyOTkuNDcyNjU2IFogTSA0MTIuNTM5MDYyIDI5NC45MTAxNTYgIiAvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2U9InJnYigwJSwgMCUsIDAlKSIgc3Ryb2tlLW9wYWNpdHk9IjEiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTSA0MTIuNTM5MDYyIDI5NC45MTAxNTYgTCAzOTguODIwMzEyIDI5MC4zNDc2NTYgTCA0MDAuNzc3MzQ0IDI5NC45MTAxNTYgTCAzOTguODIwMzEyIDI5OS40NzI2NTYgTCA0MTIuNTM5MDYyIDI5NC45MTAxNTYgIiAvPjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0icmdiKDEwMCUsIDEwMCUsIDEwMCUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gMzMwLjU2NjQwNiAzMTMuMTI4OTA2IEwgMzMwLjU2NjQwNiAyNzYuNjg3NSBMIDM0OC43ODUxNTYgMjc2LjY4NzUgTCAzNDguNzg1MTU2IDMxMy4xMjg5MDYgWiBNIDMzMC41NjY0MDYgMzEzLjEyODkwNiAiIC8+PGcgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjEiPjx1c2UgeGxpbms6aHJlZj0iI2c0OC0wLTYiIHg9IjMzMy42NjAxNTYiIHk9IjMwMy4xNzk2ODgiIC8+PC9nPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMS43MDEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlPSJyZ2IoMCUsIDAlLCAwJSkiIHN0cm9rZS1vcGFjaXR5PSIxIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0gNTIxLjg1OTM3NSAxNTMuNzE0ODQ0IEwgNTIxLjg0Mzc1IDE1Mi44MDA3ODEgTCA1MjEuNzk2ODc1IDE1MS44OTA2MjUgTCA1MjEuNzIyNjU2IDE1MC45ODA0NjkgTCA1MjEuNjE3MTg4IDE1MC4wNzQyMTkgTCA1MjEuNDgwNDY5IDE0OS4xNzE4NzUgTCA1MjEuMzEyNSAxNDguMjczNDM4IEwgNTIxLjExMzI4MSAxNDcuMzgyODEyIEwgNTIwLjg4NjcxOSAxNDYuNDk2MDk0IEwgNTIwLjYzMjgxMiAxNDUuNjIxMDk0IEwgNTIwLjM0NzY1NiAxNDQuNzUzOTA2IEwgNTIwLjAzNTE1NiAxNDMuODk4NDM4IEwgNTE5LjY5MTQwNiAxNDMuMDUwNzgxIEwgNTE5LjMyMDMxMiAxNDIuMjE0ODQ0IEwgNTE4LjkyMTg3NSAxNDEuMzk0NTMxIEwgNTE4LjUgMTQwLjU4NTkzOCBMIDUxOC4wNDY4NzUgMTM5Ljc5Mjk2OSBMIDUxNy41NjY0MDYgMTM5LjAxNTYyNSBMIDUxNy4wNjI1IDEzOC4yNTM5MDYgTCA1MTYuNTM1MTU2IDEzNy41MTE3MTkgTCA1MTUuOTgwNDY5IDEzNi43ODUxNTYgTCA1MTUuNDAyMzQ0IDEzNi4wNzgxMjUgTCA1MTQuODAwNzgxIDEzNS4zOTA2MjUgTCA1MTQuMTc5Njg4IDEzNC43MjY1NjIgTCA1MTMuNTM1MTU2IDEzNC4wNzgxMjUgTCA1MTIuODY3MTg4IDEzMy40NTcwMzEgTCA1MTIuMTc5Njg4IDEzMi44NTU0NjkgTCA1MTEuNDcyNjU2IDEzMi4yNzczNDQgTCA1MTAuNzQ2MDk0IDEzMS43MjI2NTYgTCA1MTAuMDAzOTA2IDEzMS4xOTUzMTIgTCA1MDkuMjQyMTg4IDEzMC42OTE0MDYgTCA1MDguNDY0ODQ0IDEzMC4yMTA5MzggTCA1MDcuNjcxODc1IDEyOS43NjE3MTkgTCA1MDYuODYzMjgxIDEyOS4zMzU5MzggTCA1MDYuMDQyOTY5IDEyOC45Mzc1IEwgNTA1LjIwNzAzMSAxMjguNTY2NDA2IEwgNTA0LjM2MzI4MSAxMjguMjI2NTYyIEwgNTAzLjUwMzkwNiAxMjcuOTEwMTU2IEwgNTAyLjYzNjcxOSAxMjcuNjI1IEwgNTAxLjc2MTcxOSAxMjcuMzcxMDk0IEwgNTAwLjg3ODkwNiAxMjcuMTQ0NTMxIEwgNDk5Ljk4NDM3NSAxMjYuOTQ1MzEyIEwgNDk5LjA4OTg0NCAxMjYuNzgxMjUgTCA0OTguMTg3NSAxMjYuNjQ0NTMxIEwgNDk3LjI4MTI1IDEyNi41MzUxNTYgTCA0OTYuMzcxMDk0IDEyNi40NjA5MzggTCA0OTUuNDU3MDMxIDEyNi40MTQwNjIgTCA0OTQuNTQ2ODc1IDEyNi4zOTg0MzggIiAvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMS43MDEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlPSJyZ2IoMCUsIDAlLCAwJSkiIHN0cm9rZS1vcGFjaXR5PSIxIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0gMTg0Ljc3NzM0NCAxMjYuMzk4NDM4IEwgMTgzLjg2MzI4MSAxMjYuNDE0MDYyIEwgMTgyLjk1MzEyNSAxMjYuNDYwOTM4IEwgMTgyLjA0Mjk2OSAxMjYuNTM1MTU2IEwgMTgxLjEzNjcxOSAxMjYuNjQ0NTMxIEwgMTgwLjIzNDM3NSAxMjYuNzgxMjUgTCAxNzkuMzM1OTM4IDEyNi45NDUzMTIgTCAxNzguNDQ1MzEyIDEyNy4xNDQ1MzEgTCAxNzcuNTU4NTk0IDEyNy4zNzEwOTQgTCAxNzYuNjgzNTk0IDEyNy42MjUgTCAxNzUuODE2NDA2IDEyNy45MTAxNTYgTCAxNzQuOTYwOTM4IDEyOC4yMjY1NjIgTCAxNzQuMTEzMjgxIDEyOC41NjY0MDYgTCAxNzMuMjc3MzQ0IDEyOC45Mzc1IEwgMTcyLjQ1NzAzMSAxMjkuMzM1OTM4IEwgMTcxLjY0ODQzOCAxMjkuNzYxNzE5IEwgMTcwLjg1NTQ2OSAxMzAuMjEwOTM4IEwgMTcwLjA3ODEyNSAxMzAuNjkxNDA2IEwgMTY5LjMxNjQwNiAxMzEuMTk1MzEyIEwgMTY4LjU3NDIxOSAxMzEuNzIyNjU2IEwgMTY3Ljg0NzY1NiAxMzIuMjc3MzQ0IEwgMTY3LjE0MDYyNSAxMzIuODU1NDY5IEwgMTY2LjQ1MzEyNSAxMzMuNDU3MDMxIEwgMTY1Ljc4OTA2MiAxMzQuMDc4MTI1IEwgMTY1LjE0MDYyNSAxMzQuNzI2NTYyIEwgMTY0LjUxOTUzMSAxMzUuMzkwNjI1IEwgMTYzLjkxNzk2OSAxMzYuMDc4MTI1IEwgMTYzLjMzOTg0NCAxMzYuNzg1MTU2IEwgMTYyLjc4NTE1NiAxMzcuNTExNzE5IEwgMTYyLjI1NzgxMiAxMzguMjUzOTA2IEwgMTYxLjc1MzkwNiAxMzkuMDE1NjI1IEwgMTYxLjI3MzQzOCAxMzkuNzkyOTY5IEwgMTYwLjgyNDIxOSAxNDAuNTg1OTM4IEwgMTYwLjM5ODQzOCAxNDEuMzk0NTMxIEwgMTYwIDE0Mi4yMTQ4NDQgTCAxNTkuNjI4OTA2IDE0My4wNTA3ODEgTCAxNTkuMjg5MDYyIDE0My44OTg0MzggTCAxNTguOTcyNjU2IDE0NC43NTM5MDYgTCAxNTguNjg3NSAxNDUuNjIxMDk0IEwgMTU4LjQzMzU5NCAxNDYuNDk2MDk0IEwgMTU4LjIwNzAzMSAxNDcuMzgyODEyIEwgMTU4LjAwNzgxMiAxNDguMjczNDM4IEwgMTU3Ljg0Mzc1IDE0OS4xNzE4NzUgTCAxNTcuNzA3MDMxIDE1MC4wNzQyMTkgTCAxNTcuNTk3NjU2IDE1MC45ODA0NjkgTCAxNTcuNTIzNDM4IDE1MS44OTA2MjUgTCAxNTcuNDc2NTYyIDE1Mi44MDA3ODEgTCAxNTcuNDYwOTM4IDE1My43MTQ4NDQgIiAvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMS43MDEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlPSJyZ2IoMCUsIDAlLCAwJSkiIHN0cm9rZS1vcGFjaXR5PSIxIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0gNTIxLjg1OTM3NSAxNjcuMzcxMDk0IEwgNTIxLjg1OTM3NSAxNTMuNzE0ODQ0ICIgLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjEuNzAxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDQ5NC41NDY4NzUgMTI2LjM2NzE4OCBMIDE4NC43NzczNDQgMTI2LjM2NzE4OCAiIC8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxLjcwMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2U9InJnYigwJSwgMCUsIDAlKSIgc3Ryb2tlLW9wYWNpdHk9IjEiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTSAxNTcuNDYwOTM4IDE1My43MTQ4NDQgTCAxNTcuNDYwOTM4IDE2MC41MjczNDQgIiAvPjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gMTU3LjQ2MDkzOCAxNjcuMzcxMDk0IEwgMTYyLjAyMzQzOCAxNTMuNjQ4NDM4IEwgMTU3LjQ2MDkzOCAxNTUuNjA5Mzc1IEwgMTUyLjg5ODQzOCAxNTMuNjQ4NDM4IFogTSAxNTcuNDYwOTM4IDE2Ny4zNzEwOTQgIiAvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2U9InJnYigwJSwgMCUsIDAlKSIgc3Ryb2tlLW9wYWNpdHk9IjEiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTSAxNTcuNDYwOTM4IDE2Ny4zNzEwOTQgTCAxNjIuMDIzNDM4IDE1My42NDg0MzggTCAxNTcuNDYwOTM4IDE1NS42MDkzNzUgTCAxNTIuODk4NDM4IDE1My42NDg0MzggTCAxNTcuNDYwOTM4IDE2Ny4zNzEwOTQgIiAvPjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0icmdiKDEwMCUsIDEwMCUsIDEwMCUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gMzMwLjU2NjQwNiAxNDQuNTg1OTM4IEwgMzMwLjU2NjQwNiAxMDguMTQ4NDM4IEwgMzQ4Ljc4NTE1NiAxMDguMTQ4NDM4IEwgMzQ4Ljc4NTE1NiAxNDQuNTg1OTM4IFogTSAzMzAuNTY2NDA2IDE0NC41ODU5MzggIiAvPjxnIGZpbGw9InJnYigwJSwgMCUsIDAlKSIgZmlsbC1vcGFjaXR5PSIxIj48dXNlIHhsaW5rOmhyZWY9IiNnNDgtMC03IiB4PSIzMzMuNjYwMTU2IiB5PSIxMzQuNjQwNjI1IiAvPjwvZz48cGF0aCBmaWxsLXJ1bGU9Im5vbnplcm8iIGZpbGw9InJnYig4MCUsIDgwJSwgODAlKSIgZmlsbC1vcGFjaXR5PSIxIiBzdHJva2Utd2lkdGg9IjEuNzAxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDE3NS42ODM1OTQgMTg1LjU4OTg0NCBDIDE3NS42ODM1OTQgMTk1LjY1MjM0NCAxNjcuNTIzNDM4IDIwMy44MDg1OTQgMTU3LjQ2MDkzOCAyMDMuODA4NTk0IEMgMTQ3LjM5ODQzOCAyMDMuODA4NTk0IDEzOS4yNDIxODggMTk1LjY1MjM0NCAxMzkuMjQyMTg4IDE4NS41ODk4NDQgQyAxMzkuMjQyMTg4IDE3NS41MjczNDQgMTQ3LjM5ODQzOCAxNjcuMzcxMDk0IDE1Ny40NjA5MzggMTY3LjM3MTA5NCBDIDE2Ny41MjM0MzggMTY3LjM3MTA5NCAxNzUuNjgzNTk0IDE3NS41MjczNDQgMTc1LjY4MzU5NCAxODUuNTg5ODQ0ICIgLz48ZyBmaWxsPSJyZ2IoMCUsIDAlLCAwJSkiIGZpbGwtb3BhY2l0eT0iMSI+PHVzZSB4bGluazpocmVmPSIjZzQ4LTAtMSIgeD0iMTUxLjQ2MDkzOCIgeT0iMTkzLjM3ODkwNiIgLz48L2c+PHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoODAlLCA4MCUsIDgwJSkiIGZpbGwtb3BhY2l0eT0iMSIgc3Ryb2tlLXdpZHRoPSIxLjcwMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2U9InJnYigwJSwgMCUsIDAlKSIgc3Ryb2tlLW9wYWNpdHk9IjEiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTSAzNTcuODc4OTA2IDE4NS41ODk4NDQgQyAzNTcuODc4OTA2IDE5NS42NTIzNDQgMzQ5LjcyMjY1NiAyMDMuODA4NTk0IDMzOS42NjAxNTYgMjAzLjgwODU5NCBDIDMyOS41OTc2NTYgMjAzLjgwODU5NCAzMjEuNDQxNDA2IDE5NS42NTIzNDQgMzIxLjQ0MTQwNiAxODUuNTg5ODQ0IEMgMzIxLjQ0MTQwNiAxNzUuNTI3MzQ0IDMyOS41OTc2NTYgMTY3LjM3MTA5NCAzMzkuNjYwMTU2IDE2Ny4zNzEwOTQgQyAzNDkuNzIyNjU2IDE2Ny4zNzEwOTQgMzU3Ljg3ODkwNiAxNzUuNTI3MzQ0IDM1Ny44Nzg5MDYgMTg1LjU4OTg0NCAiIC8+PGcgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjEiPjx1c2UgeGxpbms6aHJlZj0iI2c0OC0wLTUiIHg9IjMzMy42NjAxNTYiIHk9IjE5My4zNzg5MDYiIC8+PC9nPjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0icmdiKDgwJSwgODAlLCA4MCUpIiBmaWxsLW9wYWNpdHk9IjEiIHN0cm9rZS13aWR0aD0iMS43MDEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlPSJyZ2IoMCUsIDAlLCAwJSkiIHN0cm9rZS1vcGFjaXR5PSIxIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0gNTQwLjA3ODEyNSAxODUuNTg5ODQ0IEMgNTQwLjA3ODEyNSAxOTUuNjUyMzQ0IDUzMS45MjE4NzUgMjAzLjgwODU5NCA1MjEuODU5Mzc1IDIwMy44MDg1OTQgQyA1MTEuNzk2ODc1IDIwMy44MDg1OTQgNTAzLjY0MDYyNSAxOTUuNjUyMzQ0IDUwMy42NDA2MjUgMTg1LjU4OTg0NCBDIDUwMy42NDA2MjUgMTc1LjUyNzM0NCA1MTEuNzk2ODc1IDE2Ny4zNzEwOTQgNTIxLjg1OTM3NSAxNjcuMzcxMDk0IEMgNTMxLjkyMTg3NSAxNjcuMzcxMDk0IDU0MC4wNzgxMjUgMTc1LjUyNzM0NCA1NDAuMDc4MTI1IDE4NS41ODk4NDQgIiAvPjxnIGZpbGw9InJnYigwJSwgMCUsIDAlKSIgZmlsbC1vcGFjaXR5PSIxIj48dXNlIHhsaW5rOmhyZWY9IiNnNDgtMC00IiB4PSI1MTUuODU5Mzc1IiB5PSIxOTMuMzc4OTA2IiAvPjwvZz48cGF0aCBmaWxsLXJ1bGU9Im5vbnplcm8iIGZpbGw9InJnYig4MCUsIDgwJSwgODAlKSIgZmlsbC1vcGFjaXR5PSIxIiBzdHJva2Utd2lkdGg9IjEuNzAxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDI2Ni43ODEyNSAyOTQuOTEwMTU2IEMgMjY2Ljc4MTI1IDMwNC45NzI2NTYgMjU4LjYyNSAzMTMuMTI4OTA2IDI0OC41NjI1IDMxMy4xMjg5MDYgQyAyMzguNSAzMTMuMTI4OTA2IDIzMC4zMzk4NDQgMzA0Ljk3MjY1NiAyMzAuMzM5ODQ0IDI5NC45MTAxNTYgQyAyMzAuMzM5ODQ0IDI4NC44NDc2NTYgMjM4LjUgMjc2LjY4NzUgMjQ4LjU2MjUgMjc2LjY4NzUgQyAyNTguNjI1IDI3Ni42ODc1IDI2Ni43ODEyNSAyODQuODQ3NjU2IDI2Ni43ODEyNSAyOTQuOTEwMTU2ICIgLz48ZyBmaWxsPSJyZ2IoMCUsIDAlLCAwJSkiIGZpbGwtb3BhY2l0eT0iMSI+PHVzZSB4bGluazpocmVmPSIjZzQ4LTAtMCIgeD0iMjQyLjU2MjUiIHk9IjMwMi42OTkyMTkiIC8+PC9nPjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0icmdiKDgwJSwgODAlLCA4MCUpIiBmaWxsLW9wYWNpdHk9IjEiIHN0cm9rZS13aWR0aD0iMS43MDEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlPSJyZ2IoMCUsIDAlLCAwJSkiIHN0cm9rZS1vcGFjaXR5PSIxIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0gNDQ4Ljk4MDQ2OSAyOTQuOTEwMTU2IEMgNDQ4Ljk4MDQ2OSAzMDQuOTcyNjU2IDQ0MC44MjQyMTkgMzEzLjEyODkwNiA0MzAuNzYxNzE5IDMxMy4xMjg5MDYgQyA0MjAuNjk5MjE5IDMxMy4xMjg5MDYgNDEyLjUzOTA2MiAzMDQuOTcyNjU2IDQxMi41MzkwNjIgMjk0LjkxMDE1NiBDIDQxMi41MzkwNjIgMjg0Ljg0NzY1NiA0MjAuNjk5MjE5IDI3Ni42ODc1IDQzMC43NjE3MTkgMjc2LjY4NzUgQyA0NDAuODI0MjE5IDI3Ni42ODc1IDQ0OC45ODA0NjkgMjg0Ljg0NzY1NiA0NDguOTgwNDY5IDI5NC45MTAxNTYgIiAvPjxnIGZpbGw9InJnYigwJSwgMCUsIDAlKSIgZmlsbC1vcGFjaXR5PSIxIj48dXNlIHhsaW5rOmhyZWY9IiNnNDgtMC0zIiB4PSI0MjQuNzYxNzE5IiB5PSIzMDIuNjk5MjE5IiAvPjwvZz48L3N2Zz4=)
 
-Box 195gd23.cf
+Box 194gd23.cf
 
 ``` r
 p <- tda_ps(xlim = c(0, 7), ylim = c(0, 3.7), width = 60, height = 30)
@@ -6924,7 +6900,7 @@ plot(p)
 [`tda_g_mst()`](https://janmarvin.github.io/TDA/reference/tda_g_analyses.md)
 is `gmst`, `gd25.cf`, on the same `gd7.dat`.
 
-Box 196gmst (gd25.cf)
+Box 195gmst (gd25.cf)
 
 ``` r
 tda_g_mst(tda_graph(gd7, directed = FALSE))$table
@@ -6944,7 +6920,7 @@ tda_g_mst(tda_graph(gd7, directed = FALSE))$table
 is `gnst`, on `gd10.dat` (`gd32.cf`): the number of spanning trees, and
 with `opt = 2` the trees themselves.
 
-Box 197gnst (gd32.cf)
+Box 196gnst (gd32.cf)
 
 ``` r
 gd10 <- read.table(ex("gd10.dat"), col.names = c("I", "J", "V"))
@@ -6992,7 +6968,7 @@ tda_g_spantrees(g10, opt = 2)$table
     23  1  8  3  2  3  4
     24  1  8  3  3  4  1
 
-Box 198gd31.cf
+Box 197gd31.cf
 
 ``` r
 p <- tda_ps(xlim = c(0, 8), ylim = c(-1, 5), width = 80, height = 40)
@@ -7019,7 +6995,7 @@ option 2 gives the edge and one indicator per fundamental cycle; option
 then one indicator row per cycle, two row shapes in the one file, which
 is why it arrives ragged as well.
 
-Box 199gcyc, options 1 to 4
+Box 198gcyc, options 1 to 4
 
 ``` r
 gd9 <- read.table(ex("gd9.dat"), col.names = c("I", "J", "V"))
@@ -7150,7 +7126,7 @@ print(tda_g_cycles(g9, "all_v2")$table, n = Inf)
     [48]   1 37  1  0  1  1  0  0  1  0  0  1  0 
     [49]   1 38  1  1  0  1  0  0  0  0  0  0  0 
 
-Box 200gd29.cf
+Box 199gd29.cf
 
 ``` r
 p <- tda_ps(xlim = c(0, 8), ylim = c(-1, 5), width = 80, height = 40)
@@ -7172,7 +7148,7 @@ plot(p)
 [`tda_g_dcycles()`](https://janmarvin.github.io/TDA/reference/tda_g_analyses.md)
 is `gdcyc`, on `gd5.dat` (`gd33.cf`).
 
-Box 201gdcyc (gd33.cf)
+Box 200gdcyc (gd33.cf)
 
 ``` r
 tda_g_dcycles(g5, opt = 1)$table
@@ -7224,7 +7200,7 @@ is `gflow`, on `gd11.dat`: for every ordered pair of nodes the maximal
 flow, one record per pair – index, the two nodes’ indices, the two
 nodes, the flow.
 
-Box 202gflow (gd35.cf)
+Box 201gflow (gd35.cf)
 
 ``` r
 gd11 <- read.table(ex("gd11.dat"), col.names = c("I", "J", "V"))
@@ -7277,7 +7253,7 @@ tda_g_flow(g11, matrix = TRUE)$table
     7  7  7 -1 -1 -1 -1 -1 -1  0  -1
     8  8  8 40 30 47 37 37 30 50   0
 
-Box 203gd34.cf
+Box 202gd34.cf
 
 ``` r
 p <- tda_ps(xlim = c(0, 11), ylim = c(-1, 7), width = 80, height = 40)
@@ -7303,7 +7279,7 @@ is `gcliq`, on `gd16.dat`; the manual’s Box 1 runs both of its
 algorithms, `alg = 1` (Bron-Kerbosch) and `alg = 2` (Harary-Ross), whose
 listings differ in order, not in content.
 
-Box 204gcliq (gd42.cf)
+Box 203gcliq (gd42.cf)
 
 ``` r
 gd16 <- read.table(ex("gd16.dat"), col.names = c("I", "J", "V"))
@@ -7328,7 +7304,7 @@ tda_g_cliques(g16, algorithm = "harary_ross")$table
     [4]  1 4 3 4 3 6 
     [5]  1 5 3 3 5 6 
 
-Box 205gd43.cf
+Box 204gd43.cf
 
 ``` r
 p <- tda_ps(xlim = c(0, 8), ylim = c(-1.5, 7), width = 80, height = 40)
@@ -7351,7 +7327,7 @@ is `giset`, independent sets on `gd12.dat` (`gd37.cf`), and
 [`tda_g_compact()`](https://janmarvin.github.io/TDA/reference/tda_g_analyses.md)
 is `gcset`, compact sets on `gd13.dat` (`gd39.cf`).
 
-Box 206giset and gcset
+Box 205giset and gcset
 
 ``` r
 gd12 <- read.table(ex("gd12.dat"), col.names = c("I", "J", "V"))
@@ -7387,7 +7363,7 @@ tda_g_compact(g13, opt = 2)$table                   # one row per node
     7  1  3  4  7  8  3
     8  1  3  4  7  8  5
 
-Box 207gd38.cf
+Box 206gd38.cf
 
 ``` r
 p <- tda_ps(xlim = c(0, 8), ylim = c(-1.5, 7), width = 80, height = 40)
@@ -7406,7 +7382,7 @@ plot(p)
 
 ### 7.2.9.3 Regular Equivalence
 
-Box 208gd36.cf
+Box 207gd36.cf
 
 ``` r
 p <- tda_ps(xlim = c(0, 8), ylim = c(-1.5, 7), width = 80, height = 40)
@@ -7431,7 +7407,7 @@ minimal total cost. The manual’s `co1.dat` is a 6 x 6 cost matrix, row
 by row; the result is the permutation of its Box 2 and the matrix with
 its rows permuted accordingly.
 
-Box 209gap (co1.cf)
+Box 208gap (co1.cf)
 
 ``` r
 cost <- matrix(scan(ex("co1.dat"), quiet = TRUE), 6, 6, byrow = TRUE)
@@ -7467,7 +7443,7 @@ ap$permuted
 the order (2,1), (3,1), (3,2); the manual’s Box 2 is the permutation 2,
 1, 3.
 
-Box 210gqap (co2.cf)
+Box 209gqap (co2.cf)
 
 ``` r
 co2 <- read.table(ex("co2.dat"), col.names = c("F", "D"))
@@ -7510,7 +7486,7 @@ row; `cl1.cf` runs `hcls` with `opt = 2`, complete linkage. The output
 is the manual’s Box 3: at each level the two clusters merged, named by
 their representative nodes.
 
-Box 211hcls: complete-link clustering (cl1.cf) (id1.cf)
+Box 210hcls: complete-link clustering (cl1.cf)
 
 ``` r
 D <- scan(ex("cl1.dat"), quiet = TRUE)
@@ -7537,7 +7513,7 @@ tda_cluster(dm, method = "hierarchical_single", options = list(opt = 2))$table
 [`tda_cutree()`](https://janmarvin.github.io/TDA/reference/tda_cutree.md)
 is both steps.
 
-Box 212hclsp: the dendrogram cut at four levels (cl1a.cf) (id2.cf)
+Box 211hclsp: the dendrogram cut at four levels (cl1a.cf)
 
 ``` r
 tda_cutree(dm, nlev = 4)$table
@@ -7563,7 +7539,7 @@ tda_cutree(dm, nlev = 4)$table
 `cl2.cf` runs `nncl` twice: with a threshold (`sc = 10`) and with a
 fixed number of neighbours (`ns = 2`).
 
-Box 213nncl (cl2.cf)
+Box 212nncl (cl2.cf)
 
 ``` r
 tda_cluster(dm, method = "nearest_neighbour", options = list(alg = 1, sc = 10))$table
@@ -7600,7 +7576,7 @@ tda_cluster(dm, method = "nearest_neighbour", options = list(alg = 2, ns = 2))$t
 maximally different centres. The manual’s Box 2 lists each cluster’s
 nodes.
 
-Box 214hcld (cl3.cf)
+Box 213hcld (cl3.cf)
 
 ``` r
 hc <- tda_cluster(dm, method = "hierarchical", algorithm = "centers")
@@ -7661,7 +7637,7 @@ hc$merges     # one row per split: the two clusters, their sizes, their diameter
 The second algorithm splits on the diameter instead – at each step the
 cluster with the largest diameter is divided.
 
-Box 215hcld, second algorithm
+Box 214hcld, second algorithm
 
 ``` r
 # the default stops after two splits; the manual's run goes on until
@@ -7720,7 +7696,7 @@ hd$merges
 `cl3p.cf` draws the merge table as a dendrogram: columns 1 and 2 of
 `cl3.df` are the pair joined, column 5 the distance.
 
-Box 216cl3p.cf
+Box 215cl3p.cf
 
 ``` r
 edges <- data.frame(
@@ -7740,7 +7716,7 @@ plot(g, width = 90, height = 50, layout = "tree", rt = 1, pl = 2, nc = 11)
 `gd15.dat`, five nodes, with the four output options. Option 1 is the
 node permutation, option 2 the edge list permuted (Box 3).
 
-Box 217becl (cl5.cf)
+Box 216becl (cl5.cf)
 
 ``` r
 gd15 <- read.table(ex("gd15.dat"), col.names = c("I", "J", "V"))
@@ -7803,7 +7779,7 @@ node 1 controls nodes 2 to 9, node 9 controls 1 to 8, node 3 controls 5;
 the pair table of the manual’s Box 2 is the result’s `"pairs"`
 attribute.
 
-Box 218gfcf (gd13.cf)
+Box 217gfcf (gd13.cf)
 
 ``` r
 gd3 <- read.table(ex("gd3.dat"), col.names = c("I", "J", "V"))
@@ -7842,7 +7818,7 @@ head(attr(ctl, "pairs"), 8)
 `gd3a.dat`. It writes two files: the pair table, and a summary with one
 row per node (the manual’s Box 4 shows both).
 
-Box 219gbcf (gd14.cf)
+Box 218gbcf (gd14.cf)
 
 ``` r
 gd3a <- read.table(ex("gd3a.dat"), col.names = c("I", "J", "V"))
@@ -7896,7 +7872,7 @@ tda_g_backward(tda_graph(gd3a, directed = TRUE), sc = 49,
 In `gd12.cf` node 1 is drawn as a square, `shape =` for `plg`’s `gt=2`,
 and several edges are curved or run back to an earlier node.
 
-Box 220gd12.cf
+Box 219gd12.cf
 
 ``` r
 p <- tda_ps(xlim = c(0, 11), ylim = c(2.0, 7.5), width = 100, height = 50)
@@ -7928,7 +7904,7 @@ plot(p)
 pair, the direct share `A(i,j)` and the share including holdings held
 through other nodes, `Y(i,j)`. `gd11.cf` runs it on `gd2b.dat`.
 
-Box 221gio (gd11.cf)
+Box 220gio (gd11.cf)
 
 ``` r
 gd2b <- read.table(ex("gd2b.dat"), col.names = c("I", "J", "V"))
@@ -7953,7 +7929,7 @@ tda_g_ownership(tda_graph(gd2b, directed = TRUE))$table
 Two graphs on one page; in the second a reciprocal pair of edges is
 drawn as two curves, and all edges carry arrowheads.
 
-Box 222gd9.cf
+Box 221gd9.cf
 
 ``` r
 p <- tda_ps(xlim = c(0, 11.5), ylim = c(0, 4), width = 80, height = 40)
@@ -7984,7 +7960,7 @@ plot(p)
 `gfc` (`tda_g(g, "gfc")`) is flow centrality on `gd14.dat` (`gd41.cf`),
 one record per pair of nodes.
 
-Box 223gfc (gd41.cf)
+Box 222gfc (gd41.cf)
 
 ``` r
 gd14 <- read.table(ex("gd14.dat"), col.names = c("I", "J", "V"))
@@ -8002,9 +7978,10 @@ tda_g(tda_graph(gd14, directed = TRUE), "gfc", list(fmt = "4.0"))$table
     8 4 3      4      3  2 -1 -1 -1 -1 -1
     9 4 5      4      5  2 -1 -1  0 -1 -1
 
-## 8 Set-valued Data
+The section’s Figure 1 is the directed graph the examples use, drawn by
+`gd40.cf`.
 
-Box 224gd40.cf
+Box 223gd40.cf
 
 ``` r
 p <- tda_ps(xlim = c(0, 8), ylim = c(-1.5, 7), width = 80, height = 40)
@@ -8022,6 +7999,8 @@ plot(p)
 
 ![](data:image/svg+xml;base64,PHN2ZyBjbGFzcz0icGxvdCIgc3R5bGU9IndpZHRoOjIwLjEzcmVtIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iOTA3cHQiIGhlaWdodD0iNTM4cHQiIHZpZXdib3g9IjAgMCA5MDcgNTM4Ij48ZGVmcz48Zz48ZyBpZD0iZzU5LTAtMCI+PHBhdGggZD0iTSA0LjkwNjI1IC03LjM5MDYyNSBMIDUuOTY4NzUgLTcuMzkwNjI1IEMgOC4xMDkzNzUgLTcuMzkwNjI1IDkuMjM0Mzc1IC02LjM5MDYyNSA5LjIzNDM3NSAtNC40Njg3NSBDIDkuMjM0Mzc1IC0yLjQzNzUgOC4wMTU2MjUgLTEuMjE4NzUgNiAtMS4yMTg3NSBDIDMuODQzNzUgLTEuMjE4NzUgMi43OTY4NzUgLTIuMzEyNSAyLjY3MTg3NSAtNC42NTYyNSBMIDAuNzAzMTI1IC00LjY1NjI1IEMgMC43OTY4NzUgLTMuMzc1IDEuMDE1NjI1IC0yLjUzMTI1IDEuNDA2MjUgLTEuODI4MTI1IEMgMi4yMTg3NSAtMC4yNjU2MjUgMy43NSAwLjUxNTYyNSA1LjkwNjI1IDAuNTE1NjI1IEMgOS4xNDA2MjUgMC41MTU2MjUgMTEuMjM0Mzc1IC0xLjQzNzUgMTEuMjM0Mzc1IC00LjQ4NDM3NSBDIDExLjIzNDM3NSAtNi41MzEyNSAxMC40NTMxMjUgLTcuNjQwNjI1IDguNTc4MTI1IC04LjI5Njg3NSBDIDEwLjAzMTI1IC04LjkwNjI1IDEwLjc2NTYyNSAtMTAuMDE1NjI1IDEwLjc2NTYyNSAtMTEuNjQwNjI1IEMgMTAuNzY1NjI1IC0xNC4zOTA2MjUgOC45Njg3NSAtMTYuMDQ2ODc1IDUuOTY4NzUgLTE2LjA0Njg3NSBDIDIuNzk2ODc1IC0xNi4wNDY4NzUgMS4xMDkzNzUgLTE0LjI4MTI1IDEuMDQ2ODc1IC0xMC44NzUgTCAzIC0xMC44NzUgQyAzLjAxNTYyNSAtMTEuODU5Mzc1IDMuMTA5Mzc1IC0xMi40MDYyNSAzLjM1OTM3NSAtMTIuOTA2MjUgQyAzLjc5Njg3NSAtMTMuODEyNSA0Ljc4MTI1IC0xNC4zNDM3NSA2IC0xNC4zNDM3NSBDIDcuNzM0Mzc1IC0xNC4zNDM3NSA4Ljc2NTYyNSAtMTMuMjk2ODc1IDguNzY1NjI1IC0xMS41NjI1IEMgOC43NjU2MjUgLTEwLjQzNzUgOC4zNzUgLTkuNzUgNy41IC05LjM3NSBDIDYuOTY4NzUgLTkuMTQwNjI1IDYuMjY1NjI1IC05LjA2MjUgNC45MDYyNSAtOS4wMzEyNSBaIE0gNC45MDYyNSAtNy4zOTA2MjUgIiAvPjwvZz48ZyBpZD0iZzU5LTAtMSI+PHBhdGggZD0iTSA1Ljc1IC0xMS40Mzc1IEwgNS43NSAwIEwgNy43MDMxMjUgMCBMIDcuNzAzMTI1IC0xNi4wNDY4NzUgTCA2LjQyMTg3NSAtMTYuMDQ2ODc1IEMgNS43MzQzNzUgLTEzLjU5Mzc1IDUuMjgxMjUgLTEzLjI1IDIuMjY1NjI1IC0xMi44NTkzNzUgTCAyLjI2NTYyNSAtMTEuNDM3NSBaIE0gNS43NSAtMTEuNDM3NSAiIC8+PC9nPjxnIGlkPSJnNTktMC0yIj48cGF0aCBkPSJNIDExLjIzNDM3NSAtMS45Mzc1IEwgMi45NTMxMjUgLTEuOTM3NSBDIDMuMTU2MjUgLTMuMjY1NjI1IDMuODU5Mzc1IC00LjEwOTM3NSA1Ljc5Njg3NSAtNS4yODEyNSBMIDguMDE1NjI1IC02LjUzMTI1IEMgMTAuMjE4NzUgLTcuNzUgMTEuMzQzNzUgLTkuMzkwNjI1IDExLjM0Mzc1IC0xMS4zNzUgQyAxMS4zNDM3NSAtMTIuNzAzMTI1IDEwLjgxMjUgLTEzLjkzNzUgOS44NzUgLTE0LjgxMjUgQyA4Ljk1MzEyNSAtMTUuNjU2MjUgNy43OTY4NzUgLTE2LjA0Njg3NSA2LjMxMjUgLTE2LjA0Njg3NSBDIDQuMzEyNSAtMTYuMDQ2ODc1IDIuODEyNSAtMTUuMzQzNzUgMS45NTMxMjUgLTEzLjk2ODc1IEMgMS40MDYyNSAtMTMuMTI1IDEuMTU2MjUgLTEyLjEyNSAxLjEwOTM3NSAtMTAuNSBMIDMuMDYyNSAtMTAuNSBDIDMuMTI1IC0xMS41OTM3NSAzLjI2NTYyNSAtMTIuMjM0Mzc1IDMuNTMxMjUgLTEyLjc2NTYyNSBDIDQuMDQ2ODc1IC0xMy43NSA1LjA2MjUgLTE0LjM0Mzc1IDYuMjM0Mzc1IC0xNC4zNDM3NSBDIDguMDE1NjI1IC0xNC4zNDM3NSA5LjM0Mzc1IC0xMy4wNjI1IDkuMzQzNzUgLTExLjMyODEyNSBDIDkuMzQzNzUgLTEwLjAzMTI1IDguNjA5Mzc1IC04LjkyMTg3NSA3LjIxODc1IC04LjEyNSBMIDUuMTcxODc1IC02LjkyMTg3NSBDIDEuODkwNjI1IC01LjA0Njg3NSAwLjkzNzUgLTMuNTMxMjUgMC43NSAtMC4wMTU2MjUgTCAxMS4yMzQzNzUgLTAuMDE1NjI1IFogTSAxMS4yMzQzNzUgLTEuOTM3NSAiIC8+PC9nPjxnIGlkPSJnNTktMC0zIj48cGF0aCBkPSJNIDcuMjY1NjI1IC0zLjg5MDYyNSBMIDcuMjY1NjI1IDAgTCA5LjIxODc1IDAgTCA5LjIxODc1IC0zLjg5MDYyNSBMIDExLjU0Njg3NSAtMy44OTA2MjUgTCAxMS41NDY4NzUgLTUuNjQwNjI1IEwgOS4yMTg3NSAtNS42NDA2MjUgTCA5LjIxODc1IC0xNi4wNDY4NzUgTCA3Ljc2NTYyNSAtMTYuMDQ2ODc1IEwgMC42MjUgLTUuOTUzMTI1IEwgMC42MjUgLTMuODkwNjI1IFogTSA3LjI2NTYyNSAtNS42NDA2MjUgTCAyLjMyODEyNSAtNS42NDA2MjUgTCA3LjI2NTYyNSAtMTIuNzE4NzUgWiBNIDcuMjY1NjI1IC01LjY0MDYyNSAiIC8+PC9nPjxnIGlkPSJnNTktMC00Ij48cGF0aCBkPSJNIDEwLjU2MjUgLTE1LjczNDM3NSBMIDIuNDM3NSAtMTUuNzM0Mzc1IEwgMS4yNjU2MjUgLTcuMTcxODc1IEwgMy4wNjI1IC03LjE3MTg3NSBDIDMuOTY4NzUgLTguMjY1NjI1IDQuNzM0Mzc1IC04LjY0MDYyNSA1Ljk2ODc1IC04LjY0MDYyNSBDIDguMDc4MTI1IC04LjY0MDYyNSA5LjM5MDYyNSAtNy4xODc1IDkuMzkwNjI1IC00Ljg1OTM3NSBDIDkuMzkwNjI1IC0yLjU5Mzc1IDguMDc4MTI1IC0xLjIxODc1IDUuOTUzMTI1IC0xLjIxODc1IEMgNC4yMzQzNzUgLTEuMjE4NzUgMy4yMDMxMjUgLTIuMDkzNzUgMi43MzQzNzUgLTMuODU5Mzc1IEwgMC43ODEyNSAtMy44NTkzNzUgQyAxLjA0Njg3NSAtMi41NzgxMjUgMS4yNjU2MjUgLTEuOTUzMTI1IDEuNzM0Mzc1IC0xLjM3NSBDIDIuNjI1IC0wLjE3MTg3NSA0LjIxODc1IDAuNTE1NjI1IDYgMC41MTU2MjUgQyA5LjE3MTg3NSAwLjUxNTYyNSAxMS4zOTA2MjUgLTEuNzk2ODc1IDExLjM5MDYyNSAtNS4xMjUgQyAxMS4zOTA2MjUgLTguMjM0Mzc1IDkuMzI4MTI1IC0xMC4zNzUgNi4zMTI1IC0xMC4zNzUgQyA1LjIwMzEyNSAtMTAuMzc1IDQuMzEyNSAtMTAuMDc4MTI1IDMuMzkwNjI1IC05LjQyMTg3NSBMIDQuMDE1NjI1IC0xMy44MTI1IEwgMTAuNTYyNSAtMTMuODEyNSBaIE0gMTAuNTYyNSAtMTUuNzM0Mzc1ICIgLz48L2c+PC9nPjwvZGVmcz48cGF0aCBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjEuNzAxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDE3Ni4zNjcxODggMjU3LjQxMDE1NiBMIDM0Ni44MzU5MzggMTM3LjA5NzY1NiAiIC8+PHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoMCUsIDAlLCAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSAzNDYuODM1OTM4IDEzNy4wOTc2NTYgTCAzMzIuNzM4MjgxIDE0MS4zNTkzNzUgTCAzMzcuMDUwNzgxIDE0NC4wMDc4MTIgTCAzMzguMDk3NjU2IDE0OC45NTcwMzEgWiBNIDM0Ni44MzU5MzggMTM3LjA5NzY1NiAiIC8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDM0Ni44MzU5MzggMTM3LjA5NzY1NiBMIDMzMi43MzgyODEgMTQxLjM1OTM3NSBMIDMzNy4wNTA3ODEgMTQ0LjAwNzgxMiBMIDMzOC4wOTc2NTYgMTQ4Ljk1NzAzMSBMIDM0Ni44MzU5MzggMTM3LjA5NzY1NiAiIC8+PHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoMTAwJSwgMTAwJSwgMTAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSAyNTIuMzIwMzEyIDIxNS44MzIwMzEgTCAyNTIuMzIwMzEyIDE3OC43MDcwMzEgTCAyNzAuODgyODEyIDE3OC43MDcwMzEgTCAyNzAuODgyODEyIDIxNS44MzIwMzEgWiBNIDI1Mi4zMjAzMTIgMjE1LjgzMjAzMSAiIC8+PGcgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjEiPjx1c2UgeGxpbms6aHJlZj0iI2c1OS0wLTAiIHg9IjI1NS41ODU5MzgiIHk9IjIwNS4zNDk2MDkiIC8+PC9nPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMS43MDEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlPSJyZ2IoMCUsIDAlLCAwJSkiIHN0cm9rZS1vcGFjaXR5PSIxIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0gMTk0LjkyOTY4OCAyNTcuNDEwMTU2IEwgNTI5LjA2MjUgMjU3LjQxMDE1NiAiIC8+PHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoMCUsIDAlLCAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSA1MjkuMDYyNSAyNTcuNDEwMTU2IEwgNTE1LjA4MjAzMSAyNTIuNzYxNzE5IEwgNTE3LjA3ODEyNSAyNTcuNDEwMTU2IEwgNTE1LjA4MjAzMSAyNjIuMDU4NTk0IFogTSA1MjkuMDYyNSAyNTcuNDEwMTU2ICIgLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlPSJyZ2IoMCUsIDAlLCAwJSkiIHN0cm9rZS1vcGFjaXR5PSIxIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0gNTI5LjA2MjUgMjU3LjQxMDE1NiBMIDUxNS4wODIwMzEgMjUyLjc2MTcxOSBMIDUxNy4wNzgxMjUgMjU3LjQxMDE1NiBMIDUxNS4wODIwMzEgMjYyLjA1ODU5NCBMIDUyOS4wNjI1IDI1Ny40MTAxNTYgIiAvPjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0icmdiKDEwMCUsIDEwMCUsIDEwMCUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gMzUyLjczMDQ2OSAyNzUuOTcyNjU2IEwgMzUyLjczMDQ2OSAyMzguODQ3NjU2IEwgMzcxLjI5Mjk2OSAyMzguODQ3NjU2IEwgMzcxLjI5Mjk2OSAyNzUuOTcyNjU2IFogTSAzNTIuNzMwNDY5IDI3NS45NzI2NTYgIiAvPjxnIGZpbGw9InJnYigwJSwgMCUsIDAlKSIgZmlsbC1vcGFjaXR5PSIxIj48dXNlIHhsaW5rOmhyZWY9IiNnNTktMC0xIiB4PSIzNTUuOTk2MDk0IiB5PSIyNjUuNDkwMjM0IiAvPjwvZz48cGF0aCBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjEuNzAxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDE3Ni4zNjcxODggMjU3LjQxMDE1NiBMIDM0Ni44MzU5MzggMzc3Ljc1NzgxMiAiIC8+PHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoMCUsIDAlLCAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSAzNDYuODM1OTM4IDM3Ny43NTc4MTIgTCAzMzguMDk3NjU2IDM2NS44OTg0MzggTCAzMzcuMDUwNzgxIDM3MC44NDc2NTYgTCAzMzIuNzM4MjgxIDM3My40OTIxODggWiBNIDM0Ni44MzU5MzggMzc3Ljc1NzgxMiAiIC8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDM0Ni44MzU5MzggMzc3Ljc1NzgxMiBMIDMzOC4wOTc2NTYgMzY1Ljg5ODQzOCBMIDMzNy4wNTA3ODEgMzcwLjg0NzY1NiBMIDMzMi43MzgyODEgMzczLjQ5MjE4OCBMIDM0Ni44MzU5MzggMzc3Ljc1NzgxMiAiIC8+PHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoMTAwJSwgMTAwJSwgMTAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSAyNTIuMzIwMzEyIDMzNi4xNDg0MzggTCAyNTIuMzIwMzEyIDI5OS4wMTk1MzEgTCAyNzAuODgyODEyIDI5OS4wMTk1MzEgTCAyNzAuODgyODEyIDMzNi4xNDg0MzggWiBNIDI1Mi4zMjAzMTIgMzM2LjE0ODQzOCAiIC8+PGcgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjEiPjx1c2UgeGxpbms6aHJlZj0iI2c1OS0wLTIiIHg9IjI1NS41ODU5MzgiIHk9IjMyNS42NjIxMDkiIC8+PC9nPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMS43MDEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlPSJyZ2IoMCUsIDAlLCAwJSkiIHN0cm9rZS1vcGFjaXR5PSIxIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0gMzYxLjk5NjA5NCAxMjYuMzkwNjI1IEwgNTMyLjQ2NDg0NCAyNDYuNzAzMTI1ICIgLz48cGF0aCBmaWxsLXJ1bGU9Im5vbnplcm8iIGZpbGw9InJnYigwJSwgMCUsIDAlKSIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNIDUzMi40NjQ4NDQgMjQ2LjcwMzEyNSBMIDUyMy43MjY1NjIgMjM0Ljg0Mzc1IEwgNTIyLjY3NTc4MSAyMzkuNzkyOTY5IEwgNTE4LjM2MzI4MSAyNDIuNDQxNDA2IFogTSA1MzIuNDY0ODQ0IDI0Ni43MDMxMjUgIiAvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2U9InJnYigwJSwgMCUsIDAlKSIgc3Ryb2tlLW9wYWNpdHk9IjEiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTSA1MzIuNDY0ODQ0IDI0Ni43MDMxMjUgTCA1MjMuNzI2NTYyIDIzNC44NDM3NSBMIDUyMi42NzU3ODEgMjM5Ljc5Mjk2OSBMIDUxOC4zNjMyODEgMjQyLjQ0MTQwNiBMIDUzMi40NjQ4NDQgMjQ2LjcwMzEyNSAiIC8+PHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoMTAwJSwgMTAwJSwgMTAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSA0MzcuOTQ5MjE5IDIwNS4xMjg5MDYgTCA0MzcuOTQ5MjE5IDE2OCBMIDQ1Ni41MTE3MTkgMTY4IEwgNDU2LjUxMTcxOSAyMDUuMTI4OTA2IFogTSA0MzcuOTQ5MjE5IDIwNS4xMjg5MDYgIiAvPjxnIGZpbGw9InJnYigwJSwgMCUsIDAlKSIgZmlsbC1vcGFjaXR5PSIxIj48dXNlIHhsaW5rOmhyZWY9IiNnNTktMC0wIiB4PSI0NDEuMjE0ODQ0IiB5PSIxOTQuNjQyNTc4IiAvPjwvZz48cGF0aCBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjEuNzAxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDM2MS45OTYwOTQgMzg4LjQ2NDg0NCBMIDUzMi40NjQ4NDQgMjY4LjExNzE4OCAiIC8+PHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoMCUsIDAlLCAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSA1MzIuNDY0ODQ0IDI2OC4xMTcxODggTCA1MTguMzYzMjgxIDI3Mi4zNzg5MDYgTCA1MjIuNjc1NzgxIDI3NS4wMjczNDQgTCA1MjMuNzI2NTYyIDI3OS45NzY1NjIgWiBNIDUzMi40NjQ4NDQgMjY4LjExNzE4OCAiIC8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDUzMi40NjQ4NDQgMjY4LjExNzE4OCBMIDUxOC4zNjMyODEgMjcyLjM3ODkwNiBMIDUyMi42NzU3ODEgMjc1LjAyNzM0NCBMIDUyMy43MjY1NjIgMjc5Ljk3NjU2MiBMIDUzMi40NjQ4NDQgMjY4LjExNzE4OCAiIC8+PHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoMTAwJSwgMTAwJSwgMTAwJSkiIGZpbGwtb3BhY2l0eT0iMSIgZD0iTSA0MzcuOTQ5MjE5IDM0Ni44NTE1NjIgTCA0MzcuOTQ5MjE5IDMwOS43MjY1NjIgTCA0NTYuNTExNzE5IDMwOS43MjY1NjIgTCA0NTYuNTExNzE5IDM0Ni44NTE1NjIgWiBNIDQzNy45NDkyMTkgMzQ2Ljg1MTU2MiAiIC8+PGcgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjEiPjx1c2UgeGxpbms6aHJlZj0iI2c1OS0wLTIiIHg9IjQ0MS4yMTQ4NDQiIHk9IjMzNi4zNjkxNDEiIC8+PC9nPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMS43MDEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlPSJyZ2IoMCUsIDAlLCAwJSkiIHN0cm9rZS1vcGFjaXR5PSIxIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0gNTY2LjE4NzUgMjU3LjQxMDE1NiBMIDcxNC42ODc1IDI1Ny40MTAxNTYgIiAvPjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0gNzE0LjY4NzUgMjU3LjQxMDE1NiBMIDcwMC43MDcwMzEgMjUyLjc2MTcxOSBMIDcwMi43MDcwMzEgMjU3LjQxMDE1NiBMIDcwMC43MDcwMzEgMjYyLjA1ODU5NCBaIE0gNzE0LjY4NzUgMjU3LjQxMDE1NiAiIC8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDcxNC42ODc1IDI1Ny40MTAxNTYgTCA3MDAuNzA3MDMxIDI1Mi43NjE3MTkgTCA3MDIuNzA3MDMxIDI1Ny40MTAxNTYgTCA3MDAuNzA3MDMxIDI2Mi4wNTg1OTQgTCA3MTQuNjg3NSAyNTcuNDEwMTU2ICIgLz48cGF0aCBmaWxsLXJ1bGU9Im5vbnplcm8iIGZpbGw9InJnYigxMDAlLCAxMDAlLCAxMDAlKSIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNIDYzMS4xNzE4NzUgMjc1Ljk3MjY1NiBMIDYzMS4xNzE4NzUgMjM4Ljg0NzY1NiBMIDY0OS43MzQzNzUgMjM4Ljg0NzY1NiBMIDY0OS43MzQzNzUgMjc1Ljk3MjY1NiBaIE0gNjMxLjE3MTg3NSAyNzUuOTcyNjU2ICIgLz48ZyBmaWxsPSJyZ2IoMCUsIDAlLCAwJSkiIGZpbGwtb3BhY2l0eT0iMSI+PHVzZSB4bGluazpocmVmPSIjZzU5LTAtMiIgeD0iNjM0LjQzNzUiIHk9IjI2NS40OTAyMzQiIC8+PC9nPjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZmlsbD0icmdiKDgwJSwgODAlLCA4MCUpIiBmaWxsLW9wYWNpdHk9IjEiIHN0cm9rZS13aWR0aD0iMS43MDEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlPSJyZ2IoMCUsIDAlLCAwJSkiIHN0cm9rZS1vcGFjaXR5PSIxIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIGQ9Ik0gMTk0LjkyOTY4OCAyNTcuNDEwMTU2IEMgMTk0LjkyOTY4OCAyNjcuNjY0MDYyIDE4Ni42MjEwOTQgMjc1Ljk3MjY1NiAxNzYuMzY3MTg4IDI3NS45NzI2NTYgQyAxNjYuMTE3MTg4IDI3NS45NzI2NTYgMTU3LjgwNDY4OCAyNjcuNjY0MDYyIDE1Ny44MDQ2ODggMjU3LjQxMDE1NiBDIDE1Ny44MDQ2ODggMjQ3LjE2MDE1NiAxNjYuMTE3MTg4IDIzOC44NDc2NTYgMTc2LjM2NzE4OCAyMzguODQ3NjU2IEMgMTg2LjYyMTA5NCAyMzguODQ3NjU2IDE5NC45Mjk2ODggMjQ3LjE2MDE1NiAxOTQuOTI5Njg4IDI1Ny40MTAxNTYgIiAvPjxnIGZpbGw9InJnYigwJSwgMCUsIDAlKSIgZmlsbC1vcGFjaXR5PSIxIj48dXNlIHhsaW5rOmhyZWY9IiNnNTktMC0xIiB4PSIxNzAuMzY3MTg4IiB5PSIyNjQuOTk4MDQ3IiAvPjwvZz48cGF0aCBmaWxsLXJ1bGU9Im5vbnplcm8iIGZpbGw9InJnYig4MCUsIDgwJSwgODAlKSIgZmlsbC1vcGFjaXR5PSIxIiBzdHJva2Utd2lkdGg9IjEuNzAxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDM4MC41NTg1OTQgMTI2LjM5MDYyNSBDIDM4MC41NTg1OTQgMTM2LjY0NDUzMSAzNzIuMjQ2MDk0IDE0NC45NTMxMjUgMzYxLjk5NjA5NCAxNDQuOTUzMTI1IEMgMzUxLjc0MjE4OCAxNDQuOTUzMTI1IDM0My40MzM1OTQgMTM2LjY0NDUzMSAzNDMuNDMzNTk0IDEyNi4zOTA2MjUgQyAzNDMuNDMzNTk0IDExNi4xNDA2MjUgMzUxLjc0MjE4OCAxMDcuODI4MTI1IDM2MS45OTYwOTQgMTA3LjgyODEyNSBDIDM3Mi4yNDYwOTQgMTA3LjgyODEyNSAzODAuNTU4NTk0IDExNi4xNDA2MjUgMzgwLjU1ODU5NCAxMjYuMzkwNjI1ICIgLz48ZyBmaWxsPSJyZ2IoMCUsIDAlLCAwJSkiIGZpbGwtb3BhY2l0eT0iMSI+PHVzZSB4bGluazpocmVmPSIjZzU5LTAtMiIgeD0iMzU1Ljk5NjA5NCIgeT0iMTMzLjk3ODUxNiIgLz48L2c+PHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoODAlLCA4MCUsIDgwJSkiIGZpbGwtb3BhY2l0eT0iMSIgc3Ryb2tlLXdpZHRoPSIxLjcwMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2U9InJnYigwJSwgMCUsIDAlKSIgc3Ryb2tlLW9wYWNpdHk9IjEiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTSA1NjYuMTg3NSAyNTcuNDEwMTU2IEMgNTY2LjE4NzUgMjY3LjY2NDA2MiA1NTcuODc1IDI3NS45NzI2NTYgNTQ3LjYyNSAyNzUuOTcyNjU2IEMgNTM3LjM3MTA5NCAyNzUuOTcyNjU2IDUyOS4wNjI1IDI2Ny42NjQwNjIgNTI5LjA2MjUgMjU3LjQxMDE1NiBDIDUyOS4wNjI1IDI0Ny4xNjAxNTYgNTM3LjM3MTA5NCAyMzguODQ3NjU2IDU0Ny42MjUgMjM4Ljg0NzY1NiBDIDU1Ny44NzUgMjM4Ljg0NzY1NiA1NjYuMTg3NSAyNDcuMTYwMTU2IDU2Ni4xODc1IDI1Ny40MTAxNTYgIiAvPjxnIGZpbGw9InJnYigwJSwgMCUsIDAlKSIgZmlsbC1vcGFjaXR5PSIxIj48dXNlIHhsaW5rOmhyZWY9IiNnNTktMC0wIiB4PSI1NDEuNjI1IiB5PSIyNjQuOTk4MDQ3IiAvPjwvZz48cGF0aCBmaWxsLXJ1bGU9Im5vbnplcm8iIGZpbGw9InJnYig4MCUsIDgwJSwgODAlKSIgZmlsbC1vcGFjaXR5PSIxIiBzdHJva2Utd2lkdGg9IjEuNzAxIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0icmdiKDAlLCAwJSwgMCUpIiBzdHJva2Utb3BhY2l0eT0iMSIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNIDM4MC41NTg1OTQgMzg4LjQ2NDg0NCBDIDM4MC41NTg1OTQgMzk4LjcxNDg0NCAzNzIuMjQ2MDk0IDQwNy4wMjczNDQgMzYxLjk5NjA5NCA0MDcuMDI3MzQ0IEMgMzUxLjc0MjE4OCA0MDcuMDI3MzQ0IDM0My40MzM1OTQgMzk4LjcxNDg0NCAzNDMuNDMzNTk0IDM4OC40NjQ4NDQgQyAzNDMuNDMzNTk0IDM3OC4yMTA5MzggMzUxLjc0MjE4OCAzNjkuODk4NDM4IDM2MS45OTYwOTQgMzY5Ljg5ODQzOCBDIDM3Mi4yNDYwOTQgMzY5Ljg5ODQzOCAzODAuNTU4NTk0IDM3OC4yMTA5MzggMzgwLjU1ODU5NCAzODguNDY0ODQ0ICIgLz48ZyBmaWxsPSJyZ2IoMCUsIDAlLCAwJSkiIGZpbGwtb3BhY2l0eT0iMSI+PHVzZSB4bGluazpocmVmPSIjZzU5LTAtMyIgeD0iMzU1Ljk5NjA5NCIgeT0iMzk2LjAxNzU3OCIgLz48L2c+PHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSJyZ2IoODAlLCA4MCUsIDgwJSkiIGZpbGwtb3BhY2l0eT0iMSIgc3Ryb2tlLXdpZHRoPSIxLjcwMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2U9InJnYigwJSwgMCUsIDAlKSIgc3Ryb2tlLW9wYWNpdHk9IjEiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgZD0iTSA3NTEuODEyNSAyNTcuNDEwMTU2IEMgNzUxLjgxMjUgMjY3LjY2NDA2MiA3NDMuNTAzOTA2IDI3NS45NzI2NTYgNzMzLjI1IDI3NS45NzI2NTYgQyA3MjMgMjc1Ljk3MjY1NiA3MTQuNjg3NSAyNjcuNjY0MDYyIDcxNC42ODc1IDI1Ny40MTAxNTYgQyA3MTQuNjg3NSAyNDcuMTYwMTU2IDcyMyAyMzguODQ3NjU2IDczMy4yNSAyMzguODQ3NjU2IEMgNzQzLjUwMzkwNiAyMzguODQ3NjU2IDc1MS44MTI1IDI0Ny4xNjAxNTYgNzUxLjgxMjUgMjU3LjQxMDE1NiAiIC8+PGcgZmlsbD0icmdiKDAlLCAwJSwgMCUpIiBmaWxsLW9wYWNpdHk9IjEiPjx1c2UgeGxpbms6aHJlZj0iI2c1OS0wLTQiIHg9IjcyNy4yNSIgeT0iMjY0Ljk5ODA0NyIgLz48L2c+PC9zdmc+)
 
+## 8 Set-valued Data
+
 ### 8.3.2 Evaluation of Inclusion Functions
 
 Chapter 8 is about set-valued data: a case is not a number but an
@@ -8032,7 +8011,7 @@ evaluates a function over interval arguments.
 The manual’s box is `evalfi1`: the function’s inclusion over the
 interval and its derivative’s, `derivative = TRUE`.
 
-Box 225An inclusion function and its derivative (evalfi1)
+Box 224An inclusion function and its derivative (evalfi1)
 
 ``` r
 tda_evalfi("sin(x)", x = c(0, 1))
@@ -8064,7 +8043,7 @@ inclusion evaluations. The program does not: running the manual’s
 command file unchanged through TDA gives 19, 20 and 35, and so does the
 call here. The manual is out of date on this box.
 
-Box 226gmin
+Box 225gmin
 
 ``` r
 g <- tda_gmin("sin(x)", start = list(c(1, 0, 10)), use_derivatives = TRUE,
@@ -8100,7 +8079,7 @@ g$counts
 
 ### 8.4.2 The range Command
 
-Box 227range
+Box 226range
 
 ``` r
 tda_range("sin(x)", start = list(c(1, 0, 10)), use_derivatives = TRUE)
@@ -8115,7 +8094,7 @@ tda_range("sin(x)", start = list(c(1, 0, 10)), use_derivatives = TRUE)
 `self_consistent = TRUE` asks for the self-consistent estimate rather
 than the bounds alone.
 
-Box 228Distribution of a set-valued discrete variable
+Box 227Distribution of a set-valued discrete variable
 
 ``` r
 # the manual's box shows both data files as well as the results
@@ -8173,7 +8152,7 @@ tda_iddf(~iv(V1, V2), data = id1a, self_consistent = TRUE)
 `iv(lower, upper)` is the interval-valued variable, the counterpart of
 `Surv()` for this chapter.
 
-Box 229Distribution of an interval-valued variable
+Box 228Distribution of an interval-valued variable
 
 ``` r
 id2 <- read.table(ex("id2.dat"))
@@ -8211,7 +8190,7 @@ tda_idf(~iv(XL, XH), data = id2)
 The mean of an interval-valued variable is itself an interval: every
 value in it is the mean of some admissible data set.
 
-Box 230imean
+Box 229imean
 
 ``` r
 tda_imean(~iv(XL, XH), data = id2)
@@ -8224,7 +8203,7 @@ tda_imean(~iv(XL, XH), data = id2)
 
 ### 8.6.2 Variances
 
-Box 231ivariance
+Box 230ivariance
 
 ``` r
 tda_ivariance(~iv(V1, V2), data = id1a)

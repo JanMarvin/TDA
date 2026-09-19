@@ -65,6 +65,7 @@ Other smoothing:
 [`tda_interp()`](https://janmarvin.github.io/TDA/reference/tda_interp.md),
 [`tda_isotonic()`](https://janmarvin.github.io/TDA/reference/tda_isotonic.md),
 [`tda_mat()`](https://janmarvin.github.io/TDA/reference/tda_mat.md),
+[`tda_sma()`](https://janmarvin.github.io/TDA/reference/tda_sma.md),
 [`tda_smd()`](https://janmarvin.github.io/TDA/reference/tda_smd.md)
 
 ## Examples

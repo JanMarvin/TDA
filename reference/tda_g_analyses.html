@@ -168,7 +168,7 @@ column labels), or <code>"matrix_no_labels"</code> – <code>gsp</code>'s
 <code>tda_g_edges</code>: <code>"edges"</code> (default), or the adjacency
 matrix as <code>"lower_triangle"</code>, <code>"lower_triangle_diag"</code>,
 <code>"full"</code>, or <code>"full_square"</code> – <code>gdp</code>'s
-<code>opt=</code> (this list belongs to <code>tda_g_edges</code>). For <code>tda_g_dcycles</code>: <code>"per_cycle"</code> (default),
+<code>opt=</code>. For <code>tda_g_dcycles</code>: <code>"per_cycle"</code> (default),
 <code>"per_node"</code>, or <code>"progress"</code> (report progress to the
 console instead of writing anything) – <code>gdcyc</code>'s
 <code>opt=</code>. For <code>tda_g_reachable</code>: <code>"count"</code> (default,
@@ -428,12 +428,6 @@ answering wrongly, so the error message is worth reading. Most of the
 <code>gd*</code> commands want a directed graph, <code>gcliq</code>, <code>gcut</code>,
 <code>gcyc</code>, <code>gmst</code>, <code>gnst</code>, <code>gcset</code> and <code>gnc</code>
 want an undirected one, and <code>gcni</code> wants an unvalued one.</p>
-
-<p>TDA refuses a command whose graph is of the wrong kind rather than
-answering wrongly, so the error message is worth reading. Most of the
-<code>gd*</code> commands want a directed graph, <code>gcliq</code>, <code>gcut</code>,
-<code>gcyc</code>, <code>gmst</code>, <code>gnst</code>, <code>gcset</code> and <code>gnc</code>
-want an undirected one, and <code>gcni</code> wants an unvalued one.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -443,7 +437,8 @@ want an undirected one, and <code>gcni</code> wants an unvalued one.</p>
 <code><a href="tda_g.html">tda_g()</a></code>,
 <code><a href="tda_graph.html">tda_graph()</a></code>,
 <code><a href="tda_locate_line.html">tda_locate_line()</a></code>,
-<code><a href="tda_ptree.html">tda_ptree()</a></code></p></div>
+<code><a href="tda_ptree.html">tda_ptree()</a></code>,
+<code><a href="tda_ucl.html">tda_ucl()</a></code></p></div>
     </div>
 
     <div class="section level2">

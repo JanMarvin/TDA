@@ -133,15 +133,12 @@ nobs(object, ...)
 - degree, kgam, mixture:
 
   model-specific options, each read by a few models and ignored by the
-  rest (checked against `check_mod()`, `build_pvec()` and the model
-  functions in `t_fnrtb.c`, and by fitting with and without each):
-  `deg=` is the polynomial degree of `polynomial`, `polynomial2`,
+  rest: `deg=` is the polynomial degree of `polynomial`, `polynomial2`,
   `discrete_logistic` and `discrete_cloglog` (models 4, 5, 20, 21) and
   has no effect on any other model; `kgam=` is the fixed shape of
-  `generalized_gamma` (model 13) only – not, as an earlier version of
-  this text said, of the Gompertz-Makeham family, where it changes
-  nothing; `mix=1` requests the gamma mixture form of `exponential` and
-  `weibull` (models 2 and 7), and for any other model TDA stops with
+  `generalized_gamma` (model 13) only, the Gompertz-Makeham family does
+  not read it; `mix=1` requests the gamma mixture form of `exponential`
+  and `weibull` (models 2 and 7), and for any other model TDA stops with
   “Gamma mixture not possible” rather than ignoring it.
 
 - id, spell:

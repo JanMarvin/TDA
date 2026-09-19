@@ -55,7 +55,7 @@ fully, one variable at a time in definition order, before moving to the
 next case – not all of one variable's values before the next. A block
 defining `X = rd` then `E = rdn` draws `X`'s case 1, then `E`'s case 1
 (however many `random1()` calls that costs), then `X`'s case 2, and so
-on – `tda_rd(256)` followed separately by `tda_rdn(256)` does not
+on – `tda_runif(256)` followed separately by `tda_rnorm(256)` does not
 reproduce this at all, even with the same seed, since it draws all of
 `X` before touching `E`'s own share of the stream. Reproducing that
 exact case-by-case interleaving is what `tda_rng`'s stateful

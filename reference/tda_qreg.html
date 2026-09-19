@@ -97,8 +97,7 @@ data if not given.</p></dd>
 <dt id="arg-waves-min-waves">waves, min_waves<a class="anchor" aria-label="anchor" href="#arg-waves-min-waves"></a></dt>
 <dd><p>the number of waves and, of those, the minimum
 with valid data required per case (<code>nw=</code>/<code>pmin=</code>); only
-meaningful for models 7 and 8, which this wrapper does not otherwise
-support (see Models above).</p></dd>
+meaningful for models 7 and 8 (see the Panel models section).</p></dd>
 
 
 <dt id="arg-intercept">intercept<a class="anchor" aria-label="anchor" href="#arg-intercept"></a></dt>
@@ -209,9 +208,8 @@ the output files.</p></dd>
     <p>An object of class <code>tda_fit</code>. For the multivariate and
   simultaneous probits (models 6 and 8) it carries <code>correlation</code>,
   the estimated correlation matrix among the latent equations, which
-  TDA computes only when asked for a parameter file.
-  Additionally carrying
-  <code>categories</code>, the (weighted) count and percentage of each
+  TDA computes only when asked for a parameter file. It additionally
+  carries <code>categories</code>, the (weighted) count and percentage of each
   response category as <code>qreg</code> itself tabulates them before
   estimating. Cases with missing values are dropped before the fit,
   with a message (see <code><a href="tdaR-package.html">?tdaR</a></code>).</p>
@@ -223,9 +221,9 @@ the output files.</p></dd>
 <p><code>model</code> takes a name from <code>TDA_QRMODELS</code>, matched partially, or a
 TDA model number:</p><table class="table table"><tr><td>1</td><td><code>logit</code></td><td>binary logit</td></tr><tr><td>2</td><td><code>probit</code></td><td>binary probit</td></tr><tr><td>3</td><td><code>ordinal_logit</code></td><td>needs three or more categories</td></tr><tr><td>4</td><td><code>ordinal_probit</code></td><td>needs three or more categories</td></tr><tr><td>5</td><td><code>multinomial_logit</code></td><td>needs <code>nq</code></td></tr><tr><td>6</td><td><code>multivariate_probit</code></td><td>needs <code>nq</code></td></tr><tr><td>7</td><td><code>conditional_logit</code></td><td>panel: needs <code>waves</code> (2+)
                                          and <code><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind()</a></code> terms – see
-                                         Details</td></tr><tr><td>8</td><td><code>simultaneous_probit</code></td><td>panel: needs <code>waves</code> (2+)
+                                         Panel models</td></tr><tr><td>8</td><td><code>simultaneous_probit</code></td><td>panel: needs <code>waves</code> (2+)
                                          and <code><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind()</a></code> terms – see
-                                         Details</td></tr></table></div>
+                                         Panel models</td></tr></table></div>
     <div class="section level2">
     <h2 id="panel-models-waves-">Panel models (waves)<a class="anchor" aria-label="anchor" href="#panel-models-waves-"></a></h2>
 
@@ -256,10 +254,6 @@ lists only the first five models, though eight are implemented – the
 table above is the full set. The binary models agree with <code>glm</code>:
 a binary logit is a binomial glm with a logit link, a binary probit
 one with a probit link.</p>
-<p>Models 7 and 8 need multi-wave (repeated-measures) data – a different
-<code>varlist</code> shape than the single formula this wrapper builds, not
-just an extra option – so this function refuses them outright rather
-than send a request TDA would misinterpret or reject confusingly.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

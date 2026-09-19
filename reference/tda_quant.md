@@ -3,7 +3,7 @@
 `tda_quant` computes quantiles, `tda_atab` aggregates a variable into
 classes, which is how TDA makes a histogram, and `tda_freq1` gives a
 one-way frequency table. All three describe the distribution of one
-variable at a time and return a `table` in the same shape `...` in, one
+variable at a time and return a `table` in the shape `...` came in, one
 row per variable or class – unlike
 [`tda_freq2`](https://janmarvin.github.io/TDA/reference/tda_freq1.md) (a
 cross-tabulation of two variables, a matrix rather than a table) or

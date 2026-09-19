@@ -78,7 +78,7 @@ blocks:
 
 - COHO2, COHO3:
 
-  birth cohort indicators, 1939-42 and 1949-51.
+  birth cohort indicators, 1939-41 and 1949-51.
 
 ## Examples
 

@@ -64,7 +64,7 @@ An object carrying the run and, where there is one, a table.
 `tda_sd_info` reports what a structure holds: how many points, lines and
 polygons, and the bounding box. `tda_sd_voronoi` builds a Voronoi
 diagram and the Delaunay triangulation of the points; `tda_sd_enclosing`
-the smallest enclosing circle or the convex hull, `tda_sd_neighbours`
+the enclosing rectangle or the convex hull, `tda_sd_neighbours`
 nearest-neighbour lists, and `tda_sd_relations` the relations between
 objects. `tda_sd_select` picks out objects in a region – like
 `tda_sd_clip`, it needs `rec` (as an option:

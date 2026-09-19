@@ -45,7 +45,7 @@ zoo(zoofile, files, method = 1L)
   packing method for the members: `1` (LZD, the default) or `0` (stored,
   uncompressed). TDA's `arcd` reads all of 0, 1 and 2, but other readers
   of TDA-written archives may not, and LZD is what `zoo` itself has
-  always produced. all of them.
+  always produced.
 
 ## Value
 
@@ -69,10 +69,9 @@ CRC-16 the original archive itself stored, and separately, every file
 independent, unrelated `zoo`/`unzoo` reference tools
 (<https://github.com/troglobit/zoo>) – not just read back correctly by
 this same code, which would only prove self-consistency. `zoo` writes
-stored (uncompressed) entries, each with its correct CRC-16 checksum:
-always valid and readable by any Zoo implementation, including TDA's, at
-the cost of not compressing – compression is a possible future addition,
-not something any current user of this package has needed.
+LZD-compressed entries by default, or stored (uncompressed) ones with
+`method = 0`, each with its CRC-16 checksum, readable by any Zoo
+implementation including TDA's.
 
 Only Zoo's short filename field (12 characters) is read or written; the
 format's optional long-filename/directory extension is not implemented.

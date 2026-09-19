@@ -1,11 +1,9 @@
-# `yw=` marks the case that is censored with a nonzero value, the same convention as R's `survival::Surv(..., event = )` with the sense flipped – unlike [`tda_lsreg1`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md)'s `cen=`, this is not translated, so `censor` passed here should already be 1 for a censored case.
+# Regression with a censored response
 
-The iteration often hits `mxit` (default 20) without TDA's tolerance
-test passing, even once the estimates have stopped moving – `tda_run`
-then warns “TDA did not converge”. Raising `options = list(mxit = ...)`
-rarely changes the estimate by more than its last few iterations already
-did; check by comparing coefficients at two values of `mxit` rather than
-assuming the warning means the fit is unusable.
+`tda_zreg`/`tda_zreg1` are TDA's `zreg`/`zreg1`: least squares with a
+censoring indicator, a Buckley-James estimator where right-censored
+cases are iteratively reweighted rather than dropped or treated as
+exact.
 
 ## Usage
 
@@ -71,11 +69,17 @@ An object of class `tda_fit`.
 runs the other way – a case counts as *exact* when its indicator is zero
 – so this is translated for you, the same correction
 [`tda_lsreg1`](https://janmarvin.github.io/TDA/reference/tda_lsreg.md)
-already documents for its own `cen=`. Confirmed by fitting the same
-censored data both ways and comparing against the known-correct
-uncensored OLS fit: sent through unflipped, `zreg` recovered essentially
-nothing of the true relationship (a near-zero slope); flipped, it
-recovers it closely.
+documents for its `cen=`. Sent through unflipped, `zreg` recovers
+essentially nothing of a known relationship (a near-zero slope);
+flipped, it recovers it closely, checked against the uncensored
+least-squares fit.
+
+The iteration often hits `mxit` (default 20) without TDA's tolerance
+test passing, even once the estimates have stopped moving – `tda_run`
+then warns “TDA did not converge”. Raising `options = list(mxit = ...)`
+rarely changes the estimate by more than its last few iterations already
+did; check by comparing coefficients at two values of `mxit` rather than
+assuming the warning means the fit is unusable.
 
 `tda_zreg1` is TDA's `zreg1`, the residual-life variant: instead of one
 fit, it refits the Buckley-James regression of the *remaining* lifetime
@@ -85,15 +89,9 @@ coefficients over time. Time-varying covariates enter as *event dates*
 (`dates`, TDA's `xv=`): at each step, a date column becomes the
 indicator "has this event happened by \\t\\" (`date <= t`), so its
 coefficient traces how experiencing the event shifts expected remaining
-lifetime. An earlier note here claimed `zreg1` needed episode-spell
-data; reading its source shows it takes the same plain one-row-per-case
-frame as `tda_zreg`, plus the date columns – the dichotomisation over
-time *is* the time variation.
-
-`tda_zreg`/`tda_zreg1` are TDA's `zreg`/`zreg1`: least squares with a
-censoring indicator, a Buckley-James estimator where right-censored
-cases are iteratively reweighted rather than dropped or treated as
-exact.
+lifetime. It takes the same plain one-row-per-case frame as `tda_zreg`,
+plus the date columns – the dichotomisation over time *is* the time
+variation.
 
 ## See also
 
