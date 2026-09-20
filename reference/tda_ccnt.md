@@ -97,10 +97,10 @@ cat(tda_dump(f), sep = "\n")
 f2 <- tempfile()
 writeLines(rep("0123456789", 10), f2)
 tda_dsplit(f2, len = 20)
-#> [1] "/tmp/RtmpyuRzLd/tda1f97650c580e/file1f976988e99e.a"
-#> [2] "/tmp/RtmpyuRzLd/tda1f97650c580e/file1f976988e99e.b"
-#> [3] "/tmp/RtmpyuRzLd/tda1f97650c580e/file1f976988e99e.c"
-#> [4] "/tmp/RtmpyuRzLd/tda1f97650c580e/file1f976988e99e.d"
-#> [5] "/tmp/RtmpyuRzLd/tda1f97650c580e/file1f976988e99e.e"
-#> [6] "/tmp/RtmpyuRzLd/tda1f97650c580e/file1f976988e99e.f"
+#> [1] "/tmp/RtmpTtCcDY/tda1f862a2af6fc/file1f866e73f33b.a"
+#> [2] "/tmp/RtmpTtCcDY/tda1f862a2af6fc/file1f866e73f33b.b"
+#> [3] "/tmp/RtmpTtCcDY/tda1f862a2af6fc/file1f866e73f33b.c"
+#> [4] "/tmp/RtmpTtCcDY/tda1f862a2af6fc/file1f866e73f33b.d"
+#> [5] "/tmp/RtmpTtCcDY/tda1f862a2af6fc/file1f866e73f33b.e"
+#> [6] "/tmp/RtmpTtCcDY/tda1f862a2af6fc/file1f866e73f33b.f"
 ```
