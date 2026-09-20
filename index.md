@@ -112,11 +112,11 @@ Blossfeld and Rohwer’s *Techniques of Event History Modeling* (1995; 2nd
 ed. 2002) is written around it and shipped it on an accompanying disk.
 The 6.x line was a redesign — a clean split of commands from parameters
 — and from version 6.2 the program and manual have two authors, Rohwer
-and Ulrich Pötter. The last releases (6.4a–6.4p, through March 2009)
-came from the years at Ruhr-Universität Bochum, where Rohwer held the
-chair for methods of social research. TDA has always been a
-non-commercial project, released under the GNU General Public License.
-Its homepage is <https://www.stat.rub.de/tda.html>.
+and Ulrich Pötter. The releases 6.1 to 6.4p (1997 to March 2009) fall in
+Rohwer’s years as professor at Ruhr-Universität Bochum (1997–2013),
+where TDA’s homepage still is. TDA has always been a non-commercial
+project, released under the GNU General Public License. Its homepage is
+<https://www.stat.rub.de/tda.html>.
 
 ## Licence
 

@@ -9,17 +9,18 @@ Rohwer began TDA in 1989; it grew inside Hans-Peter Blossfeld's
 *Household Dynamics and Social Inequality* project at the European
 University Institute in Florence and then at the University of Bremen,
 reached maturity with version 5.7 (1994), and was redesigned as the 6.x
-line with Ulrich Poetter as co-author, the last releases coming from
-Rohwer's later years at the Ruhr-Universitaet Bochum (the account TDA's
-manual preface gives). It became one of the standard tools of
-quantitative life course research: transition rate models, product-limit
-and life table estimation, sequence analysis, and a long tail of
-supporting methods, all driven by plain-text command files. Blossfeld
-and Rohwer's *Techniques of Event History Modeling* (1995, 2002) is
-written around it. This package embeds TDA's original C sources – the
-models are computed by TDA itself, unchanged – behind ordinary R
-functions, formulas and data frames, so that its methods, and results
-computed with it decades ago, stay reachable from a current environment.
+line with Ulrich Poetter as co-author; the 6.x releases (1997 to 2009)
+fall in Rohwer's years as professor at the Ruhr-Universitaet Bochum
+(1997 to 2013), where TDA's homepage still is. It became one of the
+standard tools of quantitative life course research: transition rate
+models, product-limit and life table estimation, sequence analysis, and
+a long tail of supporting methods, all driven by plain-text command
+files. Blossfeld and Rohwer's *Techniques of Event History Modeling*
+(1995, 2002) is written around it. This package embeds TDA's original C
+sources – the models are computed by TDA itself, unchanged – behind
+ordinary R functions, formulas and data frames, so that its methods, and
+results computed with it decades ago, stay reachable from a current
+environment.
 
 **Where to start**, by task:
 
@@ -156,8 +157,8 @@ book's command files, written out in full.
 
 ## References
 
-Rohwer, G. and Poetter, U., *TDA User's Manual*. Ruhr-Universitaet
-Bochum. TDA's homepage: <https://www.stat.rub.de/tda.html>.
+Rohwer, G. and Poetter, U., *TDA User's Manual*. TDA's homepage:
+<https://www.stat.rub.de/tda.html>.
 
 Blossfeld, H.-P. and Rohwer, G. (2002). *Techniques of Event History
 Modeling: New Approaches to Causal Analysis*, 2nd ed. Mahwah, NJ:

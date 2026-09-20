@@ -65,7 +65,7 @@ which is otherwise only visible in an error message.
 tda_expand("A*B")
 #> [1] "expm=A*B"
 #> attr(,"run")
-#> TDA. Analysis of Transition Data (6.4q). Sun Sep 20 09:48:14 2026
+#> TDA. Analysis of Transition Data (6.4q). Sun Sep 20 10:43:45 2026
 #> Current memory: 390032 bytes.
 #> 
 #> Reading command file: commands
@@ -76,7 +76,7 @@ tda_expand("A*B")
 #> expm=A*B
 #> ----------------------------------------------------------------------------
 #> Current memory: 390032 bytes. Max memory used: 390036 bytes.
-#> End of program. Sun Sep 20 09:48:14 2026
+#> End of program. Sun Sep 20 10:43:45 2026
 tda_mparse("A+B", setup = c("mdefi(2,2,A);", "mdefi(2,2,B);"))
 #> [1] " Cnt        Typ        Val   Dimension"                   
 #> [2] "--------------------------------------"                   
@@ -87,7 +87,7 @@ tda_mparse("A+B", setup = c("mdefi(2,2,A);", "mdefi(2,2,B);"))
 #> [7] "      2.0000       0.0000 "                               
 #> [8] "      0.0000       2.0000 "                               
 #> attr(,"run")
-#> TDA. Analysis of Transition Data (6.4q). Sun Sep 20 09:48:14 2026
+#> TDA. Analysis of Transition Data (6.4q). Sun Sep 20 10:43:45 2026
 #> Current memory: 390032 bytes.
 #> 
 #> Reading command file: commands
@@ -107,5 +107,5 @@ tda_mparse("A+B", setup = c("mdefi(2,2,A);", "mdefi(2,2,B);"))
 #> 
 #> ----------------------------------------------------------------------------
 #> Current memory: 390032 bytes. Max memory used: 402220 bytes.
-#> End of program. Sun Sep 20 09:48:14 2026
+#> End of program. Sun Sep 20 10:43:45 2026
 ```

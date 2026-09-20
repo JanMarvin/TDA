@@ -21,7 +21,6 @@ Rohwer G, Poetter U (2009). *TDA User's Manual*. Version 6.4,
       author = {Goetz Rohwer and Ulrich Poetter},
       year = {2009},
       note = {Version 6.4},
-      address = {Ruhr-Universität Bochum},
       url = {https://www.stat.rub.de/tda.html},
     }
 

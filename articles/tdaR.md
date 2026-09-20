@@ -35,11 +35,11 @@ of Bremen. Version 5.7 (June 1994) was the first the authors called
 mature, and it is the program behind Blossfeld and Rohwer’s *Techniques
 of Event History Modeling* (1995; 2nd ed. 2002). The 6.x line was a
 redesign, and from version 6.2 the program and the manual have two
-authors, Rohwer and Ulrich Pötter. The last releases, 6.4a to 6.4p
-through March 2009, came from Rohwer’s years at Ruhr-Universität Bochum.
-TDA has always been a non-commercial project under the GNU General
-Public License; its source is C, and the *User’s Manual* of some 800
-pages is its documentation.
+authors, Rohwer and Ulrich Pötter. The 6.x releases, 6.1 in 1997 to 6.4p
+in March 2009, fall in Rohwer’s years as professor at Ruhr-Universität
+Bochum (1997–2013), where TDA’s homepage still is. TDA has always been a
+non-commercial project under the GNU General Public License; its source
+is C, and the *User’s Manual* of some 800 pages is its documentation.
 
 tdaR is that program, compiled into an R package. The C is TDA’s, made
 re-entrant so that it can run inside R and be called more than once;
