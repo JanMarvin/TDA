@@ -134,9 +134,10 @@ quoted only in brief, attributed excerpts.
 
 # Package index
 
-## Running TDA
+## Running TDA and reading its output
 
-The command-file interface, help, and what comes back.
+The command-file interface, TDA’s help, the methods of fitted objects,
+convergence control, and accounting for what a run printed.
 
 - [`tdaR`](https://janmarvin.github.io/TDA/reference/tdaR-package.md)
   [`tdaR-package`](https://janmarvin.github.io/TDA/reference/tdaR-package.md)
@@ -183,11 +184,6 @@ The command-file interface, help, and what comes back.
   [`tda_blocks()`](https://janmarvin.github.io/TDA/reference/tda_read_table.md)
   [`tda_file()`](https://janmarvin.github.io/TDA/reference/tda_read_table.md)
   : Read TDA's output files
-- [`tda_ccnt()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md)
-  [`tda_lcnt()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md)
-  [`tda_dump()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md)
-  [`tda_dsplit()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md)
-  : Inspect a raw file
 - [`tda_payload()`](https://janmarvin.github.io/TDA/reference/tda_payload.md)
   : Extract a command's result section from TDA output
 - [`tda_output_audit()`](https://janmarvin.github.io/TDA/reference/tda_output_audit.md)
@@ -201,44 +197,27 @@ The command-file interface, help, and what comes back.
   [`tda_strict()`](https://janmarvin.github.io/TDA/reference/tda_control.md)
   [`tda_converged()`](https://janmarvin.github.io/TDA/reference/tda_control.md)
   : Convergence control
-- [`vcov(`*`<tda_fit>`*`)`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
-  [`confint(`*`<tda_fit>`*`)`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
-  [`logLik(`*`<tda_fit>`*`)`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
-  [`summary(`*`<tda_fit>`*`)`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
-  [`anova(`*`<tda_fit>`*`)`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
-  [`predict(`*`<tda_fit>`*`)`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
-  [`fitted(`*`<tda_fit>`*`)`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
-  [`residuals(`*`<tda_fit>`*`)`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
-  [`TDA_MODELS`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
-  [`tda_rate()`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
-  [`tda_coxph()`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
-  [`tda_estimates.tda_fit()`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
-  [`coef(`*`<tda_fit>`*`)`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
-  [`nobs(`*`<tda_fit>`*`)`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
-  : Transition rate models
 
 ## Data
 
-Example data, data description, variable creation, random numbers.
+The example data, building TDA’s input, variables and random numbers.
 
 - [`tda_rrdat()`](https://janmarvin.github.io/TDA/reference/tda_rrdat.md)
   : The job-episode data from Blossfeld and Rohwer
+
+- [`tda_interval_wages()`](https://janmarvin.github.io/TDA/reference/tda_interval_wages.md)
+  : Artificial interval-valued wage data
 
 - [`tda_write_data()`](https://janmarvin.github.io/TDA/reference/tda_write_data.md)
   [`tda_nvar()`](https://janmarvin.github.io/TDA/reference/tda_write_data.md)
   [`tda_block()`](https://janmarvin.github.io/TDA/reference/tda_write_data.md)
   : Build TDA's input
 
+- [`tda_pdatr()`](https://janmarvin.github.io/TDA/reference/tda_pdatr.md)
+  : Print all case pairs
+
 - [`tda_ndvar()`](https://janmarvin.github.io/TDA/reference/tda_ndvar.md)
   : Dummy variables
-
-- [`tda_niset()`](https://janmarvin.github.io/TDA/reference/tda_niset.md)
-  : Numerical-integration settings
-
-- [`tda_rd()`](https://janmarvin.github.io/TDA/reference/tda_rd.md)
-  [`tda_rdn()`](https://janmarvin.github.io/TDA/reference/tda_rd.md) :
-
-  Random values, as TDA's `rd()`/`rdn()`
 
 - [`tda_derive()`](https://janmarvin.github.io/TDA/reference/tda_derive.md)
   : Derive variables with TDA's expression language
@@ -255,23 +234,13 @@ Example data, data description, variable creation, random numbers.
 - [`tda_cwt_norm()`](https://janmarvin.github.io/TDA/reference/tda_cwt_norm.md)
   : Rescale case weights the way TDA's cwt(wnorm=) does
 
-- [`tda_interval_wages()`](https://janmarvin.github.io/TDA/reference/tda_interval_wages.md)
-  : Artificial interval-valued wage data
-
 - [`tda_dblock()`](https://janmarvin.github.io/TDA/reference/tda_dblock.md)
   : Declare a block structure
 
-- [`tda_read_table()`](https://janmarvin.github.io/TDA/reference/tda_read_table.md)
-  [`tda_read_blocks()`](https://janmarvin.github.io/TDA/reference/tda_read_table.md)
-  [`tda_blocks()`](https://janmarvin.github.io/TDA/reference/tda_read_table.md)
-  [`tda_file()`](https://janmarvin.github.io/TDA/reference/tda_read_table.md)
-  : Read TDA's output files
+- [`tda_rd()`](https://janmarvin.github.io/TDA/reference/tda_rd.md)
+  [`tda_rdn()`](https://janmarvin.github.io/TDA/reference/tda_rd.md) :
 
-- [`tda_ccnt()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md)
-  [`tda_lcnt()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md)
-  [`tda_dump()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md)
-  [`tda_dsplit()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md)
-  : Inspect a raw file
+  Random values, as TDA's `rd()`/`rdn()`
 
 - [`tda_rng()`](https://janmarvin.github.io/TDA/reference/tda_rng.md)
   [`tda_runif()`](https://janmarvin.github.io/TDA/reference/tda_rng.md)
@@ -280,49 +249,50 @@ Example data, data description, variable creation, random numbers.
 
 ## Reading and writing files
 
-Statistical packages, spreadsheets, archives, text.
+Statistical packages, spreadsheets, archives, spatial and other formats,
+and TDA’s record-file utilities.
 
-- [`tda_read_dbf()`](https://janmarvin.github.io/TDA/reference/tda_read_dbf.md)
-  : Read a dBase (.dbf) attribute table
-- [`tda_read_ps()`](https://janmarvin.github.io/TDA/reference/tda_read_ps.md)
-  : Read TDA's PostScript output
-- [`tda_read_shapefile()`](https://janmarvin.github.io/TDA/reference/tda_read_shapefile.md)
-  : Read a shapefile into a TDA spatial structure
-- [`tda_read_e00()`](https://janmarvin.github.io/TDA/reference/tda_read_spatial.md)
-  [`tda_read_gshhs()`](https://janmarvin.github.io/TDA/reference/tda_read_spatial.md)
-  [`tda_read_dcw()`](https://janmarvin.github.io/TDA/reference/tda_read_spatial.md)
-  : Read other spatial formats
 - [`tda_read_spss()`](https://janmarvin.github.io/TDA/reference/tda_read_spss.md)
   : Read an SPSS data file
 - [`tda_read_stata()`](https://janmarvin.github.io/TDA/reference/tda_read_stata.md)
   : Read a Stata file
 - [`tda_read_sys()`](https://janmarvin.github.io/TDA/reference/tda_read_sys.md)
   : Read a TDA system file
-- [`tda_read_table()`](https://janmarvin.github.io/TDA/reference/tda_read_table.md)
-  [`tda_read_blocks()`](https://janmarvin.github.io/TDA/reference/tda_read_table.md)
-  [`tda_blocks()`](https://janmarvin.github.io/TDA/reference/tda_read_table.md)
-  [`tda_file()`](https://janmarvin.github.io/TDA/reference/tda_read_table.md)
-  : Read TDA's output files
-- [`tda_read_ucinet()`](https://janmarvin.github.io/TDA/reference/tda_read_ucinet.md)
-  : Read a UCINET file
 - [`tda_read_xls()`](https://janmarvin.github.io/TDA/reference/tda_read_xls.md)
   : Read an Excel .xls workbook
-- [`tda_write_data()`](https://janmarvin.github.io/TDA/reference/tda_write_data.md)
-  [`tda_nvar()`](https://janmarvin.github.io/TDA/reference/tda_write_data.md)
-  [`tda_block()`](https://janmarvin.github.io/TDA/reference/tda_write_data.md)
-  : Build TDA's input
-- [`tda_write_spss()`](https://janmarvin.github.io/TDA/reference/tda_write_foreign.md)
-  [`tda_write_stata()`](https://janmarvin.github.io/TDA/reference/tda_write_foreign.md)
-  [`tda_write_sys()`](https://janmarvin.github.io/TDA/reference/tda_write_foreign.md)
-  : Write a data frame to SPSS, Stata or a TDA system file
+- [`tda_read_dbf()`](https://janmarvin.github.io/TDA/reference/tda_read_dbf.md)
+  : Read a dBase (.dbf) attribute table
+- [`tda_read_ucinet()`](https://janmarvin.github.io/TDA/reference/tda_read_ucinet.md)
+  : Read a UCINET file
+- [`tda_read_shapefile()`](https://janmarvin.github.io/TDA/reference/tda_read_shapefile.md)
+  : Read a shapefile into a TDA spatial structure
+- [`tda_read_e00()`](https://janmarvin.github.io/TDA/reference/tda_read_spatial.md)
+  [`tda_read_gshhs()`](https://janmarvin.github.io/TDA/reference/tda_read_spatial.md)
+  [`tda_read_dcw()`](https://janmarvin.github.io/TDA/reference/tda_read_spatial.md)
+  : Read other spatial formats
+- [`tda_gtopo()`](https://janmarvin.github.io/TDA/reference/tda_gtopo.md)
+  : Read a GTOPO30 elevation profile
 - [`tda_rcsv()`](https://janmarvin.github.io/TDA/reference/tda_rcsv.md)
   : Read a CSV file through TDA
 - [`tda_rsys()`](https://janmarvin.github.io/TDA/reference/tda_rsys.md)
   : Read a TDA system file
 - [`tda_rplz()`](https://janmarvin.github.io/TDA/reference/tda_rplz.md)
   : Read a PLZ-style CSV file
-- [`tda_pdatr()`](https://janmarvin.github.io/TDA/reference/tda_pdatr.md)
-  : Print all case pairs
+- [`tda_esort()`](https://janmarvin.github.io/TDA/reference/tda_esort.md)
+  [`tda_eskip()`](https://janmarvin.github.io/TDA/reference/tda_esort.md)
+  [`tda_eselect()`](https://janmarvin.github.io/TDA/reference/tda_esort.md)
+  [`tda_emerge()`](https://janmarvin.github.io/TDA/reference/tda_esort.md)
+  [`tda_ejoin()`](https://janmarvin.github.io/TDA/reference/tda_esort.md)
+  : TDA's file utilities
+- [`tda_ccnt()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md)
+  [`tda_lcnt()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md)
+  [`tda_dump()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md)
+  [`tda_dsplit()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md)
+  : Inspect a raw file
+- [`tda_write_spss()`](https://janmarvin.github.io/TDA/reference/tda_write_foreign.md)
+  [`tda_write_stata()`](https://janmarvin.github.io/TDA/reference/tda_write_foreign.md)
+  [`tda_write_sys()`](https://janmarvin.github.io/TDA/reference/tda_write_foreign.md)
+  : Write a data frame to SPSS, Stata or a TDA system file
 - [`tda_arcd()`](https://janmarvin.github.io/TDA/reference/tda_arcd.md)
   : Open or close a TDA data archive
 - [`tda_arcv()`](https://janmarvin.github.io/TDA/reference/tda_arcv.md)
@@ -332,22 +302,11 @@ Statistical packages, spreadsheets, archives, text.
 - [`unzoo()`](https://janmarvin.github.io/TDA/reference/unzoo.md)
   [`zoo()`](https://janmarvin.github.io/TDA/reference/unzoo.md) : Read
   and write Zoo archives
-- [`tda_ccnt()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md)
-  [`tda_lcnt()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md)
-  [`tda_dump()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md)
-  [`tda_dsplit()`](https://janmarvin.github.io/TDA/reference/tda_ccnt.md)
-  : Inspect a raw file
-- [`tda_expand()`](https://janmarvin.github.io/TDA/reference/tda_expressions.md)
-  [`tda_mparse()`](https://janmarvin.github.io/TDA/reference/tda_expressions.md)
-  : Expand an expression, or parse a matrix expression
-- [`tda_rank_orders()`](https://janmarvin.github.io/TDA/reference/tda_rank_orders.md)
-  : All rank orders of a given size
-- [`tda_eigen()`](https://janmarvin.github.io/TDA/reference/tda_eigen.md)
-  : Eigenvalues of a matrix, via TDA
-- [`tda_gtopo()`](https://janmarvin.github.io/TDA/reference/tda_gtopo.md)
-  : Read a GTOPO30 elevation profile
 
 ## Descriptive statistics
+
+Summaries, frequency tables, correlation and covariance, inequality and
+segregation measures, replication weights.
 
 - [`tda_dstat()`](https://janmarvin.github.io/TDA/reference/tda_dstat.md)
   [`tda_corr()`](https://janmarvin.github.io/TDA/reference/tda_dstat.md)
@@ -373,27 +332,15 @@ Statistical packages, spreadsheets, archives, text.
   : Substitution-metric distance between distributions
 - [`tda_independence()`](https://janmarvin.github.io/TDA/reference/tda_independence.md)
   : Delta-independence of two integer variables
-- [`tda_loglin()`](https://janmarvin.github.io/TDA/reference/tda_loglin.md)
-  [`coef(`*`<tda_loglin>`*`)`](https://janmarvin.github.io/TDA/reference/tda_loglin.md)
-  [`vcov(`*`<tda_loglin>`*`)`](https://janmarvin.github.io/TDA/reference/tda_loglin.md)
-  [`residuals(`*`<tda_loglin>`*`)`](https://janmarvin.github.io/TDA/reference/tda_loglin.md)
-  [`print(`*`<tda_loglin>`*`)`](https://janmarvin.github.io/TDA/reference/tda_loglin.md)
-  : Log-linear models of a contingency table
 
 ## Episode data and transition rate models
 
-Episode splitting and merging, product-limit and life-table estimation,
-rate models.
+Episode splitting, life tables, product-limit and interval-censored
+estimation, rate models, user-defined rate models.
 
 - [`tda_episodes()`](https://janmarvin.github.io/TDA/reference/tda_episodes.md)
   [`tda_state_dist()`](https://janmarvin.github.io/TDA/reference/tda_episodes.md)
   : The episode data behind a model
-- [`tda_esort()`](https://janmarvin.github.io/TDA/reference/tda_esort.md)
-  [`tda_eskip()`](https://janmarvin.github.io/TDA/reference/tda_esort.md)
-  [`tda_eselect()`](https://janmarvin.github.io/TDA/reference/tda_esort.md)
-  [`tda_emerge()`](https://janmarvin.github.io/TDA/reference/tda_esort.md)
-  [`tda_ejoin()`](https://janmarvin.github.io/TDA/reference/tda_esort.md)
-  : TDA's file utilities
 - [`tda_split()`](https://janmarvin.github.io/TDA/reference/tda_split.md)
   : Split episodes at a time-varying covariate
 - [`tda_transitions()`](https://janmarvin.github.io/TDA/reference/tda_transitions.md)
@@ -405,6 +352,16 @@ rate models.
   [`tda_ple()`](https://janmarvin.github.io/TDA/reference/tda_ltb.md)
   [`tda_km()`](https://janmarvin.github.io/TDA/reference/tda_ltb.md) :
   Life tables, Kaplan-Meier, and the discrete time estimators
+- [`tda_mple()`](https://janmarvin.github.io/TDA/reference/tda_mple.md)
+  : Product-limit (Kaplan-Meier) distribution and jumps
+- [`tda_midf()`](https://janmarvin.github.io/TDA/reference/tda_midf.md)
+  : Distribution function bounds and estimate for interval-censored data
+- [`tda_midf1()`](https://janmarvin.github.io/TDA/reference/tda_midf1.md)
+  : Uniform-model CDF for interval-censored data, at each observation
+- [`tda_midf2()`](https://janmarvin.github.io/TDA/reference/tda_midf2.md)
+  : Restricted mean for interval-censored data, at each observation
+- [`tda_midf3()`](https://janmarvin.github.io/TDA/reference/tda_midf3.md)
+  : Average nearby endpoints for interval-censored data
 - [`tda_survivor()`](https://janmarvin.github.io/TDA/reference/tda_survivor.md)
   : The survivor function as a single table
 - [`tda_rates()`](https://janmarvin.github.io/TDA/reference/tda_rates.md)
@@ -424,8 +381,14 @@ rate models.
   [`coef(`*`<tda_fit>`*`)`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
   [`nobs(`*`<tda_fit>`*`)`](https://janmarvin.github.io/TDA/reference/tda_rate.md)
   : Transition rate models
+- [`tda_rap()`](https://janmarvin.github.io/TDA/reference/tda_rap.md) :
+  Rates in age-period form
 - [`tda_constrain()`](https://janmarvin.github.io/TDA/reference/tda_constrain.md)
   : Build a linear parameter constraint
+- [`tda_frml()`](https://janmarvin.github.io/TDA/reference/tda_frml.md)
+  : Maximum likelihood for a user-defined transition rate model
+- [`tda_gdf()`](https://janmarvin.github.io/TDA/reference/tda_gdf.md) :
+  General distribution functions for censored data
 - [`plot(`*`<tda_ple>`*`)`](https://janmarvin.github.io/TDA/reference/plot.tda_ple.md)
   [`plot(`*`<tda_ltb>`*`)`](https://janmarvin.github.io/TDA/reference/plot.tda_ple.md)
   [`plot(`*`<tda_rate>`*`)`](https://janmarvin.github.io/TDA/reference/plot.tda_ple.md)
@@ -442,6 +405,12 @@ rate models.
 - [`TDA_QRMODELS`](https://janmarvin.github.io/TDA/reference/tda_qreg.md)
   [`tda_qreg()`](https://janmarvin.github.io/TDA/reference/tda_qreg.md)
   : Qualitative response models
+- [`tda_loglin()`](https://janmarvin.github.io/TDA/reference/tda_loglin.md)
+  [`coef(`*`<tda_loglin>`*`)`](https://janmarvin.github.io/TDA/reference/tda_loglin.md)
+  [`vcov(`*`<tda_loglin>`*`)`](https://janmarvin.github.io/TDA/reference/tda_loglin.md)
+  [`residuals(`*`<tda_loglin>`*`)`](https://janmarvin.github.io/TDA/reference/tda_loglin.md)
+  [`print(`*`<tda_loglin>`*`)`](https://janmarvin.github.io/TDA/reference/tda_loglin.md)
+  : Log-linear models of a contingency table
 - [`tda_l1reg()`](https://janmarvin.github.io/TDA/reference/tda_l1reg.md)
   : Least absolute deviations regression
 - [`tda_freg()`](https://janmarvin.github.io/TDA/reference/tda_freg.md)
@@ -456,12 +425,8 @@ rate models.
 - [`tda_zreg()`](https://janmarvin.github.io/TDA/reference/tda_zreg.md)
   [`tda_zreg1()`](https://janmarvin.github.io/TDA/reference/tda_zreg.md)
   : Regression with a censored response
-- [`tda_gdf()`](https://janmarvin.github.io/TDA/reference/tda_gdf.md) :
-  General distribution functions for censored data
-- [`tda_pcyc()`](https://janmarvin.github.io/TDA/reference/tda_pcyc.md)
-  : Cycle structure of permutations
-- [`tda_spmod()`](https://janmarvin.github.io/TDA/reference/tda_spmod.md)
-  : Stationary solution of a Leslie matrix
+- [`tda_fml()`](https://janmarvin.github.io/TDA/reference/tda_fml.md) :
+  Maximum likelihood with a user-defined likelihood
 - [`tda_mlrc_design()`](https://janmarvin.github.io/TDA/reference/tda_mlrc_design.md)
   : Design matrix for MLRC models
 - [`lvl()`](https://janmarvin.github.io/TDA/reference/lvl.md) : A
@@ -500,44 +465,42 @@ rate models.
   : Interval regression: a coefficient identified only up to bounds
 - [`tda_sddf()`](https://janmarvin.github.io/TDA/reference/tda_sddf.md)
   : Distribution function of a set-valued discrete variable
+- [`tda_evalfi()`](https://janmarvin.github.io/TDA/reference/tda_evalfi.md)
+  : Evaluate an inclusion function over an interval
 
-## Smoothing, interpolation and integration
+## Smoothing, interpolation and expressions
 
 - [`tda_sma()`](https://janmarvin.github.io/TDA/reference/tda_sma.md) :
   Moving average
 - [`tda_smd()`](https://janmarvin.github.io/TDA/reference/tda_smd.md) :
   Robust smoothing by running medians
+- [`tda_mwvec()`](https://janmarvin.github.io/TDA/reference/tda_mwvec.md)
+  [`tda_mwvec1()`](https://janmarvin.github.io/TDA/reference/tda_mwvec.md)
+  : Weighted mean of the later elements
 - [`tda_spl()`](https://janmarvin.github.io/TDA/reference/tda_spl.md) :
   Smoothing spline
 - [`tda_interp()`](https://janmarvin.github.io/TDA/reference/tda_interp.md)
   : Interpolate a surface over a grid
 - [`tda_isotonic()`](https://janmarvin.github.io/TDA/reference/tda_isotonic.md)
   : Isotonic regression, with or without tie groups
-- [`tda_mat()`](https://janmarvin.github.io/TDA/reference/tda_mat.md) :
-  Matrix operations
-- [`tda_integrate()`](https://janmarvin.github.io/TDA/reference/tda_integrate.md)
-  [`tda_range()`](https://janmarvin.github.io/TDA/reference/tda_integrate.md)
-  [`tda_evalf()`](https://janmarvin.github.io/TDA/reference/tda_integrate.md)
-  [`tda_minimize()`](https://janmarvin.github.io/TDA/reference/tda_integrate.md)
-  [`tda_gmin()`](https://janmarvin.github.io/TDA/reference/tda_integrate.md)
-  : Integrate, minimise, and evaluate a function
-- [`tda_evalfi()`](https://janmarvin.github.io/TDA/reference/tda_evalfi.md)
-  : Evaluate an inclusion function over an interval
-- [`tda_fml()`](https://janmarvin.github.io/TDA/reference/tda_fml.md) :
-  Maximum likelihood with a user-defined likelihood
-- [`tda_frml()`](https://janmarvin.github.io/TDA/reference/tda_frml.md)
-  : Maximum likelihood for a user-defined transition rate model
+- [`tda_expand()`](https://janmarvin.github.io/TDA/reference/tda_expressions.md)
+  [`tda_mparse()`](https://janmarvin.github.io/TDA/reference/tda_expressions.md)
+  : Expand an expression, or parse a matrix expression
 
 ## Optimization
 
+Function evaluation, integration and minimisation; linear, quadratic and
+0-1 programming; constrained least squares; assignment and location
+problems.
+
 - [`tda_integrate()`](https://janmarvin.github.io/TDA/reference/tda_integrate.md)
   [`tda_range()`](https://janmarvin.github.io/TDA/reference/tda_integrate.md)
   [`tda_evalf()`](https://janmarvin.github.io/TDA/reference/tda_integrate.md)
   [`tda_minimize()`](https://janmarvin.github.io/TDA/reference/tda_integrate.md)
   [`tda_gmin()`](https://janmarvin.github.io/TDA/reference/tda_integrate.md)
   : Integrate, minimise, and evaluate a function
-- [`tda_boolean_min()`](https://janmarvin.github.io/TDA/reference/tda_boolean_min.md)
-  : Boolean function minimization
+- [`tda_niset()`](https://janmarvin.github.io/TDA/reference/tda_niset.md)
+  : Numerical-integration settings
 - [`tda_mlp()`](https://janmarvin.github.io/TDA/reference/tda_mlp.md)
   [`tda_mlp1()`](https://janmarvin.github.io/TDA/reference/tda_mlp.md) :
   Linear programming
@@ -550,15 +513,28 @@ rate models.
   [`tda_mlsei1()`](https://janmarvin.github.io/TDA/reference/tda_mls.md)
   [`tda_mnls()`](https://janmarvin.github.io/TDA/reference/tda_mls.md) :
   Constrained least squares
-- [`tda_mqap()`](https://janmarvin.github.io/TDA/reference/tda_mqap.md)
-  : Quadratic assignment problem
 - [`tda_mqp()`](https://janmarvin.github.io/TDA/reference/tda_mqp.md)
   [`tda_mqpb()`](https://janmarvin.github.io/TDA/reference/tda_mqp.md)
   [`tda_mqpc()`](https://janmarvin.github.io/TDA/reference/tda_mqp.md) :
   Quadratic programming
+- [`tda_mqap()`](https://janmarvin.github.io/TDA/reference/tda_mqap.md)
+  : Quadratic assignment problem
+- [`tda_gap()`](https://janmarvin.github.io/TDA/reference/tda_gap.md) :
+  The assignment problem
+- [`tda_gap_permute()`](https://janmarvin.github.io/TDA/reference/tda_gap_permute.md)
+  : Column permutations toward graph agreement
+- [`tda_gqap()`](https://janmarvin.github.io/TDA/reference/tda_gqap.md)
+  : Quadratic assignment (GRASP)
+- [`tda_locate_line()`](https://janmarvin.github.io/TDA/reference/tda_locate_line.md)
+  : One-dimensional multifacility location
 
 ## Matrix algebra
 
+TDA’s matrix commands, including the Leslie-matrix iteration it keeps
+among them.
+
+- [`tda_mat()`](https://janmarvin.github.io/TDA/reference/tda_mat.md) :
+  Matrix operations
 - [`tda_mag()`](https://janmarvin.github.io/TDA/reference/tda_mag.md) :
   Aggregating a matrix by row and column groups
 - [`tda_mcath()`](https://janmarvin.github.io/TDA/reference/tda_mcath.md)
@@ -596,20 +572,12 @@ rate models.
   Eigen decomposition of a general (possibly non-symmetric) matrix
 - [`tda_mevs()`](https://janmarvin.github.io/TDA/reference/tda_mevs.md)
   : Eigen decomposition of a symmetric matrix
+- [`tda_eigen()`](https://janmarvin.github.io/TDA/reference/tda_eigen.md)
+  : Eigenvalues of a matrix, via TDA
 - [`tda_minvs()`](https://janmarvin.github.io/TDA/reference/tda_minvs.md)
   [`tda_minvd()`](https://janmarvin.github.io/TDA/reference/tda_minvs.md)
   [`tda_mginv()`](https://janmarvin.github.io/TDA/reference/tda_minvs.md)
   : Matrix inversion
-- [`tda_midf()`](https://janmarvin.github.io/TDA/reference/tda_midf.md)
-  : Distribution function bounds and estimate for interval-censored data
-- [`tda_midf1()`](https://janmarvin.github.io/TDA/reference/tda_midf1.md)
-  : Uniform-model CDF for interval-censored data, at each observation
-- [`tda_midf2()`](https://janmarvin.github.io/TDA/reference/tda_midf2.md)
-  : Restricted mean for interval-censored data, at each observation
-- [`tda_midf3()`](https://janmarvin.github.io/TDA/reference/tda_midf3.md)
-  : Average nearby endpoints for interval-censored data
-- [`tda_mkmet()`](https://janmarvin.github.io/TDA/reference/tda_mkmet.md)
-  : Kemeny distance between rankings
 - [`tda_mkp()`](https://janmarvin.github.io/TDA/reference/tda_mkp.md) :
   Kronecker product
 - [`tda_mnc()`](https://janmarvin.github.io/TDA/reference/tda_mnc.md) :
@@ -624,12 +592,6 @@ rate models.
 - [`tda_mpbl()`](https://janmarvin.github.io/TDA/reference/tda_mpbl.md)
   [`tda_mpbu()`](https://janmarvin.github.io/TDA/reference/tda_mpbl.md)
   : Permute to block triangular form
-- [`tda_msrow()`](https://janmarvin.github.io/TDA/reference/tda_msrow.md)
-  [`tda_mscol()`](https://janmarvin.github.io/TDA/reference/tda_msrow.md)
-  [`tda_mprow()`](https://janmarvin.github.io/TDA/reference/tda_msrow.md)
-  [`tda_mpcol()`](https://janmarvin.github.io/TDA/reference/tda_msrow.md)
-  [`tda_mpsym()`](https://janmarvin.github.io/TDA/reference/tda_msrow.md)
-  : Selecting or permuting rows and columns
 - [`tda_mpfit()`](https://janmarvin.github.io/TDA/reference/tda_mpfit.md)
   : Iterative proportional fitting
 - [`tda_mpinv()`](https://janmarvin.github.io/TDA/reference/tda_mpinv.md)
@@ -637,8 +599,8 @@ rate models.
 - [`tda_mpit()`](https://janmarvin.github.io/TDA/reference/tda_mpit.md)
   [`tda_mpit1()`](https://janmarvin.github.io/TDA/reference/tda_mpit.md)
   : Iterate a Leslie matrix
-- [`tda_mple()`](https://janmarvin.github.io/TDA/reference/tda_mple.md)
-  : Product-limit (Kaplan-Meier) distribution and jumps
+- [`tda_spmod()`](https://janmarvin.github.io/TDA/reference/tda_spmod.md)
+  : Stationary solution of a Leslie matrix
 - [`tda_mpz()`](https://janmarvin.github.io/TDA/reference/tda_mpz.md) :
   Permute rows for a zero-free diagonal
 - [`tda_msort()`](https://janmarvin.github.io/TDA/reference/tda_msort.md)
@@ -650,26 +612,41 @@ rate models.
 - [`tda_msqrtd()`](https://janmarvin.github.io/TDA/reference/tda_msqrtd.md)
   [`tda_msqrti()`](https://janmarvin.github.io/TDA/reference/tda_msqrtd.md)
   : Diagonal square root and its reciprocal
+- [`tda_msrow()`](https://janmarvin.github.io/TDA/reference/tda_msrow.md)
+  [`tda_mscol()`](https://janmarvin.github.io/TDA/reference/tda_msrow.md)
+  [`tda_mprow()`](https://janmarvin.github.io/TDA/reference/tda_msrow.md)
+  [`tda_mpcol()`](https://janmarvin.github.io/TDA/reference/tda_msrow.md)
+  [`tda_mpsym()`](https://janmarvin.github.io/TDA/reference/tda_msrow.md)
+  : Selecting or permuting rows and columns
 - [`tda_msvd()`](https://janmarvin.github.io/TDA/reference/tda_msvd.md)
   [`tda_msvd1()`](https://janmarvin.github.io/TDA/reference/tda_msvd.md)
   : Singular value decomposition
 - [`tda_mtrim()`](https://janmarvin.github.io/TDA/reference/tda_mtrim.md)
   : Trim or pad a matrix's edges
-- [`tda_mwvec()`](https://janmarvin.github.io/TDA/reference/tda_mwvec.md)
-  [`tda_mwvec1()`](https://janmarvin.github.io/TDA/reference/tda_mwvec.md)
-  : Backward weighted running mean
 
-## Clustering, scaling and Boolean analysis
+## Clustering, scaling, rank-order and Boolean analysis
+
+Cluster analysis, principal components and factor analysis,
+multidimensional scaling and unfolding, Procrustes rotation, conjoint,
+Rasch and rank-order methods, combinatorial patterns, Boolean functions.
 
 - [`TDA_CLUSTER`](https://janmarvin.github.io/TDA/reference/tda_cluster.md)
   [`tda_cluster()`](https://janmarvin.github.io/TDA/reference/tda_cluster.md)
   : Clustering from a dissimilarity matrix
 - [`tda_cutree()`](https://janmarvin.github.io/TDA/reference/tda_cutree.md)
   : Cut a dendrogram into groups
+- [`tda_clpyr()`](https://janmarvin.github.io/TDA/reference/tda_clpyr.md)
+  : Pyramidal clustering
+- [`tda_scla()`](https://janmarvin.github.io/TDA/reference/tda_scla.md)
+  : Separable clusters of a valued graph
 - [`tda_dma()`](https://janmarvin.github.io/TDA/reference/tda_dma.md) :
   Principal components, factor analysis, correspondence analysis
 - [`tda_pdatd()`](https://janmarvin.github.io/TDA/reference/tda_pdatd.md)
   : Distance matrix from raw variables
+- [`tda_dmet()`](https://janmarvin.github.io/TDA/reference/tda_dmet.md)
+  : Convert a distance matrix into a metric
+- [`tda_dmet1()`](https://janmarvin.github.io/TDA/reference/tda_dmet1.md)
+  : Distances made metric
 - [`TDA_MDS`](https://janmarvin.github.io/TDA/reference/tda_mds.md)
   [`tda_mds()`](https://janmarvin.github.io/TDA/reference/tda_mds.md) :
   Multidimensional scaling
@@ -685,22 +662,24 @@ rate models.
   : Non-metric conjoint analysis
 - [`tda_conj()`](https://janmarvin.github.io/TDA/reference/tda_conj.md)
   : Conjoint analysis
-- [`tda_com()`](https://janmarvin.github.io/TDA/reference/tda_com.md) :
-  Combinatorial patterns
-- [`tda_clpyr()`](https://janmarvin.github.io/TDA/reference/tda_clpyr.md)
-  : Pyramidal clustering
-- [`tda_rap()`](https://janmarvin.github.io/TDA/reference/tda_rap.md) :
-  Rates in age-period form
-- [`tda_rfit()`](https://janmarvin.github.io/TDA/reference/tda_rfit.md)
-  : Fit binary relations to a valued graph
 - [`tda_rmod()`](https://janmarvin.github.io/TDA/reference/tda_rmod.md)
   : Simple Rasch model
-- [`tda_rod()`](https://janmarvin.github.io/TDA/reference/tda_rod.md) :
-  Rank-order data utilities
 - [`tda_sga()`](https://janmarvin.github.io/TDA/reference/tda_sga.md) :
   Scalogram (Guttman) analysis
+- [`tda_rod()`](https://janmarvin.github.io/TDA/reference/tda_rod.md) :
+  Rank-order data utilities
+- [`tda_mkmet()`](https://janmarvin.github.io/TDA/reference/tda_mkmet.md)
+  : Kemeny distance between rankings
+- [`tda_rank_orders()`](https://janmarvin.github.io/TDA/reference/tda_rank_orders.md)
+  : All rank orders of a given size
+- [`tda_com()`](https://janmarvin.github.io/TDA/reference/tda_com.md) :
+  Combinatorial patterns
+- [`tda_pcyc()`](https://janmarvin.github.io/TDA/reference/tda_pcyc.md)
+  : Cycle structure of permutations
 - [`tda_bfc()`](https://janmarvin.github.io/TDA/reference/tda_bfc.md) :
   Context dependencies in Boolean functions
+- [`tda_boolean_min()`](https://janmarvin.github.io/TDA/reference/tda_boolean_min.md)
+  : Boolean function minimization
 
 ## Sequence analysis
 
@@ -726,6 +705,9 @@ rate models.
   : Sequence pattern matching
 
 ## Graphs and networks
+
+Graph objects and TDA’s graph analyses – components, paths, flows,
+cliques, trees, temporal networks.
 
 - [`tda_graph()`](https://janmarvin.github.io/TDA/reference/tda_graph.md)
   : A graph for TDA's graph commands
@@ -764,10 +746,6 @@ rate models.
   [`tda_g_spanning()`](https://janmarvin.github.io/TDA/reference/tda_g_analyses.md)
   [`tda_g_eigen()`](https://janmarvin.github.io/TDA/reference/tda_g_analyses.md)
   : Graph analyses
-- [`tda_gap()`](https://janmarvin.github.io/TDA/reference/tda_gap.md) :
-  The assignment problem
-- [`tda_gap_permute()`](https://janmarvin.github.io/TDA/reference/tda_gap_permute.md)
-  : Column permutations toward graph agreement
 - [`tda_gde()`](https://janmarvin.github.io/TDA/reference/tda_gde.md) :
   Undirected graph from node lists
 - [`tda_gdu()`](https://janmarvin.github.io/TDA/reference/tda_gdu.md) :
@@ -778,26 +756,16 @@ rate models.
   Hasse diagram of multivariate patterns
 - [`tda_gpro()`](https://janmarvin.github.io/TDA/reference/tda_gpro.md)
   : Projection of proximities
-- [`tda_gqap()`](https://janmarvin.github.io/TDA/reference/tda_gqap.md)
-  : Quadratic assignment (GRASP)
-- [`tda_dmet()`](https://janmarvin.github.io/TDA/reference/tda_dmet.md)
-  : Convert a distance matrix into a metric
-- [`tda_dmet1()`](https://janmarvin.github.io/TDA/reference/tda_dmet1.md)
-  : Distances made metric
 - [`tda_mdefg()`](https://janmarvin.github.io/TDA/reference/tda_mdefg.md)
   : Adjacency matrix of a graph
-- [`tda_scla()`](https://janmarvin.github.io/TDA/reference/tda_scla.md)
-  : Separable clusters of a valued graph
+- [`tda_rfit()`](https://janmarvin.github.io/TDA/reference/tda_rfit.md)
+  : Fit binary relations to a valued graph
 - [`tda_tnet()`](https://janmarvin.github.io/TDA/reference/tda_tnet.md)
   : Temporal-network summaries
-- [`tda_triang()`](https://janmarvin.github.io/TDA/reference/tda_triang.md)
-  : Triangulation of points
 - [`tda_ptree()`](https://janmarvin.github.io/TDA/reference/tda_ptree.md)
   : Print a tree's data structure
 - [`tda_ucl()`](https://janmarvin.github.io/TDA/reference/tda_ucl.md) :
   Split an ordering into contiguous clusters
-- [`tda_locate_line()`](https://janmarvin.github.io/TDA/reference/tda_locate_line.md)
-  : One-dimensional multifacility location
 - [`plot(`*`<tda_graph>`*`)`](https://janmarvin.github.io/TDA/reference/plot.tda_graph.md)
   : Draw a graph
 
@@ -828,12 +796,12 @@ rate models.
   [`tda_sd_plot3_lines()`](https://janmarvin.github.io/TDA/reference/tda_sd_ps3.md)
   [`tda_sd_plot3_polygons()`](https://janmarvin.github.io/TDA/reference/tda_sd_ps3.md)
   : Three-dimensional spatial plots
-- [`tda_sddf()`](https://janmarvin.github.io/TDA/reference/tda_sddf.md)
-  : Distribution function of a set-valued discrete variable
 - [`tda_map()`](https://janmarvin.github.io/TDA/reference/tda_map.md) :
   Maps
 - [`tda_polygons()`](https://janmarvin.github.io/TDA/reference/tda_polygons.md)
   : Build polygons from line segments
+- [`tda_triang()`](https://janmarvin.github.io/TDA/reference/tda_triang.md)
+  : Triangulation of points
 - [`plot(`*`<tda_spatial>`*`)`](https://janmarvin.github.io/TDA/reference/plot.tda_spatial.md)
   : Draw spatial data
 
@@ -865,16 +833,6 @@ TDA’s plot commands, and reading the PostScript they write.
   [`tda_pl_function()`](https://janmarvin.github.io/TDA/reference/tda_pl.md)
   [`tda_ps_file()`](https://janmarvin.github.io/TDA/reference/tda_pl.md)
   : Add a command to a plot
-- [`tda_ps_objects()`](https://janmarvin.github.io/TDA/reference/tda_ps_objects.md)
-  : What is inside a TDA PostScript file
-- [`tda_combine_ps()`](https://janmarvin.github.io/TDA/reference/tda_combine_ps.md)
-  : Combine several PostScript plots into one file
-- [`tda_read_ps()`](https://janmarvin.github.io/TDA/reference/tda_read_ps.md)
-  : Read TDA's PostScript output
-- [`tda_plot_ps()`](https://janmarvin.github.io/TDA/reference/tda_plot_ps.md)
-  : Draw TDA's PostScript output with grid
-- [`tda_check_ps()`](https://janmarvin.github.io/TDA/reference/tda_check_ps.md)
-  : Audit a parse against the PostScript it came from
 - [`tda_pl_arc()`](https://janmarvin.github.io/TDA/reference/tda_pl_arc.md)
   : Curved arcs
 - [`tda_pl_axis()`](https://janmarvin.github.io/TDA/reference/tda_pl_axis.md)
@@ -908,6 +866,16 @@ TDA’s plot commands, and reading the PostScript they write.
   : Globe in a 3-d plot
 - [`tda_plsurf3()`](https://janmarvin.github.io/TDA/reference/tda_plsurf3.md)
   : Parametric surface in a 3-d plot
+- [`tda_ps_objects()`](https://janmarvin.github.io/TDA/reference/tda_ps_objects.md)
+  : What is inside a TDA PostScript file
+- [`tda_combine_ps()`](https://janmarvin.github.io/TDA/reference/tda_combine_ps.md)
+  : Combine several PostScript plots into one file
+- [`tda_read_ps()`](https://janmarvin.github.io/TDA/reference/tda_read_ps.md)
+  : Read TDA's PostScript output
+- [`tda_plot_ps()`](https://janmarvin.github.io/TDA/reference/tda_plot_ps.md)
+  : Draw TDA's PostScript output with grid
+- [`tda_check_ps()`](https://janmarvin.github.io/TDA/reference/tda_check_ps.md)
+  : Audit a parse against the PostScript it came from
 
 # Articles
 

@@ -62,7 +62,7 @@ d <- data.frame(id = 1:4, x = c(0, 1, 1, 0), y = c(0, 0, 1, 1))
 s <- tda_spatial(d)
 r <- tda_sd(s, "sdinf")
 cat(r$run$output, sep = "\n")
-#> TDA. Analysis of Transition Data (6.4q). Sun Sep 20 04:09:26 2026
+#> TDA. Analysis of Transition Data (6.4q). Sun Sep 20 04:42:40 2026
 #> Current memory: 390032 bytes.
 #> 
 #> Reading command file: commands
@@ -115,5 +115,5 @@ cat(r$run$output, sep = "\n")
 #> Number of polygons: 0
 #> ----------------------------------------------------------------------------
 #> Current memory: 390032 bytes. Max memory used: 426151 bytes.
-#> End of program. Sun Sep 20 04:09:26 2026
+#> End of program. Sun Sep 20 04:42:40 2026
 ```

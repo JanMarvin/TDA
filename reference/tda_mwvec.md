@@ -1,4 +1,4 @@
-# Backward weighted running mean
+# Weighted mean of the later elements
 
 For each position `i`, averages `a[j]` weighted by `weights[j]` over
 every later position (`tda_mwvec`: every `j > i`; `tda_mwvec1`: every

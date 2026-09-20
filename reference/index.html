@@ -38,9 +38,9 @@
     </div>
 
     <div class="section level2">
-      <h2 id="running-tda">Running TDA<a class="anchor" aria-label="anchor" href="#running-tda"></a></h2>
+      <h2 id="running-tda-and-reading-its-output">Running TDA and reading its output<a class="anchor" aria-label="anchor" href="#running-tda-and-reading-its-output"></a></h2>
 
-      <div class="section-desc"><p>The command-file interface, help, and what comes back.</p></div>
+      <div class="section-desc"><p>The command-file interface, TDA’s help, the methods of fitted objects, convergence control, and accounting for what a run printed.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -98,13 +98,6 @@
 
         <dt>
 
-          <code><a href="tda_ccnt.html">tda_ccnt()</a></code> <code><a href="tda_ccnt.html">tda_lcnt()</a></code> <code><a href="tda_ccnt.html">tda_dump()</a></code> <code><a href="tda_ccnt.html">tda_dsplit()</a></code>
-
-        </dt>
-        <dd>Inspect a raw file</dd>
-
-        <dt>
-
           <code><a href="tda_payload.html">tda_payload()</a></code>
 
         </dt>
@@ -137,17 +130,10 @@
 
         </dt>
         <dd>Convergence control</dd>
-
-        <dt>
-
-          <code><a href="tda_rate.html">vcov(<i>&lt;tda_fit&gt;</i>)</a></code> <code><a href="tda_rate.html">confint(<i>&lt;tda_fit&gt;</i>)</a></code> <code><a href="tda_rate.html">logLik(<i>&lt;tda_fit&gt;</i>)</a></code> <code><a href="tda_rate.html">summary(<i>&lt;tda_fit&gt;</i>)</a></code> <code><a href="tda_rate.html">anova(<i>&lt;tda_fit&gt;</i>)</a></code> <code><a href="tda_rate.html">predict(<i>&lt;tda_fit&gt;</i>)</a></code> <code><a href="tda_rate.html">fitted(<i>&lt;tda_fit&gt;</i>)</a></code> <code><a href="tda_rate.html">residuals(<i>&lt;tda_fit&gt;</i>)</a></code> <code><a href="tda_rate.html">TDA_MODELS</a></code> <code><a href="tda_rate.html">tda_rate()</a></code> <code><a href="tda_rate.html">tda_coxph()</a></code> <code><a href="tda_rate.html">tda_estimates.tda_fit()</a></code> <code><a href="tda_rate.html">coef(<i>&lt;tda_fit&gt;</i>)</a></code> <code><a href="tda_rate.html">nobs(<i>&lt;tda_fit&gt;</i>)</a></code>
-
-        </dt>
-        <dd>Transition rate models</dd>
       </dl></div><div class="section level2">
       <h2 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a></h2>
 
-      <div class="section-desc"><p>Example data, data description, variable creation, random numbers.</p></div>
+      <div class="section-desc"><p>The example data, building TDA’s input, variables and random numbers.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -163,6 +149,13 @@
 
         <dt>
 
+          <code><a href="tda_interval_wages.html">tda_interval_wages()</a></code>
+
+        </dt>
+        <dd>Artificial interval-valued wage data</dd>
+
+        <dt>
+
           <code><a href="tda_write_data.html">tda_write_data()</a></code> <code><a href="tda_write_data.html">tda_nvar()</a></code> <code><a href="tda_write_data.html">tda_block()</a></code>
 
         </dt>
@@ -170,24 +163,17 @@
 
         <dt>
 
+          <code><a href="tda_pdatr.html">tda_pdatr()</a></code>
+
+        </dt>
+        <dd>Print all case pairs</dd>
+
+        <dt>
+
           <code><a href="tda_ndvar.html">tda_ndvar()</a></code>
 
         </dt>
         <dd>Dummy variables</dd>
-
-        <dt>
-
-          <code><a href="tda_niset.html">tda_niset()</a></code>
-
-        </dt>
-        <dd>Numerical-integration settings</dd>
-
-        <dt>
-
-          <code><a href="tda_rd.html">tda_rd()</a></code> <code><a href="tda_rd.html">tda_rdn()</a></code>
-
-        </dt>
-        <dd>Random values, as TDA's <code>rd()</code>/<code>rdn()</code></dd>
 
         <dt>
 
@@ -226,13 +212,6 @@
 
         <dt>
 
-          <code><a href="tda_interval_wages.html">tda_interval_wages()</a></code>
-
-        </dt>
-        <dd>Artificial interval-valued wage data</dd>
-
-        <dt>
-
           <code><a href="tda_dblock.html">tda_dblock()</a></code>
 
         </dt>
@@ -240,17 +219,10 @@
 
         <dt>
 
-          <code><a href="tda_read_table.html">tda_read_table()</a></code> <code><a href="tda_read_table.html">tda_read_blocks()</a></code> <code><a href="tda_read_table.html">tda_blocks()</a></code> <code><a href="tda_read_table.html">tda_file()</a></code>
+          <code><a href="tda_rd.html">tda_rd()</a></code> <code><a href="tda_rd.html">tda_rdn()</a></code>
 
         </dt>
-        <dd>Read TDA's output files</dd>
-
-        <dt>
-
-          <code><a href="tda_ccnt.html">tda_ccnt()</a></code> <code><a href="tda_ccnt.html">tda_lcnt()</a></code> <code><a href="tda_ccnt.html">tda_dump()</a></code> <code><a href="tda_ccnt.html">tda_dsplit()</a></code>
-
-        </dt>
-        <dd>Inspect a raw file</dd>
+        <dd>Random values, as TDA's <code>rd()</code>/<code>rdn()</code></dd>
 
         <dt>
 
@@ -261,7 +233,7 @@
       </dl></div><div class="section level2">
       <h2 id="reading-and-writing-files">Reading and writing files<a class="anchor" aria-label="anchor" href="#reading-and-writing-files"></a></h2>
 
-      <div class="section-desc"><p>Statistical packages, spreadsheets, archives, text.</p></div>
+      <div class="section-desc"><p>Statistical packages, spreadsheets, archives, spatial and other formats, and TDA’s record-file utilities.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -269,34 +241,6 @@
 
 
       <dl><dt>
-
-          <code><a href="tda_read_dbf.html">tda_read_dbf()</a></code>
-
-        </dt>
-        <dd>Read a dBase (.dbf) attribute table</dd>
-
-        <dt>
-
-          <code><a href="tda_read_ps.html">tda_read_ps()</a></code>
-
-        </dt>
-        <dd>Read TDA's PostScript output</dd>
-
-        <dt>
-
-          <code><a href="tda_read_shapefile.html">tda_read_shapefile()</a></code>
-
-        </dt>
-        <dd>Read a shapefile into a TDA spatial structure</dd>
-
-        <dt>
-
-          <code><a href="tda_read_spatial.html">tda_read_e00()</a></code> <code><a href="tda_read_spatial.html">tda_read_gshhs()</a></code> <code><a href="tda_read_spatial.html">tda_read_dcw()</a></code>
-
-        </dt>
-        <dd>Read other spatial formats</dd>
-
-        <dt>
 
           <code><a href="tda_read_spss.html">tda_read_spss()</a></code>
 
@@ -319,10 +263,17 @@
 
         <dt>
 
-          <code><a href="tda_read_table.html">tda_read_table()</a></code> <code><a href="tda_read_table.html">tda_read_blocks()</a></code> <code><a href="tda_read_table.html">tda_blocks()</a></code> <code><a href="tda_read_table.html">tda_file()</a></code>
+          <code><a href="tda_read_xls.html">tda_read_xls()</a></code>
 
         </dt>
-        <dd>Read TDA's output files</dd>
+        <dd>Read an Excel .xls workbook</dd>
+
+        <dt>
+
+          <code><a href="tda_read_dbf.html">tda_read_dbf()</a></code>
+
+        </dt>
+        <dd>Read a dBase (.dbf) attribute table</dd>
 
         <dt>
 
@@ -333,24 +284,24 @@
 
         <dt>
 
-          <code><a href="tda_read_xls.html">tda_read_xls()</a></code>
+          <code><a href="tda_read_shapefile.html">tda_read_shapefile()</a></code>
 
         </dt>
-        <dd>Read an Excel .xls workbook</dd>
+        <dd>Read a shapefile into a TDA spatial structure</dd>
 
         <dt>
 
-          <code><a href="tda_write_data.html">tda_write_data()</a></code> <code><a href="tda_write_data.html">tda_nvar()</a></code> <code><a href="tda_write_data.html">tda_block()</a></code>
+          <code><a href="tda_read_spatial.html">tda_read_e00()</a></code> <code><a href="tda_read_spatial.html">tda_read_gshhs()</a></code> <code><a href="tda_read_spatial.html">tda_read_dcw()</a></code>
 
         </dt>
-        <dd>Build TDA's input</dd>
+        <dd>Read other spatial formats</dd>
 
         <dt>
 
-          <code><a href="tda_write_foreign.html">tda_write_spss()</a></code> <code><a href="tda_write_foreign.html">tda_write_stata()</a></code> <code><a href="tda_write_foreign.html">tda_write_sys()</a></code>
+          <code><a href="tda_gtopo.html">tda_gtopo()</a></code>
 
         </dt>
-        <dd>Write a data frame to SPSS, Stata or a TDA system file</dd>
+        <dd>Read a GTOPO30 elevation profile</dd>
 
         <dt>
 
@@ -375,10 +326,24 @@
 
         <dt>
 
-          <code><a href="tda_pdatr.html">tda_pdatr()</a></code>
+          <code><a href="tda_esort.html">tda_esort()</a></code> <code><a href="tda_esort.html">tda_eskip()</a></code> <code><a href="tda_esort.html">tda_eselect()</a></code> <code><a href="tda_esort.html">tda_emerge()</a></code> <code><a href="tda_esort.html">tda_ejoin()</a></code>
 
         </dt>
-        <dd>Print all case pairs</dd>
+        <dd>TDA's file utilities</dd>
+
+        <dt>
+
+          <code><a href="tda_ccnt.html">tda_ccnt()</a></code> <code><a href="tda_ccnt.html">tda_lcnt()</a></code> <code><a href="tda_ccnt.html">tda_dump()</a></code> <code><a href="tda_ccnt.html">tda_dsplit()</a></code>
+
+        </dt>
+        <dd>Inspect a raw file</dd>
+
+        <dt>
+
+          <code><a href="tda_write_foreign.html">tda_write_spss()</a></code> <code><a href="tda_write_foreign.html">tda_write_stata()</a></code> <code><a href="tda_write_foreign.html">tda_write_sys()</a></code>
+
+        </dt>
+        <dd>Write a data frame to SPSS, Stata or a TDA system file</dd>
 
         <dt>
 
@@ -407,45 +372,10 @@
 
         </dt>
         <dd>Read and write Zoo archives</dd>
-
-        <dt>
-
-          <code><a href="tda_ccnt.html">tda_ccnt()</a></code> <code><a href="tda_ccnt.html">tda_lcnt()</a></code> <code><a href="tda_ccnt.html">tda_dump()</a></code> <code><a href="tda_ccnt.html">tda_dsplit()</a></code>
-
-        </dt>
-        <dd>Inspect a raw file</dd>
-
-        <dt>
-
-          <code><a href="tda_expressions.html">tda_expand()</a></code> <code><a href="tda_expressions.html">tda_mparse()</a></code>
-
-        </dt>
-        <dd>Expand an expression, or parse a matrix expression</dd>
-
-        <dt>
-
-          <code><a href="tda_rank_orders.html">tda_rank_orders()</a></code>
-
-        </dt>
-        <dd>All rank orders of a given size</dd>
-
-        <dt>
-
-          <code><a href="tda_eigen.html">tda_eigen()</a></code>
-
-        </dt>
-        <dd>Eigenvalues of a matrix, via TDA</dd>
-
-        <dt>
-
-          <code><a href="tda_gtopo.html">tda_gtopo()</a></code>
-
-        </dt>
-        <dd>Read a GTOPO30 elevation profile</dd>
       </dl></div><div class="section level2">
       <h2 id="descriptive-statistics">Descriptive statistics<a class="anchor" aria-label="anchor" href="#descriptive-statistics"></a></h2>
 
-
+      <div class="section-desc"><p>Summaries, frequency tables, correlation and covariance, inequality and segregation measures, replication weights.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -521,17 +451,10 @@
 
         </dt>
         <dd>Delta-independence of two integer variables</dd>
-
-        <dt>
-
-          <code><a href="tda_loglin.html">tda_loglin()</a></code> <code><a href="tda_loglin.html">coef(<i>&lt;tda_loglin&gt;</i>)</a></code> <code><a href="tda_loglin.html">vcov(<i>&lt;tda_loglin&gt;</i>)</a></code> <code><a href="tda_loglin.html">residuals(<i>&lt;tda_loglin&gt;</i>)</a></code> <code><a href="tda_loglin.html">print(<i>&lt;tda_loglin&gt;</i>)</a></code>
-
-        </dt>
-        <dd>Log-linear models of a contingency table</dd>
       </dl></div><div class="section level2">
       <h2 id="episode-data-and-transition-rate-models">Episode data and transition rate models<a class="anchor" aria-label="anchor" href="#episode-data-and-transition-rate-models"></a></h2>
 
-      <div class="section-desc"><p>Episode splitting and merging, product-limit and life-table estimation, rate models.</p></div>
+      <div class="section-desc"><p>Episode splitting, life tables, product-limit and interval-censored estimation, rate models, user-defined rate models.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -544,13 +467,6 @@
 
         </dt>
         <dd>The episode data behind a model</dd>
-
-        <dt>
-
-          <code><a href="tda_esort.html">tda_esort()</a></code> <code><a href="tda_esort.html">tda_eskip()</a></code> <code><a href="tda_esort.html">tda_eselect()</a></code> <code><a href="tda_esort.html">tda_emerge()</a></code> <code><a href="tda_esort.html">tda_ejoin()</a></code>
-
-        </dt>
-        <dd>TDA's file utilities</dd>
 
         <dt>
 
@@ -575,6 +491,41 @@
 
         <dt>
 
+          <code><a href="tda_mple.html">tda_mple()</a></code>
+
+        </dt>
+        <dd>Product-limit (Kaplan-Meier) distribution and jumps</dd>
+
+        <dt>
+
+          <code><a href="tda_midf.html">tda_midf()</a></code>
+
+        </dt>
+        <dd>Distribution function bounds and estimate for interval-censored data</dd>
+
+        <dt>
+
+          <code><a href="tda_midf1.html">tda_midf1()</a></code>
+
+        </dt>
+        <dd>Uniform-model CDF for interval-censored data, at each observation</dd>
+
+        <dt>
+
+          <code><a href="tda_midf2.html">tda_midf2()</a></code>
+
+        </dt>
+        <dd>Restricted mean for interval-censored data, at each observation</dd>
+
+        <dt>
+
+          <code><a href="tda_midf3.html">tda_midf3()</a></code>
+
+        </dt>
+        <dd>Average nearby endpoints for interval-censored data</dd>
+
+        <dt>
+
           <code><a href="tda_survivor.html">tda_survivor()</a></code>
 
         </dt>
@@ -596,10 +547,31 @@
 
         <dt>
 
+          <code><a href="tda_rap.html">tda_rap()</a></code>
+
+        </dt>
+        <dd>Rates in age-period form</dd>
+
+        <dt>
+
           <code><a href="tda_constrain.html">tda_constrain()</a></code>
 
         </dt>
         <dd>Build a linear parameter constraint</dd>
+
+        <dt>
+
+          <code><a href="tda_frml.html">tda_frml()</a></code>
+
+        </dt>
+        <dd>Maximum likelihood for a user-defined transition rate model</dd>
+
+        <dt>
+
+          <code><a href="tda_gdf.html">tda_gdf()</a></code>
+
+        </dt>
+        <dd>General distribution functions for censored data</dd>
 
         <dt>
 
@@ -637,6 +609,13 @@
 
         </dt>
         <dd>Qualitative response models</dd>
+
+        <dt>
+
+          <code><a href="tda_loglin.html">tda_loglin()</a></code> <code><a href="tda_loglin.html">coef(<i>&lt;tda_loglin&gt;</i>)</a></code> <code><a href="tda_loglin.html">vcov(<i>&lt;tda_loglin&gt;</i>)</a></code> <code><a href="tda_loglin.html">residuals(<i>&lt;tda_loglin&gt;</i>)</a></code> <code><a href="tda_loglin.html">print(<i>&lt;tda_loglin&gt;</i>)</a></code>
+
+        </dt>
+        <dd>Log-linear models of a contingency table</dd>
 
         <dt>
 
@@ -682,24 +661,10 @@
 
         <dt>
 
-          <code><a href="tda_gdf.html">tda_gdf()</a></code>
+          <code><a href="tda_fml.html">tda_fml()</a></code>
 
         </dt>
-        <dd>General distribution functions for censored data</dd>
-
-        <dt>
-
-          <code><a href="tda_pcyc.html">tda_pcyc()</a></code>
-
-        </dt>
-        <dd>Cycle structure of permutations</dd>
-
-        <dt>
-
-          <code><a href="tda_spmod.html">tda_spmod()</a></code>
-
-        </dt>
-        <dd>Stationary solution of a Leslie matrix</dd>
+        <dd>Maximum likelihood with a user-defined likelihood</dd>
 
         <dt>
 
@@ -807,8 +772,15 @@
 
         </dt>
         <dd>Distribution function of a set-valued discrete variable</dd>
+
+        <dt>
+
+          <code><a href="tda_evalfi.html">tda_evalfi()</a></code>
+
+        </dt>
+        <dd>Evaluate an inclusion function over an interval</dd>
       </dl></div><div class="section level2">
-      <h2 id="smoothing-interpolation-and-integration">Smoothing, interpolation and integration<a class="anchor" aria-label="anchor" href="#smoothing-interpolation-and-integration"></a></h2>
+      <h2 id="smoothing-interpolation-and-expressions">Smoothing, interpolation and expressions<a class="anchor" aria-label="anchor" href="#smoothing-interpolation-and-expressions"></a></h2>
 
 
 
@@ -833,6 +805,13 @@
 
         <dt>
 
+          <code><a href="tda_mwvec.html">tda_mwvec()</a></code> <code><a href="tda_mwvec.html">tda_mwvec1()</a></code>
+
+        </dt>
+        <dd>Weighted mean of the later elements</dd>
+
+        <dt>
+
           <code><a href="tda_spl.html">tda_spl()</a></code>
 
         </dt>
@@ -854,42 +833,14 @@
 
         <dt>
 
-          <code><a href="tda_mat.html">tda_mat()</a></code>
+          <code><a href="tda_expressions.html">tda_expand()</a></code> <code><a href="tda_expressions.html">tda_mparse()</a></code>
 
         </dt>
-        <dd>Matrix operations</dd>
-
-        <dt>
-
-          <code><a href="tda_integrate.html">tda_integrate()</a></code> <code><a href="tda_integrate.html">tda_range()</a></code> <code><a href="tda_integrate.html">tda_evalf()</a></code> <code><a href="tda_integrate.html">tda_minimize()</a></code> <code><a href="tda_integrate.html">tda_gmin()</a></code>
-
-        </dt>
-        <dd>Integrate, minimise, and evaluate a function</dd>
-
-        <dt>
-
-          <code><a href="tda_evalfi.html">tda_evalfi()</a></code>
-
-        </dt>
-        <dd>Evaluate an inclusion function over an interval</dd>
-
-        <dt>
-
-          <code><a href="tda_fml.html">tda_fml()</a></code>
-
-        </dt>
-        <dd>Maximum likelihood with a user-defined likelihood</dd>
-
-        <dt>
-
-          <code><a href="tda_frml.html">tda_frml()</a></code>
-
-        </dt>
-        <dd>Maximum likelihood for a user-defined transition rate model</dd>
+        <dd>Expand an expression, or parse a matrix expression</dd>
       </dl></div><div class="section level2">
       <h2 id="optimization">Optimization<a class="anchor" aria-label="anchor" href="#optimization"></a></h2>
 
-
+      <div class="section-desc"><p>Function evaluation, integration and minimisation; linear, quadratic and 0-1 programming; constrained least squares; assignment and location problems.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -905,10 +856,10 @@
 
         <dt>
 
-          <code><a href="tda_boolean_min.html">tda_boolean_min()</a></code>
+          <code><a href="tda_niset.html">tda_niset()</a></code>
 
         </dt>
-        <dd>Boolean function minimization</dd>
+        <dd>Numerical-integration settings</dd>
 
         <dt>
 
@@ -933,6 +884,13 @@
 
         <dt>
 
+          <code><a href="tda_mqp.html">tda_mqp()</a></code> <code><a href="tda_mqp.html">tda_mqpb()</a></code> <code><a href="tda_mqp.html">tda_mqpc()</a></code>
+
+        </dt>
+        <dd>Quadratic programming</dd>
+
+        <dt>
+
           <code><a href="tda_mqap.html">tda_mqap()</a></code>
 
         </dt>
@@ -940,14 +898,35 @@
 
         <dt>
 
-          <code><a href="tda_mqp.html">tda_mqp()</a></code> <code><a href="tda_mqp.html">tda_mqpb()</a></code> <code><a href="tda_mqp.html">tda_mqpc()</a></code>
+          <code><a href="tda_gap.html">tda_gap()</a></code>
 
         </dt>
-        <dd>Quadratic programming</dd>
+        <dd>The assignment problem</dd>
+
+        <dt>
+
+          <code><a href="tda_gap_permute.html">tda_gap_permute()</a></code>
+
+        </dt>
+        <dd>Column permutations toward graph agreement</dd>
+
+        <dt>
+
+          <code><a href="tda_gqap.html">tda_gqap()</a></code>
+
+        </dt>
+        <dd>Quadratic assignment (GRASP)</dd>
+
+        <dt>
+
+          <code><a href="tda_locate_line.html">tda_locate_line()</a></code>
+
+        </dt>
+        <dd>One-dimensional multifacility location</dd>
       </dl></div><div class="section level2">
       <h2 id="matrix-algebra">Matrix algebra<a class="anchor" aria-label="anchor" href="#matrix-algebra"></a></h2>
 
-
+      <div class="section-desc"><p>TDA’s matrix commands, including the Leslie-matrix iteration it keeps among them.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -955,6 +934,13 @@
 
 
       <dl><dt>
+
+          <code><a href="tda_mat.html">tda_mat()</a></code>
+
+        </dt>
+        <dd>Matrix operations</dd>
+
+        <dt>
 
           <code><a href="tda_mag.html">tda_mag()</a></code>
 
@@ -1040,45 +1026,17 @@
 
         <dt>
 
+          <code><a href="tda_eigen.html">tda_eigen()</a></code>
+
+        </dt>
+        <dd>Eigenvalues of a matrix, via TDA</dd>
+
+        <dt>
+
           <code><a href="tda_minvs.html">tda_minvs()</a></code> <code><a href="tda_minvs.html">tda_minvd()</a></code> <code><a href="tda_minvs.html">tda_mginv()</a></code>
 
         </dt>
         <dd>Matrix inversion</dd>
-
-        <dt>
-
-          <code><a href="tda_midf.html">tda_midf()</a></code>
-
-        </dt>
-        <dd>Distribution function bounds and estimate for interval-censored data</dd>
-
-        <dt>
-
-          <code><a href="tda_midf1.html">tda_midf1()</a></code>
-
-        </dt>
-        <dd>Uniform-model CDF for interval-censored data, at each observation</dd>
-
-        <dt>
-
-          <code><a href="tda_midf2.html">tda_midf2()</a></code>
-
-        </dt>
-        <dd>Restricted mean for interval-censored data, at each observation</dd>
-
-        <dt>
-
-          <code><a href="tda_midf3.html">tda_midf3()</a></code>
-
-        </dt>
-        <dd>Average nearby endpoints for interval-censored data</dd>
-
-        <dt>
-
-          <code><a href="tda_mkmet.html">tda_mkmet()</a></code>
-
-        </dt>
-        <dd>Kemeny distance between rankings</dd>
 
         <dt>
 
@@ -1110,13 +1068,6 @@
 
         <dt>
 
-          <code><a href="tda_msrow.html">tda_msrow()</a></code> <code><a href="tda_msrow.html">tda_mscol()</a></code> <code><a href="tda_msrow.html">tda_mprow()</a></code> <code><a href="tda_msrow.html">tda_mpcol()</a></code> <code><a href="tda_msrow.html">tda_mpsym()</a></code>
-
-        </dt>
-        <dd>Selecting or permuting rows and columns</dd>
-
-        <dt>
-
           <code><a href="tda_mpfit.html">tda_mpfit()</a></code>
 
         </dt>
@@ -1138,10 +1089,10 @@
 
         <dt>
 
-          <code><a href="tda_mple.html">tda_mple()</a></code>
+          <code><a href="tda_spmod.html">tda_spmod()</a></code>
 
         </dt>
-        <dd>Product-limit (Kaplan-Meier) distribution and jumps</dd>
+        <dd>Stationary solution of a Leslie matrix</dd>
 
         <dt>
 
@@ -1173,6 +1124,13 @@
 
         <dt>
 
+          <code><a href="tda_msrow.html">tda_msrow()</a></code> <code><a href="tda_msrow.html">tda_mscol()</a></code> <code><a href="tda_msrow.html">tda_mprow()</a></code> <code><a href="tda_msrow.html">tda_mpcol()</a></code> <code><a href="tda_msrow.html">tda_mpsym()</a></code>
+
+        </dt>
+        <dd>Selecting or permuting rows and columns</dd>
+
+        <dt>
+
           <code><a href="tda_msvd.html">tda_msvd()</a></code> <code><a href="tda_msvd.html">tda_msvd1()</a></code>
 
         </dt>
@@ -1184,17 +1142,10 @@
 
         </dt>
         <dd>Trim or pad a matrix's edges</dd>
-
-        <dt>
-
-          <code><a href="tda_mwvec.html">tda_mwvec()</a></code> <code><a href="tda_mwvec.html">tda_mwvec1()</a></code>
-
-        </dt>
-        <dd>Backward weighted running mean</dd>
       </dl></div><div class="section level2">
-      <h2 id="clustering-scaling-and-boolean-analysis">Clustering, scaling and Boolean analysis<a class="anchor" aria-label="anchor" href="#clustering-scaling-and-boolean-analysis"></a></h2>
+      <h2 id="clustering-scaling-rank-order-and-boolean-analysis">Clustering, scaling, rank-order and Boolean analysis<a class="anchor" aria-label="anchor" href="#clustering-scaling-rank-order-and-boolean-analysis"></a></h2>
 
-
+      <div class="section-desc"><p>Cluster analysis, principal components and factor analysis, multidimensional scaling and unfolding, Procrustes rotation, conjoint, Rasch and rank-order methods, combinatorial patterns, Boolean functions.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -1217,6 +1168,20 @@
 
         <dt>
 
+          <code><a href="tda_clpyr.html">tda_clpyr()</a></code>
+
+        </dt>
+        <dd>Pyramidal clustering</dd>
+
+        <dt>
+
+          <code><a href="tda_scla.html">tda_scla()</a></code>
+
+        </dt>
+        <dd>Separable clusters of a valued graph</dd>
+
+        <dt>
+
           <code><a href="tda_dma.html">tda_dma()</a></code>
 
         </dt>
@@ -1228,6 +1193,20 @@
 
         </dt>
         <dd>Distance matrix from raw variables</dd>
+
+        <dt>
+
+          <code><a href="tda_dmet.html">tda_dmet()</a></code>
+
+        </dt>
+        <dd>Convert a distance matrix into a metric</dd>
+
+        <dt>
+
+          <code><a href="tda_dmet1.html">tda_dmet1()</a></code>
+
+        </dt>
+        <dd>Distances made metric</dd>
 
         <dt>
 
@@ -1280,45 +1259,10 @@
 
         <dt>
 
-          <code><a href="tda_com.html">tda_com()</a></code>
-
-        </dt>
-        <dd>Combinatorial patterns</dd>
-
-        <dt>
-
-          <code><a href="tda_clpyr.html">tda_clpyr()</a></code>
-
-        </dt>
-        <dd>Pyramidal clustering</dd>
-
-        <dt>
-
-          <code><a href="tda_rap.html">tda_rap()</a></code>
-
-        </dt>
-        <dd>Rates in age-period form</dd>
-
-        <dt>
-
-          <code><a href="tda_rfit.html">tda_rfit()</a></code>
-
-        </dt>
-        <dd>Fit binary relations to a valued graph</dd>
-
-        <dt>
-
           <code><a href="tda_rmod.html">tda_rmod()</a></code>
 
         </dt>
         <dd>Simple Rasch model</dd>
-
-        <dt>
-
-          <code><a href="tda_rod.html">tda_rod()</a></code>
-
-        </dt>
-        <dd>Rank-order data utilities</dd>
 
         <dt>
 
@@ -1329,10 +1273,52 @@
 
         <dt>
 
+          <code><a href="tda_rod.html">tda_rod()</a></code>
+
+        </dt>
+        <dd>Rank-order data utilities</dd>
+
+        <dt>
+
+          <code><a href="tda_mkmet.html">tda_mkmet()</a></code>
+
+        </dt>
+        <dd>Kemeny distance between rankings</dd>
+
+        <dt>
+
+          <code><a href="tda_rank_orders.html">tda_rank_orders()</a></code>
+
+        </dt>
+        <dd>All rank orders of a given size</dd>
+
+        <dt>
+
+          <code><a href="tda_com.html">tda_com()</a></code>
+
+        </dt>
+        <dd>Combinatorial patterns</dd>
+
+        <dt>
+
+          <code><a href="tda_pcyc.html">tda_pcyc()</a></code>
+
+        </dt>
+        <dd>Cycle structure of permutations</dd>
+
+        <dt>
+
           <code><a href="tda_bfc.html">tda_bfc()</a></code>
 
         </dt>
         <dd>Context dependencies in Boolean functions</dd>
+
+        <dt>
+
+          <code><a href="tda_boolean_min.html">tda_boolean_min()</a></code>
+
+        </dt>
+        <dd>Boolean function minimization</dd>
       </dl></div><div class="section level2">
       <h2 id="sequence-analysis">Sequence analysis<a class="anchor" aria-label="anchor" href="#sequence-analysis"></a></h2>
 
@@ -1394,7 +1380,7 @@
       </dl></div><div class="section level2">
       <h2 id="graphs-and-networks">Graphs and networks<a class="anchor" aria-label="anchor" href="#graphs-and-networks"></a></h2>
 
-
+      <div class="section-desc"><p>Graph objects and TDA’s graph analyses – components, paths, flows, cliques, trees, temporal networks.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -1421,20 +1407,6 @@
 
         </dt>
         <dd>Graph analyses</dd>
-
-        <dt>
-
-          <code><a href="tda_gap.html">tda_gap()</a></code>
-
-        </dt>
-        <dd>The assignment problem</dd>
-
-        <dt>
-
-          <code><a href="tda_gap_permute.html">tda_gap_permute()</a></code>
-
-        </dt>
-        <dd>Column permutations toward graph agreement</dd>
 
         <dt>
 
@@ -1473,27 +1445,6 @@
 
         <dt>
 
-          <code><a href="tda_gqap.html">tda_gqap()</a></code>
-
-        </dt>
-        <dd>Quadratic assignment (GRASP)</dd>
-
-        <dt>
-
-          <code><a href="tda_dmet.html">tda_dmet()</a></code>
-
-        </dt>
-        <dd>Convert a distance matrix into a metric</dd>
-
-        <dt>
-
-          <code><a href="tda_dmet1.html">tda_dmet1()</a></code>
-
-        </dt>
-        <dd>Distances made metric</dd>
-
-        <dt>
-
           <code><a href="tda_mdefg.html">tda_mdefg()</a></code>
 
         </dt>
@@ -1501,10 +1452,10 @@
 
         <dt>
 
-          <code><a href="tda_scla.html">tda_scla()</a></code>
+          <code><a href="tda_rfit.html">tda_rfit()</a></code>
 
         </dt>
-        <dd>Separable clusters of a valued graph</dd>
+        <dd>Fit binary relations to a valued graph</dd>
 
         <dt>
 
@@ -1512,13 +1463,6 @@
 
         </dt>
         <dd>Temporal-network summaries</dd>
-
-        <dt>
-
-          <code><a href="tda_triang.html">tda_triang()</a></code>
-
-        </dt>
-        <dd>Triangulation of points</dd>
 
         <dt>
 
@@ -1533,13 +1477,6 @@
 
         </dt>
         <dd>Split an ordering into contiguous clusters</dd>
-
-        <dt>
-
-          <code><a href="tda_locate_line.html">tda_locate_line()</a></code>
-
-        </dt>
-        <dd>One-dimensional multifacility location</dd>
 
         <dt>
 
@@ -1587,13 +1524,6 @@
 
         <dt>
 
-          <code><a href="tda_sddf.html">tda_sddf()</a></code>
-
-        </dt>
-        <dd>Distribution function of a set-valued discrete variable</dd>
-
-        <dt>
-
           <code><a href="tda_map.html">tda_map()</a></code>
 
         </dt>
@@ -1605,6 +1535,13 @@
 
         </dt>
         <dd>Build polygons from line segments</dd>
+
+        <dt>
+
+          <code><a href="tda_triang.html">tda_triang()</a></code>
+
+        </dt>
+        <dd>Triangulation of points</dd>
 
         <dt>
 
@@ -1642,41 +1579,6 @@
 
         </dt>
         <dd>Add a command to a plot</dd>
-
-        <dt>
-
-          <code><a href="tda_ps_objects.html">tda_ps_objects()</a></code>
-
-        </dt>
-        <dd>What is inside a TDA PostScript file</dd>
-
-        <dt>
-
-          <code><a href="tda_combine_ps.html">tda_combine_ps()</a></code>
-
-        </dt>
-        <dd>Combine several PostScript plots into one file</dd>
-
-        <dt>
-
-          <code><a href="tda_read_ps.html">tda_read_ps()</a></code>
-
-        </dt>
-        <dd>Read TDA's PostScript output</dd>
-
-        <dt>
-
-          <code><a href="tda_plot_ps.html">tda_plot_ps()</a></code>
-
-        </dt>
-        <dd>Draw TDA's PostScript output with grid</dd>
-
-        <dt>
-
-          <code><a href="tda_check_ps.html">tda_check_ps()</a></code>
-
-        </dt>
-        <dd>Audit a parse against the PostScript it came from</dd>
 
         <dt>
 
@@ -1768,6 +1670,41 @@
 
         </dt>
         <dd>Parametric surface in a 3-d plot</dd>
+
+        <dt>
+
+          <code><a href="tda_ps_objects.html">tda_ps_objects()</a></code>
+
+        </dt>
+        <dd>What is inside a TDA PostScript file</dd>
+
+        <dt>
+
+          <code><a href="tda_combine_ps.html">tda_combine_ps()</a></code>
+
+        </dt>
+        <dd>Combine several PostScript plots into one file</dd>
+
+        <dt>
+
+          <code><a href="tda_read_ps.html">tda_read_ps()</a></code>
+
+        </dt>
+        <dd>Read TDA's PostScript output</dd>
+
+        <dt>
+
+          <code><a href="tda_plot_ps.html">tda_plot_ps()</a></code>
+
+        </dt>
+        <dd>Draw TDA's PostScript output with grid</dd>
+
+        <dt>
+
+          <code><a href="tda_check_ps.html">tda_check_ps()</a></code>
+
+        </dt>
+        <dd>Audit a parse against the PostScript it came from</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
