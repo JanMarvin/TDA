@@ -62,7 +62,7 @@ create capability at all).</p>
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">unzoo</span><span class="op">(</span><span class="va">zoofile</span>, files <span class="op">=</span> <span class="cn">NULL</span>, list <span class="op">=</span> <span class="cn">FALSE</span>, exdir <span class="op">=</span> <span class="st">"."</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">zoo</span><span class="op">(</span><span class="va">zoofile</span>, <span class="va">files</span>, method <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">zoo</span><span class="op">(</span><span class="va">zoofile</span>, <span class="va">files</span>, method <span class="op">=</span> <span class="fl">1L</span>, names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/basename.html" class="external-link">basename</a></span><span class="op">(</span><span class="va">files</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -97,11 +97,18 @@ default) or <code>0</code> (stored, uncompressed). TDA's <code>arcd</code>
 reads all of 0, 1 and 2, but other readers of TDA-written archives
 may not, and LZD is what <code>zoo</code> itself has always produced.</p></dd>
 
+
+<dt id="arg-names">names<a class="anchor" aria-label="anchor" href="#arg-names"></a></dt>
+<dd><p>the names the members get in the archive, one per file:
+by default the files' base names. A name may carry a directory,
+<code>"sub/x.dat"</code>, with <code>/</code> as the separator; it must be
+relative and may not contain <code>..</code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>For <code>list = TRUE</code>, a data frame with one row per member:
-  <code>name</code>, <code>method</code> (0 stored, 1 LZD, 2 LZH), <code>size</code>
+  <code>name</code> (with its directory, if the entry stores one), <code>method</code> (0 stored, 1 LZD, 2 LZH), <code>size</code>
   (original, uncompressed), and <code>ok</code> (whether this reads correctly –
   always <code>TRUE</code> for methods 0/1/2, since those are the only methods
   Zoo defines). Otherwise, the paths of the files written, invisibly the
@@ -124,13 +131,18 @@ correctly by this same code, which would only prove self-consistency.
 <code>zoo</code> writes LZD-compressed entries by default, or stored
 (uncompressed) ones with <code>method = 0</code>, each with its CRC-16
 checksum, readable by any Zoo implementation including TDA's.</p>
-<p>Only Zoo's short filename field (12 characters) is read or written; the
-format's optional long-filename/directory extension is not implemented.
-Every TDA-era archive uses short, DOS-compatible names, so this covers
-real usage, but a <code>.zoo</code> file from elsewhere with longer names
-would have them silently truncated on write and would need the long
-names read from the variable part of the directory entry on read, which
-<code>unzoo</code> does not yet do.</p>
+<p>Member names are Zoo 2.1's: a long file name and a directory name are
+stored in the directory entry beside the DOS-style 8.3 short name, and
+both <code>unzoo</code> and <code>zoo</code> use them, so <code>sub/long_name.dat</code>
+round-trips as itself. <code>unzoo</code> creates the directories it needs
+under <code>exdir</code>. An archive <code>zoo</code> writes is, field for field,
+what the reference <code>zoo</code> tool writes for the same members (its
+header, every directory entry's names and version bytes, the file
+leaders, the terminal record; only the members' dates differ, which
+<code>zoo</code> leaves unset), and TDA's own <code>arcd</code> finds a member by
+its full stored name. TDA's archive description file separates its
+fields by blanks, so a member TDA is to read may not have a blank in
+its name.</p>
 <p>Zoo can, in principle, keep more than one stored version of a file under
 the same name (its version-history feature) – <code>unzoo</code> does not
 collapse or deduplicate by name, so if an archive has several entries
@@ -159,6 +171,16 @@ rather than only the latest.</p>
 <span class="r-in"><span><span class="fu">unzoo</span><span class="op">(</span><span class="va">out</span>, list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       name method size   ok</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 avar.dat      1  120 TRUE</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># names longer than 8.3 and a directory are kept as given</span></span></span>
+<span class="r-in"><span><span class="fu">zoo</span><span class="op">(</span><span class="va">out</span>, <span class="va">paths</span>, names <span class="op">=</span> <span class="st">"results/avar_first_run.dat"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">unzoo</span><span class="op">(</span><span class="va">out</span>, list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         name method size   ok</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 results/avar_first_run.dat      1  120 TRUE</span>
+<span class="r-in"><span><span class="va">ex2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">unzoo</span><span class="op">(</span><span class="va">out</span>, exdir <span class="op">=</span> <span class="va">ex2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="va">ex2</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "results/avar_first_run.dat"</span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="fu">unzoo</span><span class="op">(</span><span class="st">"https://example.com/archive.zoo"</span>, exdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>

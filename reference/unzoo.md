@@ -13,7 +13,7 @@ all).
 ``` r
 unzoo(zoofile, files = NULL, list = FALSE, exdir = ".", overwrite = TRUE)
 
-zoo(zoofile, files, method = 1L)
+zoo(zoofile, files, method = 1L, names = basename(files))
 ```
 
 ## Arguments
@@ -47,14 +47,20 @@ zoo(zoofile, files, method = 1L)
   of TDA-written archives may not, and LZD is what `zoo` itself has
   always produced.
 
+- names:
+
+  the names the members get in the archive, one per file: by default the
+  files' base names. A name may carry a directory, `"sub/x.dat"`, with
+  `/` as the separator; it must be relative and may not contain `..`.
+
 ## Value
 
-For `list = TRUE`, a data frame with one row per member: `name`,
-`method` (0 stored, 1 LZD, 2 LZH), `size` (original, uncompressed), and
-`ok` (whether this reads correctly – always `TRUE` for methods 0/1/2,
-since those are the only methods Zoo defines). Otherwise, the paths of
-the files written, invisibly the same as
-[`unzip`](https://rdrr.io/r/utils/unzip.html).
+For `list = TRUE`, a data frame with one row per member: `name` (with
+its directory, if the entry stores one), `method` (0 stored, 1 LZD, 2
+LZH), `size` (original, uncompressed), and `ok` (whether this reads
+correctly – always `TRUE` for methods 0/1/2, since those are the only
+methods Zoo defines). Otherwise, the paths of the files written,
+invisibly the same as [`unzip`](https://rdrr.io/r/utils/unzip.html).
 
 ## Details
 
@@ -73,13 +79,17 @@ LZD-compressed entries by default, or stored (uncompressed) ones with
 `method = 0`, each with its CRC-16 checksum, readable by any Zoo
 implementation including TDA's.
 
-Only Zoo's short filename field (12 characters) is read or written; the
-format's optional long-filename/directory extension is not implemented.
-Every TDA-era archive uses short, DOS-compatible names, so this covers
-real usage, but a `.zoo` file from elsewhere with longer names would
-have them silently truncated on write and would need the long names read
-from the variable part of the directory entry on read, which `unzoo`
-does not yet do.
+Member names are Zoo 2.1's: a long file name and a directory name are
+stored in the directory entry beside the DOS-style 8.3 short name, and
+both `unzoo` and `zoo` use them, so `sub/long_name.dat` round-trips as
+itself. `unzoo` creates the directories it needs under `exdir`. An
+archive `zoo` writes is, field for field, what the reference `zoo` tool
+writes for the same members (its header, every directory entry's names
+and version bytes, the file leaders, the terminal record; only the
+members' dates differ, which `zoo` leaves unset), and TDA's own `arcd`
+finds a member by its full stored name. TDA's archive description file
+separates its fields by blanks, so a member TDA is to read may not have
+a blank in its name.
 
 Zoo can, in principle, keep more than one stored version of a file under
 the same name (its version-history feature) – `unzoo` does not collapse
@@ -109,6 +119,16 @@ zoo(out, paths)
 unzoo(out, list = TRUE)
 #>       name method size   ok
 #> 1 avar.dat      1  120 TRUE
+
+# names longer than 8.3 and a directory are kept as given
+zoo(out, paths, names = "results/avar_first_run.dat")
+unzoo(out, list = TRUE)
+#>                         name method size   ok
+#> 1 results/avar_first_run.dat      1  120 TRUE
+ex2 <- tempfile()
+unzoo(out, exdir = ex2)
+list.files(ex2, recursive = TRUE)
+#> [1] "results/avar_first_run.dat"
 if (FALSE) { # \dontrun{
 unzoo("https://example.com/archive.zoo", exdir = tempfile())
 } # }

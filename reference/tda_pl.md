@@ -334,7 +334,7 @@ p2 <- tda_pl_polyline(p2, c(0.2, 1, 0.2), c(11, 11, 11.8))  # a raw shape
 # its row along the top, so it doesn't cross the data line below
 p2 <- tda_pl_function(p2, "sin(x)+11", range = c(0, 6), step = 0.2)
 tda_ps_file(p2)   # the PostScript path, once the session has been run
-#> [1] "/tmp/Rtmp3e0crm/tda1f87579aada1/plot.ps"
+#> [1] "/tmp/RtmpHMSjz9/tda1f8c17ed140b/plot.ps"
 p2
 #> TDA plot session (plot.ps), 90 x 70 mm, x: [0,6], y: [0,12]
 #> Data: 5 rows, x, y 
