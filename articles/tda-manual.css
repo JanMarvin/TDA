@@ -53,9 +53,10 @@ body {
   font-kerning: normal;
   font-variant-ligatures: common-ligatures contextual;
   text-rendering: optimizeLegibility;
-  /* where the browser has it, break lines with the whole paragraph in
-     view rather than greedily, and never leave a one-word last line */
-  text-wrap: pretty;
+  /* not text-wrap: pretty -- WebKit's paragraph-level line breaker
+     does not hyphenate, and hyphenation matters more to a justified
+     column than the last line's length */
+  text-wrap: wrap;
   widows: 2;
   orphans: 2;
 }

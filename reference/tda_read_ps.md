@@ -53,7 +53,7 @@ p <- tda_pl_lines(p, "x", "y")
 pdf(NULL)  # plot() runs the session and draws it; capture the run
 p <- plot(p)
 dev.off()
-#> agg_record_1ff9735e0d55 
+#> agg_record_1eb951767553 
 #>                       2 
 ps <- tda_read_ps(p$run, which = p$file)
 ps$bbox
