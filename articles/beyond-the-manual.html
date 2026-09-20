@@ -64,6 +64,11 @@
   .container.template-article { max-width: none; padding: 0; margin: 0; }
   .template-article .row { margin: 0; }
   .template-article main { padding: 0; max-width: none; }
+  .template-article main p, .template-article main li,
+  .template-article main dd {
+    -webkit-hyphens: auto; hyphens: auto;
+    -webkit-hyphenate-limit-before: 3; -webkit-hyphenate-limit-after: 3;
+  }
   /* Bootstrap has a .figure class of its own; the vignette's p.figure
      and its centred plot must not pick it up. */
   .template-article main p.figure {
