@@ -204,7 +204,7 @@ cat(cmds, sep = "\n")
 #> ) = Vx,Vy;
 res <- tda_run(cmds, data = d)
 cat(res$output, sep = "\n")
-#> TDA. Analysis of Transition Data (6.4q). Sun Sep 20 04:42:47 2026
+#> TDA. Analysis of Transition Data (6.4q). Sun Sep 20 05:31:47 2026
 #> Current memory: 390032 bytes.
 #> 
 #> Reading command file: commands
@@ -227,5 +227,5 @@ cat(res$output, sep = "\n")
 #> Vy           2.0000     9.0000     5.0000     2.9439          20.0000
 #> ----------------------------------------------------------------------------
 #> Current memory: 390032 bytes. Max memory used: 390176 bytes.
-#> End of program. Sun Sep 20 04:42:47 2026
+#> End of program. Sun Sep 20 05:31:47 2026
 ```

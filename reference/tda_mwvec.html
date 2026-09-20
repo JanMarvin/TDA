@@ -7,9 +7,7 @@ stand in for position – tda_mwvec is the special case
 t = seq_along(a)) – TDA's mwvec/mwvec1.
 Falls back to a[i] unchanged wherever the weights beyond
 i sum to zero (including the last position, which always
-has nothing after it). Confirmed against a hand-written R
-equivalent on a random instance; no base-R builtin matches this
-directly."><meta property="og:description" content="For each position i, averages a[j] weighted by
+has nothing after it). No base-R builtin matches this directly."><meta property="og:description" content="For each position i, averages a[j] weighted by
 weights[j] over every later position (tda_mwvec:
 every j &amp;gt; i; tda_mwvec1: every j with
 t[j] &amp;gt; t[i], letting an arbitrary order vector t
@@ -17,9 +15,7 @@ stand in for position – tda_mwvec is the special case
 t = seq_along(a)) – TDA's mwvec/mwvec1.
 Falls back to a[i] unchanged wherever the weights beyond
 i sum to zero (including the last position, which always
-has nothing after it). Confirmed against a hand-written R
-equivalent on a random instance; no base-R builtin matches this
-directly."></head><body>
+has nothing after it). No base-R builtin matches this directly."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -68,9 +64,7 @@ stand in for position – <code>tda_mwvec</code> is the special case
 <code>t = seq_along(a)</code>) – TDA's <code>mwvec</code>/<code>mwvec1</code>.
 Falls back to <code>a[i]</code> unchanged wherever the weights beyond
 <code>i</code> sum to zero (including the last position, which always
-has nothing after it). Confirmed against a hand-written R
-equivalent on a random instance; no base-R builtin matches this
-directly.</p>
+has nothing after it). No base-R builtin matches this directly.</p>
     </div>
 
     <div class="section level2">
@@ -135,8 +129,16 @@ strictly later positions count).</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">tda_mwvec</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">30</span>, <span class="fl">40</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 31.66667 37.50000 40.00000 40.00000</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">30</span>, <span class="fl">40</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">w</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># position 1 averages 20, 30, 40; position 3 averages 40 alone;</span></span></span>
+<span class="r-in"><span><span class="co"># the last position has nothing after it and keeps its own value</span></span></span>
+<span class="r-in"><span><span class="fu">tda_mwvec</span><span class="op">(</span><span class="va">a</span>, <span class="va">w</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 30 35 40 40</span>
+<span class="r-in"><span><span class="co"># with an order vector, "later" means a larger t: positions 1 and 2</span></span></span>
+<span class="r-in"><span><span class="co"># share t = 1, so both average the values at t = 2 and t = 3</span></span></span>
+<span class="r-in"><span><span class="fu">tda_mwvec1</span><span class="op">(</span><span class="va">a</span>, <span class="va">w</span>, t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 35 35 40 40</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

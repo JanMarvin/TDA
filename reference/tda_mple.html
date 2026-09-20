@@ -13,7 +13,7 @@ risk-set reduction means only the last observation
 processed within that tied group reaches the value standard
 Kaplan-Meier software reports for that time – earlier ones in the
 same group show smaller, order-dependent intermediate values.
-Confirmed by hand: two events tied at time = 2 out of 3
+Two events tied at time = 2 out of 3
 total observations give F = (1/3, 2/3, 1) here, where
 standard Kaplan-Meier reports F(2) = 2/3 for both tied
 observations. This is a property of the algorithm as TDA
@@ -26,7 +26,7 @@ has nothing later to redistribute its share to, so all of the
 mass ends up accounted for there by construction. Standard
 Kaplan-Meier software instead leaves the survival curve at
 whatever value it last reached, undefined beyond a censored tail.
-Confirmed by hand: time = c(1, 2, 3),
+time = c(1, 2, 3),
 censored = c(0, 0, 1) gives F = (1/3, 2/3, 1) here.
 This is the low-level building block behind TDA's
 tda_ple, which most users want instead – this one
@@ -45,7 +45,7 @@ risk-set reduction means only the last observation
 processed within that tied group reaches the value standard
 Kaplan-Meier software reports for that time – earlier ones in the
 same group show smaller, order-dependent intermediate values.
-Confirmed by hand: two events tied at time = 2 out of 3
+Two events tied at time = 2 out of 3
 total observations give F = (1/3, 2/3, 1) here, where
 standard Kaplan-Meier reports F(2) = 2/3 for both tied
 observations. This is a property of the algorithm as TDA
@@ -58,7 +58,7 @@ has nothing later to redistribute its share to, so all of the
 mass ends up accounted for there by construction. Standard
 Kaplan-Meier software instead leaves the survival curve at
 whatever value it last reached, undefined beyond a censored tail.
-Confirmed by hand: time = c(1, 2, 3),
+time = c(1, 2, 3),
 censored = c(0, 0, 1) gives F = (1/3, 2/3, 1) here.
 This is the low-level building block behind TDA's
 tda_ple, which most users want instead – this one
@@ -118,7 +118,7 @@ risk-set reduction means only the <em>last</em> observation
 processed within that tied group reaches the value standard
 Kaplan-Meier software reports for that time – earlier ones in the
 same group show smaller, order-dependent intermediate values.
-Confirmed by hand: two events tied at <code>time = 2</code> out of 3
+Two events tied at <code>time = 2</code> out of 3
 total observations give <code>F = (1/3, 2/3, 1)</code> here, where
 standard Kaplan-Meier reports <code>F(2) = 2/3</code> for both tied
 observations. This is a property of the algorithm as TDA
@@ -131,7 +131,7 @@ has nothing later to redistribute its share to, so all of the
 mass ends up accounted for there by construction. Standard
 Kaplan-Meier software instead leaves the survival curve at
 whatever value it last reached, undefined beyond a censored tail.
-Confirmed by hand: <code>time = c(1, 2, 3)</code>,
+<code>time = c(1, 2, 3)</code>,
 <code>censored = c(0, 0, 1)</code> gives <code>F = (1/3, 2/3, 1)</code> here.
 This is the low-level building block behind TDA's
 <code><a href="tda_ltb.html">tda_ple</a></code>, which most users want instead – this one
@@ -202,13 +202,14 @@ event.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">tda_mple</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $F</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.2 0.4 0.4 0.7 1.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $jumps</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.2 0.2 0.0 0.3 0.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># six durations, two of them censored (still running at 3 and 7)</span></span></span>
+<span class="r-in"><span><span class="va">t</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">8</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">cen</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">pl</span> <span class="op">&lt;-</span> <span class="fu">tda_mple</span><span class="op">(</span><span class="va">t</span>, <span class="va">cen</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">pl</span><span class="op">$</span><span class="cn">F</span>       <span class="co"># the Kaplan-Meier distribution function at each observation</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1666667 0.3333333 0.3333333 0.5555556 0.5555556 1.0000000</span>
+<span class="r-in"><span><span class="va">pl</span><span class="op">$</span><span class="va">jumps</span>   <span class="co"># its increase there; 0 at the censored ones</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1666667 0.1666667 0.0000000 0.2222222 0.0000000 0.4444444</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

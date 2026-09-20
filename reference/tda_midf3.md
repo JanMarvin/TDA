@@ -7,7 +7,6 @@ falling in that same range – TDA's `midf3`. A local smoothing of nearby
 endpoints, not a distribution estimate like
 [`tda_midf`](https://janmarvin.github.io/TDA/reference/tda_midf.md)/[`tda_midf1`](https://janmarvin.github.io/TDA/reference/tda_midf1.md)/
 [`tda_midf2`](https://janmarvin.github.io/TDA/reference/tda_midf2.md).
-Confirmed by hand on a 3-interval example.
 
 ## Usage
 
@@ -64,11 +63,15 @@ Other matrix algebra:
 ## Examples
 
 ``` r
-tda_midf3(c(1, 2, 0), c(3, 4, 2))
+lo <- c(0, 1, 2, 3, 1)
+up <- c(2, 3, 4, 5, 2)
+# for each interval, the mean lower and upper endpoint of the
+# intervals overlapping it
+tda_midf3(lo, up)
 #> $lower_avg
-#> [1] 1.5 2.0 1.0
+#> [1] 1.000000 1.750000 2.500000 3.000000 1.333333
 #> 
 #> $upper_avg
-#> [1] 2.5 3.0 2.0
+#> [1] 2.000000 2.333333 2.750000 4.000000 2.000000
 #> 
 ```

@@ -6,9 +6,7 @@ every later position (`tda_mwvec`: every `j > i`; `tda_mwvec1`: every
 for position – `tda_mwvec` is the special case `t = seq_along(a)`) –
 TDA's `mwvec`/`mwvec1`. Falls back to `a[i]` unchanged wherever the
 weights beyond `i` sum to zero (including the last position, which
-always has nothing after it). Confirmed against a hand-written R
-equivalent on a random instance; no base-R builtin matches this
-directly.
+always has nothing after it). No base-R builtin matches this directly.
 
 ## Usage
 
@@ -70,6 +68,14 @@ Other matrix algebra:
 ## Examples
 
 ``` r
-tda_mwvec(c(10, 20, 30, 40), c(1, 2, 1, 3))
-#> [1] 31.66667 37.50000 40.00000 40.00000
+a <- c(10, 20, 30, 40)
+w <- c(1, 1, 1, 1)
+# position 1 averages 20, 30, 40; position 3 averages 40 alone;
+# the last position has nothing after it and keeps its own value
+tda_mwvec(a, w)
+#> [1] 30 35 40 40
+# with an order vector, "later" means a larger t: positions 1 and 2
+# share t = 1, so both average the values at t = 2 and t = 3
+tda_mwvec1(a, w, t = c(1, 1, 2, 3))
+#> [1] 35 35 40 40
 ```

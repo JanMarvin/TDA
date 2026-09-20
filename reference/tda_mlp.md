@@ -5,15 +5,15 @@ and/or equality constraints – TDA's `mlp` and `mlp1` (Salazar & Sen's
 MINIT, CACM algorithm 333). `tda_mlp` takes only inequality constraints,
 matching `mlp(T,X,Y)`; `tda_mlp1` adds equality constraints, matching
 `mlp1(T,p,X,Y)` – the two are the same underlying call with `p` fixed at
-0 for `tda_mlp` (confirmed by reading `m_mlp`'s `opt` branch). The
-problem solved, after negating the objective internally for
-`direction = "min"`, is \$\$\max\\ c'x \quad \mathrm{s.t.}\\ x \ge 0,\\
-Ax \le b,\\ A_e x = b_e\$\$ with the dual \\\min\\ b'y \\\mathrm{s.t.}\\
-y \ge 0,\\ A'y \ge c\\ (this is all stated directly in `lpf1`'s header
-in `t_lp.c`; nothing here was guessed). Equality-constraint rows report
-a dual value of 0 – TDA's convention, not something this wrapper
-computes. Verified by hand for a plain and an equality instance, and
-against brute-force vertex enumeration in `test-r-comparisons.R`.
+0 for `tda_mlp`. The problem solved, after negating the objective
+internally for `direction = "min"`, is \$\$\max\\ c'x \quad
+\mathrm{s.t.}\\ x \ge 0,\\ Ax \le b,\\ A_e x = b_e\$\$ with the dual
+\\\min\\ b'y \\\mathrm{s.t.}\\ y \ge 0,\\ A'y \ge c\\ (this is all
+stated directly in `lpf1`'s header in `t_lp.c`; nothing here was
+guessed). Equality-constraint rows report a dual value of 0 – TDA's
+convention, not something this wrapper computes. Verified by hand for a
+plain and an equality instance, and against brute-force vertex
+enumeration in `test-r-comparisons.R`.
 
 ## Usage
 

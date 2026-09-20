@@ -5,8 +5,7 @@ rows of `A`, each row a ranking (or score) over the same set of items –
 TDA's `mkmet`. For two rankings, each pair of items contributes 0 if
 both rankings order (or tie) the pair the same way, 1 if one ranking
 ties the pair and the other doesn't, or 2 if the rankings strictly
-disagree on the pair's order. Confirmed by hand against two 3-item
-rankings, one pair with a tie.
+disagree on the pair's order.
 
 ## Usage
 
@@ -62,9 +61,16 @@ Other matrix algebra:
 ## Examples
 
 ``` r
-tda_mkmet(rbind(c(1, 2, 3), c(3, 2, 1), c(1, 2, 2)))
-#>      [,1] [,2] [,3]
-#> [1,]    0    6    1
-#> [2,]    6    0    5
-#> [3,]    1    5    0
+# four rankings of the same four items: b swaps the last two of a,
+# c reverses a, d ties items in pairs
+R <- rbind(a = c(1, 2, 3, 4),
+           b = c(1, 2, 4, 3),
+           c = c(4, 3, 2, 1),
+           d = c(1, 1, 2, 2))
+tda_mkmet(R)   # a-b: 2 (one pair reversed); a-c: 12 (all six pairs)
+#>      [,1] [,2] [,3] [,4]
+#> [1,]    0    2   12    2
+#> [2,]    2    0   10    2
+#> [3,]   12   10    0   10
+#> [4,]    2    2   10    0
 ```

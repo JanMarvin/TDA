@@ -30,8 +30,8 @@ path of the PostScript file, invisibly.
 ## Examples
 
 ``` r
+# a bowl-shaped surface over an 8 x 8 grid: contours at three heights
 z <- outer(1:8, 1:8, function(i, j) (i - 4)^2 + (j - 4)^2)
-r <- tda_plotcm(z, levels = c(2, 6, 12))
-file.exists(grep("[.]ps$", r, value = TRUE))   # the finished plot
-#> [1] TRUE
+f <- tda_plotcm(z, levels = c(2, 6, 12))
+tda_plot_ps(tda_read_ps(f))
 ```

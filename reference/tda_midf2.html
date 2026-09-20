@@ -4,20 +4,18 @@ given that it exceeds that observation's lower[i] –
 \(E[X \mid X &amp;gt; lower_i]\) – estimated by
 integrating a piecewise-uniform density built from
 tda_midf's CDF estimate over the induced partition –
-TDA's midf2, confirmed against a from-scratch R translation
-of the same two-stage calculation (build the CDF at every
-breakpoint, then integrate the resulting piecewise-constant density
+TDA's midf2: it builds the CDF at every
+breakpoint, then integrates the resulting piecewise-constant density
 from each observation's value onward, normalizing by the
-survival probability there)."><meta property="og:description" content="For each observation, the conditional mean of the unobserved value
+survival probability there."><meta property="og:description" content="For each observation, the conditional mean of the unobserved value
 given that it exceeds that observation's lower[i] –
 \(E[X \mid X &amp;gt; lower_i]\) – estimated by
 integrating a piecewise-uniform density built from
 tda_midf's CDF estimate over the induced partition –
-TDA's midf2, confirmed against a from-scratch R translation
-of the same two-stage calculation (build the CDF at every
-breakpoint, then integrate the resulting piecewise-constant density
+TDA's midf2: it builds the CDF at every
+breakpoint, then integrates the resulting piecewise-constant density
 from each observation's value onward, normalizing by the
-survival probability there)."></head><body>
+survival probability there."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -63,11 +61,10 @@ given that it exceeds that observation's <code>lower[i]</code> –
 \(E[X \mid X &gt; lower_i]\) – estimated by
 integrating a piecewise-uniform density built from
 <code><a href="tda_midf.html">tda_midf</a></code>'s CDF estimate over the induced partition –
-TDA's <code>midf2</code>, confirmed against a from-scratch R translation
-of the same two-stage calculation (build the CDF at every
-breakpoint, then integrate the resulting piecewise-constant density
+TDA's <code>midf2</code>: it builds the CDF at every
+breakpoint, then integrates the resulting piecewise-constant density
 from each observation's value onward, normalizing by the
-survival probability there).</p>
+survival probability there.</p>
     </div>
 
     <div class="section level2">
@@ -126,8 +123,12 @@ survival probability there).</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">tda_midf2</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">0</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.300000 2.833333 2.000000</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">lo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">up</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># the expected value of each observation given that it lies in its</span></span></span>
+<span class="r-in"><span><span class="co"># interval, under the estimated distribution</span></span></span>
+<span class="r-in"><span><span class="fu">tda_midf2</span><span class="op">(</span><span class="va">lo</span>, <span class="va">up</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.300000 2.500000 3.300000 3.833333 2.500000</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

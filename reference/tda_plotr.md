@@ -30,7 +30,7 @@ path of the PostScript file, invisibly.
 ## Examples
 
 ``` r
-r <- tda_plotr(outer(1:5, 1:5, "+"))
-file.exists(grep("[.]ps$", r, value = TRUE))   # the finished plot
-#> [1] TRUE
+# cells shaded from white (smallest value) to black (largest)
+f <- tda_plotr(outer(1:5, 1:5, "+"))
+tda_plot_ps(tda_read_ps(f))
 ```

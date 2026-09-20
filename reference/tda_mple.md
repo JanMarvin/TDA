@@ -13,21 +13,20 @@ events tie, processing them one at a time rather than as a single
 simultaneous risk-set reduction means only the *last* observation
 processed within that tied group reaches the value standard Kaplan-Meier
 software reports for that time – earlier ones in the same group show
-smaller, order-dependent intermediate values. Confirmed by hand: two
-events tied at `time = 2` out of 3 total observations give
-`F = (1/3, 2/3, 1)` here, where standard Kaplan-Meier reports
-`F(2) = 2/3` for both tied observations. This is a property of the
-algorithm as TDA implements it, not a bug and not this wrapper's choice
-to make. Separately: `F` always reaches exactly 1 at the highest-time
-observation, *even when that observation is censored* – redistribution
-only moves probability mass to later observations, never destroys it,
-and the highest-time observation has nothing later to redistribute its
-share to, so all of the mass ends up accounted for there by
-construction. Standard Kaplan-Meier software instead leaves the survival
-curve at whatever value it last reached, undefined beyond a censored
-tail. Confirmed by hand: `time = c(1, 2, 3)`, `censored = c(0, 0, 1)`
-gives `F = (1/3, 2/3, 1)` here. This is the low-level building block
-behind TDA's
+smaller, order-dependent intermediate values. Two events tied at
+`time = 2` out of 3 total observations give `F = (1/3, 2/3, 1)` here,
+where standard Kaplan-Meier reports `F(2) = 2/3` for both tied
+observations. This is a property of the algorithm as TDA implements it,
+not a bug and not this wrapper's choice to make. Separately: `F` always
+reaches exactly 1 at the highest-time observation, *even when that
+observation is censored* – redistribution only moves probability mass to
+later observations, never destroys it, and the highest-time observation
+has nothing later to redistribute its share to, so all of the mass ends
+up accounted for there by construction. Standard Kaplan-Meier software
+instead leaves the survival curve at whatever value it last reached,
+undefined beyond a censored tail. `time = c(1, 2, 3)`,
+`censored = c(0, 0, 1)` gives `F = (1/3, 2/3, 1)` here. This is the
+low-level building block behind TDA's
 [`tda_ple`](https://janmarvin.github.io/TDA/reference/tda_ltb.md), which
 most users want instead – this one works directly on plain vectors, with
 no grouping, formula interface, or standard errors.
@@ -92,11 +91,12 @@ Other matrix algebra:
 ## Examples
 
 ``` r
-tda_mple(c(2, 3, 3, 5, 7), c(0, 0, 1, 0, 0))
-#> $F
-#> [1] 0.2 0.4 0.4 0.7 1.0
-#> 
-#> $jumps
-#> [1] 0.2 0.2 0.0 0.3 0.3
-#> 
+# six durations, two of them censored (still running at 3 and 7)
+t <- c(2, 3, 3, 5, 7, 8)
+cen <- c(0, 0, 1, 0, 1, 0)
+pl <- tda_mple(t, cen)
+pl$F       # the Kaplan-Meier distribution function at each observation
+#> [1] 0.1666667 0.3333333 0.3333333 0.5555556 0.5555556 1.0000000
+pl$jumps   # its increase there; 0 at the censored ones
+#> [1] 0.1666667 0.1666667 0.0000000 0.2222222 0.0000000 0.4444444
 ```

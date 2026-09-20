@@ -56,7 +56,8 @@ Other matrix algebra:
 ## Examples
 
 ``` r
-tda_mscal1(matrix(c(2, 4, 6, 8), 2))
+A <- matrix(c(1, 2, 3, 4), 2)
+tda_mscal1(A)   # A / sum(A): the cells now sum to one
 #>      [,1] [,2]
 #> [1,]  0.1  0.3
 #> [2,]  0.2  0.4

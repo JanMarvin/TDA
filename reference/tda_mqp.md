@@ -10,10 +10,10 @@ The problem solved is \$\$\min\\ d'x + \tfrac12 x'Cx \quad
 `tda_mqp` is unconstrained (box bounds fixed at +-huge internally by
 TDA); `tda_mqpb` adds box bounds; `tda_mqpc` adds general
 equality/inequality constraints instead of bounds – no single TDA
-command accepts both bounds and general constraints, confirmed by
-reading `m_mqp`'s three branches. Verified against hand-solved instances
-for all three commands: an unconstrained case, a box-clipped case, and a
-mixed equality+inequality case – see `examples/coverage/mqpops2.cf`.
+command accepts both bounds and general constraints. The suite checks
+all three commands against hand-solved instances: an unconstrained case,
+a box-clipped case, and a mixed equality+inequality case – see
+`examples/coverage/mqpops2.cf`.
 
 ## Usage
 

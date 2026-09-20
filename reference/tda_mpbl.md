@@ -3,13 +3,12 @@
 Finds a symmetric permutation that puts a square matrix into block
 lower-triangular (`tda_mpbl`) or block upper-triangular (`tda_mpbu`)
 form (Duff & Reid, CACM 529) – TDA's `mpbl`/`mpbu`.
-`B[i, j] == A[p[i], p[j]]` for every `i, j` (confirmed against raw TDA
-output, not merely assumed from `m_perm`'s header comment); `block`
-gives, for each row/column of `B`, which block it belongs to (blocks
-numbered in the order `B` is arranged, so entries between an earlier and
-a later block are always zero on the side `tda_mpbl`/`tda_mpbu` promises
-– confirmed on an instance with cross-block coupling, not one where
-every block trivially has size 1).
+`B[i, j] == A[p[i], p[j]]` for every `i, j`; `block` gives, for each
+row/column of `B`, which block it belongs to (blocks numbered in the
+order `B` is arranged, so entries between an earlier and a later block
+are always zero on the side `tda_mpbl`/`tda_mpbu` promises – confirmed
+on an instance with cross-block coupling, not one where every block
+trivially has size 1).
 
 ## Usage
 

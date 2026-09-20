@@ -7,8 +7,7 @@ contributed by age class `i` (used only for class 1 of the next
 generation); `survival[i]` is the fraction of age class `i` that
 survives into age class `i + 1` (`survival[n]`, the last row, is
 unused). `tda_mpit1` adds a constant vector `immigration` to every age
-class after each projection step. Confirmed against a from-scratch R
-implementation of the same recursion.
+class after each projection step.
 
 ## Usage
 

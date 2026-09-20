@@ -3,8 +3,7 @@
 block lower-triangular (tda_mpbl) or block upper-triangular
 (tda_mpbu) form (Duff &amp;amp; Reid, CACM 529) – TDA's
 mpbl/mpbu. B[i, j] == A[p[i], p[j]] for
-every i, j (confirmed against raw TDA output, not merely
-assumed from m_perm's header comment); block
+every i, j; block
 gives, for each row/column of B, which block it belongs to
 (blocks numbered in the order B is arranged, so entries
 between an earlier and a later block are always zero on the side
@@ -14,8 +13,7 @@ block trivially has size 1)."><meta property="og:description" content="Finds a s
 block lower-triangular (tda_mpbl) or block upper-triangular
 (tda_mpbu) form (Duff &amp;amp; Reid, CACM 529) – TDA's
 mpbl/mpbu. B[i, j] == A[p[i], p[j]] for
-every i, j (confirmed against raw TDA output, not merely
-assumed from m_perm's header comment); block
+every i, j; block
 gives, for each row/column of B, which block it belongs to
 (blocks numbered in the order B is arranged, so entries
 between an earlier and a later block are always zero on the side
@@ -66,8 +64,7 @@ block trivially has size 1)."></head><body>
 block lower-triangular (<code>tda_mpbl</code>) or block upper-triangular
 (<code>tda_mpbu</code>) form (Duff &amp; Reid, CACM 529) – TDA's
 <code>mpbl</code>/<code>mpbu</code>. <code>B[i, j] == A[p[i], p[j]]</code> for
-every <code>i, j</code> (confirmed against raw TDA output, not merely
-assumed from <code>m_perm</code>'s header comment); <code>block</code>
+every <code>i, j</code>; <code>block</code>
 gives, for each row/column of <code>B</code>, which block it belongs to
 (blocks numbered in the order <code>B</code> is arranged, so entries
 between an earlier and a later block are always zero on the side

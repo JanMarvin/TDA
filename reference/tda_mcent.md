@@ -3,13 +3,11 @@
 `tda_mcent` subtracts each column's mean – TDA's `mcent`, matching
 `sweep(A, 2, colMeans(A))`. `tda_mstand` additionally divides each
 column by its *population* standard deviation (denominator `n`, not base
-R's [`sd()`](https://rdrr.io/r/stats/sd.html)'s `n-1`) – TDA's `mstand`;
-confirmed by hand, since this is exactly the kind of denominator choice
-that silently disagrees with the R-native way of doing the same thing if
-assumed rather than checked. `tda_mdcent` double-centers a symmetric
-matrix – TDA's `mdcent`, the classical (Torgerson) transformation
-multidimensional scaling uses to turn a matrix of *squared* distances
-into one whose eigendecomposition gives point coordinates.
+R's [`sd()`](https://rdrr.io/r/stats/sd.html)'s `n-1`) – TDA's `mstand`.
+`tda_mdcent` double-centers a symmetric matrix – TDA's `mdcent`, the
+classical (Torgerson) transformation multidimensional scaling uses to
+turn a matrix of *squared* distances into one whose eigendecomposition
+gives point coordinates.
 
 ## Usage
 

@@ -3,10 +3,9 @@
 `tda_msvd` returns just the singular values – TDA's `msvd`. `tda_msvd1`
 returns the full decomposition `A = U %*% diag(d) %*% t(V)` – TDA's
 `msvd1`, matching base R's [`svd()`](https://rdrr.io/r/base/svd.html)
-convention exactly (singular vectors as columns of `u`/`v`), confirmed
-by reconstructing `A` from the result. `A` must have at least as many
-rows as columns for either. As with any singular vector, each column's
-sign is arbitrary and need not match
+convention exactly (singular vectors as columns of `u`/`v`). `A` must
+have at least as many rows as columns for either. As with any singular
+vector, each column's sign is arbitrary and need not match
 [`svd()`](https://rdrr.io/r/base/svd.html)'s choice.
 
 ## Usage

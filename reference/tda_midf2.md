@@ -5,11 +5,10 @@ that it exceeds that observation's `lower[i]` – \\E\[X \mid X \>
 lower_i\]\\ – estimated by integrating a piecewise-uniform density built
 from
 [`tda_midf`](https://janmarvin.github.io/TDA/reference/tda_midf.md)'s
-CDF estimate over the induced partition – TDA's `midf2`, confirmed
-against a from-scratch R translation of the same two-stage calculation
-(build the CDF at every breakpoint, then integrate the resulting
+CDF estimate over the induced partition – TDA's `midf2`: it builds the
+CDF at every breakpoint, then integrates the resulting
 piecewise-constant density from each observation's value onward,
-normalizing by the survival probability there).
+normalizing by the survival probability there.
 
 ## Usage
 
@@ -66,6 +65,10 @@ Other matrix algebra:
 ## Examples
 
 ``` r
-tda_midf2(c(1, 2, 0), c(3, 4, 2))
-#> [1] 2.300000 2.833333 2.000000
+lo <- c(0, 1, 2, 3, 1)
+up <- c(2, 3, 4, 5, 2)
+# the expected value of each observation given that it lies in its
+# interval, under the estimated distribution
+tda_midf2(lo, up)
+#> [1] 2.300000 2.500000 3.300000 3.833333 2.500000
 ```

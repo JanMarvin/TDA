@@ -78,12 +78,22 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">tda_gfcf</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>i <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, j <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># 1 -&gt; 2 -&gt; 4 and 1 -&gt; 3 -&gt; 4: node 1 controls everything downstream,</span></span></span>
+<span class="r-in"><span><span class="co"># 2 and 3 control node 4 only, node 4 controls nothing</span></span></span>
+<span class="r-in"><span><span class="va">fc</span> <span class="op">&lt;-</span> <span class="fu">tda_gfcf</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>i <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, j <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">fc</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   node n_controlled controlled</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1    1            3      2,3,4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2    2            2        3,4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    2            1          4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3    3            1          4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4    4            0           </span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">fc</span>, <span class="st">"pairs"</span><span class="op">)</span>   <span class="co"># per pair: path length and the flow shares</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   i node controlled L S M R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 1    1          2 1 1 3 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 1    1          3 1 1 3 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 1    1          4 2 2 3 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 2    2          4 1 1 1 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 3    3          4 1 1 1 1</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

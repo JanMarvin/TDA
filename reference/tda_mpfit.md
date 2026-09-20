@@ -2,8 +2,7 @@
 
 Adjusts a table `A` so its row and column sums match prescribed targets
 while preserving cross-product ratios (the RAS/IPF algorithm) – TDA's
-`mpfit`, confirmed against a from-scratch RAS implementation on a small
-table. `A` must be non-negative with strictly positive row and column
+`mpfit`. `A` must be non-negative with strictly positive row and column
 sums, as must the target `row_sums`/`col_sums`, and their totals should
 agree (TDA warns but does not refuse otherwise).
 

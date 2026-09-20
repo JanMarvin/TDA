@@ -5,13 +5,13 @@ interval (itself included) whose lower endpoint falls within
 endpoints falling in that same range – TDA's midf3. A
 local smoothing of nearby endpoints, not a distribution estimate
 like tda_midf/tda_midf1/
-tda_midf2. Confirmed by hand on a 3-interval example."><meta property="og:description" content="For each interval i, averages the lower endpoints of every
+tda_midf2."><meta property="og:description" content="For each interval i, averages the lower endpoints of every
 interval (itself included) whose lower endpoint falls within
 [lower[i], upper[i]], and separately averages the upper
 endpoints falling in that same range – TDA's midf3. A
 local smoothing of nearby endpoints, not a distribution estimate
 like tda_midf/tda_midf1/
-tda_midf2. Confirmed by hand on a 3-interval example."></head><body>
+tda_midf2."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -58,7 +58,7 @@ interval (itself included) whose lower endpoint falls within
 endpoints falling in that same range – TDA's <code>midf3</code>. A
 local smoothing of nearby endpoints, not a distribution estimate
 like <code><a href="tda_midf.html">tda_midf</a></code>/<code><a href="tda_midf1.html">tda_midf1</a></code>/
-<code><a href="tda_midf2.html">tda_midf2</a></code>. Confirmed by hand on a 3-interval example.</p>
+<code><a href="tda_midf2.html">tda_midf2</a></code>.</p>
     </div>
 
     <div class="section level2">
@@ -117,12 +117,16 @@ like <code><a href="tda_midf.html">tda_midf</a></code>/<code><a href="tda_midf1.
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">tda_midf3</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">0</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">lo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">up</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># for each interval, the mean lower and upper endpoint of the</span></span></span>
+<span class="r-in"><span><span class="co"># intervals overlapping it</span></span></span>
+<span class="r-in"><span><span class="fu">tda_midf3</span><span class="op">(</span><span class="va">lo</span>, <span class="va">up</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lower_avg</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.5 2.0 1.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.000000 1.750000 2.500000 3.000000 1.333333</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $upper_avg</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.5 3.0 2.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2.000000 2.333333 2.750000 4.000000 2.000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>

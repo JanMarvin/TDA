@@ -37,7 +37,10 @@ from the export channel.
 ## Examples
 
 ``` r
-tda_gde(node = c(1, 2, 2, 3), id = c(10, 10, 20, 20))
+# three persons (node) and the organisations they belong to (id):
+# person 1 in 10 and 20, person 2 in 20 and 30, person 3 in 30.
+# Sharing an organisation makes two persons adjacent: 1-2 and 2-3.
+tda_gde(node = c(1, 1, 2, 2, 3), id = c(10, 20, 20, 30, 30))
 #>      [,1] [,2] [,3]
 #> [1,]    1    2    1
 #> [2,]    2    3    1

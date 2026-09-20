@@ -3,16 +3,14 @@
 msvd. tda_msvd1 returns the full decomposition
 A = U %*% diag(d) %*% t(V) – TDA's msvd1,
 matching base R's svd() convention exactly (singular
-vectors as columns of u/v), confirmed by
-reconstructing A from the result. A must have at
+vectors as columns of u/v). A must have at
 least as many rows as columns for either. As with any singular
 vector, each column's sign is arbitrary and need not match
 svd()'s choice."><meta property="og:description" content="tda_msvd returns just the singular values – TDA's
 msvd. tda_msvd1 returns the full decomposition
 A = U %*% diag(d) %*% t(V) – TDA's msvd1,
 matching base R's svd() convention exactly (singular
-vectors as columns of u/v), confirmed by
-reconstructing A from the result. A must have at
+vectors as columns of u/v). A must have at
 least as many rows as columns for either. As with any singular
 vector, each column's sign is arbitrary and need not match
 svd()'s choice."></head><body>
@@ -60,8 +58,7 @@ svd()'s choice."></head><body>
 <code>msvd</code>. <code>tda_msvd1</code> returns the full decomposition
 <code>A = U %*% diag(d) %*% t(V)</code> – TDA's <code>msvd1</code>,
 matching base R's <code><a href="https://rdrr.io/r/base/svd.html" class="external-link">svd()</a></code> convention exactly (singular
-vectors as columns of <code>u</code>/<code>v</code>), confirmed by
-reconstructing <code>A</code> from the result. <code>A</code> must have at
+vectors as columns of <code>u</code>/<code>v</code>). <code>A</code> must have at
 least as many rows as columns for either. As with any singular
 vector, each column's sign is arbitrary and need not match
 <code><a href="https://rdrr.io/r/base/svd.html" class="external-link">svd()</a></code>'s choice.</p>

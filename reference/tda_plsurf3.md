@@ -37,9 +37,11 @@ path of the PostScript file, invisibly.
 ## Examples
 
 ``` r
-r <- tda_plsurf3(fx = "u", fy = "v", fz = "sin(u) * cos(v)",
+# z = sin(u) cos(v) over a 5 x 5 grid of lines, 12 points each
+f <- tda_plsurf3(fx = "u", fy = "v", fz = "sin(u) * cos(v)",
                  u_range = c(-2, 2, 5, 12),
                  v_range = c(-2, 2, 5, 12))
-file.exists(grep("[.]ps$", r, value = TRUE))   # the finished plot
-#> [1] TRUE
+tda_plot_ps(tda_read_ps(f))
+
+# tda_pl_surface3() adds the same surface to a tda_ps3() session
 ```

@@ -4,12 +4,10 @@
 by index – TDA's `msrow`/`mscol`, matching `X[rows, ]`/`X[, cols]`.
 `tda_mprow`/ `tda_mpcol`/`tda_mpsym` permute rows, columns, or both by
 the same permutation – TDA's `mprow`/`mpcol`/ `mpsym`, matching
-`A[p, ]`/`A[, p]`/`A[p, p]` – confirmed against all five by hand
-(`mprow`/`mpcol`/ `mpsym` additionally have their exact convention
-stated in `m_mperm`'s header, `b(i,j)=a(p(i),j)` etc.). `mprow`/`mpcol`
-require a permutation of `1:nrow(A)`/`1:ncol(A)`, so unlike `msrow`/
-`mscol` they cannot repeat or drop indices; `mpsym` additionally
-requires `A` to be square.
+`A[p, ]`/`A[, p]`/`A[p, p]` (`m_mperm`'s header states the convention,
+`b(i,j)=a(p(i),j)` etc.). `mprow`/`mpcol` require a permutation of
+`1:nrow(A)`/`1:ncol(A)`, so unlike `msrow`/ `mscol` they cannot repeat
+or drop indices; `mpsym` additionally requires `A` to be square.
 
 ## Usage
 

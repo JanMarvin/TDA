@@ -7,15 +7,14 @@ function of that unobserved value – TDA's `midf` (undocumented beyond
 header, which also understates the command's arity: it lists three
 outputs, `midf(XL,XU,DL,DU,DM)`, but `m_midf` actually returns four,
 `midf(XL,XU,PT,DL,DU,DM)` – the breakpoints themselves, `PT`, are a
-result too, confirmed by counting `m_getmat` calls). Evaluated at every
-distinct interval endpoint (the “induced partition” `breakpoints`):
-`lower_bound` counts only intervals entirely below that point (a sure
-lower bound on the true CDF); `upper_bound` counts every interval that
-could be below it (a sure upper bound); `cdf` is a point estimate in
-between, assuming each interval's unobserved value is uniformly
-distributed within it. Every interval must have positive width
-(`lower < upper`, swapped automatically if given in the other order).
-Confirmed cell-for-cell by hand on a 3-interval example.
+result too). Evaluated at every distinct interval endpoint (the “induced
+partition” `breakpoints`): `lower_bound` counts only intervals entirely
+below that point (a sure lower bound on the true CDF); `upper_bound`
+counts every interval that could be below it (a sure upper bound); `cdf`
+is a point estimate in between, assuming each interval's unobserved
+value is uniformly distributed within it. Every interval must have
+positive width (`lower < upper`, swapped automatically if given in the
+other order). Confirmed cell-for-cell by hand on a 3-interval example.
 
 ## Usage
 
@@ -73,17 +72,22 @@ Other matrix algebra:
 ## Examples
 
 ``` r
-tda_midf(c(1, 2, 0), c(3, 4, 2))
+# five observations known only to intervals: [0,2], [1,3], [2,4], [3,5], [1,2]
+lo <- c(0, 1, 2, 3, 1)
+up <- c(2, 3, 4, 5, 2)
+# at each endpoint: the share of intervals surely below it (lower
+# bound), possibly below it (upper bound), and the estimate between
+tda_midf(lo, up)
 #> $breakpoints
-#> [1] 0 1 2 3 4
+#> [1] 0 1 2 3 4 5
 #> 
 #> $lower_bound
-#> [1] 0.0000000 0.0000000 0.3333333 0.6666667 1.0000000
+#> [1] 0.0 0.0 0.4 0.6 0.8 1.0
 #> 
 #> $upper_bound
-#> [1] 0.3333333 0.6666667 1.0000000 1.0000000 1.0000000
+#> [1] 0.2 0.6 0.8 1.0 1.0 1.0
 #> 
 #> $cdf
-#> [1] 0.0000000 0.1666667 0.5000000 0.8333333 1.0000000
+#> [1] 0.0 0.1 0.5 0.7 0.9 1.0
 #> 
 ```

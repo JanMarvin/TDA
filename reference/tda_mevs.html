@@ -3,8 +3,7 @@
 mevs. Eigenvalues come back in descending order,
 same as base R's eigen(A, symmetric = TRUE). The
 eigenvectors come back as the columns of vectors,
-same convention as eigen()$vectors – confirmed by hand on
-a 3x3 instance (column i satisfies
+same convention as eigen()$vectors (column i satisfies
 A %*% vectors[, i] == values[i] * vectors[, i]); an
 initial 2x2 test matrix was checked first and satisfied this
 equally well as rows, which turned out to be a coincidence of
@@ -17,8 +16,7 @@ agree."><meta property="og:description" content="Eigenvalues and eigenvectors of
 mevs. Eigenvalues come back in descending order,
 same as base R's eigen(A, symmetric = TRUE). The
 eigenvectors come back as the columns of vectors,
-same convention as eigen()$vectors – confirmed by hand on
-a 3x3 instance (column i satisfies
+same convention as eigen()$vectors (column i satisfies
 A %*% vectors[, i] == values[i] * vectors[, i]); an
 initial 2x2 test matrix was checked first and satisfied this
 equally well as rows, which turned out to be a coincidence of
@@ -72,8 +70,7 @@ agree."></head><body>
 <code>mevs</code>. Eigenvalues come back in <em>descending</em> order,
 same as base R's <code>eigen(A, symmetric = TRUE)</code>. The
 eigenvectors come back as the <em>columns</em> of <code>vectors</code>,
-same convention as <code>eigen()$vectors</code> – confirmed by hand on
-a 3x3 instance (column <code>i</code> satisfies
+same convention as <code>eigen()$vectors</code> (column <code>i</code> satisfies
 <code>A %*% vectors[, i] == values[i] * vectors[, i]</code>); an
 initial 2x2 test matrix was checked first and satisfied this
 equally well as rows, which turned out to be a coincidence of
@@ -142,15 +139,17 @@ read).</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">tda_mevs</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $values</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $vectors</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           [,1]       [,2]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.7071068  0.7071068</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] 0.7071068 -0.7071068</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>              <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>              <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">e</span> <span class="op">&lt;-</span> <span class="fu">tda_mevs</span><span class="op">(</span><span class="va">A</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">e</span><span class="op">$</span><span class="va">values</span>                      <span class="co"># descending, as eigen(A)$values</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4.732051 3.000000 1.267949</span>
+<span class="r-in"><span><span class="va">A</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="va">e</span><span class="op">$</span><span class="va">vectors</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">-</span> <span class="va">e</span><span class="op">$</span><span class="va">values</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">*</span> <span class="va">e</span><span class="op">$</span><span class="va">vectors</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>   <span class="co"># zero: an eigenpair</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              [,1]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 4.440892e-16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,] 4.440892e-16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,] 2.220446e-16</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

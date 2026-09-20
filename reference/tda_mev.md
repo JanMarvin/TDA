@@ -5,8 +5,7 @@ symmetric, so eigenvalues and eigenvectors may be complex – TDA's `mev`.
 `t_mat.c`'s dispatch comment understates this command's arity
 (`mev(A,ER,EI,EV)`, four arguments); what `m_mev` actually parses is
 five (`mev(A,ER,EI,EVR,EVI)`), splitting the eigenvector matrix into
-separate real and imaginary parts – confirmed by counting `m_getmat`
-calls and matched against `eigen1`'s header, which does list five.
+separate real and imaginary parts, as `eigen1`'s header lists them.
 Column `i` of the result, `EVR[, i] + 1i * EVI[, i]`, is the right
 eigenvector for eigenvalue `ER[i] + 1i * EI[i]`, i.e.
 `A %*% v == lambda * v` – the same convention and ordering as base R's

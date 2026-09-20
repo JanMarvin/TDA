@@ -10,8 +10,8 @@ not just `by`) – TDA's `msort1`, matching `unique(sorted_X)`.
 [`tda_mginv`](https://janmarvin.github.io/TDA/reference/tda_minvs.md)
 prints a pseudorank as a side effect, but never returns it). It returns
 the sort *permutation* itself: an integer vector `p` such that `X[p, ]`
-is sorted by `by` – TDA's `mrank`, confirmed against a hand-checked
-instance to equal base R's `order(X[, by[1]], X[, by[2]], ...)`, not
+is sorted by `by` – TDA's `mrank`, which equals base R's
+`order(X[, by[1]], X[, by[2]], ...)`, not
 [`rank()`](https://rdrr.io/r/base/rank.html).
 
 ## Usage

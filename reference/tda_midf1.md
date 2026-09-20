@@ -3,8 +3,7 @@
 The same uniform-within-interval distribution function estimate as
 [`tda_midf`](https://janmarvin.github.io/TDA/reference/tda_midf.md)'s
 `cdf`, but evaluated at each observation's `lower[i]` rather than at
-every distinct breakpoint – TDA's `midf1`, confirmed against a
-from-scratch R translation of the same formula.
+every distinct breakpoint – TDA's `midf1`.
 
 ## Usage
 
@@ -61,6 +60,9 @@ Other matrix algebra:
 ## Examples
 
 ``` r
-tda_midf1(c(1, 2, 0), c(3, 4, 2))
-#> [1] 0.1666667 0.5000000 0.0000000
+lo <- c(0, 1, 2, 3, 1)
+up <- c(2, 3, 4, 5, 2)
+# the estimated distribution function at each interval's own position
+tda_midf1(lo, up)
+#> [1] 0.0 0.1 0.5 0.7 0.1
 ```

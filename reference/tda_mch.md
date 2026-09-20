@@ -3,14 +3,13 @@
 Flags each row/column index of a square matrix `A` where the current
 index order fails a running dominance test against its mirror image –
 TDA's `mch` (undocumented beyond "check row and column sum conditions"
-in its own header; the exact rule below was read from the loop body and
-confirmed against a from-scratch re-implementation of the same loops,
-not derived from a named textbook procedure). For each index `i`,
-scanning outward (`j` from `i+1` to `n`, then separately from `i-1` down
-to `1`), `A[i, j]` accumulates into a running total `z` and its mirror
-`A[j, i]` accumulates into a running total `s`; index `i` is flagged the
-first time `z` falls behind `s` by more than a small tolerance. In
-effect: is `A[i, ]`'s share of an outward pair always at least as large,
+in its own header; the rule below is the loop body's, not a named
+textbook procedure). For each index `i`, scanning outward (`j` from
+`i+1` to `n`, then separately from `i-1` down to `1`), `A[i, j]`
+accumulates into a running total `z` and its mirror `A[j, i]`
+accumulates into a running total `s`; index `i` is flagged the first
+time `z` falls behind `s` by more than a small tolerance. In effect: is
+`A[i, ]`'s share of an outward pair always at least as large,
 cumulatively, as the corresponding mirrored entries in `A[, i]` – a
 diagnostic for whether the current `1:n` ordering already respects that
 dominance, without finding a better ordering the way
@@ -71,6 +70,14 @@ Other matrix algebra:
 ## Examples
 
 ``` r
-tda_mch(matrix(c(0, 1, 0, 5, 0, 1, 0, 0, 0), 3, 3, byrow = TRUE))
-#> [1] 1 1 0
+# A[i, j] = 5 means i strongly precedes j.  Ordered 1 < 2 < 3 the
+# rows dominate their columns and every index passes (0); the same
+# matrix with the order reversed fails everywhere (1).
+A <- matrix(c(0, 5, 5,
+              1, 0, 5,
+              1, 1, 0), 3, byrow = TRUE)
+tda_mch(A)
+#> [1] 0 0 0
+tda_mch(A[3:1, 3:1])
+#> [1] 1 1 1
 ```

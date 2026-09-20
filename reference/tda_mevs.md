@@ -3,13 +3,12 @@
 Eigenvalues and eigenvectors of a symmetric matrix – TDA's `mevs`.
 Eigenvalues come back in *descending* order, same as base R's
 `eigen(A, symmetric = TRUE)`. The eigenvectors come back as the
-*columns* of `vectors`, same convention as `eigen()$vectors` – confirmed
-by hand on a 3x3 instance (column `i` satisfies
-`A %*% vectors[, i] == values[i] * vectors[, i]`); an initial 2x2 test
-matrix was checked first and satisfied this equally well as rows, which
-turned out to be a coincidence of that specific matrix's eigenvector
-matrix happening to be symmetric, not a real property of TDA's
-convention – worth recording since it is exactly the kind of false
+*columns* of `vectors`, same convention as `eigen()$vectors` (column `i`
+satisfies `A %*% vectors[, i] == values[i] * vectors[, i]`); an initial
+2x2 test matrix was checked first and satisfied this equally well as
+rows, which turned out to be a coincidence of that specific matrix's
+eigenvector matrix happening to be symmetric, not a real property of
+TDA's convention – worth recording since it is exactly the kind of false
 confirmation a too-simple test case can produce. As with any
 eigenvector, the sign of each one is arbitrary; TDA's and R's choices
 need not agree.
@@ -68,13 +67,15 @@ Other matrix algebra:
 ## Examples
 
 ``` r
-tda_mevs(matrix(c(2, 1, 1, 2), 2))
-#> $values
-#> [1] 3 1
-#> 
-#> $vectors
-#>           [,1]       [,2]
-#> [1,] 0.7071068  0.7071068
-#> [2,] 0.7071068 -0.7071068
-#> 
+A <- matrix(c(4, 1, 0,
+              1, 3, 1,
+              0, 1, 2), 3)
+e <- tda_mevs(A)
+e$values                      # descending, as eigen(A)$values
+#> [1] 4.732051 3.000000 1.267949
+A %*% e$vectors[, 1] - e$values[1] * e$vectors[, 1]   # zero: an eigenpair
+#>              [,1]
+#> [1,] 4.440892e-16
+#> [2,] 4.440892e-16
+#> [3,] 2.220446e-16
 ```
